@@ -1,30 +1,16 @@
 from box.core.default_settings import * 
 
-from box.core.default_settings import * 
-INSTALLED_APPS  = [
-    *priority_third_party,
-    *django_contrib,
-    *third_party,
-    *box_core,
-    *box_shop,
-    *box_payment,
-    *box_blog,
-    'project',
+INSTALLED_APPS +=[
+    'project'
 ]
 TEMPLATES[0]['OPTIONS']['context_processors'].extend([
     'project.context_processors.context',
 ])
+DJANGO_DEBUG_TOOLBAR_ON = False 
 MIDDLEWARE.extend([
     # 'project.middlewares.Middleware',
 ])
-# DATABASES['default'] = {
-#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#     'NAME': 'margo_db',
-#     'USER' : 'jurgeon018',
-#     'PASSWORD' : '69018',
-#     'HOST' : '127.0.0.1',
-#     'PORT' : '5432',
-# }
+AUTH_USER_MODEL = 'project.ProjectUser'
 STATIC_SITEMAP_PAGES = [
     # 'index',
     # 'contact',

@@ -8,5 +8,5 @@ router = DefaultRouter
 # router.register('/', ViewSet)
 
 urlpatterns = [
-    path('', router.urls)
+    # path('', include(router.urls)),
 ]
