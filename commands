@@ -1,22 +1,23 @@
-sudo -u postgres psql -c "create user jurgeon with password '69018'; alter role jurgeon set client_encoding to 'utf8'; alter role jurgeon set default_transaction_isolation to 'read committed'; alter role jurgeon set timezone to 'UTC';"
 # створюєш юзера в БД. Вводиш 1 раз перед початком розробки. 
+sudo -u postgres psql -c "create user jurgeon with password '69018'; alter role jurgeon set client_encoding to 'utf8'; alter role jurgeon set default_transaction_isolation to 'read committed'; alter role jurgeon set timezone to 'UTC';"
 
+# це не чіпай 
 #####sudo -u postgres psql -c 'create database dopomoga;'
 #####sudo -u postgres psql -c 'grant all privileges on database dopomoga to jurgeon;'
-# це не чіпай 
 
 
-sudo -u postgres psql -c "drop database dopomoga; "
 # видаляє БД
+sudo -u postgres psql -c "drop database eleek; "
 
-sudo -u postgres psql -c "create database dopomoga owner jurgeon; "
 # створює БД 
-
+sudo -u postgres psql -c "create database eleek owner jurgeon; "
 
 # видаляє БД 
 rm db.sqlite3
+
 # видаляє файли міграцій
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+
 # робить міграції в БД 
 python3 manage.py makemigrations
 python3 manage.py migrate 
