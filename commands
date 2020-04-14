@@ -23,7 +23,7 @@ python3 manage.py makemigrations
 python3 manage.py migrate 
 python3 manage.py set_user starway starway dev@starwayua.com +88005553535 admin_name admin_surname  
 python3 manage.py set_user jurgeon018 yfpfhrj69018 jurgeon018@gmail.com +380994507803 Andrew Mendela  
-python3 manage.py set_site domain.com 
+python3 manage.py set_site eleek.com.ua 
 python3 manage.py runserver 127.0.0.1:8000
 
 
