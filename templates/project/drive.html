@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+{% extends 'project/base.html' %}
+{% load i18n sw_content %}
+{% block styles %}
   <link rel="stylesheet" href="./static/source/pages/drive/index.css.map">
   <link rel="stylesheet" href="./static/source/lib/select2/select2.min.css">
   <link rel="stylesheet" href="./static/source/lib/fancybox/jquery.fancybox.min.css">
   <link rel="stylesheet" href="./static/source/pages/login/index.css">
   <link rel="stylesheet" href="./static/source/pages/drive/index.css">
 
-</head>
-<body>
+{% endblock styles %}
+{% block content %}
   <header class="nav_bar">
     
       <div class="logo__wrap">
@@ -536,6 +533,7 @@
     </footer>
     <!-- /.footer -->
   </main>
+{% endblock content %}
 
 
 <script src="./static/source/lib/jquery/index.js"></script> 
@@ -546,8 +544,7 @@
 <script src="./static/source/lib/select2/select2.full.min.js"></script> 
 <script src="./static/source/pages/drive/index.js"></script> 
 
-</body>
-</html>
+{% endblock scripts %}
 
 
 
