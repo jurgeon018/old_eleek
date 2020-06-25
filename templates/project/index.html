@@ -1,6 +1,1049 @@
-{% extends "project/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./static/source/pages/index/index.css.map">
+  <link rel="stylesheet" href="./static/source/lib/slick/slick.min.css">
+  <link rel="stylesheet" href="./static/source/lib/slick/slick-theme.css">
+  <link rel="stylesheet" href="./static/source/pages/index/index.css?v=3">
 
-{% block content %}
+</head>
+<body>
+  <header class="nav_bar">
+    
+      <div class="logo__wrap">
+        <a href="#" class="logo_header">
+          <svg width="100%" height="100%" viewBox="0 0 182 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g class="header_logos" id="Artboard" transform="translate(-66.000000, -34.000000)" fill="#000">
+                    <path d="M118.40184,34 L108.668147,70 L66,70 L75.7336929,34 L118.40184,34 Z M148.82548,40.9464888 L147.741303,44.9563537 L131.535046,44.9563537 L128.16293,57.4279879 C128.022046,57.9490018 128.052042,58.348928 128.258019,58.6277666 C128.458696,58.9067042 128.835953,59.0435472 129.372292,59.0435472 L143.932436,59.0435472 L142.84816,63.0534121 L127.939155,63.0534121 C127.381819,63.0534121 126.797785,62.9532324 126.186755,62.7587192 C125.575824,62.564206 125.046484,62.2430561 124.599235,61.795765 C124.157385,61.3484739 123.841321,60.7695916 123.657742,60.0538663 C123.468864,59.3382401 123.519358,58.4646649 123.799626,57.4279879 L127.709581,42.9672261 C127.784973,42.6882884 127.909259,42.425106 128.07684,42.1778771 C128.25002,41.9305491 128.446398,41.7147316 128.682071,41.5305238 C128.912345,41.346415 129.163216,41.2043203 129.441284,41.099087 C129.717853,40.9991054 130.002921,40.9464888 130.294887,40.9464888 L148.82548,40.9464888 Z M248,40.9464888 L233.973895,52.0321546 L242.02278,63.0534121 L237.233924,63.0534121 L230.575482,54.0180123 L227.115875,54.0180123 L228.207151,49.9818886 L230.874048,49.9818886 L242.259953,40.9464888 L248,40.9464888 Z M157.09164,40.9464888 L152.198596,59.0435472 L168.326762,59.0435472 L167.242485,63.0534121 L148.790084,63.0534121 C148.498017,63.0534121 148.246846,63.0007955 148.024271,62.9008139 C147.803096,62.7955806 147.623816,62.6534859 147.491631,62.4745298 C147.359546,62.2956728 147.274456,62.0798553 147.23896,61.8378782 C147.199665,61.5904511 147.219285,61.322116 147.297454,61.0326748 L152.728336,40.9464888 L157.09164,40.9464888 Z M196.350374,40.9464888 L195.266198,44.9563537 L179.059941,44.9563537 L175.687825,57.4279879 C175.546941,57.9490018 175.576937,58.348928 175.782914,58.6277666 C175.983591,58.9067042 176.360848,59.0435472 176.897187,59.0435472 L191.457331,59.0435472 L190.373054,63.0534121 L175.46405,63.0534121 C174.906813,63.0534121 174.32268,62.9532324 173.711749,62.7587192 C173.100719,62.564206 172.571379,62.2430561 172.12423,61.795765 C171.68228,61.3484739 171.366216,60.7695916 171.182637,60.0538663 C170.993858,59.3382401 171.044253,58.4646649 171.324521,57.4279879 L175.234476,42.9672261 C175.309868,42.6882884 175.434153,42.425106 175.601834,42.1778771 C175.774915,41.9305491 175.971392,41.7147316 176.206965,41.5305238 C176.437339,41.346415 176.688111,41.2043203 176.966179,41.099087 C177.242748,40.9991054 177.527815,40.9464888 177.819782,40.9464888 L196.350374,40.9464888 Z M220.732501,40.9464888 L219.648425,44.9563537 L203.442068,44.9563537 L200.069951,57.4279879 C199.929167,57.9490018 199.959064,58.348928 200.165141,58.6277666 C200.365818,58.9067042 200.743075,59.0435472 201.279414,59.0435472 L215.839558,59.0435472 L214.755281,63.0534121 L199.846177,63.0534121 C199.28874,63.0534121 198.705007,62.9533315 198.093876,62.7587192 C197.482846,62.5641069 196.953606,62.2430561 196.506357,61.795765 C196.064407,61.3484739 195.748443,60.7695916 195.564764,60.0538663 C195.375985,59.3382401 195.42638,58.4646649 195.706748,57.4279879 L199.616603,42.9672261 C199.691994,42.6882884 199.81628,42.425106 199.983961,42.1778771 C200.157141,41.9305491 200.353519,41.7147316 200.589092,41.5305238 C200.819466,41.346415 201.070238,41.2043203 201.348306,41.099087 C201.624975,40.9991054 201.909942,40.9464888 202.202009,40.9464888 L220.732501,40.9464888 Z M229.030558,40.9464888 L223.053337,63.0534121 L218.689934,63.0534121 L224.667254,40.9464888 L229.030558,40.9464888 Z M109.842214,40.9464888 L104.102166,40.9464888 L92.6369704,49.9818886 L86.5978573,49.9818886 L85.5064814,54.0180123 L92.3384044,54.0180123 L98.9968471,63.0534121 L103.785702,63.0534121 L95.7368178,52.0321546 L109.842214,40.9464888 Z M85.4735851,40.9464888 L83.1494495,40.9464888 C82.8574827,40.9464888 82.5724151,40.9991054 82.2958466,41.099087 C82.0177782,41.2043203 81.7669067,41.346415 81.5365329,41.5305238 C81.3009597,41.7147316 81.1045821,41.9305491 80.9314018,42.1778771 C80.8057161,42.3632988 80.7043838,42.5576943 80.6297673,42.76098 L80.5641435,42.9672261 L76.6541882,57.4279879 C76.3739201,58.4646649 76.3234259,59.3382401 76.5123044,60.0538663 C76.6958835,60.7695916 77.0119475,61.3484739 77.4537973,61.795765 C77.9010464,62.2430561 78.4303862,62.564206 79.0413167,62.7587192 C79.5505088,62.9208135 80.040953,63.0173985 80.512823,63.0450909 L80.7937174,63.0534121 L94.5797494,63.0534121 L91.6247855,59.0435472 L82.2268544,59.0435472 C81.6905154,59.0435472 81.3132583,58.9067042 81.1125812,58.6277666 C80.929402,58.3799101 80.8854267,58.0363794 80.9768633,57.5971745 L81.017492,57.4279879 L84.3895084,44.9563537 L85.4735851,40.9464888 Z M144.561065,49.9818886 L143.469789,54.0180123 L130.699141,54.0180123 L131.790517,49.9818886 L144.561065,49.9818886 Z M192.086059,49.9818886 L190.994684,54.0180123 L178.224136,54.0180123 L179.315412,49.9818886 L192.086059,49.9818886 Z M216.468186,49.9818886 L215.37691,54.0180123 L202.606263,54.0180123 L203.697539,49.9818886 L216.468186,49.9818886 Z M98.3711182,40.9464888 L89.0407794,40.9464888 L87.9566027,44.9563537 L93.2829969,44.9563537 L98.3711182,40.9464888 Z" id="Combined-Shape"></path>
+                </g>
+            </g>
+          </svg>
+        </a>
+      </div>
+      <div class="nav_menu__block">
+          <div class="nav_menu_item__block">
+              <div class="nav_menu_content">
+                  <div class="nav_menu_item modal_search">
+                    <svg class="svg_item" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                      <path d="M9 .4c4.75 0 8.6 3.85 8.6 8.6 0 2.158-.795 4.131-2.109 5.641l3.933 3.935c.235.234.235.614 0 .848-.234.235-.614.235-.848 0l-3.935-3.933C13.131 16.805 11.158 17.6 9 17.6 4.25 17.6.4 13.75.4 9S4.25.4 9 .4zm0 1.2C4.913 1.6 1.6 4.913 1.6 9s3.313 7.4 7.4 7.4c2.01 0 3.833-.802 5.167-2.103l.059-.071c.022-.023.046-.043.07-.06C15.598 12.832 16.4 11.01 16.4 9c0-4.087-3.313-7.4-7.4-7.4z"/>
+                    </svg>
+                  </div>
+                  <div class="nav_menu_item">
+                    <svg class="svg_item" xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19">
+                      <path d="M13 11.4c2.54 0 4.6 2.06 4.6 4.6v2c0 .331-.269.6-.6.6-.331 0-.6-.269-.6-.6v-2c0-1.878-1.522-3.4-3.4-3.4H5c-1.878 0-3.4 1.522-3.4 3.4v2c0 .331-.269.6-.6.6-.331 0-.6-.269-.6-.6v-2c0-2.54 2.06-4.6 4.6-4.6zM9 .4c2.54 0 4.6 2.06 4.6 4.6 0 2.54-2.06 4.6-4.6 4.6-2.54 0-4.6-2.06-4.6-4.6C4.4 2.46 6.46.4 9 .4zm0 1.2C7.122 1.6 5.6 3.122 5.6 5S7.122 8.4 9 8.4s3.4-1.522 3.4-3.4S10.878 1.6 9 1.6z"/>
+                    </svg>
+                  </div>
+                  <div class="nav_menu_item modal_basket">
+                    <svg class="svg_item" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19">
+                      <path d="M6.096 14.488c1.18 0 2.137.956 2.137 2.137 0 1.18-.957 2.137-2.137 2.137-1.18 0-2.138-.956-2.138-2.137 0-1.18.957-2.137 2.138-2.137zm9.5 0c1.18 0 2.137.956 2.137 2.137 0 1.18-.957 2.137-2.137 2.137-1.18 0-2.138-.956-2.138-2.137 0-1.18.957-2.137 2.138-2.137zm-9.5 1.108c-.569 0-1.03.46-1.03 1.029 0 .568.461 1.03 1.03 1.03.568 0 1.029-.462 1.029-1.03 0-.568-.46-1.03-1.03-1.03zm9.5 0c-.569 0-1.03.46-1.03 1.029 0 .568.461 1.03 1.03 1.03.568 0 1.029-.462 1.029-1.03 0-.568-.46-1.03-1.03-1.03zM2.336.238c1.027.001 1.901.731 2.095 1.727l.021.132.277 2.099H17.97c.323 0 .571.273.553.584l-.01.079-1.33 6.641c-.193.971-1.025 1.677-1.994 1.72H6.694c-1.035.01-1.92-.723-2.116-1.726l-.021-.132-1.204-9.12c-.062-.478-.446-.844-.916-.891l-.102-.005H.555C.247 1.346 0 1.098 0 .792c0-.28.208-.513.479-.55L.554.238h1.782zm14.958 5.066H4.875l.78 5.913c.064.481.453.848.93.891l.105.005h8.378c.465.009.874-.295 1.006-.734l.023-.096 1.197-5.979z"/>
+                    </svg>
+                  </div>
+              </div>
+          </div>
+          <div class="nav_menu_burger__wrap">
+              <div class="nav_menu_burger">
+                <div id="menu-toggle">
+                  <div id="hamburger">
+                    <span class="burger_span"></span>
+                    <span class="burger_span"></span>
+                    <span class="burger_span"></span>
+                  </div>
+                  <div id="cross">
+                    <span class="burger_span"></span>
+                    <span class="burger_span"></span>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    <nav class="scroll_menu">
+        <div class="scroll_content__block">
+            <div class="scroll_left__block">
+              <div class="scroll_main__block">
+                  <div class="scroll_category">
+                      <a href="#" class="scroll__category_text header_title header_title_1">
+                        Велосипеди
+                      </a>
+                      <div class="scroll_category_img">
+                          <img src="./static/source/img/index/header-1.jpg" alt="">
+                      </div>
+                  </div>
+                  <div class="scroll_category">
+                    <a href="#" class="scroll__category_text header_title header_title_1">
+                      Рами
+                    </a>
+                    <div class="scroll_category_img">
+                      <img src="./static/source/img/index/header-2.jpg" alt="">
+                    </div>
+                  </div>
+                  <div class="scroll_category">
+                    <a href="#" class="scroll__category_text header_title header_title_1">
+                      Комплекти
+                    </a>
+                    <div class="scroll_category_img">
+                      <img src="./static/source/img/index/header-3.jpg" alt="">
+                    </div>
+                  </div>
+                  <div class="scroll_category">
+                    <a href="#" class="scroll__category_text header_title header_title_1">
+                      Про нас
+                    </a>
+                    <div class="scroll_category_img">
+                      <img src="./static/source/img/index/header-4.jpg" alt="">
+                    </div>
+                  </div>
+                  <div class="scroll_category">
+                    <a href="#" class="scroll__category_text header_title header_title_1">
+                      Часті питання
+                    </a>
+                    <div class="scroll_category_img">
+                      <img src="./static/source/img/index/header-5.png" alt="">
+                    </div>
+                  </div>
+              </div>
+              <div class="scroll_mail__bottom">
+                <div class="scroll_search__block">
+                  <svg fill='#fff' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                    <path d="M9 .4c4.75 0 8.6 3.85 8.6 8.6 0 2.158-.795 4.131-2.109 5.641l3.933 3.935c.235.234.235.614 0 .848-.234.235-.614.235-.848 0l-3.935-3.933C13.131 16.805 11.158 17.6 9 17.6 4.25 17.6.4 13.75.4 9S4.25.4 9 .4zm0 1.2C4.913 1.6 1.6 4.913 1.6 9s3.313 7.4 7.4 7.4c2.01 0 3.833-.802 5.167-2.103l.059-.071c.022-.023.046-.043.07-.06C15.598 12.832 16.4 11.01 16.4 9c0-4.087-3.313-7.4-7.4-7.4z"></path>
+                  </svg>
+                  <input type="search" name="scroll_search" class="scroll_search">
+                </div>
+                <div class="scroll_changer__block">
+                  <div class="scroll_lang__block">
+                    <a href="#" class="scroll_lang scroll_changer sub_title sub_title_2 color_white scroll_changer_active">
+                      ua
+                    </a>
+                    <a href="#" class="scroll_lang scroll_changer sub_title sub_title_2 color_white">
+                      en
+                    </a>
+                    <a href="#" class="scroll_lang scroll_changer sub_title sub_title_2 color_white">
+                      ru
+                    </a>
+                  </div>
+                  <div class="scroll_vallute__block">
+                    <a href="#" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white scroll_changer_active">
+                      uah
+                    </a>
+                    <a href="#" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white">
+                      usd
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="scroll_right__block">
+                <div class="scroll_top__block">
+                  <div class="preferens_title__block">
+                    <span class="pref_num main__title main__title_5 color_black">
+                      01
+                    </span>
+                    <span class="pref_line">
 
-  123123
-{% endblock content %}
+                    </span>
+                    <span class="pref_text main__title main__title_5 color_black">
+                      Тест - драйв
+                    </span>
+                  </div>
+                  <div class="scroll_title main__title main__title_3">
+                    Записатить на тест-драйв
+                  </div>
+                  <a href="#" class="btn_standart btn_standart_transparent">
+                    Записатись
+                  </a>
+                </div>
+                <div class="scroll_bottom__block">
+                  <div class="preferens_title__block">
+                    <span class="pref_num main__title main__title_5 color_black">
+                      02
+                    </span>
+                    <span class="pref_line">
+
+                    </span>
+                    <span class="pref_text main__title main__title_5 color_black">
+                      Конструктор Велосипедів
+                    </span>
+                  </div>
+                  <div class="scroll_title main__title main__title_3">
+                    Склади свій власний електро-велосипед онлайн!
+                  </div>
+                  <a href="#" class="btn_standart btn_standart_transparent">
+                    Почати
+                  </a>
+                </div>
+            </div>
+            <a href="#" class="mobile_bottom__block mobile_bottom__block_1">
+              <div class="mobile_bottom_text color_black main__title main__title_5">
+                Тест-драйв
+              </div>
+              <img src="./static/source/img/index/combined-arrow.svg" alt="">
+            </a>
+            <a href="#" class="mobile_bottom__block mobile_bottom__block_2">
+              <div class="mobile_bottom_text color_black main__title main__title_5">
+                Конструктор Велосипедів
+              </div>
+              <img src="./static/source/img/index/combined-arrow.svg" alt="">
+            </a>
+        </div>
+    </nav>
+    <div class="search_menu">
+        <div class="search_menu__block">
+            <div class="search_menu_title">
+              <div class="main__title main__title_2 color_black">
+                Пошук
+              </div>
+              <img class="modal_search modal_search_close" src="./static/source/img/index/close.svg" alt="">
+            </div>
+            <form action="" class="search_menu__wrap">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                    <path d="M9 .4c4.75 0 8.6 3.85 8.6 8.6 0 2.158-.795 4.131-2.109 5.641l3.933 3.935c.235.234.235.614 0 .848-.234.235-.614.235-.848 0l-3.935-3.933C13.131 16.805 11.158 17.6 9 17.6 4.25 17.6.4 13.75.4 9S4.25.4 9 .4zm0 1.2C4.913 1.6 1.6 4.913 1.6 9s3.313 7.4 7.4 7.4c2.01 0 3.833-.802 5.167-2.103l.059-.071c.022-.023.046-.043.07-.06C15.598 12.832 16.4 11.01 16.4 9c0-4.087-3.313-7.4-7.4-7.4z"></path>
+                  </svg>
+                  <input type="search" placeholder="Що шукаєте?" class="main_search" name="main_search">
+                  <input type="submit" value="Шукати" class="search_main_btn btn_standart btn_standart_black">
+            </form>
+        </div>
+    </div>
+    <div class="black_bg"></div>
+    <div class="basket_menu">
+      <div class="search_menu_title">
+        <div class="main__title main__title_2 color_black">
+          Корзина
+        </div>
+        <img class="modal_basket modal_search_close" src="./static/source/img/index/close.svg" alt="">
+      </div>
+      <div class="basket_content__block">
+        <div class="none_content_send main__title color_black">
+          
+        </div>
+        <div class="basket_content_profile">
+            <div class="basket_profile_img">
+                <img src="./static/source/img/index/lite.png" alt="">
+            </div>
+            <div class="basket_right_content">
+              <div class="basket_title__block">
+                <div class="basket_title main__title main__title_5">
+                  Вилка VEPR-H123
+                </div>
+                <img class="basket_del" src="./static/source/img/index/trash.svg" alt="">
+              </div>
+              <div class="basket_bottom__wrap">
+                <div class="basket_counter__block">
+                  <div class="basket_text sub_title sub_title_2">
+                    Кількість
+                  </div>
+                  <div class="basket_counter">
+                    <div class="basket_prep basket_count sub_title sub_title_21">
+                      -
+                    </div>
+                    <input type="number" class="basket_input basket_count main__title main__title_5" value="1">
+                    <div class="basket_next basket_count sub_title sub_title_21">
+                      +
+                    </div>
+                  </div>
+                </div>
+                <div class="basket_sum__block">
+                  <div class="basket_text sub_title sub_title_2">
+                    Ціна
+                  </div>
+                  <div class="basket_summ main__title main__title_5">
+                    2500 грн.
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="basket_content_profile">
+          <div class="basket_profile_img">
+              <img src="./static/source/img/index/lite.png" alt="">
+          </div>
+          <div class="basket_right_content">
+            <div class="basket_title__block">
+              <div class="basket_title main__title main__title_5">
+                Вилка VEPR-H123
+              </div>
+              <img class="basket_del" src="./static/source/img/index/trash.svg" alt="">
+            </div>
+            <div class="basket_bottom__wrap">
+              <div class="basket_counter__block">
+                <div class="basket_text sub_title sub_title_2">
+                  Кількість
+                </div>
+                <div class="basket_counter">
+                  <div class="basket_prep basket_count sub_title sub_title_21">
+                    -
+                  </div>
+                  <input type="number" class="basket_input basket_count main__title main__title_5" value="1">
+                  <div class="basket_next basket_count sub_title sub_title_21">
+                    +
+                  </div>
+                </div>
+              </div>
+              <div class="basket_sum__block">
+                <div class="basket_text sub_title sub_title_2">
+                  Ціна
+                </div>
+                <div class="basket_summ main__title main__title_5">
+                  2500 грн.
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      </div>
+      <div class="basket_bottom_result">
+        <div class="basket_result__block">
+          <div class="basket_all_result_title__block">
+            <div class="basket_all_result_title main__title main__title_4">
+              Всього
+            </div>
+            <div class="basket_all_result main__title main__title_4">
+              ₴ 100 500
+            </div>
+          </div>
+          <div class="flex_box">
+              <div class="discount__block">
+                  <div class="discount_title">
+                    Знижка
+                  </div>
+                  <div class="discount_result main__title main__title_5">
+                    ₴ 2 000
+                  </div>
+              </div>
+          </div>
+        </div>
+        <a href="#" class="basket_btn basket_btn_wrap">
+          <div class="sub_title sub_title_2">
+            Замовити
+          </div>
+        </a>
+      </div>
+    </div>
+     
+  </header>
+  <main class="section__wrapper">
+    <section class="first_section">
+          <div class="bike_trailer__block">
+            <div class="bike_trailer__wrapper">
+              <div class="bike_trailer_content">
+                <h1 class="main__title main__title_1 color_black slide-name anim_text">
+                  Новий <span class="color_yellow">Eleek Atom1</span> — <br> відчуй драйв!
+                </h1>
+                <div class="bike_trailer_btn__wrap slide-name anim_text">
+                    <a href="#" class="btn_standart btn_standart_transparent">
+                      Тест-драйв
+                    </a>
+                    <a href="#" class="btn_standart btn_standart_black">
+                      Детальніше
+                    </a>
+                </div>
+              </div>
+                <div class="bike_trailer_img__block">
+                    <img class="bike_trailer_img slide-img anim_img" src="./static/source/img/index/123.png" alt="">
+                </div>
+            </div>
+            <div class="bike_trailer__wrapper">
+              <div class="bike_trailer_content">
+                <h1 class="main__title main__title_1 color_black slide-name anim_text">
+                  Новий <span class="color_yellow">Eleek Atom2</span> — <br> відчуй драйв!
+                </h1>
+                <div class="bike_trailer_btn__wrap slide-name anim_text">
+                    <a href="#" class="btn_standart btn_standart_transparent">
+                      Тест-драйв
+                    </a>
+                    <a href="#" class="btn_standart btn_standart_black">
+                      Детальніше
+                    </a>
+                </div>
+              </div>
+              <div class="bike_trailer_img__block">
+                  <img class="bike_trailer_img slide-img anim_img" src="./static/source/img/index/123.png" alt="">
+              </div>
+            </div>
+            <div class="bike_trailer__wrapper">
+              <div class="bike_trailer_content">
+                <h1 class="main__title main__title_1 color_black slide-name anim_text">
+                  Новий <span class="color_yellow">Eleek Atom3</span> — <br> відчуй драйв!
+                </h1>
+                <div class="bike_trailer_btn__wrap slide-name anim_text">
+                    <a href="#" class="btn_standart btn_standart_transparent">
+                      Тест-драйв
+                    </a>
+                    <a href="#" class="btn_standart btn_standart_black">
+                      Детальніше
+                    </a>
+                </div>
+              </div>
+              <div class="bike_trailer_img__block">
+                  <img class="bike_trailer_img slide-img anim_img" src="./static/source/img/index/123.png" alt="">
+              </div>
+            </div>
+            <div class="bike_trailer__wrapper">
+              <div class="bike_trailer_content">
+                <h1 class="main__title main__title_1 color_black slide-name anim_text">
+                  Новий <span class="color_yellow">Eleek Atom4</span> — <br> відчуй драйв!
+                </h1>
+                <div class="bike_trailer_btn__wrap slide-name anim_text">
+                    <a href="#" class="btn_standart btn_standart_transparent">
+                      Тест-драйв
+                    </a>
+                    <a href="#" class="btn_standart btn_standart_black">
+                      Детальніше
+                    </a>
+                </div>
+              </div>
+              <div class="bike_trailer_img__block">
+                  <img class="bike_trailer_img slide-img anim_img" src="./static/source/img/index/123.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="nav_for_bike_trailer">
+            <div class="bike_progress__block">
+              <span class="num_name title_text_regular">
+                01
+              </span>
+              <div class="line_progress__block">
+                <div class="line_active"></div>
+              </div>
+              <span class="num_name title_text_regular last_click_num">
+                01
+              </span>
+            </div>
+            <div class="bike_progress_arrow">
+                <button type="button" class="slick-first all_class_slick">
+                    <img src="./static/source/img/index/combined-arrow.svg" alt="">
+                </button>
+                <button type="button" class="slick-second all_class_slick">
+                  <img src="./static/source/img/index/combined-arrow.svg" alt="">
+                </button>
+            </div>
+          </div>
+    </section>
+    <!-- /.first_section -->
+    <section class="second_section">
+      <div class="container">
+        <h1 class="second_title main__title main__title_1 color_white">
+          Відчуй переваги професіоналів
+        </h1>
+        <div class="second_sub_title sub_title sub_title_2 color_white text_center">
+          Наші велосипеди одні з найпотужніших та найякісніших на ринку
+        </div>
+        <div class="preferens__wrap">
+            <img src="./static/source/img/index/grid-eleek.png" alt="" class="hidden_preferens__bg">
+            <div class="preferens_profile">
+              <div class="preferens_item">
+                    <div class="preferens_title__block">
+                        <span class="pref_num main__title main__title_5 color_white">
+                          01
+                        </span>
+                        <span class="pref_line">
+
+                        </span>
+                        <span class="pref_text main__title main__title_5 color_white">
+                          Дистанція
+                        </span>
+                    </div>
+                    <div class="preferens_counter__block">
+                        <span class="preferens_counter_1 color_yellow main__title main__title_0">
+                          150
+                        </span>
+                        <span class="sub_title sub_title_1 color_white">
+                          км
+                        </span>
+                    </div>
+              </div>
+              <div class="preferens_item">
+                  <div class="preferens_title__block">
+                      <span class="pref_num main__title main__title_5 color_white">
+                        02
+                      </span>
+                      <span class="pref_line">
+
+                      </span>
+                      <span class="pref_text main__title main__title_5 color_white">
+                        Швидкість
+                      </span>
+                  </div>
+                  <div class="preferens_counter__block">
+                      <span class="preferens_counter_1 color_yellow main__title main__title_0">
+                        100
+                      </span>
+                      <span class="sub_title sub_title_1 color_white">
+                        км/год
+                      </span>
+                  </div>
+              </div>
+            </div>
+             
+            <div class="preferens_profile">
+              <div class="preferens_item">
+                <div class="preferens_title__block">
+                    <span class="pref_num main__title main__title_5 color_white">
+                      03
+                    </span>
+                    <span class="pref_line">
+
+                    </span>
+                    <span class="pref_text main__title main__title_5 color_white">
+                      Потужність
+                    </span>
+                </div>
+                <div class="preferens_counter__block">
+                    <span class="preferens_counter_1 color_yellow main__title main__title_0">
+                      3954
+                    </span>
+                    <span class="sub_title sub_title_1 color_white">
+                      вт
+                    </span>
+                </div>
+              </div>
+              <div class="preferens_item">
+              <div class="preferens_title__block">
+                  <span class="pref_num main__title main__title_5 color_white">
+                    04
+                  </span>
+                  <span class="pref_line">
+
+                  </span>
+                  <span class="pref_text main__title main__title_5 color_white">
+                    Потужність
+                  </span>
+              </div>
+              <div class="preferens_counter__block">
+                  <span class="preferens_counter_1 color_yellow main__title main__title_0">
+                    4
+                  </span>
+                  <span class="sub_title sub_title_1 color_white">
+                    год
+                  </span>
+              </div>
+              </div>
+            </div>
+        </div>
+        <div class="img_preferens__block">
+          <img src="./static/source/img/index/atom-without-borders.png" alt="" class="img_preferens">
+        </div>
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /.second_section -->
+    <section class="three_section">
+        <div class="eleek_title__wrap">
+          <h1 class="color_black three_title main__title main__title_1">
+              Велосипеди ELEEK
+          </h1>
+          <div class="eleek_arrow__block">
+              <div class="eleek_prev_arrow eleek_arrow">
+                  <img src="./static/source/img/index/combined-arrow.svg" alt="">
+              </div>
+              <div class="eleek_next_arrow eleek_arrow">
+                <img src="./static/source/img/index/combined-arrow.svg" alt="">
+              </div>
+          </div>
+        </div>
+        <div class="eleek_slider__wrap">
+            <div class="eleek_slide">
+              <div class="eleek_num_counter main__title main__title_01 color_white">
+                01
+              </div>
+              <div class="eleek_slide_name main__title main__title_3 color_black">
+                Neo
+              </div>
+              <div class="eleek_slide_img">
+                  <img src="./static/source/img/index/atom-without-borders.png" alt="">
+              </div>
+              <div class="eleek_slide_info__wrapp">
+                <div class="eleek_slide_info__block">
+                  <div class="eleek_slide_info sub_title sub_title_2">
+                    Дистанція
+                  </div>
+                  <div class="eleek_slide_info eleek_info_result">
+                    До 150 км
+                  </div>
+                </div>
+                <div class="eleek_slide_info__block">
+                  <div class="eleek_slide_info sub_title sub_title_2">
+                    Макс. швидкість
+                  </div>
+                  <div class="eleek_slide_info eleek_info_result">
+                    80 км/год
+                  </div>
+                </div>
+                <div class="eleek_slide_info__block">
+                  <div class="eleek_slide_info sub_title sub_title_2">
+                    Потужність
+                  </div>
+                  <div class="eleek_slide_info eleek_info_result">
+                    3000 Вт
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="eleek_slide_btn btn_standart btn_standart_transparent">
+                Детальніше
+              </a>
+            </div>
+            <div class="eleek_slide">
+              <div class="eleek_num_counter main__title main__title_01 color_white">
+                02
+              </div>
+              <div class="eleek_slide_name main__title main__title_3 color_black">
+                Neo
+              </div>
+              <div class="eleek_slide_img">
+                  <img src="./static/source/img/index/atom-without-borders.png" alt="">
+              </div>
+              <div class="eleek_slide_info__wrapp">
+                <div class="eleek_slide_info__block">
+                  <div class="eleek_slide_info sub_title sub_title_2">
+                    Дистанція
+                  </div>
+                  <div class="eleek_slide_info eleek_info_result">
+                    До 150 км
+                  </div>
+                </div>
+                <div class="eleek_slide_info__block">
+                  <div class="eleek_slide_info sub_title sub_title_2">
+                    Макс. швидкість
+                  </div>
+                  <div class="eleek_slide_info eleek_info_result">
+                    80 км/год
+                  </div>
+                </div>
+                <div class="eleek_slide_info__block">
+                  <div class="eleek_slide_info sub_title sub_title_2">
+                    Потужність
+                  </div>
+                  <div class="eleek_slide_info eleek_info_result">
+                    3000 Вт
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="eleek_slide_btn btn_standart btn_standart_transparent">
+                Детальніше
+              </a>
+            </div>
+            <div class="eleek_slide">
+              <div class="eleek_num_counter main__title main__title_01 color_white">
+                03
+              </div>
+              <div class="eleek_slide_name main__title main__title_3 color_black">
+                Neo
+              </div>
+              <div class="eleek_slide_img">
+                  <img src="./static/source/img/index/atom-without-borders.png" alt="">
+              </div>
+              <div class="eleek_slide_info__wrapp">
+                <div class="eleek_slide_info__block">
+                  <div class="eleek_slide_info sub_title sub_title_2">
+                    Дистанція
+                  </div>
+                  <div class="eleek_slide_info eleek_info_result">
+                    До 150 км
+                  </div>
+                </div>
+                <div class="eleek_slide_info__block">
+                  <div class="eleek_slide_info sub_title sub_title_2">
+                    Макс. швидкість
+                  </div>
+                  <div class="eleek_slide_info eleek_info_result">
+                    80 км/год
+                  </div>
+                </div>
+                <div class="eleek_slide_info__block">
+                  <div class="eleek_slide_info sub_title sub_title_2">
+                    Потужність
+                  </div>
+                  <div class="eleek_slide_info eleek_info_result">
+                    3000 Вт
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="eleek_slide_btn btn_standart btn_standart_transparent">
+                Детальніше
+              </a>
+            </div>
+            <div class="eleek_slide">
+              <div class="eleek_num_counter main__title main__title_01 color_white">
+                04
+              </div>
+              <div class="eleek_slide_name main__title main__title_3 color_black">
+                Neo
+              </div>
+              <div class="eleek_slide_img">
+                  <img src="./static/source/img/index/atom-without-borders.png" alt="">
+              </div>
+              <div class="eleek_slide_info__wrapp">
+                <div class="eleek_slide_info__block">
+                  <div class="eleek_slide_info sub_title sub_title_2">
+                    Дистанція
+                  </div>
+                  <div class="eleek_slide_info eleek_info_result">
+                    До 150 км
+                  </div>
+                </div>
+                <div class="eleek_slide_info__block">
+                  <div class="eleek_slide_info sub_title sub_title_2">
+                    Макс. швидкість
+                  </div>
+                  <div class="eleek_slide_info eleek_info_result">
+                    80 км/год
+                  </div>
+                </div>
+                <div class="eleek_slide_info__block">
+                  <div class="eleek_slide_info sub_title sub_title_2">
+                    Потужність
+                  </div>
+                  <div class="eleek_slide_info eleek_info_result">
+                    3000 Вт
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="eleek_slide_btn btn_standart btn_standart_transparent">
+                Детальніше
+              </a>
+            </div>
+        </div>
+    </section>
+    <!-- /.three_section -->
+    <section class="four_section">
+      <img src="./static/source/img/index/rrama-png.png" alt="" class="absolute_rams_1">
+      <img src="./static/source/img/index/lite.png" alt="" class="absolute_rams_2">
+      <img src="./static/source/img/index/ekross-copy.png" alt="" class="absolute_rams_3">
+      <div class="four_bg"></div>
+      <div class="four_wrapp">
+        <h1 class="color_black four_title main__title main__title_1">
+          Рами ELEEK
+        </h1>
+        <div class="sub_title sub_title_2">
+          При виборі електро велосипеда можна не обмежувати себе в побажаннях. Ми можемо підібрати велосипед який підійде саме Вам. Починаючи з велосипеда для неспішних прогулянок по парку, закінчуючи зарядженим брутальним мотоциклом для агресивної їзди всюди.
+        </div>
+        <a href="#" class="btn_standart btn_standart_black">
+          Детальніше
+        </a>
+      </div>
+      <!-- /.four_wrapp -->
+    </section>
+    <!-- /.four_section -->
+    <section class="five_section">
+      <div class="five_bg"></div>
+      <div class="absolute_product__block">
+        <div class="absolute_product_profile absolute_product_profile_1">
+            <div class="absolute_product_img">
+                <img src="./static/source/img/index/koleso.png" alt="">
+            </div>
+            <div class="main__title main__title_5 color_white">
+                Колеса
+            </div>
+            <a href="#" class="absolute_product_arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+              </svg>
+            </a>
+        </div>
+        <div class="absolute_product_profile absolute_product_profile_2">
+          <div class="absolute_product_img">
+              <img src="./static/source/img/index/stop.png" alt="">
+          </div>
+          <a href="#" class="main__title main__title_5 color_white">
+            Гальма
+          </a>
+          <div class="absolute_product_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="absolute_product_profile absolute_product_profile_3">
+          <div class="absolute_product_img">
+              <img src="./static/source/img/index/vylka.png" alt="">
+          </div>
+          <a href="#" class="main__title main__title_5 color_white">
+            Вилки
+          </a>
+          <div class="absolute_product_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="absolute_product_profile absolute_product_profile_4">
+          <div class="absolute_product_img">
+              <img src="./static/source/img/index/motor.png" alt="">
+          </div>
+          <a href="#" class="main__title main__title_5 color_white">
+            Мотори
+          </a>
+          <div class="absolute_product_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="absolute_product_profile absolute_product_profile_5">
+          <div class="absolute_product_img">
+              <img src="./static/source/img/index/amort.png" alt="">
+          </div>
+          <a href="#" class="main__title main__title_5 color_white">
+            Амортизатори
+          </a>
+          <div class="absolute_product_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+            </svg>
+          </div>
+        </div>
+    </div>
+      <div class="five_wrapp">
+          <div class="five_title__block">
+            <h1 class="color_white five_title main__title main__title_1">
+              Комплектуючі товари
+            </h1>
+            <div class="color_white sub_title sub_title_2">
+              В нашому асортименті ви можете знайти усі найнеобхідніші товари для вашого байку
+            </div>
+            <a href="#" class="btn_standart btn_standart_yellow">
+              Весь асортимент
+            </a>
+          </div>
+          <div class="complect__wrap">
+              <div class="complect_slide">
+                  <img src="./static/source/img/index/koleso.png" alt="" class="complect_img">
+                  <div class="main__title main__title_5 color_white">
+                    Колеса
+                  </div>
+                  <a href="#" class="absolute_product_arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                      <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+                    </svg>
+                  </a>
+              </div>
+              <div class="complect_slide">
+                <img src="./static/source/img/index/stop.png" alt="" class="complect_img">
+                <div class="main__title main__title_5 color_white">
+                  Гальма
+                </div>
+                <a href="#" class="absolute_product_arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                    <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="complect_slide">
+                <img src="./static/source/img/index/vylka.png" alt="" class="complect_img">
+                <div class="main__title main__title_5 color_white">
+                  Вилки
+                </div>
+                <a href="#" class="absolute_product_arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                    <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="complect_slide">
+                <img src="./static/source/img/index/motor.png" alt="" class="complect_img">
+                <div class="main__title main__title_5 color_white">
+                  Мотори
+                </div>
+                <a href="#" class="absolute_product_arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                    <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="complect_slide">
+                <img src="./static/source/img/index/amort.png" alt="" class="complect_img">
+                <div class="main__title main__title_5 color_white">
+                  Амортизатори
+                </div>
+                <a href="#" class="absolute_product_arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                    <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+                  </svg>
+                </a>
+              </div>
+          </div>
+          
+      </div>
+    </section>
+    <!-- /.five_section -->
+    <section class="six_section">
+      <video class="eleek_video" data-src="./static/source/img/index/video.webm" autoplay muted poster="posterimage.jpg">
+        Sorry, your browser doesn't support embedded videos, 
+        but don't worry, you can <a href="./static/source/img/index/video.webm">download it</a>
+        and watch it with your favorite video player!
+      </video>
+    </section>
+    <!-- /.six_section -->
+    <footer class="footer">
+       <div class="footer_main_content">
+        <div class="footer_info__block footer_part">
+          <a href="#" class="footer_logo">
+            <svg width="182px" height="36px" viewBox="0 0 182 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="Artboard" transform="translate(-66.000000, -34.000000)" fill="#fff">
+                      <path d="M118.40184,34 L108.668147,70 L66,70 L75.7336929,34 L118.40184,34 Z M148.82548,40.9464888 L147.741303,44.9563537 L131.535046,44.9563537 L128.16293,57.4279879 C128.022046,57.9490018 128.052042,58.348928 128.258019,58.6277666 C128.458696,58.9067042 128.835953,59.0435472 129.372292,59.0435472 L143.932436,59.0435472 L142.84816,63.0534121 L127.939155,63.0534121 C127.381819,63.0534121 126.797785,62.9532324 126.186755,62.7587192 C125.575824,62.564206 125.046484,62.2430561 124.599235,61.795765 C124.157385,61.3484739 123.841321,60.7695916 123.657742,60.0538663 C123.468864,59.3382401 123.519358,58.4646649 123.799626,57.4279879 L127.709581,42.9672261 C127.784973,42.6882884 127.909259,42.425106 128.07684,42.1778771 C128.25002,41.9305491 128.446398,41.7147316 128.682071,41.5305238 C128.912345,41.346415 129.163216,41.2043203 129.441284,41.099087 C129.717853,40.9991054 130.002921,40.9464888 130.294887,40.9464888 L148.82548,40.9464888 Z M248,40.9464888 L233.973895,52.0321546 L242.02278,63.0534121 L237.233924,63.0534121 L230.575482,54.0180123 L227.115875,54.0180123 L228.207151,49.9818886 L230.874048,49.9818886 L242.259953,40.9464888 L248,40.9464888 Z M157.09164,40.9464888 L152.198596,59.0435472 L168.326762,59.0435472 L167.242485,63.0534121 L148.790084,63.0534121 C148.498017,63.0534121 148.246846,63.0007955 148.024271,62.9008139 C147.803096,62.7955806 147.623816,62.6534859 147.491631,62.4745298 C147.359546,62.2956728 147.274456,62.0798553 147.23896,61.8378782 C147.199665,61.5904511 147.219285,61.322116 147.297454,61.0326748 L152.728336,40.9464888 L157.09164,40.9464888 Z M196.350374,40.9464888 L195.266198,44.9563537 L179.059941,44.9563537 L175.687825,57.4279879 C175.546941,57.9490018 175.576937,58.348928 175.782914,58.6277666 C175.983591,58.9067042 176.360848,59.0435472 176.897187,59.0435472 L191.457331,59.0435472 L190.373054,63.0534121 L175.46405,63.0534121 C174.906813,63.0534121 174.32268,62.9532324 173.711749,62.7587192 C173.100719,62.564206 172.571379,62.2430561 172.12423,61.795765 C171.68228,61.3484739 171.366216,60.7695916 171.182637,60.0538663 C170.993858,59.3382401 171.044253,58.4646649 171.324521,57.4279879 L175.234476,42.9672261 C175.309868,42.6882884 175.434153,42.425106 175.601834,42.1778771 C175.774915,41.9305491 175.971392,41.7147316 176.206965,41.5305238 C176.437339,41.346415 176.688111,41.2043203 176.966179,41.099087 C177.242748,40.9991054 177.527815,40.9464888 177.819782,40.9464888 L196.350374,40.9464888 Z M220.732501,40.9464888 L219.648425,44.9563537 L203.442068,44.9563537 L200.069951,57.4279879 C199.929167,57.9490018 199.959064,58.348928 200.165141,58.6277666 C200.365818,58.9067042 200.743075,59.0435472 201.279414,59.0435472 L215.839558,59.0435472 L214.755281,63.0534121 L199.846177,63.0534121 C199.28874,63.0534121 198.705007,62.9533315 198.093876,62.7587192 C197.482846,62.5641069 196.953606,62.2430561 196.506357,61.795765 C196.064407,61.3484739 195.748443,60.7695916 195.564764,60.0538663 C195.375985,59.3382401 195.42638,58.4646649 195.706748,57.4279879 L199.616603,42.9672261 C199.691994,42.6882884 199.81628,42.425106 199.983961,42.1778771 C200.157141,41.9305491 200.353519,41.7147316 200.589092,41.5305238 C200.819466,41.346415 201.070238,41.2043203 201.348306,41.099087 C201.624975,40.9991054 201.909942,40.9464888 202.202009,40.9464888 L220.732501,40.9464888 Z M229.030558,40.9464888 L223.053337,63.0534121 L218.689934,63.0534121 L224.667254,40.9464888 L229.030558,40.9464888 Z M109.842214,40.9464888 L104.102166,40.9464888 L92.6369704,49.9818886 L86.5978573,49.9818886 L85.5064814,54.0180123 L92.3384044,54.0180123 L98.9968471,63.0534121 L103.785702,63.0534121 L95.7368178,52.0321546 L109.842214,40.9464888 Z M85.4735851,40.9464888 L83.1494495,40.9464888 C82.8574827,40.9464888 82.5724151,40.9991054 82.2958466,41.099087 C82.0177782,41.2043203 81.7669067,41.346415 81.5365329,41.5305238 C81.3009597,41.7147316 81.1045821,41.9305491 80.9314018,42.1778771 C80.8057161,42.3632988 80.7043838,42.5576943 80.6297673,42.76098 L80.5641435,42.9672261 L76.6541882,57.4279879 C76.3739201,58.4646649 76.3234259,59.3382401 76.5123044,60.0538663 C76.6958835,60.7695916 77.0119475,61.3484739 77.4537973,61.795765 C77.9010464,62.2430561 78.4303862,62.564206 79.0413167,62.7587192 C79.5505088,62.9208135 80.040953,63.0173985 80.512823,63.0450909 L80.7937174,63.0534121 L94.5797494,63.0534121 L91.6247855,59.0435472 L82.2268544,59.0435472 C81.6905154,59.0435472 81.3132583,58.9067042 81.1125812,58.6277666 C80.929402,58.3799101 80.8854267,58.0363794 80.9768633,57.5971745 L81.017492,57.4279879 L84.3895084,44.9563537 L85.4735851,40.9464888 Z M144.561065,49.9818886 L143.469789,54.0180123 L130.699141,54.0180123 L131.790517,49.9818886 L144.561065,49.9818886 Z M192.086059,49.9818886 L190.994684,54.0180123 L178.224136,54.0180123 L179.315412,49.9818886 L192.086059,49.9818886 Z M216.468186,49.9818886 L215.37691,54.0180123 L202.606263,54.0180123 L203.697539,49.9818886 L216.468186,49.9818886 Z M98.3711182,40.9464888 L89.0407794,40.9464888 L87.9566027,44.9563537 L93.2829969,44.9563537 L98.3711182,40.9464888 Z" id="Combined-Shape"></path>
+                  </g>
+              </g>
+            </svg>
+          </a>
+          <div class="footer_info">
+              <div class="footer_info_svg">
+                <img src="./static/source/img/index/map-pin.svg" alt="">
+              </div>
+              <a href="#" class="footer_info_text">
+                вул. Об'їзна 12, м.Тернопіль
+              </a>
+          </div>
+          <div class="footer_info">
+            <div class="footer_info_svg">
+              <img src="./static/source/img/index/phone.svg" alt="">
+            </div>
+            <a href="tel:+380673878768" class="footer_info_text">
+              +380 67 387 87 68
+            </a>
+          </div>
+          <div class="footer_info">
+            <div class="footer_info_svg">
+              <img src="./static/source/img/index/mail.svg" alt="">
+            </div>
+            <a href="mailto:eleekbikes@gmail.com" class="footer_info_text">
+              eleekbikes@gmail.com
+            </a>
+          </div>
+          <div class="footer_info">
+            <div class="footer_info_svg">
+              <img src="./static/source/img/index/clock.svg" alt="">
+            </div>
+            <div class="footer_info_text color_white">
+              Пн. - Пт.: 09:00 - 18:00
+            </div>
+          </div>
+          <div class="footer_social__block">
+              <a href="#" class="footer_social">
+                <svg class="footer_social_svg" xmlns="http://www.w3.org/2000/svg" width="17" height="31" viewBox="0 0 17 31">
+                  <path fill="#FFF" d="M10.411 30.887V16.799h4.727l.71-5.492H10.41V7.801c0-1.59.44-2.673 2.722-2.673h2.906V.214C15.536.15 13.81 0 11.803 0 7.611 0 4.741 2.559 4.741 7.257v4.05H0v5.492h4.741v14.088h5.67z"/>
+                </svg>
+              </a>
+              <a href="#" class="footer_social">
+                <svg class="footer_social_svg" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+                  <path fill="#FFF" d="M25.605 0C28.03 0 30 1.971 30 4.395v21.21C30 28.03 28.029 30 25.605 30H4.395C1.97 30 0 28.029 0 25.605V4.395C0 1.97 1.971 0 4.395 0zm0 1.758H4.395c-1.454 0-2.637 1.183-2.637 2.637v21.21c0 1.454 1.183 2.637 2.637 2.637h21.21c1.454 0 2.637-1.183 2.637-2.637V4.395c0-1.454-1.183-2.637-2.637-2.637zM15 7.09c4.362 0 7.91 3.548 7.91 7.91s-3.548 7.91-7.91 7.91S7.09 19.362 7.09 15 10.638 7.09 15 7.09zm0 1.758c-3.392 0-6.152 2.76-6.152 6.152 0 3.392 2.76 6.152 6.152 6.152 3.392 0 6.152-2.76 6.152-6.152 0-3.392-2.76-6.152-6.152-6.152zm8.79-5.274c1.453 0 2.636 1.183 2.636 2.637s-1.183 2.637-2.637 2.637-2.637-1.183-2.637-2.637 1.183-2.637 2.637-2.637zm0 1.758c-.485 0-.88.394-.88.879 0 .484.395.879.88.879.484 0 .878-.395.878-.88 0-.484-.394-.878-.879-.878z"/>
+                </svg>
+              </a>
+              <a href="#" class="footer_social">
+                <svg class="footer_social_svg" xmlns="http://www.w3.org/2000/svg" width="35" height="25" viewBox="0 0 35 25">
+                  <path fill="#FFF" d="M17.82 0c1.823.008 10.914.076 13.374.75 1.5.403 2.681 1.585 3.085 3.084.647 2.366.714 6.946.72 8.151v.43c-.005.875-.065 5.795-.72 8.285-.404 1.499-1.586 2.681-3.085 3.085-2.507.66-11.896.715-13.47.72h-.448c-1.57-.005-10.937-.063-13.47-.749-1.5-.404-2.682-1.586-3.085-3.085-.64-2.402-.712-7.16-.72-8.21v-.416c.008-1.045.08-5.783.72-8.21.403-1.5 1.614-2.71 3.084-3.114C6.265.073 15.356.007 17.18 0zM14.01 7.007V17.5l9.11-5.247-9.11-5.247z"/>
+                </svg>
+              </a>
+          </div>
+       </div>
+       <div class="footer_accordeon__block footer_part">
+          <div class="footer_accordeon_name color_white main__title main__title_3">
+            Клієнтам <div class="footer_btn"></div>
+          </div>
+          <div class="footer_accordeon_content">
+            <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+              Про нас
+            </a>
+            <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+              Часті питання
+            </a>
+            <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+              Доставка і оплата
+            </a>
+            <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+              Тест-драйв
+            </a>
+            <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+              Конструктор
+            </a>
+          </div>
+        </div>
+        <div class="footer_accordeon__block footer_part">
+          <div class="footer_accordeon_name color_white main__title main__title_3">
+            Магазин <div class="footer_btn"></div>
+          </div>
+          <div class="footer_accordeon_content">
+            <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+              Велосипеди
+            </a>
+            <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+              Рами
+            </a>
+            <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+              Доставка і оплата
+            </a>
+            <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+              Комплектуючі
+            </a>
+          </div>
+        </div>
+        <div class="footer_accordeon__block footer_part">
+          <div class="footer_accordeon_name color_white main__title main__title_3">
+            Зв’язок <div class="footer_btn"></div>
+          </div>
+          <div class="footer_accordeon_content">
+            <form action="" class="footer_form">
+              <div class="footer_input__wrap inp-vak-wrap">
+                <label for="footer_name" class="footer_label label__style color_white">
+                  Ім'я
+                </label>
+                <input type="text" id="footer_name" name='name' class="footer_input input_focus">
+              </div>
+              <div class="footer_input__wrap inp-vak-wrap">
+                <label for="footer_email" class="footer_label label__style color_white">
+                  Email
+                </label>
+                <input type="text" id="footer_email" name='email' class="footer_input input_focus">
+              </div>
+              <div class="footer_input__wrap inp-vak-wrap">
+                <label for="footer_email" class="footer_label label__style color_white">
+                  Повідомлення
+                </label>
+                <textarea name='user_send' id="user_send" class="user_send footer_input input_focus"></textarea>
+              </div>
+              <div class="wrap_for_footer_btn">
+                <input type="submit" value="Відправити" class="btn_standart btn_standart_yellow">
+              </div>
+            </form>
+          </div>
+        </div>
+       </div>
+       <div class="footer_bottom_info">
+         <div class="footer_data color_white">
+          eleek.com.ua © 2020. Всі права захищено 
+         </div>
+         <div class="footer_starway__block color_white">
+            <div class="starway_text">
+              Розробка
+            </div>
+            <a href="https://starway.agency/" class="starway_logo">
+              <svg class="svg_sw" xmlns="http://www.w3.org/2000/svg" width="110" height="30" viewBox="0 0 110 30">
+                <g fill="#FFF" fill-rule="evenodd">
+                    <path d="M9.89 26.965l9.972-10.101c.375-.38.375-.988 0-1.368-.375-.38-.974-.38-1.35 0l-6.197 6.277-5.128 5.192H9.89zM18.64 3.9L6.656 16.04c-.902.913.474 2.243 1.344 1.362L18.64 6.624V3.9zM5.062 14.425L17.049 2.283h-2.717L3.706 13.053c-.968.98-1.453 2.267-1.453 3.553 0 1.285.485 2.572 1.453 3.552.97.982 2.239 1.473 3.508 1.473 1.27 0 2.54-.49 3.508-1.473l6.196-6.276c1.249-1.266 3.289-1.266 4.538 0 1.25 1.266 1.251 3.33 0 4.596l-8.382 8.487h2.703l7.029-7.12c.968-.98 1.453-2.267 1.453-3.553 0-1.285-.485-2.572-1.453-3.553-.969-.981-2.239-1.472-3.508-1.472-1.27 0-2.54.49-3.507 1.472l-6.197 6.277c-1.247 1.263-3.285 1.263-4.532 0-1.248-1.265-1.249-3.325 0-4.59zM20.894 0v7.57l-1.4 1.417c1.78.049 3.547.761 4.906 2.137 1.408 1.427 2.113 3.298 2.113 5.168 0 1.725-.633 3.614-1.828 4.868l-.143.15c-2.68 2.783-5.245 5.319-7.83 7.938H1.764l5.253-5.337c-1.78-.05-3.546-.762-4.905-2.138C.703 20.346 0 18.476 0 16.606c0-1.871.704-3.741 2.113-5.168L13.41 0h7.484z"/>
+                    <path fill-rule="nonzero" d="M32.026 17.645c.667.404 1.278.684 1.83.838.553.154 1.07.231 1.548.231.789 0 1.384-.118 1.785-.355.401-.236.602-.557.602-.961 0-.226-.062-.415-.187-.566-.125-.15-.305-.277-.541-.38-.236-.103-.533-.194-.89-.273l-.455-.097c-.24-.05-.5-.101-.78-.155-.35-.055-.727-.133-1.132-.236-.405-.103-.78-.264-1.128-.484-.347-.219-.635-.512-.865-.879-.229-.367-.343-.841-.343-1.424 0-.494.087-.944.262-1.352.176-.408.446-.761.81-1.06.364-.298.826-.53 1.385-.694.56-.164 1.224-.247 1.993-.247.796 0 1.539.09 2.23.268.691.178 1.347.425 1.967.74l-.667 1.954c-.25-.11-.513-.22-.79-.329-.276-.11-.56-.207-.854-.293-.293-.086-.591-.154-.895-.206-.303-.051-.61-.077-.92-.077-.378 0-.695.036-.951.108-.256.072-.464.168-.622.288-.159.12-.272.257-.339.411-.067.155-.101.31-.101.468 0 .364.194.635.581.813.388.178 1 .315 1.836.411.506.082 1.003.184 1.492.303.489.12.926.292 1.31.515.384.222.694.517.93.884.236.367.354.842.354 1.424 0 .556-.116 1.054-.348 1.497-.233.442-.562.814-.987 1.115-.424.302-.932.533-1.522.695-.59.16-1.242.241-1.957.241-.411 0-.802-.017-1.173-.051-.371-.034-.734-.091-1.088-.17-.354-.079-.703-.187-1.046-.324-.344-.137-.695-.308-1.052-.514l.718-2.077zm10.89-10.778l1.8-.01V9.87h3.318v2.16h-3.327v4.33c0 .424.049.776.146 1.053.098.278.23.497.395.658.165.162.359.275.581.34.223.065.459.098.708.098h1.78l-.02 2.056h-1.992c-.56 0-1.086-.058-1.578-.175-.492-.116-.92-.33-1.285-.642-.364-.312-.652-.739-.864-1.28-.213-.542-.319-1.238-.319-2.088v-4.35h-1.74v-1.934l1.68-.473.717-2.756zM56.993 19.25c-.27.233-.57.442-.9.627-.33.185-.676.34-1.037.463-.36.123-.73.218-1.107.283-.378.065-.752.094-1.123.087-.499-.007-.97-.077-1.411-.21-.442-.134-.828-.343-1.158-.628-.33-.284-.593-.65-.789-1.095-.196-.446-.293-.987-.293-1.625 0-.583.138-1.064.414-1.445.277-.38.65-.684 1.118-.91.469-.226 1.018-.386 1.649-.478.63-.093 1.3-.139 2.007-.139.203 0 .421.003.656.008l1.118.03c.203.006.401.01.593.014v-.957c0-.226-.054-.44-.162-.643-.108-.202-.266-.378-.475-.53-.21-.15-.469-.27-.779-.36-.31-.088-.667-.133-1.072-.133-.317 0-.619.04-.905.118-.287.08-.536.182-.749.309-.212.127-.38.276-.505.447-.125.172-.188.35-.188.535h-2.478c.014-.555.144-1.049.39-1.48.246-.433.581-.796 1.006-1.09.425-.296.926-.518 1.502-.67.577-.15 1.199-.226 1.866-.226.796 0 1.506.086 2.13.258.623.17 1.15.413 1.577.725.428.311.754.685.976 1.12.223.436.334.914.334 1.435v7.363h-2.003l-.202-1.203zm-3.287-.514c.31 0 .625-.04.946-.118.32-.08.62-.186.9-.32.28-.133.522-.294.728-.483.206-.188.356-.396.45-.622v-1.224l-.722-.018-.259-.007c-.35-.01-.708-.016-1.072-.016-.378 0-.745.02-1.103.057-.357.038-.674.104-.95.2-.277.096-.501.23-.673.401-.172.172-.258.395-.258.669s.052.506.157.694c.104.189.248.343.43.463s.396.204.642.252c.246.048.507.072.784.072zm14.107-6.674l-1.224.01c-.479 0-.91.07-1.295.21-.384.141-.713.35-.986.628s-.482.624-.627 1.039c-.145.415-.217.893-.217 1.434v5.07h-2.458V9.87h1.993l.222 1.265c.35-.363.794-.665 1.33-.905s1.172-.36 1.907-.36h1.355v2.19zm20.608-2.19l-4.289 10.581h-2.225l-2.215-5.245-1.982 5.245h-2.235L71.196 9.87h2.64l2.58 6.654.15.607h.041l.162-.607 1.73-4.155-1.052-2.499h2.64l2.76 6.654.153.607h.05l.142-.607L85.77 9.87h2.65zm7.684 9.378c-.27.233-.57.442-.9.627-.33.185-.676.34-1.037.463-.36.123-.73.218-1.107.283-.378.065-.752.094-1.123.087-.499-.007-.97-.077-1.41-.21-.442-.134-.828-.343-1.159-.628-.33-.284-.593-.65-.789-1.095-.195-.446-.293-.987-.293-1.625 0-.583.138-1.064.415-1.445.276-.38.649-.684 1.117-.91.469-.226 1.018-.386 1.649-.478.63-.093 1.3-.139 2.008-.139.202 0 .42.003.656.008l1.117.03c.204.006.401.01.593.014v-.957c0-.226-.054-.44-.161-.643-.108-.202-.267-.378-.476-.53-.209-.15-.468-.27-.779-.36-.31-.088-.667-.133-1.072-.133-.317 0-.618.04-.905.118-.287.08-.536.182-.748.309-.213.127-.381.276-.506.447-.125.172-.187.35-.187.535H88.53c.013-.555.143-1.049.39-1.48.245-.433.58-.796 1.005-1.09.425-.296.926-.518 1.502-.67.577-.15 1.199-.226 1.867-.226.795 0 1.505.086 2.129.258.623.17 1.15.413 1.577.725.429.311.754.685.977 1.12.222.436.333.914.333 1.435v7.363h-2.002l-.203-1.203zm-3.287-.514c.31 0 .626-.04.946-.118.32-.08.62-.186.9-.32.28-.133.523-.294.728-.483.206-.188.356-.396.45-.622v-1.224l-.722-.018-.259-.007c-.35-.01-.708-.016-1.072-.016-.377 0-.745.02-1.102.057-.358.038-.675.104-.951.2-.277.096-.5.23-.673.401-.172.172-.258.395-.258.669s.053.506.157.694c.105.189.248.343.43.463s.396.204.642.252c.246.048.508.072.784.072zM110 9.87l-4.45 10.346c-.324.788-.626 1.429-.906 1.923-.28.493-.58.877-.9 1.151-.32.275-.68.461-1.082.56-.401.1-.882.15-1.441.15h-1.629l-.01-2.057h1.78c.216 0 .401-.05.557-.149.155-.1.295-.24.42-.421.124-.182.24-.402.348-.659l.26-.627.094-.231-4.248-9.986h2.721l2.771 6.726.122.535 2.953-7.25 2.64-.01z"/>
+                </g>
+              </svg>
+            </a>
+         </div>
+       </div>
+        
+    </footer>
+    <!-- /.footer -->
+  </main>
+
+
+<script src="./static/source/lib/jquery/index.js"></script> 
+<script src="./static/source/lib/slick/slick.min.js"></script> 
+<script src="./static/source/lib/wow/wow.min.js"></script> 
+<script src="./static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="./static/source/lib/validation/validation.min.js"></script> 
+<script src="./static/development/components/module/form_errors/index.js"></script> 
+<script src="./static/source/pages/index/index.js"></script> 
+
+</body>
+</html>
+
+
+

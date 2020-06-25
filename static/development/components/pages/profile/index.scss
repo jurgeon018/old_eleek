@@ -1,0 +1,22 @@
+.profile_tab {
+    min-height: 100vh;
+    padding-left: 150px;
+    .tab_container {
+        padding: 0;
+    }
+}
+.exit_profile {
+    text-decoration: none;
+    color: #ff2a2a;
+    margin-left: 15px;
+    padding-top: 6px;
+}
+.sub_profile__block {
+    display: flex;
+     align-items: center;
+     margin-top: 15px;
+     margin-bottom: 30px;
+}
+.profile_name {
+    padding-top: 75px;
+}

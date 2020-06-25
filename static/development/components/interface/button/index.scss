@@ -1,0 +1,43 @@
+.btn {
+    &_standart {
+        display: block;
+        cursor: pointer;
+        font-size: 16px;
+        letter-spacing: 2px;
+        padding: 17px 10px;
+        text-align: center;
+        &_black {
+            background-color: #2b2a27;
+            color: #ffffff;
+            border: solid 1px transparent;
+            &:hover{
+
+            }
+        }
+        &_yellow {
+            color: #2b2a27;
+            background-color: #ffd10a; 
+            border: solid 1px transparent;
+            &:hover{
+                
+            }
+        }
+        &_transparent {
+            color: #2b2a27;
+            border: solid 1px #242321;
+            background-color: transparent; 
+            &:hover{
+                
+            }
+        }
+    }
+}
+
+@media (max-width: 430px) {
+    .btn {
+        &_standart {
+            font-size: 14px;
+            padding: 14px 15px;
+        }
+    }
+}
