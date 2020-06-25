@@ -17,12 +17,26 @@ def item(request, slug):
     return render(request, 'project/item.html', locals())
 
 
-def about(request):
-    return render(request, 'project/about.html', locals())
+def faq(request):
+    return render(request, 'project/faq.html', locals())
 
 
-def about(request):
-    return render(request, 'project/about.html', locals())
+def constructor(request):
+    return render(request, 'project/constructor.html', locals())
+
+
+def test_drive(request):
+    return render(request, 'project/test_drive.html', locals())
+
+def order(request):
+    return render(request, 'project/order.html', locals())
+
+
+def search(request):
+    return render(request, 'project/search.html', locals())
+
+def profile(request):
+    return render(request, 'project/profile.html', locals())
 
 
 
@@ -35,8 +49,12 @@ urlpatterns = [
     path('about/',       about, name='about'),
     path('items/',       items, name='items'),
     path('item/<slug>/', item,  name='item'),
-    path('about/',       about, name='about'),
-    path('about/',       about, name='about'),
+    path('faq/',       faq, name='faq'),
+    path('constructor/',       constructor, name='constructor'),
+    path('test_drive/',       test_drive, name='test_drive'),
+    path('order/',       order, name='order'),
+    path('search/',       search, name='search'),
+    path('profile/',       profile, name='profile'),
 ]
 
 
