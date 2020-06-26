@@ -133,11 +133,12 @@
                         {{currency.code}}
                       </a>
                   {% endfor %}
-                  <a href="{% url 'set_currency' 'UAH' %}" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white {% if request.session.current.currency == 'UAH' %}scroll_changer_active{% endif %}">
+
+                  <a href="{% url 'set_currency' 'UAH' %}" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white {% if request.session.current_currency == 'UAH' %}scroll_changer_active{% endif %}">
                     uah
                   </a>
                   
-                  <a href="{% url 'set_currency' 'USD' %}" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white {% if request.session.current.currency == 'USD' %}scroll_changer_active{% endif %}">
+                  <a href="{% url 'set_currency' 'USD' %}" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white {% if request.session.current_currency == 'USD' %}scroll_changer_active{% endif %}">
                     usd
                   </a>
                 </div>
