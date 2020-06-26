@@ -14,8 +14,6 @@ item_section__wrapper
 {% block content %}
 <section class="prod_header">
   <div class="container">
-      
-      
       <div class="product-block">
           <div class="product_filter">
               <div class="filter filter_center">
@@ -147,35 +145,36 @@ item_section__wrapper
           </div>
           <div class="product_content">
             <div class="mini_navigate-block">
-              <a href="#" class="mini_nav_name sub_title sub_title_2 color_black_2">
+              <a href="{% url 'index' %}" class="mini_nav_name sub_title sub_title_2 color_black_2">
                 Головна
               </a>
               <span class="slash sub_title sub_title_2 color_black">
                   /
               </span>
-              <a href="#" class="mini_nav_name sub_title sub_title_2 color_black_2">
+              <a href="{% url 'shop' %}" class="mini_nav_name sub_title sub_title_2 color_black_2">
                 Магазин
               </a>
               <span class="slash sub_title sub_title_2 color_black">
                   /
               </span>
-              <a href="#" class="mini_nav_name sub_title sub_title_2 color_black_2">
+              <a href="{% url 'items' %}" class="mini_nav_name sub_title sub_title_2 color_black_2">
                 Комплектуючі
               </a>
-              <span class="slash sub_title sub_title_2 color_black">
+              <!-- <span class="slash sub_title sub_title_2 color_black">
                   /
               </span>
-              <a href="#" class="mini_nav_name sub_title sub_title_2 color_black_2">
+              <a href="{% url 'items' %}" class="mini_nav_name sub_title sub_title_2 color_black_2">
                 Амортизатори
-              </a>
+              </a> -->
           </div>
               <h2 class="product_title main__title main__title_3 color_black">
-                Амортизатори
+                Комплектуючі
+                {{category.title}}
               </h2>
-              
               <div class="main_product-block">
+                {% for i in '123456789'|make_list %}
                   <div class="product_card-prof">
-                      <a href="#" class="prod_card_link">
+                      <a href="{% url 'item' 1 %}" class="prod_card_link">
                           <img src="/static/source/img/item/img-0041.jpg" alt="" class="prod_card-img">
                       </a>
                       <div class="prod_card_info__wrap">
@@ -192,96 +191,7 @@ item_section__wrapper
                         </div>
                       </div>
                   </div>
-                  <div class="product_card-prof">
-                    <a href="#" class="prod_card_link">
-                        <img src="/static/source/img/item/img-0041.jpg" alt="" class="prod_card-img">
-                    </a>
-                    <div class="prod_card_info__wrap">
-                      <div class="prod_card-name standart_title standart_title_4 color_black">
-                        Амортизатор DNM RCP-2
-                      </div>
-                      <div class="prod_card-info">
-                          <div class="prod_card-cost main__title main__title_5 color_black">
-                              1022 грн.
-                          </div>
-                          <a href="#" class="prod_card-btn">
-                              <img class="absolute_center" src="/static/source/img/items/okey.svg" alt="">
-                          </a>
-                      </div>
-                    </div>
-                </div>
-                <div class="product_card-prof">
-                      <a href="#" class="prod_card_link">
-                          <img src="/static/source/img/item/img-0041.jpg" alt="" class="prod_card-img">
-                      </a>
-                      <div class="prod_card_info__wrap">
-                        <div class="prod_card-name standart_title standart_title_4 color_black">
-                          Амортизатор DNM RCP-2
-                        </div>
-                        <div class="prod_card-info">
-                            <div class="prod_card-cost main__title main__title_5 color_black">
-                                1022 грн.
-                            </div>
-                            <a href="#" class="prod_card-btn">
-                                <img class="absolute_center" src="/static/source/img/items/okey.svg" alt="">
-                            </a>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="product_card-prof">
-                      <a href="#" class="prod_card_link">
-                          <img src="/static/source/img/item/img-0041.jpg" alt="" class="prod_card-img">
-                      </a>
-                      <div class="prod_card_info__wrap">
-                        <div class="prod_card-name standart_title standart_title_4 color_black">
-                          Амортизатор DNM RCP-2
-                        </div>
-                        <div class="prod_card-info">
-                            <div class="prod_card-cost main__title main__title_5 color_black">
-                                1022 грн.
-                            </div>
-                            <a href="#" class="prod_card-btn">
-                                <img class="absolute_center" src="/static/source/img/items/okey.svg" alt="">
-                            </a>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="product_card-prof">
-                      <a href="#" class="prod_card_link">
-                          <img src="/static/source/img/item/img-0041.jpg" alt="" class="prod_card-img">
-                      </a>
-                      <div class="prod_card_info__wrap">
-                        <div class="prod_card-name standart_title standart_title_4 color_black">
-                          Амортизатор DNM RCP-2
-                        </div>
-                        <div class="prod_card-info">
-                            <div class="prod_card-cost main__title main__title_5 color_black">
-                                1022 грн.
-                            </div>
-                            <a href="#" class="prod_card-btn">
-                                <img class="absolute_center" src="/static/source/img/items/okey.svg" alt="">
-                            </a>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="product_card-prof">
-                      <a href="#" class="prod_card_link">
-                          <img src="/static/source/img/item/img-0041.jpg" alt="" class="prod_card-img">
-                      </a>
-                      <div class="prod_card_info__wrap">
-                        <div class="prod_card-name standart_title standart_title_4 color_black">
-                          Амортизатор DNM RCP-2
-                        </div>
-                        <div class="prod_card-info">
-                            <div class="prod_card-cost main__title main__title_5 color_black">
-                                1022 грн.
-                            </div>
-                            <a href="#" class="prod_card-btn">
-                                <img class="absolute_center" src="/static/source/img/items/okey.svg" alt="">
-                            </a>
-                        </div>
-                      </div>
-                  </div>
+                {% endfor %}
               </div>
               <div class="prod_card_more standart_title standart_title_4 color_black">
                   Більше товарів
