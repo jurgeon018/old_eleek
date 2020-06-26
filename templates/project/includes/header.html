@@ -1,3 +1,8 @@
+{% load i18n sw_content %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+
 <header class="nav_bar">
     <div class="logo__wrap">
       <a href="{% url 'index' %}" class="logo_header">
@@ -77,16 +82,20 @@
                   </div>
                 </div>
                 <div class="scroll_category">
-                  <a href="{% url 'about' %}" class="scroll__category_text header_title header_title_1">
-                    Про нас
+                  {% render 'header_about' as header_about %}
+                  <a href="{% url 'about' %}" class="scroll__category_text header_title header_title_1 db_content" data-admin_url="{{header_about.get_admin_url}}">
+                    <!-- Про нас -->
+                    {{header_about.text}}
                   </a>
                   <div class="scroll_category_img">
                     <img src="/static/source/img/index/header-4.jpg" alt="">
                   </div>
                 </div>
                 <div class="scroll_category">
-                  <a href="{% url 'faq' %}" class="scroll__category_text header_title header_title_1">
-                    Часті питання
+                  {% render 'header_faq' as header_faq %}
+                  <a href="{% url 'faq' %}" class="scroll__category_text header_title header_title_1 db_content" data-admin_url="{{header_faq.get_admin_url}}">
+                    <!-- Часті питання -->
+                    {{header_faq.text}}
                   </a>
                   <div class="scroll_category_img">
                     <img src="/static/source/img/index/header-5.png" alt="">
@@ -102,21 +111,33 @@
               </div>
               <div class="scroll_changer__block">
                 <div class="scroll_lang__block">
-                  <a href="#" class="scroll_lang scroll_changer sub_title sub_title_2 color_white scroll_changer_active">
+                  {% for language in languages %}
+                  <a href="{% url 'set_lang' language.code %}" class="scroll_lang scroll_changer sub_title sub_title_2 color_white {% if language.code == LANGUAGE_CODE %}scroll_changer_active{% endif %}">
+                    {% if  language.code == 'uk' %}
                     ua
-                  </a>
-                  <a href="#" class="scroll_lang scroll_changer sub_title sub_title_2 color_white">
-                    en
-                  </a>
-                  <a href="#" class="scroll_lang scroll_changer sub_title sub_title_2 color_white">
+                    {% elif language.code == 'ru' %}
                     ru
+                    {% elif language.code == 'en' %}
+                    en
+                    {% endif %}
                   </a>
+                  {% endfor %}
                 </div>
                 <div class="scroll_vallute__block">
-                  <a href="#" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white scroll_changer_active">
+                  {% for currency in currencies %}
+                    {% if currency.code == request.session.current_currency %}
+                      <a class="scroll_vallute scroll_changer sub_title sub_title_2 color_white scroll_changer_active">
+                    {% else %}
+                      <a href="{% url 'set_currency' currency.code %}" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white">
+                    {% endif %}
+                        {{currency.code}}
+                      </a>
+                  {% endfor %}
+                  <a href="{% url 'set_currency' 'UAH' %}" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white {% if request.session.current.currency == 'UAH' %}scroll_changer_active{% endif %}">
                     uah
                   </a>
-                  <a href="#" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white">
+                  
+                  <a href="{% url 'set_currency' 'USD' %}" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white {% if request.session.current.currency == 'USD' %}scroll_changer_active{% endif %}">
                     usd
                   </a>
                 </div>

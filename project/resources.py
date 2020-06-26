@@ -10,3 +10,5 @@ class PartnerResource(ModelResource):
     class Meta:
         model = Partner
         exclude = []
+
+

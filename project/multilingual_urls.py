@@ -12,6 +12,7 @@ def index(request):
 
 def about(request):
     page = Page.objects.get(code='about')
+    print(page)
     certificates = Certificate.objects.all()
     partners = Partner.objects.all()
     return render(request, 'project/about.html', locals())
