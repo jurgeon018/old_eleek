@@ -1,3 +1,44 @@
+# робить міграції в БД 
+python3 manage.py makemigrations
+python3 manage.py migrate 
+python3 manage.py set_user starway starway dev@starwayua.com +88005553535 admin_name admin_surname  
+python3 manage.py set_user jurgeon018 yfpfhrj69018 jurgeon018@gmail.com +380994507803 Andrew Mendela  
+python3 manage.py set_site eleek.com.ua 
+
+python3 manage.py sw_import -d import/
+
+python3 manage.py runserver 127.0.0.1:8000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # створюєш юзера в БД. Вводиш 1 раз перед початком розробки. 
 sudo -u postgres psql -c "create user jurgeon with password '69018'; alter role jurgeon set client_encoding to 'utf8'; alter role jurgeon set default_transaction_isolation to 'read committed'; alter role jurgeon set timezone to 'UTC';"
 
@@ -17,18 +58,3 @@ rm db.sqlite3
 
 # видаляє файли міграцій
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
-
-# робить міграції в БД 
-python3 manage.py makemigrations
-python3 manage.py migrate 
-python3 manage.py set_user starway starway dev@starwayua.com +88005553535 admin_name admin_surname  
-python3 manage.py set_user jurgeon018 yfpfhrj69018 jurgeon018@gmail.com +380994507803 Andrew Mendela  
-python3 manage.py set_site eleek.com.ua 
-python3 manage.py runserver 127.0.0.1:8000
-
-
-
-
-
-
-
