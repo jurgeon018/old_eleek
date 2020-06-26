@@ -198,266 +198,34 @@ item_section__wrapper
 <section class="item_tab">
   <div class="tab_container">
     <div class="item_tab_link__block">
-      <div data-tab="1" class="item_tab_link standart_title standart_title_3 color_black item_tab_link_active">
-        Характеристики
+      {% for feature_category in '123'|make_list %}
+      <div data-tab="{{forloop.counter|add:'1'}}" class="item_tab_link standart_title standart_title_3 color_black {% if forloop.counter == 1 %} item_tab_link_active {% endif %}">
+        Категорія хараткретисики {{feature_category}}
       </div>
-      <div data-tab="2" class="item_tab_link standart_title standart_title_3 color_black">
-        Габарити
-      </div>
-      <div data-tab="3" class="item_tab_link item_tab_link_3 standart_title standart_title_3 color_black">
+      {% endfor %}
+      <div data-tab="1" class="item_tab_link item_tab_link_3 standart_title standart_title_3 color_black">
         Відгуки
       </div>
     </div>
     <div class="item_tab_content__block">
-      <div id="1" class="item_tab_content item_tab_content_active">
+      {% for feature_category in '123'|make_list %}
+      <div id="{{forloop.counter|add:'1'}}" class="item_tab_content {% if forloop.counter == 1 %} item_tab_content_active {% endif %}">
         <div class="characteristick__wrap">
+            {% for feature in '123456789' %}
             <div class="char_prof">
               <div class="char_text standart_title standart_title_5 color_black">
-                Рама
+                Характеристика {{feature}}
               </div>
               <div class="char_result main__title main__title_5 color_black">
-                ELEEK Ekross
+                Значення характеристики {{feature}}
               </div>
             </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Вилка
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                Zoom Forgo 680DH
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Потужність
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                3300 Вт
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Амортизатор
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                DNM LAR22
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Переднє колесо
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                18″х2.75 мото
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Заднє колесо
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                18″х3.0 мото
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Гальмівні диски
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                Avid 203мм
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Гальма
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                TEKTRO E-350 (гідравлічні)
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Руль
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                ELEEK 31.6×720мм
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Винос
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                ELEEK 45мм blk
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Передня зірка
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                38Т
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Шатуни
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                SR Suntour XCT
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Педалі
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                NEKO
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Ланцюг
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                КМС Z410
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Натягувач ланцюга
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                LitePro
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Фрівіл
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                DNP 16Т
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Підножка
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                ELEEK
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Ручка газу
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                ELEEK мото (половинчаста)
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Фара
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                20Вт (2000 люмен)
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Контроллер
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                KELLY KLS 7230S
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Дисплей
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                ELEEK
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Батарея
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                ELEEK 74v 53Ah (3922 ват/год)
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Мотор
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                3000Вт (прямопривідний)
-              </div>
-            </div>
+            {% endfor %}
         </div>
       </div>
-      <div id="2" class="item_tab_content">
-        <div class="characteristick__wrap">
-          <div class="char_prof">
-            <div class="char_text standart_title standart_title_5 color_black">
-              Рама
-            </div>
-            <div class="char_result main__title main__title_5 color_black">
-              ELEEK Ekross
-            </div>
-          </div>
-          <div class="char_prof">
-            <div class="char_text standart_title standart_title_5 color_black">
-              Вилка
-            </div>
-            <div class="char_result main__title main__title_5 color_black">
-              Zoom Forgo 680DH
-            </div>
-          </div>
-          <div class="char_prof">
-            <div class="char_text standart_title standart_title_5 color_black">
-              Потужність
-            </div>
-            <div class="char_result main__title main__title_5 color_black">
-              3300 Вт
-            </div>
-          </div>
-          <div class="char_prof">
-            <div class="char_text standart_title standart_title_5 color_black">
-              Амортизатор
-            </div>
-            <div class="char_result main__title main__title_5 color_black">
-              DNM LAR22
-            </div>
-          </div>
-          <div class="char_prof">
-            <div class="char_text standart_title standart_title_5 color_black">
-              Переднє колесо
-            </div>
-            <div class="char_result main__title main__title_5 color_black">
-              18″х2.75 мото
-            </div>
-          </div>
-          <div class="char_prof">
-            <div class="char_text standart_title standart_title_5 color_black">
-              Заднє колесо
-            </div>
-            <div class="char_result main__title main__title_5 color_black">
-              18″х3.0 мото
-            </div>
-          </div>
-          <div class="char_prof">
-            <div class="char_text standart_title standart_title_5 color_black">
-              Гальмівні диски
-            </div>
-            <div class="char_result main__title main__title_5 color_black">
-              Avid 203мм
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="3" class="item_tab_content">
+      {% endfor %}
+
+      <div id="1" class="item_tab_content">
         <div class="item_comment__wrap">
           <div class="item_comment__block">
               <div class="comment_kredit__block kredit__block">
@@ -472,6 +240,8 @@ item_section__wrapper
                 У даного товару ще немає відруків. Ви можете бути першим. 
               </div>
               <div class="comment_profile__wrapper">
+                {% for i in '123456789'|make_list %}
+                  
                 <div class="comment_profile">
                   <div class="comment_name__block">
                     <div class="comment_name color_black standart_title standart_title_4">
@@ -506,14 +276,15 @@ item_section__wrapper
                     </div>
                   </div>
                   <div class="comment_text color_black sub_title sub_title_2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A perferendis obcaecati ipsa, voluptatum quod adipisci alias dolores illo autem ipsam. Mollitia cupiditate qui commodi atque numquam, quae perspiciatis at? Rem molestias magni minus sequi officia aut totam repellendus. Optio, ullam blanditiis in dolorum dolor officia praesentium atque perspiciatis deleniti doloribus quis quos! Provident, enim expedita! Consectetur, hic pariatur perspiciatis in qui ipsam dolor quo iure quod, suscipit nostrum fugit quae! Quisquam blanditiis delectus voluptates repellendus fuga pariatur ducimus qui esse, molestias eveniet impedit obcaecati, maxime dignissimos quam autem itaque labore explicabo ad. Deleniti maxime error molestias doloribus reiciendis, officia modi!
+                    {{i}}Lorem ipsum dolor sit amet consectetur adipisicing elit. A perferendis obcaecati ipsa, voluptatum quod adipisci alias dolores illo autem ipsam. Mollitia cupiditate qui commodi atque numquam, quae perspiciatis at? Rem molestias magni minus sequi officia aut totam repellendus. Optio, ullam blanditiis in dolorum dolor officia praesentium atque perspiciatis deleniti doloribus quis quos! Provident, enim expedita! Consectetur, hic pariatur perspiciatis in qui ipsam dolor quo iure quod, suscipit nostrum fugit quae! Quisquam blanditiis delectus voluptates repellendus fuga pariatur ducimus qui esse, molestias eveniet impedit obcaecati, maxime dignissimos quam autem itaque labore explicabo ad. Deleniti maxime error molestias doloribus reiciendis, officia modi!
                   </div>
                 </div>
+                {% endfor %}
               </div>
           </div>
-
         </div>
       </div>
+
     </div>
   </div>
 </section>
