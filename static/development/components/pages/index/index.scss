@@ -27,10 +27,12 @@
     &_btn__wrap {
         display: flex;
         align-items: center;
-        width: 350px;
+        // width: 380px;
         margin-top: 140px;
-        justify-content: space-between;
-        
+        // justify-content: space-between;
+        .btn_standart_transparent {
+            margin-right: 30px;
+        }
     }
     &_content {
         margin-top: 130px;

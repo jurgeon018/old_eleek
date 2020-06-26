@@ -58,7 +58,7 @@
           <div class="scroll_left__block">
             <div class="scroll_main__block">
                 <div class="scroll_category">
-                    <a href="{% url 'items' 1 %}" class="scroll__category_text header_title header_title_1">
+                    <a href="{% url 'items' 1 %}" class="scroll__category_text header_title header_title_00">
                       Велосипеди
                     </a>
                     <div class="scroll_category_img">
@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="scroll_category">
-                  <a href="{% url 'items' 1 %}" class="scroll__category_text header_title header_title_1">
+                  <a href="{% url 'items' 1 %}" class="scroll__category_text header_title header_title_00">
                     Рами
                   </a>
                   <div class="scroll_category_img">
@@ -74,7 +74,7 @@
                   </div>
                 </div>
                 <div class="scroll_category">
-                  <a href="{% url 'items' 1 %}" class="scroll__category_text header_title header_title_1">
+                  <a href="{% url 'items' 1 %}" class="scroll__category_text header_title header_title_00">
                     Комплекти
                   </a>
                   <div class="scroll_category_img">
@@ -82,20 +82,30 @@
                   </div>
                 </div>
                 <div class="scroll_category">
+<<<<<<< HEAD
                   {% render 'header_about' as header_about %}
                   <a href="{% url 'about' %}" class="scroll__category_text header_title header_title_1 db_content" data-admin_url="{{header_about.get_admin_url}}">
                     <!-- Про нас -->
                     {{header_about.text}}
+=======
+                  <a href="{% url 'about' %}" class="scroll__category_text header_title header_title_00">
+                    Про нас
+>>>>>>> e385bd084ae93d7a98cd0b647cf5eed5f0245a79
                   </a>
                   <div class="scroll_category_img">
                     <img src="/static/source/img/index/header-4.jpg" alt="">
                   </div>
                 </div>
                 <div class="scroll_category">
+<<<<<<< HEAD
                   {% render 'header_faq' as header_faq %}
                   <a href="{% url 'faq' %}" class="scroll__category_text header_title header_title_1 db_content" data-admin_url="{{header_faq.get_admin_url}}">
                     <!-- Часті питання -->
                     {{header_faq.text}}
+=======
+                  <a href="{% url 'faq' %}" class="scroll__category_text header_title header_title_00">
+                    Часті питання
+>>>>>>> e385bd084ae93d7a98cd0b647cf5eed5f0245a79
                   </a>
                   <div class="scroll_category_img">
                     <img src="/static/source/img/index/header-5.png" alt="">
@@ -157,7 +167,7 @@
                     Тест - драйв
                   </span>
                 </div>
-                <div class="scroll_title main__title main__title_3">
+                <div class="scroll_title main__title main__title_3 color_black">
                   Записатить на тест-драйв
                 </div>
                 <a href="{% url 'test_drive' %}" class="btn_standart btn_standart_transparent">
@@ -176,7 +186,7 @@
                     Конструктор Велосипедів
                   </span>
                 </div>
-                <div class="scroll_title main__title main__title_3">
+                <div class="scroll_title main__title main__title_3 color_black">
                   Склади свій власний електро-велосипед онлайн!
                 </div>
                 <a href="{% url 'constructor' %}" class="btn_standart btn_standart_transparent">
