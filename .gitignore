@@ -6,7 +6,7 @@ venv/
 ENV/
 env/
 # media/
-
+settings.ini 
 /media/shop/item
 **/media/shop/item/**
 
