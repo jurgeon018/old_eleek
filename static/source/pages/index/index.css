@@ -547,7 +547,7 @@ main {
 
 @media (max-width: 631px) {
   .main__title_0 {
-    font-size: 40px; }
+    font-size: 30px; }
   .main__title_1 {
     font-size: 27px; }
   .main__title_5 {
@@ -583,11 +583,25 @@ main {
   padding: 17px 26px;
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
-  text-align: center; }
+  text-align: center;
+  transition: all .2s; }
   .btn_standart_black {
     background-color: #2b2a27;
     color: #ffffff;
-    border: solid 1px transparent; }
+    border: solid 1px transparent;
+    position: relative;
+    overflow-x: hidden; }
+    .btn_standart_black::before {
+      transition: all .2s;
+      position: absolute;
+      top: 0;
+      right: -100%;
+      content: '';
+      display: block;
+      width: 100%;
+      height: 110%;
+      background: #ffd10a;
+      border: 1px solid #ffd10a; }
   .btn_standart_yellow {
     color: #2b2a27;
     background-color: #ffd10a;
@@ -596,6 +610,29 @@ main {
     color: #2b2a27;
     border: solid 1px #242321;
     background-color: transparent; }
+
+.btn_standart_black ::before {
+  right: 0; }
+
+a.glo {
+  color: #00c6ff;
+  padding: 15px 20px;
+  text-transform: uppercase;
+  width: 350px;
+  text-decoration: none;
+  text-align: center;
+  margin: 30px 0;
+  display: block;
+  background-image: linear-gradient(to left, transparent, transparent 50%, #00c6ff 50%, #00c6ff);
+  background-position: 100% 0;
+  background-size: 200% 100%;
+  transition: all .25s ease-in;
+  font: 400 18px tahoma;
+  border: 1px solid #00C6FF; }
+
+a.glo:hover {
+  background-position: 0 0;
+  color: #fff; }
 
 @media (max-width: 430px) {
   .btn_standart {
@@ -783,6 +820,17 @@ main {
   .nav_menu_item:hover .svg_item {
     fill: #ffd10a; }
 
+.anim_arrow {
+  transition: all .2s; }
+
+.scroll_main__block {
+  position: relative; }
+  .scroll_main__block .scroll_category_img img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%); }
+
 .svg_item {
   transition: all .2s; }
 
@@ -892,11 +940,10 @@ main {
   -webkit-text-stroke-color: #fff;
   transition: all .2s; }
   .header_title_1 {
-    font-size: 65px; }
+    font-size: 75px; }
 
 .scroll_category {
-  margin-bottom: 20px;
-  position: relative; }
+  margin-bottom: 20px; }
   .scroll_category:hover .scroll_category_img img {
     transition: all .2s;
     opacity: 1;
@@ -1547,9 +1594,13 @@ input::-webkit-inner-spin-button {
 .first_section {
   width: 100%;
   height: 100%;
+  min-height: 100vh;
   position: relative;
   padding-bottom: 50px;
-  z-index: 0; }
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; }
   .first_section::after {
     content: '';
     position: absolute;
@@ -1768,6 +1819,9 @@ input::-webkit-inner-spin-button {
   .preferens_counter__block .sub_title {
     font-family: 'Oswald', sans-serif; }
 
+.preferens_item_fix {
+  margin-bottom: 90px; }
+
 .pref_line {
   width: 80%;
   height: 1px;
@@ -1784,7 +1838,7 @@ input::-webkit-inner-spin-button {
 .img_preferens__block {
   position: relative;
   margin: 0 100px;
-  margin-top: -300px;
+  margin-top: -500px;
   text-align: center; }
 
 @media (max-width: 1406px) {
@@ -1813,7 +1867,7 @@ input::-webkit-inner-spin-button {
     margin-top: 30px;
     justify-content: center; }
   .img_preferens__block {
-    margin-top: 30px; }
+    margin-top: -45px; }
   .second_section {
     padding-bottom: 0px; }
   .preferens_profile {
@@ -1825,7 +1879,12 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 631px) {
   .preferens_item {
-    width: 90%; } }
+    width: 90%; }
+  .preferens_item_fix {
+    margin-bottom: 30px; }
+  .img_preferens__block {
+    margin-top: 30px;
+    margin: 0; } }
 
 @media (max-width: 452px) {
   .img_preferens__block img {
@@ -1891,6 +1950,9 @@ input::-webkit-inner-spin-button {
     .eleek_slide_img img {
       width: 100%;
       height: auto; }
+    .eleek_slide_img .oval_slide {
+      position: absolute;
+      bottom: -27px; }
   .eleek_slide_info__wrapp {
     max-width: 400px;
     margin: 0 auto;
@@ -1950,7 +2012,7 @@ input::-webkit-inner-spin-button {
 .absolute_rams_2 {
   position: absolute;
   bottom: 200px;
-  left: 22%;
+  left: 27%;
   z-index: 9; }
 
 .absolute_rams_3 {

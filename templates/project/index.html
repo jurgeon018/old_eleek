@@ -68,7 +68,7 @@ section__wrapper
         <img src="/static/source/img/index/grid-eleek.png" alt="" class="hidden_preferens__bg">
         <div class="preferens_profile">
 
-          <div class="preferens_item">
+          <div class="preferens_item preferens_item_fix">
                 <div class="preferens_title__block">
                     <span class="pref_num main__title main__title_5 color_white">
                       01
@@ -113,7 +113,7 @@ section__wrapper
           
         </div>
         <div class="preferens_profile">
-          <div class="preferens_item">
+          <div class="preferens_item preferens_item_fix">
             <div class="preferens_title__block">
                 <span class="pref_num main__title main__title_5 color_white">
                   03
@@ -158,7 +158,7 @@ section__wrapper
         </div>
     </div>
     <div class="img_preferens__block">
-      <img src="/static/source/img/index/atom-without-borders.png" alt="" class="img_preferens">
+      <img src="/static/source/img/index/111333.png" alt="" class="img_preferens">
     </div>
   </div>
   <!-- /.container -->
@@ -179,7 +179,7 @@ section__wrapper
       </div>
     </div>
     <div class="eleek_slider__wrap">
-      {% for slide in '1234'|make_list %}
+      {% for slide in '123'|make_list %}
         <div class="eleek_slide">
           <div class="eleek_num_counter main__title main__title_01 color_white">
             0{{slide}}
@@ -188,7 +188,8 @@ section__wrapper
             Neo {{slide}}
           </div>
           <div class="eleek_slide_img">
-              <img src="/static/source/img/index/atom-without-borders.png" alt="">
+              <img src="/static/source/img/index/slide-{{slide}}.png" alt="">
+              <img class="oval_slide" src="/static/source/img/index/oval.png" alt="">
           </div>
           <div class="eleek_slide_info__wrapp">
             <div class="eleek_slide_info__block">
@@ -238,6 +239,9 @@ section__wrapper
     </div>
     <a href="#" class="btn_standart btn_standart_black">
       Детальніше
+    </a>
+    <a href="#" class="glo">
+      Кнопка с анимацией загрузки
     </a>
   </div>
   <!-- /.four_wrapp -->
@@ -392,11 +396,6 @@ section__wrapper
     and watch it with your favorite video player!
   </video>
 </section>
-<<<<<<< HEAD
-<!-- /.six_section -->
-</main>
-=======
->>>>>>> 4e6d378aee09259a90bcdf43339a7393fa53d4c4
 {% endblock content %}
 {% block scripts %}
 <script src="/static/source/lib/jquery/index.js"></script> 

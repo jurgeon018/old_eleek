@@ -215,6 +215,25 @@
         }
     }
 }
+.anim_arrow {
+  transition: all .2s;
+}
+
+.scroll_main__block {
+  position: relative;
+
+  .scroll_category_img {
+    img {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+
+    }
+  }
+
+}
+
 .svg_item {
   transition: all .2s;
 }
@@ -363,7 +382,7 @@
     -webkit-text-stroke-color: #fff;
     transition: all .2s;
     &_1 {
-        font-size: 65px;
+        font-size: 75px;
     }
 
    
@@ -374,7 +393,6 @@
   }
   &_category {
     margin-bottom: 20px;
-    position: relative;
     &:hover {
       .scroll_category_img {
         img {
