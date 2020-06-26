@@ -34,7 +34,6 @@ function create_animation(arrow, button) {
 
     arrow.style.top = y + 'px';
 		arrow.style.right = x + 'px';
-	
 	});
 
 	button.addEventListener('mouseenter', () => {
