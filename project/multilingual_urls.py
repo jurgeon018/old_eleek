@@ -28,6 +28,9 @@ def constructor(request):
 def test_drive(request):
     return render(request, 'project/test_drive.html', locals())
 
+def delivery(request):
+    return render(request, 'project/delivery.html', locals())
+
 from box.apps.sw_shop.sw_cart.decorators import cart_exists
 
 @cart_exists
@@ -73,6 +76,8 @@ urlpatterns = [
     path('search/',      search,      name='search'),
     path('profile/',     profile,     name='profile'),
     path('shop/',        shop,        name='shop'),
+    path('delivery/',        delivery,        name='delivery'),
+    
     path('login/',       login,       name='login'),
     path('register/',    register,    name='register'),
 ]
