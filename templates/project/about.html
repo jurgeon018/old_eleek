@@ -51,15 +51,11 @@ item_section__wrapper
         </div>
       </div>
       <div class="doc_slider">
+        {% for cert in '1111' %}
         <div class="doc_prof">
-          <img src="/static/source/img/usually/1.jpg" alt="">
+          <img src="/static/source/img/usually/{{cert}}.jpg" alt="{{cert.alt}}">
         </div>
-        <div class="doc_prof">
-          <img src="/static/source/img/usually/1.jpg" alt="">
-        </div>
-        <div class="doc_prof">
-          <img src="/static/source/img/usually/1.jpg" alt="">
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -78,24 +74,11 @@ item_section__wrapper
       </div>
     </div>
       <div class="partner_slider">
+        {% for i in '123456123456' %}
         <div class="partner_prof">
-          <img src="/static/source/img/usually//logo-1.png" alt="">
+          <img src="/static/source/img/usually/logo-{{i}}.png" alt="{{slider.alt}}">
         </div>
-        <div class="partner_prof">
-          <img src="/static/source/img/usually//logo-2.png" alt="">
-        </div>
-        <div class="partner_prof">
-          <img src="/static/source/img/usually//logo-3.png" alt="">
-        </div>
-        <div class="partner_prof">
-          <img src="/static/source/img/usually//logo-4.png" alt="">
-        </div>
-        <div class="partner_prof">
-          <img src="/static/source/img/usually//logo-5.png" alt="">
-        </div>
-        <div class="partner_prof">
-          <img src="/static/source/img/usually//logo-6.png" alt="">
-        </div>
+        {% endfor %}
       </div>
   </div>
   <div class="drive_form__block contact_form__block">

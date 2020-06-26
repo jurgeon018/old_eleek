@@ -22,7 +22,7 @@ section__wrapper
                 <a href="{% url 'test_drive' %}" class="btn_standart btn_standart_transparent">
                   Тест-драйв
                 </a>
-                <a href="#" class="btn_standart btn_standart_black">
+                <a href="{% url 'item' 1 %}" class="btn_standart btn_standart_black">
                   Детальніше
                 </a>
             </div>
@@ -216,7 +216,7 @@ section__wrapper
               </div>
             </div>
           </div>
-          <a href="{{slide.item.get_absolute_url}}" class="eleek_slide_btn btn_standart btn_standart_transparent">
+          <a href="{% url 'item' 1 %}" class="eleek_slide_btn btn_standart btn_standart_transparent">
             Детальніше
           </a>
         </div>
