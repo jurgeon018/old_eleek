@@ -416,6 +416,8 @@ main {
     font-weight: 700; }
   .main__title_0 {
     font-size: 100px; }
+  .main__title_00 {
+    font-size: 75px; }
   .main__title_1 {
     font-size: 65px; }
   .main__title_2 {
@@ -578,7 +580,9 @@ main {
   cursor: pointer;
   font-size: 16px;
   letter-spacing: 2px;
-  padding: 17px 10px;
+  padding: 17px 26px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
   text-align: center; }
   .btn_standart_black {
     background-color: #2b2a27;
@@ -604,7 +608,7 @@ main {
 
 @charset "UTF-8";
 .nav_bar {
-  height: 100px;
+  height: 70px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -619,7 +623,7 @@ main {
   background-color: #ffd10a;
   text-align: center; }
   .logo_header svg {
-    width: 225px;
+    width: 190px;
     position: relative;
     z-index: 1;
     left: 10px; }
@@ -766,7 +770,7 @@ main {
   -moz-transform: skew(-15deg);
   -o-transform: skew(-15deg);
   background: #fff;
-  height: 100px;
+  height: 70px;
   position: absolute;
   top: 0;
   left: 0px;
@@ -799,10 +803,11 @@ main {
   #menu-toggle #hamburger {
     position: absolute;
     height: 100%;
-    width: 100%; }
+    width: 100%;
+    top: -10px; }
     #menu-toggle #hamburger .burger_span {
       width: 44px;
-      height: 2px;
+      height: 1px;
       position: relative;
       top: 24px;
       left: 30px;
@@ -817,7 +822,8 @@ main {
     position: absolute;
     height: 100%;
     width: 100%;
-    transform: rotate(45deg); }
+    transform: rotate(45deg);
+    top: -10px; }
     #menu-toggle #cross .burger_span:nth-child(1) {
       height: 0%;
       width: 2px;
@@ -882,7 +888,7 @@ main {
   text-transform: uppercase;
   cursor: pointer;
   color: transparent;
-  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #fff;
   transition: all .2s; }
   .header_title_1 {
@@ -936,7 +942,8 @@ main {
     background-color: #2b2a27 !important;
     width: 90px !important; }
   .scroll_right__block .scroll_title {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    margin-top: 20px;
     line-height: 1.5;
     font-size: 35px; }
   .scroll_right__block .btn_standart_transparent {
@@ -952,10 +959,12 @@ main {
   right: -100%;
   padding: 40px 60px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around; }
+  flex-direction: column; }
   .scroll_top__block_active {
     right: 0; }
+  .scroll_top__block .btn_standart {
+    position: absolute;
+    bottom: 40px; }
 
 .scroll_bottom__block {
   padding: 40px 60px;
@@ -967,10 +976,12 @@ main {
   background-color: #ffd10a;
   right: -100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around; }
+  flex-direction: column; }
   .scroll_bottom__block_active {
     right: 0; }
+  .scroll_bottom__block .btn_standart {
+    position: absolute;
+    bottom: 40px; }
 
 .scroll_search {
   border: none;

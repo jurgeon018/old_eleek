@@ -16,7 +16,7 @@ section__wrapper
         <div class="bike_trailer__wrapper">
           <div class="bike_trailer_content">
             <h1 class="main__title main__title_1 color_black slide-name anim_text">
-              Новий <span class="color_yellow">Eleek Atom1</span> — <br> відчуй драйв!
+              Новий <span class="main__title main__title_1 color_yellow">Eleek Atom1</span> — <br> відчуй драйв!
             </h1>
             <div class="bike_trailer_btn__wrap slide-name anim_text">
                 <a href="{% url 'test_drive' %}" class="btn_standart btn_standart_transparent">
@@ -81,8 +81,8 @@ section__wrapper
                     </span>
                 </div>
                 <div class="preferens_counter__block">
-                    <span class="preferens_counter_1 color_yellow main__title main__title_0">
-                      150
+                    <span data-count="150" id="preferens_counter_1" class="lines preferens_counter_1 color_yellow main__title main__title_0">
+                      0
                     </span>
                     <span class="sub_title sub_title_1 color_white">
                       км
@@ -102,8 +102,8 @@ section__wrapper
                   </span>
               </div>
               <div class="preferens_counter__block">
-                  <span class="preferens_counter_1 color_yellow main__title main__title_0">
-                    100
+                  <span data-count="100" id="preferens_counter_2" class="lines preferens_counter_2 color_yellow main__title main__title_0">
+                    0
                   </span>
                   <span class="sub_title sub_title_1 color_white">
                     км/год
@@ -126,8 +126,8 @@ section__wrapper
                 </span>
             </div>
             <div class="preferens_counter__block">
-                <span class="preferens_counter_1 color_yellow main__title main__title_0">
-                  3954
+                <span data-count="3954" id="preferens_counter_3" class="lines preferens_counter_3 color_yellow main__title main__title_0">
+                  0
                 </span>
                 <span class="sub_title sub_title_1 color_white">
                   вт
@@ -147,8 +147,8 @@ section__wrapper
               </span>
           </div>
           <div class="preferens_counter__block">
-              <span class="preferens_counter_1 color_yellow main__title main__title_0">
-                4
+              <span data-count="4" id="preferens_counter_4" class="lines preferens_counter_4 color_yellow main__title main__title_0">
+                0
               </span>
               <span class="sub_title sub_title_1 color_white">
                 год
@@ -393,8 +393,6 @@ section__wrapper
   </video>
 </section>
 <!-- /.six_section -->
-{% include "project/includes/footer.html" %}
-<!-- /.footer -->
 </main>
 {% endblock content %}
 {% block scripts %}
