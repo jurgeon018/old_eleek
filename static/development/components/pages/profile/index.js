@@ -1,6 +1,5 @@
 import './index.scss';
 
-
 $(".item_tab_link").on("click", function(){
     ($(this)[0].dataset.tab);
     var className = ($(this)[0].dataset.tab);

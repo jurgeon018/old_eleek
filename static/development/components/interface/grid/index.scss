@@ -16,7 +16,10 @@ main{
     left: 50%;
     transform: translate(-50%, -50%);
 }
-    
+.ultra_link {
+    padding-bottom: 3px;
+    border-bottom: 1px solid #2b2a27;
+}
 //  тут шрифти Oswald ==================>
 .main__title {
     font-stretch: normal;
