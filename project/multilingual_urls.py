@@ -9,7 +9,7 @@ def about(request):
     return render(request, 'project/about.html', locals())
 
 
-def items(request):
+def items(request, slug):
     return render(request, 'project/items.html', locals())
 
 
@@ -67,7 +67,7 @@ urlpatterns = [
     
     path('',             index,       name='index'),
     path('about/',       about,       name='about'),
-    path('items/',       items,       name='items'),
+    path('items/<slug>/',       items,       name='items'),
     path('item/<slug>/', item,        name='item'),
     path('faq/',         faq,         name='faq'),
     path('constructor/', constructor, name='constructor'),
