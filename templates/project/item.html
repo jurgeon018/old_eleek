@@ -113,6 +113,7 @@ item_section__wrapper
       </div>
       <div class="characteristick__wrap">
         <div class="char__block">
+          {% for feature in '13579' %}
           <div class="char_prof">
             <div class="char_text standart_title standart_title_5 color_black">
               Дистанція
@@ -121,48 +122,37 @@ item_section__wrapper
               До 150 км
             </div>
           </div>
-          <div class="char_prof">
-            <div class="char_text standart_title standart_title_5 color_black">
-              Макс. швидкість
-            </div>
-            <div class="char_result main__title main__title_5 color_black">
-              80 км/год
-            </div>
-          </div>
+          {% endfor %}
         </div>
         <div class="char__block">
+          {% for feature in '2468' %}
           <div class="char_prof">
             <div class="char_text standart_title standart_title_5 color_black">
-              Потужність
+              Характеристика {{feature}}
             </div>
             <div class="char_result main__title main__title_5 color_black">
-              3300 Вт
+              Значення характеристик {{feature}}
             </div>
           </div>
-          <div class="char_prof">
-            <div class="char_text standart_title standart_title_5 color_black">
-              Час повного заряду
-            </div>
-            <div class="char_result main__title main__title_5 color_black">
-              4 год
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
+
       <div class="item_char_title main__title main__title_4">
         Кольора
       </div>
+      {% for attribute in '123456789' %}
       <div class="color_change__wrap">
         <div class="color_change__block">
           <div class="color_change_prof">
             <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-              Колір рами:
+              Назва атриута {{attribute}}
             </div>
             <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
               
             </div>
             <div class="color_change_name sub_title sub_title_2 color_black">
-              Чорний RAL 9005
+              Значення атрибута {{attribute}}
             </div>
           </div>
           <div class="color_change_btn">
@@ -176,550 +166,30 @@ item_section__wrapper
                   <img src="/static/source/img/item/okey.svg" alt="">
                 </div>
             </div>
-            <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
+            {% for colour in '123456789'|make_list %}
+            <div data-color='#{{colour}}{{attribute}}2a2a' style="background:#{{colour}}a2a2a;" class="color_change_oval color_change_select">
               <div class="success_color">
                 <img src="/static/source/img/item/okey.svg" alt="">
               </div>
             </div>
-            <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-        
+            {% endfor %}
           </div>
         </div>
       </div>
-      <div class="color_change__wrap">
-        <div class="color_change__block">
-          <div class="color_change_prof">
-            <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-              Колір підсиділа:
-            </div>
-            <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
-              
-            </div>
-            <div class="color_change_name sub_title sub_title_2 color_black">
-              Чорний RAL 9005
-            </div>
-          </div>
-          <div class="color_change_btn">
-            <img src="/static/source/img/item/close.svg" alt="">
-          </div>
-        </div>
-        <div class="color_change_content">
-          <div class="color_change_content_wrap">
-            <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-            </div>
-            <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-        
-          </div>
-        </div>
-      </div>
-      <div class="color_change__wrap">
-        <div class="color_change__block">
-          <div class="color_change_prof">
-            <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-              Колір бокових панелей:
-            </div>
-            <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
-              
-            </div>
-            <div class="color_change_name sub_title sub_title_2 color_black">
-              Чорний RAL 9005
-            </div>
-          </div>
-          <div class="color_change_btn">
-            <img src="/static/source/img/item/close.svg" alt="">
-          </div>
-        </div>
-        <div class="color_change_content">
-          <div class="color_change_content_wrap">
-            <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-            </div>
-            <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-        
-          </div>
-        </div>
-      </div>
-      <div class="color_change__wrap">
-        <div class="color_change__block">
-          <div class="color_change_prof">
-            <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-              Колір ободів:
-            </div>
-            <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
-              
-            </div>
-            <div class="color_change_name sub_title sub_title_2 color_black">
-              Чорний RAL 9005
-            </div>
-          </div>
-          <div class="color_change_btn">
-            <img src="/static/source/img/item/close.svg" alt="">
-          </div>
-        </div>
-        <div class="color_change_content">
-          <div class="color_change_content_wrap">
-            <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-            </div>
-            <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-        
-          </div>
-        </div>
-      </div>
-      <div class="color_change__wrap">
-        <div class="color_change__block">
-          <div class="color_change_prof">
-            <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-              Колір захисту контроллера:
-            </div>
-            <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
-              
-            </div>
-            <div class="color_change_name sub_title sub_title_2 color_black">
-              Чорний RAL 9005
-            </div>
-          </div>
-          <div class="color_change_btn">
-            <img src="/static/source/img/item/close.svg" alt="">
-          </div>
-        </div>
-        <div class="color_change_content">
-          <div class="color_change_content_wrap">
-            <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-            </div>
-            <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-            <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
-              </div>
-            </div>
-        
-          </div>
-        </div>
-      </div>
+      {% endfor %}
       <div class="option__wrap">
         <div class="item_char_title main__title main__title_4">
           Опції
         </div>
         <div class="option_content__block">
+          {% for option in '123456789'|make_list %}
           <div class="option_content_prof">
             <img class="option_img" src="/static/source/img/item/close.svg" alt="">
             <div class="option_text standart_title standart_title_6">
-              Повороти
+              Опція {{option}}
             </div>
           </div>
-          <div class="option_content_prof">
-            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-            <div class="option_text standart_title standart_title_6">
-              Сигналізація
-            </div>
-          </div>
-          <div class="option_content_prof">
-            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-            <div class="option_text standart_title standart_title_6">
-              GPS трекер
-            </div>
-          </div>
-          <div class="option_content_prof">
-            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-            <div class="option_text standart_title standart_title_6">
-              USB 5V 1.5A i 2.0A
-            </div>
-          </div>
-          <div class="option_content_prof">
-            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-            <div class="option_text standart_title standart_title_6">
-              Вихід на 12 V
-            </div>
-          </div>
-          <div class="option_content_prof">
-            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-            <div class="option_text standart_title standart_title_6">
-              Бризговики
-            </div>
-          </div>
-          <div class="option_content_prof">
-            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-            <div class="option_text standart_title standart_title_6">
-              Багажник
-            </div>
-          </div>
-          <div class="option_content_prof">
-            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-            <div class="option_text standart_title standart_title_6">
-              Дзеркала
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>

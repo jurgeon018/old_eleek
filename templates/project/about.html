@@ -1,3 +1,5 @@
+{% extends "project/base.html" %}
+{% load sw_content i18n %}
 {% block styles %}
 <link rel="stylesheet" href="/static/source/pages/about/index.css.map">
 <link rel="stylesheet" href="/static/source/lib/select2/select2.min.css">
@@ -7,9 +9,11 @@
 <link rel="stylesheet" href="/static/source/pages/login/index.css">
 <link rel="stylesheet" href="/static/source/pages/about/index.css">
 {% endblock styles %}
+
 {% block main_class %}
 item_section__wrapper
 {% endblock main_class %}
+
 {% block content %}
 <div class="bg_for_usually_page">
   <video class="eleek_video" data-src="/static/source/img/index/video.webm" autoplay muted poster="posterimage.jpg">

@@ -18,10 +18,10 @@ STATIC_SITEMAP_PAGES = [
     # 'about',
 ]
 PROJECT_CORE_MULTILINGUAL_URLS = [
-    'project.urls',
+    'project.multilingual_urls',
 ]
 PROJECT_CORE_URLS = [
-    'project.api.urls',
+    'project.urls',
 ]
 ROOT_URLCONF     = 'box.core.urls'
 WSGI_APPLICATION = 'core.wsgi.application'
@@ -53,5 +53,9 @@ LIQPAY_SANDBOX_PUBLIC_KEY = 'sdf'
 LIQPAY_SANDBOX_PRIVATE_KEY = 'sdf'
 
 LIQPAY_SANDBOX_MODE = 'sdf'
+
+
+LOGIN_REDIRECT_URL = 'profile'
+LOGIN_URL = 'login'
 
 

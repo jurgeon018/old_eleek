@@ -65,19 +65,19 @@
         Клієнтам <div class="footer_btn"></div>
       </div>
       <div class="footer_accordeon_content">
-        <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+        <a href="{% url 'about' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
           Про нас
         </a>
-        <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+        <a href="{% url 'faq' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
           Часті питання
         </a>
-        <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+        <a href="{% url 'delivery' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
           Доставка і оплата
         </a>
-        <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+        <a href="{% url 'test_drive' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
           Тест-драйв
         </a>
-        <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+        <a href="{% url 'constructor' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
           Конструктор
         </a>
       </div>
@@ -87,16 +87,13 @@
         Магазин <div class="footer_btn"></div>
       </div>
       <div class="footer_accordeon_content">
-        <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+        <a href="{% url 'items' 1 %}" class="footer_accordeon_text color_white sub_title sub_title_2">
           Велосипеди
         </a>
-        <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+        <a href="{% url 'items' 1 %}" class="footer_accordeon_text color_white sub_title sub_title_2">
           Рами
         </a>
-        <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
-          Доставка і оплата
-        </a>
-        <a href="#" class="footer_accordeon_text color_white sub_title sub_title_2">
+        <a href="{% url 'items' 1 %}" class="footer_accordeon_text color_white sub_title sub_title_2">
           Комплектуючі
         </a>
       </div>
