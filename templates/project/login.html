@@ -5,10 +5,11 @@
 <link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
 <link rel="stylesheet" href="/static/source/pages/login/index.css?v=3">
 {% endblock styles %}
-{% block content %}
 {% block main_class %}
 item_section__wrapper
 {% endblock main_class %}
+
+{% block content %}
 <section class="login_section">
   <div class="registery__wrap">
     <div class="registery_bg">
@@ -42,7 +43,7 @@ item_section__wrapper
             <div class="last_registery_text sub_title sub_title_2 color_black">
               Ще не зареєстровані?
             </div>
-            <a href="#" class="ultra_link sub_title sub_title_2 color_yellow">
+            <a href="{% url 'register' %}" class="ultra_link sub_title sub_title_2 color_yellow">
               Зареєструватись
             </a>
           </div>
@@ -51,7 +52,6 @@ item_section__wrapper
     </div>
   </div>
 </section>
-{% include 'project/includes/footer.html' %}
 {% endblock content %}
 {% block scripts %}
 <script src="/static/source/lib/jquery/index.js"></script> 

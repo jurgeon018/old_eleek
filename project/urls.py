@@ -28,6 +28,7 @@ def constructor(request):
 def test_drive(request):
     return render(request, 'project/test_drive.html', locals())
 
+
 def order(request):
     return render(request, 'project/order.html', locals())
 
@@ -39,6 +40,16 @@ def profile(request):
     return render(request, 'project/profile.html', locals())
 
 
+def shop(request):
+    return render(request, 'project/shop.html', locals())
+
+
+def login(request):
+    return render(request, 'project/login.html', locals())
+
+
+def register(request):
+    return render(request, 'project/register.html', locals())
 
 
 from django.urls import path, include 
@@ -55,6 +66,9 @@ urlpatterns = [
     path('order/',       order, name='order'),
     path('search/',       search, name='search'),
     path('profile/',       profile, name='profile'),
+    path('shop/',       shop, name='shop'),
+    path('login/',       login, name='login'),
+    path('register/',       register, name='register'),
 ]
 
 
