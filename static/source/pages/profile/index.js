@@ -150,6 +150,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/common_componentc/header/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
+window.addEventListener('DOMContentLoaded', function () {
+  var arrow_1 = document.getElementById('arrow_1');
+  var button_1 = document.getElementById('button_1');
+  var arrow_2 = document.getElementById('arrow_2');
+  var button_2 = document.getElementById('button_2');
+  var arrow_3 = document.getElementById('arrow_3');
+  var button_3 = document.getElementById('button_3');
+  var arrow_4 = document.getElementById('arrow_4');
+  var button_4 = document.getElementById('button_4');
+  var arrow_5 = document.getElementById('arrow_5');
+  var button_5 = document.getElementById('button_5');
+  create_animation(arrow_1, button_1);
+  create_animation(arrow_2, button_2);
+  create_animation(arrow_3, button_3);
+  create_animation(arrow_4, button_4);
+  create_animation(arrow_5, button_5);
+});
+
+function create_animation(arrow, button) {
+  document.addEventListener('mousemove', function (e) {
+    arrow.style.top = e.clientY / 2 + 'px';
+    arrow.style.right = e.clientX / 2 + 'px';
+  });
+  button.addEventListener('mouseenter', function () {
+    arrow.style.opacity = 1;
+  });
+  button.addEventListener('mouseleave', function () {
+    arrow.style.opacity = 0;
+  });
+}
+
 $('#menu-toggle').click(function () {
   $(this).toggleClass('open');
   $('.scroll_menu').toggleClass('scroll_menu_active');

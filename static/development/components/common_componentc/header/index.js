@@ -1,5 +1,60 @@
 import './index.scss';
 
+window.addEventListener('DOMContentLoaded', () => {
+	const arrow_1 = document.getElementById('arrow_1'); 
+  const button_1 = document.getElementById('button_1');
+  
+  const arrow_2 = document.getElementById('arrow_2'); 
+  const button_2 = document.getElementById('button_2');
+  
+  const arrow_3 = document.getElementById('arrow_3'); 
+  const button_3 = document.getElementById('button_3');
+  
+  const arrow_4 = document.getElementById('arrow_4'); 
+  const button_4 = document.getElementById('button_4');
+  
+  const arrow_5 = document.getElementById('arrow_5'); 
+	const button_5 = document.getElementById('button_5');
+
+	create_animation(arrow_1, button_1);
+	create_animation(arrow_2, button_2);
+	create_animation(arrow_3, button_3);
+	create_animation(arrow_4, button_4);
+	create_animation(arrow_5, button_5);
+  
+
+});
+
+function create_animation(arrow, button) {
+  document.addEventListener('mousemove', (e) => {
+		arrow.style.top = (e.clientY / 2) + 'px';
+		arrow.style.right = (e.clientX / 2) + 'px';
+	
+	});
+
+	button.addEventListener('mouseenter', () => {
+		arrow.style.opacity = 1;
+	});
+	button.addEventListener('mouseleave', () => {
+		arrow.style.opacity = 0;
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $('#menu-toggle').click(function(){
     $(this).toggleClass('open');
     $('.scroll_menu').toggleClass('scroll_menu_active');
