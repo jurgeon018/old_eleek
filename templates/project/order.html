@@ -7,344 +7,237 @@
 <link rel="stylesheet" href="/static/source/pages/order/index.css?v=3">
 {% endblock styles %}
 {% block content %}
-<main class="item_section__wrapper">
-  <section class="section_order padding_sect">
-    <div class="container">
-      <h2 class="main__title main__title_2 color_black">
-        Оформлення замовлення
-      </h2>
-      <div class="order__wrap">
-        <form action='/test/' class="order_info__block">
-          <div data-step='1' class="step__wrap step__wrap_active">
-            <div class="step_title__wrap">
-              <div class="step_num main__title main__title_5 color_black">
-                1
-              </div>
-              <div class="step_title standart_title standart_title_3 color_black">
-                Крок 1. Контактні дані
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
+<section class="section_order padding_sect">
+  <div class="container">
+    <h2 class="main__title main__title_2 color_black">
+      Оформлення замовлення
+    </h2>
+    <div class="order__wrap">
+      <form action='/test/' class="order_info__block">
+        <div data-step='1' class="step__wrap step__wrap_active">
+          <div class="step_title__wrap">
+            <div class="step_num main__title main__title_5 color_black">
+              1
+            </div>
+            <div class="step_title standart_title standart_title_3 color_black">
+              Крок 1. Контактні дані
+            </div>
+          </div>
+          <div class="step_content">
+            <div class="footer_input__wrap inp-vak-wrap">
+              <label for="order_name" class="order_label label__style color_black">
+                Ім'я та прізвище
+              </label>
+              <input type="text" id="order_name" name='name' class="order_input input_focus input_requared">
+            </div>
+            <div class="footer_input__wrap inp-vak-wrap">
+              <label for="order_email" class="order_label label__style color_black">
+                E-mail
+              </label>
+              <input type="text" id="order_email" name='email' class="order_input input_focus input_requared">
+            </div>
+            <div class="footer_input__wrap inp-vak-wrap">
+              <label for="order_phone" class="order_label label__style color_black">
+                Телефон
+              </label>
+              <input type="text" id="order_phone" name='email' class="order_input input_focus input_requared">
+            </div>
+            <div class="wrap_for_footer_btn">
+              <div data-step-btn='1' class="btn_standart btn_standart_yellow next_step_btn">
+                Далі
               </div>
             </div>
-            <div class="step_content">
-              <div class="footer_input__wrap inp-vak-wrap">
-                <label for="order_name" class="order_label label__style color_black">
-                  Ім'я та прізвище
-                </label>
-                <input type="text" id="order_name" name='name' class="order_input input_focus input_requared">
-              </div>
-              <div class="footer_input__wrap inp-vak-wrap">
-                <label for="order_email" class="order_label label__style color_black">
-                  E-mail
-                </label>
-                <input type="text" id="order_email" name='email' class="order_input input_focus input_requared">
-              </div>
-              <div class="footer_input__wrap inp-vak-wrap">
-                <label for="order_phone" class="order_label label__style color_black">
-                  Телефон
-                </label>
-                <input type="text" id="order_phone" name='email' class="order_input input_focus input_requared">
-              </div>
-              <div class="wrap_for_footer_btn">
-                <div data-step-btn='1' class="btn_standart btn_standart_yellow next_step_btn">
-                  Далі
-                </div>
-              </div>
-            </div>
+          </div>
 
-          </div>
-          <div data-step='2' class="step__wrap">
-            <div class="step_title__wrap">
-              <div class="step_num main__title main__title_5 color_black">
-                2
-              </div>
-              <div class="step_title standart_title standart_title_3 color_black">
-                Крок 2. Спосіб доставки
-              </div>
+        </div>
+        <div data-step='2' class="step__wrap">
+          <div class="step_title__wrap">
+            <div class="step_num main__title main__title_5 color_black">
+              2
             </div>
-            <div class="step_content">
-              <div data-radio='1' class="radio_block">
-                <div class="radio_tchk">
-                  <div class="radio_center absolute_center"></div>
-                </div>
-                <div class="radio_title standart_title standart_title_6 color_black">
-                  Доставка від Eleek
-                </div>
-              </div>
-              <div data-radio='2' class="radio_block">
-                <div class="radio_tchk">
-                  <div class="radio_center radio_center_active absolute_center"></div>
-                </div>
-                <div class="radio_title standart_title standart_title_6 color_black">
-                  Нова пошта
-                </div>
-              </div>
-              <div data-radio='3' class="radio_block">
-                <div class="radio_tchk">
-                  <div class="radio_center absolute_center"></div>
-                </div>
-                <div class="radio_title standart_title standart_title_6 color_black">
-                  Delivery
-                </div>
-              </div>
-              <div data-radio='4' class="radio_block">
-                <div class="radio_tchk">
-                  <div class="radio_center absolute_center"></div>
-                </div>
-                <div class="radio_title standart_title standart_title_6 color_black">
-                  Укр пошта 
-                </div>
-              </div>
-              <div data-radio="5" class="radio_block">
-                <div class="radio_tchk">
-                  <div class="radio_center absolute_center"></div>
-                </div>
-                <div class="radio_title standart_title standart_title_6 color_black">
-                  DHL
-                </div>
-              </div>
-              <div data-radio='6' class="radio_block">
-                <div class="radio_tchk">
-                  <div class="radio_center absolute_center"></div>
-                </div>
-                <div class="radio_title standart_title standart_title_6 color_black">
-                  Самовивіз з магазину
-                </div>
-              </div>
-              <div class="select-block">
-                <input type="hidden" name="nova_pochta_department" class="nova_pochta_hidden">
-                <div class="select_label sub_title sub_title_3 color_black">
-                  Місто
-                </div>
-                <select name="" id="" style="width: 100%;" class="select_city">
-                  
-                </select>
-              </div>
-              <div class="select-block">
-                <input type="hidden" name="nova_pochta_department" class="nova_pochta_hidden">
-                <div class="select_label sub_title sub_title_3 color_black">
-                  Номер відділення
-                </div>
-                <select name="" id="" style="width: 100%;" class="select_aria">
-                  
-                </select>
-              </div>
-              <div class="wrap_for_footer_btn">
-                <div data-step-btn='2' class="btn_standart btn_standart_yellow next_step_btn">
-                  Далі
-                </div>
-              </div>
+            <div class="step_title standart_title standart_title_3 color_black">
+              Крок 2. Спосіб доставки
             </div>
           </div>
-          <div data-step='3' class="step__wrap">
-            <div class="step_title__wrap">
-              <div class="step_num main__title main__title_5 color_black">
-                3
+          <div class="step_content">
+            <div data-radio='1' class="radio_block">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
               </div>
-              <div class="step_title standart_title standart_title_3 color_black">
-                Крок 3. Оплата
+              <div class="radio_title standart_title standart_title_6 color_black">
+                Доставка від Eleek
               </div>
             </div>
-            <div class="step_content">
-              <div data-radio='7' class="radio_block">
-                <div class="radio_tchk">
-                  <div class="radio_center radio_center_active absolute_center"></div>
-                </div>
-                <div class="radio_title standart_title standart_title_6 color_black">
-                  Готівка
-                </div>
+            <div data-radio='2' class="radio_block">
+              <div class="radio_tchk">
+                <div class="radio_center radio_center_active absolute_center"></div>
               </div>
-              <div data-radio='8' class="radio_block">
-                <div class="radio_tchk">
-                  <div class="radio_center absolute_center"></div>
-                </div>
-                <div class="radio_title standart_title standart_title_6 color_black">
-                  Оплата карткою
-                </div>
+              <div class="radio_title standart_title standart_title_6 color_black">
+                Нова пошта
               </div>
-              <div data-radio='9' class="radio_block">
-                <div class="radio_tchk">
-                  <div class="radio_center absolute_center"></div>
-                </div>
-                <div class="radio_title standart_title standart_title_6 color_black">
-                  Оплата частинами
-                </div>
+            </div>
+            <div data-radio='3' class="radio_block">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
               </div>
-              <a href="#" class="liqpay">
-                <img src="/static/source/img/order/512-px-liqpay-svg.png" alt="">
-              </a>
-              <div class="wrap_for_footer_btn">
-                <input type="submit" class="btn_standart btn_standart_yellow" value="Оплатити">
+              <div class="radio_title standart_title standart_title_6 color_black">
+                Delivery
+              </div>
+            </div>
+            <div data-radio='4' class="radio_block">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              <div class="radio_title standart_title standart_title_6 color_black">
+                Укр пошта 
+              </div>
+            </div>
+            <div data-radio="5" class="radio_block">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              <div class="radio_title standart_title standart_title_6 color_black">
+                DHL
+              </div>
+            </div>
+            <div data-radio='6' class="radio_block">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              <div class="radio_title standart_title standart_title_6 color_black">
+                Самовивіз з магазину
+              </div>
+            </div>
+            <div class="select-block">
+              <input type="hidden" name="nova_pochta_department" class="nova_pochta_hidden">
+              <div class="select_label sub_title sub_title_3 color_black">
+                Місто
+              </div>
+              <select name="" id="" style="width: 100%;" class="select_city">
+                
+              </select>
+            </div>
+            <div class="select-block">
+              <input type="hidden" name="nova_pochta_department" class="nova_pochta_hidden">
+              <div class="select_label sub_title sub_title_3 color_black">
+                Номер відділення
+              </div>
+              <select name="" id="" style="width: 100%;" class="select_aria">
+                
+              </select>
+            </div>
+            <div class="wrap_for_footer_btn">
+              <div data-step-btn='2' class="btn_standart btn_standart_yellow next_step_btn">
+                Далі
               </div>
             </div>
           </div>
-          
-        </form>
-        <div class="order_item__block">
-          <div class="order_item__wrap">
-            <div class="order_item_content__block">
-              <div class="basket_content_profile">
-                <div class="basket_profile_img">
-                    <img src="/static/source/img/index/lite.png" alt="">
-                </div>
-                <div class="basket_right_content">
-                  <div class="basket_title__block">
-                    <div class="basket_title main__title main__title_5">
-                      Вилка VEPR-H123
-                    </div>
-                  </div>
-                  <div class="basket_bottom__wrap">
-                    <div class="basket_counter__block">
-                      <div class="basket_text sub_title sub_title_2">
-                        Кількість
-                      </div>
-                      <div class="basket_counter">
-                        <div class="basket_prep basket_count sub_title sub_title_21">
-                          -
-                        </div>
-                        <input type="number" class="basket_input basket_count main__title main__title_5" value="1">
-                        <div class="basket_next basket_count sub_title sub_title_21">
-                          +
-                        </div>
-                      </div>
-                    </div>
-                    <div class="basket_sum__block">
-                      <div class="basket_text sub_title sub_title_2">
-                        Ціна
-                      </div>
-                      <div class="basket_summ main__title main__title_5">
-                        2500 грн.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="basket_content_profile">
-                <div class="basket_profile_img">
-                    <img src="/static/source/img/index/lite.png" alt="">
-                </div>
-                <div class="basket_right_content">
-                  <div class="basket_title__block">
-                    <div class="basket_title main__title main__title_5">
-                      Вилка VEPR-H123
-                    </div>
-                  </div>
-                  <div class="basket_bottom__wrap">
-                    <div class="basket_counter__block">
-                      <div class="basket_text sub_title sub_title_2">
-                        Кількість
-                      </div>
-                      <div class="basket_counter">
-                        <div class="basket_prep basket_count sub_title sub_title_21">
-                          -
-                        </div>
-                        <input type="number" class="basket_input basket_count main__title main__title_5" value="1">
-                        <div class="basket_next basket_count sub_title sub_title_21">
-                          +
-                        </div>
-                      </div>
-                    </div>
-                    <div class="basket_sum__block">
-                      <div class="basket_text sub_title sub_title_2">
-                        Ціна
-                      </div>
-                      <div class="basket_summ main__title main__title_5">
-                        2500 грн.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="basket_content_profile">
-                <div class="basket_profile_img">
-                    <img src="/static/source/img/index/lite.png" alt="">
-                </div>
-                <div class="basket_right_content">
-                  <div class="basket_title__block">
-                    <div class="basket_title main__title main__title_5">
-                      Вилка VEPR-H123
-                    </div>
-                  </div>
-                  <div class="basket_bottom__wrap">
-                    <div class="basket_counter__block">
-                      <div class="basket_text sub_title sub_title_2">
-                        Кількість
-                      </div>
-                      <div class="basket_counter">
-                        <div class="basket_prep basket_count sub_title sub_title_21">
-                          -
-                        </div>
-                        <input type="number" class="basket_input basket_count main__title main__title_5" value="1">
-                        <div class="basket_next basket_count sub_title sub_title_21">
-                          +
-                        </div>
-                      </div>
-                    </div>
-                    <div class="basket_sum__block">
-                      <div class="basket_text sub_title sub_title_2">
-                        Ціна
-                      </div>
-                      <div class="basket_summ main__title main__title_5">
-                        2500 грн.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="basket_content_profile">
-                <div class="basket_profile_img">
-                    <img src="/static/source/img/index/lite.png" alt="">
-                </div>
-                <div class="basket_right_content">
-                  <div class="basket_title__block">
-                    <div class="basket_title main__title main__title_5">
-                      Вилка VEPR-H123
-                    </div>
-                  </div>
-                  <div class="basket_bottom__wrap">
-                    <div class="basket_counter__block">
-                      <div class="basket_text sub_title sub_title_2">
-                        Кількість
-                      </div>
-                      <div class="basket_counter">
-                        <div class="basket_prep basket_count sub_title sub_title_21">
-                          -
-                        </div>
-                        <input type="number" class="basket_input basket_count main__title main__title_5" value="1">
-                        <div class="basket_next basket_count sub_title sub_title_21">
-                          +
-                        </div>
-                      </div>
-                    </div>
-                    <div class="basket_sum__block">
-                      <div class="basket_text sub_title sub_title_2">
-                        Ціна
-                      </div>
-                      <div class="basket_summ main__title main__title_5">
-                        2500 грн.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        </div>
+        <div data-step='3' class="step__wrap">
+          <div class="step_title__wrap">
+            <div class="step_num main__title main__title_5 color_black">
+              3
             </div>
-            <div class="order_item_result">
-              <div class="order_text main__title main__title_5 color_black">
-                Всього
-              </div>
-              <div class="order_sum main__title main__title_5 color_black">
-                102 500 грн.
-              </div>
+            <div class="step_title standart_title standart_title_3 color_black">
+              Крок 3. Оплата
             </div>
           </div>
-          
+          <div class="step_content">
+            <div data-radio='7' class="radio_block">
+              <div class="radio_tchk">
+                <div class="radio_center radio_center_active absolute_center"></div>
+              </div>
+              <div class="radio_title standart_title standart_title_6 color_black">
+                Готівка
+              </div>
+            </div>
+            <div data-radio='8' class="radio_block">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              <div class="radio_title standart_title standart_title_6 color_black">
+                Оплата карткою
+              </div>
+            </div>
+            <div data-radio='9' class="radio_block">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              <div class="radio_title standart_title standart_title_6 color_black">
+                Оплата частинами
+              </div>
+            </div>
+            <a href="#" class="liqpay">
+              <img src="/static/source/img/order/512-px-liqpay-svg.png" alt="">
+            </a>
+            <div class="wrap_for_footer_btn">
+              <input type="submit" class="btn_standart btn_standart_yellow" value="Оплатити">
+            </div>
+          </div>
+        </div>
+        
+      </form>
+      <div class="order_item__block">
+        <div class="order_item__wrap">
+          <div class="order_item_content__block">
+            {% for cart_item in '1234567'|make_list %}
+            <div class="basket_content_profile">
+              <div class="basket_profile_img">
+                  <img src="/static/source/img/index/lite.png" alt="">
+              </div>
+              <div class="basket_right_content">
+                <div class="basket_title__block">
+                  <div class="basket_title main__title main__title_5">
+                    {{cart_item}}
+                    Вилка VEPR-H123
+                  </div>
+                </div>
+                <div class="basket_bottom__wrap">
+                  <div class="basket_counter__block">
+                    <div class="basket_text sub_title sub_title_2">
+                      Кількість
+                    </div>
+                    <div class="basket_counter">
+                      <div class="basket_prep basket_count sub_title sub_title_21">
+                        -
+                      </div>
+                      <input type="number" class="basket_input basket_count main__title main__title_5" value="{{cart_item}}">
+                      <div class="basket_next basket_count sub_title sub_title_21">
+                        +
+                      </div>
+                    </div>
+                  </div>
+                  <div class="basket_sum__block">
+                    <div class="basket_text sub_title sub_title_2">
+                      Ціна
+                    </div>
+                    <div class="basket_summ main__title main__title_5">
+                      {{cart_item}}500 грн.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="order_item_result">
+            <div class="order_text main__title main__title_5 color_black">
+              Всього
+            </div>
+            <div class="order_sum main__title main__title_5 color_black">
+              102 500 грн.
+              {{cart.total_price}}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!-- /.container -->
-  </section>
-  <!-- /.section_order -->
-{% include 'project/includes/footer.html' %}
-  <!-- /.footer -->
-</main>
+  </div>
+  <!-- /.container -->
+</section>
 {% endblock content %}
 {% block scripts %}
 <script src="/static/source/lib/jquery/index.js"></script> 

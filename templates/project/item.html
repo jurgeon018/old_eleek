@@ -7,13 +7,41 @@
 <link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
 <link rel="stylesheet" href="/static/source/pages/item/index.css?v=3">
 {% endblock styles %}
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
 {% block content %}
-<main class="item_section__wrapper">
-  <section class="item_section">
-    <div class="standart_container item_content__wrap">
-      <div class="item_slider__block">
-        <div class="slider_card-wrap sticky">
-          <div class="main_card_slider">
+<section class="item_section">
+  <div class="standart_container item_content__wrap">
+    <div class="item_slider__block">
+      <div class="slider_card-wrap sticky">
+        <div class="main_card_slider">
+          <div class="img-wrap">
+            <img src="/static/source/img/item/cat-1.jpg" alt="">
+          </div>
+          <div class="img-wrap">
+            <img src="/static/source/img/item/cat-2.jpg" alt="">
+          </div>
+          <div class="img-wrap">
+            <img src="/static/source/img/item/cat-3.jpg" alt="">
+          </div>
+          <div class="img-wrap">
+            <img src="/static/source/img/item/cat-4.jpg" alt="">
+          </div>
+        </div>
+        <div class="bottom_slider__wrap">
+          <div class="three_de__block">
+            <svg class="hvr-bob" xmlns="http://www.w3.org/2000/svg" width="49" height="56" viewBox="0 0 49 56">
+              <g class="three_svg" fill="none" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                  <path d="M24.684 1.093l18.133 9.714c1.54.82 2.515 2.504 2.516 4.347V38.3c0 1.843-.975 3.527-2.516 4.347L24.684 52.36c-1.277.685-2.78.685-4.057 0L2.493 42.646C.954 41.815-.012 40.12 0 38.274v-23.12c0-1.843.975-3.527 2.516-4.347l18.133-9.714c1.271-.677 2.764-.677 4.035 0z" transform="translate(1.167 1.857)"/>
+                  <path d="M.725 12.531L22.667 24.286 44.608 12.531M22.667 52.846L22.667 24.286" transform="translate(1.167 1.857)"/>
+              </g>
+            </svg>
+            <div class="three_title standart_title standart_title_5 color_black">
+              Показати в 3Д
+            </div>
+          </div>
+          <div class="mini_slider">
             <div class="img-wrap">
               <img src="/static/source/img/item/cat-1.jpg" alt="">
             </div>
@@ -27,907 +55,692 @@
               <img src="/static/source/img/item/cat-4.jpg" alt="">
             </div>
           </div>
-          <div class="bottom_slider__wrap">
-            <div class="three_de__block">
-              <svg class="hvr-bob" xmlns="http://www.w3.org/2000/svg" width="49" height="56" viewBox="0 0 49 56">
-                <g class="three_svg" fill="none" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                    <path d="M24.684 1.093l18.133 9.714c1.54.82 2.515 2.504 2.516 4.347V38.3c0 1.843-.975 3.527-2.516 4.347L24.684 52.36c-1.277.685-2.78.685-4.057 0L2.493 42.646C.954 41.815-.012 40.12 0 38.274v-23.12c0-1.843.975-3.527 2.516-4.347l18.133-9.714c1.271-.677 2.764-.677 4.035 0z" transform="translate(1.167 1.857)"/>
-                    <path d="M.725 12.531L22.667 24.286 44.608 12.531M22.667 52.846L22.667 24.286" transform="translate(1.167 1.857)"/>
-                </g>
-              </svg>
-              <div class="three_title standart_title standart_title_5 color_black">
-                Показати в 3Д
-              </div>
+        </div>
+      </div>
+    </div>
+    <div class="item_select__block">
+      <div class="item_category_name sub_title sub_title_2 color_black">
+        Електровелосипеди
+      </div>
+      <div class="item_name__block">
+        <div class="item_name main__title main__title_2 color_black">
+          Велосипед Neo
+        </div>
+        <div class="item_rating__block">
+          <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+          </svg>
+          <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+          </svg>
+          <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+          </svg>
+          <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+          </svg>
+          <svg class="rating_svg" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+          </svg>
+          <span class="rating_num standart_title standart_title_5 color_black">
+            4/5
+          </span>
+        </div>
+      </div>
+      <div class="item_price__block">
+        <div class="item_price main__title main__title_3 color_black">
+          ₴ 100 000
+        </div>
+        <div class="item_btn_price btn_standart btn_standart_black color_white">
+          Купити
+        </div>
+      </div>
+      <div class="additional__block">
+        <div class="addit_name sub_title sub_title_3">
+          Ціна додаткових опцій:
+        </div>
+        <div class="addit_price main__title main__title_5">
+          ₴ 25 000
+        </div>
+      </div>
+      <div class="kredit__block">
+        <div class="kredit_text sub_title sub_title_2 color_black">
+          Від 10 057/місяць при купівлі товару в кредит або оплаті частинами
+        </div>
+        <div class="kredit_btn btn_standart btn_standart_yellow standart_title standart_title_5 color_black">
+          Купити в кредит
+        </div>
+      </div>
+      <div class="characteristick__wrap">
+        <div class="char__block">
+          <div class="char_prof">
+            <div class="char_text standart_title standart_title_5 color_black">
+              Дистанція
             </div>
-            <div class="mini_slider">
-              <div class="img-wrap">
-                <img src="/static/source/img/item/cat-1.jpg" alt="">
-              </div>
-              <div class="img-wrap">
-                <img src="/static/source/img/item/cat-2.jpg" alt="">
-              </div>
-              <div class="img-wrap">
-                <img src="/static/source/img/item/cat-3.jpg" alt="">
-              </div>
-              <div class="img-wrap">
-                <img src="/static/source/img/item/cat-4.jpg" alt="">
-              </div>
+            <div class="char_result main__title main__title_5 color_black">
+              До 150 км
+            </div>
+          </div>
+          <div class="char_prof">
+            <div class="char_text standart_title standart_title_5 color_black">
+              Макс. швидкість
+            </div>
+            <div class="char_result main__title main__title_5 color_black">
+              80 км/год
+            </div>
+          </div>
+        </div>
+        <div class="char__block">
+          <div class="char_prof">
+            <div class="char_text standart_title standart_title_5 color_black">
+              Потужність
+            </div>
+            <div class="char_result main__title main__title_5 color_black">
+              3300 Вт
+            </div>
+          </div>
+          <div class="char_prof">
+            <div class="char_text standart_title standart_title_5 color_black">
+              Час повного заряду
+            </div>
+            <div class="char_result main__title main__title_5 color_black">
+              4 год
             </div>
           </div>
         </div>
       </div>
-      <div class="item_select__block">
-        <div class="item_category_name sub_title sub_title_2 color_black">
-          Електровелосипеди
-        </div>
-        <div class="item_name__block">
-          <div class="item_name main__title main__title_2 color_black">
-            Велосипед Neo
-          </div>
-          <div class="item_rating__block">
-            <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-              <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-            </svg>
-            <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-              <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-            </svg>
-            <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-              <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-            </svg>
-            <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-              <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-            </svg>
-            <svg class="rating_svg" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-              <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-            </svg>
-            <span class="rating_num standart_title standart_title_5 color_black">
-              4/5
-            </span>
-          </div>
-        </div>
-        <div class="item_price__block">
-          <div class="item_price main__title main__title_3 color_black">
-            ₴ 100 000
-          </div>
-          <div class="item_btn_price btn_standart btn_standart_black color_white">
-            Купити
-          </div>
-        </div>
-        <div class="additional__block">
-          <div class="addit_name sub_title sub_title_3">
-            Ціна додаткових опцій:
-          </div>
-          <div class="addit_price main__title main__title_5">
-            ₴ 25 000
-          </div>
-        </div>
-        <div class="kredit__block">
-          <div class="kredit_text sub_title sub_title_2 color_black">
-            Від 10 057/місяць при купівлі товару в кредит або оплаті частинами
-          </div>
-          <div class="kredit_btn btn_standart btn_standart_yellow standart_title standart_title_5 color_black">
-            Купити в кредит
-          </div>
-        </div>
-        <div class="characteristick__wrap">
-          <div class="char__block">
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Дистанція
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                До 150 км
-              </div>
+      <div class="item_char_title main__title main__title_4">
+        Кольора
+      </div>
+      <div class="color_change__wrap">
+        <div class="color_change__block">
+          <div class="color_change_prof">
+            <div class="color_change_title main_sub_title main_sub_title_3 color_black">
+              Колір рами:
             </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Макс. швидкість
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                80 км/год
-              </div>
+            <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
+              
+            </div>
+            <div class="color_change_name sub_title sub_title_2 color_black">
+              Чорний RAL 9005
             </div>
           </div>
-          <div class="char__block">
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Потужність
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                3300 Вт
-              </div>
-            </div>
-            <div class="char_prof">
-              <div class="char_text standart_title standart_title_5 color_black">
-                Час повного заряду
-              </div>
-              <div class="char_result main__title main__title_5 color_black">
-                4 год
-              </div>
-            </div>
+          <div class="color_change_btn">
+            <img src="/static/source/img/item/close.svg" alt="">
           </div>
         </div>
+        <div class="color_change_content">
+          <div class="color_change_content_wrap">
+            <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
+                <div class="success_color">
+                  <img src="/static/source/img/item/okey.svg" alt="">
+                </div>
+            </div>
+            <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+        
+          </div>
+        </div>
+      </div>
+      <div class="color_change__wrap">
+        <div class="color_change__block">
+          <div class="color_change_prof">
+            <div class="color_change_title main_sub_title main_sub_title_3 color_black">
+              Колір підсиділа:
+            </div>
+            <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
+              
+            </div>
+            <div class="color_change_name sub_title sub_title_2 color_black">
+              Чорний RAL 9005
+            </div>
+          </div>
+          <div class="color_change_btn">
+            <img src="/static/source/img/item/close.svg" alt="">
+          </div>
+        </div>
+        <div class="color_change_content">
+          <div class="color_change_content_wrap">
+            <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
+                <div class="success_color">
+                  <img src="/static/source/img/item/okey.svg" alt="">
+                </div>
+            </div>
+            <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+        
+          </div>
+        </div>
+      </div>
+      <div class="color_change__wrap">
+        <div class="color_change__block">
+          <div class="color_change_prof">
+            <div class="color_change_title main_sub_title main_sub_title_3 color_black">
+              Колір бокових панелей:
+            </div>
+            <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
+              
+            </div>
+            <div class="color_change_name sub_title sub_title_2 color_black">
+              Чорний RAL 9005
+            </div>
+          </div>
+          <div class="color_change_btn">
+            <img src="/static/source/img/item/close.svg" alt="">
+          </div>
+        </div>
+        <div class="color_change_content">
+          <div class="color_change_content_wrap">
+            <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
+                <div class="success_color">
+                  <img src="/static/source/img/item/okey.svg" alt="">
+                </div>
+            </div>
+            <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+        
+          </div>
+        </div>
+      </div>
+      <div class="color_change__wrap">
+        <div class="color_change__block">
+          <div class="color_change_prof">
+            <div class="color_change_title main_sub_title main_sub_title_3 color_black">
+              Колір ободів:
+            </div>
+            <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
+              
+            </div>
+            <div class="color_change_name sub_title sub_title_2 color_black">
+              Чорний RAL 9005
+            </div>
+          </div>
+          <div class="color_change_btn">
+            <img src="/static/source/img/item/close.svg" alt="">
+          </div>
+        </div>
+        <div class="color_change_content">
+          <div class="color_change_content_wrap">
+            <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
+                <div class="success_color">
+                  <img src="/static/source/img/item/okey.svg" alt="">
+                </div>
+            </div>
+            <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+        
+          </div>
+        </div>
+      </div>
+      <div class="color_change__wrap">
+        <div class="color_change__block">
+          <div class="color_change_prof">
+            <div class="color_change_title main_sub_title main_sub_title_3 color_black">
+              Колір захисту контроллера:
+            </div>
+            <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
+              
+            </div>
+            <div class="color_change_name sub_title sub_title_2 color_black">
+              Чорний RAL 9005
+            </div>
+          </div>
+          <div class="color_change_btn">
+            <img src="/static/source/img/item/close.svg" alt="">
+          </div>
+        </div>
+        <div class="color_change_content">
+          <div class="color_change_content_wrap">
+            <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
+                <div class="success_color">
+                  <img src="/static/source/img/item/okey.svg" alt="">
+                </div>
+            </div>
+            <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+            <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
+              <div class="success_color">
+                <img src="/static/source/img/item/okey.svg" alt="">
+              </div>
+            </div>
+        
+          </div>
+        </div>
+      </div>
+      <div class="option__wrap">
         <div class="item_char_title main__title main__title_4">
-          Кольора
+          Опції
         </div>
-        <div class="color_change__wrap">
-          <div class="color_change__block">
-            <div class="color_change_prof">
-              <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-                Колір рами:
-              </div>
-              <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
-                
-              </div>
-              <div class="color_change_name sub_title sub_title_2 color_black">
-                Чорний RAL 9005
-              </div>
-            </div>
-            <div class="color_change_btn">
-              <img src="/static/source/img/item/close.svg" alt="">
+        <div class="option_content__block">
+          <div class="option_content_prof">
+            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+            <div class="option_text standart_title standart_title_6">
+              Повороти
             </div>
           </div>
-          <div class="color_change_content">
-            <div class="color_change_content_wrap">
-              <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
-                  <div class="success_color">
-                    <img src="/static/source/img/item/okey.svg" alt="">
-                  </div>
-              </div>
-              <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-          
+          <div class="option_content_prof">
+            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+            <div class="option_text standart_title standart_title_6">
+              Сигналізація
             </div>
           </div>
-        </div>
-        <div class="color_change__wrap">
-          <div class="color_change__block">
-            <div class="color_change_prof">
-              <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-                Колір підсиділа:
-              </div>
-              <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
-                
-              </div>
-              <div class="color_change_name sub_title sub_title_2 color_black">
-                Чорний RAL 9005
-              </div>
-            </div>
-            <div class="color_change_btn">
-              <img src="/static/source/img/item/close.svg" alt="">
+          <div class="option_content_prof">
+            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+            <div class="option_text standart_title standart_title_6">
+              GPS трекер
             </div>
           </div>
-          <div class="color_change_content">
-            <div class="color_change_content_wrap">
-              <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
-                  <div class="success_color">
-                    <img src="/static/source/img/item/okey.svg" alt="">
-                  </div>
-              </div>
-              <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-          
+          <div class="option_content_prof">
+            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+            <div class="option_text standart_title standart_title_6">
+              USB 5V 1.5A i 2.0A
             </div>
           </div>
-        </div>
-        <div class="color_change__wrap">
-          <div class="color_change__block">
-            <div class="color_change_prof">
-              <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-                Колір бокових панелей:
-              </div>
-              <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
-                
-              </div>
-              <div class="color_change_name sub_title sub_title_2 color_black">
-                Чорний RAL 9005
-              </div>
-            </div>
-            <div class="color_change_btn">
-              <img src="/static/source/img/item/close.svg" alt="">
+          <div class="option_content_prof">
+            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+            <div class="option_text standart_title standart_title_6">
+              Вихід на 12 V
             </div>
           </div>
-          <div class="color_change_content">
-            <div class="color_change_content_wrap">
-              <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
-                  <div class="success_color">
-                    <img src="/static/source/img/item/okey.svg" alt="">
-                  </div>
-              </div>
-              <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-          
+          <div class="option_content_prof">
+            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+            <div class="option_text standart_title standart_title_6">
+              Бризговики
             </div>
           </div>
-        </div>
-        <div class="color_change__wrap">
-          <div class="color_change__block">
-            <div class="color_change_prof">
-              <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-                Колір ободів:
-              </div>
-              <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
-                
-              </div>
-              <div class="color_change_name sub_title sub_title_2 color_black">
-                Чорний RAL 9005
-              </div>
-            </div>
-            <div class="color_change_btn">
-              <img src="/static/source/img/item/close.svg" alt="">
+          <div class="option_content_prof">
+            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+            <div class="option_text standart_title standart_title_6">
+              Багажник
             </div>
           </div>
-          <div class="color_change_content">
-            <div class="color_change_content_wrap">
-              <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
-                  <div class="success_color">
-                    <img src="/static/source/img/item/okey.svg" alt="">
-                  </div>
-              </div>
-              <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-          
-            </div>
-          </div>
-        </div>
-        <div class="color_change__wrap">
-          <div class="color_change__block">
-            <div class="color_change_prof">
-              <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-                Колір захисту контроллера:
-              </div>
-              <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
-                
-              </div>
-              <div class="color_change_name sub_title sub_title_2 color_black">
-                Чорний RAL 9005
-              </div>
-            </div>
-            <div class="color_change_btn">
-              <img src="/static/source/img/item/close.svg" alt="">
-            </div>
-          </div>
-          <div class="color_change_content">
-            <div class="color_change_content_wrap">
-              <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
-                  <div class="success_color">
-                    <img src="/static/source/img/item/okey.svg" alt="">
-                  </div>
-              </div>
-              <div data-color='#2a2a2a' style="background:#2a2a2a;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#ffffff' style="background:#ffffff;" class="white_color_change_oval color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#bc0a0a' style="background:#bc0a0a;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#900909' style="background:#900909;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#38951d' style="background:#38951d;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#295ccd' style="background:#295ccd;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#ec7300' style="background:#ec7300;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#f6db00' style="background:#f6db00;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#e6cd00' style="background:#e6cd00;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#848484' style="background:#848484;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#a9a9a9' style="background:#a9a9a9;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#616161' style="background:#616161;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#9d9d9d' style="background:#9d9d9d;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#3e6532' style="background:#3e6532;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-              <div data-color='#169dff' style="background:#169dff;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-              </div>
-          
-            </div>
-          </div>
-        </div>
-        <div class="option__wrap">
-          <div class="item_char_title main__title main__title_4">
-            Опції
-          </div>
-          <div class="option_content__block">
-            <div class="option_content_prof">
-              <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-              <div class="option_text standart_title standart_title_6">
-                Повороти
-              </div>
-            </div>
-            <div class="option_content_prof">
-              <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-              <div class="option_text standart_title standart_title_6">
-                Сигналізація
-              </div>
-            </div>
-            <div class="option_content_prof">
-              <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-              <div class="option_text standart_title standart_title_6">
-                GPS трекер
-              </div>
-            </div>
-            <div class="option_content_prof">
-              <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-              <div class="option_text standart_title standart_title_6">
-                USB 5V 1.5A i 2.0A
-              </div>
-            </div>
-            <div class="option_content_prof">
-              <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-              <div class="option_text standart_title standart_title_6">
-                Вихід на 12 V
-              </div>
-            </div>
-            <div class="option_content_prof">
-              <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-              <div class="option_text standart_title standart_title_6">
-                Бризговики
-              </div>
-            </div>
-            <div class="option_content_prof">
-              <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-              <div class="option_text standart_title standart_title_6">
-                Багажник
-              </div>
-            </div>
-            <div class="option_content_prof">
-              <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-              <div class="option_text standart_title standart_title_6">
-                Дзеркала
-              </div>
+          <div class="option_content_prof">
+            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+            <div class="option_text standart_title standart_title_6">
+              Дзеркала
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  <!-- /.item_section -->
-  <section class="item_tab">
-    <div class="tab_container">
-      <div class="item_tab_link__block">
-        <div data-tab="1" class="item_tab_link standart_title standart_title_3 color_black item_tab_link_active">
-          Характеристики
-        </div>
-        <div data-tab="2" class="item_tab_link standart_title standart_title_3 color_black">
-          Габарити
-        </div>
-        <div data-tab="3" class="item_tab_link item_tab_link_3 standart_title standart_title_3 color_black">
-          Відгуки
-        </div>
+  </div>
+</section>
+<section class="item_tab">
+  <div class="tab_container">
+    <div class="item_tab_link__block">
+      <div data-tab="1" class="item_tab_link standart_title standart_title_3 color_black item_tab_link_active">
+        Характеристики
       </div>
-      <div class="item_tab_content__block">
-        <div id="1" class="item_tab_content item_tab_content_active">
-          <div class="characteristick__wrap">
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Рама
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  ELEEK Ekross
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Вилка
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  Zoom Forgo 680DH
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Потужність
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  3300 Вт
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Амортизатор
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  DNM LAR22
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Переднє колесо
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  18″х2.75 мото
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Заднє колесо
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  18″х3.0 мото
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Гальмівні диски
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  Avid 203мм
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Гальма
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  TEKTRO E-350 (гідравлічні)
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Руль
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  ELEEK 31.6×720мм
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Винос
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  ELEEK 45мм blk
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Передня зірка
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  38Т
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Шатуни
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  SR Suntour XCT
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Педалі
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  NEKO
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Ланцюг
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  КМС Z410
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Натягувач ланцюга
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  LitePro
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Фрівіл
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  DNP 16Т
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Підножка
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  ELEEK
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Ручка газу
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  ELEEK мото (половинчаста)
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Фара
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  20Вт (2000 люмен)
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Контроллер
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  KELLY KLS 7230S
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Дисплей
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  ELEEK
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Батарея
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  ELEEK 74v 53Ah (3922 ват/год)
-                </div>
-              </div>
-              <div class="char_prof">
-                <div class="char_text standart_title standart_title_5 color_black">
-                  Мотор
-                </div>
-                <div class="char_result main__title main__title_5 color_black">
-                  3000Вт (прямопривідний)
-                </div>
-              </div>
-          </div>
-        </div>
-        <div id="2" class="item_tab_content">
-          <div class="characteristick__wrap">
+      <div data-tab="2" class="item_tab_link standart_title standart_title_3 color_black">
+        Габарити
+      </div>
+      <div data-tab="3" class="item_tab_link item_tab_link_3 standart_title standart_title_3 color_black">
+        Відгуки
+      </div>
+    </div>
+    <div class="item_tab_content__block">
+      <div id="1" class="item_tab_content item_tab_content_active">
+        <div class="characteristick__wrap">
             <div class="char_prof">
               <div class="char_text standart_title standart_title_5 color_black">
                 Рама
@@ -984,131 +797,315 @@
                 Avid 203мм
               </div>
             </div>
-          </div>
-        </div>
-        <div id="3" class="item_tab_content">
-          <div class="item_comment__wrap">
-            <div class="item_comment__block">
-                <div class="comment_kredit__block kredit__block">
-                  <div class="kredit_text sub_title sub_title_2 color_black">
-                    Поділіться своїм досвідом користуванням нашим товаром та оцінінь його!
-                  </div>
-                  <div class="add_comment_btn kredit_btn btn_standart btn_standart_black standart_title standart_title_5 color_black">
-                    Додати відгук
-                  </div>
-                </div>
-                <div class="none_comments_text none_comments_text_hidden sub_title sub_title_2 color_black">
-                  У даного товару ще немає відруків. Ви можете бути першим. 
-                </div>
-                <div class="comment_profile__wrapper">
-                  <div class="comment_profile">
-                    <div class="comment_name__block">
-                      <div class="comment_name color_black standart_title standart_title_4">
-                        Андрій
-                      </div>
-                      <div class="comment_star">
-                        <div class="svg_rating__wrap">
-                          <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-                            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-                          </svg>
-                        </div>
-                        <div class="svg_rating__wrap">
-                          <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-                            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-                          </svg>
-                        </div>
-                        <div class="svg_rating__wrap">
-                          <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-                            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-                          </svg>
-                        </div>
-                        <div class="svg_rating__wrap">
-                          <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-                            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-                          </svg>
-                        </div>
-                        <div class="svg_rating__wrap">
-                          <svg class="rating_svg" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-                            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="comment_text color_black sub_title sub_title_2">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. A perferendis obcaecati ipsa, voluptatum quod adipisci alias dolores illo autem ipsam. Mollitia cupiditate qui commodi atque numquam, quae perspiciatis at? Rem molestias magni minus sequi officia aut totam repellendus. Optio, ullam blanditiis in dolorum dolor officia praesentium atque perspiciatis deleniti doloribus quis quos! Provident, enim expedita! Consectetur, hic pariatur perspiciatis in qui ipsam dolor quo iure quod, suscipit nostrum fugit quae! Quisquam blanditiis delectus voluptates repellendus fuga pariatur ducimus qui esse, molestias eveniet impedit obcaecati, maxime dignissimos quam autem itaque labore explicabo ad. Deleniti maxime error molestias doloribus reiciendis, officia modi!
-                    </div>
-                  </div>
-                </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Гальма
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                TEKTRO E-350 (гідравлічні)
+              </div>
             </div>
-
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Руль
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                ELEEK 31.6×720мм
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Винос
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                ELEEK 45мм blk
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Передня зірка
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                38Т
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Шатуни
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                SR Suntour XCT
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Педалі
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                NEKO
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Ланцюг
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                КМС Z410
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Натягувач ланцюга
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                LitePro
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Фрівіл
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                DNP 16Т
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Підножка
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                ELEEK
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Ручка газу
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                ELEEK мото (половинчаста)
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Фара
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                20Вт (2000 люмен)
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Контроллер
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                KELLY KLS 7230S
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Дисплей
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                ELEEK
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Батарея
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                ELEEK 74v 53Ah (3922 ват/год)
+              </div>
+            </div>
+            <div class="char_prof">
+              <div class="char_text standart_title standart_title_5 color_black">
+                Мотор
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                3000Вт (прямопривідний)
+              </div>
+            </div>
+        </div>
+      </div>
+      <div id="2" class="item_tab_content">
+        <div class="characteristick__wrap">
+          <div class="char_prof">
+            <div class="char_text standart_title standart_title_5 color_black">
+              Рама
+            </div>
+            <div class="char_result main__title main__title_5 color_black">
+              ELEEK Ekross
+            </div>
+          </div>
+          <div class="char_prof">
+            <div class="char_text standart_title standart_title_5 color_black">
+              Вилка
+            </div>
+            <div class="char_result main__title main__title_5 color_black">
+              Zoom Forgo 680DH
+            </div>
+          </div>
+          <div class="char_prof">
+            <div class="char_text standart_title standart_title_5 color_black">
+              Потужність
+            </div>
+            <div class="char_result main__title main__title_5 color_black">
+              3300 Вт
+            </div>
+          </div>
+          <div class="char_prof">
+            <div class="char_text standart_title standart_title_5 color_black">
+              Амортизатор
+            </div>
+            <div class="char_result main__title main__title_5 color_black">
+              DNM LAR22
+            </div>
+          </div>
+          <div class="char_prof">
+            <div class="char_text standart_title standart_title_5 color_black">
+              Переднє колесо
+            </div>
+            <div class="char_result main__title main__title_5 color_black">
+              18″х2.75 мото
+            </div>
+          </div>
+          <div class="char_prof">
+            <div class="char_text standart_title standart_title_5 color_black">
+              Заднє колесо
+            </div>
+            <div class="char_result main__title main__title_5 color_black">
+              18″х3.0 мото
+            </div>
+          </div>
+          <div class="char_prof">
+            <div class="char_text standart_title standart_title_5 color_black">
+              Гальмівні диски
+            </div>
+            <div class="char_result main__title main__title_5 color_black">
+              Avid 203мм
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- /.item_tabs -->
-  <form method="POST" action="#" class="comment_form" id="comment_form" style="display:none;">
-    <div class="search_menu_title">
-      <div class="main__title main__title_4 color_black">
-        Новий відгук
+      <div id="3" class="item_tab_content">
+        <div class="item_comment__wrap">
+          <div class="item_comment__block">
+              <div class="comment_kredit__block kredit__block">
+                <div class="kredit_text sub_title sub_title_2 color_black">
+                  Поділіться своїм досвідом користуванням нашим товаром та оцінінь його!
+                </div>
+                <div class="add_comment_btn kredit_btn btn_standart btn_standart_black standart_title standart_title_5 color_black">
+                  Додати відгук
+                </div>
+              </div>
+              <div class="none_comments_text none_comments_text_hidden sub_title sub_title_2 color_black">
+                У даного товару ще немає відруків. Ви можете бути першим. 
+              </div>
+              <div class="comment_profile__wrapper">
+                <div class="comment_profile">
+                  <div class="comment_name__block">
+                    <div class="comment_name color_black standart_title standart_title_4">
+                      Андрій
+                    </div>
+                    <div class="comment_star">
+                      <div class="svg_rating__wrap">
+                        <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+                          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+                        </svg>
+                      </div>
+                      <div class="svg_rating__wrap">
+                        <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+                          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+                        </svg>
+                      </div>
+                      <div class="svg_rating__wrap">
+                        <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+                          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+                        </svg>
+                      </div>
+                      <div class="svg_rating__wrap">
+                        <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+                          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+                        </svg>
+                      </div>
+                      <div class="svg_rating__wrap">
+                        <svg class="rating_svg" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+                          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="comment_text color_black sub_title sub_title_2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A perferendis obcaecati ipsa, voluptatum quod adipisci alias dolores illo autem ipsam. Mollitia cupiditate qui commodi atque numquam, quae perspiciatis at? Rem molestias magni minus sequi officia aut totam repellendus. Optio, ullam blanditiis in dolorum dolor officia praesentium atque perspiciatis deleniti doloribus quis quos! Provident, enim expedita! Consectetur, hic pariatur perspiciatis in qui ipsam dolor quo iure quod, suscipit nostrum fugit quae! Quisquam blanditiis delectus voluptates repellendus fuga pariatur ducimus qui esse, molestias eveniet impedit obcaecati, maxime dignissimos quam autem itaque labore explicabo ad. Deleniti maxime error molestias doloribus reiciendis, officia modi!
+                  </div>
+                </div>
+              </div>
+          </div>
+
+        </div>
       </div>
-      <img class="modal_comm modal_search_close" src="/static/source/img/index/close.svg" alt="">
     </div>
-    <div class="footer_input__wrap inp-vak-wrap">
-      <label for="comment_name" class="footer_label label__style color_black">
-        Ім'я
-      </label>
-      <input type="text" id="comment_name" name='name' class="comment_name footer_input input_focus">
+  </div>
+</section>
+<form method="POST" action="#" class="comment_form" id="comment_form" style="display:none;">
+  <div class="search_menu_title">
+    <div class="main__title main__title_4 color_black">
+      Новий відгук
     </div>
-    <div class="footer_input__wrap inp-vak-wrap">
-      <label for="comment_email" class="footer_label label__style color_black">
-        Email
-      </label>
-      <input type="text" id="comment_email" name='email' class="comment_email footer_input input_focus">
+    <img class="modal_comm modal_search_close" src="/static/source/img/index/close.svg" alt="">
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_name" class="footer_label label__style color_black">
+      Ім'я
+    </label>
+    <input type="text" id="comment_name" name='name' class="comment_name footer_input input_focus">
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_email" class="footer_label label__style color_black">
+      Email
+    </label>
+    <input type="text" id="comment_email" name='email' class="comment_email footer_input input_focus">
+  </div>
+  <div class="comment_name__block">
+    <div class="comment_name color_black sub_title sub_title_2">
+      Ваша оцінка товару
     </div>
-    <div class="comment_name__block">
-      <div class="comment_name color_black sub_title sub_title_2">
-        Ваша оцінка товару
-      </div>
-      <div class="modal-review__rating-order-wrap">
-        <input type="hidden" class="hidden_rating_review" value="5">
-        <span class="rating_review" data-rating-value="1"></span>
-        <span class="rating_review" data-rating-value="2"></span>
-        <span class="rating_review" data-rating-value="3"></span>
-        <span class="rating_review" data-rating-value="4"></span>
-        <span class="rating_review" data-rating-value="5"></span>
-      </div>
-      <!-- <div class="comment_star">
-        <svg class="rating_item rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-        </svg>
-        <svg class="rating_item rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-        </svg>
-        <svg class="rating_item rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-        </svg>
-        <svg class="rating_item rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-        </svg>
-        <svg class="rating_item rating_svg rating_svg_usually" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-        </svg>
-      </div> -->
+    <div class="modal-review__rating-order-wrap">
+      <input type="hidden" class="hidden_rating_review" value="5">
+      <span class="rating_review" data-rating-value="1"></span>
+      <span class="rating_review" data-rating-value="2"></span>
+      <span class="rating_review" data-rating-value="3"></span>
+      <span class="rating_review" data-rating-value="4"></span>
+      <span class="rating_review" data-rating-value="5"></span>
     </div>
-    <div class="footer_input__wrap inp-vak-wrap">
-      <label for="comment_send" class="footer_label label__style color_black">
-        Відгук
-      </label>
-      <textarea name='user_send' id="comment_send" class="comment_send user_send footer_input input_focus"></textarea>
-    </div>
-    <div class="wrap_for_footer_btn">
-      <input type="submit" value="Додати відгук" class="generate_comment btn_standart btn_standart_black">
-    </div>
-  </form>
-{% include 'project/includes/footer.html' %}
-  <!-- /.footer -->
-</main>
+    <!-- <div class="comment_star">
+      <svg class="rating_item rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+        <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+      </svg>
+      <svg class="rating_item rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+        <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+      </svg>
+      <svg class="rating_item rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+        <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+      </svg>
+      <svg class="rating_item rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+        <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+      </svg>
+      <svg class="rating_item rating_svg rating_svg_usually" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+        <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+      </svg>
+    </div> -->
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_send" class="footer_label label__style color_black">
+      Відгук
+    </label>
+    <textarea name='user_send' id="comment_send" class="comment_send user_send footer_input input_focus"></textarea>
+  </div>
+  <div class="wrap_for_footer_btn">
+    <input type="submit" value="Додати відгук" class="generate_comment btn_standart btn_standart_black">
+  </div>
+</form>
 {% endblock content %}
 {% block scripts %}
 <script src="/static/source/lib/jquery/index.js"></script> 
