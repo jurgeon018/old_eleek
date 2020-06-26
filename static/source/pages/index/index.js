@@ -169,9 +169,13 @@ window.addEventListener('DOMContentLoaded', function () {
 });
 
 function create_animation(arrow, button) {
+  var x;
+  var y;
   document.addEventListener('mousemove', function (e) {
-    arrow.style.top = e.clientY / 2 + 'px';
-    arrow.style.right = e.clientX / 2 + 'px';
+    x = e.clientX / 10;
+    y = e.clientY / 10;
+    arrow.style.top = y + 'px';
+    arrow.style.right = x + 'px';
   });
   button.addEventListener('mouseenter', function () {
     arrow.style.opacity = 1;
