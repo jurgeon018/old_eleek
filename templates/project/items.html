@@ -40,105 +40,21 @@ item_section__wrapper
                               
                           </div>
                       <div class="range_slider" id="slider"></div>
-                      
-
+                      {% for category in '1234'|make_list %}
                       <div class="items_filter_content__wrap items_filter_content__wrap_active">
                         <div class="items_filter_title standart_title standart_title_4 color_black">
-                          Велосипеди
+                          Категорія {{category}}
                         </div>
                         <div class="items_filter_content">
+                          {% for filter in '123456789'|make_list %}
                           <div class="radio_block">
                             <input class="input_radio" name="discount" type="checkbox" id="rb-1"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-1">Акумулятори</label>
+                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-1">Фільтр {{filter}}</label>
                           </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-2"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-2">Контролери</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-3"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-3">Мотори</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-4"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-4">Вилки</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-5"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-5">Колеса</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-6"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-6">Гальма</label>
-                          </div>
+                          {% endfor %}
                         </div>
-                        
                       </div>
-                      <div class="items_filter_content__wrap">
-                        <div class="items_filter_title standart_title standart_title_4 color_black">
-                          Рами
-                        </div>
-                        <div class="items_filter_content">
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-1"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-1">Акумулятори</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-2"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-2">Контролери</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-3"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-3">Мотори</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-4"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-4">Вилки</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-5"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-5">Колеса</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-6"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-6">Гальма</label>
-                          </div>
-                        </div>
-                        
-                      </div>
-                      <div class="items_filter_content__wrap">
-                        <div class="items_filter_title standart_title standart_title_4 color_black">
-                          Комплектуючі
-                        </div>
-                        <div class="items_filter_content">
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-1"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-1">Акумулятори</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-2"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-2">Контролери</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-3"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-3">Мотори</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-4"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-4">Вилки</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-5"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-5">Колеса</label>
-                          </div>
-                          <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-6"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-6">Гальма</label>
-                          </div>
-                        </div>
-                        
-                      </div>
-                      
+                      {% endfor %}
                       </form>
                   </div> 
               </div> 
@@ -158,7 +74,8 @@ item_section__wrapper
                   /
               </span>
               <a href="{% url 'items' 1 %}" class="mini_nav_name sub_title sub_title_2 color_black_2">
-                Комплектуючі
+                Назва категорії
+                {{category.title}}
               </a>
               <!-- <span class="slash sub_title sub_title_2 color_black">
                   /
@@ -168,7 +85,7 @@ item_section__wrapper
               </a> -->
           </div>
               <h2 class="product_title main__title main__title_3 color_black">
-                Комплектуючі
+                Назва категорії
                 {{category.title}}
               </h2>
               <div class="main_product-block">
@@ -179,13 +96,13 @@ item_section__wrapper
                       </a>
                       <div class="prod_card_info__wrap">
                         <div class="prod_card-name standart_title standart_title_4 color_black">
-                          Амортизатор DNM RCP-2
+                          Товар {{i}}
                         </div>
                         <div class="prod_card-info">
                             <div class="prod_card-cost main__title main__title_5 color_black">
-                                1022 грн.
+                                {{i}}022 грн.
                             </div>
-                            <a href="#" class="prod_card-btn">
+                            <a href="{% url 'item' 1 %}" class="prod_card-btn">
                                 <img class="absolute_center" src="/static/source/img/items/okey.svg" alt="">
                             </a>
                         </div>

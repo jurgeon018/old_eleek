@@ -38,8 +38,10 @@ item_section__wrapper
               </g>
             </svg>
             <div class="three_title standart_title standart_title_5 color_black">
-              Показати в 3Д
-            </div>
+              <a href="{% url 'constructor' %}">
+                Показати в 3Д
+              </a>
+              </div>
           </div>
           <div class="mini_slider">
             <div class="img-wrap">
@@ -59,12 +61,16 @@ item_section__wrapper
       </div>
     </div>
     <div class="item_select__block">
+      <a href="{% url 'items' 1 %}">
       <div class="item_category_name sub_title sub_title_2 color_black">
         Електровелосипеди
+        {{item.category.title}}
       </div>
+      </a>
       <div class="item_name__block">
         <div class="item_name main__title main__title_2 color_black">
           Велосипед Neo
+          {{item.title}}
         </div>
         <div class="item_rating__block">
           <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
