@@ -32,6 +32,7 @@ def item(request, slug):
     odd_features = ItemFeature.objects.filter(item=item)[:10:2]
     even_features = ItemFeature.objects.filter(item=item)[1:10:2]
     page = item
+    # colour_
     return render(request, 'project/item.html', locals())
 
 
@@ -62,10 +63,16 @@ def order(request):
 
 
 def search(request):
-    page = Page.objects.get(code='search')
-    search_query = request.GET.get('main_search')
-    
+    page  = Page.objects.get(code='search')
+    query = request.POST or request.GET
+    query = query.get('main_search','')
+    if query:
+        search_items = Item.objects.all().filter(
+            title__icontains=query,
+        )
     return render(request, 'project/search.html', locals())
+
+# TEST DRIVE 
 
 @login_required
 def profile(request):

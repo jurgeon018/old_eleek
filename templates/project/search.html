@@ -30,23 +30,23 @@ item_section__wrapper
     <div class="search_sub_title sub_title sub_title_2 color_black">
       За даним запитом 
       <b>‘<span class="search_result">‘{{search_query}}’</span>’</b> 
-      знайдено товарів: {{search_items.count}} 6.
+      знайдено товарів: {{search_items.count}} 
     </div>
     <div class="main_product-block">
-      {% for search_item in '123456789'|make_list %}
+      {% for search_item in search_items %}
       <div class="product_card-prof">
-          <a href="{% url 'item' 1 %}" class="prod_card_link">
+          <a href="{{search_item.get_absolute_url}}" class="prod_card_link">
               <img src="/static/source/img/item/img-0041.jpg" alt="" class="prod_card-img">
           </a>
           <div class="prod_card_info__wrap">
             <div class="prod_card-name standart_title standart_title_4 color_black">
-              Товар {{search_item}}
+              {{search_item.title}}
             </div>
             <div class="prod_card-info">
                 <div class="prod_card-cost main__title main__title_5 color_black">
-                    {{search_item}}022 грн.
+                    {{search_item.price}} {{search_item.currency.code}}
                 </div>
-                <a href="{% url 'item' 1  %}" class="prod_card-btn">
+                <a href="{{search_item.get_absolute_url}}" class="prod_card-btn">
                     <img class="absolute_center" src="/static/source/img/items/okey.svg" alt="">
                 </a>
             </div>
