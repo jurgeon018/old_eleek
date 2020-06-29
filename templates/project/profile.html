@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="/static/source/pages/profile/index.css?v=3">
 {% endblock styles %}
 {% block content %}
-
 <main class="item_section__wrapper">
   <section class="item_tab profile_tab padding_sect">
     <div class="profile_name main__title main__title_2 color_black">
@@ -19,9 +18,9 @@
     </div>
     <div class="sub_profile__block">
       <div class="sub_mail main__title main__title_4 color_black">
-        oleg_fem@gmail.com
+        {{request.user.username}} {% if request.user.email %} ({{request.user.email}}) {% endif %}
       </div>
-      <a href="#" class="exit_profile main_sub_title main_sub_title_3">
+      <a href="{% url 'sw_logout' %}" class="exit_profile main_sub_title main_sub_title_3">
         Вийти
       </a>
     </div>
@@ -65,74 +64,27 @@
                 Ціна 
               </div>
             </div>
+            {% for cart_item in '123456789'|make_list %}
+            <a href="{% url 'item' 1 %}">
             <div class="profile_item">
               <div class="profile_characteristick attr_size_1">
                 <img src="/static/source/img/item/img-0041.jpg" alt="">
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_2">
-                Амортизатор DNM RCP-2
+                Товар {{cart_item}}
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_3">
-                1 шт.
+                {{cart_item}} шт.
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_4">
-                16.03.2020
+                16.0{{cart_item}}.2020
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
-                1223 грн.
+                {{cart_item}}223 грн.
               </div>
             </div>
-            <div class="profile_item">
-              <div class="profile_characteristick attr_size_1">
-                <img src="/static/source/img/item/img-0041.jpg" alt="">
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_2">
-                Амортизатор DNM RCP-2
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_3">
-                1 шт.
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_4">
-                16.03.2020
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
-                1223 грн.
-              </div>
-            </div>
-            <div class="profile_item">
-              <div class="profile_characteristick attr_size_1">
-                <img src="/static/source/img/item/img-0041.jpg" alt="">
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_2">
-                Амортизатор DNM RCP-2
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_3">
-                1 шт.
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_4">
-                16.03.2020
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
-                1223 грн.
-              </div>
-            </div>
-            <div class="profile_item">
-              <div class="profile_characteristick attr_size_1">
-                <img src="/static/source/img/item/img-0041.jpg" alt="">
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_2">
-                Амортизатор DNM RCP-2
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_3">
-                1 шт.
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_4">
-                16.03.2020
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
-                1223 грн.
-              </div>
-            </div>
+            </a>
+            {% endfor %}
           </div>
         </div>
         <div id="2" class="item_tab_content">
@@ -159,136 +111,27 @@
                 Дія  
               </div>
             </div>
+            {% for sale_item in '123456789'|make_list %}
             <div class="profile_item">
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_10">
-                Амортизатори 
+                Категорія {{sale_item}}
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_11">
-                15%
+                {{sale_item}}5%
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_12">
                 16.03.2020-10.06.2020
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_13">
+                <a href="{% url 'shop' %}">
                 <div class="btn_standart btn_standart_transparent">
-                  В магазин 
-                </div>
+                    В магазин 
+                  </div>
+                </a>
               </div>
             </div>
-            <div class="profile_item">
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_10">
-                Амортизатори 
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_11">
-                15%
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_12">
-                16.03.2020-10.06.2020
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_13">
-                <div class="btn_standart btn_standart_transparent">
-                  В магазин 
-                </div>
-              </div>
-            </div>
-            <div class="profile_item">
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_10">
-                Амортизатори 
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_11">
-                15%
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_12">
-                16.03.2020-10.06.2020
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_13">
-                <div class="btn_standart btn_standart_transparent">
-                  В магазин 
-                </div>
-              </div>
-            </div>
-            <div class="profile_item">
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_10">
-                Амортизатори 
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_11">
-                15%
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_12">
-                16.03.2020-10.06.2020
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_13">
-                <div class="btn_standart btn_standart_transparent">
-                  В магазин 
-                </div>
-              </div>
-            </div>
-            <div class="profile_item">
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_10">
-                Амортизатори 
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_11">
-                15%
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_12">
-                16.03.2020-10.06.2020
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_13">
-                <div class="btn_standart btn_standart_transparent">
-                  В магазин 
-                </div>
-              </div>
-            </div>
-            <div class="profile_item">
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_10">
-                Амортизатори 
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_11">
-                15%
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_12">
-                16.03.2020-10.06.2020
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_13">
-                <div class="btn_standart btn_standart_transparent">
-                  В магазин 
-                </div>
-              </div>
-            </div>
-            <div class="profile_item">
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_10">
-                Амортизатори 
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_11">
-                15%
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_12">
-                16.03.2020-10.06.2020
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_13">
-                <div class="btn_standart btn_standart_transparent">
-                  В магазин 
-                </div>
-              </div>
-            </div>
-            <div class="profile_item">
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_10">
-                Амортизатори 
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_11">
-                15%
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_12">
-                16.03.2020-10.06.2020
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_13">
-                <div class="btn_standart btn_standart_transparent">
-                  В магазин 
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
-          
         </div>
         <div id="3" class="item_tab_content">
           <form action="" class="change_profile registery_form">
@@ -296,25 +139,25 @@
               <label for="login_name" class="login_label label__style color_black">
                 Ім'я та прізвище
               </label>
-              <input type="text" id="login_name" name="name" class="login_name login_input input_focus">
+              <input type="text" id="login_name" name="name" value="{% if request.user.full_name %} {{request.user.full_name}} {% endif %}" class="login_name login_input input_focus">
             </div>
             <div class="footer_input__wrap inp-vak-wrap">
               <label for="login_mail" class="login_label label__style color_black">
                 E-mail
               </label>
-              <input type="text" id="login_mail" name="email" class="login_mail login_input input_focus">
+              <input type="text" id="login_mail" name="email" value="{% if request.user.email %} {{request.user.email}} {% endif %}" class="login_mail login_input input_focus">
             </div>
             <div class="footer_input__wrap inp-vak-wrap">
               <label for="login_tel" class="login_label label__style color_black">
                 Телефон
               </label>
-              <input type="tel" id="login_tel" name="phone" class="login_tel login_input input_focus">
+              <input type="tel" id="login_tel" name="phone" value="{% if request.user.phone_number %} {{request.user.phone_number}} {% endif %}" class="login_tel login_input input_focus">
             </div>
             <div class="footer_input__wrap inp-vak-wrap">
               <label for="login_city" class="login_label label__style color_black">
                 Місто
               </label>
-              <input type="text" id="login_city" name="city" class="login_city login_input input_focus">
+              <input type="text" id="login_city" name="city" value="{% if request.user.address %} {{request.user.address}} {% endif %}" class="login_city login_input input_focus">
             </div>
             <div class="footer_input__wrap inp-vak-wrap">
               <label for="login_pass" class="login_label label__style color_black">
