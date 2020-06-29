@@ -1,8 +1,11 @@
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render 
-from box.apps.sw_shop.sw_catalog.models import *
-from .models import * 
 
+from .models import * 
+from box.apps.sw_shop.sw_catalog.models import *
 from box.core.sw_content.models import Page 
+from box.apps.sw_shop.sw_cart.decorators import cart_exists
 
 
 def index(request):
@@ -12,12 +15,9 @@ def index(request):
 
 def about(request):
     page = Page.objects.get(code='about')
-    print(page)
     certificates = Certificate.objects.all()
     partners = Partner.objects.all()
     return render(request, 'project/about.html', locals())
-
-from django.shortcuts import get_object_or_404
 
 
 def item_category(request, slug):
@@ -28,8 +28,10 @@ def item_category(request, slug):
 
 
 def item(request, slug):
-    # item = get_object_or_404(Item, slug=slug)
-    # page = item
+    item = get_object_or_404(Item, slug=slug)
+    odd_features = ItemFeature.objects.filter(item=item)[:10:2]
+    even_features = ItemFeature.objects.filter(item=item)[1:10:2]
+    page = item
     return render(request, 'project/item.html', locals())
 
 
@@ -47,11 +49,11 @@ def test_drive(request):
     page = Page.objects.get(code='test_drive')
     return render(request, 'project/test_drive.html', locals())
 
+
 def delivery(request):
     page = Page.objects.get(code='delivery')
     return render(request, 'project/delivery.html', locals())
 
-from box.apps.sw_shop.sw_cart.decorators import cart_exists
 
 @cart_exists
 def order(request):
@@ -64,8 +66,6 @@ def search(request):
     search_query = request.GET.get('main_search')
     
     return render(request, 'project/search.html', locals())
-
-from django.contrib.auth.decorators import login_required
 
 @login_required
 def profile(request):

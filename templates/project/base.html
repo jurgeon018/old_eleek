@@ -1,5 +1,10 @@
 {% extends "core/base.html" %}
 
+{% block meta_robots %}
+<meta name="robots" content="nofollow, noindex" />
+{% endblock meta_robots %}
+
+
 
 {% block outer_content %}
 {% include 'project/includes/header.html' %}
