@@ -6,6 +6,7 @@ python3 manage.py set_user jurgeon018 yfpfhrj69018 jurgeon018@gmail.com +3809945
 python3 manage.py set_site eleek.com.ua 
 
 python3 manage.py sw_import -d import/
+python3 manage.py gen_random_info 
 
 python3 manage.py runserver 127.0.0.1:8000
 

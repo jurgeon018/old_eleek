@@ -60,7 +60,7 @@
           <div class="scroll_left__block">
             <div class="scroll_main__block">
                 <div class="scroll_category">
-                    <a id="button_1" href="{% url 'items' 1 %}" class="scroll__category_text header_title header_title_1">
+                    <a id="button_1" href="{{velo.get_absolute_url}}" class="scroll__category_text header_title header_title_1">
                       Велосипеди
                     </a>
                     <div class="scroll_category_img">
@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="scroll_category">
-                  <a id="button_2" href="{% url 'items' 1 %}" class="scroll__category_text header_title header_title_1">
+                  <a id="button_2" href="{{ramy.get_absolute_url}}" class="scroll__category_text header_title header_title_1">
                     Рами
                   </a>
                   <div class="scroll_category_img">
@@ -76,7 +76,7 @@
                   </div>
                 </div>
                 <div class="scroll_category">
-                  <a id="button_3" href="{% url 'items' 1 %}" class="scroll__category_text header_title header_title_1">
+                  <a id="button_3" href="{{comp.get_absolute_url}}" class="scroll__category_text header_title header_title_1">
                     Комплекти
                   </a>
                   <div class="scroll_category_img">

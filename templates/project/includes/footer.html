@@ -1,3 +1,4 @@
+{% load i18n sw_content %}
 <footer class="footer">
     <div class="footer_main_content">
     <div class="footer_info__block footer_part">
@@ -14,16 +15,20 @@
           <div class="footer_info_svg">
             <img src="/static/source/img/index/map-pin.svg" alt="">
           </div>
-          <a href="#" class="footer_info_text">
-            вул. Об'їзна 12, м.Тернопіль
+          {% render 'address1' 'address' as address1 %}
+          <a href="#" class="footer_info_text db_content" data-admin_url="{{address1.get_admin_url}}">
+            {{address1.text}}
+            <!-- вул. Об'їзна 12, м.Тернопіль -->
           </a>
       </div>
       <div class="footer_info">
         <div class="footer_info_svg">
           <img src="/static/source/img/index/phone.svg" alt="">
         </div>
-        <a href="tel:+380673878768" class="footer_info_text">
-          +380 67 387 87 68
+        {% render 'tel1' 'tel' as tel1 %}
+        <a href="tel:+380673878768" class="footer_info_text db_content" data-admin_url="{{tel1.get_admin_url}}">
+          <!-- +380 67 387 87 68 -->
+          {{tel1.text}}
         </a>
       </div>
       <div class="footer_info">
@@ -87,13 +92,13 @@
         Магазин <div class="footer_btn"></div>
       </div>
       <div class="footer_accordeon_content">
-        <a href="{% url 'items' 1 %}" class="footer_accordeon_text color_white sub_title sub_title_2">
+        <a href="{{velo.get_absolute_url}}" class="footer_accordeon_text color_white sub_title sub_title_2">
           Велосипеди
         </a>
-        <a href="{% url 'items' 1 %}" class="footer_accordeon_text color_white sub_title sub_title_2">
+        <a href="{{ramy.get_absolute_url}}" class="footer_accordeon_text color_white sub_title sub_title_2">
           Рами
         </a>
-        <a href="{% url 'items' 1 %}" class="footer_accordeon_text color_white sub_title sub_title_2">
+        <a href="{{comp.get_absolute_url}}" class="footer_accordeon_text color_white sub_title sub_title_2">
           Комплектуючі
         </a>
       </div>
@@ -103,7 +108,7 @@
         Зв’язок <div class="footer_btn"></div>
       </div>
       <div class="footer_accordeon_content">
-        <form action="" class="footer_form">
+        <form action="{% url 'sw_contact' %}" method="POST" class="footer_form">
           <div class="footer_input__wrap inp-vak-wrap">
             <label for="footer_name" class="footer_label label__style color_white">
               Ім'я
@@ -120,7 +125,7 @@
             <label for="footer_email" class="footer_label label__style color_white">
               Повідомлення
             </label>
-            <textarea name='user_send' id="user_send" class="user_send footer_input input_focus"></textarea>
+            <textarea name='message' id="user_send" class="user_send footer_input input_focus"></textarea>
           </div>
           <div class="wrap_for_footer_btn">
             <input type="submit" value="Відправити" class="btn_standart btn_standart_yellow">
@@ -130,8 +135,11 @@
     </div>
     </div>
     <div class="footer_bottom_info">
-      <div class="footer_data color_white">
-      eleek.com.ua © 2020. Всі права захищено 
+      {% render 'footer_all_rights' as footer_all_rights %}
+      <div class="footer_data color_white db_content" data-admin_url="{{footer_all_rights.get_admin_url}}">
+      eleek.com.ua © 2020. 
+      {{footer_all_rights.text}}
+      <!-- Всі права захищено  -->
       </div>
       <div class="footer_starway__block color_white">
         <div class="starway_text">

@@ -1,5 +1,5 @@
 from django.shortcuts import render 
-from box.apps.sw_shop.sw_catalog.models import Item 
+from box.apps.sw_shop.sw_catalog.models import *
 from .models import * 
 
 from box.core.sw_content.models import Page 
@@ -20,10 +20,11 @@ def about(request):
 from django.shortcuts import get_object_or_404
 
 
-def items(request, slug):
-    # category = get_object_or_404(ItemCategory, slug=slug)
-    # page = category 
-    return render(request, 'project/items.html', locals())
+def item_category(request, slug):
+    category = get_object_or_404(ItemCategory, slug=slug)
+    items    = Item.objects.filter(category=category)
+    page = category 
+    return render(request, 'project/item_category.html', locals())
 
 
 def item(request, slug):
@@ -60,6 +61,8 @@ def order(request):
 
 def search(request):
     page = Page.objects.get(code='search')
+    search_query = request.GET.get('main_search')
+    
     return render(request, 'project/search.html', locals())
 
 from django.contrib.auth.decorators import login_required
@@ -92,7 +95,8 @@ urlpatterns = [
     
     path('',             index,       name='index'),
     path('about/',       about,       name='about'),
-    path('items/<slug>/',       items,       name='items'),
+    path('item_category/<slug>/',       item_category,       name='item_category'),
+    
     path('item/<slug>/', item,        name='item'),
     path('faq/',         faq,         name='faq'),
     path('constructor/', constructor, name='constructor'),
