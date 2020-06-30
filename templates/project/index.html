@@ -237,13 +237,15 @@ section__wrapper
   <div class="four_bg"></div>
   <div class="four_wrapp">
     <h1 class="color_black four_title main__title main__title_1">
-      Рами ELEEK
+      {{ramy.title|title}}
     </h1>
-    <div class="sub_title sub_title_2">
-      При виборі електро велосипеда можна не обмежувати себе в побажаннях. Ми можемо підібрати велосипед який підійде саме Вам. Починаючи з велосипеда для неспішних прогулянок по парку, закінчуючи зарядженим брутальним мотоциклом для агресивної їзди всюди.
+    {% render 'index_choose' as index_choose %}
+    <div class="sub_title sub_title_2 db_content" data-admin_url="{{index_choose.get_admin_url}}">
+      {{index_choose.text}}
+      <!-- При виборі електро велосипеда можна не обмежувати себе в побажаннях. Ми можемо підібрати велосипед який підійде саме Вам. Починаючи з велосипеда для неспішних прогулянок по парку, закінчуючи зарядженим брутальним мотоциклом для агресивної їзди всюди. -->
     </div>
     <a href="{{ramy.get_absolute_url}}" class="btn_standart btn_standart_black">
-      Детальніше
+      {% trans 'Детальніше' %}
     </a>
     <a href="#" class="glo">
       Кнопка с анимацией загрузки
