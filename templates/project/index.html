@@ -261,7 +261,7 @@ section__wrapper
         </div>
         <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
         <div class="main__title main__title_5 color_white">
-            {{kole.title}}
+            {{kole.title|title}}
         </div>
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
             <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -273,7 +273,7 @@ section__wrapper
           <img src="/static/source/img/index/stop.png" alt="">
       </div>
       <a href="{{galm.get_absolute_url}}" class="main__title main__title_5 color_white">
-        {{galm.title}}
+        {{galm.title|title}}
         <div class="absolute_product_arrow">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
             <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -299,7 +299,7 @@ section__wrapper
       <div class="absolute_product_img">
           <img src="/static/source/img/index/motor.png" alt="">
       </div>
-        {{moto.title}}
+        {{moto.title|title}}
         <div class="absolute_product_arrow">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
             <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -312,7 +312,7 @@ section__wrapper
           <img src="/static/source/img/index/amort.png" alt="">
       </div>
       <a href="{{amor.get_absolute_url}}" class="main__title main__title_5 color_white">
-        {{amor.title}}
+        {{amor.title|title}}
         <div class="absolute_product_arrow">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
             <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -324,13 +324,19 @@ section__wrapper
   <div class="five_wrapp">
       <div class="five_title__block">
         <h1 class="color_white five_title main__title main__title_1">
-          {{comp.title}}
+          {{comp.title|title}}
         </h1>
+        {% render 'index_assort' as index_assort %}
+        data-admin_url="{{index_assort.get_admin_url}}"
+        class="db_content"
         <div class="color_white sub_title sub_title_2">
-          В нашому асортименті ви можете знайти усі найнеобхідніші товари для вашого байку
+          {{index_assort.text}}
+          <!-- В нашому асортименті ви можете знайти усі найнеобхідніші товари для вашого байку -->
         </div>
-        <a href="{{comp.get_absolute_url}}" class="btn_standart btn_standart_yellow">
-          Весь асортимент
+        {% render 'index_all_assort' as index_all_assort %}
+        <a href="{{comp.get_absolute_url}}" class="btn_standart btn_standart_yellow db_content" data-admin_url="{{index_all_assort.get_admin_url}}">
+          {{index_all_assort.text}}
+          <!-- Весь асортимент -->
         </a>
       </div>
       <div class="complect__wrap">
@@ -338,7 +344,7 @@ section__wrapper
             <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
               <img src="/static/source/img/index/koleso.png" alt="" class="complect_img">
               <div class="main__title main__title_5 color_white">
-                {{kole.title}}
+                {{kole.title|title}}
               </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
                   <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -349,7 +355,7 @@ section__wrapper
             <a href="{{galm.get_absolute_url}}" class="absolute_product_arrow">
             <img src="/static/source/img/index/stop.png" alt="" class="complect_img">
             <div class="main__title main__title_5 color_white">
-            {{galm.title}}
+            {{galm.title|title}}
             </div>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
                 <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -360,7 +366,7 @@ section__wrapper
             <a href="{{vilk.get_absolute_url}}" class="absolute_product_arrow">
             <img src="/static/source/img/index/vylka.png" alt="" class="complect_img">
             <div class="main__title main__title_5 color_white">
-              {{vilk.title}}
+              {{vilk.title|title}}
             </div>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
                 <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -371,7 +377,7 @@ section__wrapper
             <a href="{{moto.get_absolute_url}}" class="absolute_product_arrow">
             <img src="/static/source/img/index/motor.png" alt="" class="complect_img">
             <div class="main__title main__title_5 color_white">
-              {{moto.title}}
+              {{moto.title|title}}
             </div>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
                 <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -382,7 +388,7 @@ section__wrapper
             <a href="{{amor.get_absolute_url}}" class="absolute_product_arrow">
             <img src="/static/source/img/index/amort.png" alt="" class="complect_img">
             <div class="main__title main__title_5 color_white">
-              {{amor.title}}
+              {{amor.title|title}}
             </div>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
                 <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
