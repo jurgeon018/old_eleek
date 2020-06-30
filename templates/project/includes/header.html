@@ -4,6 +4,27 @@
 {% get_language_info_list for LANGUAGES as languages %}
 
 <header class="nav_bar">
+  <div class="load_spin">
+    <img src="/static/source/img/index/712.svg" alt="">
+  </div>
+  <div class="absolute_admin__block">
+    <a href="{{page.get_admin_url}}" target="_blank">
+      <div data-title='Редагувати сторінку' class="admin_nav-bar">
+          <svg class="admin_svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="door-open" class="svg-inline--fa fa-door-open fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M624 448h-80V113.45C544 86.19 522.47 64 496 64H384v64h96v384h144c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM312.24 1.01l-192 49.74C105.99 54.44 96 67.7 96 82.92V448H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h336V33.18c0-21.58-19.56-37.41-39.76-32.17zM264 288c-13.25 0-24-14.33-24-32s10.75-32 24-32 24 14.33 24 32-10.75 32-24 32z"></path></svg>
+      </div>
+      </a>
+      <div data-title='Включити редагування' class="admin_button">
+          <label class="power">
+              <input class="admin_checkbox" type="checkbox">
+              <div>
+                  <svg class="svg_power" viewBox="0 0 44 44">
+                      <path d="M22,6 C31,6 38,13 38,22 C38,31 31,38 22,38 C13,38 6,31 6,22 C6,13 13,6 22,6 L22,28" id="path"></path>
+                  </svg>
+              </div>
+          </label>
+      </div>
+  </div>
+
     <div class="logo__wrap">
       <a href="{% url 'index' %}" class="logo_header">
         <svg width="100%" height="100%" viewBox="0 0 182 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -18,6 +39,8 @@
     <div class="nav_menu__block">
         <div class="nav_menu_item__block">
             <div class="nav_menu_content">
+
+
                 <div class="nav_menu_item modal_search">
                   <svg class="svg_item" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                     <path d="M9 .4c4.75 0 8.6 3.85 8.6 8.6 0 2.158-.795 4.131-2.109 5.641l3.933 3.935c.235.234.235.614 0 .848-.234.235-.614.235-.848 0l-3.935-3.933C13.131 16.805 11.158 17.6 9 17.6 4.25 17.6.4 13.75.4 9S4.25.4 9 .4zm0 1.2C4.913 1.6 1.6 4.913 1.6 9s3.313 7.4 7.4 7.4c2.01 0 3.833-.802 5.167-2.103l.059-.071c.022-.023.046-.043.07-.06C15.598 12.832 16.4 11.01 16.4 9c0-4.087-3.313-7.4-7.4-7.4z"/>
@@ -52,6 +75,7 @@
               </div>
             </div>
         </div>
+        
     </div>
 
 

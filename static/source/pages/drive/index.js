@@ -86,6 +86,91 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "../components/common_componentc/admin_panel/index.js":
+/*!************************************************************!*\
+  !*** ../components/common_componentc/admin_panel/index.js ***!
+  \************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/common_componentc/admin_panel/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+
+console.log(1313); // admin panel ============================>
+// сторінка повина починатись по стандарту з admin_check = 1
+
+var only_on_click = true;
+var admin_panels = document.querySelectorAll('.db_content');
+var admin_check = sessionStorage.getItem('admin_panell');
+console.log('admin_check: ', admin_check);
+
+if (admin_check == 0) {
+  only_on_click = false;
+  $('.admin_button').attr('data-title', 'Виключити редагування');
+  $('.admin_checkbox').attr('checked', '');
+  admin_check = sessionStorage.getItem('admin_panell');
+  admin_panels.forEach(function (item, index, array) {
+    var link_adress = $(item).data('admin_url');
+    var hidden_panel = document.createElement('div');
+    hidden_panel.classList.add('db_hidden_content');
+    var hidden_link = document.createElement('a');
+    hidden_link.classList.add('db_hidden_link');
+    hidden_link.setAttribute("href", link_adress);
+    hidden_link.textContent = 'Редагувати';
+    hidden_panel.appendChild(hidden_link);
+    item.appendChild(hidden_panel);
+  });
+}
+
+$('.svg_power').on('click', function () {
+  admin_func();
+});
+
+function admin_func() {
+  if (only_on_click) {
+    only_on_click = false;
+    $('.admin_button').attr('data-title', 'Виключити редагування');
+    sessionStorage.setItem('admin_panell', 0);
+    admin_check = sessionStorage.getItem('admin_panell');
+    admin_panels.forEach(function (item, index, array) {
+      var link_adress = $(item).data('admin_url');
+      var hidden_panel = document.createElement('div');
+      hidden_panel.classList.add('db_hidden_content');
+      var hidden_link = document.createElement('a');
+      hidden_link.classList.add('db_hidden_link');
+      hidden_link.setAttribute("href", link_adress);
+      hidden_link.textContent = 'Редагувати';
+      hidden_panel.appendChild(hidden_link);
+      item.appendChild(hidden_panel);
+    });
+  } else {
+    $('.admin_button').attr('data-title', 'Включити редагування');
+    only_on_click = true;
+    sessionStorage.setItem('admin_panell', 1);
+    admin_check = sessionStorage.getItem('admin_panell');
+    admin_panels.forEach(function (item, index, array) {
+      $('.db_hidden_content').remove();
+    });
+  }
+} // admin panel ============================>
+
+/***/ }),
+
+/***/ "../components/common_componentc/admin_panel/index.scss":
+/*!**************************************************************!*\
+  !*** ../components/common_componentc/admin_panel/index.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
+
+/***/ }),
+
 /***/ "../components/common_componentc/footer/index.js":
 /*!*******************************************************!*\
   !*** ../components/common_componentc/footer/index.js ***!
@@ -559,16 +644,24 @@ __webpack_require__.r(__webpack_exports__);
 
 $(function () {
   Onload();
-});
-/**
- * valide_form - Валідація форм
- * @param {selector form} ID Форми на яку підвішують валідацію
- * @param {class name} class групи куди виводять помилки
- * @param {bull} true Чи виводи вспливайку пісял відповіді ajax
- *
- **/
+}); // /**
+//  * valide_form - Валідація форм
+//  * @param {selector form} ID Форми на яку підвішують валідацію
+//  * @param {class name} class групи куди виводять помилки
+//  * @param {bull} true Чи виводи вспливайку пісял відповіді ajax
+//  *
+//  **/
 
 function Onload() {
+  // var more_form = $('.mini-user-form');
+  // for (var testz = 0; testz < more_form.length; testz++) {
+  //     var tehas = more_form[testz];
+  //     var dinamic_id = 'active_form' + testz;
+  //     $(tehas).attr('id', dinamic_id);
+  //     var dinamic_main_id = '#' + $(tehas).attr('id');
+  //     console.log(dinamic_main_id);
+  //     valide_form(dinamic_main_id, '.inp-mini-wrap', false);
+  // }
   valide_form('.footer_form', '.inp-vak-wrap', true);
   valide_form('#comment_form', '.inp-vak-wrap', true);
   valide_form('.registery_form', '.inp-vak-wrap', false);
@@ -578,215 +671,161 @@ function location_leng() {
   return location.pathname.split('/')[1];
 }
 
-function valide_form(id_form, append_error_box, check_request) {
+function valide_form(id_form, error_inp_wrap, check_request) {
   var check_request = check_request;
 
   if ($(id_form).length > 0) {
     var lang_site;
-    var errore_text = {};
+    var error_text = {};
     lang_site = location_leng();
-    console.log(id_form);
 
     switch (lang_site) {
       case 'uk':
-        errore_text.required = 'Поле обов\'язково для заповнення';
-        errore_text.email = 'Поле має містити email';
-        errore_text.rating = 'Оцінка товару є обов\'язкова';
+        error_text.required = 'Поле обов\'язково для заповнення';
+        error_text.email = 'Поле має містити email';
         break;
 
       case 'ru':
-        errore_text.required = 'Поле обязательно для заполнения';
-        errore_text.email = 'Поле должно содержать email';
-        errore_text.rating = 'Оценка товара является обязательная';
+        error_text.required = 'Поле обязательно для заполнения';
+        error_text.email = 'Поле должно содержать email';
         break;
 
       case 'en':
-        errore_text.required = 'The field is required';
-        errore_text.email = 'The field must contain an email';
-        errore_text.rating = 'Evaluation of the goods is required';
+        error_text.required = 'The field is required';
+        error_text.email = 'The field must contain an email';
         break;
 
       default:
-        errore_text.required = 'Поле обов\'язково для заповнення';
-        errore_text.email = 'Поле має містити email';
-        errore_text.rating = 'Оцінка товару є обов\'язкова';
+        error_text.required = 'Поле обов\'язково для заповнення.';
+        error_text.email = 'Поле має містити email.';
     }
 
     $(id_form).validate({
       errorPlacement: function errorPlacement(event, validator) {
-        $(validator).parents(append_error_box).append($(event));
-        $(validator).parents(append_error_box).addClass('is-error');
+        console.log(validator);
+        $(validator).parents(error_inp_wrap).append($(event));
       },
-      ignore: "not:hidden.product_rating",
       rules: {
+        email: {
+          required: true,
+          email: true
+        },
         name: {
           required: true
         },
-        user_send: {
+        phone_number: {
           required: true
         },
         password: {
           required: true
         },
-        phone: {
+        pas1: {
           required: true
         },
-        email: {
-          required: true,
-          email: true
+        pas2: {
+          required: true
         }
       },
       messages: {
         email: {
-          required: errore_text.required,
-          email: errore_text.email
+          required: error_text.required,
+          email: error_text.email
         },
         name: {
-          required: errore_text.required
+          required: error_text.required
         },
-        phone: {
-          required: errore_text.required
+        phone_number: {
+          required: error_text.required
         },
         password: {
-          required: errore_text.required
+          required: error_text.required
         },
-        user_send: {
-          required: errore_text.required
+        pas1: {
+          required: error_text.required
+        },
+        pas2: {
+          required: error_text.required
         }
       },
       submitHandler: function submitHandler(form) {
         event.preventDefault();
-        var data = formSerialize({
-          'form': form
-        }); // send_form({'form': form,'data':data});
+        $('.load_spin').addClass('load_spin_active');
+        var form_input = $(form).serializeArray();
+        var url_form = form.action;
+        var form_json = {};
+        $(form_input).each(function (index, obj) {
+          console.log(obj);
+          console.log(index);
+          form_json[obj.name] = obj.value;
+          console.log(form_json);
+        });
+        console.log(form_json);
 
-        var all_form_input = form.querySelectorAll('input'); // const all_form_textaria = form.querySelectorAll('textarea');
+        if (url_form != '') {
+          fetch(url_form, {
+            method: 'POST',
+            body: new URLSearchParams($.param(form_json))
+          }).then(function (data) {
+            return data.json();
+          }).then(function (data) {
+            console.log(data);
 
-        for (var key in all_form_input) {
-          if (all_form_input.hasOwnProperty(key)) {
-            var element = all_form_input[key];
-            console.log(element.type);
-            $.fancybox.close();
-          }
+            if (data.status == 'OK' && typeof data['status'] !== "undefined") {
+              sayHi();
+            }
+
+            if (data.status == 'BAD' && typeof data['status'] !== "undefined") {
+              $('.load_spin').removeClass('load_spin_active');
+              $(".error_block_false").text("Невірний логін або пароль"); //   $.fancybox.open({
+              //     src: '#modal-form_false',
+              //   });
+            }
+
+            if (typeof data['url'] !== "undefined" && data.url != '') {
+              //   sayHi();
+              console.log(location.href);
+              console.log(data.url);
+              location.href = data.url;
+            }
+          });
+        } else {
+          console.log("forn_not_actions");
         }
 
-        function send_form(params) {
-          var form = params.form;
-          var form_data = params.data;
-          var url_form = form.action;
-          var form_json = {};
+        function explode() {
+          if (id_form == '#modal-form_user') {// window.location.pathname = '/'
+          } else {// sayHi();
+            }
+        }
 
-          if (url_form != '') {
-            $('.loader_all').addClass('loader_all-active');
-            var loader = '<div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>';
-            document.getElementById('loader_all__wrap').innerHTML = loader;
-            fetch(url_form, {
-              method: 'POST',
-              body: form_data
-            }).then(function (data) {
-              return data.json();
-            }).then(function (data) {
-              $('.loader_all').removeClass('loader_all-active');
+        explode();
 
-              if (data.status == 'OK' && typeof data['status'] !== "undefined") {
-                if (typeof data['redirect_url'] !== "undefined" && data.redirect_url != '') {
-                  clear_input();
-                  location.href = data.redirect_url;
-                } else {// sayHi();
+        function sayHi() {
+          $('.load_spin').removeClass('load_spin_active');
+          $.fancybox.close();
+
+          if (check_request === true) {
+            $.fancybox.open({
+              src: '#modal-form_true'
+            });
+            var form_inputs = $(form)[0].querySelectorAll('input');
+
+            if (form_inputs.length > 0) {
+              for (var key in form_inputs) {
+                if (form_inputs.hasOwnProperty(key) && /^0$|^[1-9]\d*$/.test(key) && key <= 4294967294) {
+                  if (form_inputs[key].type !== 'submit') {
+                    form_inputs[key].value = '';
+                  }
                 }
               }
-            });
-          } else {
-            console.error("URL Form is #".concat(params.form.id, " not fond "));
-          }
-        }
 
-        function clear_input() {
-          var TYPE_INPUT = {
-            TEXT: 'text',
-            EMAIL: 'email',
-            CHECKBOX: 'checkbox',
-            HIDDEN: 'hidden',
-            TEL: 'tel',
-            FILE: 'file'
-          };
-          var all_form_input = form.querySelectorAll('input');
-          var all_form_textaria = form.querySelectorAll('textarea');
+              var form_textaria = $(form)[0].querySelectorAll('textarea');
 
-          for (var _key in all_form_textaria) {
-            if (all_form_textaria.hasOwnProperty(_key)) {
-              var _element = all_form_textaria[_key];
-              _element.value = '';
-            }
-          }
-
-          for (var _key2 in all_form_input) {
-            if (all_form_input.hasOwnProperty(_key2)) {
-              var _element2 = all_form_input[_key2];
-              console.log(_element2);
-
-              switch (_element2.type) {
-                case TYPE_INPUT.TEXT:
-                  _element2.value = '';
-                  break;
-
-                case TYPE_INPUT.EMAIL:
-                  _element2.value = '';
-                  break;
-
-                case TYPE_INPUT.TEL:
-                  _element2.value = '';
-                  break;
-
-                case TYPE_INPUT.HIDDEN:
-                  _element2.value = '';
-                  break;
-
-                case TYPE_INPUT.FILE:
-                  _element2.value = '';
-                  break;
-
-                case TYPE_INPUT.CHECKBOX:
-                  $(_element2).prop("checked", false);
-                  break;
+              if (form_textaria.length > 0) {
+                form_textaria[0].value = '';
               }
             }
           }
-        }
-
-        function formSerialize(params) {
-          var form = params.form;
-          var serialize = $(form).serializeArray();
-          var data = {};
-          data['inputs'] = [], data['item_category_ids'] = [], data['item_ids'] = [], data['inputs'] = [];
-          var inputs_other = form.querySelectorAll('input[name=other]');
-          Array.apply(null, inputs_other).map(function (item) {
-            var categories_input = $(item).parents('.form_container__main').find('.form_box__header-input');
-            data['inputs'].push({
-              'item_category_id': categories_input[0].name,
-              'text': item.value
-            });
-          });
-          $(serialize).each(function (index, input) {
-            if (input.value == 'category') {
-              data['item_category_ids'].push(input.name);
-            } else if (input.value == 'item') {
-              data['item_ids'].push(input.name);
-            } else {
-              data[input.name] = input.value;
-            }
-          });
-          var file_logo__life = form.querySelectorAll('#file_logo__life')[0];
-          var Formdata = new FormData();
-
-          if (file_logo__life != undefined) {
-            if (file_logo__life.files[0] !== undefined) {
-              Formdata.append('logo', file_logo__life.files[0]);
-            }
-          }
-
-          Formdata.append('data', JSON.stringify(data));
-          return Formdata;
         }
       }
     });
@@ -853,13 +892,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_interface_grid_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/interface/grid/index */ "../components/interface/grid/index.js");
 /* harmony import */ var _components_interface_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/interface/button */ "../components/interface/button/index.js");
 /* harmony import */ var _components_module_form_errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/module/form_errors */ "../components/module/form_errors/index.js");
-/* harmony import */ var _components_common_componentc_header_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/common_componentc/header/index */ "../components/common_componentc/header/index.js");
-/* harmony import */ var _components_common_componentc_footer_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/common_componentc/footer/index */ "../components/common_componentc/footer/index.js");
-/* harmony import */ var _components_pages_drive_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/pages/drive/index */ "../components/pages/drive/index.js");
+/* harmony import */ var _components_common_componentc_admin_panel_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../components/common_componentc/admin_panel/index */ "../components/common_componentc/admin_panel/index.js");
+/* harmony import */ var _components_common_componentc_header_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/common_componentc/header/index */ "../components/common_componentc/header/index.js");
+/* harmony import */ var _components_common_componentc_footer_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/common_componentc/footer/index */ "../components/common_componentc/footer/index.js");
+/* harmony import */ var _components_pages_drive_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/pages/drive/index */ "../components/pages/drive/index.js");
 // script interface
 
 
  // script common elements
+
 
  // script pages
 

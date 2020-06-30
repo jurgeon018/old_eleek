@@ -6,6 +6,8 @@ import '../components/interface/button'
 
 // script common elements
 import '../components/module/form_errors'
+import './../components/common_componentc/admin_panel/index'
+
 
 // script pages
 import '../components/common_componentc/header/index'

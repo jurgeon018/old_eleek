@@ -8,6 +8,32 @@
     z-index: 999;
 }
 
+
+.load_spin {
+	display: none;
+}
+.load_spin_active {
+  top: 0;
+  left: 0;
+	position: fixed;
+	z-index: 10000000;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(#4d5359, 0.7);
+	display: block !important;
+	
+	img {
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	}
+}
+
+
 .logo {
     &_header {
         display: block;
