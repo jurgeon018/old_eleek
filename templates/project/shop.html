@@ -14,26 +14,28 @@ item_section__wrapper
 {% block content %}
 <section class="shop_section padding_sect">
   <div class="container">
-    <h2 class="shop_title main__title main__title_2 color_white"> 
-      Магазин
+    {% render 'shop_shop' as shop_shop %}
+    <h2 class="shop_title main__title main__title_2 color_white db_content" data-admin_url="{{shop_shop.get_admin_url}}"> 
+      {{shop_shop.text}}
+      <!-- Магазин -->
     </h2>
     <div class="shop__wrapper">
       <a href="{{velo.get_absolute_url}}" class="shop_item">
         <img src="/static/source/img/shop/fl-002-2020-may-15-01-52-19-pm-000-customized-view-24433306083.png" alt="" class="shop_bg">
-        <div class="shop_name_category main__title main__title_3 color_yellow">
-          Електровелосипеди
+        <div class="shop_name_category main__title main__title_3 color_yellow db_content" data-admin_url="{{velo.get_admin_url}}">
+          {{velo.title}}
         </div>
       </a>
       <a href="{{ramy.get_absolute_url}}" class="shop_item">
         <img src="/static/source/img/shop/rrama-png.png" alt="" class="shop_bg">
-        <div class="shop_name_category main__title main__title_3 color_yellow">
-          Рами
+        <div class="shop_name_category main__title main__title_3 color_yellow db_content" data-admin_url="{{ramy.get_admin_url}}">
+          {{ramy.title}}
         </div>
       </a>
       <a href="{{comp.get_absolute_url}}" class="shop_item">
         <img src="/static/source/img/shop/amort.png" alt="" class="shop_bg">
-        <div class="shop_name_category main__title main__title_3 color_yellow">
-          Комплектуючі
+        <div class="shop_name_category main__title main__title_3 color_yellow db_content" data-admin_url="{{comp.get_admin_url}}">
+          {{comp.title}}
         </div>
       </a>
     </div>

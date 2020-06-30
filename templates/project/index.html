@@ -11,58 +11,63 @@ section__wrapper
 {% endblock main_class %}
 {% block content %}
 <section class="first_section">
-      <div class="bike_trailer__block">
-        {% for slider in '12345'|make_list %}
-        <div class="bike_trailer__wrapper">
-          <div class="bike_trailer_content">
-            <h1 class="main__title main__title_1 color_black slide-name anim_text">
-              Новий <span class="main__title main__title_1 color_yellow">Eleek Atom1</span> — <br> відчуй драйв!
-            </h1>
-            <div class="bike_trailer_btn__wrap slide-name anim_text">
-                <a href="{% url 'test_drive' %}" class="btn_standart btn_standart_transparent">
-                  Тест-драйв
-                </a>
-                <a href="{% url 'item' 1 %}" class="btn_standart btn_standart_black">
-                  Детальніше
-                </a>
-            </div>
-          </div>
-            <div class="bike_trailer_img__block">
-                <img class="bike_trailer_img slide-img anim_img" src="/static/source/img/index/123.png" alt="">
-            </div>
-        </div>
-        {% endfor %}
-      </div>
-      <div class="nav_for_bike_trailer">
-        <div class="bike_progress__block">
-          <span class="num_name title_text_regular">
-            01
-          </span>
-          <div class="line_progress__block">
-            <div class="line_active"></div>
-          </div>
-          <span class="num_name title_text_regular last_click_num">
-            ...
-          </span>
-        </div>
-        <div class="bike_progress_arrow">
-            <button type="button" class="slick-first all_class_slick">
-                <img src="/static/source/img/index/combined-arrow.svg" alt="">
-            </button>
-            <button type="button" class="slick-second all_class_slick">
-              <img src="/static/source/img/index/combined-arrow.svg" alt="">
-            </button>
+  <div class="bike_trailer__block">
+    {% for slider in '12345'|make_list %}
+    123123123
+    <div class="bike_trailer__wrapper">
+      <div class="bike_trailer_content">
+        <h1 class="main__title main__title_1 color_black slide-name anim_text">
+          Новий <span class="main__title main__title_1 color_yellow">Eleek Atom1</span> — <br> відчуй драйв!
+        </h1>
+        <div class="bike_trailer_btn__wrap slide-name anim_text">
+            <a href="{% url 'test_drive' %}" class="btn_standart btn_standart_transparent">
+              {% trans 'Тест-драйв' %}
+            </a>
+            <a href="{% url 'item' 1 %}" class="btn_standart btn_standart_black">
+              {% trans 'Детальніше' %}
+            </a>
         </div>
       </div>
+        <div class="bike_trailer_img__block">
+            <img class="bike_trailer_img slide-img anim_img" src="/static/source/img/index/123.png" alt="">
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="nav_for_bike_trailer">
+    <div class="bike_progress__block">
+      <span class="num_name title_text_regular">
+        01
+      </span>
+      <div class="line_progress__block">
+        <div class="line_active"></div>
+      </div>
+      <span class="num_name title_text_regular last_click_num">
+        ...
+      </span>
+    </div>
+    <div class="bike_progress_arrow">
+        <button type="button" class="slick-first all_class_slick">
+            <img src="/static/source/img/index/combined-arrow.svg" alt="">
+        </button>
+        <button type="button" class="slick-second all_class_slick">
+          <img src="/static/source/img/index/combined-arrow.svg" alt="">
+        </button>
+    </div>
+  </div>
 </section>
 <!-- /.first_section -->
 <section class="second_section">
   <div class="container">
-    <h1 class="second_title main__title main__title_1 color_white">
-      Відчуй переваги професіоналів
+    {% render 'index_feel' as index_feel %}
+    <h1 class="second_title main__title main__title_1 color_white db_content" data-admin_url="{{index_feel.get_admin_url}}">
+      {{index_feel.text}}
+      <!-- Відчуй переваги професіоналів -->
     </h1>
-    <div class="second_sub_title sub_title sub_title_2 color_white text_center">
-      Наші велосипеди одні з найпотужніших та найякісніших на ринку
+    {% render 'index_our_velek' as index_our_velek %}
+    <div class="second_sub_title sub_title sub_title_2 color_white text_center db_content" data-admin_url="{{index_our_velek.get_admin_url}}">
+      {{index_our_velek.text}}
+      <!-- Наші велосипеди одні з найпотужніших та найякісніших на ринку -->
     </div>
     <div class="preferens__wrap">
         <img src="/static/source/img/index/grid-eleek.png" alt="" class="hidden_preferens__bg">

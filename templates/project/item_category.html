@@ -20,7 +20,7 @@ item_section__wrapper
                   <input type="checkbox" id="filter3" name="filter-group" class="inp_filter">
                   <label for="filter3" class="filter-title">
                       <span class="filter__title standart_title standart_title_4 color_black">
-                        Фільтр
+                        {% trans 'Фільтр' %}
                       </span> 
                       <div class="mobale_filter">
                           <img src="/static/source/img/items/set-2.svg" alt="">
@@ -29,7 +29,7 @@ item_section__wrapper
                   <div class="filter-content"> 
                       <form action="" class="filter_form">
                         <div class="filter_category standart_title standart_title_4 color_black">
-                          Ціна
+                          {% trans 'Ціна' %}
                       </div>
                       <input type="hidden" name="min_sum" class="input_for_min_range">
                       <input type="hidden" name="max_sum" class="input_for_max_range">
@@ -59,13 +59,13 @@ item_section__wrapper
           <div class="product_content">
             <div class="mini_navigate-block">
               <a href="{% url 'index' %}" class="mini_nav_name sub_title sub_title_2 color_black_2">
-                Головна
+                {% trans 'Головна' %}
               </a>
               <span class="slash sub_title sub_title_2 color_black">
                   /
               </span>
               <a href="{% url 'shop' %}" class="mini_nav_name sub_title sub_title_2 color_black_2">
-                Магазин
+                {% trans 'Магазин' %}
               </a>
               {% for cat in category.parents %}
                 {% if cat%}
@@ -110,7 +110,7 @@ item_section__wrapper
                 {% endfor %}
               </div>
               <div class="prod_card_more standart_title standart_title_4 color_black">
-                  Більше товарів
+                  {% trans 'Більше товарів' %}
               </div>
           </div>
       </div>

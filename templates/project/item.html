@@ -32,7 +32,7 @@ item_section__wrapper
             </svg>
             <a href="{% url 'constructor' %}">
             <div class="three_title standart_title standart_title_5 color_black">
-                Показати в 3Д
+                {% trans 'Показати в 3Д' %}
               </div>
             </a>
           </div>
@@ -73,12 +73,12 @@ item_section__wrapper
           {{item.price}} {{item.currency.code}}
         </div>
         <div class="item_btn_price btn_standart btn_standart_black color_white">
-          Купити
+          {% trans 'Купити' %}
         </div>
       </div>
       <div class="additional__block">
         <div class="addit_name sub_title sub_title_3">
-          Ціна додаткових опцій:
+          {% trans 'Ціна додаткових опцій' %}:
         </div>
         <div class="addit_price main__title main__title_5">
           ₴ 0
@@ -89,12 +89,11 @@ item_section__wrapper
           Від 10 057/місяць при купівлі товару в кредит або оплаті частинами
         </div>
         <div class="kredit_btn btn_standart btn_standart_yellow standart_title standart_title_5 color_black">
-          Купити в кредит
+          {% trans 'Купити в кредит' %}
         </div>
       </div>
-
       <div class="item_char_title main__title main__title_4">
-        Характеристики
+        {% trans 'Характеристики' %}
       </div>
       <div class="characteristick__wrap">
         <div class="char__block">
@@ -141,8 +140,6 @@ item_section__wrapper
         </div>
       </div>
       {% endfor %}
-
-
 
       {% for attribute_category in item.get_attribute_categories %}
       {{attribute_category}}
@@ -196,7 +193,7 @@ item_section__wrapper
 
       <div class="option__wrap">
         <div class="item_char_title main__title main__title_4">
-          Атрибути
+          {% trans 'Атрибути' %}
         </div>
         <div class="option_content__block">
           {% for option in '123456789'|make_list %}
@@ -222,7 +219,7 @@ item_section__wrapper
       </div>
       {% endfor %}
       <div data-tab="1" class="item_tab_link item_tab_link_3 standart_title standart_title_3 color_black">
-        Відгуки
+        {% trans 'Відгуки' %}
       </div>
     </div>
     <div class="item_tab_content__block">
@@ -243,28 +240,29 @@ item_section__wrapper
         </div>
       </div>
       {% endfor %}
-
       <div id="1" class="item_tab_content">
         <div class="item_comment__wrap">
           <div class="item_comment__block">
               <div class="comment_kredit__block kredit__block">
-                <div class="kredit_text sub_title sub_title_2 color_black">
-                  Поділіться своїм досвідом користуванням нашим товаром та оцінінь його!
+                {% render 'review' as review %}
+                <div class="kredit_text sub_title sub_title_2 color_black db_content" data-admin_url="{{review.get_admin_url}}">
+                  {{review.text}}
+                  <!-- Поділіться своїм досвідом користуванням нашим товаром та оцінінь його! -->
                 </div>
                 <div class="add_comment_btn kredit_btn btn_standart btn_standart_black standart_title standart_title_5 color_black">
-                  Додати відгук
+                  {% trans 'Додати відгук' %}
                 </div>
               </div>
               <div class="none_comments_text none_comments_text_hidden sub_title sub_title_2 color_black">
-                У даного товару ще немає відруків. Ви можете бути першим. 
+                {% trans 'У даного товару ще немає відруків. Ви можете бути першим. ' %}
               </div>
               <div class="comment_profile__wrapper">
                 {% for i in '123456789'|make_list %}
-                  
                 <div class="comment_profile">
                   <div class="comment_name__block">
                     <div class="comment_name color_black standart_title standart_title_4">
                       Андрій
+                      {{review.name}}
                     </div>
                     <div class="comment_star">
                       <div class="svg_rating__wrap">
@@ -295,7 +293,9 @@ item_section__wrapper
                     </div>
                   </div>
                   <div class="comment_text color_black sub_title sub_title_2">
-                    {{i}}Lorem ipsum dolor sit amet consectetur adipisicing elit. A perferendis obcaecati ipsa, voluptatum quod adipisci alias dolores illo autem ipsam. Mollitia cupiditate qui commodi atque numquam, quae perspiciatis at? Rem molestias magni minus sequi officia aut totam repellendus. Optio, ullam blanditiis in dolorum dolor officia praesentium atque perspiciatis deleniti doloribus quis quos! Provident, enim expedita! Consectetur, hic pariatur perspiciatis in qui ipsam dolor quo iure quod, suscipit nostrum fugit quae! Quisquam blanditiis delectus voluptates repellendus fuga pariatur ducimus qui esse, molestias eveniet impedit obcaecati, maxime dignissimos quam autem itaque labore explicabo ad. Deleniti maxime error molestias doloribus reiciendis, officia modi!
+                    {{i}}
+                    {{review.text}}
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A perferendis obcaecati ipsa, voluptatum quod adipisci alias dolores illo autem ipsam. Mollitia cupiditate qui commodi atque numquam, quae perspiciatis at? Rem molestias magni minus sequi officia aut totam repellendus. Optio, ullam blanditiis in dolorum dolor officia praesentium atque perspiciatis deleniti doloribus quis quos! Provident, enim expedita! Consectetur, hic pariatur perspiciatis in qui ipsam dolor quo iure quod, suscipit nostrum fugit quae! Quisquam blanditiis delectus voluptates repellendus fuga pariatur ducimus qui esse, molestias eveniet impedit obcaecati, maxime dignissimos quam autem itaque labore explicabo ad. Deleniti maxime error molestias doloribus reiciendis, officia modi!
                   </div>
                 </div>
                 {% endfor %}

@@ -12,8 +12,10 @@ item_section__wrapper
 {% endblock main_class %}
 <section class="section_order padding_sect">
   <div class="container">
-    <h2 class="main__title main__title_2 color_black">
-      Оформлення замовлення
+    {% render 'order_order' as order_order %}
+    <h2 class="main__title main__title_2 color_black db_content" data-admin_url="{{order_order.get_admin_url}}">
+      {{order_order.text}}
+      <!-- Оформлення замовлення -->
     </h2>
     <div class="order__wrap">
       <form action='/test/' class="order_info__block">
@@ -23,13 +25,13 @@ item_section__wrapper
               1
             </div>
             <div class="step_title standart_title standart_title_3 color_black">
-              Крок 1. Контактні дані
+              <!-- Крок 1. Контактні дані -->
             </div>
           </div>
           <div class="step_content">
             <div class="footer_input__wrap inp-vak-wrap">
               <label for="order_name" class="order_label label__style color_black">
-                Ім'я та прізвище
+                {% trans "Ім'я та прізвище" %}
               </label>
               <input type="text" id="order_name" name='name' class="order_input input_focus input_requared">
             </div>
@@ -41,25 +43,26 @@ item_section__wrapper
             </div>
             <div class="footer_input__wrap inp-vak-wrap">
               <label for="order_phone" class="order_label label__style color_black">
-                Телефон
+                {% trans 'Телефон' %}
               </label>
               <input type="text" id="order_phone" name='email' class="order_input input_focus input_requared">
             </div>
             <div class="wrap_for_footer_btn">
               <div data-step-btn='1' class="btn_standart btn_standart_yellow next_step_btn">
-                Далі
+                {% trans 'Далі' %}
               </div>
             </div>
           </div>
-
         </div>
         <div data-step='2' class="step__wrap">
           <div class="step_title__wrap">
             <div class="step_num main__title main__title_5 color_black">
               2
             </div>
-            <div class="step_title standart_title standart_title_3 color_black">
-              Крок 2. Спосіб доставки
+            {% render 'step2' as step2 %}
+            <div class="step_title standart_title standart_title_3 color_black db_content" data-admin_url="{{step2.get_admin_url}}">
+              {{step2.text}}
+              <!-- Крок 2. Спосіб доставки -->
             </div>
           </div>
           <div class="step_content">
@@ -68,7 +71,7 @@ item_section__wrapper
                 <div class="radio_center absolute_center"></div>
               </div>
               <div class="radio_title standart_title standart_title_6 color_black">
-                Доставка від Eleek
+                {% trans 'Доставка від Eleek' %}
               </div>
             </div>
             <div data-radio='2' class="radio_block">
@@ -76,7 +79,7 @@ item_section__wrapper
                 <div class="radio_center radio_center_active absolute_center"></div>
               </div>
               <div class="radio_title standart_title standart_title_6 color_black">
-                Нова пошта
+                {% trans 'Нова пошта' %}
               </div>
             </div>
             <div data-radio='3' class="radio_block">
@@ -92,7 +95,7 @@ item_section__wrapper
                 <div class="radio_center absolute_center"></div>
               </div>
               <div class="radio_title standart_title standart_title_6 color_black">
-                Укр пошта 
+                {% trans 'Укр пошта' %}
               </div>
             </div>
             <div data-radio="5" class="radio_block">
@@ -108,13 +111,13 @@ item_section__wrapper
                 <div class="radio_center absolute_center"></div>
               </div>
               <div class="radio_title standart_title standart_title_6 color_black">
-                Самовивіз з магазину
+                {% trans 'Самовивіз з магазину' %}
               </div>
             </div>
             <div class="select-block">
               <input type="hidden" name="nova_pochta_department" class="nova_pochta_hidden">
               <div class="select_label sub_title sub_title_3 color_black">
-                Місто
+                {% trans 'Місто' %}
               </div>
               <select name="" id="" style="width: 100%;" class="select_city">
                 
@@ -123,7 +126,7 @@ item_section__wrapper
             <div class="select-block">
               <input type="hidden" name="nova_pochta_department" class="nova_pochta_hidden">
               <div class="select_label sub_title sub_title_3 color_black">
-                Номер відділення
+                {% trans 'Номер відділення' %}
               </div>
               <select name="" id="" style="width: 100%;" class="select_aria">
                 
@@ -131,7 +134,7 @@ item_section__wrapper
             </div>
             <div class="wrap_for_footer_btn">
               <div data-step-btn='2' class="btn_standart btn_standart_yellow next_step_btn">
-                Далі
+                {% trans 'Далі' %}
               </div>
             </div>
           </div>
@@ -141,8 +144,10 @@ item_section__wrapper
             <div class="step_num main__title main__title_5 color_black">
               3
             </div>
-            <div class="step_title standart_title standart_title_3 color_black">
-              Крок 3. Оплата
+            {% render 'step3' as step3 %}
+            <div class="step_title standart_title standart_title_3 color_black db_content" data-admin_url="{{step3.get_admin_url}}">
+              {{step3.text}}
+              <!-- Крок 3. Оплата -->
             </div>
           </div>
           <div class="step_content">
@@ -151,7 +156,7 @@ item_section__wrapper
                 <div class="radio_center radio_center_active absolute_center"></div>
               </div>
               <div class="radio_title standart_title standart_title_6 color_black">
-                Готівка
+                {% trans 'Готівка' %}
               </div>
             </div>
             <div data-radio='8' class="radio_block">
@@ -159,7 +164,7 @@ item_section__wrapper
                 <div class="radio_center absolute_center"></div>
               </div>
               <div class="radio_title standart_title standart_title_6 color_black">
-                Оплата карткою
+                {% trans 'Оплата карткою' %}
               </div>
             </div>
             <div data-radio='9' class="radio_block">
@@ -167,7 +172,7 @@ item_section__wrapper
                 <div class="radio_center absolute_center"></div>
               </div>
               <div class="radio_title standart_title standart_title_6 color_black">
-                Оплата частинами
+                {% trans 'Оплата частинами' %}
               </div>
             </div>
             <a href="#" class="liqpay">
@@ -198,7 +203,7 @@ item_section__wrapper
                 <div class="basket_bottom__wrap">
                   <div class="basket_counter__block">
                     <div class="basket_text sub_title sub_title_2">
-                      Кількість
+                      {% trans 'Кількість' %}
                     </div>
                     <div class="basket_counter">
                       <div class="basket_prep basket_count sub_title sub_title_21">
@@ -212,7 +217,7 @@ item_section__wrapper
                   </div>
                   <div class="basket_sum__block">
                     <div class="basket_text sub_title sub_title_2">
-                      Ціна
+                      {% trans 'Ціна' %}
                     </div>
                     <div class="basket_summ main__title main__title_5">
                       {{cart_item}}500 грн.
@@ -225,7 +230,7 @@ item_section__wrapper
           </div>
           <div class="order_item_result">
             <div class="order_text main__title main__title_5 color_black">
-              Всього
+              {% trans 'Всього' %}
             </div>
             <div class="order_sum main__title main__title_5 color_black">
               102 500 грн.
@@ -236,7 +241,6 @@ item_section__wrapper
       </div>
     </div>
   </div>
-  <!-- /.container -->
 </section>
 {% endblock content %}
 {% block scripts %}
