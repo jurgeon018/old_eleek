@@ -5,7 +5,6 @@ import './four_section.scss';
 import './five_section.scss';
 import './six_section.scss';
 
-
 /** @preserve jQuery animateNumber plugin v0.0.14
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber

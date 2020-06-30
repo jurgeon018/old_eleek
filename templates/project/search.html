@@ -12,8 +12,10 @@ item_section__wrapper
 {% block content %}
 <section class="search_section padding_sect">
   <div class="container">
-      <h2 class="main__title main__title_2 color_black">
-        Результати пошуку
+    {% render 'search_results' as search_results %}
+    <h2 class="main__title main__title_2 color_black db_content" data-admin_url="{{search_results.get_admin_url}}">
+        {{search_results.text}}
+        <!-- Результати пошуку -->
       </h2>
     <!-- <div class="search_error">
       <div class="search_sub_title sub_title sub_title_2 color_black">
@@ -28,13 +30,13 @@ item_section__wrapper
       </form>
     </div> -->
     <div class="search_sub_title sub_title sub_title_2 color_black">
-      За даним запитом 
+      {% trans 'За даним ' %}
       <b>‘<span class="search_result">‘{{search_query}}’</span>’</b> 
-      знайдено товарів: {{search_items.count}} 
+      {% trans 'знайдено товарів' %}: {{search_items.count}} 
     </div>
     <div class="main_product-block">
       {% for search_item in search_items %}
-      <div class="product_card-prof">
+      <div class="product_card-prof db_content" data-admin_url="{{search_item.get_admin_url}}">
           <a href="{{search_item.get_absolute_url}}" class="prod_card_link">
               <img src="/static/source/img/item/img-0041.jpg" alt="" class="prod_card-img">
           </a>

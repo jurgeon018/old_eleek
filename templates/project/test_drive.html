@@ -16,49 +16,52 @@ item_section__wrapper
 </div>
 <section class="usually_section">
   <div class="drive_form__block">
-    <form action="{% url 'test_drive_contact' %}" class="drive__form">
-      <h3 class="drive_title main__title main__title_2 color_black">
-        Тест-драйв
+    <form action="{% url 'test_drive_contact' %}" method='POST' class="drive__form">
+      {% render 'test_drive_test_drive' as test_drive_test_drive %}
+      <h3 class="drive_title main__title main__title_2 color_black db_content" data-admin_url="{{test_drive_test_drive.get_admin_url}}">
+        {{test_drive_test_drive.text}}
+        <!-- Тест-драйв -->
       </h3>
-      <div class="drive_subtitle sub_title sub_title_2 color_black">
-        Відчуйте силу електро-велосипеду перед покупкою. Заповніть форму на тест-драйф, та наш менеджер зв’яжиться з вами.
+      {% render 'test_drive_text1' as test_drive_text1 %}
+      <div class="drive_subtitle sub_title sub_title_2 color_black db_content" data-admin_url="{{test_drive_text1.get_admin_url}}">
+        {{test_drive_text1.text}}
+        <!-- Відчуйте силу електро-велосипеду перед покупкою. Заповніть форму на тест-драйф, та наш менеджер зв’яжиться з вами. -->
       </div>
       <div class="footer_input__wrap inp-vak-wrap">
         <label for="login_name" class="login_label label__style color_black">
-          Ім'я
+          {% trans "Ім'я" %}
         </label>
-        <input type="password" id="login_name" name="phone" class="login_name login_input input_focus">
+        <input id="login_name" name="name" class="login_name login_input input_focus">
       </div>
       <div class="footer_input__wrap inp-vak-wrap">
         <label for="login_tel" class="login_label label__style color_black">
-          Телефон
+          {% trans 'Телефон' %}
         </label>
-        <input type="password" id="login_tel" name="phone" class="login_tel login_input input_focus">
+        <input id="login_tel" name="phone" class="login_tel login_input input_focus">
       </div>
       <div class="footer_input__wrap inp-vak-wrap">
         <label for="login_mail" class="login_label label__style color_black">
-          E-mail
+          {% trans 'E-mail' %}
         </label>
         <input type="text" id="login_mail" name="email" class="login_mail login_input input_focus">
       </div>
       <div class="footer_input__wrap inp-vak-wrap">
         <label for="select_drive" class="label_select_drive login_label label__style color_black">
-          Модель велосипеда
+          {% trans 'Модель велосипеда' %}
         </label>
         <select name="select_drive" id="" style="width: 100%;" class="select_drive">
-          <option selected='selected' value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
+          {% for model in models %}
+          <option {% if forloop.counter == 1 %} selected='selected' {% endif%} value="{{model.name}}">{{model.name}}</option>
+          {% endfor %}
         </select>
       </div>
       <div class="footer_input__wrap area_input__wrap inp-vak-wrap">
         <label for="drive_send" class="login_label label__style color_black">
-          Повідомлення
+          {% trans 'Повідомлення' %}
         </label>
         <textarea name='drive_send' id="drive_send" class="login_input input_focus"></textarea>
       </div>
-      <input type="submit" value="Замовити" class="btn_standart btn_standart_yellow">
-      
+      <input type="submit" value="{% trans 'Замовити' %}" class="btn_standart btn_standart_yellow">
     </form>
     <div class="drive_map__block">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d626.5368564183469!2d25.55722983059672!3d49.54148059378946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473036dd4ef33ebf%3A0x1bbc6010ee64c2f!2sELEEK!5e0!3m2!1sru!2sua!4v1593086495915!5m2!1sru!2sua" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>

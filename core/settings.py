@@ -59,3 +59,27 @@ LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'login'
 
 
+
+
+
+EMAIL_BACKEND = 'box.core.sw_global_config.backends.ConfiguredEmailBackend'
+EMAIL_USE_TLS          = True
+EMAIL_USE_SSL          = False
+EMAIL_PORT             = 587
+EMAIL_HOST             = "mail.starwayua.com"
+EMAIL_HOST_USER        = "dev@starwayua.com"
+EMAIL_HOST_PASSWORD    = 'dev69018'#config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL     = EMAIL_HOST_USER
+
+
+
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'jurgeon018@gmail.com'
+# EMAIL_HOST_PASSWORD = 'yfpfhrj69001'
+
+

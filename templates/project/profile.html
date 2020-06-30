@@ -13,30 +13,38 @@
 {% block content %}
 <main class="item_section__wrapper">
   <section class="item_tab profile_tab padding_sect">
-    <div class="profile_name main__title main__title_2 color_black">
-      Особистий кабінет
+    {% render 'cabinet' as cabinet %}
+    <div class="profile_name main__title main__title_2 color_black db_content" data-admin_url="{{cabinet.get_admin_url}}">
+      {{cabinet.text}}
+      <!-- Особистий кабінет -->
     </div>
     <div class="sub_profile__block">
       <div class="sub_mail main__title main__title_4 color_black">
         {{request.user.username}} {% if request.user.email %} ({{request.user.email}}) {% endif %}
       </div>
       <a href="{% url 'sw_logout' %}" class="exit_profile main_sub_title main_sub_title_3">
-        Вийти
+        {% trans 'Вийти' %}
       </a>
     </div>
     <div class="tab_container">
       <div class="item_tab_link__block">
+
         <div data-tab="1" class="item_tab_link standart_title standart_title_3 color_black item_tab_link_active">
-          Історія покупок
+          {% trans 'Історія покупок' %}
         </div>
+
         <div data-tab="2" class="item_tab_link standart_title standart_title_3 color_black">
-          Програма лояльності
+          {% trans 'Програма лояльності' %}
         </div>
+        
         <div data-tab="3" class="item_tab_link item_tab_link_3 standart_title standart_title_3 color_black">
-          Налаштування профілю
+          {% trans 'Налаштування профілю' %}
         </div>
+
       </div>
       <div class="item_tab_content__block">
+        
+        <!-- Історія покупок -->
         <div id="1" class="item_tab_content item_tab_content_active">
           <div class="profile_content__wrap">
             <!-- <div class="profile_warning__block">
@@ -87,6 +95,9 @@
             {% endfor %}
           </div>
         </div>
+
+
+        <!-- Програма лояльності -->
         <div id="2" class="item_tab_content">
           <div class="profile_content__wrap">
             <!-- <div class="profile_warning__block">
@@ -133,6 +144,9 @@
             {% endfor %}
           </div>
         </div>
+
+
+        <!-- Налаштування профілю -->
         <div id="3" class="item_tab_content">
           <form action="" class="change_profile registery_form">
             <div class="footer_input__wrap inp-vak-wrap">
@@ -176,13 +190,11 @@
             </div>
           </form>
         </div>
+
+
       </div>
     </div>
   </section>
-  <!-- /.item_tabs -->
-
-{% include 'project/includes/footer.html' %}
-  <!-- /.footer -->
 </main>
 {% endblock content %}
 {% block scripts %}

@@ -11,58 +11,63 @@ section__wrapper
 {% endblock main_class %}
 {% block content %}
 <section class="first_section">
-      <div class="bike_trailer__block">
-        {% for slider in '12345'|make_list %}
-        <div class="bike_trailer__wrapper">
-          <div class="bike_trailer_content">
-            <h1 class="main__title main__title_1 color_black slide-name anim_text">
-              Новий <span class="main__title main__title_1 color_yellow">Eleek Atom1</span> — <br> відчуй драйв!
-            </h1>
-            <div class="bike_trailer_btn__wrap slide-name anim_text">
-                <a href="{% url 'test_drive' %}" class="btn_standart btn_standart_transparent">
-                  Тест-драйв
-                </a>
-                <a href="{% url 'item' 1 %}" class="btn_standart btn_standart_black">
-                  Детальніше
-                </a>
-            </div>
-          </div>
-            <div class="bike_trailer_img__block">
-                <img class="bike_trailer_img slide-img anim_img" src="/static/source/img/index/123.png" alt="">
-            </div>
-        </div>
-        {% endfor %}
-      </div>
-      <div class="nav_for_bike_trailer">
-        <div class="bike_progress__block">
-          <span class="num_name title_text_regular">
-            01
-          </span>
-          <div class="line_progress__block">
-            <div class="line_active"></div>
-          </div>
-          <span class="num_name title_text_regular last_click_num">
-            ...
-          </span>
-        </div>
-        <div class="bike_progress_arrow">
-            <button type="button" class="slick-first all_class_slick">
-                <img src="/static/source/img/index/combined-arrow.svg" alt="">
-            </button>
-            <button type="button" class="slick-second all_class_slick">
-              <img src="/static/source/img/index/combined-arrow.svg" alt="">
-            </button>
+  <div class="bike_trailer__block">
+    {% for slider in '12345'|make_list %}
+    123123123
+    <div class="bike_trailer__wrapper">
+      <div class="bike_trailer_content">
+        <h1 class="main__title main__title_1 color_black slide-name anim_text">
+          Новий <span class="main__title main__title_1 color_yellow">Eleek Atom1</span> — <br> відчуй драйв!
+        </h1>
+        <div class="bike_trailer_btn__wrap slide-name anim_text">
+            <a href="{% url 'test_drive' %}" class="btn_standart btn_standart_transparent">
+              {% trans 'Тест-драйв' %}
+            </a>
+            <a href="{% url 'item' 1 %}" class="btn_standart btn_standart_black">
+              {% trans 'Детальніше' %}
+            </a>
         </div>
       </div>
+        <div class="bike_trailer_img__block">
+            <img class="bike_trailer_img slide-img anim_img" src="/static/source/img/index/123.png" alt="">
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="nav_for_bike_trailer">
+    <div class="bike_progress__block">
+      <span class="num_name title_text_regular">
+        01
+      </span>
+      <div class="line_progress__block">
+        <div class="line_active"></div>
+      </div>
+      <span class="num_name title_text_regular last_click_num">
+        ...
+      </span>
+    </div>
+    <div class="bike_progress_arrow">
+        <button type="button" class="slick-first all_class_slick">
+            <img src="/static/source/img/index/combined-arrow.svg" alt="">
+        </button>
+        <button type="button" class="slick-second all_class_slick">
+          <img src="/static/source/img/index/combined-arrow.svg" alt="">
+        </button>
+    </div>
+  </div>
 </section>
 <!-- /.first_section -->
 <section class="second_section">
   <div class="container">
-    <h1 class="second_title main__title main__title_1 color_white">
-      Відчуй переваги професіоналів
+    {% render 'index_feel' as index_feel %}
+    <h1 class="second_title main__title main__title_1 color_white db_content" data-admin_url="{{index_feel.get_admin_url}}">
+      {{index_feel.text}}
+      <!-- Відчуй переваги професіоналів -->
     </h1>
-    <div class="second_sub_title sub_title sub_title_2 color_white text_center">
-      Наші велосипеди одні з найпотужніших та найякісніших на ринку
+    {% render 'index_our_velek' as index_our_velek %}
+    <div class="second_sub_title sub_title sub_title_2 color_white text_center db_content" data-admin_url="{{index_our_velek.get_admin_url}}">
+      {{index_our_velek.text}}
+      <!-- Наші велосипеди одні з найпотужніших та найякісніших на ринку -->
     </div>
     <div class="preferens__wrap">
         <img src="/static/source/img/index/grid-eleek.png" alt="" class="hidden_preferens__bg">
@@ -256,7 +261,7 @@ section__wrapper
         </div>
         <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
         <div class="main__title main__title_5 color_white">
-            {{kole.title}}
+            {{kole.title|title}}
         </div>
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
             <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -268,7 +273,7 @@ section__wrapper
           <img src="/static/source/img/index/stop.png" alt="">
       </div>
       <a href="{{galm.get_absolute_url}}" class="main__title main__title_5 color_white">
-        {{galm.title}}
+        {{galm.title|title}}
         <div class="absolute_product_arrow">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
             <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -294,7 +299,7 @@ section__wrapper
       <div class="absolute_product_img">
           <img src="/static/source/img/index/motor.png" alt="">
       </div>
-        {{moto.title}}
+        {{moto.title|title}}
         <div class="absolute_product_arrow">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
             <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -307,7 +312,7 @@ section__wrapper
           <img src="/static/source/img/index/amort.png" alt="">
       </div>
       <a href="{{amor.get_absolute_url}}" class="main__title main__title_5 color_white">
-        {{amor.title}}
+        {{amor.title|title}}
         <div class="absolute_product_arrow">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
             <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -319,13 +324,19 @@ section__wrapper
   <div class="five_wrapp">
       <div class="five_title__block paroller" data-paroller-factor="0.5" data-paroller-type="foreground" >
         <h1 class="color_white five_title main__title main__title_1">
-          {{comp.title}}
+          {{comp.title|title}}
         </h1>
+        {% render 'index_assort' as index_assort %}
+        data-admin_url="{{index_assort.get_admin_url}}"
+        class="db_content"
         <div class="color_white sub_title sub_title_2">
-          В нашому асортименті ви можете знайти усі найнеобхідніші товари для вашого байку
+          {{index_assort.text}}
+          <!-- В нашому асортименті ви можете знайти усі найнеобхідніші товари для вашого байку -->
         </div>
-        <a href="{{comp.get_absolute_url}}" class="btn_standart btn_standart_yellow">
-          Весь асортимент
+        {% render 'index_all_assort' as index_all_assort %}
+        <a href="{{comp.get_absolute_url}}" class="btn_standart btn_standart_yellow db_content" data-admin_url="{{index_all_assort.get_admin_url}}">
+          {{index_all_assort.text}}
+          <!-- Весь асортимент -->
         </a>
       </div>
       <div class="complect__wrap">
@@ -333,7 +344,7 @@ section__wrapper
             <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
               <img src="/static/source/img/index/koleso.png" alt="" class="complect_img">
               <div class="main__title main__title_5 color_white">
-                {{kole.title}}
+                {{kole.title|title}}
               </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
                   <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -344,7 +355,7 @@ section__wrapper
             <a href="{{galm.get_absolute_url}}" class="absolute_product_arrow">
             <img src="/static/source/img/index/stop.png" alt="" class="complect_img">
             <div class="main__title main__title_5 color_white">
-            {{galm.title}}
+            {{galm.title|title}}
             </div>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
                 <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -355,7 +366,7 @@ section__wrapper
             <a href="{{vilk.get_absolute_url}}" class="absolute_product_arrow">
             <img src="/static/source/img/index/vylka.png" alt="" class="complect_img">
             <div class="main__title main__title_5 color_white">
-              {{vilk.title}}
+              {{vilk.title|title}}
             </div>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
                 <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -366,7 +377,7 @@ section__wrapper
             <a href="{{moto.get_absolute_url}}" class="absolute_product_arrow">
             <img src="/static/source/img/index/motor.png" alt="" class="complect_img">
             <div class="main__title main__title_5 color_white">
-              {{moto.title}}
+              {{moto.title|title}}
             </div>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
                 <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -377,7 +388,7 @@ section__wrapper
             <a href="{{amor.get_absolute_url}}" class="absolute_product_arrow">
             <img src="/static/source/img/index/amort.png" alt="" class="complect_img">
             <div class="main__title main__title_5 color_white">
-              {{amor.title}}
+              {{amor.title|title}}
             </div>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
                 <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
