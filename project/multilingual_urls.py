@@ -10,6 +10,10 @@ from box.apps.sw_shop.sw_cart.decorators import cart_exists
 
 def index(request):
     page = Page.objects.get(code='index')
+    test_drive_sliders = TestDriveSlider.objects.all()
+    print(test_drive_sliders)
+    velo_sliders = VeloSlider.objects.all()
+    print(velo_sliders)
     return render(request, 'project/index.html', locals())
 
 

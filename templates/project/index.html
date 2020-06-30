@@ -10,26 +10,28 @@
 section__wrapper
 {% endblock main_class %}
 {% block content %}
+
 <section class="first_section">
   <div class="bike_trailer__block">
-    {% for slider in '12345'|make_list %}
-    123123123
+    {% for slider in test_drive_sliders %}
     <div class="bike_trailer__wrapper">
       <div class="bike_trailer_content">
         <h1 class="main__title main__title_1 color_black slide-name anim_text">
-          Новий <span class="main__title main__title_1 color_yellow">Eleek Atom1</span> — <br> відчуй драйв!
+          {{slider.text}}
         </h1>
         <div class="bike_trailer_btn__wrap slide-name anim_text">
             <a href="{% url 'test_drive' %}" class="btn_standart btn_standart_transparent">
               {% trans 'Тест-драйв' %}
             </a>
-            <a href="{% url 'item' 1 %}" class="btn_standart btn_standart_black">
+            {% if slider.item %}
+            <a href="{{slider.item.get_absolute_url}}" class="btn_standart btn_standart_black">
               {% trans 'Детальніше' %}
             </a>
+            {% endif %}
         </div>
       </div>
         <div class="bike_trailer_img__block">
-            <img class="bike_trailer_img slide-img anim_img" src="/static/source/img/index/123.png" alt="">
+            <img class="bike_trailer_img slide-img anim_img" src="{{slider.image.url}}" alt="{{slider.alt}}">
         </div>
     </div>
     {% endfor %}

@@ -63,9 +63,65 @@ class TestDriveModel(models.Model):
     def __str__(self):
         return f'{self.id}'
 
+    @classmethod
+    def modeltranslation_fields(self):
+        return ['name']
+
     class Meta:
         verbose_name = 'модель велосипеда для тест драйву'
         verbose_name_plural = 'моделі велосипедів для тест драйву'
+
+
+from tinymce import HTMLField
+
+
+class TestDriveSlider(models.Model):
+    text  = HTMLField(verbose_name="Текст")
+    item  = models.ForeignKey(verbose_name="Товар", to="sw_catalog.Item", on_delete=models.SET_NULL, null=True, blank=True)
+    image = models.ImageField(verbose_name="Картинка",)
+    alt   = models.CharField(verbose_name="Альт", max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.id}'
+    
+    @classmethod
+    def modeltranslation_fields(self):
+        return ['text', 'alt']
+
+    class Meta:
+        verbose_name = 'модель велосипеда для тест драйву'
+        verbose_name_plural = 'моделі велосипедів для тест драйву'
+
+
+class VeloSlider(models.Model):
+    item     = models.ForeignKey(verbose_name="Товар", to="sw_catalog.Item", on_delete=models.SET_NULL, null=True, blank=True)
+    image    = models.ImageField(verbose_name="Картинка",)
+    alt      = models.CharField(verbose_name="Альт", max_length=255, blank=True, null=True)
+    name     = models.CharField(verbose_name="Назва", max_length=255, blank=True, null=True)
+    distance = models.CharField(verbose_name="Дистанція", max_length=255)
+    speed    = models.CharField(verbose_name="Макс. швидкість", max_length=255)
+    power    = models.CharField(verbose_name="Потужність", max_length=255)
+
+    def __str__(self):
+        return f'{self.id}'
+    
+    @classmethod
+    def modeltranslation_fields(self):
+        return [
+            'alt',
+            'distance',
+            'speed',
+            'power',
+            'name',
+        ]
+
+    class Meta:
+        verbose_name = 'модель велосипеда для тест драйву'
+        verbose_name_plural = 'моделі велосипедів для тест драйву'
+
+
+
+
 
 
 

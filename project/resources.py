@@ -1,10 +1,12 @@
 from import_export.resources import ModelResource
 from .models import * 
 
+
 class CertificateResource(ModelResource):
     class Meta:
         model = Certificate
         exclude = []
+
 
 class PartnerResource(ModelResource):
     class Meta:
@@ -18,7 +20,14 @@ class TestDriveModelResource(ModelResource):
         exclude = []
 
 
+class TestDriveSliderResource(ModelResource):
+    class Meta:
+        model = TestDriveSlider
+        exclude = []
 
 
-
+class VeloSliderResource(ModelResource):
+    class Meta:
+        model = VeloSlider
+        exclude = []
 
