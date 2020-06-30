@@ -171,9 +171,11 @@ section__wrapper
 <!-- /.second_section -->
 <section class="three_section">
     <div class="eleek_title__wrap">
-      <h1 class="color_black three_title main__title main__title_1">
-          Велосипеди ELEEK
-      </h1>
+      <a href="{{velo.get_absolute_url}}">
+        <h1 class="color_black three_title main__title main__title_1">
+          {{velo.title|title}}
+        </h1>
+      </a>
       <div class="eleek_arrow__block">
           <div class="eleek_prev_arrow eleek_arrow">
               <img src="/static/source/img/index/combined-arrow.svg" alt="">
@@ -223,7 +225,7 @@ section__wrapper
             </div>
           </div>
           <a href="{% url 'item' 1 %}" class="eleek_slide_btn btn_standart btn_standart_transparent">
-            Детальніше
+            {% trans 'Детальніше' %}
           </a>
         </div>
       {% endfor %}
