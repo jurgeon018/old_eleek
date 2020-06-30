@@ -2,12 +2,13 @@ rm db.sqlite3
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 python3 manage.py makemigrations
 python3 manage.py migrate 
-python3 manage.py sw_set_user starway starway dev@starwayua.com +88005553535 admin_name admin_surname  
+python3 manage.py sw_import -d import/
+python3 manage.py gen_random_info 
+
+python3 manage.py sw_set_user admin eleek69018 dev@starwayua.com +88005553535 admin_name admin_surname  
 python3 manage.py sw_set_user jurgeon018 yfpfhrj69018 jurgeon018@gmail.com +380994507803 Andrew Mendela  
 python3 manage.py sw_set_site eleek.com.ua 
 
-python3 manage.py sw_import -d import/
-python3 manage.py gen_random_info 
 
 python3 manage.py runserver 127.0.0.1:8000
 

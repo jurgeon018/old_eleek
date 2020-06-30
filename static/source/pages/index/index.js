@@ -174,8 +174,8 @@ function create_animation(arrow, button) {
   document.addEventListener('mousemove', function (e) {
     x = e.clientX / 10;
     y = e.clientY / 10;
-    arrow.style.top = y + 'px';
-    arrow.style.right = x + 'px';
+    arrow.setAttribute("style", "margin-top: ".concat(y, "px; margin-right: ").concat(x, "px;")); // arrow.style.top = y + 'px';
+    // arrow.style.right = x + 'px';
   });
   button.addEventListener('mouseenter', function () {
     arrow.style.opacity = 1;
@@ -861,6 +861,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+skrollr.init();
 /** @preserve jQuery animateNumber plugin v0.0.14
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber

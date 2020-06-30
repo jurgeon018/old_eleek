@@ -32,8 +32,11 @@ function create_animation(arrow, button) {
     x = (e.clientX / 10);
     y = (e.clientY / 10);
 
-    arrow.style.top = y + 'px';
-		arrow.style.right = x + 'px';
+    arrow.setAttribute("style", `margin-top: ${y}px; margin-right: ${x}px;`);
+
+    // arrow.style.top = y + 'px';
+		// arrow.style.right = x + 'px';
+	
 	});
 
 	button.addEventListener('mouseenter', () => {
