@@ -1,5 +1,5 @@
 {% extends 'project/base.html' %}
-{% load i18n sw_content %}
+{% load i18n sw_content sw_catalog %}
 {% block styles %}
 <link rel="stylesheet" href="/static/source/pages/items/index.css.map">
 <link rel="stylesheet" href="/static/source/lib/slick/slick.min.css">
@@ -16,18 +16,11 @@ item_section__wrapper
     <div class="item_slider__block">
       <div class="slider_card-wrap sticky">
         <div class="main_card_slider">
+          {% for i in '1234'|make_list %}
           <div class="img-wrap">
-            <img src="/static/source/img/item/cat-1.jpg" alt="">
+            <img src="/static/source/img/item/cat-{{i}}.jpg" alt="">
           </div>
-          <div class="img-wrap">
-            <img src="/static/source/img/item/cat-2.jpg" alt="">
-          </div>
-          <div class="img-wrap">
-            <img src="/static/source/img/item/cat-3.jpg" alt="">
-          </div>
-          <div class="img-wrap">
-            <img src="/static/source/img/item/cat-4.jpg" alt="">
-          </div>
+          {% endfor %}
         </div>
         <div class="bottom_slider__wrap">
           <div class="three_de__block">
@@ -37,51 +30,38 @@ item_section__wrapper
                   <path d="M.725 12.531L22.667 24.286 44.608 12.531M22.667 52.846L22.667 24.286" transform="translate(1.167 1.857)"/>
               </g>
             </svg>
+            <a href="{% url 'constructor' %}">
             <div class="three_title standart_title standart_title_5 color_black">
-              Показати в 3Д
-            </div>
+                Показати в 3Д
+              </div>
+            </a>
           </div>
           <div class="mini_slider">
+            {% for i in '1234'|make_list %}
             <div class="img-wrap">
-              <img src="/static/source/img/item/cat-1.jpg" alt="">
+              <img src="/static/source/img/item/cat-{{i}}.jpg" alt="">
             </div>
-            <div class="img-wrap">
-              <img src="/static/source/img/item/cat-2.jpg" alt="">
-            </div>
-            <div class="img-wrap">
-              <img src="/static/source/img/item/cat-3.jpg" alt="">
-            </div>
-            <div class="img-wrap">
-              <img src="/static/source/img/item/cat-4.jpg" alt="">
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
     </div>
     <div class="item_select__block">
+      <a href="{% url 'item_category' 1 %}">
       <div class="item_category_name sub_title sub_title_2 color_black">
-        Електровелосипеди
+        {{item.category.title|title}}
       </div>
+      </a>
       <div class="item_name__block">
         <div class="item_name main__title main__title_2 color_black">
-          Велосипед Neo
+          {{item.title|title}}
         </div>
         <div class="item_rating__block">
-          <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+          {% for i in '12345' %}
+          <svg class="rating_svg {% if True %} rating_svg_active {% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
             <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
           </svg>
-          <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-          </svg>
-          <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-          </svg>
-          <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-          </svg>
-          <svg class="rating_svg" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-            <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-          </svg>
+          {% endfor %}
           <span class="rating_num standart_title standart_title_5 color_black">
             4/5
           </span>
@@ -89,7 +69,8 @@ item_section__wrapper
       </div>
       <div class="item_price__block">
         <div class="item_price main__title main__title_3 color_black">
-          ₴ 100 000
+          ₴ 100 000 
+          {{item.price}} {{item.currency.code}}
         </div>
         <div class="item_btn_price btn_standart btn_standart_black color_white">
           Купити
@@ -100,7 +81,7 @@ item_section__wrapper
           Ціна додаткових опцій:
         </div>
         <div class="addit_price main__title main__title_5">
-          ₴ 25 000
+          ₴ 0
         </div>
       </div>
       <div class="kredit__block">
@@ -111,48 +92,82 @@ item_section__wrapper
           Купити в кредит
         </div>
       </div>
+
+      <div class="item_char_title main__title main__title_4">
+        Характеристики
+      </div>
       <div class="characteristick__wrap">
         <div class="char__block">
-          {% for feature in '13579' %}
+          {% for feature in odd_features %}
           <div class="char_prof">
             <div class="char_text standart_title standart_title_5 color_black">
-              Дистанція
+              {{feature.name}}
             </div>
             <div class="char_result main__title main__title_5 color_black">
-              До 150 км
+              {{feature.value}}
             </div>
           </div>
           {% endfor %}
         </div>
         <div class="char__block">
-          {% for feature in '2468' %}
+          {% for feature in even_features %}
           <div class="char_prof">
             <div class="char_text standart_title standart_title_5 color_black">
-              Характеристика {{feature}}
+              {{feature.name}}
             </div>
             <div class="char_result main__title main__title_5 color_black">
-              Значення характеристик {{feature}}
+              {{feature.value}}
             </div>
           </div>
           {% endfor %}
         </div>
       </div>
 
-      <div class="item_char_title main__title main__title_4">
-        Кольора
+      
+      {% for options in item.get_item_options %}
+      <div class="option__wrap">
+        <div class="item_char_title main__title main__title_4">
+          {{options.attribute.name|title}}
+        </div>
+        <div class="option_content__block">
+          {% for option in options.get_values %}
+          <div class="option_content_prof">
+            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+            <div class="option_text standart_title standart_title_6">
+              {{option.value.value}} ({{option.price}} {{option.currency.code}})
+            </div>
+          </div>
+          {% endfor %}
+        </div>
       </div>
-      {% for attribute in '123456789' %}
+      {% endfor %}
+
+
+
+      {% for attribute_category in item.get_attribute_categories %}
+      {{attribute_category}}
+      {{attribute_category.get_attributes}}
+        
+      {% endfor %}
+      
+      <div class="item_char_title main__title main__title_4">
+        Кольори
+      </div>
+      {% for attribute in item.get_item_attributes %}
       <div class="color_change__wrap">
         <div class="color_change__block">
           <div class="color_change_prof">
             <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-              Назва атриута {{attribute}}
+              {{attribute.attribute.name}}
             </div>
-            <div data-color="#000" style="background:#000;" class="main_color_change_oval color_change_oval">
-              
+            <div data-color="#{{attribute.get_values.first.value.code}}" style="background:#{{attribute.get_values.first.value.code}};" class="main_color_change_oval color_change_oval">
+              <!-- .... -->
+              <!-- Код кольору вибраного значення -->
             </div>
             <div class="color_change_name sub_title sub_title_2 color_black">
-              Значення атрибута {{attribute}}
+              <!-- .... -->
+              <!-- Назва вибраного значення -->
+              {{attribute.get_values.first.value.value}}
             </div>
           </div>
           <div class="color_change_btn">
@@ -161,15 +176,15 @@ item_section__wrapper
         </div>
         <div class="color_change_content">
           <div class="color_change_content_wrap">
-            <div data-color='#090909' style="background:#090909;" class="color_change_oval color_change_select">
-                <div class="success_color">
-                  <img src="/static/source/img/item/okey.svg" alt="">
-                </div>
-            </div>
-            {% for colour in '123456789'|make_list %}
-            <div data-color='#{{colour}}{{attribute}}2a2a' style="background:#{{colour}}a2a2a;" class="color_change_oval color_change_select">
-              <div class="success_color">
-                <img src="/static/source/img/item/okey.svg" alt="">
+            {% for value in attribute.get_values %}
+            <div
+              class="color_change_oval color_change_select"
+              style="background:#{{value.value.code}};" 
+              data-color='#{{value.value.code}}' 
+              data-value="{{value.value.value}}"
+            >
+              <div class="success_color {% if forloop.counter == 1 %}success_color_active{% endif %}">
+                <img src="/static/source/img/item/okey.svg" alt="open">
               </div>
             </div>
             {% endfor %}
@@ -177,30 +192,33 @@ item_section__wrapper
         </div>
       </div>
       {% endfor %}
+      
+
       <div class="option__wrap">
         <div class="item_char_title main__title main__title_4">
-          Опції
+          Атрибути
         </div>
         <div class="option_content__block">
           {% for option in '123456789'|make_list %}
           <div class="option_content_prof">
             <img class="option_img" src="/static/source/img/item/close.svg" alt="">
             <div class="option_text standart_title standart_title_6">
-              Опція {{option}}
+              Атрибут {{option}}
             </div>
           </div>
           {% endfor %}
         </div>
-      </div>
+      </div> 
+
     </div>
   </div>
 </section>
 <section class="item_tab">
   <div class="tab_container">
     <div class="item_tab_link__block">
-      {% for feature_category in '123'|make_list %}
+      {% for feature_category in item.get_feature_categories %}
       <div data-tab="{{forloop.counter|add:'1'}}" class="item_tab_link standart_title standart_title_3 color_black {% if forloop.counter == 1 %} item_tab_link_active {% endif %}">
-        Категорія хараткретисики {{feature_category}}
+        {{feature_category.name}}
       </div>
       {% endfor %}
       <div data-tab="1" class="item_tab_link item_tab_link_3 standart_title standart_title_3 color_black">
@@ -208,16 +226,17 @@ item_section__wrapper
       </div>
     </div>
     <div class="item_tab_content__block">
-      {% for feature_category in '123'|make_list %}
+      {% for feature_category in item.get_feature_categories %}
       <div id="{{forloop.counter|add:'1'}}" class="item_tab_content {% if forloop.counter == 1 %} item_tab_content_active {% endif %}">
         <div class="characteristick__wrap">
-            {% for feature in '123456789' %}
+            {% get_category_features feature_category item as features %}
+            {% for feature in features %}
             <div class="char_prof">
               <div class="char_text standart_title standart_title_5 color_black">
-                Характеристика {{feature}}
+                {{feature.name}}
               </div>
               <div class="char_result main__title main__title_5 color_black">
-                Значення характеристики {{feature}}
+                {{feature.value}}
               </div>
             </div>
             {% endfor %}

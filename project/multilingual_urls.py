@@ -1,8 +1,11 @@
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render 
-from box.apps.sw_shop.sw_catalog.models import Item 
-from .models import * 
 
+from .models import * 
+from box.apps.sw_shop.sw_catalog.models import *
 from box.core.sw_content.models import Page 
+from box.apps.sw_shop.sw_cart.decorators import cart_exists
 
 
 def index(request):
@@ -12,23 +15,24 @@ def index(request):
 
 def about(request):
     page = Page.objects.get(code='about')
-    print(page)
     certificates = Certificate.objects.all()
     partners = Partner.objects.all()
     return render(request, 'project/about.html', locals())
 
-from django.shortcuts import get_object_or_404
 
-
-def items(request, slug):
-    # category = get_object_or_404(ItemCategory, slug=slug)
-    # page = category 
-    return render(request, 'project/items.html', locals())
+def item_category(request, slug):
+    category = get_object_or_404(ItemCategory, slug=slug)
+    items    = Item.objects.filter(category=category)
+    page = category 
+    return render(request, 'project/item_category.html', locals())
 
 
 def item(request, slug):
-    # item = get_object_or_404(Item, slug=slug)
-    # page = item
+    item = get_object_or_404(Item, slug=slug)
+    odd_features = ItemFeature.objects.filter(item=item)[:10:2]
+    even_features = ItemFeature.objects.filter(item=item)[1:10:2]
+    page = item
+    # colour_
     return render(request, 'project/item.html', locals())
 
 
@@ -46,11 +50,11 @@ def test_drive(request):
     page = Page.objects.get(code='test_drive')
     return render(request, 'project/test_drive.html', locals())
 
+
 def delivery(request):
     page = Page.objects.get(code='delivery')
     return render(request, 'project/delivery.html', locals())
 
-from box.apps.sw_shop.sw_cart.decorators import cart_exists
 
 @cart_exists
 def order(request):
@@ -59,10 +63,16 @@ def order(request):
 
 
 def search(request):
-    page = Page.objects.get(code='search')
+    page  = Page.objects.get(code='search')
+    query = request.POST or request.GET
+    query = query.get('main_search','')
+    if query:
+        search_items = Item.objects.all().filter(
+            title__icontains=query,
+        )
     return render(request, 'project/search.html', locals())
 
-from django.contrib.auth.decorators import login_required
+# TEST DRIVE 
 
 @login_required
 def profile(request):
@@ -92,7 +102,8 @@ urlpatterns = [
     
     path('',             index,       name='index'),
     path('about/',       about,       name='about'),
-    path('items/<slug>/',       items,       name='items'),
+    path('item_category/<slug>/',       item_category,       name='item_category'),
+    
     path('item/<slug>/', item,        name='item'),
     path('faq/',         faq,         name='faq'),
     path('constructor/', constructor, name='constructor'),

@@ -1,0 +1,134 @@
+{% extends 'project/base.html' %}
+{% load i18n sw_content %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/items/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/nouislider/nouislider.min.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/pages/items/index.css?v=3">
+{% endblock styles %}
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
+{% block content %}
+<section class="prod_header">
+  <div class="container">
+      <div class="product-block">
+          <div class="product_filter">
+              <div class="filter filter_center">
+                  <input type="checkbox" id="filter3" name="filter-group" class="inp_filter">
+                  <label for="filter3" class="filter-title">
+                      <span class="filter__title standart_title standart_title_4 color_black">
+                        Фільтр
+                      </span> 
+                      <div class="mobale_filter">
+                          <img src="/static/source/img/items/set-2.svg" alt="">
+                      </div>
+                  </label> 
+                  <div class="filter-content"> 
+                      <form action="" class="filter_form">
+                        <div class="filter_category standart_title standart_title_4 color_black">
+                          Ціна
+                      </div>
+                      <input type="hidden" name="min_sum" class="input_for_min_range">
+                      <input type="hidden" name="max_sum" class="input_for_max_range">
+                          <div class="cost_filter_num standart_title standart_title_6 color_black">
+                              
+                          </div>
+                      <div class="range_slider" id="slider"></div>
+                      {% for category in '1234'|make_list %}
+                      <div class="items_filter_content__wrap items_filter_content__wrap_active">
+                        <div class="items_filter_title standart_title standart_title_4 color_black">
+                          Категорія {{category}}
+                        </div>
+                        <div class="items_filter_content">
+                          {% for filter in '123456789'|make_list %}
+                          <div class="radio_block">
+                            <input class="input_radio" name="discount" type="checkbox" id="rb-1"> 
+                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-1">Фільтр {{filter}}</label>
+                          </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                      {% endfor %}
+                      </form>
+                  </div> 
+              </div> 
+          </div>
+          <div class="product_content">
+            <div class="mini_navigate-block">
+              <a href="{% url 'index' %}" class="mini_nav_name sub_title sub_title_2 color_black_2">
+                Головна
+              </a>
+              <span class="slash sub_title sub_title_2 color_black">
+                  /
+              </span>
+              <a href="{% url 'shop' %}" class="mini_nav_name sub_title sub_title_2 color_black_2">
+                Магазин
+              </a>
+              {% for cat in category.parents %}
+                {% if cat%}
+                  <span class="slash sub_title sub_title_2 color_black">
+                      /
+                  </span>
+                  <a href="{{cat.get_absolute_url}}" class="mini_nav_name sub_title sub_title_2 color_black_2">
+                    {{cat.title|title}}
+                  </a>
+                {% endif %}
+              {% endfor %}
+              <!-- <span class="slash sub_title sub_title_2 color_black">
+                  /
+              </span>
+              <a href="{{category.get_absolute_url}}" class="mini_nav_name sub_title sub_title_2 color_black_2">
+                Амортизатори
+              </a> -->
+          </div>
+              <h2 class="product_title main__title main__title_3 color_black">
+                {{category.title}}
+              </h2>
+              <div class="main_product-block">
+                {% for item in items %}
+                  <div class="product_card-prof">
+                      <a href="{{item.get_absolute_url}}" class="prod_card_link">
+                          <img src="/static/source/img/item/img-0041.jpg" alt="" class="prod_card-img">
+                      </a>
+                      <div class="prod_card_info__wrap">
+                        <div class="prod_card-name standart_title standart_title_4 color_black">
+                          {{item.title|title}}
+                        </div>
+                        <div class="prod_card-info">
+                            <div class="prod_card-cost main__title main__title_5 color_black">
+                                {{item.price}} {{item.currency}}
+                            </div>
+                            <a href="{{item.get_absolute_url}}" class="prod_card-btn">
+                                <img class="absolute_center" src="/static/source/img/items/okey.svg" alt="">
+                            </a>
+                        </div>
+                      </div>
+                  </div>
+                {% endfor %}
+              </div>
+              <div class="prod_card_more standart_title standart_title_4 color_black">
+                  Більше товарів
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- /.container -->
+</section>
+{% endblock content %}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/slick/slick.min.js"></script> 
+<script src="/static/source/lib/wow/wow.min.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/source/lib/nouislider/nouislider.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/pages/items/index.js"></script> 
+{% endblock scripts %}
+
+
+

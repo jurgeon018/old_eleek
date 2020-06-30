@@ -91,7 +91,7 @@ item_section__wrapper
       </div>
   </div>
   <div class="drive_form__block contact_form__block">
-    <form action="" class="drive__form">
+    <form action="{% url 'sw_contact' %}" class="drive__form">
       {% render 'about_contacts' as about_contacts %}
       <h3 class="drive_title main__title main__title_3 color_black db_content" data-admin_url="{{about_contacts.get_admin_url}}">
         {{about_contacts.text}}
@@ -103,7 +103,7 @@ item_section__wrapper
           <!-- Ім'я -->
           {{about_name.text}}
         </label>
-        <input type="password" id="login_name" name="phone" class="login_name login_input input_focus">
+        <input type="password" id="login_name" name="name" class="login_name login_input input_focus">
       </div>
       <div class="footer_input__wrap inp-vak-wrap">
         {% render 'about_phone' as about_phone %}
@@ -128,7 +128,7 @@ item_section__wrapper
           <!-- Повідомлення -->
           {{about_message.text}}
         </label>
-        <textarea name='drive_send' id="drive_send" class="login_input input_focus"></textarea>
+        <textarea name='message' id="drive_send" class="login_input input_focus"></textarea>
       </div>
       {% render 'about_order' as about_order %}
       <input type="submit" value="{{about_order.text}}" class="btn_standart btn_standart_yellow db_content" data-admin_url="{{about_order.get_admin_url}}">

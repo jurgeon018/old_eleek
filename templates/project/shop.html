@@ -18,19 +18,19 @@ item_section__wrapper
       Магазин
     </h2>
     <div class="shop__wrapper">
-      <a href="{% url 'items' %}" class="shop_item">
+      <a href="{{velo.get_absolute_url}}" class="shop_item">
         <img src="/static/source/img/shop/fl-002-2020-may-15-01-52-19-pm-000-customized-view-24433306083.png" alt="" class="shop_bg">
         <div class="shop_name_category main__title main__title_3 color_yellow">
           Електровелосипеди
         </div>
       </a>
-      <a href="{% url 'items' %}" class="shop_item">
+      <a href="{{ramy.get_absolute_url}}" class="shop_item">
         <img src="/static/source/img/shop/rrama-png.png" alt="" class="shop_bg">
         <div class="shop_name_category main__title main__title_3 color_yellow">
           Рами
         </div>
       </a>
-      <a href="{% url 'items' %}" class="shop_item">
+      <a href="{{comp.get_absolute_url}}" class="shop_item">
         <img src="/static/source/img/shop/amort.png" alt="" class="shop_bg">
         <div class="shop_name_category main__title main__title_3 color_yellow">
           Комплектуючі
