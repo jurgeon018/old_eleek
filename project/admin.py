@@ -14,3 +14,13 @@ class CertificateAdmin(admin.ModelAdmin):
 class PartnerAdmin(admin.ModelAdmin):
     pass 
 
+
+@admin.register(TestDrive)
+class TestDriveAdmin(admin.ModelAdmin):
+    pass 
+
+
+@admin.register(TestDriveModel)
+class TestDriveModelAdmin(admin.ModelAdmin):
+    pass 
+

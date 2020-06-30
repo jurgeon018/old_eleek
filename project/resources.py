@@ -12,3 +12,13 @@ class PartnerResource(ModelResource):
         exclude = []
 
 
+class TestDriveModelResource(ModelResource):
+    class Meta:
+        model = TestDriveModel
+        exclude = []
+
+
+
+
+
+

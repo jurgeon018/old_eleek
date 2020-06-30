@@ -16,7 +16,7 @@ item_section__wrapper
 </div>
 <section class="usually_section">
   <div class="drive_form__block">
-    <form action="{% url 'test_drive_contact' %}" class="drive__form">
+    <form action="{% url 'test_drive_contact' %}" method='POST' class="drive__form">
       <h3 class="drive_title main__title main__title_2 color_black">
         Тест-драйв
       </h3>
@@ -27,13 +27,13 @@ item_section__wrapper
         <label for="login_name" class="login_label label__style color_black">
           Ім'я
         </label>
-        <input type="password" id="login_name" name="phone" class="login_name login_input input_focus">
+        <input id="login_name" name="name" class="login_name login_input input_focus">
       </div>
       <div class="footer_input__wrap inp-vak-wrap">
         <label for="login_tel" class="login_label label__style color_black">
           Телефон
         </label>
-        <input type="password" id="login_tel" name="phone" class="login_tel login_input input_focus">
+        <input id="login_tel" name="phone" class="login_tel login_input input_focus">
       </div>
       <div class="footer_input__wrap inp-vak-wrap">
         <label for="login_mail" class="login_label label__style color_black">
@@ -46,9 +46,9 @@ item_section__wrapper
           Модель велосипеда
         </label>
         <select name="select_drive" id="" style="width: 100%;" class="select_drive">
-          <option selected='selected' value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
+          {% for model in models %}
+          <option {% if forloop.counter == 1 %} selected='selected' {% endif%} value="{{model.name}}">{{model.name}}</option>
+          {% endfor %}
         </select>
       </div>
       <div class="footer_input__wrap area_input__wrap inp-vak-wrap">

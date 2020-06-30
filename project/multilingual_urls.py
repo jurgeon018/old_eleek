@@ -48,6 +48,7 @@ def constructor(request):
 
 def test_drive(request):
     page = Page.objects.get(code='test_drive')
+    models = TestDriveModel.objects.all()
     return render(request, 'project/test_drive.html', locals())
 
 
