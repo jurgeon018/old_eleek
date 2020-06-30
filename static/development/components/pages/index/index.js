@@ -6,11 +6,6 @@ import './five_section.scss';
 import './six_section.scss';
 
 
-
-skrollr.init();
-
-
-
 /** @preserve jQuery animateNumber plugin v0.0.14
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber
@@ -41,7 +36,6 @@ skrollr.init();
       handler(tween.now, tween);
     }
   };
-
   if (!$.Tween || !$.Tween.propHooks) {
     $.fx.step.number = handle;
   } else {
