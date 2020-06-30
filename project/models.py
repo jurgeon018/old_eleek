@@ -73,13 +73,16 @@ class TestDriveModel(models.Model):
 
 
 from tinymce import HTMLField
-
+from box.core.helpers import get_admin_url
 
 class TestDriveSlider(models.Model):
     text  = HTMLField(verbose_name="Текст")
     item  = models.ForeignKey(verbose_name="Товар", to="sw_catalog.Item", on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField(verbose_name="Картинка",)
     alt   = models.CharField(verbose_name="Альт", max_length=255, blank=True, null=True)
+
+    def get_admin_url(self):
+        return get_admin_url(self)
 
     def __str__(self):
         return f'{self.id}'
@@ -105,6 +108,9 @@ class VeloSlider(models.Model):
     def __str__(self):
         return f'{self.id}'
     
+    def get_admin_url(self):
+        return get_admin_url(self)
+
     @classmethod
     def modeltranslation_fields(self):
         return [

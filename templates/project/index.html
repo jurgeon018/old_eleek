@@ -14,7 +14,7 @@ section__wrapper
 <section class="first_section">
   <div class="bike_trailer__block">
     {% for slider in test_drive_sliders %}
-    <div class="bike_trailer__wrapper">
+    <div class="bike_trailer__wrapper db_content" data-admin_url="{{slider.get_admin_url}}">
       <div class="bike_trailer_content">
         <h1 class="main__title main__title_1 color_black slide-name anim_text">
           {{slider.text}}
@@ -84,7 +84,7 @@ section__wrapper
 
                     </span>
                     <span class="pref_text main__title main__title_5 color_white">
-                      Дистанція
+                      {% trans 'Дистанція' %}
                     </span>
                 </div>
                 <div class="preferens_counter__block">
@@ -92,7 +92,7 @@ section__wrapper
                       0
                     </span>
                     <span class="sub_title sub_title_1 color_white">
-                      км
+                      {% trans 'км' %}
                     </span>
                 </div>
           </div>
@@ -105,7 +105,7 @@ section__wrapper
 
                   </span>
                   <span class="pref_text main__title main__title_5 color_white">
-                    Швидкість
+                    {% trans 'Швидкість' %}
                   </span>
               </div>
               <div class="preferens_counter__block">
@@ -113,7 +113,7 @@ section__wrapper
                     0
                   </span>
                   <span class="sub_title sub_title_1 color_white">
-                    км/год
+                    {% trans 'км/год' %}
                   </span>
               </div>
           </div>
@@ -129,7 +129,7 @@ section__wrapper
 
                 </span>
                 <span class="pref_text main__title main__title_5 color_white">
-                  Потужність
+                  {% trans 'Потужність' %}
                 </span>
             </div>
             <div class="preferens_counter__block">
@@ -150,7 +150,7 @@ section__wrapper
 
               </span>
               <span class="pref_text main__title main__title_5 color_white">
-                Потужність
+                {% trans 'Час' %}
               </span>
           </div>
           <div class="preferens_counter__block">
@@ -158,7 +158,7 @@ section__wrapper
                 0
               </span>
               <span class="sub_title sub_title_1 color_white">
-                год
+                {% trans 'год' %}
               </span>
           </div>
           </div>
@@ -188,13 +188,17 @@ section__wrapper
       </div>
     </div>
     <div class="eleek_slider__wrap">
-      {% for slide in '123'|make_list %}
+      {% for slide in velo_sliders %}
         <div class="eleek_slide">
           <div class="eleek_num_counter main__title main__title_01 color_white">
-            0{{slide}}
+            {% if forloop.counter > 9 %}
+              {{forloop.counter}}
+            {% else %}
+              0{{forloop.counter}}
+            {% endif %}
           </div>
           <div class="eleek_slide_name main__title main__title_3 color_black">
-            Neo {{slide}}
+            {{slide.name}}
           </div>
           <div class="eleek_slide_img">
               <img src="/static/source/img/index/slide-{{slide}}.png" alt="">
@@ -203,32 +207,34 @@ section__wrapper
           <div class="eleek_slide_info__wrapp">
             <div class="eleek_slide_info__block">
               <div class="eleek_slide_info sub_title sub_title_2">
-                Дистанція
+                {% trans 'Дистанція' %}
               </div>
               <div class="eleek_slide_info eleek_info_result">
-                До 15{{slide}} км
+                {{slide.distance}}
               </div>
             </div>
             <div class="eleek_slide_info__block">
               <div class="eleek_slide_info sub_title sub_title_2">
-                Макс. швидкість
+                {% trans 'Макс. швидкість' %}
               </div>
               <div class="eleek_slide_info eleek_info_result">
-                8{{slide}} км/год
+                {{slide.speed}}
               </div>
             </div>
             <div class="eleek_slide_info__block">
               <div class="eleek_slide_info sub_title sub_title_2">
-                Потужність
+                {% trans 'Потужність' %}
               </div>
               <div class="eleek_slide_info eleek_info_result">
-                {{slide}}000 Вт
+                {{slide.power}}
               </div>
             </div>
           </div>
-          <a href="{% url 'item' 1 %}" class="eleek_slide_btn btn_standart btn_standart_transparent">
+          {% if slide.item %}
+          <a href="{{slide.item.get_absolute_url}}" class="eleek_slide_btn btn_standart btn_standart_transparent">
             {% trans 'Детальніше' %}
           </a>
+          {% endif %}
         </div>
       {% endfor %}
     </div>
