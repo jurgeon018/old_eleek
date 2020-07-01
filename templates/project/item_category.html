@@ -13,6 +13,7 @@ item_section__wrapper
 {% endblock main_class %}
 {% block content %}
 <section class="prod_header">
+<input type="hidden" class="category_id" name="category_id" value={{category.id}}>
   <div class="container">
       <div class="product-block">
           <div class="product_filter">
@@ -28,6 +29,8 @@ item_section__wrapper
                   </label> 
                   <div class="filter-content"> 
                       <form action="" class="filter_form">
+                        <input type="hidden" class="hidden_category_id" data-attribute_id="{{attribute.id}}" name="colour"
+                            value="{{forloop.counter}}">
                         <div class="filter_category standart_title standart_title_4 color_black">
                           {% trans 'Ціна' %}
                       </div>
@@ -48,7 +51,7 @@ item_section__wrapper
                         <div class="items_filter_content">
                           {% for subcategory in category.get_children %}
                           <div class="radio_block">
-                            <input class="input_radio" name="discount" type="checkbox" id="rb-1"> 
+                            <input class="input_radio input_all_arr" name="discount" type="checkbox" id="rb-1"> 
                             <label class="label_radio standart_title standart_title_6 color_black" for="rb-1">{{subcategory.title}}</label>
                           </div>
                           {% endfor %}

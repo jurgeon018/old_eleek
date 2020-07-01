@@ -707,6 +707,7 @@ function Onload() {
   //     valide_form(dinamic_main_id, '.inp-mini-wrap', false);
   // }
   valide_form('.footer_form', '.inp-vak-wrap', true);
+  valide_form('.drive__form', '.inp-vak-wrap', true);
   valide_form('#comment_form', '.inp-vak-wrap', true);
   valide_form('.registery_form', '.inp-vak-wrap', false);
 }
@@ -942,6 +943,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/pages/items/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
+var page_number = 0;
+var super_kostile = false;
 var hidden_min_range = $('.input_for_min_range');
 var hidden_max_range = $('.input_for_max_range');
 var rangeFinder = $('.range_slider').length;
@@ -977,6 +980,32 @@ $('.items_filter_title').on('click', function () {
 $('.prod_card_more').on('click', function () {
   get_card_generate();
 });
+
+function generate_arr_attr(all_arr) {
+  var filter_prof = document.querySelectorAll('.filter_form');
+  filter_prof.forEach(function (item, index, array) {
+    var current_id = $(item).find('.hidden_category_id').attr('data-attribute_id');
+    var current_inp = $(item).find('.input_all_arr');
+    var period_arr = {
+      attribute_id: current_id,
+      value_ids: ''
+    };
+    var per_arr = [];
+    $(current_inp).each(function (item, index, array) {
+      if ($(index)[0].checked) {
+        if ($(index).hasClass('input_color')) {
+          per_arr.push($(index).attr('data-value_id'));
+        } else {
+          per_arr.push($(index).attr('data-value_id'));
+        }
+      }
+    }); // var new_per = per_arr.substring(0, per_arr.length - 1);
+
+    period_arr.value_ids = per_arr;
+    all_arr.push(period_arr);
+    return all_arr;
+  });
+}
 
 function get_card_generate() {
   var all_array = [];
@@ -1016,12 +1045,12 @@ function get_card_generate() {
     val_floor2 = '';
   }
 
-  fetch("/api/items/?per_page=6&page_number=".concat(page_number, "&category_id=").concat(category_id, "&ordering=").concat(ordering, "&is_discount=").concat(discount, "&max_price=").concat(val_floor2, "&min_price=").concat(val_floor1, "&attributes=").concat(JSON.stringify(all_array)), {
+  fetch("/api/items/?per_page=6&page_number=".concat(page_number, "&category_id=").concat(category_id, "&is_discount=").concat(discount, "&max_price=").concat(val_floor2, "&min_price=").concat(val_floor1, "&attributes=").concat(JSON.stringify(all_array)), {
     method: 'GET'
   }).then(function (data) {
     return data.json();
   }).then(function (body) {
-    console.log('body: ', body.results);
+    console.log('body: ', body);
     var cur_step = 0;
     var last_page = body.count;
     var fixed_count = last_page; // console.log('page_number: ', page_number);

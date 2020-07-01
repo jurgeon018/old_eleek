@@ -1,4 +1,6 @@
 import './index.scss';
+var page_number = 0;
+var super_kostile = false;
 
 
 var hidden_min_range = $('.input_for_min_range');
@@ -46,6 +48,37 @@ $('.prod_card_more').on('click', function () {
   });
 
 
+  function generate_arr_attr(all_arr) {
+
+    var filter_prof = document.querySelectorAll('.filter_form');
+    filter_prof.forEach(function (item, index, array) {
+      var current_id = $(item).find('.hidden_category_id').attr('data-attribute_id');
+      var current_inp = $(item).find('.input_all_arr');
+      var period_arr = {
+        attribute_id: current_id,
+        value_ids: ''
+      };
+
+
+      let per_arr = [];
+      $(current_inp).each(function (item, index, array) {
+        if ($(index)[0].checked) {
+          if ($(index).hasClass('input_color')) {
+            per_arr.push($(index).attr('data-value_id'));
+          } else {
+            per_arr.push($(index).attr('data-value_id'));
+          }
+
+        }
+      });
+      // var new_per = per_arr.substring(0, per_arr.length - 1);
+      period_arr.value_ids = per_arr;
+      all_arr.push(period_arr);
+      return all_arr;
+    });
+  }
+
+
   function get_card_generate() {
 
     var all_array = [];
@@ -90,14 +123,14 @@ $('.prod_card_more').on('click', function () {
       val_floor2 = '';
     }
 
-    fetch(`/api/items/?per_page=6&page_number=${page_number}&category_id=${category_id}&ordering=${ordering}&is_discount=${discount}&max_price=${val_floor2}&min_price=${val_floor1}&attributes=${JSON.stringify(all_array)}`, {
+    fetch(`/api/items/?per_page=6&page_number=${page_number}&category_id=${category_id}&is_discount=${discount}&max_price=${val_floor2}&min_price=${val_floor1}&attributes=${JSON.stringify(all_array)}`, {
       method: 'GET',
     })
       .then(data => {
         return data.json();
       })
       .then(body => {
-        console.log('body: ', body.results);
+        console.log('body: ', body);
         let cur_step = 0;
         var last_page = body.count;
         const fixed_count = last_page;
