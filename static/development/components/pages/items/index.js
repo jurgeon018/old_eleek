@@ -56,8 +56,8 @@ $('.prod_card_more').on('click', function () {
       var current_id = $(item).find('.hidden_category_id').val();
       var current_inp = $(item).find('.input_all_arr');
       var period_arr = {
-        attribute_id: current_id,
-        value_ids: ''
+        // attribute_id: current_id,
+        category_ids: ''
       };
 
 
@@ -65,9 +65,9 @@ $('.prod_card_more').on('click', function () {
       $(current_inp).each(function (item, index, array) {
         if ($(index)[0].checked) {
           if ($(index).hasClass('input_color')) {
-            per_arr.push($(index).attr('data-value_id'));
+            per_arr.push($(index).val());
           } else {
-            per_arr.push($(index).attr('data-value_id'));
+            per_arr.push($(index).val());
           }
 
         }
@@ -78,12 +78,51 @@ $('.prod_card_more').on('click', function () {
       return all_arr;
     });
   }
+
+
+  $(".filter_form").change(function () {
+    get_user_cart_generate();
+  });
+  $('.cost_filter_link').on('mouseup', function () {
+    get_user_cart_generate();
+  });
+
+  // $('.noUi-base').on('click', function() {
+  //   get_user_cart_generate();  
+  // });
+  var check_end_slider = $('#slider').length;
+  if (check_end_slider >= 1) {
+    slider.noUiSlider.on('end.one', function () {
+      get_user_cart_generate();
+    });
+  }
+  $('.product_title').on('mouseup', function () {
+
+    console.log('yes!');
+
+
+  });
+
+
+
   function get_card_generate() {
 
-    var all_array = [];
-    generate_arr_attr(all_array);
-    console.log(all_array);
+    // var all_array = [];
+    // generate_arr_attr(all_array);
+    // console.log(all_array);
 
+    var filter_prof = document.querySelectorAll('.items_filter_content__wrap');
+    let per_arr = [];
+    filter_prof.forEach(function (item, index, array) {
+      var current_inp = $(item).find('.input_all_arr');
+      $(current_inp).each(function (item, index, array) {
+            per_arr.push($(index).val());
+      });
+      
+    });
+    console.log('per_arr: ', per_arr);
+
+    page_number = 2;
 
     page_number++;
   
@@ -104,8 +143,8 @@ $('.prod_card_more').on('click', function () {
       val_floor2 = '';
     }
 
-    fetch(`/api/items/?per_page=6&page_number=${page_number}&category_id=${category_id}`, {
-      // fetch(`/api/items/?per_page=6&page_number=${page_number}&category_id=${category_id}&ordering=${ordering}&is_discount=${discount}&max_price=${val_floor2}&min_price=${val_floor1}&attributes=${JSON.stringify(all_array)}`, {
+    // fetch(`/api/items/?per_page=6&page_number=${page_number}&category_id=${category_id}`, {
+      fetch(`/api/items/?per_page=6&page_number=${page_number}&category_id=${category_id}&max_price=${val_floor2}&min_price=${val_floor1}&category_ids=${JSON.stringify(per_arr)}`, {
       method: 'GET',
     })
       .then(data => {
@@ -205,8 +244,7 @@ $('.prod_card_more').on('click', function () {
       val_floor1 = '';
       val_floor2 = '';
     }
-    fetch(`/api/items/?per_page=6&page_number=${page_number}&category_id=${category_id}`, {
-      // fetch(`/api/items/?per_page=6&page_number=${page_number}&category_id=${category_id}&ordering=${$('.ordering').val()}&is_discount=${discount}&max_price=${val_floor2}&min_price=${val_floor1}&attributes=${JSON.stringify(all_array)}`, {
+    fetch(`/api/items/?per_page=6&page_number=${page_number}&category_id=${category_id}&max_price=${val_floor2}&min_price=${val_floor1}&attributes=${JSON.stringify(all_array)}`, {
       method: 'GET',
     })
       .then(data => {
