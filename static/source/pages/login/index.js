@@ -707,9 +707,9 @@ function Onload() {
   //     valide_form(dinamic_main_id, '.inp-mini-wrap', false);
   // }
   valide_form('.footer_form', '.inp-vak-wrap', true);
-  valide_form('.drive__form', '.inp-vak-wrap', true);
   valide_form('#comment_form', '.inp-vak-wrap', true);
   valide_form('.registery_form', '.inp-vak-wrap', false);
+  valide_form('.drive__form', '.inp-vak-wrap', false);
 }
 
 function location_leng() {

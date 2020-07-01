@@ -707,9 +707,9 @@ function Onload() {
   //     valide_form(dinamic_main_id, '.inp-mini-wrap', false);
   // }
   valide_form('.footer_form', '.inp-vak-wrap', true);
-  valide_form('.drive__form', '.inp-vak-wrap', true);
   valide_form('#comment_form', '.inp-vak-wrap', true);
   valide_form('.registery_form', '.inp-vak-wrap', false);
+  valide_form('.drive__form', '.inp-vak-wrap', false);
 }
 
 function location_leng() {
@@ -982,9 +982,9 @@ $('.prod_card_more').on('click', function () {
 });
 
 function generate_arr_attr(all_arr) {
-  var filter_prof = document.querySelectorAll('.filter_form');
+  var filter_prof = document.querySelectorAll('.items_filter_content__wrap');
   filter_prof.forEach(function (item, index, array) {
-    var current_id = $(item).find('.hidden_category_id').attr('data-attribute_id');
+    var current_id = $(item).find('.hidden_category_id').val();
     var current_inp = $(item).find('.input_all_arr');
     var period_arr = {
       attribute_id: current_id,

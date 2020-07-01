@@ -29,8 +29,7 @@ item_section__wrapper
                   </label> 
                   <div class="filter-content"> 
                       <form action="" class="filter_form">
-                        <input type="hidden" class="hidden_category_id" data-attribute_id="{{attribute.id}}" name="colour"
-                            value="{{forloop.counter}}">
+                       
                         <div class="filter_category standart_title standart_title_4 color_black">
                           {% trans 'Ціна' %}
                       </div>
@@ -110,7 +109,7 @@ item_section__wrapper
                     </g>
                   </svg>
                 </div>
-                {% for item in items %}
+                <!-- {% for item in items %}
                   <div class="product_card-prof">
                       <a href="{{item.get_absolute_url}}" class="prod_card_link">
                           <img src="/static/source/img/item/img-0041.jpg" alt="" class="prod_card-img">
@@ -129,7 +128,7 @@ item_section__wrapper
                         </div>
                       </div>
                   </div>
-                {% endfor %}
+                {% endfor %} -->
               </div>
               <div class="prod_card_more standart_title standart_title_4 color_black">
                   {% trans 'Більше товарів' %}
