@@ -20,7 +20,7 @@ item_section__wrapper
                   <input type="checkbox" id="filter3" name="filter-group" class="inp_filter">
                   <label for="filter3" class="filter-title">
                       <span class="filter__title standart_title standart_title_4 color_black">
-                        {% trans 'Фільтр' %}
+                        <!-- {% trans 'Фільтр' %} -->
                       </span> 
                       <div class="mobale_filter">
                           <img src="/static/source/img/items/set-2.svg" alt="">
@@ -37,19 +37,21 @@ item_section__wrapper
                               
                           </div>
                       <div class="range_slider" id="slider"></div>
-                      {% for category in '1234'|make_list %}
+                      {% for category in parent_categories %}
                       <div class="items_filter_content__wrap items_filter_content__wrap_active">
                         <div class="items_filter_title standart_title standart_title_4 color_black">
-                          Категорія {{category}}
+                          {{category.title|title}}
                         </div>
+                        {% if category.get_children %}
                         <div class="items_filter_content">
-                          {% for filter in '123456789'|make_list %}
+                          {% for subcategory in category.get_children %}
                           <div class="radio_block">
                             <input class="input_radio" name="discount" type="checkbox" id="rb-1"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-1">Фільтр {{filter}}</label>
+                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-1">{{subcategory.title}}</label>
                           </div>
                           {% endfor %}
                         </div>
+                        {% endif %}
                       </div>
                       {% endfor %}
                       </form>
@@ -85,7 +87,7 @@ item_section__wrapper
               </a> -->
           </div>
               <h2 class="product_title main__title main__title_3 color_black">
-                {{category.title}}
+                {{category.title|title}}
               </h2>
               <div class="main_product-block">
                 <div class="load_product">
