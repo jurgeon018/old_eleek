@@ -1145,6 +1145,7 @@ function createProdCard(product, step) {
 }
 
 ;
+var test = "\n    \n  ";
 
 /***/ }),
 

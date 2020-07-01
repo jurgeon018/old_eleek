@@ -60,6 +60,7 @@ function Onload() {
   valide_form('.drive__form', '.inp-vak-wrap', false);
  
 }
+
 function location_leng() {
   return location.pathname.split('/')[1];
 }

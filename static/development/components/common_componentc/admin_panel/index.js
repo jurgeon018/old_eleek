@@ -1,7 +1,6 @@
 import './index.scss'
 
 console.log(1313);
-
   // admin panel ============================>
   // сторінка повина починатись по стандарту з admin_check = 1
   var only_on_click = true;
