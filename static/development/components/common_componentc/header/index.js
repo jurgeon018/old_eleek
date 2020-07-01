@@ -188,8 +188,10 @@ function basket_blur() {
   for (let index = 0; index < 5; index++) {
     $('.basket_content__block')[0].appendChild(create_basket_card(card_json));
   }
-  
 
+
+
+  
 function create_basket_card(content) {
         let basket_content_profile = document.createElement('div');
         basket_content_profile.classList.add('basket_content_profile');

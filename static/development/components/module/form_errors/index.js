@@ -56,6 +56,7 @@ function Onload() {
 
 
   valide_form('.footer_form', '.inp-vak-wrap', true);
+  valide_form('.drive__form', '.inp-vak-wrap', true);
   valide_form('#comment_form', '.inp-vak-wrap', true);
   valide_form('.registery_form', '.inp-vak-wrap', false);
  
@@ -101,7 +102,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
               name: {
                   required: true,
                   lettersonly: true
-
               },
               username: {
                   required: true,
