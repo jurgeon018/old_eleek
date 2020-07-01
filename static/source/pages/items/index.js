@@ -1103,33 +1103,19 @@ function cardNew1(bodyCar) {// var fragment = document.createDocumentFragment();
 }
 
 function get_user_cart_generate() {
-  var all_array = [];
-  generate_arr_attr(all_array);
-  console.log(all_array); //  var category_value_size = [];
-  //       var category_value_color = [];
-  //       var category_all_input_size = document.querySelectorAll('.input_radio');
-  //       category_all_input_size.forEach(function(item, index, array) {
-  //         if ($(item)[0].checked) {
-  //           category_value_size.push($(item).attr('id'));
-  //         }
-  //       });
-  //     var category_all_input_color = document.querySelectorAll('.input_color');
-  //       category_all_input_color.forEach(function(item, index, array) {
-  //         if ($(item)[0].checked) {
-  //           category_value_color.push($(item).attr('id').slice(6));
-  //         }
-  //       });
-  //     var attrCategory = [{
-  //         attribute_id: $('.hidden_size_id').val(),
-  //         value_ids: category_value_size
-  //       },
-  //       {
-  //         attribute_id: $('.hidden_color_id').val(),
-  //         value_ids: category_value_color
-  //       }
-  //     ]
-  // console.log(attrCategory);
-
+  // var all_array = [];
+  // generate_arr_attr(all_array);
+  // console.log(all_array);
+  var filter_prof = document.querySelectorAll('.items_filter_content__wrap');
+  var per_arr = [];
+  filter_prof.forEach(function (item, index, array) {
+    var current_inp = $(item).find('.input_all_arr');
+    $(current_inp).each(function (item, index, array) {
+      if ($(index)[0].checked) {
+        per_arr.push($(index).val());
+      }
+    });
+  });
   var removeBtn = 0;
   var cart_check = document.querySelectorAll('.main_product-block .product_card-prof');
   cart_check.forEach(function (item, index, array) {
@@ -1152,7 +1138,7 @@ function get_user_cart_generate() {
     val_floor2 = '';
   }
 
-  fetch("/api/items/?per_page=6&page_number=".concat(page_number, "&category_id=").concat(category_id, "&max_price=").concat(val_floor2, "&min_price=").concat(val_floor1, "&attributes=").concat(JSON.stringify(all_array)), {
+  fetch("/api/items/?per_page=6&page_number=".concat(page_number, "&category_id=").concat(category_id, "&max_price=").concat(val_floor2, "&min_price=").concat(val_floor1, "&category_ids=").concat(JSON.stringify(per_arr)), {
     method: 'GET'
   }).then(function (data) {
     return data.json();
