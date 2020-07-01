@@ -10,7 +10,6 @@
 section__wrapper
 {% endblock main_class %}
 {% block content %}
-
 <section class="first_section">
   <div class="bike_trailer__block">
     {% for slider in test_drive_sliders %}
@@ -271,7 +270,7 @@ section__wrapper
       <div class="absolute_product_img">
           <img src="/static/source/img/index/koleso.png" alt="">
       </div>
-      <a href="{{galm.get_absolute_url}}" class="main__title main__title_5 color_white">
+      <a href="{{kole.get_absolute_url}}" class="main__title main__title_5 color_white">
         {{kole.title|title}}
         <div class="absolute_product_arrow">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
@@ -339,9 +338,7 @@ section__wrapper
           {{comp.title|title}}
         </h1>
         {% render 'index_assort' as index_assort %}
-        data-admin_url="{{index_assort.get_admin_url}}"
-        class="db_content"
-        <div class="color_white sub_title sub_title_2">
+        <div class="color_white sub_title sub_title_2 db_content" data-admin_url="{{index_assort.get_admin_url}}">
           {{index_assort.text}}
           <!-- В нашому асортименті ви можете знайти усі найнеобхідніші товари для вашого байку -->
         </div>
