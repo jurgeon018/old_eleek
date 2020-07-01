@@ -94,7 +94,7 @@ item_section__wrapper
       </div>
   </div>
   <div class="drive_form__block contact_form__block">
-    <form action="{% url 'sw_contact' %}" class="drive__form">
+    <form action="{% url 'sw_contact' %}" method="POST" class="drive__form">
       {% render 'about_contacts' as about_contacts %}
       <h3 class="drive_title main__title main__title_3 color_black db_content" data-admin_url="{{about_contacts.get_admin_url}}">
         {{about_contacts.text}}

@@ -29,8 +29,7 @@ item_section__wrapper
                   </label> 
                   <div class="filter-content"> 
                       <form action="" class="filter_form">
-                        <input type="hidden" class="hidden_category_id" data-attribute_id="{{attribute.id}}" name="colour"
-                            value="{{forloop.counter}}">
+                       
                         <div class="filter_category standart_title standart_title_4 color_black">
                           {% trans 'Ціна' %}
                       </div>
@@ -42,13 +41,15 @@ item_section__wrapper
                       <div class="range_slider" id="slider"></div>
                       {% for category in '1234'|make_list %}
                       <div class="items_filter_content__wrap items_filter_content__wrap_active">
+                        <input type="hidden" class="hidden_category_id" data-attribute_id="{{attribute.id}}" name="eleek"
+                        value="{{forloop.counter}}">
                         <div class="items_filter_title standart_title standart_title_4 color_black">
                           Категорія {{category}}
                         </div>
                         <div class="items_filter_content">
                           {% for filter in '123456789'|make_list %}
                           <div class="radio_block">
-                            <input class="input_radio input_all_arr" name="discount" type="checkbox" id="rb-1"> 
+                            <input class="input_radio input_all_arr" data-value_id="{{value.id}}" name="discount" type="checkbox" id="rb-1"> 
                             <label class="label_radio standart_title standart_title_6 color_black" for="rb-1">Фільтр {{filter}}</label>
                           </div>
                           {% endfor %}
