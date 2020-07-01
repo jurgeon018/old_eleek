@@ -14,7 +14,7 @@
             color: #ffffff;
             border: solid 1px transparent;
             position: relative;
-            overflow-x: hidden;
+            overflow: hidden;
             &::before {
                 transition: all .2s;
                 position: absolute;

@@ -50,13 +50,16 @@
         }
         &::after {
           content: '';
+          width: 100%;
+          -webkit-transform: skew(-15deg);
+          -moz-transform: skew(-15deg);
+          -o-transform: skew(-15deg);
+          background-color: #ffd10a;
+          height: 70px;
           position: absolute;
-          top: -14px;
-          right: 17px;
-          width: 50px;
-          height: 150px;
-          background-color: inherit;
-          transform: rotate(15deg);
+          top: 0;
+          right: 30px;
+          transition: all .4s;
           z-index: 0;
         }
     }
@@ -93,9 +96,14 @@
     animation-name: logos;
     animation-delay: .4s;
         .logo_header {
-            transition-delay: .6s;
+            transition-delay: .7s;
             background-color: #2b2a27;
 
+
+            &:after {
+              transition-delay: .7s;
+              background-color: #2b2a27;
+            }
             
         }
   }

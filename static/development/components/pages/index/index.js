@@ -361,7 +361,7 @@ var slickFinder1 = $('.bike_trailer__block').length;
       infinite: true,
       slidesToShow: 2,
       slidesToScroll: 1,
-      autoplay: true,
+      // autoplay: true,
       centerMode: true,
       centerPadding: '200px',
       // arrows: true,

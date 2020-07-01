@@ -1,5 +1,36 @@
 import './index.scss'
 
+
+
+
+
+
+
+let lang_site;
+let curr_lang;
+lang_site = location_leng();
+switch (lang_site) {
+    case 'uk':
+    curr_lang = "Ім'я повинно містити лише букви";
+    break;
+    case 'ru':
+    curr_lang = 'Имя должно содержать только буквы';
+    break;
+    case 'en':
+    curr_lang = 'The name must contain only letters';
+    break;
+    default:
+    curr_lang = "Ім'я повинно містити лише букви.";
+}
+
+jQuery.validator.addMethod("lettersonly", function(value, element) {
+return this.optional(element) || /[^0-9]+$/i.test(value);
+}, curr_lang); 
+
+
+
+
+
 $(function() {
   Onload();
 })
@@ -69,11 +100,19 @@ function valide_form(id_form, error_inp_wrap, check_request) {
               },
               name: {
                   required: true,
+                  lettersonly: true
+
+              },
+              username: {
+                  required: true,
               },
               phone_number: {
                   required: true,
               },
               password: {
+                required: true,
+              },
+              password2: {
                 required: true,
               },
               pas1: {
@@ -92,10 +131,16 @@ function valide_form(id_form, error_inp_wrap, check_request) {
               name: {
                   required: error_text.required,
               },
+              username: {
+                  required: error_text.required,
+              },
               phone_number: {
                   required: error_text.required,
               },
               password: {
+                required: error_text.required,
+              },
+              password2: {
                 required: error_text.required,
               },
               pas1: {
@@ -118,9 +163,31 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                   
                   console.log(form_json);
                 });
+
+
+                var pass_checked = true;
+                var pass_finder = $('.login_pass2').length; 
+                console.log('pass_finder: ', pass_finder);
+
+                if (pass_finder == 1) {
+                    var pass_1 = $('.login_pass').val();
+                    var pass_2 = $('.login_pass2').val();
+                        pass_checked = false;
+                    if (pass_1 == pass_2) {
+                        $('.pass_checked_error').text('');
+                        pass_checked = true;
+                    } else {
+                        pass_checked = false;
+                         event.preventDefault();
+                         $('.load_spin').removeClass('load_spin_active');
+                         $.fancybox.close();
+                        $('.pass_checked_error').text('паролі не співпадають');
+                    }
+                    
+                }
         
                   console.log(form_json);
-                if(url_form != ''){
+                if(url_form != '' && pass_checked == true){
         
                   fetch(url_form, {
                     method: 'POST',
@@ -176,6 +243,11 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                     $.fancybox.open({
                       src: '#modal-form_true',
                     });
+                    setTimeout(() => {
+                      $.fancybox.close({
+                        src: '#modal-form_true',
+                      });
+                    }, 1500);
                       var form_inputs = $(form)[0].querySelectorAll('input');
                       if (form_inputs.length > 0) {
                           for (var key in form_inputs) {

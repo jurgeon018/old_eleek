@@ -4,10 +4,17 @@
 {% get_language_info_list for LANGUAGES as languages %}
 
 <header class="nav_bar">
+  <form method="POST" action="" class="true_form" id="modal-form_true" style="display:none;">
+    <img class="form_true_img" src="/static/source/img/index/123.png" alt="">
+    <div class="usually_modal_text standart_title standart_title_6 color_black">
+        Дякуємо, заявка опрацьована <br>
+        Наші менеджери звяжуться з Вами
+    </div>
+    </form>
   <div class="load_spin">
     <img src="/static/source/img/index/712.svg" alt="">
   </div>
-  <div class="absolute_admin__block">
+  <!-- <div class="absolute_admin__block">
     <a href="{{page.get_admin_url}}" target="_blank">
       <div data-title='Редагувати сторінку' class="admin_nav-bar">
           <svg class="admin_svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="door-open" class="svg-inline--fa fa-door-open fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M624 448h-80V113.45C544 86.19 522.47 64 496 64H384v64h96v384h144c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM312.24 1.01l-192 49.74C105.99 54.44 96 67.7 96 82.92V448H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h336V33.18c0-21.58-19.56-37.41-39.76-32.17zM264 288c-13.25 0-24-14.33-24-32s10.75-32 24-32 24 14.33 24 32-10.75 32-24 32z"></path></svg>
@@ -23,7 +30,7 @@
               </div>
           </label>
       </div>
-  </div>
+  </div> -->
 
     <div class="logo__wrap">
       <a href="{% url 'index' %}" class="logo_header">

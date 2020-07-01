@@ -268,17 +268,17 @@ section__wrapper
   <div class="five_bg"></div>
   <div class="absolute_product__block">
     <div class="absolute_product_profile absolute_product_profile_1">
-        <div class="absolute_product_img">
-            <img src="/static/source/img/index/koleso.png" alt="">
-        </div>
-        <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
-        <div class="main__title main__title_5 color_white">
-            {{kole.title|title}}
-        </div>
+      <div class="absolute_product_img">
+          <img src="/static/source/img/index/koleso.png" alt="">
+      </div>
+      <a href="{{galm.get_absolute_url}}" class="main__title main__title_5 color_white">
+        {{kole.title|title}}
+        <div class="absolute_product_arrow">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
             <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
           </svg>
-        </a>
+        </div>
+      </a>
     </div>
     <div class="absolute_product_profile absolute_product_profile_2">
       <div class="absolute_product_img">
@@ -334,7 +334,7 @@ section__wrapper
     </div>
 </div>
   <div class="five_wrapp">
-      <div class="five_title__block paroller" data-paroller-factor="0.5" data-paroller-type="foreground" >
+      <div class="five_title__block paroller" >
         <h1 class="color_white five_title main__title main__title_1">
           {{comp.title|title}}
         </h1>
@@ -352,6 +352,63 @@ section__wrapper
         </a>
       </div>
       <div class="complect__wrap">
+        <div class="complect_slide">
+            <img src="/static/source/img/index/koleso.png" alt="" class="complect_img">
+            <div class="main__title main__title_5 color_white">
+              {{kole.title|title}}
+            </div>
+            <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+              </svg>
+            </a>
+        </div>
+        <div class="complect_slide">
+          <img src="/static/source/img/index/stop.png" alt="" class="complect_img">
+          <div class="main__title main__title_5 color_white">
+            {{galm.title|title}}
+          </div>
+          <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+            </svg>
+          </a>
+        </div>
+        <div class="complect_slide">
+          <img src="/static/source/img/index/vylka.png" alt="" class="complect_img">
+          <div class="main__title main__title_5 color_white">
+            {{vilk.title|title}}
+          </div>
+          <a href="{{vilk.get_absolute_url}}" class="absolute_product_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+            </svg>
+          </a>
+        </div>
+        <div class="complect_slide">
+          <img src="/static/source/img/index/motor.png" alt="" class="complect_img">
+          <div class="main__title main__title_5 color_white">
+            {{moto.title|title}}
+          </div>
+          <a href="{{moto.get_absolute_url}}" class="absolute_product_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+            </svg>
+          </a>
+        </div>
+        <div class="complect_slide">
+          <img src="/static/source/img/index/amort.png" alt="" class="complect_img">
+          <div class="main__title main__title_5 color_white">
+            {{amor.title|title}}
+          </div>
+          <a href="{{amor.get_absolute_url}}" class="absolute_product_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+            </svg>
+          </a>
+        </div>
+    </div>
+      <!-- <div class="complect__wrap">
           <div class="complect_slide">
             <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
               <img src="/static/source/img/index/koleso.png" alt="" class="complect_img">
@@ -407,15 +464,15 @@ section__wrapper
               </svg>
             </a>
           </div>
-      </div>
+      </div> -->
       
   </div>
 </section>
 <!-- /.five_section -->
 <section class="six_section">
-  <video class="eleek_video" data-src="/static/source/img/index/video.webm" autoplay muted poster="posterimage.jpg">
+  <video class="eleek_video" data-src="/static/source/img/index/video.mp4" autoplay muted poster="posterimage.jpg">
     Sorry, your browser doesn't support embedded videos, 
-    but don't worry, you can <a href="/static/source/img/index/video.webm">download it</a>
+    but don't worry, you can <a href="/static/source/img/index/video.mp4">download it</a>
     and watch it with your favorite video player!
   </video>
 </section>

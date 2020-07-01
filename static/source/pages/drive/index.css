@@ -590,7 +590,7 @@ main {
     color: #ffffff;
     border: solid 1px transparent;
     position: relative;
-    overflow-x: hidden; }
+    overflow: hidden; }
     .btn_standart_black::before {
       transition: all .2s;
       position: absolute;
@@ -642,6 +642,47 @@ a.glo:hover {
 .error {
   transition: all .2s;
   color: #FF0000; }
+
+.pass_checked_error {
+  transition: all .2s;
+  color: #FF0000;
+  text-align: center;
+  margin-bottom: 10px; }
+
+.true_form {
+  position: absolute;
+  z-index: 9999;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  padding: 0;
+  width: 500px;
+  height: 250px;
+  background: #fff !important;
+  min-width: unset;
+  text-align: center;
+  min-height: unset; }
+  .true_form .fancybox-button svg {
+    display: none; }
+
+.form_true_img {
+  margin-top: 35px;
+  width: 100px; }
+
+.usually_modal_text {
+  font-size: 16px;
+  margin-top: 30px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal; }
+
+@media (max-width: 600px) {
+  .true_form {
+    width: 85%; }
+  .usually_modal_text {
+    font-size: 15px; } }
 
 @charset "UTF-8";
 .db_hidden_content {
@@ -932,13 +973,16 @@ body .dribbble img {
     left: 10px; }
   .logo_header::after {
     content: '';
+    width: 100%;
+    -webkit-transform: skew(-15deg);
+    -moz-transform: skew(-15deg);
+    -o-transform: skew(-15deg);
+    background-color: #ffd10a;
+    height: 70px;
     position: absolute;
-    top: -14px;
-    right: 17px;
-    width: 50px;
-    height: 150px;
-    background-color: inherit;
-    transform: rotate(15deg);
+    top: 0;
+    right: 30px;
+    transition: all .4s;
     z-index: 0; }
 
 .logo__wrap {
@@ -971,8 +1015,11 @@ body .dribbble img {
   animation-name: logos;
   animation-delay: .4s; }
   .logo_wrap_active .logo_header {
-    transition-delay: .6s;
+    transition-delay: .7s;
     background-color: #2b2a27; }
+    .logo_wrap_active .logo_header:after {
+      transition-delay: .7s;
+      background-color: #2b2a27; }
 
 @keyframes logosNative {
   0% {

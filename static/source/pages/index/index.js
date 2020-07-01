@@ -311,98 +311,29 @@ function basket_blur() {
   var curr_user_num = $(this);
   var quantity_id;
 
-  if (curr_user_num.val() >= 0) {} else {
+  if (curr_user_num.val() > 0) {} else if (curr_user_num.val() <= 0 || curr_user_num.val() == '') {
     $(curr_user_num).val(1);
   }
 
   var item_id = $(this).attr('data-quantity_item_id');
   quantity_id = $(this).val();
-  console.log('quantity_id: ', quantity_id); //   fetch(`/api/cart_item/${Number(item_id)}/`, {
-  //     method: 'PATCH',
-  //     body: JSON.stringify({
-  //       quantity: Number(quantity_id),
-  //     }),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Accept": "application/json"
-  //     },
-  //   })
-  //     .then(data => {
-  //       return data.json();
-  //     })
-  //     .then(data => {
-  //       var old_price = $('.summ_cart').text();
-  //       var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
-  //       number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
-  //       number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
-  //     });
-}
-
-$('.basket_prep').on('click', basket_minus);
-
-function basket_minus() {
-  var current_basket_input = $(this).parents('.basket_counter').find('.basket_input').val();
-
-  if (current_basket_input == 1) {
-    console.log('меньше не може бути');
-  } else {
-    $(this).parents('.basket_counter').find('.basket_input').val(Number(current_basket_input) - 1);
-    var item_id = $(this).attr('data-quantity_item_id');
-    var quantity_id = $(this).parents('.basket_counter').find('.basket_input').val();
-    console.log('quantity_id: ', quantity_id); //   fetch(`/api/cart_item/${Number(item_id)}/`, {
-    //     method: 'PATCH',
-    //     body: JSON.stringify({
-    //       quantity: Number(quantity_id),
-    //     }),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Accept": "application/json"
-    //     },
-    //   })
-    //     .then(data => {
-    //       return data.json();
-    //     })
-    //     .then(data => {
-    //       var old_price = $('.summ_cart').text();
-    //       var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
-    //       number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
-    //       number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
-    //     });
-    // generate_api_move(this, 'data-quantity_item_id', '/api/change_cart_item_amount/', '?cart_item_id=', this);
-  }
-}
-
-$('.basket_next').on('click', basket_plus);
-
-function basket_plus() {
-  var current_basket_input = $(this).parents('.basket_counter').find('.basket_input').val();
-
-  if (current_basket_input == 99999) {
-    console.log('більше не може бути');
-  } else {
-    $(this).parents('.basket_counter').find('.basket_input').val(Number(current_basket_input) + 1);
-    var item_id = $(this).attr('data-quantity_item_id');
-    var quantity_id = $(this).parents('.basket_counter').find('.basket_input').val();
-    console.log('quantity_id: ', quantity_id); //   fetch(`/api/cart_item/${Number(item_id)}/`, {
-    //     method: 'PATCH',
-    //     body: JSON.stringify({
-    //       quantity: Number(quantity_id),
-    //     }),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Accept": "application/json"
-    //     },
-    //   })
-    //     .then(data => {
-    //       return data.json();
-    //     })
-    //     .then(data => {
-    //       var old_price = $('.summ_cart').text();
-    //       var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
-    //       number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
-    //       number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
-    //     });
-  }
+  console.log('quantity_id: ', quantity_id);
+  fetch("/api/cart_item/".concat(Number(item_id), "/"), {
+    method: 'PATCH',
+    body: JSON.stringify({
+      quantity: Number(quantity_id)
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
+  }).then(function (data) {
+    return data.json();
+  }).then(function (data) {// var old_price = $('.summ_cart').text();
+    // var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
+    // number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
+    // number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
+  });
 }
 
 $('.basket_del').on('click', basket_delete);
@@ -445,7 +376,7 @@ function number_to(id, from, to, duration) {
 }
 
 var card_json = {
-  img_src: './static/source/img/index/lite.png',
+  img_src: '/static/source/img/index/lite.png',
   name_basket: 'Вилка VEPR-H123',
   quantity: '1',
   price: '2500'
@@ -471,8 +402,8 @@ function create_basket_card(content) {
   basket_title.classList.add('basket_title', 'main__title', 'main__title_5');
   basket_title.textContent = content.name_basket;
   var basket_del = document.createElement('img');
-  basket_del.classList.add('basket_del');
-  basket_del.setAttribute("src", './static/source/img/index/trash.svg');
+  basket_del.classList.add('basket_del', 'remove_prod_card');
+  basket_del.setAttribute("src", '/static/source/img/index/trash.svg');
   var basket_bottom__wrap = document.createElement('div');
   basket_bottom__wrap.classList.add('basket_bottom__wrap');
   var basket_counter__block = document.createElement('div');
@@ -488,7 +419,7 @@ function create_basket_card(content) {
   var basket_input = document.createElement('input');
   basket_input.setAttribute("type", 'number');
   basket_input.setAttribute("value", content.quantity);
-  basket_input.classList.add('basket_input', 'basket_count', 'main__title', 'main__title_5');
+  basket_input.classList.add('basket_input', 'basket_count', 'main__title', 'main__title_5', 'cart_counter');
   var basket_next = document.createElement('div');
   basket_next.classList.add('basket_next', 'basket_count', 'sub_title', 'sub_title_21');
   basket_next.textContent = '+';
@@ -521,6 +452,95 @@ function create_basket_card(content) {
   $(basket_prep).on('click', basket_minus);
   $(basket_input).on('blur', basket_blur);
   return basket_content_profile;
+}
+
+function counter_plus(name) {
+  var count_var = $(name).text();
+  count_num = Number(count_var);
+  count_num++;
+  $(name).text(count_num);
+}
+
+function counter_minus(name) {
+  var count_var = $(name).text();
+  count_num = Number(count_var);
+  count_num--;
+  $(name).text(count_num);
+}
+
+$('.remove_prod_card').on('click', function () {
+  var remove_id = $(this).data('cart_item_id');
+  var remove_quan = $(this).data('cart_item_quantity');
+  fetch("/api/cart_item/".concat(remove_id), {
+    method: 'DELETE'
+  }).then(function (data) {
+    return data.json();
+  }).then(function (data) {
+    console.log('data: ', data);
+    var old_price = $('.summ_cart').text(); // var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
+
+    number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
+  });
+});
+
+function basket_minus() {
+  console.log(123);
+  var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
+
+  if (current_quan_sum == 1) {
+    console.log('меньше не може бути');
+  } else {
+    $(this).parents('.basket_counter').find('.cart_counter').val(Number(current_quan_sum) - 1);
+    var item_id = $(this).attr('data-quantity_item_id');
+    var quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val();
+    console.log('quantity_id: ', quantity_id);
+    fetch("/api/cart_item/".concat(Number(item_id), "/"), {
+      method: 'PATCH',
+      body: JSON.stringify({
+        quantity: Number(quantity_id)
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    }).then(function (data) {
+      return data.json();
+    }).then(function (data) {// var old_price = $('.summ_cart').text();
+      // var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
+      // number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
+      // number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
+    });
+  }
+}
+
+function basket_plus() {
+  var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
+  console.log('current_quan_sum: ', current_quan_sum);
+
+  if (current_quan_sum == 99999) {
+    console.log('більше не може бути');
+  } else {
+    $(this).parents('.basket_counter').find('.cart_counter').val(Number(current_quan_sum) + 1);
+    var item_id = $(this).attr('data-quantity_item_id');
+    var quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val();
+    console.log('quantity_id: ', quantity_id);
+    fetch("/api/cart_item/".concat(Number(item_id), "/"), {
+      method: 'PATCH',
+      body: JSON.stringify({
+        quantity: Number(quantity_id)
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    }).then(function (data) {
+      return data.json();
+    }).then(function (data) {// var old_price = $('.summ_cart').text();
+      // var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
+      // number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
+      // number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
+    });
+  }
 }
 
 /***/ }),
@@ -642,6 +662,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/module/form_errors/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
+var lang_site;
+var curr_lang;
+lang_site = location_leng();
+
+switch (lang_site) {
+  case 'uk':
+    curr_lang = "Ім'я повинно містити лише букви";
+    break;
+
+  case 'ru':
+    curr_lang = 'Имя должно содержать только буквы';
+    break;
+
+  case 'en':
+    curr_lang = 'The name must contain only letters';
+    break;
+
+  default:
+    curr_lang = "Ім'я повинно містити лише букви.";
+}
+
+jQuery.validator.addMethod("lettersonly", function (value, element) {
+  return this.optional(element) || /[^0-9]+$/i.test(value);
+}, curr_lang);
 $(function () {
   Onload();
 }); // /**
@@ -711,12 +755,19 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           email: true
         },
         name: {
+          required: true,
+          lettersonly: true
+        },
+        username: {
           required: true
         },
         phone_number: {
           required: true
         },
         password: {
+          required: true
+        },
+        password2: {
           required: true
         },
         pas1: {
@@ -734,10 +785,16 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         name: {
           required: error_text.required
         },
+        username: {
+          required: error_text.required
+        },
         phone_number: {
           required: error_text.required
         },
         password: {
+          required: error_text.required
+        },
+        password2: {
           required: error_text.required
         },
         pas1: {
@@ -759,9 +816,30 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           form_json[obj.name] = obj.value;
           console.log(form_json);
         });
+        var pass_checked = true;
+        var pass_finder = $('.login_pass2').length;
+        console.log('pass_finder: ', pass_finder);
+
+        if (pass_finder == 1) {
+          var pass_1 = $('.login_pass').val();
+          var pass_2 = $('.login_pass2').val();
+          pass_checked = false;
+
+          if (pass_1 == pass_2) {
+            $('.pass_checked_error').text('');
+            pass_checked = true;
+          } else {
+            pass_checked = false;
+            event.preventDefault();
+            $('.load_spin').removeClass('load_spin_active');
+            $.fancybox.close();
+            $('.pass_checked_error').text('паролі не співпадають');
+          }
+        }
+
         console.log(form_json);
 
-        if (url_form != '') {
+        if (url_form != '' && pass_checked == true) {
           fetch(url_form, {
             method: 'POST',
             body: new URLSearchParams($.param(form_json))
@@ -808,6 +886,11 @@ function valide_form(id_form, error_inp_wrap, check_request) {
             $.fancybox.open({
               src: '#modal-form_true'
             });
+            setTimeout(function () {
+              $.fancybox.close({
+                src: '#modal-form_true'
+              });
+            }, 1500);
             var form_inputs = $(form)[0].querySelectorAll('input');
 
             if (form_inputs.length > 0) {
@@ -1228,7 +1311,7 @@ if (slickFinder2 >= 1) {
     infinite: true,
     slidesToShow: 2,
     slidesToScroll: 1,
-    autoplay: true,
+    // autoplay: true,
     centerMode: true,
     centerPadding: '200px',
     // arrows: true,

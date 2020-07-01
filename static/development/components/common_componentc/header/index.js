@@ -21,7 +21,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	create_animation(arrow_3, button_3);
 	create_animation(arrow_4, button_4);
 	create_animation(arrow_5, button_5);
-  
 
 });
 
@@ -109,110 +108,38 @@ $('.basket_input').on('blur', basket_blur);
 function basket_blur() {
     let curr_user_num = $(this);
     let quantity_id;
-    if (curr_user_num.val() >= 0) {
+    if (curr_user_num.val() > 0) {
       
-    } else {
+    } else if (curr_user_num.val() <= 0 || curr_user_num.val() == '') {
         $(curr_user_num).val(1);
     }
       let item_id = $(this).attr('data-quantity_item_id');
       quantity_id = $(this).val();
       console.log('quantity_id: ', quantity_id);
       
-    //   fetch(`/api/cart_item/${Number(item_id)}/`, {
-    //     method: 'PATCH',
-    //     body: JSON.stringify({
-    //       quantity: Number(quantity_id),
-    //     }),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Accept": "application/json"
-    //     },
-    //   })
-    //     .then(data => {
-    //       return data.json();
-    //     })
-    //     .then(data => {
-    //       var old_price = $('.summ_cart').text();
-    //       var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
-    //       number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
-    //       number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
+      fetch(`/api/cart_item/${Number(item_id)}/`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          quantity: Number(quantity_id),
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+      })
+        .then(data => {
+          return data.json();
+        })
+        .then(data => {
+          // var old_price = $('.summ_cart').text();
+          // var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
+          // number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
+          // number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
 
-    //     });
-    
+        });
 }
 
 
-  $('.basket_prep').on('click', basket_minus);
-  function basket_minus() {
-    var current_basket_input = $(this).parents('.basket_counter').find('.basket_input').val();
-    if (current_basket_input == 1) {
-      console.log('меньше не може бути');
-    } else {
-      $(this).parents('.basket_counter').find('.basket_input').val(Number(current_basket_input) - 1);
-      let item_id = $(this).attr('data-quantity_item_id');
-      let quantity_id = $(this).parents('.basket_counter').find('.basket_input').val();
-      console.log('quantity_id: ', quantity_id);
-      
-    //   fetch(`/api/cart_item/${Number(item_id)}/`, {
-    //     method: 'PATCH',
-    //     body: JSON.stringify({
-    //       quantity: Number(quantity_id),
-    //     }),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Accept": "application/json"
-    //     },
-    //   })
-    //     .then(data => {
-    //       return data.json();
-    //     })
-    //     .then(data => {
-    //       var old_price = $('.summ_cart').text();
-    //       var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
-    //       number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
-    //       number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
-
-    //     });
-
-      // generate_api_move(this, 'data-quantity_item_id', '/api/change_cart_item_amount/', '?cart_item_id=', this);
-    } 
-  }
-
-  $('.basket_next').on('click', basket_plus);
-  function basket_plus() {
-    var current_basket_input = $(this).parents('.basket_counter').find('.basket_input').val();
-
-    if (current_basket_input == 99999) {
-      console.log('більше не може бути');
-    } else {
-      $(this).parents('.basket_counter').find('.basket_input').val(Number(current_basket_input) + 1);
-
-      let item_id = $(this).attr('data-quantity_item_id');
-      let quantity_id = $(this).parents('.basket_counter').find('.basket_input').val();
-      console.log('quantity_id: ', quantity_id);
-      
-    //   fetch(`/api/cart_item/${Number(item_id)}/`, {
-    //     method: 'PATCH',
-    //     body: JSON.stringify({
-    //       quantity: Number(quantity_id),
-    //     }),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Accept": "application/json"
-    //     },
-    //   })
-    //     .then(data => {
-    //       return data.json();
-    //     })
-    //     .then(data => {
-    //       var old_price = $('.summ_cart').text();
-    //       var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
-    //       number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
-    //       number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
-
-    //     });
-    } 
-  }
   $('.basket_del').on('click', basket_delete);
   function basket_delete() {
     let wrap = $(this).parents('.basket_content_profile');
@@ -253,7 +180,7 @@ function basket_blur() {
   }
 
   let card_json = {
-    img_src: './static/source/img/index/lite.png',
+    img_src: '/static/source/img/index/lite.png',
     name_basket: 'Вилка VEPR-H123',
     quantity: '1',
     price: '2500',
@@ -285,8 +212,8 @@ function create_basket_card(content) {
         basket_title.textContent = content.name_basket;
 
         let basket_del = document.createElement('img');
-        basket_del.classList.add('basket_del');
-        basket_del.setAttribute(`src`, './static/source/img/index/trash.svg');
+        basket_del.classList.add('basket_del', 'remove_prod_card');
+        basket_del.setAttribute(`src`, '/static/source/img/index/trash.svg');
 
         let basket_bottom__wrap = document.createElement('div');
         basket_bottom__wrap.classList.add('basket_bottom__wrap');
@@ -308,7 +235,7 @@ function create_basket_card(content) {
         let basket_input = document.createElement('input');
         basket_input.setAttribute(`type`, 'number');
         basket_input.setAttribute(`value`, content.quantity);
-        basket_input.classList.add('basket_input', 'basket_count', 'main__title', 'main__title_5');
+        basket_input.classList.add('basket_input', 'basket_count', 'main__title', 'main__title_5', 'cart_counter');
 
         let basket_next = document.createElement('div');
         basket_next.classList.add('basket_next', 'basket_count', 'sub_title', 'sub_title_21');
@@ -354,3 +281,106 @@ function create_basket_card(content) {
         return basket_content_profile;
 }
 
+function counter_plus(name) {
+  let count_var = $(name).text();
+  count_num = Number(count_var);
+  count_num++
+  $(name).text(count_num);
+}
+function counter_minus(name) {
+  let count_var = $(name).text();
+  count_num = Number(count_var);
+  count_num--
+  $(name).text(count_num);
+}
+
+
+$('.remove_prod_card').on('click', function () {
+
+  var remove_id = $(this).data('cart_item_id');
+  var remove_quan = $(this).data('cart_item_quantity');
+
+  fetch(`/api/cart_item/${remove_id}`, {
+    method: 'DELETE',
+  })
+
+    .then(data => {
+      return data.json();
+    })
+    .then(data => {
+      console.log('data: ', data);
+      var old_price = $('.summ_cart').text();
+      // var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
+      number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
+    });
+});
+
+
+function basket_minus() {
+  console.log(123);
+  var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
+  if (current_quan_sum == 1) {
+    console.log('меньше не може бути');
+  } else {
+    $(this).parents('.basket_counter').find('.cart_counter').val(Number(current_quan_sum) - 1);
+    let item_id = $(this).attr('data-quantity_item_id');
+    let quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val();
+    console.log('quantity_id: ', quantity_id);
+   
+    fetch(`/api/cart_item/${Number(item_id)}/`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        quantity: Number(quantity_id),
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+    })
+      .then(data => {
+        return data.json();
+      })
+      .then(data => {
+        // var old_price = $('.summ_cart').text();
+        // var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
+        // number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
+        // number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
+
+      });
+  } 
+}
+function basket_plus() {
+  var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
+  console.log('current_quan_sum: ', current_quan_sum);
+
+  if (current_quan_sum == 99999) {
+    console.log('більше не може бути');
+  } else {
+    $(this).parents('.basket_counter').find('.cart_counter').val(Number(current_quan_sum) + 1);
+
+    let item_id = $(this).attr('data-quantity_item_id');
+    let quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val();
+    console.log('quantity_id: ', quantity_id);
+
+    fetch(`/api/cart_item/${Number(item_id)}/`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        quantity: Number(quantity_id),
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+    })
+      .then(data => {
+        return data.json();
+      })
+      .then(data => {
+        // var old_price = $('.summ_cart').text();
+        // var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
+        // number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
+        // number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
+
+      });
+  } 
+}
