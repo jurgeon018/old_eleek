@@ -39,15 +39,6 @@ item_section__wrapper
                               
                           </div>
                       <div class="range_slider" id="slider"></div>
-<<<<<<< HEAD
-                      {% for category in '1234'|make_list %}
-                      <div class="items_filter_content__wrap items_filter_content__wrap_active">
-                        <input type="hidden" class="hidden_category_id" data-attribute_id="{{attribute.id}}" name="eleek"
-                        value="{{forloop.counter}}">
-                        <div class="items_filter_title standart_title standart_title_4 color_black">
-                          Категорія {{category}}
-                        </div>
-=======
                       {% for category in parent_categories %}
                       <div class="items_filter_content__wrap {% if category == page %} items_filter_content__wrap_active {% endif %}">
                         <a href="{{category.get_absolute_url}}">
@@ -56,17 +47,11 @@ item_section__wrapper
                           </div>
                         </a>
                         {% if category.get_children %}
->>>>>>> 9652029d0d0c83ab3910ae12235134a9e33f6be1
                         <div class="items_filter_content">
                           {% for subcategory in category.get_children %}
                           <div class="radio_block">
-<<<<<<< HEAD
-                            <input class="input_radio input_all_arr" data-value_id="{{value.id}}" name="discount" type="checkbox" id="rb-1"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-1">Фільтр {{filter}}</label>
-=======
-                            <input class="input_radio input_all_arr" name="discount" type="checkbox" id="rb-1"> 
-                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-1">{{subcategory.title}}</label>
->>>>>>> 9652029d0d0c83ab3910ae12235134a9e33f6be1
+                            <input class="input_radio input_all_arr" name="discount" value="{{subcategory.id}}" type="checkbox" id="rb-{{subcategory.id}}"> 
+                            <label class="label_radio standart_title standart_title_6 color_black" for="rb-{{subcategory.id}}">{{subcategory.title}}</label>
                           </div>
                           {% endfor %}
                         </div>
@@ -98,12 +83,6 @@ item_section__wrapper
                   </a>
                 {% endif %}
               {% endfor %}
-              <!-- <span class="slash sub_title sub_title_2 color_black">
-                  /
-              </span>
-              <a href="{{category.get_absolute_url}}" class="mini_nav_name sub_title sub_title_2 color_black_2">
-                Амортизатори
-              </a> -->
           </div>
               <h2 class="product_title main__title main__title_3 color_black">
                 {{category.title|title}}
@@ -130,7 +109,7 @@ item_section__wrapper
                     </g>
                   </svg>
                 </div>
-                {% for item in items %}
+                <!-- {% for item in items %}
                   <div class="product_card-prof">
                       <a href="{{item.get_absolute_url}}" class="prod_card_link">
                           <img src="/static/source/img/item/img-0041.jpg" alt="" class="prod_card-img">
@@ -149,7 +128,7 @@ item_section__wrapper
                         </div>
                       </div>
                   </div>
-                {% endfor %}
+                {% endfor %} -->
               </div>
               <div class="prod_card_more standart_title standart_title_4 color_black">
                   {% trans 'Більше товарів' %}
