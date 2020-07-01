@@ -26,7 +26,7 @@ def about(request):
 
 def item_category(request, slug):
     category = get_object_or_404(ItemCategory, slug=slug)
-    items    = Item.objects.filter(category=category)
+    items    = Item.objects.filter(category=category)[0:6]
     page = category 
     parent_categories = ItemCategory.objects.filter(parent__isnull=True)
     return render(request, 'project/item_category.html', locals())
