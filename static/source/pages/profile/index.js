@@ -709,7 +709,7 @@ function Onload() {
   valide_form('.footer_form', '.inp-vak-wrap', true);
   valide_form('#comment_form', '.inp-vak-wrap', true);
   valide_form('.registery_form', '.inp-vak-wrap', false);
-  valide_form('.drive__form', '.inp-vak-wrap', false);
+  valide_form('.drive__form_last', '.inp-vak-wrap', false);
 }
 
 function location_leng() {
@@ -756,6 +756,10 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           email: true
         },
         name: {
+          required: true,
+          lettersonly: true
+        },
+        contact_name: {
           required: true,
           lettersonly: true
         },
@@ -806,20 +810,17 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         }
       },
       submitHandler: function submitHandler(form) {
+        console.log('form: ', form);
         event.preventDefault();
         $('.load_spin').addClass('load_spin_active');
         var form_input = $(form).serializeArray();
         var url_form = form.action;
         var form_json = {};
         $(form_input).each(function (index, obj) {
-          console.log(obj);
-          console.log(index);
           form_json[obj.name] = obj.value;
-          console.log(form_json);
         });
         var pass_checked = true;
         var pass_finder = $('.login_pass2').length;
-        console.log('pass_finder: ', pass_finder);
 
         if (pass_finder == 1) {
           var pass_1 = $('.login_pass').val();
@@ -841,14 +842,17 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         console.log(form_json);
 
         if (url_form != '' && pass_checked == true) {
+          console.log('url_form: ', url_form);
           fetch(url_form, {
             method: 'POST',
-            body: new URLSearchParams($.param(form_json))
+            body: new URLSearchParams($.param(form_json)) // headers: {
+            //   "Content-Type": "application/json",
+            //   "Accept": "application/json"
+            // },
+
           }).then(function (data) {
             return data.json();
           }).then(function (data) {
-            console.log(data);
-
             if (data.status == 'OK' && typeof data['status'] !== "undefined") {
               sayHi();
             }
@@ -862,8 +866,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
 
             if (typeof data['url'] !== "undefined" && data.url != '') {
               //   sayHi();
-              console.log(location.href);
-              console.log(data.url);
               location.href = data.url;
             }
           });
@@ -880,6 +882,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         explode();
 
         function sayHi() {
+          console.log(133313);
           $('.load_spin').removeClass('load_spin_active');
           $.fancybox.close();
 

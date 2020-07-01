@@ -2082,7 +2082,9 @@ input::-webkit-inner-spin-button {
 .mini_slider {
   margin-left: 168px; }
   .mini_slider .slick-slide {
-    text-align: center; }
+    text-align: center;
+    padding-top: 5px;
+    padding-left: 10px; }
   .mini_slider .img-wrap {
     height: 170px !important;
     border: 1px solid #242321; }
@@ -2100,6 +2102,7 @@ input::-webkit-inner-spin-button {
   transition: all .2s; }
 
 .three_de__block {
+  margin-top: 5px;
   width: 168px;
   transition: all .2s;
   display: block;
