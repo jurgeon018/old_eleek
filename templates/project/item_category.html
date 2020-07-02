@@ -16,6 +16,7 @@ item_section__wrapper
   <input type="hidden" class="category_id" name="category_id" value={{category.id}}>
   <div class="container">
     <div class="product-block">
+      {% if items %}
       <div class="product_filter">
           <div class="filter filter_center">
               <input type="checkbox" id="filter3" name="filter-group" class="inp_filter">
@@ -29,10 +30,9 @@ item_section__wrapper
               </label> 
               <div class="filter-content"> 
                   <form action="" class="filter_form">
-                    
                     <div class="filter_category standart_title standart_title_4 color_black">
                       {% trans 'Ціна' %}
-                  </div>
+                    </div>
                   <input type="hidden" name="min_sum" class="input_for_min_range">
                   <input type="hidden" name="max_sum" class="input_for_max_range">
                   <input type="hidden" id="max_min_prices" data-max_price="{{max_price}}" data-min_price="{{min_price}}"_>
@@ -131,10 +131,15 @@ item_section__wrapper
               </div>
             {% endfor %}
           </div>
+          {% if show_more %}
           <div class="prod_card_more standart_title standart_title_4 color_black">
-              {% trans 'Більше товарів' %}
+            {% trans 'Більше товарів' %}
           </div>
+          {% endif %}
       </div>
+      {% else %}
+      Нема товарів!
+      {% endif %}
     </div>
   </div>
   <!-- /.container -->
