@@ -296,6 +296,7 @@ item_section__wrapper
         {% get_category_attributes attribute_category item as attributes %}
         {% for attribute in attributes %}
           {% if attribute_category.name == 'кольори' %}
+          <!-- Ось тут ми зупинилсь! -->
             <div 
             data-item_attribute_id='{{attribute.get_values.first.value.item_attribute.id}}'
             data-item_attribute_value_id='{{attribute.get_values.first.value.id}}'  
