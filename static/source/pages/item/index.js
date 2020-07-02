@@ -915,6 +915,9 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           }).then(function (data) {
             return data.json();
           }).then(function (data) {
+            console.log('data: ', data);
+            console.log('tut?');
+
             if (data.status == 'OK' && typeof data['status'] !== "undefined") {
               sayHi();
             }
@@ -1226,10 +1229,25 @@ $('.price_option').on('click', function () {
   console.log('current_sum: ', current_sum);
 
   if ($(this).hasClass('option_content_prof_active')) {
-    $(all_price__block).text(all_summ - Number(current_sum));
-  } else {
     $(all_price__block).text(all_summ + Number(current_sum));
+  } else {
+    $(all_price__block).text(all_summ - Number(current_sum));
   }
+});
+$('.item_btn_price').on('click', function () {
+  var item_id = $('.item_name').attr('data-id-name');
+  var body = {
+    "item_id": Number(item_id) // "attributes": JSON.stringify(main_attr),
+
+  };
+  fetch('/api/cart_items/', {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
+  });
 });
 
 /***/ }),

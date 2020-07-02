@@ -230,9 +230,26 @@ $('.price_option').on('click', function() {
     let current_sum = $(this).attr('data-price-option');
     console.log('current_sum: ', current_sum);
         if ($(this).hasClass('option_content_prof_active')) {
-            $(all_price__block).text(all_summ - Number(current_sum));
-        } else {
             $(all_price__block).text(all_summ + Number(current_sum));
+        } else {
+            $(all_price__block).text(all_summ - Number(current_sum));
         }
 });
 
+
+
+$('.item_btn_price').on('click', function() {
+    let item_id = $('.item_name').attr('data-id-name');
+      let body = {
+        "item_id": Number(item_id),
+        // "attributes": JSON.stringify(main_attr),
+      }
+      fetch('/api/cart_items/', {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        }
+      })
+});

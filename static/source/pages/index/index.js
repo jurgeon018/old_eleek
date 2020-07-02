@@ -915,6 +915,9 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           }).then(function (data) {
             return data.json();
           }).then(function (data) {
+            console.log('data: ', data);
+            console.log('tut?');
+
             if (data.status == 'OK' && typeof data['status'] !== "undefined") {
               sayHi();
             }

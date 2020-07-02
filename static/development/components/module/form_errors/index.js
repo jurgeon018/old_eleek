@@ -245,7 +245,10 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                     return data.json();
                   })
                   .then(data => {
+                    console.log('data: ', data);
+                    console.log('tut?');
                     if(data.status=='OK' && typeof data['status'] !== "undefined"){
+                      
                         sayHi();
                     }
                     if(data.status=='BAD' && typeof data['status'] !== "undefined"){
