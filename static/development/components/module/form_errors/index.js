@@ -65,6 +65,7 @@ function location_leng() {
   return location.pathname.split('/')[1];
 }
 function valide_form(id_form, error_inp_wrap, check_request) {
+  var modal = false;
   var check_request = check_request;
   if ($(id_form).length > 0) {
       var lang_site;
@@ -103,11 +104,24 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                   required: true,
                   lettersonly: true
               },
+              first_name: {
+                  required: true,
+                  lettersonly: true
+              },
               contact_name: {
                   required: true,
                   lettersonly: true
               },
               username: {
+                  required: true,
+              },
+              old_password: {
+                  required: true,
+              },
+              pass1: {
+                  required: true,
+              },
+              address: {
                   required: true,
               },
               phone_number: {
@@ -138,10 +152,25 @@ function valide_form(id_form, error_inp_wrap, check_request) {
               name: {
                   required: error_text.required,
               },
+              first_name: {
+                  required: error_text.required,
+              },
+              address: {
+                  required: error_text.required,
+              },
+              old_password: {
+                  required: error_text.required,
+              },
+              pass1: {
+                  required: error_text.required,
+              },
               username: {
                   required: error_text.required,
               },
               phone_number: {
+                  required: error_text.required,
+              },
+              phone: {
                   required: error_text.required,
               },
               password: {
@@ -194,9 +223,18 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                 if(url_form != '' && pass_checked == true){
                   console.log('url_form: ', url_form);
                  
+                  let current_method = 'POST';
+                  
+                    if ($(form).hasClass('PATCH')) {
+                      current_method = 'PATCH';
+                      modal = true;
+                    } else {
+                      current_method = 'POST';
+                      modal = false;
+                    }
                  
                   fetch(url_form, {
-                    method: 'POST',
+                    method: current_method,
                     body: new URLSearchParams($.param(form_json)),
                     // headers: {
                     //   "Content-Type": "application/json",
@@ -244,9 +282,28 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                 explode()
               function sayHi() {
                 console.log(133313);
+                console.log('modal: ', modal);
+                
                   $('.load_spin').removeClass('load_spin_active');
-                  $.fancybox.close();
+                  
+
+                  if (modal == true) {
+                    console.log('tut');
+                    $.fancybox.open({
+                      src: '#modal_form_change_profile',
+                    });
+                    setTimeout(() => {
+                      $.fancybox.close({
+                        src: '#modal_form_change_profile',
+                      });
+                    }, 1500);
+                  } else {
+                    $.fancybox.close();
+                  }
                   if (check_request === true) {
+                   
+
+
                     $.fancybox.open({
                       src: '#modal-form_true',
                     });
@@ -276,3 +333,4 @@ function valide_form(id_form, error_inp_wrap, check_request) {
       });
   } 
 }
+

@@ -77,11 +77,11 @@ item_section__wrapper
         </div>
       </div>
       <div class="additional__block">
-        <div class="addit_name sub_title sub_title_3">
+        <div class="addit_name sub_title sub_title_3 color_black">
           {% trans 'Ціна додаткових опцій' %}:
         </div>
-        <div class="addit_price main__title main__title_5">
-          ₴ 0
+        <div class="addit_price main__title main__title_5 color_black">
+          ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span>
         </div>
       </div>
       <div class="kredit__block">
@@ -130,7 +130,7 @@ item_section__wrapper
         </div>
         <div class="option_content__block">
           {% for option in options.get_values %}
-          <div class="option_content_prof">
+          <div class="option_content_prof price_option" data-price-option='{{option.price}}'>
             <img class="option_img" src="/static/source/img/item/close.svg" alt="">
             <div class="option_text standart_title standart_title_6">
               {{option.value.value}} ({{option.price}} {{option.currency.code}})

@@ -221,3 +221,17 @@ function create_comment(content) {
         
         return comment_profile;
 }
+
+$('.price_option').on('click', function() {
+    let all_price__block = $('.additional_price');
+    let all_summ = Number($(all_price__block).text());
+    console.log('all_summ: ', all_summ);
+    let current_sum = $(this).attr('data-price-option');
+    console.log('current_sum: ', current_sum);
+        if ($(this).hasClass('option_content_prof_active')) {
+            $(all_price__block).text(all_summ - Number(current_sum));
+        } else {
+            $(all_price__block).text(all_summ + Number(current_sum));
+        }
+});
+
