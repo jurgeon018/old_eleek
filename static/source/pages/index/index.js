@@ -606,6 +606,26 @@ $('.btn-lean_more').on('mouseleave', function () {
   $(this).addClass('is-focus-out');
   $(this).removeClass('is-focus-over');
 });
+$(".absolute_product_arrow").hover(function () {
+  $(this).removeClass('out').addClass('over');
+}, function () {
+  $(this).removeClass('over').addClass('out');
+});
+$(".btn_standart_black").hover(function () {
+  $(this).removeClass('out').addClass('over');
+}, function () {
+  $(this).removeClass('over').addClass('out');
+});
+$(".btn_standart_yellow").hover(function () {
+  $(this).removeClass('out').addClass('over');
+}, function () {
+  $(this).removeClass('over').addClass('out');
+});
+$(".btn_standart_transparent").hover(function () {
+  $(this).removeClass('out').addClass('over');
+}, function () {
+  $(this).removeClass('over').addClass('out');
+});
 
 /***/ }),
 
@@ -1476,10 +1496,10 @@ $(window).resize(function () {// create_slider();
 //   let width = window.innerWidth;
 //   console.log('width: ', width);
 // }
-
-parent.onmouseout = function (event) {
-  /* event.target: внешний элемент */
-};
+// $('.glo').on('mouseout', function(event) {
+//   /* event.target: внешний элемент */
+//   console.log(1);
+// });
 
 /***/ }),
 

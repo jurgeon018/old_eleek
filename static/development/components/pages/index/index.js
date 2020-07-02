@@ -5,6 +5,8 @@ import './four_section.scss';
 import './five_section.scss';
 import './six_section.scss';
 
+
+
 /** @preserve jQuery animateNumber plugin v0.0.14
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber
@@ -483,11 +485,11 @@ var index_wow_1 = new WOW(
     
   // }
 
-  parent.onmouseout = function(event) {
-    /* event.target: внешний элемент */
-  };
+  // $('.glo').on('mouseout', function(event) {
+  //   /* event.target: внешний элемент */
+  //   console.log(1);
+  // });
 
+  
 
-
-    
   

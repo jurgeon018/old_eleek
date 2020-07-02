@@ -122,7 +122,7 @@ const resize = () => {
   })
 }
 
-export default (target, userOptions = {}) => {
+let rallax = (target, userOptions = {}) => {
   const rallax = new RallaxObj(target, userOptions)
   targets.push(rallax)
 	resize()
@@ -134,3 +134,9 @@ export default (target, userOptions = {}) => {
 
   return rallax
 }
+
+const parallax = rallax('.parallax')
+
+parallax.start()
+
+

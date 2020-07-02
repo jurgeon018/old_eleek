@@ -132,19 +132,15 @@ item_section__wrapper
             {% endfor %}
           </div>
           {% if show_more %}
-          <div class="prod_card_more standart_title standart_title_4 color_black">
+          <div class="prod_card_more btn_standart_transparent standart_title standart_title_4 color_black">
             {% trans 'Більше товарів' %}
           </div>
           {% endif %}
       </div>
       {% else %}
-<<<<<<< HEAD
-      {% trans 'В даній категорії немає товарів!' %}
-=======
       <div class="unset_title__block main__title main__title_00 color_black">
-        Нема товарів!
+        {% trans 'В даній категорії немає товарів!' %}
       </div>
->>>>>>> 245ce57f9cc1ba7e5be491095d445cde4b6f1c5f
       {% endif %}
     </div>
   </div>

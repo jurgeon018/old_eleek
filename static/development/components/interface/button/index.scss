@@ -14,20 +14,7 @@
             color: #ffffff;
             border: solid 1px transparent;
             position: relative;
-            overflow: hidden;
-            &::before {
-                transition: all .2s;
-                position: absolute;
-                top: 0;
-                right: -100%;
-                content: '';
-                display: block;
-                width: 100%;
-                height: 110%;
-                background: #ffd10a;
-                border: 1px solid #ffd10a;
-
-            }
+            
             &:hover{
                 
             }
@@ -54,26 +41,209 @@
     right: 0;
 }
 
-a.glo{
-    color:#00c6ff;
-    padding: 15px 20px;
-    text-transform: uppercase;
-    width:350px;
-    text-decoration:none;
-    text-align:center;
-    margin:30px 0;
+
+
+.absolute_product_arrow{
+    color:#fff;
     display: block;
-    background-image: linear-gradient(to left,transparent,transparent 50%,#00c6ff 50%,#00c6ff);
+    background-image: linear-gradient(to left,#2b2a27,#2b2a27 50%,#ffd10a 50%,#ffd10a);
+    background-position: 95% 0;
+    background-size: 220% 100%;
+    transition: all .55s ease-in;
+   }
+   .absolute_product_arrow:hover {
+        background-position: 5% 0;
+   }
+
+   .absolute_product_arrow.out {
+        animation-name: out0;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#ffd10a,#ffd10a 50%,#2b2a27 50%,#2b2a27);
+        background-position: 5% 0;
+    }
+    .absolute_product_arrow.over {
+        animation-name: in0;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#2b2a27,#2b2a27 50%,#ffd10a 50%,#ffd10a);
+    }
+ @keyframes out0 {
+    from {
+        background-position: 100% 0;
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+ @keyframes in0 {
+     from {
+        background-position: 100% 0;
+
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+
+
+
+
+
+
+
+
+
+    .btn_standart_black {
+        color:#fff;
+        display: block;
+        background-image: linear-gradient(to left,#2b2a27,#2b2a27 50%,#ffd10a 50%,#ffd10a);
+        background-position: 95% 0;
+        background-size: 220% 100%;
+        transition: all .55s ease-in;
+        
+    }
+   .btn_standart_black:hover {
+                background-position: 5% 0;
+   }
+
+   .btn_standart_black.out {
+        animation-name: out;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#ffd10a,#ffd10a 50%,#2b2a27 50%,#2b2a27);
+        background-position: 5% 0;
+
+
+    }
+    .btn_standart_black.over {
+        animation-name: in;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#2b2a27,#2b2a27 50%,#ffd10a 50%,#ffd10a);
+    }
+ @keyframes in {
+    from {
+        background-position: 100% 0;
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+ @keyframes out {
+     from {
+        background-position: 100% 0;
+
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+
+
+
+
+
+
+
+
+
+
+.btn_standart_yellow{
+    color:#fff;
+    display: block;
+    background-image: linear-gradient(to left,#ffd10a,#ffd10a 50%,#2b2a27 50%,#2b2a27);
+    background-position: 95% 0;
+    background-size: 220% 100%;
+    transition: all .55s ease-in;
+   }
+   .btn_standart_yellow:hover {
+        background-position: 5% 0;
+   }
+
+   .btn_standart_yellow.out {
+        animation-name: out3;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#2b2a27,#2b2a27 50%,#ffd10a 50%,#ffd10a);
+        background-position: 5% 0;
+
+    }
+    .btn_standart_yellow.over {
+        animation-name: in3;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#ffd10a,#ffd10a 50%,#2b2a27 50%,#2b2a27);
+    }
+ @keyframes in3 {
+    from {
+        background-position: 100% 0;
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+ @keyframes out3 {
+     from {
+        background-position: 100% 0;
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+
+
+
+
+
+
+
+
+.btn_standart_transparent{
+    
+    display: block;
+    background-image: linear-gradient(to left,transparent,transparent 50%,#2b2a27 50%,#2b2a27);
     background-position: 100% 0;
-    background-size: 200% 100%;
-    transition: all .25s ease-in;
-    font: 400 18px tahoma;
-    border: 1px solid #00C6FF;
+    background-size: 220% 100%;
+    transition: all .55s ease-in;
    }
-   a.glo:hover {
-   background-position: 0 0;
-   color:#fff;
+   .btn_standart_transparent:hover {
+        background-position: 5% 0;
    }
+
+   .btn_standart_transparent.out {
+        animation-name: out3;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#2b2a27,#2b2a27 50%,transparent 50%,transparent);
+        background-position: 5% 0;
+
+    }
+    .btn_standart_transparent.over {
+        animation-name: in3;
+        animation-duration:1s;
+        color:#fff !important;
+        background-image: linear-gradient(to left,transparent,transparent 50%,#2b2a27 50%,#2b2a27);
+    }
+ @keyframes in3 {
+    from {
+        background-position: 100% 0;
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+ @keyframes out3 {
+     from {
+        background-position: 100% 0;
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+
+
+
+
+
+
+
+
+
+
 
 
 @media (max-width: 430px) {
