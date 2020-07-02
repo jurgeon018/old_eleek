@@ -261,29 +261,28 @@
     <div class="basket_content__block">
       <div class="none_content_send main__title color_black">
       </div>
-      {{cart_items}}
-      {% for i in '12345678'|make_list %}
+      <!-- {% for cart_item in cart_items %}
       <div class="basket_content_profile">
           <div class="basket_profile_img">
-              <img src="/static/source/img/index/lite.png" alt="">
+              <img src="{{cart_item.item.image_url}}" alt="{{cart_item.item.alt}}">
           </div>
           <div class="basket_right_content">
             <div class="basket_title__block">
               <div class="basket_title main__title main__title_5">
-                Товар {{i}}
+                {{cart_item.item.title}}
               </div>
               <img class="basket_del" src="/static/source/img/index/trash.svg" alt="">
             </div>
             <div class="basket_bottom__wrap">
               <div class="basket_counter__block">
                 <div class="basket_text sub_title sub_title_2">
-                  Кількість
+                  {% trans 'Кількість' %}
                 </div>
                 <div class="basket_counter">
                   <div class="basket_prep basket_count sub_title sub_title_21">
                     -
                   </div>
-                  <input type="number" class="basket_input basket_count main__title main__title_5" value="{{i}}">
+                  <input type="number" class="basket_input basket_count main__title main__title_5" value="{{cart_item.quantity}}">
                   <div class="basket_next basket_count sub_title sub_title_21">
                     +
                   </div>
@@ -291,17 +290,16 @@
               </div>
               <div class="basket_sum__block">
                 <div class="basket_text sub_title sub_title_2">
-                  Ціна
+                  {% trans 'Ціна' %}
                 </div>
                 <div class="basket_summ main__title main__title_5">
-                  {{i}}500 грн.
+                  {{cart_item.item.price}}
                 </div>
               </div>
             </div>
           </div>
       </div>
-      {% endfor %}
-
+      {% endfor %} -->
     </div>
     <div class="basket_bottom_result">
       <div class="basket_result__block">
