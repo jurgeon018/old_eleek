@@ -11,9 +11,7 @@ from box.apps.sw_shop.sw_cart.decorators import cart_exists
 def index(request):
     page = Page.objects.get(code='index')
     test_drive_sliders = TestDriveSlider.objects.all()
-    print(test_drive_sliders)
     velo_sliders = VeloSlider.objects.all()
-    print(velo_sliders)
     return render(request, 'project/index.html', locals())
 
 
@@ -23,12 +21,21 @@ def about(request):
     partners = Partner.objects.all()
     return render(request, 'project/about.html', locals())
 
+from django.db.models import Max, Min 
 
 def item_category(request, slug):
-    category = get_object_or_404(ItemCategory, slug=slug)
-    items    = Item.objects.filter(category=category)[0:6]
-    page = category 
+    category          = get_object_or_404(ItemCategory, slug=slug)
+    page              = category 
+    items             = Item.objects.filter(category=category)[0:6]
+    all_items         = Item.objects.all()
     parent_categories = ItemCategory.objects.filter(parent__isnull=True)
+    discount_filter   = all_items.filter(discount__isnull=False).exists()
+    raw_max_price     = all_items.aggregate(Max('price'))['price__max']
+    raw_min_price     = all_items.aggregate(Min('price'))['price__min']
+    max_price         = str(raw_max_price).replace(',','.')
+    min_price         = str(raw_min_price).replace(',','.')
+    print('sdfsdf',max_price, min_price,raw_max_price, raw_min_price)
+
     return render(request, 'project/item_category.html', locals())
 
 
