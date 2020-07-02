@@ -50,6 +50,7 @@ module.exports = {
         drive:  './drive.js' ,
         about:  './about.js' ,
         profile:  './profile.js' ,
+        password_reset:  './password_reset.js' ,
     },
     output:{
         filename:'[name]/index.js',
