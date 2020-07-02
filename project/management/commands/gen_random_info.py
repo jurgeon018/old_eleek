@@ -51,11 +51,11 @@ class Command(BaseCommand):
         color_values        = AttributeValue.objects.filter(attribute__category=colour_category)
         uncolor_values      = AttributeValue.objects.exclude(attribute__category=colour_category)
 
-        for i in range(300):
+        for i in range(900):
             item, _ = Item.objects.get_or_create(
                 title=f'товар без характеристик {i}',
             )
-            print(item, '/ 299')
+            print(item, '/ 899')
             item.price    = randrange(1000,99999)
             item.currency = choice(Currency.objects.all())
             item.category = choice(ItemCategory.objects.all())
