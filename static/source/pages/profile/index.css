@@ -643,7 +643,7 @@ a.glo:hover {
   transition: all .2s;
   color: #FF0000; }
 
-.pass_checked_error {
+.pass_checked_error, .error_block_false {
   transition: all .2s;
   color: #FF0000;
   text-align: center;

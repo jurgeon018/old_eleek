@@ -33,13 +33,14 @@ item_section__wrapper
             </label>
             <input type="password" id="login_pass" name="password" class="login_pass login_input input_focus">
           </div>
-          
+          <div class="error_block_false"></div>
           <div class="bottom_registery__block">
-            <a href="{% url 'account_reset_password' %}" class="ultra_link sub_title sub_title_2 color_yellow">
-              {% trans 'Забули пароль?' %}
-            </a>
+          <a class="ultra_link sub_title sub_title_2 color_yellow" href="/accounts/google/login/?process=login">{% trans 'Вхід через Google' %}</a>
             <input type="submit" value="Вхід" class="btn_standart btn_standart_black">
           </div>
+          <a href="{% url 'account_reset_password' %}" class="ultra_link sub_title sub_title_2 color_yellow">
+            {% trans 'Забули пароль?' %}
+          </a>
           <div class="last_registery__block">
             <div class="last_registery_text sub_title sub_title_2 color_black">
               {% trans 'Ще не зареєстровані?' %}
@@ -48,7 +49,6 @@ item_section__wrapper
               {% trans 'Зареєструватись' %}
             </a>
           </div>
-          <a class="ultra_link sub_title sub_title_2 color_yellow" href="/accounts/google/login/?process=login">{% trans 'Вхід через Google' %}</a>
         </form>
       </div>
     </div>

@@ -1477,6 +1477,10 @@ $(window).resize(function () {// create_slider();
 //   console.log('width: ', width);
 // }
 
+parent.onmouseout = function (event) {
+  /* event.target: внешний элемент */
+};
+
 /***/ }),
 
 /***/ "../components/pages/index/index.scss":

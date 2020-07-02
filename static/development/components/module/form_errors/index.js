@@ -251,6 +251,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                     if(data.status=='BAD' && typeof data['status'] !== "undefined"){
                         $('.load_spin').removeClass('load_spin_active');
                         $(".error_block_false").text("Невірний логін або пароль");
+                       
                       //   $.fancybox.open({
                       //     src: '#modal-form_false',
                       //   });

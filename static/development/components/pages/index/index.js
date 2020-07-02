@@ -482,5 +482,12 @@ var index_wow_1 = new WOW(
   //   console.log('width: ', width);
     
   // }
+
+  parent.onmouseout = function(event) {
+    /* event.target: внешний элемент */
+  };
+
+
+
     
   
