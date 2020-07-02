@@ -118,7 +118,6 @@ $('.prod_card_more').on('click', function () {
       $(current_inp).each(function (item, index, array) {
             per_arr.push($(index).val());
       });
-      
     });
     console.log('per_arr: ', per_arr);
 
@@ -191,35 +190,20 @@ $('.prod_card_more').on('click', function () {
   }
 
   function get_user_cart_generate() {
-    var all_array = [];
-    generate_arr_attr(all_array);
-    console.log(all_array);
-    //  var category_value_size = [];
-    //       var category_value_color = [];
+    // var all_array = [];
+    // generate_arr_attr(all_array);
+    // console.log(all_array);
 
-    //       var category_all_input_size = document.querySelectorAll('.input_radio');
-    //       category_all_input_size.forEach(function(item, index, array) {
-    //         if ($(item)[0].checked) {
-    //           category_value_size.push($(item).attr('id'));
-    //         }
-    //       });
-    //     var category_all_input_color = document.querySelectorAll('.input_color');
-    //       category_all_input_color.forEach(function(item, index, array) {
-    //         if ($(item)[0].checked) {
-    //           category_value_color.push($(item).attr('id').slice(6));
-
-    //         }
-    //       });
-    //     var attrCategory = [{
-    //         attribute_id: $('.hidden_size_id').val(),
-    //         value_ids: category_value_size
-    //       },
-    //       {
-    //         attribute_id: $('.hidden_color_id').val(),
-    //         value_ids: category_value_color
-    //       }
-    //     ]
-    // console.log(attrCategory);
+    var filter_prof = document.querySelectorAll('.items_filter_content__wrap');
+    let per_arr = [];
+    filter_prof.forEach(function (item, index, array) {
+      var current_inp = $(item).find('.input_all_arr');
+      $(current_inp).each(function (item, index, array) {
+        if ($(index)[0].checked) {
+          per_arr.push($(index).val());
+        }
+      });
+    });
 
     var removeBtn = 0;
     var cart_check = document.querySelectorAll('.main_product-block .product_card-prof');
@@ -244,7 +228,7 @@ $('.prod_card_more').on('click', function () {
       val_floor1 = '';
       val_floor2 = '';
     }
-    fetch(`/api/items/?per_page=6&page_number=${page_number}&category_id=${category_id}&max_price=${val_floor2}&min_price=${val_floor1}&attributes=${JSON.stringify(all_array)}`, {
+    fetch(`/api/items/?per_page=6&page_number=${page_number}&category_id=${category_id}&max_price=${val_floor2}&min_price=${val_floor1}&category_ids=${JSON.stringify(per_arr)}`, {
       method: 'GET',
     })
       .then(data => {

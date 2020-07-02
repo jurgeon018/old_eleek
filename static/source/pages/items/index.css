@@ -2144,7 +2144,6 @@ input::-webkit-inner-spin-button {
 
 .main_product-block {
   position: relative;
-  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   width: 100%;

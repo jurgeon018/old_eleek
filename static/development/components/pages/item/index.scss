@@ -215,6 +215,8 @@
     margin-left: 168px;
     .slick-slide {
         text-align: center;
+        padding-top: 5px;
+        padding-left: 10px;
     }
     .img-wrap {
         // width: 170px !important;
@@ -237,6 +239,7 @@
         transition: all .2s;
 }
 .three_de__block {
+    margin-top: 5px;
     width: 168px;
     transition: all .2s;
     display: block;
