@@ -948,7 +948,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var page_number = 0;
 var super_kostile = false;
-var removeBtn = 0;
+var removeBtn = 6;
 var hidden_min_range = $('.input_for_min_range');
 var hidden_max_range = $('.input_for_max_range');
 var rangeFinder = $('.range_slider').length;
@@ -1031,6 +1031,7 @@ if (check_end_slider >= 1) {
 $('.product_title').on('mouseup', function () {
   console.log('yes!');
 });
+page_number = 1;
 
 function get_card_generate() {
   // var all_array = [];
@@ -1045,7 +1046,6 @@ function get_card_generate() {
     });
   });
   console.log('per_arr: ', per_arr);
-  page_number = 2;
   page_number++;
   var ordering;
   ordering = $('.ordering').val();
@@ -1071,7 +1071,7 @@ function get_card_generate() {
   }).then(function (data) {
     return data.json();
   }).then(function (body) {
-    console.log('body: ', body.results);
+    console.log('body: ', body);
     var cur_step = 0;
     var last_page = body.count;
     var fixed_count = last_page; // console.log('page_number: ', page_number);

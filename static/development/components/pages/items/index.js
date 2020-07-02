@@ -1,7 +1,7 @@
 import './index.scss';
 var page_number = 0;
 var super_kostile = false;
-var removeBtn = 0;
+var removeBtn = 6;
 
 
 var hidden_min_range = $('.input_for_min_range');
@@ -103,7 +103,7 @@ $('.prod_card_more').on('click', function () {
 
   });
 
-
+  page_number = 1;
 
   function get_card_generate() {
 
@@ -121,7 +121,7 @@ $('.prod_card_more').on('click', function () {
     });
     console.log('per_arr: ', per_arr);
 
-    page_number = 2;
+    
 
     page_number++;
   
@@ -150,15 +150,13 @@ $('.prod_card_more').on('click', function () {
         return data.json();
       })
       .then(body => {
-
-
-        console.log('body: ', body.results);
+        console.log('body: ', body);
 
         let cur_step = 0;
 
         var last_page = body.count;
         const fixed_count = last_page;
-
+        
         // console.log('page_number: ', page_number);
         //   console.log('last_page: ', last_page);
 
@@ -240,7 +238,7 @@ $('.prod_card_more').on('click', function () {
           $('.prod_card_more').css('display', 'none');
         }
         let cur_step = 0;
-
+        
         let last_page = body.count;
         const fixed_count = last_page;
 
