@@ -23,6 +23,13 @@ item_section__wrapper
 
           <div class="footer_input__wrap inp-vak-wrap">
             <label for="login_mail" class="login_label label__style color_black">
+              {% trans 'Логін' %}
+            </label>
+            <input type="text" id="login_mail" name="username" class="login_mail login_input input_focus">
+          </div>
+
+          <div class="footer_input__wrap inp-vak-wrap">
+            <label for="login_mail" class="login_label label__style color_black">
               E-mail
             </label>
             <input type="text" id="login_mail" name="email" class="login_mail login_input input_focus">
@@ -38,13 +45,13 @@ item_section__wrapper
             <label for="login_pass" class="login_label label__style color_black">
               {% trans 'Пароль' %}
             </label>
-            <input type="password" id="login_pass" name="pass1" class="login_pass login_input input_focus">
+            <input type="password" id="login_pass" name="password" class="login_pass login_input input_focus">
           </div>
           <div class="footer_input__wrap inp-vak-wrap">
             <label for="login_pass2" class="login_label label__style color_black">
               Повторіть пароль
             </label>
-            <input type="password" id="login_pass2" name="pass2" class="login_pass2 login_input input_focus">
+            <input type="password" id="login_pass2" name="password2" class="login_pass2 login_input input_focus">
           </div>
           <div class="pass_checked_error"></div>
 
