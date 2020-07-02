@@ -188,16 +188,19 @@ item_section__wrapper
       <div class="order_item__block">
         <div class="order_item__wrap">
           <div class="order_item_content__block">
-            {% for cart_item in '1234567'|make_list %}
+            {% for cart_item in cart_items %}
             <div class="basket_content_profile">
               <div class="basket_profile_img">
-                  <img src="/static/source/img/index/lite.png" alt="">
+                <a href="{{cart_item.item.get_absolute_url}}">
+                  <img src="{{cart_item.item.image_url}}" alt="{{cart_item.item.alt}}">
+                </a>
               </div>
               <div class="basket_right_content">
                 <div class="basket_title__block">
                   <div class="basket_title main__title main__title_5">
-                    {{cart_item}}
-                    Вилка VEPR-H123
+                    <a href="{{cart_item.item.get_absolute_url}}" style="color:black">
+                    {{cart_item.item.title|title}}
+                    </a>
                   </div>
                 </div>
                 <div class="basket_bottom__wrap">
@@ -209,7 +212,7 @@ item_section__wrapper
                       <div class="basket_prep basket_count sub_title sub_title_21">
                         -
                       </div>
-                      <input type="number" class="basket_input basket_count main__title main__title_5" value="{{cart_item}}">
+                      <input type="number" class="basket_input basket_count main__title main__title_5" value="{{cart_item.quantity}}">
                       <div class="basket_next basket_count sub_title sub_title_21">
                         +
                       </div>
@@ -220,7 +223,7 @@ item_section__wrapper
                       {% trans 'Ціна' %}
                     </div>
                     <div class="basket_summ main__title main__title_5">
-                      {{cart_item}}500 грн.
+                      {{cart_item.item.price}} {{cart_item.item.currency}}
                     </div>
                   </div>
                 </div>
@@ -233,8 +236,7 @@ item_section__wrapper
               {% trans 'Всього' %}
             </div>
             <div class="order_sum main__title main__title_5 color_black">
-              102 500 грн.
-              {{cart.total_price}}
+              {{cart.total_price}} {{cart.currency}}
             </div>
           </div>
         </div>

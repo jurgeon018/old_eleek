@@ -79,6 +79,7 @@ def search(request):
     page  = Page.objects.get(code='search')
     query = request.POST or request.GET
     query = query.get('main_search','')
+    print(query)
     if query:
         search_items = Item.objects.all().filter(
             title__icontains=query,
