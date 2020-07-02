@@ -7,8 +7,7 @@
   <form method="POST" action="" class="true_form" id="modal-form_true" style="display:none;">
     <img class="form_true_img" src="/static/source/img/index/123.png" alt="">
     <div class="usually_modal_text standart_title standart_title_6 color_black">
-        Дякуємо, заявка опрацьована <br>
-        Наші менеджери звяжуться з Вами
+      {% trans 'Дякуємо, заявка опрацьована <br>Наші менеджери звяжуться з Вами' %}
     </div>
     </form>
   <div class="load_spin">
@@ -47,8 +46,6 @@
   <div class="nav_menu__block">
       <div class="nav_menu_item__block">
           <div class="nav_menu_content">
-
-
               <div class="nav_menu_item modal_search">
                 <svg class="svg_item" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                   <path d="M9 .4c4.75 0 8.6 3.85 8.6 8.6 0 2.158-.795 4.131-2.109 5.641l3.933 3.935c.235.234.235.614 0 .848-.234.235-.614.235-.848 0l-3.935-3.933C13.131 16.805 11.158 17.6 9 17.6 4.25 17.6.4 13.75.4 9S4.25.4 9 .4zm0 1.2C4.913 1.6 1.6 4.913 1.6 9s3.313 7.4 7.4 7.4c2.01 0 3.833-.802 5.167-2.103l.059-.071c.022-.023.046-.043.07-.06C15.598 12.832 16.4 11.01 16.4 9c0-4.087-3.313-7.4-7.4-7.4z"/>
@@ -83,7 +80,6 @@
             </div>
           </div>
       </div>
-      
   </div>
   <nav class="scroll_menu">
       <div class="scroll_content__block">
@@ -184,7 +180,6 @@
                     01
                   </span>
                   <span class="pref_line">
-
                   </span>
                   <span class="pref_text main__title main__title_5 color_black">
                     {% trans 'Тест - драйв' %}
@@ -211,22 +206,22 @@
                 {% render 'header_construct' as header_construct %}
                 <div class="scroll_title main__title main__title_3 color_black db_content" data-admin_url="{{header_construct.get_admin_url}}">
                   {{header_construct.text}}
-                  Склади свій власний електро-велосипед онлайн!
+                  <!-- Склади свій власний електро-велосипед онлайн! -->
                 </div>
                 <a href="{% url 'constructor' %}" class="btn_standart btn_standart_transparent">
-                  Почати
+                  {% trans 'Почати' %}
                 </a>
               </div>
           </div>
           <a href="#" class="mobile_bottom__block mobile_bottom__block_1">
             <div class="mobile_bottom_text color_black main__title main__title_5">
-              Тест-драйв
+              {% trans 'Тест-драйв' %}
             </div>
             <img src="/static/source/img/index/combined-arrow.svg" alt="">
           </a>
           <a href="#" class="mobile_bottom__block mobile_bottom__block_2">
             <div class="mobile_bottom_text color_black main__title main__title_5">
-              Конструктор Велосипедів
+              {% trans 'Конструктор Велосипедів' %}
             </div>
             <img src="/static/source/img/index/combined-arrow.svg" alt="">
           </a>
@@ -236,7 +231,7 @@
       <div class="search_menu__block">
           <div class="search_menu_title">
             <div class="main__title main__title_2 color_black">
-              Пошук
+              {% trans 'Пошук' %}
             </div>
             <img class="modal_search modal_search_close" src="/static/source/img/index/close.svg" alt="">
           </div>
@@ -253,7 +248,7 @@
   <div class="basket_menu">
     <div class="search_menu_title">
       <div class="main__title main__title_2 color_black">
-        Корзина
+        {% trans 'Корзина' %}
       </div>
       <img class="modal_basket modal_search_close" src="/static/source/img/index/close.svg" alt="">
     </div>
@@ -304,7 +299,7 @@
       <div class="basket_result__block">
         <div class="basket_all_result_title__block">
           <div class="basket_all_result_title main__title main__title_4">
-            Всього
+            {% trans 'Всього' %}
           </div>
           <div class="basket_all_result main__title main__title_4">
             ₴ 100 500
@@ -313,7 +308,7 @@
         <div class="flex_box">
             <div class="discount__block">
                 <div class="discount_title">
-                  Знижка
+                  {% trans 'Знижка' %}
                 </div>
                 <div class="discount_result main__title main__title_5">
                   ₴ 2 000
@@ -323,9 +318,21 @@
       </div>
       <a href="{% url 'order' %}" class="basket_btn basket_btn_wrap">
         <div class="sub_title sub_title_2">
-          Замовити
+          {% trans 'Замовити' %}
         </div>
       </a>
     </div>
   </div>
 </header>
+
+
+
+
+
+
+
+
+
+
+
+
