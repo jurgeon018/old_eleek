@@ -30,15 +30,15 @@ item_section__wrapper
       </form>
     </div> -->
     <div class="search_sub_title sub_title sub_title_2 color_black">
-      {% trans 'За даним ' %}
-      <b>‘<span class="search_result">‘{{search_query}}’</span>’</b> 
+      {% trans 'За даним запитом' %}
+      <b>‘<span class="search_result">‘{{query}}’</span>’</b> 
       {% trans 'знайдено товарів' %}: {{search_items.count}} 
     </div>
     <div class="main_product-block">
       {% for search_item in search_items %}
       <div class="product_card-prof db_content" data-admin_url="{{search_item.get_admin_url}}">
           <a href="{{search_item.get_absolute_url}}" class="prod_card_link">
-              <img src="/static/source/img/item/img-0041.jpg" alt="" class="prod_card-img">
+              <img src="{{search_item.image_url}}" alt="" class="prod_card-img">
           </a>
           <div class="prod_card_info__wrap">
             <div class="prod_card-name standart_title standart_title_4 color_black">
@@ -68,3 +68,7 @@ item_section__wrapper
 <script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
 <script src="/static/source/pages/search/index.js"></script> 
 {% endblock scripts %}
+
+
+
+

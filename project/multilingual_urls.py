@@ -85,8 +85,6 @@ def search(request):
         )
     return render(request, 'project/search.html', locals())
 
-# TEST DRIVE 
-
 @login_required
 def profile(request):
     page = Page.objects.get(code='profile')
