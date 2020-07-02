@@ -1098,9 +1098,6 @@ $('.color_change_select').on('click', function () {
   $(wrap).find('.color_change_select').find('.success_color').removeClass('success_color_active');
   $(this).find('.success_color').addClass('success_color_active');
 });
-$('.option_content_prof').on('click', function () {
-  $(this).toggleClass('option_content_prof_active');
-});
 $(".item_tab_link").on("click", function () {
   $(this)[0].dataset.tab;
   var className = $(this)[0].dataset.tab;
@@ -1229,9 +1226,34 @@ $('.price_option').on('click', function () {
   console.log('current_sum: ', current_sum);
 
   if ($(this).hasClass('option_content_prof_active')) {
-    $(all_price__block).text(all_summ + Number(current_sum));
-  } else {
     $(all_price__block).text(all_summ - Number(current_sum));
+  } else {
+    $(all_price__block).text(all_summ + Number(current_sum));
+  }
+});
+$('.price_multiple_option').on('click', function () {
+  $(this).toggleClass('option_content_prof_active');
+});
+$('.price_simple_option').on('click', function () {
+  var active_sum;
+  var all_price__block = $('.additional_price');
+  var all_summ = Number($(all_price__block).text());
+  var current_sum = $(this).attr('data-price-option');
+  var wrapper = $(this).parents('.color_change_content_wrap');
+
+  if ($(wrapper).find('.option_content_prof_active').length == 1) {
+    active_sum = $(wrapper).find('.option_content_prof_active').attr('data-price-option');
+  } else {
+    active_sum = 0;
+  }
+
+  if ($(this).hasClass('option_content_prof_active')) {
+    $(this).removeClass('option_content_prof_active');
+    $(all_price__block).text(all_summ - Number(current_sum));
+  } else {
+    $(wrapper).find('.option_content_prof').removeClass('option_content_prof_active');
+    $(this).addClass('option_content_prof_active');
+    $(all_price__block).text(all_summ - Number(active_sum) + Number(current_sum));
   }
 });
 $('.item_btn_price').on('click', function () {
