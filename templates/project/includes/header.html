@@ -261,7 +261,8 @@
     <div class="basket_content__block">
       <div class="none_content_send main__title color_black">
       </div>
-      <!-- 
+      {{cart_items}}
+      {% for i in '12345678'|make_list %}
       <div class="basket_content_profile">
           <div class="basket_profile_img">
               <img src="/static/source/img/index/lite.png" alt="">
@@ -269,7 +270,7 @@
           <div class="basket_right_content">
             <div class="basket_title__block">
               <div class="basket_title main__title main__title_5">
-                Вилка VEPR-H123
+                Товар {{i}}
               </div>
               <img class="basket_del" src="/static/source/img/index/trash.svg" alt="">
             </div>
@@ -282,7 +283,7 @@
                   <div class="basket_prep basket_count sub_title sub_title_21">
                     -
                   </div>
-                  <input type="number" class="basket_input basket_count main__title main__title_5" value="1">
+                  <input type="number" class="basket_input basket_count main__title main__title_5" value="{{i}}">
                   <div class="basket_next basket_count sub_title sub_title_21">
                     +
                   </div>
@@ -293,13 +294,14 @@
                   Ціна
                 </div>
                 <div class="basket_summ main__title main__title_5">
-                  2500 грн.
+                  {{i}}500 грн.
                 </div>
               </div>
             </div>
           </div>
       </div>
-      -->
+      {% endfor %}
+
     </div>
     <div class="basket_bottom_result">
       <div class="basket_result__block">
