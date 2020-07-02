@@ -1476,10 +1476,31 @@ $(window).resize(function () {// create_slider();
 //   let width = window.innerWidth;
 //   console.log('width: ', width);
 // }
+// $('.glo').on('mouseout', function(event) {
+//   /* event.target: внешний элемент */
+//   console.log(1);
+// });
 
-parent.onmouseout = function (event) {
-  /* event.target: внешний элемент */
-};
+$(".absolute_product_arrow").hover(function () {
+  $(this).removeClass('out').addClass('over');
+}, function () {
+  $(this).removeClass('over').addClass('out');
+});
+$(".btn_standart_black").hover(function () {
+  $(this).removeClass('out').addClass('over');
+}, function () {
+  $(this).removeClass('over').addClass('out');
+});
+$(".btn_standart_yellow").hover(function () {
+  $(this).removeClass('out').addClass('over');
+}, function () {
+  $(this).removeClass('over').addClass('out');
+});
+$(".btn_standart_transparent").hover(function () {
+  $(this).removeClass('out').addClass('over');
+}, function () {
+  $(this).removeClass('over').addClass('out');
+});
 
 /***/ }),
 
