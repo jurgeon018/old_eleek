@@ -121,8 +121,8 @@ item_section__wrapper
           {% endfor %}
         </div>
       </div>
-
       
+      <!-- Опції  -->
       {% for options in item.get_item_options %}
       <div class="option__wrap">
         <div class="item_char_title main__title main__title_4">
@@ -141,72 +141,89 @@ item_section__wrapper
       </div>
       {% endfor %}
 
-      {% for attribute_category in item.get_attribute_categories %}
-      {{attribute_category}}
-      {{attribute_category.get_attributes}}
-        
-      {% endfor %}
-      
-      <div class="item_char_title main__title main__title_4">
-        Кольори
-      </div>
-      {% for attribute in item.get_item_attributes %}
-      <div class="color_change__wrap">
-        <div class="color_change__block">
-          <div class="color_change_prof">
-            <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-              {{attribute.attribute.name}}
-            </div>
-            <div data-color="#{{attribute.get_values.first.value.code}}" style="background:#{{attribute.get_values.first.value.code}};" class="main_color_change_oval color_change_oval">
-              <!-- .... -->
-              <!-- Код кольору вибраного значення -->
-            </div>
-            <div class="color_change_name sub_title sub_title_2 color_black">
-              <!-- .... -->
-              <!-- Назва вибраного значення -->
-              {{attribute.get_values.first.value.value}}
-            </div>
-          </div>
-          <div class="color_change_btn">
-            <img src="/static/source/img/item/close.svg" alt="">
-          </div>
-        </div>
-        <div class="color_change_content">
-          <div class="color_change_content_wrap">
-            {% for value in attribute.get_values %}
-            <div
-              class="color_change_oval color_change_select"
-              style="background:#{{value.value.code}};" 
-              data-color='#{{value.value.code}}' 
-              data-value="{{value.value.value}}"
-            >
-              <div class="success_color {% if forloop.counter == 1 %}success_color_active{% endif %}">
-                <img src="/static/source/img/item/okey.svg" alt="open">
+      <!-- Атрибути без категорій -->
+      {% for attribute in item.get_attributes_without_categories %}
+        {% if not attribute.is_option %}
+          <div class="color_change__wrap">
+            <div class="color_change__block">
+              <div class="color_change_prof">
+                <div class="color_change_title main_sub_title main_sub_title_3 color_black">
+                  {{attribute.attribute.name}}
+                </div>
+              </div>
+              <div class="color_change_btn">
+                <img src="/static/source/img/item/close.svg" alt="">
               </div>
             </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-      
-
-      <div class="option__wrap">
-        <div class="item_char_title main__title main__title_4">
-          {% trans 'Атрибути' %}
-        </div>
-        <div class="option_content__block">
-          {% for option in '123456789'|make_list %}
-          <div class="option_content_prof">
-            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-            <div class="option_text standart_title standart_title_6">
-              Атрибут {{option}}
+            <div class="color_change_content">
+              <div class="color_change_content_wrap">
+                {% for value in attribute.get_values %}
+                <div class="option_content_prof price_option" data-price-option='{{option.price}}'>
+                  <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+                  <div class="option_text standart_title standart_title_6">
+                    {{value.value.value}} ({{value.price}} {{value.currency.code}})
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
             </div>
           </div>
-          {% endfor %}
-        </div>
-      </div> 
+        {% else %}
+        {% endif %}
+      {% endfor %}
 
+      <!-- Категорії атрибутів -->
+      {% for attribute_category in item.get_attribute_categories %}
+        <div class="item_char_title main__title main__title_4">
+          {{attribute_category.name|title}}
+        </div>
+        {% get_category_attributes attribute_category item as attributes %}
+        <!-- Атрибути в категорії  -->
+        {% for attribute in attributes %}
+          {% if attribute_category.name == 'кольори' %}
+            <div class="color_change__wrap">
+              <div class="color_change__block">
+                <div class="color_change_prof">
+                  <div class="color_change_title main_sub_title main_sub_title_3 color_black">
+                    {{attribute.attribute.name}}
+                  </div>
+                  <div data-color="#{{attribute.get_values.first.value.code}}" style="background:#{{attribute.get_values.first.value.code}};" class="main_color_change_oval color_change_oval">
+                    <!-- .... -->
+                    <!-- Код кольору вибраного значення -->
+                  </div>
+                  <div class="color_change_name sub_title sub_title_2 color_black">
+                    <!-- .... -->
+                    <!-- Назва вибраного значення -->
+                    {{attribute.get_values.first.value.value}}
+                  </div>
+                </div>
+                <div class="color_change_btn">
+                  <img src="/static/source/img/item/close.svg" alt="">
+                </div>
+              </div>
+              <div class="color_change_content">
+                <div class="color_change_content_wrap">
+                  {% for value in attribute.get_values %}
+                  <div
+                    class="color_change_oval color_change_select"
+                    style="background:#{{value.value.code}};" 
+                    data-color='#{{value.value.code}}' 
+                    data-value="{{value.value.value}}"
+                  >
+                    <div class="success_color {% if forloop.counter == 1 %}success_color_active{% endif %}">
+                      <img src="/static/source/img/item/okey.svg" alt="open">
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          {% else %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+
+      
     </div>
   </div>
 </section>
