@@ -225,7 +225,7 @@ item_section__wrapper
         {% endfor %}
       {% endfor %}
 
-
+      <h1>Схожі товари</h1>
       {% for similar in item.similars.all %}
       <a href="{{similar.get_absolute_url}}" style="color:black;">
         Заголовок: {{similar.title}}<br>
@@ -236,7 +236,7 @@ item_section__wrapper
       </a>
       {% endfor %}
 
-      
+
     </div>
   </div>
 </section>
