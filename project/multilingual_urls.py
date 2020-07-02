@@ -36,8 +36,6 @@ def item_category(request, slug):
     raw_min_price     = all_items.aggregate(Min('price'))['price__min']
     max_price         = str(raw_max_price).replace(',','.')
     min_price         = str(raw_min_price).replace(',','.')
-    print('sdfsdf',max_price, min_price,raw_max_price, raw_min_price)
-
     return render(request, 'project/item_category.html', locals())
 
 

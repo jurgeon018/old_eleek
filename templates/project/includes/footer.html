@@ -67,51 +67,51 @@
     </div>
     <div class="footer_accordeon__block footer_part">
       <div class="footer_accordeon_name color_white main__title main__title_3">
-        Клієнтам <div class="footer_btn"></div>
+        {% trans 'Клієнтам' %} <div class="footer_btn"></div>
       </div>
       <div class="footer_accordeon_content">
         <a href="{% url 'about' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          Про нас
+          {% trans 'Про нас' %}
         </a>
         <a href="{% url 'faq' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          Часті питання
+          {% trans 'Часті питання' %}
         </a>
         <a href="{% url 'delivery' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          Доставка і оплата
+          {% trans 'Доставка і оплата' %}
         </a>
         <a href="{% url 'test_drive' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          Тест-драйв
+          {% trans 'Тест-драйв' %}
         </a>
         <a href="{% url 'constructor' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          Конструктор
+          {% trans 'Конструктор' %}
         </a>
       </div>
     </div>
     <div class="footer_accordeon__block footer_part">
       <div class="footer_accordeon_name color_white main__title main__title_3">
-        Магазин <div class="footer_btn"></div>
+        {% trans 'Магазин' %} <div class="footer_btn"></div>
       </div>
       <div class="footer_accordeon_content">
         <a href="{{velo.get_absolute_url}}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          Велосипеди
+          {{velo.title}}
         </a>
         <a href="{{ramy.get_absolute_url}}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          Рами
+          {{ramy.title}}
         </a>
         <a href="{{comp.get_absolute_url}}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          Комплектуючі
+          {{comp.title}}
         </a>
       </div>
     </div>
     <div class="footer_accordeon__block footer_part">
       <div class="footer_accordeon_name color_white main__title main__title_3">
-        Зв’язок <div class="footer_btn"></div>
+        {% trans 'Зв’язок' %} <div class="footer_btn"></div>
       </div>
       <div class="footer_accordeon_content">
         <form action="{% url 'sw_contact' %}" method="POST" class="footer_form">
           <div class="footer_input__wrap inp-vak-wrap">
             <label for="footer_name" class="footer_label label__style color_white">
-              Ім'я
+              {% trans "Ім'я" %}
             </label>
             <input type="text" id="footer_name" name='name' class="footer_input input_focus">
           </div>
@@ -123,7 +123,7 @@
           </div>
           <div class="footer_input__wrap inp-vak-wrap">
             <label for="footer_email" class="footer_label label__style color_white">
-              Повідомлення
+              {% trans 'Повідомлення' %}
             </label>
             <textarea name='message' id="user_send" class="user_send footer_input input_focus"></textarea>
           </div>
@@ -144,7 +144,7 @@
       </div>
       <div class="footer_starway__block color_white">
         <div class="starway_text">
-          Розробка
+          {% trans 'Розробка' %}
         </div>
         <a href="https://starway.agency/" class="starway_logo">
           <svg class="svg_sw" xmlns="http://www.w3.org/2000/svg" width="110" height="30" viewBox="0 0 110 30">
@@ -156,5 +156,4 @@
         </a>
       </div>
     </div>
-    
 </footer>

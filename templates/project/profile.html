@@ -58,19 +58,19 @@
                 </div> -->
             <div class="profile_attributes__block">
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_1">
-                Фото
+                {% trans "Фото" %}              
               </div>
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_2">
-                Назва
+                {% trans "Назва" %}              
               </div>
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_3">
-                К-сть 
+                {% trans "К-сть" %}              
               </div>
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_4">
-                Дата 
+                {% trans "Дата" %}              
               </div>
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_5">
-                Ціна 
+                {% trans "Ціна" %}              
               </div>
             </div>
             {% for cart_item in '123456789'|make_list %}
@@ -111,16 +111,16 @@
             </div> -->
             <div class="profile_attributes__block">
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_10">
-                Назва
+                {% trans 'Назва' %}
               </div>
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_11">
-                Знижка
+                {% trans 'Знижка' %}
               </div>
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_12">
-                Термін дії  
+                {% trans 'Термін дії' %}
               </div>
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_13">
-                Дія  
+                {% trans 'Дія' %}  
               </div>
             </div>
             {% for sale_item in '123456789'|make_list %}
@@ -145,8 +145,6 @@
             {% endfor %}
           </div>
         </div>
-
-
         <!-- Налаштування профілю -->
         <div id="3" class="item_tab_content">
           <form action="/api/users/{{request.user.id}}/" class="change_profile registery_form PATCH">
