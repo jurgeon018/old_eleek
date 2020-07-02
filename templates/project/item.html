@@ -270,6 +270,7 @@ item_section__wrapper
                   <div class="option_text standart_title standart_title_6">
                     {{value.value.value}} ({{value.price}} {{value.currency.code}})
                     <input
+                      class="hidden_color_attr"
                       type="hidden"
                       name="{{forloop.parentloop.counter}}" 
                       value="{{value.value.value}}" 
@@ -296,7 +297,10 @@ item_section__wrapper
         {% get_category_attributes attribute_category item as attributes %}
         {% for attribute in attributes %}
           {% if attribute_category.name == 'кольори' %}
-            <div class="color_change__wrap">
+            <div 
+            data-item_attribute_id='{{attribute.get_values.first.value.item_attribute.id}}'
+            data-item_attribute_value_id='{{attribute.get_values.first.value.id}}'  
+            class="color_change__wrap">
               <div class="color_change__block">
                 <div class="color_change_prof">
                   <div class="color_change_title main_sub_title main_sub_title_3 color_black">
@@ -306,7 +310,10 @@ item_section__wrapper
                     <!-- .... -->
                     <!-- Код кольору вибраного значення -->
                   </div>
-                  <div class="color_change_name sub_title sub_title_2 color_black">
+                  <div 
+                  class="color_change_name sub_title sub_title_2 color_black" 
+                  data-item_attribute_value_id="{{value.id}}" 
+                  data-item_attribute_id="{{value.item_attribute.id}}">
                     <!-- .... -->
                     <!-- Назва вибраного значення -->
                     {{attribute.get_values.first.value.value}}
@@ -319,13 +326,7 @@ item_section__wrapper
               <div class="color_change_content">
                 <div class="color_change_content_wrap">
                   {% for value in attribute.get_values %}
-                  <input
-                    type="hidden"
-                    name="{{forloop.parentloop.counter}}" 
-                    value="{{value.value.value}}" 
-                    data-item_attribute_id="{{value.item_attribute.id}}"
-                    data-item_attribute_value_id="{{value.id}}"
-                  >
+                  
                   <div
                     class="color_change_oval color_change_select"
                     style="background:#{{value.value.code}};" 
@@ -335,6 +336,14 @@ item_section__wrapper
                     <div class="success_color {% if forloop.counter == 1 %}success_color_active{% endif %}">
                       <img src="/static/source/img/item/okey.svg" alt="open">
                     </div>
+                    <input
+                    class="hidden_color_attr"
+                    type="hidden"
+                    name="{{forloop.parentloop.counter}}" 
+                    value="{{value.value.value}}" 
+                    data-item_attribute_id="{{value.item_attribute.id}}"
+                    data-item_attribute_value_id="{{value.id}}"
+                  >
                   </div>
                   {% endfor %}
                 </div>
@@ -350,9 +359,7 @@ item_section__wrapper
       {% for similar in item.similars.all %}
       <a href="{{similar.get_absolute_url}}" style="color:black;">
         Заголовок: {{similar.title}}<br>
-        {% if similar.image %}
-        Картинка: {{similar.image.url}}
-        {% endif %}
+        Картинка: {{similar.image_url}}
         Альт: {{similar.alt}}
       </a>
       {% endfor %}

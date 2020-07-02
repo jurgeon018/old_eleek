@@ -1086,6 +1086,12 @@ $('.color_change_btn').on('click', function () {
 $('.color_change_select').on('click', function () {
   var wrap = $(this).parents('.color_change__wrap');
   var current_color = $(this).attr('data-color');
+  var hidden_input = $(this).find('.hidden_color_attr');
+  var this_id = $(this).find('.hidden_color_attr').data('item_attribute_value_id');
+  console.log('this_id: ', this_id);
+  $(wrap).find('.color_change_name').attr('data-item_attribute_value_id', this_id);
+  var this_value = $(this).attr('data-value');
+  $(wrap).find('.color_change_name').text($(hidden_input).val());
 
   if ($(this).hasClass('white_color_change_oval')) {
     $(wrap).find('.main_color_change_oval').addClass('border_for_oval');
