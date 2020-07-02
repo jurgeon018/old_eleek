@@ -224,7 +224,7 @@ item_section__wrapper
         </div>
         <div class="option_content__block">
           {% for option in options.get_values %}
-          <div class="option_content_prof price_option" data-price-option='{{option.price|stringformat:".2f"}}'>
+          <div class="option_content_prof price_multiple_option price_option" data-price-option='{{option.price|stringformat:".2f"}}'>
             <img class="option_img" src="/static/source/img/item/close.svg" alt="">
             <div class="option_text standart_title standart_title_6">
               {{option.value.value}} ({{option.price}} {{option.currency.code}})
@@ -252,7 +252,7 @@ item_section__wrapper
             <div class="color_change_content">
               <div class="color_change_content_wrap">
                 {% for value in attribute.get_values %}
-                <div class="option_content_prof price_simple_option" data-price-option='{{value.price}}'>
+                <div class="option_content_prof price_simple_option" data-price-option='{{value.price|stringformat:".2f"}}'>
                   <img class="option_img" src="/static/source/img/item/close.svg" alt="">
                   <div class="option_text standart_title standart_title_6">
                     {{value.value.value}} ({{value.price}} {{value.currency.code}})
