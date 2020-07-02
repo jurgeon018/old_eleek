@@ -16,9 +16,9 @@ item_section__wrapper
     <div class="item_slider__block">
       <div class="slider_card-wrap sticky">
         <div class="main_card_slider">
-          {% for i in '1234'|make_list %}
+          {% for image in item.images.all %}
           <div class="img-wrap">
-            <img src="/static/source/img/item/cat-{{i}}.jpg" alt="">
+            <img src="{{image.image.url}}" alt="{{image.alt}}">
           </div>
           {% endfor %}
         </div>
@@ -37,9 +37,9 @@ item_section__wrapper
             </a>
           </div>
           <div class="mini_slider">
-            {% for i in '1234'|make_list %}
+            {% for image in item.images.all %}
             <div class="img-wrap">
-              <img src="/static/source/img/item/cat-{{i}}.jpg" alt="">
+              <img src="{{image.image.url}}" alt="{{image.alt}}">
             </div>
             {% endfor %}
           </div>
@@ -69,12 +69,15 @@ item_section__wrapper
       </div>
       <div class="item_price__block">
         <div class="item_price main__title main__title_3 color_black">
-          {{item.price}} {{item.currency.code}}
+          <!-- {{item.price}} {{item.currency.code}} -->
+          {{item.converted_price}} {{item.main_currency.symbol}}
         </div>
         <div class="item_btn_price btn_standart btn_standart_black color_white">
           {% trans 'Купити' %}
         </div>
       </div>
+
+      
       <div class="additional__block">
         <div class="addit_name sub_title sub_title_3 color_black">
           {% trans 'Ціна додаткових опцій' %}:
@@ -83,6 +86,98 @@ item_section__wrapper
           ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span>
         </div>
       </div>
+      
+      {% if item.manufacturer %}
+      <div class="additional__block">
+        <div class="addit_name sub_title sub_title_3 color_black">
+          {% trans 'Виробник' %}:
+        </div>
+        <div class="addit_price main__title main__title_5 color_black">
+          {{item.manufacturer.name}}
+          <!-- ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span> -->
+        </div>
+      </div>
+      {% endif %}
+
+      {% if item.brand %}
+      <div class="additional__block">
+        <div class="addit_name sub_title sub_title_3 color_black">
+          {% trans 'Бренд' %}:
+        </div>
+        <div class="addit_price main__title main__title_5 color_black">
+          {{item.brand.title}}
+          <!-- ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span> -->
+        </div>
+      </div>
+      {% endif %}
+
+      {% if item.in_stock %}
+      <div class="additional__block">
+        <div class="addit_name sub_title sub_title_3 color_black">
+          {% trans 'Наявність' %}:
+        </div>
+      <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
+          {{item.in_stock.text}}
+          <!-- ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span> -->
+        </div>
+      </div>
+      {% endif %}
+
+      {% if item.amount != 0 and item.amount != None %}
+        <div class="additional__block">
+          <div class="addit_name sub_title sub_title_3 color_black">
+            {% trans 'Hа складі' %}:
+          </div>
+        <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
+            {{item.amount}} {{item.unit.name}}
+            <!-- ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span> -->
+          </div>
+        </div>
+      {% endif %}
+
+      {% if item.currency != item.main_currency and item.converted_price %}
+      <div class="additional__block">
+        <div class="addit_name sub_title sub_title_3 color_black">
+          {% trans 'Ціна в гривнях' %}:
+        </div>
+      <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
+          {{item.converted_price}} {{item.main_currency.symbol}}
+          <!-- ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span> -->
+        </div>
+      </div>
+    {% endif %}
+
+    {% if item.discount_price != 0 %}
+      <div class="additional__block">
+        <div class="addit_name sub_title sub_title_3 color_black">
+          {% trans 'Стара ціна' %}:
+        </div>
+        <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
+            <s> {{item.price}} {{item.currency}}</s>
+        </div>
+      </div>
+
+      <div class="additional__block">
+        <div class="addit_name sub_title sub_title_3 color_black">
+          {% trans 'Нова ціна' %}:
+        </div>
+        <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
+            {{item.discount_price}} {{item.currency}}
+        </div>
+      </div>
+    {% elif item.price != 0 %}
+    <div class="additional__block">
+      <div class="addit_name sub_title sub_title_3 color_black">
+        {% trans 'Ціна' %}:
+      </div>
+      <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
+          {{item.price}} {{item.currency}}
+      </div>
+    </div>
+    {% else%}
+
+    {% endif %}
+
       <div class="kredit__block">
         <div class="kredit_text sub_title sub_title_2 color_black">
           Від 10 057/місяць при купівлі товару в кредит або оплаті частинами
@@ -287,45 +382,49 @@ item_section__wrapper
                 {% trans 'У даного товару ще немає відруків. Ви можете бути першим. ' %}
               </div>
               <div class="comment_profile__wrapper">
-                {% for i in '123456789'|make_list %}
+                {% for review in item.reviews.all %}
                 <div class="comment_profile">
                   <div class="comment_name__block">
                     <div class="comment_name color_black standart_title standart_title_4">
-                      Андрій
-                      {{review.name}}
+                      {{review.name}} ({{review.phone}}, {{review.email}})
                     </div>
                     <div class="comment_star">
+                      
                       <div class="svg_rating__wrap">
-                        <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+                        <svg class="rating_svg {% if review.rating in '12345'|make_list %}rating_svg_active{% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
                           <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
                         </svg>
                       </div>
+                      
+
                       <div class="svg_rating__wrap">
-                        <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+                        <svg class="rating_svg {% if review.rating in '2345'|make_list %}rating_svg_active{% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
                           <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
                         </svg>
                       </div>
+
                       <div class="svg_rating__wrap">
-                        <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+                        <svg class="rating_svg {% if review.rating in '345'|make_list %}rating_svg_active{% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
                           <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
                         </svg>
                       </div>
+                      
                       <div class="svg_rating__wrap">
-                        <svg class="rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+                        <svg class="rating_svg {% if review.rating in '45'|make_list %}rating_svg_active{% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
                           <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
                         </svg>
                       </div>
+                      
                       <div class="svg_rating__wrap">
-                        <svg class="rating_svg" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+                        <svg class="rating_svg {% if review.rating in '5'|make_list %}rating_svg_active{% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
                           <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
                         </svg>
                       </div>
+
                     </div>
                   </div>
                   <div class="comment_text color_black sub_title sub_title_2">
-                    {{i}}
                     {{review.text}}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A perferendis obcaecati ipsa, voluptatum quod adipisci alias dolores illo autem ipsam. Mollitia cupiditate qui commodi atque numquam, quae perspiciatis at? Rem molestias magni minus sequi officia aut totam repellendus. Optio, ullam blanditiis in dolorum dolor officia praesentium atque perspiciatis deleniti doloribus quis quos! Provident, enim expedita! Consectetur, hic pariatur perspiciatis in qui ipsam dolor quo iure quod, suscipit nostrum fugit quae! Quisquam blanditiis delectus voluptates repellendus fuga pariatur ducimus qui esse, molestias eveniet impedit obcaecati, maxime dignissimos quam autem itaque labore explicabo ad. Deleniti maxime error molestias doloribus reiciendis, officia modi!
                   </div>
                 </div>
                 {% endfor %}
