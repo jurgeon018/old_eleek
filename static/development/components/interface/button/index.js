@@ -11,6 +11,8 @@ $('.btn-lean_more').on('mouseleave', function(){
 });
 
 
+  
+ 
 
 $(".absolute_product_arrow").hover(
     function () {
@@ -44,7 +46,4 @@ $(".absolute_product_arrow").hover(
         $(this).removeClass('over').addClass('out');
     }
   );
-  
- 
-
 

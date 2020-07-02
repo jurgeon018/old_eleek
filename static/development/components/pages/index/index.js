@@ -412,6 +412,19 @@ var index_wow_1 = new WOW(
   );
   index_wow_1.init();
 
+  var index_wow_2 = new WOW(
+    {
+      boxClass:     'down_wrap',      // animated element css class (default is wow)
+      animateClass: 'fadeInUp', // animation css class (default is animated)
+      offset:       85,          // distance to the element when triggering the animation (default is 0)
+      mobile:       true,       // trigger animations on mobile devices (default is true)
+      live:         true,       // act on asynchronously loaded content (default is true)
+      scrollContainer: null,    // optional scroll container selector, otherwise use window,
+      resetAnimation: true, 
+    }
+  );
+  index_wow_2.init();
+
   let check_num = setInterval(() => {
     console.log(1);
     if ($('.preferens__wrap').hasClass('preferens_anim')) {
@@ -490,6 +503,12 @@ var index_wow_1 = new WOW(
   //   console.log(1);
   // });
 
-  
-
+  $(".btn_standart_transparent").hover(
+    function () {
+        $(this).removeClass('out').addClass('over');
+    },
+    function () {
+        $(this).removeClass('over').addClass('out');
+    }
+  );
   
