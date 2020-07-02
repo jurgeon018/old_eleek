@@ -2170,6 +2170,9 @@ input::-webkit-inner-spin-button {
   padding-bottom: 8px;
   margin-top: 15px; }
 
+.char_result {
+  text-align: right; }
+
 /* Bob */
 @-webkit-keyframes hvr-bob {
   0% {
