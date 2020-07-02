@@ -47,14 +47,14 @@ item_section__wrapper
       </div>
     </div>
     <div class="item_select__block">
-      <a href="{% url 'item_category' 1 %}">
+      <a href="{{item.category.get_absolute_url}}">
       <div class="item_category_name sub_title sub_title_2 color_black">
         {{item.category.title|title}}
       </div>
       </a>
       <div class="item_name__block">
         <div class="item_name main__title main__title_2 color_black">
-          {{item.title|title}}
+          {{item.title|title}} 
         </div>
         <div class="item_rating__block">
           {% for i in '12345' %}
@@ -69,7 +69,6 @@ item_section__wrapper
       </div>
       <div class="item_price__block">
         <div class="item_price main__title main__title_3 color_black">
-          ₴ 100 000 
           {{item.price}} {{item.currency.code}}
         </div>
         <div class="item_btn_price btn_standart btn_standart_black color_white">
@@ -169,6 +168,7 @@ item_section__wrapper
             </div>
           </div>
         {% else %}
+        <!-- TODO: розділити опції від неопцій в атрибутах без категорій https://starway.atlassian.net/browse/ELEEK-79 -->
         {% endif %}
       {% endfor %}
 
@@ -177,8 +177,9 @@ item_section__wrapper
         <div class="item_char_title main__title main__title_4">
           {{attribute_category.name|title}}
         </div>
-        {% get_category_attributes attribute_category item as attributes %}
+        
         <!-- Атрибути в категорії  -->
+        {% get_category_attributes attribute_category item as attributes %}
         {% for attribute in attributes %}
           {% if attribute_category.name == 'кольори' %}
             <div class="color_change__wrap">
@@ -219,9 +220,17 @@ item_section__wrapper
               </div>
             </div>
           {% else %}
+          <!-- TODO: вивести динамічні атрибути некольори в категорії https://starway.atlassian.net/browse/ELEEK-80-->
           {% endif %}
         {% endfor %}
       {% endfor %}
+
+      {% for similar in item.similars.all %}
+      <a href="{{similar.get_absolute_url}}" style="color:black;">
+        {{similar.title}}<br>
+      </a>
+      {% endfor %}
+
 
       
     </div>

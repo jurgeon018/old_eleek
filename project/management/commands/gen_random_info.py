@@ -71,6 +71,15 @@ class Command(BaseCommand):
             item.category = choice(ItemCategory.objects.all())
             item.save()
 
+            similar_items = Item.objects.all().exclude(id=item.id)
+            if similar_items.exists():
+                if similar_items.count() > 5:
+                    for i in range(5):
+                        item.similars.add(choice(similar_items))
+                else:
+                    item.similars.add(choice(similar_items))
+
+
             for i in range(15):
                 v, _ = ItemFeature.objects.get_or_create(
                     item=item,
