@@ -1,4 +1,6 @@
 from box.apps.sw_shop.sw_catalog.models import * 
+from box.apps.sw_shop.sw_cart.utils import get_cart
+from box.apps.sw_shop.sw_cart.models import CartItem
 
 
 def context(request):
@@ -10,6 +12,8 @@ def context(request):
     galm = ItemCategory.objects.get(code='galm')
     moto = ItemCategory.objects.get(code='moto')
     kole = ItemCategory.objects.get(code='kole')
+    cart = get_cart(request)
+    cart_items = CartItem.objects.filter(cart=cart)
     return locals()
 
 
