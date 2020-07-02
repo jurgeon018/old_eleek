@@ -62,12 +62,12 @@ section__wrapper
   
   <div class="container">
     {% render 'index_feel' as index_feel %}
-    <h1 class="second_title main__title main__title_1 color_white db_content" data-admin_url="{{index_feel.get_admin_url}}">
+    <h1 class="second_title main__title main__title_1 color_white db_content down_wrap" data-wow-duration="2s" data-admin_url="{{index_feel.get_admin_url}}">
       {{index_feel.text}}
       <!-- Відчуй переваги професіоналів -->
     </h1>
     {% render 'index_our_velek' as index_our_velek %}
-    <div class="second_sub_title sub_title sub_title_2 color_white text_center db_content" data-admin_url="{{index_our_velek.get_admin_url}}">
+    <div class="second_sub_title sub_title sub_title_2 color_white text_center db_content down_wrap" data-wow-duration="2.2s" data-admin_url="{{index_our_velek.get_admin_url}}">
       {{index_our_velek.text}}
       <!-- Наші велосипеди одні з найпотужніших та найякісніших на ринку -->
     </div>
@@ -75,7 +75,7 @@ section__wrapper
         <img src="/static/source/img/index/grid-eleek.png" alt="" class="hidden_preferens__bg">
         <div class="preferens_profile">
 
-          <div class="preferens_item preferens_item_fix">
+          <div class="preferens_item preferens_item_fix down_wrap" data-wow-duration="2.6s">
                 <div class="preferens_title__block">
                     <span class="pref_num main__title main__title_5 color_white">
                       01
@@ -96,7 +96,7 @@ section__wrapper
                     </span>
                 </div>
           </div>
-          <div class="preferens_item">
+          <div class="preferens_item down_wrap" data-wow-duration="2.6s">
               <div class="preferens_title__block">
                   <span class="pref_num main__title main__title_5 color_white">
                     02
@@ -120,7 +120,7 @@ section__wrapper
           
         </div>
         <div class="preferens_profile">
-          <div class="preferens_item preferens_item_fix">
+          <div class="preferens_item preferens_item_fix down_wrap" data-wow-duration="2.6s">
             <div class="preferens_title__block">
                 <span class="pref_num main__title main__title_5 color_white">
                   03
@@ -141,7 +141,7 @@ section__wrapper
                 </span>
             </div>
           </div>
-          <div class="preferens_item">
+          <div class="preferens_item down_wrap" data-wow-duration="2.6s">
           <div class="preferens_title__block">
               <span class="pref_num main__title main__title_5 color_white">
                 04
@@ -165,7 +165,7 @@ section__wrapper
         </div>
     </div>
     <div class="img_preferens__block">
-      <img src="/static/source/img/index/111333.png" alt="" class="img_preferens">
+      <img src="/static/source/img/index/111333.png" alt="" data-wow-duration="2.4s" class="img_preferens down_wrap">
     </div>
   </div>
   <!-- /.container -->
@@ -173,7 +173,7 @@ section__wrapper
 <!-- /.second_section -->
 <section class="three_section">
   
-    <div class="eleek_title__wrap">
+    <div class="eleek_title__wrap down_wrap">
       <a href="{{velo.get_absolute_url}}">
         <h1 class="color_black three_title main__title main__title_1">
           {{velo.title|title}}
@@ -243,11 +243,11 @@ section__wrapper
 <!-- /.three_section -->
 <section class="four_section">
   
-  <img src="/static/source/img/index/rrama-png.png" alt="" class="absolute_rams_1">
-  <img src="/static/source/img/index/lite.png" alt="" class="absolute_rams_2">
-  <img src="/static/source/img/index/ekross-copy.png" alt="" class="absolute_rams_3">
+  <img src="/static/source/img/index/rrama-png.png" alt="" style="animation-delay: 0.5s" class="absolute_rams_1 hvr-bob">
+  <img src="/static/source/img/index/lite.png" alt="" style="animation-delay: 1s" class="absolute_rams_2 hvr-bob">
+  <img src="/static/source/img/index/ekross-copy.png" style="animation-delay: 1.5s" alt="" class="absolute_rams_3 hvr-bob">
   <div class="four_bg"></div>
-  <div class="four_wrapp">
+  <div class="four_wrapp down_wrap">
     <h1 class="color_black four_title main__title main__title_1">
       {{ramy.title|title}}
     </h1>
