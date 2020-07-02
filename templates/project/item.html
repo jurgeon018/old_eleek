@@ -225,12 +225,16 @@ item_section__wrapper
         {% endfor %}
       {% endfor %}
 
+
       {% for similar in item.similars.all %}
       <a href="{{similar.get_absolute_url}}" style="color:black;">
-        {{similar.title}}<br>
+        Заголовок: {{similar.title}}<br>
+        {% if similar.image %}
+        Картинка: {{similar.image.url}}
+        {% endif %}
+        Альт: {{similar.alt}}
       </a>
       {% endfor %}
-
 
       
     </div>
