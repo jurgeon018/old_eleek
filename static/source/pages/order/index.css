@@ -674,7 +674,7 @@ main {
   color: #fff;
   display: block;
   background-image: linear-gradient(to left, #ffd10a, #ffd10a 50%, #2b2a27 50%, #2b2a27);
-  background-position: 100% 0;
+  background-position: 95% 0;
   background-size: 220% 100%;
   transition: all .55s ease-in; }
 

@@ -34,8 +34,9 @@ console.log(2);
         slidesToShow: 3,
         slidesToScroll: 1,
         asNavFor: '.main_card_slider',
-        dots: false,
         arrows: false,
+        dots: false,
+        focusOnSelect: true,
         responsive: [
             {
                 breakpoint: 660,
