@@ -27,7 +27,7 @@ def item_category(request, slug):
     category          = get_object_or_404(ItemCategory, slug=slug)
     page              = category 
     items             = Item.objects.filter(category=category)[0:6]
-    items             = []
+    # items             = []
     all_items         = Item.objects.all()
     show_more         = all_items.count() > 6
     parent_categories = ItemCategory.objects.filter(parent__isnull=True)

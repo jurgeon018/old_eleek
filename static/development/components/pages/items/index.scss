@@ -1,6 +1,7 @@
 .prod_header {
     padding-top: 120px;
     min-height: 100vh;
+    position: relative;
 }
 
 .load_product {
@@ -532,7 +533,15 @@
 }
 
 
-
+.unset_title__block {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
 
 @media (max-width: 1392px) {
     .prod_card_link {

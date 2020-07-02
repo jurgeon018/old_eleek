@@ -769,6 +769,9 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         phone_number: {
           required: true
         },
+        phone: {
+          required: true
+        },
         password: {
           required: true
         },
@@ -949,6 +952,8 @@ __webpack_require__.r(__webpack_exports__);
 var page_number = 0;
 var super_kostile = false;
 var removeBtn = 6;
+var current_min = $('#max_min_prices').attr('data-min_price');
+var current_max = $('#max_min_prices').attr('data-max_price');
 var hidden_min_range = $('.input_for_min_range');
 var hidden_max_range = $('.input_for_max_range');
 var rangeFinder = $('.range_slider').length;
@@ -956,11 +961,11 @@ var rangeFinder = $('.range_slider').length;
 if (rangeFinder >= 1) {
   var slider = document.getElementById('slider');
   noUiSlider.create(slider, {
-    start: [300, 5000],
+    start: [Number(current_min), Number(current_max)],
     connect: true,
     range: {
-      'min': 10,
-      'max': 6000
+      'min': Number(current_min),
+      'max': Number(current_max)
     },
     tooltips: false
   });

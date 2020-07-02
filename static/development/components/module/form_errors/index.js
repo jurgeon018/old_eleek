@@ -113,6 +113,9 @@ function valide_form(id_form, error_inp_wrap, check_request) {
               phone_number: {
                   required: true,
               },
+              phone: {
+                  required: true,
+              },
               password: {
                 required: true,
               },

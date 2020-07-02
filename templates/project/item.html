@@ -306,7 +306,8 @@ item_section__wrapper
     </div>
   </div>
 </section>
-<form method="POST" action="#" class="comment_form" id="comment_form" style="display:none;">
+<form method="POST" action="/api/create_review/" class="comment_form" id="comment_form" style="display:none;">
+  <input type="hidden" name='item_id' value="{{item.id}}">
   <div class="search_menu_title">
     <div class="main__title main__title_4 color_black">
       Новий відгук
@@ -320,6 +321,12 @@ item_section__wrapper
     <input type="text" id="comment_name" name='name' class="comment_name footer_input input_focus">
   </div>
   <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_phone" class="footer_label label__style color_black">
+      Телефон
+    </label>
+    <input type="text" id="comment_phone" name='phone' class="comment_phone footer_input input_focus">
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
     <label for="comment_email" class="footer_label label__style color_black">
       Email
     </label>
@@ -330,7 +337,7 @@ item_section__wrapper
       Ваша оцінка товару
     </div>
     <div class="modal-review__rating-order-wrap">
-      <input type="hidden" class="hidden_rating_review" value="5">
+      <input type="hidden" name="product_rating" class="hidden_rating_review" value="5">
       <span class="rating_review" data-rating-value="1"></span>
       <span class="rating_review" data-rating-value="2"></span>
       <span class="rating_review" data-rating-value="3"></span>
@@ -359,7 +366,7 @@ item_section__wrapper
     <label for="comment_send" class="footer_label label__style color_black">
       Відгук
     </label>
-    <textarea name='user_send' id="comment_send" class="comment_send user_send footer_input input_focus"></textarea>
+    <textarea name='text' id="comment_send" class="comment_send user_send footer_input input_focus"></textarea>
   </div>
   <div class="wrap_for_footer_btn">
     <input type="submit" value="Додати відгук" class="generate_comment btn_standart btn_standart_black">
