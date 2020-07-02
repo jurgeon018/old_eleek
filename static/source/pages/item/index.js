@@ -717,6 +717,7 @@ function location_leng() {
 }
 
 function valide_form(id_form, error_inp_wrap, check_request) {
+  var modal = false;
   var check_request = check_request;
 
   if ($(id_form).length > 0) {
@@ -759,6 +760,10 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           required: true,
           lettersonly: true
         },
+        first_name: {
+          required: true,
+          lettersonly: true
+        },
         contact_name: {
           required: true,
           lettersonly: true
@@ -766,7 +771,19 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         username: {
           required: true
         },
+        old_password: {
+          required: true
+        },
+        pass1: {
+          required: true
+        },
+        address: {
+          required: true
+        },
         phone_number: {
+          required: true
+        },
+        phone: {
           required: true
         },
         password: {
@@ -790,10 +807,25 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         name: {
           required: error_text.required
         },
+        first_name: {
+          required: error_text.required
+        },
+        address: {
+          required: error_text.required
+        },
+        old_password: {
+          required: error_text.required
+        },
+        pass1: {
+          required: error_text.required
+        },
         username: {
           required: error_text.required
         },
         phone_number: {
+          required: error_text.required
+        },
+        phone: {
           required: error_text.required
         },
         password: {
@@ -843,8 +875,18 @@ function valide_form(id_form, error_inp_wrap, check_request) {
 
         if (url_form != '' && pass_checked == true) {
           console.log('url_form: ', url_form);
+          var current_method = 'POST';
+
+          if ($(form).hasClass('PATCH')) {
+            current_method = 'PATCH';
+            modal = true;
+          } else {
+            current_method = 'POST';
+            modal = false;
+          }
+
           fetch(url_form, {
-            method: 'POST',
+            method: current_method,
             body: new URLSearchParams($.param(form_json)) // headers: {
             //   "Content-Type": "application/json",
             //   "Accept": "application/json"
@@ -883,8 +925,22 @@ function valide_form(id_form, error_inp_wrap, check_request) {
 
         function sayHi() {
           console.log(133313);
+          console.log('modal: ', modal);
           $('.load_spin').removeClass('load_spin_active');
-          $.fancybox.close();
+
+          if (modal == true) {
+            console.log('tut');
+            $.fancybox.open({
+              src: '#modal_form_change_profile'
+            });
+            setTimeout(function () {
+              $.fancybox.close({
+                src: '#modal_form_change_profile'
+              });
+            }, 1500);
+          } else {
+            $.fancybox.close();
+          }
 
           if (check_request === true) {
             $.fancybox.open({
@@ -1137,6 +1193,20 @@ function create_comment(content) {
   comment_profile.appendChild(comment_text);
   return comment_profile;
 }
+
+$('.price_option').on('click', function () {
+  var all_price__block = $('.additional_price');
+  var all_summ = Number($(all_price__block).text());
+  console.log('all_summ: ', all_summ);
+  var current_sum = $(this).attr('data-price-option');
+  console.log('current_sum: ', current_sum);
+
+  if ($(this).hasClass('option_content_prof_active')) {
+    $(all_price__block).text(all_summ - Number(current_sum));
+  } else {
+    $(all_price__block).text(all_summ + Number(current_sum));
+  }
+});
 
 /***/ }),
 

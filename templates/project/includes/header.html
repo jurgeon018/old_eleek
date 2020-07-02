@@ -2,14 +2,20 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as languages %}
-
+<form method="POST" action="" class="true_form absolute_center" id="modal_form_change_profile" style="display:none;">
+  <img class="form_true_img" src="/static/source/img/index/123.png" alt="">
+  <div class="usually_modal_text standart_title standart_title_6 color_black">
+      Ваші дані успішно змінені
+  </div>
+</form>
 <header class="nav_bar">
   <form method="POST" action="" class="true_form" id="modal-form_true" style="display:none;">
     <img class="form_true_img" src="/static/source/img/index/123.png" alt="">
     <div class="usually_modal_text standart_title standart_title_6 color_black">
       {% trans 'Дякуємо, заявка опрацьована <br>Наші менеджери звяжуться з Вами' %}
     </div>
-    </form>
+  </form>
+  
   <div class="load_spin">
     <img src="/static/source/img/index/712.svg" alt="">
   </div>
