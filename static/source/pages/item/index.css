@@ -2480,7 +2480,9 @@ div.modal-review__rating-order-wrap[class] > span:hover ~ span {
 .absolute_additional__block {
   right: -100%;
   top: 100px;
+  z-index: 999;
   transition: all .4s;
+  transition-timing-function: ease-out;
   background: #fff;
   padding: 10px;
   border-radius: 5px;
