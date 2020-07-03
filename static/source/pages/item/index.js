@@ -1116,7 +1116,18 @@ $('.color_change_select').on('click', function () {
   $(wrap).find('.color_change_select').find('.success_color').removeClass('success_color_active');
   $(this).find('.success_color').addClass('success_color_active');
 });
-$('.change_attribute').on('click', function () {});
+$('.change_attribute').on('click', function () {
+  var wrapp = $(this).parents('.color_change__wrap');
+  var this_attr = $(this).attr('data-value');
+  var content = $(wrapp).attr('data-value'); //   let mass = [];
+  //   if (content == 'none') {
+  //     mass.push(this_attr);
+  //   } else {
+  //     console.log(123);
+  //   }
+
+  $(wrapp).attr('data-value', this_attr);
+});
 $(".item_tab_link").on("click", function () {
   $(this)[0].dataset.tab;
   var className = $(this)[0].dataset.tab;
