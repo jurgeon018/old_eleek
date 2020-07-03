@@ -55,9 +55,9 @@ function Onload() {
   // }
 
   valide_form('.footer_form', '.inp-vak-wrap', true);
-  valide_form('#comment_form', '.inp-vak-wrap', true);
+  valide_form('#comment_form', '.inp-vak-wrap', false);
   valide_form('.registery_form', '.inp-vak-wrap', false);
-  valide_form('.drive__form_last', '.inp-vak-wrap', false);
+  valide_form('.drive__form_last', '.inp-vak-wrap', true);
  
 }
 
