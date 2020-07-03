@@ -83,7 +83,16 @@ console.log(2);
 
 
   $('.change_attribute').on('click', function() {
-        
+      let wrapp = $(this).parents('.color_change__wrap');
+      let this_attr = $(this).attr('data-value');
+      let content = $(wrapp).attr('data-value');
+    //   let mass = [];
+    //   if (content == 'none') {
+    //     mass.push(this_attr);
+    //   } else {
+    //     console.log(123);
+    //   }
+      $(wrapp).attr('data-value', this_attr);
   });
 
 
