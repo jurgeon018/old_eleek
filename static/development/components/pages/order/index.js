@@ -190,9 +190,56 @@ $('.order_info__block').on('submit', function (evt) {
                 option_area.textContent = 'test' + i;
                 $('.select_aria')[0].appendChild(option_area);
               }
+
+
+              fetch(`/api/settlements/`, {
+                method: 'GET',
+              })
+                .then(data => {
+                  return data.json();
+                })
+                .then(body => {
+                  console.log('body: ', body);
+      
+      
+                //   if (body.count != 0) {
+      
+                //     for (let key in body.results) {
+      
+      
+                //       let option_area = document.createElement('option');
+                //       option_area.textContent = body.results[key].title;
+                //       $('.select_aria')[0].appendChild(option_area);
+      
+                //     }
+      
+                //   }
+                })
+
+
               for (let i = 0; i < 5; i++) {
                 let option_area = document.createElement('option');
                 option_area.textContent = 'test' + i;
                 $('.select_city')[0].appendChild(option_area);
               }
               
+
+
+
+$('.submit_order_btn').on('click', function() {
+    let action = $('.order_info__block').attr('action');
+
+    let body = {
+        "name": $('#order_name').val(),
+        "email": $('#order_email').val(),
+        "phone_number": $('#order_phone').val()
+      }
+      fetch(action, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        }
+      })
+});

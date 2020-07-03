@@ -1194,12 +1194,43 @@ for (var i = 0; i < 5; i++) {
   $('.select_aria')[0].appendChild(option_area);
 }
 
+fetch("/api/settlements/", {
+  method: 'GET'
+}).then(function (data) {
+  return data.json();
+}).then(function (body) {
+  console.log('body: ', body); //   if (body.count != 0) {
+  //     for (let key in body.results) {
+  //       let option_area = document.createElement('option');
+  //       option_area.textContent = body.results[key].title;
+  //       $('.select_aria')[0].appendChild(option_area);
+  //     }
+  //   }
+});
+
 for (var _i = 0; _i < 5; _i++) {
   var _option_area = document.createElement('option');
 
   _option_area.textContent = 'test' + _i;
   $('.select_city')[0].appendChild(_option_area);
 }
+
+$('.submit_order_btn').on('click', function () {
+  var action = $('.order_info__block').attr('action');
+  var body = {
+    "name": $('#order_name').val(),
+    "email": $('#order_email').val(),
+    "phone_number": $('#order_phone').val()
+  };
+  fetch(action, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
+  });
+});
 
 /***/ }),
 
