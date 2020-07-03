@@ -47,11 +47,15 @@ item_section__wrapper
       </div>
     </div>
     <div class="item_select__block">
+
+
       <a href="{{item.category.get_absolute_url}}">
       <div class="item_category_name sub_title sub_title_2 color_black">
         {{item.category.title|title}}
       </div>
       </a>
+
+
       <div class="item_name__block">
         <div data-id-name='{{item.id}}' class="item_name main__title main__title_2 color_black">
           {{item.title|title}} 
@@ -78,7 +82,7 @@ item_section__wrapper
           </svg>
 
           <span class="rating_num standart_title standart_title_5 color_black">
-            {{item.rounded_stars}}/5 ({{item.stars}})
+            {{item.rounded_stars}}/5 {% if item.stars|stringformat:".2f" %} ({{item.stars|stringformat:".2f"}}) {% endif %} 
           </span>
         </div>
       </div>
@@ -199,6 +203,26 @@ item_section__wrapper
     </div>
     {% else%}
     {% endif %}
+
+    <div class="additional__block">
+      <div class="addit_name sub_title sub_title_3 color_black">
+        ціна
+      </div>
+      <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
+          {% get_price_by_currency item current_currency %} {{current_currency.code}}
+          https://docs.google.com/spreadsheets/d/1-v34aSjScQw6AVVaByppAX5l3cDD0WILrV6J_zsPkrk/edit#gid=0
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
       <div class="kredit__block">
         <div class="kredit_text sub_title sub_title_2 color_black">
           Від 10 057/місяць при купівлі товару в кредит або оплаті частинами

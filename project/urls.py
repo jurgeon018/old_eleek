@@ -1,11 +1,15 @@
 from django.urls import path, include 
 from django.shortcuts import redirect 
+
+
+
 def set_currency(request, currency):
     url = request.META.get('HTTP_REFERER', '/')
     print(url, currency)
-    request.session['current_currency'] = currency
+    request.session['current_currency_code'] = currency
     return redirect(url)
     
+
 
 urlpatterns = [
     path('api/', include('project.api.urls')),
