@@ -63,10 +63,20 @@ $('.radio_block').on('click', function() {
 
 function check_next_step() {
     let wrap = $(this).parents('.step__wrap');
-    
+    let counter = 0;
+    if ($(this).attr('data-step-btn') == 2) {
+        let check_city = $('.select_city').val();
+        let check_aria = $('.select_aria').val();
+        console.log('check_aria: ', check_aria);
+            console.log('check_city: ', check_city);
+        if (check_city == null || check_aria == null) {
+            counter++;
+
+        }
+    }
     let all_input = $(wrap).find('.input_requared');
 
-    let counter = 0;
+    
     $.each(all_input, function(index, value){
         
         if ($(value).val() == '') {
@@ -175,7 +185,73 @@ $('.order_info__block').on('submit', function (evt) {
     }
 });
 
-                $('.select_aria').select2({
+function matchCustom(params, data) {
+    // If there are no search terms, return all of the data
+    if ($.trim(params.term) === '') {
+      return data;
+    }
+
+    // Do not display the item if there is no 'text' property
+    if (typeof data.text === 'undefined') {
+      return null;
+    }
+
+    // `params.term` should be the term that is used for searching
+    // `data.text` is the text that is displayed for the data object
+    if (data.text.indexOf(params.term) > -1) {
+      var modifiedData = $.extend({}, data, true);
+      modifiedData.text;
+      
+
+      // You can return modified objects from here
+      // This includes matching the `children` how you want in nested data sets
+      return modifiedData;
+    }
+    
+    
+        $('.nova_city').val(params.term);
+        $('.nova_city').addClass('nova_city_active');
+    
+
+
+
+    // Return `null` if the term should not be displayed
+    return null;
+}
+    setInterval(() => {
+        if ($('.nova_city').hasClass('nova_city_active')) {
+            reset_city();
+            $('.nova_city').removeClass('nova_city_active');
+        }
+    }, 200);
+    function reset_city() {
+        setTimeout(() => {
+            let user_input = $('.nova_city').val();
+            fetch(`/api/settlements/${user_input}`, {
+                method: 'GET',
+            })
+            .then(data => {
+            return data.json();
+            })
+            .then(body => {
+            console.log('body: ', body);
+
+                if (body.count != 0) {
+
+                    for (let key in body.results) {
+                        let option_area = document.createElement('option');
+                        option_area.setAttribute('data-attr', body.results[key].title);
+                        option_area.textContent = body.results[key].title + ' (' + body.results[key].region.title + ')';
+                        $('.select_city')[0].appendChild(option_area);
+                    }
+
+                }
+            })
+        }, 200);
+    }
+
+
+            $('.select_aria').select2({
                     dropdownAutoWidth: true,
                     width: 'resolve',
                 });
@@ -183,14 +259,14 @@ $('.order_info__block').on('submit', function (evt) {
                $('.select_city').select2({
                     dropdownAutoWidth: true,
                     width: 'resolve',
+                    matcher: matchCustom
                });
 
-              for (let i = 0; i < 5; i++) {
-                let option_area = document.createElement('option');
-                option_area.textContent = 'test' + i;
-                $('.select_aria')[0].appendChild(option_area);
-              }
-
+            //   for (let i = 0; i < 5; i++) {
+            //     let option_area = document.createElement('option');
+            //     option_area.textContent = 'test' + i;
+            //     $('.select_aria')[0].appendChild(option_area);
+            //   }
 
               fetch(`/api/settlements/`, {
                 method: 'GET',
@@ -201,38 +277,86 @@ $('.order_info__block').on('submit', function (evt) {
                 .then(body => {
                   console.log('body: ', body);
       
+                  if (body.count != 0) {
       
-                //   if (body.count != 0) {
-      
-                //     for (let key in body.results) {
+                    for (let key in body.results) {
       
       
-                //       let option_area = document.createElement('option');
-                //       option_area.textContent = body.results[key].title;
-                //       $('.select_aria')[0].appendChild(option_area);
+                      let option_area = document.createElement('option');
+                      option_area.setAttribute('data-attr', body.results[key].title);
+                      option_area.textContent = body.results[key].title + ' (' + body.results[key].region.title + ')';
+                      $('.select_city')[0].appendChild(option_area);
       
-                //     }
-      
-                //   }
+                    }
+                    $('.select_city').val(null).trigger('change');
+                  }
+
                 })
 
 
-              for (let i = 0; i < 5; i++) {
-                let option_area = document.createElement('option');
-                option_area.textContent = 'test' + i;
-                $('.select_city')[0].appendChild(option_area);
-              }
+               
+                
+            //   for (let i = 0; i < 5; i++) {
+            //     let option_area = document.createElement('option');
+            //     option_area.textContent = 'test' + i;
+            //     $('.select_city')[0].appendChild(option_area);
+            //   }
               
 
+            $('.select_city').on('select2:select', function (e) { 
+                let item = $('.select_city').find(':selected');
+                console.log('item: ', $(item).attr('data-attr'));
 
+                let adress_check = document.querySelectorAll('.select_aria option');
+                adress_check.forEach(function (item, index, array) {
+                    $(item).remove();
+                });
+                fetch(`/api/warehouses/?query=${$(item).attr('data-attr')}`, {
+                    method: 'GET',
+                  })
+                    .then(data => {
+                      return data.json();
+                    })
+                    .then(body => {
+                      // console.log('body: ', body);
+                        
+                      if (body.count != 0) {
+          
+                        for (let key in body.results) {
+          
+          
+                          let option_area = document.createElement('option');
+                          option_area.textContent = body.results[key].title;
+                          $('.select_aria')[0].appendChild(option_area);
+          
+                        }
+          
+                      }
+                    })
+            });
+
+
+           
 
 $('.submit_order_btn').on('click', function() {
     let action = $('.order_info__block').attr('action');
 
+    
+    let current_delivery = $('.step_content_delivery').find('.radio_center_active').parents('.radio_block').find('.radio_title').text();
+    console.log('current_delivery: ', current_delivery);
+    let current_payment = $('.step_content_payment').find('.radio_center_active').parents('.radio_block').find('.radio_title').attr('data-payment');
+    // $.each(all_attr,function(index,value){
+    //     let current_sum = $(value).find('.option_content_prof_active').attr('data-price-option');
+    // })
+
     let body = {
         "name": $('#order_name').val(),
         "email": $('#order_email').val(),
-        "phone_number": $('#order_phone').val()
+        "phone": $('#order_phone').val(),
+        "delivery_opt": `${current_delivery.trim()}, ${$('.select_city').val()}, ${$('.select_aria').val()}`,
+        // "city": $('.select_city').val(),
+        // "warehouse": $('.select_aria').val(),
+        "payment_opt": current_payment.trim(),
       }
       fetch(action, {
         method: 'POST',
@@ -242,4 +366,110 @@ $('.submit_order_btn').on('click', function() {
           "Accept": "application/json"
         }
       })
+      .then(data => {
+        return data.json();
+        })
+        .then(body => {
+            console.log('body: ', body);
+            window.location.href = body.url;
+        })
 });
+
+
+
+
+$('.basket_prep_order').on('click', function() {
+    console.log(123);
+    var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
+    if (current_quan_sum == 1) {
+      console.log('меньше не може бути');
+    } else {
+      $(this).parents('.basket_counter').find('.cart_counter').val(Number(current_quan_sum) - 1);
+      let item_id = $(this).attr('data-quantity_item_id');
+      let quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val();
+      console.log('quantity_id: ', quantity_id);
+     
+      fetch(`/api/cart_item/${Number(item_id)}/`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          quantity: Number(quantity_id),
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+      })
+        .then(data => {
+          return data.json();
+        })
+        .then(data => {
+          console.log('data: ', data);
+          $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
+          $('.order_sum').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
+        });
+    } 
+})
+$('.basket_input_order').on('blur', function() {
+    let curr_user_num = $(this);
+    let quantity_id;
+    if (curr_user_num.val() > 0) {
+      
+    } else if (curr_user_num.val() <= 0 || curr_user_num.val() == '') {
+        $(curr_user_num).val(1);
+    }
+      let item_id = $(this).attr('data-quantity_item_id');
+      quantity_id = $(this).val();
+      console.log('quantity_id: ', quantity_id);
+      
+      fetch(`/api/cart_item/${Number(item_id)}/`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          quantity: Number(quantity_id),
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+      })
+        .then(data => {
+          return data.json();
+        })
+        .then(data => {
+          console.log('data: ', data);
+          $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
+          $('.order_sum').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
+        });
+})
+$('.basket_next_order').on('click', function() {
+    var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
+  console.log('current_quan_sum: ', current_quan_sum);
+
+  if (current_quan_sum == 99999) {
+    console.log('більше не може бути');
+  } else {
+    $(this).parents('.basket_counter').find('.cart_counter').val(Number(current_quan_sum) + 1);
+
+    let item_id = $(this).attr('data-quantity_item_id');
+    let quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val();
+    console.log('quantity_id: ', quantity_id);
+
+    fetch(`/api/cart_item/${Number(item_id)}/`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        quantity: Number(quantity_id),
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+    })
+      .then(data => {
+        return data.json();
+      })
+      .then(data => {
+        console.log('data: ', data);
+        $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
+        $('.order_sum').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
+      });
+  } 
+})

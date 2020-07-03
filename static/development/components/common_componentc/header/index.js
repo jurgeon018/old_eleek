@@ -92,13 +92,45 @@ $('.modal_basket').on('click', function() {
     $('body').toggleClass('body_active');
 
     
-    if ($('.basket_content__block')[0].childElementCount == 1) {
-        $('.none_content_send').text('Ваша корзина порожня');
-        $('.none_content_send').addClass('none_content_send_active');
-      } else {
-        $('.none_content_send').text('');
-        $('.none_content_send').removeClass('none_content_send_active');
-      }
+    $('.basket_content__block').find('.basket_content_profile').remove();
+
+      fetch(`/api/cart_items/`, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+      })
+        .then(data => {
+          return data.json();
+        })
+        .then(data => {
+          console.log('data: ', data);
+          $('.basket_all_result').text(`₴ ${Math.round(data.cart_total_price)}`)
+          console.log('data: ', data.cart_items.length);
+          let card_json = {
+            img_src: '/static/source/img/index/lite.png',
+            name_basket: 'Вилка VEPR-H123',
+            quantity: '1',
+            price: '2500',
+          }
+          for (let index = 0; index < data.cart_items.length; index++) {
+            $('.basket_content__block')[0].appendChild(create_basket_card(card_json, data.cart_items[index]));
+          }
+          
+
+          let checked = $('.basket_content__block').find('.basket_content_profile').length;
+          console.log('checked: ', checked);
+          if (checked == 0) {
+            $('.none_content_send').text('Ваша корзина порожня');
+            $('.none_content_send').addClass('none_content_send_active');
+          } else {
+            $('.none_content_send').text('');
+            $('.none_content_send').removeClass('none_content_send_active');
+          }
+        });
+       
+
 });
 
 // корзина ===========+>
@@ -131,11 +163,9 @@ function basket_blur() {
           return data.json();
         })
         .then(data => {
-          // var old_price = $('.summ_cart').text();
-          // var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
-          // number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
-          // number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
-
+          console.log('data: ', data);
+          $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
+          $('.basket_all_result').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
         });
 }
 
@@ -148,15 +178,30 @@ function basket_blur() {
     setTimeout(() => {
         $(wrap).remove();
 
-        if ($('.basket_content__block')[0].childElementCount == 1) {
-            $('.none_content_send').text('Ваша корзина порожня');
-            $('.none_content_send').addClass('none_content_send_active');
-          } else {
-            $('.none_content_send').text('');
-            $('.none_content_send').removeClass('none_content_send_active');
-          }
+        
+        if ($('.basket_content__block').find('.basket_content_profile').length == 0) {
+          $('.none_content_send').text('Ваша корзина порожня');
+          $('.none_content_send').addClass('none_content_send_active');
+        } else {
+          $('.none_content_send').text('');
+          $('.none_content_send').removeClass('none_content_send_active');
+        }
     }, 300);
     
+    let item_id = $(this).attr('data-quantity_item_id');
+
+    fetch(`/api/cart_item/${item_id}`, {
+      method: 'DELETE',
+    })
+      .then(data => {
+        return data.json();
+      })
+      .then(data => {
+        console.log('data: ', data);
+        $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
+        $('.basket_all_result').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
+      });
+
   }
   
   function number_to(id, from, to, duration) {
@@ -179,20 +224,13 @@ function basket_blur() {
     }, 10);
   }
 
-  let card_json = {
-    img_src: '/static/source/img/index/lite.png',
-    name_basket: 'Вилка VEPR-H123',
-    quantity: '1',
-    price: '2500',
-  }
-  for (let index = 0; index < 5; index++) {
-    $('.basket_content__block')[0].appendChild(create_basket_card(card_json));
-  }
-
-
-
   
-function create_basket_card(content) {
+
+
+ 
+  
+function create_basket_card(content, data) {
+  console.log('data: ', data);
         let basket_content_profile = document.createElement('div');
         basket_content_profile.classList.add('basket_content_profile');
         
@@ -201,7 +239,7 @@ function create_basket_card(content) {
 
         let profile_img = document.createElement('img');
         profile_img.classList.add('basket_profile_img');
-        profile_img.setAttribute(`src`, content.img_src);
+        profile_img.setAttribute(`src`, data.item.image_url);
 
         let basket_right_content = document.createElement('div');
         basket_right_content.classList.add('basket_right_content');
@@ -211,10 +249,11 @@ function create_basket_card(content) {
 
         let basket_title = document.createElement('div');
         basket_title.classList.add('basket_title', 'main__title', 'main__title_5');
-        basket_title.textContent = content.name_basket;
+        basket_title.textContent = data.item.alt;
 
         let basket_del = document.createElement('img');
         basket_del.classList.add('basket_del', 'remove_prod_card');
+        basket_del.setAttribute(`data-quantity_item_id`, data.id);
         basket_del.setAttribute(`src`, '/static/source/img/index/trash.svg');
 
         let basket_bottom__wrap = document.createElement('div');
@@ -231,15 +270,18 @@ function create_basket_card(content) {
         basket_counter.classList.add('basket_counter');
 
         let basket_prep = document.createElement('div');
+        basket_prep.setAttribute(`data-quantity_item_id`, data.id);
         basket_prep.classList.add('basket_prep', 'basket_count', 'sub_title', 'sub_title_21');
         basket_prep.textContent = '-';
 
         let basket_input = document.createElement('input');
         basket_input.setAttribute(`type`, 'number');
-        basket_input.setAttribute(`value`, content.quantity);
-        basket_input.classList.add('basket_input', 'basket_count', 'main__title', 'main__title_5', 'cart_counter');
+        basket_input.setAttribute(`value`, data.quantity);
+        basket_input.setAttribute(`data-quantity_item_id`, data.id);
+        basket_input.classList.add('basket_input', 'basket_count', 'main__title', 'main__title_5', 'cart_counter', 'quan_cart_sum');
 
         let basket_next = document.createElement('div');
+        basket_next.setAttribute(`data-quantity_item_id`, data.id);
         basket_next.classList.add('basket_next', 'basket_count', 'sub_title', 'sub_title_21');
         basket_next.textContent = '+';
 
@@ -252,7 +294,7 @@ function create_basket_card(content) {
 
         let basket_summ = document.createElement('div');
         basket_summ.classList.add('basket_summ', 'main__title', 'main__title_5');
-        basket_summ.textContent = content.price + ' ' +'грн.';
+        basket_summ.textContent = data.item.price + ' ' + data.item.currency.code;
 
 
         basket_content_profile.appendChild(basket_profile_img);
@@ -297,26 +339,6 @@ function counter_minus(name) {
 }
 
 
-$('.remove_prod_card').on('click', function () {
-
-  var remove_id = $(this).data('cart_item_id');
-  var remove_quan = $(this).data('cart_item_quantity');
-
-  fetch(`/api/cart_item/${remove_id}`, {
-    method: 'DELETE',
-  })
-
-    .then(data => {
-      return data.json();
-    })
-    .then(data => {
-      console.log('data: ', data);
-      var old_price = $('.summ_cart').text();
-      // var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
-      number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
-    });
-});
-
 
 function basket_minus() {
   console.log(123);
@@ -343,11 +365,9 @@ function basket_minus() {
         return data.json();
       })
       .then(data => {
-        // var old_price = $('.summ_cart').text();
-        // var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
-        // number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
-        // number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
-
+        console.log('data: ', data);
+        $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
+        $('.basket_all_result').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
       });
   } 
 }
@@ -378,11 +398,9 @@ function basket_plus() {
         return data.json();
       })
       .then(data => {
-        // var old_price = $('.summ_cart').text();
-        // var old_item_price = $(this).parents('.basket_card').find('.all_items_price');
-        // number_to(".summ_cart", Number(old_price), data.cart_total_price, 200);
-        // number_to(old_item_price, Number(old_item_price.text()), data.cart_item_total_price, 200);
-
+        console.log('data: ', data);
+        $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
+        $('.basket_all_result').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
       });
   } 
 }
