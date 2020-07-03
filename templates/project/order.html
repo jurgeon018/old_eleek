@@ -18,13 +18,15 @@ item_section__wrapper
       <!-- Оформлення замовлення -->
     </h2>
     <div class="order__wrap">
-      <form action='/test/' class="order_info__block">
+      <form action='/api/order_items/' method='POST' class="order_info__block">
         <div data-step='1' class="step__wrap step__wrap_active">
           <div class="step_title__wrap">
             <div class="step_num main__title main__title_5 color_black">
               1
             </div>
-            <div class="step_title standart_title standart_title_3 color_black">
+            {% render 'step1' as step1 %}
+            <div class="step_title standart_title standart_title_3 color_black db_content" data-admin_url="{{step1.get_admin_url}}">
+              {{step1.text}}
               <!-- Крок 1. Контактні дані -->
             </div>
           </div>
