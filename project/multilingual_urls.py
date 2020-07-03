@@ -21,6 +21,10 @@ def about(request):
     partners = Partner.objects.all()
     return render(request, 'project/about.html', locals())
 
+
+def thank_you(request):
+    return render(request, 'project/thank_you.html', locals())
+
 from django.db.models import Max, Min 
 
 def item_category(request, slug):
@@ -127,6 +131,7 @@ urlpatterns = [
     
     path('login/',       login,       name='login'),
     path('register/',    register,    name='register'),
+    path('thank_you/',    thank_you,    name='thank_you'),
 ]
 
 

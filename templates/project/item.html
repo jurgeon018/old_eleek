@@ -245,7 +245,7 @@ item_section__wrapper
         </div>
         <div class="option_content__block">
           {% for option in options.get_values %}
-          <div class="option_content_prof price_multiple_option price_option" data-price-option='{{option.price|stringformat:".2f"}}'>
+          <div class="option_content_prof price_multiple_option price_option" data-value="{{option.value.value}}" data-price-option='{{option.price|stringformat:".2f"}}'>
             <img class="option_img" src="/static/source/img/item/close.svg" alt="">
             <div class="option_text standart_title standart_title_6">
               {{option.value.value}} ({{option.price}} {{option.currency.code}})
@@ -259,11 +259,14 @@ item_section__wrapper
       <!-- Атрибути без категорій -->
       {% for attribute in item.get_attributes_without_categories %}
         {% if not attribute.is_option %}
-          <div data-item_attribute_value_id="{{attribute.get_values.first.id}}" class="color_change__wrap">
+          <div data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}' data-item_attribute_value_id="{{attribute.get_values.first.id}}" class="color_change__wrap current_attribute_change__wrap">
             <div class="color_change__block">
               <div class="color_change_prof">
                 <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-                  {{attribute.attribute.name}} : {{attribute.get_values.first.value.value}}
+                  {{attribute.attribute.name}} : 
+                </div>
+                <div class="color_change_name sub_title sub_title_2 color_black">
+                  {{attribute.get_values.first.value.value}}
                 </div>
               </div>
               <div class="color_change_btn">
@@ -305,7 +308,7 @@ item_section__wrapper
         {% for attribute in attributes %}
           {% if attribute_category.name == 'кольори' %}
           <!-- Ось тут ми зупинилсь! -->
-            <div class="color_change__wrap"
+            <div class="color_change__wrap only_color_change__wrap"
               data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}'
               data-item_attribute_value_id='{{attribute.get_values.first.value.id}}'>
               <div class="color_change__block">

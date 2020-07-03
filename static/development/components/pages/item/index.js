@@ -82,20 +82,38 @@ console.log(2);
   });
 
 
+
   $('.change_attribute').on('click', function() {
       let wrapp = $(this).parents('.color_change__wrap');
-      let this_attr = $(this).attr('data-value');
-      let content = $(wrapp).attr('data-value');
+      let this_attr = $(this).find('.hidden_color_attr').attr('data-item_attribute_value_id');
+
+      let text_attr = $(this).find('.hidden_color_attr').val();
+      $(wrapp).find('.color_change_name').text(text_attr);
+    //   let content = $(wrapp).attr('data-item_attribute_value_id');
     //   let mass = [];
     //   if (content == 'none') {
     //     mass.push(this_attr);
     //   } else {
     //     console.log(123);
     //   }
-      $(wrapp).attr('data-value', this_attr);
+      $(wrapp).attr('data-item_attribute_value_id', this_attr);
   });
 
+  function check_active_option() {
+    let all_attr = $('.current_attribute_change__wrap');
+    let all_first_sum = 0;
+    $.each(all_attr,function(index,value){
+        console.log('value: ', $(value)[0]);
+        let current_sum = $(value).find('.option_content_prof_active').attr('data-price-option');
+        console.log('current_sum: ', current_sum);
+        all_first_sum += Number(current_sum);
+    })
+    $('.additional_price').text(all_first_sum);
+    $('.absolute_additional_price').text(all_first_sum);
+  
+  }
 
+  check_active_option();
 $(".item_tab_link").on("click", function(){
     ($(this)[0].dataset.tab);
     var className = ($(this)[0].dataset.tab);
@@ -259,6 +277,8 @@ $('.price_option').on('click', function() {
 
 $('.price_multiple_option').on('click', function() {
     $(this).toggleClass('option_content_prof_active');
+
+    
 })
 
 $('.price_simple_option').on('click', function() {
@@ -276,9 +296,9 @@ $('.price_simple_option').on('click', function() {
     }
 
     if ($(this).hasClass('option_content_prof_active')) {
-        $(this).removeClass('option_content_prof_active');
-        $(all_price__block).text(all_summ - Number(current_sum));
-        $(absolute_additional_price).text(all_summ - Number(current_sum));
+        // $(this).removeClass('option_content_prof_active');
+        // $(all_price__block).text(all_summ - Number(current_sum));
+        // $(absolute_additional_price).text(all_summ - Number(current_sum));
     } else {
         $(wrapper).find('.option_content_prof').removeClass('option_content_prof_active');
         $(this).addClass('option_content_prof_active');
@@ -297,10 +317,56 @@ function show_addit_option() {
 }
 
 $('.item_btn_price').on('click', function() {
+    let all_attr = $('.current_attribute_change__wrap');
+    let attr_mass = [];
+    $.each(all_attr, function(index, value){
+        let attr_id = $(value).attr('data-item_attribute_id');
+        let attr_value = $(value).attr('data-item_attribute_value_id');
+        attr_mass.push({
+            item_attribute_id: attr_id,
+            item_attribute_value_id: attr_value
+        });
+    })
+
+    let all_color = $('.only_color_change__wrap');
+    let color_mass = [];
+    $.each(all_color, function(index, value){
+        let attr_id = $(value).attr('data-item_attribute_id');
+        let attr_value = $(value).attr('data-item_attribute_value_id');
+        color_mass.push({
+            item_attribute_id: attr_id,
+            item_attribute_value_id: attr_value
+        });
+    })
+    
+
+    let all_option = $('.option_content__block').find('.option_content_prof_active');
+    let option_mass = [];
+    $.each(all_option, function(index, value){
+        let attr_value = $(value).attr('data-value');
+        option_mass.push({
+            option_value_id: attr_value
+        });
+    })
+    console.log('option_mass: ', option_mass);
+
+   
+    let newMass = attr_mass.concat(color_mass);
+    console.log('newMass: ', newMass);
+
+
+   
+
+    
+
+
+
+    console.log('attr_mass: ', attr_mass);
     let item_id = $('.item_name').attr('data-id-name');
       let body = {
         "item_id": Number(item_id),
-        // "attributes": JSON.stringify(main_attr),
+        "attributes": JSON.stringify(newMass),
+        "options": JSON.stringify(option_mass)
       }
       fetch('/api/cart_items/', {
         method: 'POST',
