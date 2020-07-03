@@ -306,8 +306,8 @@ item_section__wrapper
           {% if attribute_category.name == 'кольори' %}
           <!-- Ось тут ми зупинилсь! -->
             <div class="color_change__wrap"
-            data-item_attribute_id='{{attribute.get_values.first.value.item_attribute.id}}'
-            data-item_attribute_value_id='{{attribute.get_values.first.value.id}}'>
+              data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}'
+              data-item_attribute_value_id='{{attribute.get_values.first.value.id}}'>
               <div class="color_change__block">
                 <div class="color_change_prof">
                   <div class="color_change_title main_sub_title main_sub_title_3 color_black">
@@ -362,15 +362,6 @@ item_section__wrapper
         {% endfor %}
       {% endfor %}
 
-      <!-- <h1>Схожі товари</h1>
-      {% for similar in item.similars.all %}
-      <a href="{{similar.get_absolute_url}}" style="color:black;">
-        Заголовок: {{similar.title}}<br>
-        Картинка: {{similar.image_url}}
-        Альт: {{similar.alt}}
-      </a>
-      {% endfor %}
- -->
 
     </div>
   </div>
@@ -379,7 +370,7 @@ item_section__wrapper
   <div class="container">
      <div class="best_title-block">
          <h4 class="best_sale_title">
-          Схожі товари
+          {% trans 'Схожі товари' %}
           </h4>
          <div class="slick-wrap">
              <button type="button" class="slick-first">
@@ -400,15 +391,17 @@ item_section__wrapper
              <div class="best-sales_text">
                 <div class="best-sales_info">
                      <div class="name-product">
-                         Костюм
+                         {{similar.title}}
                      </div>
                      <div class="cost-product">
-                         1022 грн.
+                         {{similar.price}} {{similar.currency.code}}
                      </div>
                 </div>
+                <!-- 
                 <a href="{{similar.get_absolute_url}}" class="basket-btn">
                  У Кошик
-                </a>
+                </a> 
+                -->
              </div>
          </div>
          {% endfor %}
