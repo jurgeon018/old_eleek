@@ -727,9 +727,9 @@ function Onload() {
   //     valide_form(dinamic_main_id, '.inp-mini-wrap', false);
   // }
   valide_form('.footer_form', '.inp-vak-wrap', true);
-  valide_form('#comment_form', '.inp-vak-wrap', true);
+  valide_form('#comment_form', '.inp-vak-wrap', false);
   valide_form('.registery_form', '.inp-vak-wrap', false);
-  valide_form('.drive__form_last', '.inp-vak-wrap', false);
+  valide_form('.drive__form_last', '.inp-vak-wrap', true);
 }
 
 function location_leng() {
@@ -1016,6 +1016,19 @@ function valide_form(id_form, error_inp_wrap, check_request) {
 
 /***/ }),
 
+/***/ "../components/pages/item/best_sales.scss":
+/*!************************************************!*\
+  !*** ../components/pages/item/best_sales.scss ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
+
+/***/ }),
+
 /***/ "../components/pages/item/index.js":
 /*!*****************************************!*\
   !*** ../components/pages/item/index.js ***!
@@ -1027,6 +1040,9 @@ function valide_form(id_form, error_inp_wrap, check_request) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/pages/item/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _best_sales_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./best_sales.scss */ "../components/pages/item/best_sales.scss");
+/* harmony import */ var _best_sales_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_best_sales_scss__WEBPACK_IMPORTED_MODULE_1__);
+
 
 console.log(1);
 var slickFinder0 = $('.item_slider__block').length;
@@ -1086,6 +1102,12 @@ $('.color_change_btn').on('click', function () {
 $('.color_change_select').on('click', function () {
   var wrap = $(this).parents('.color_change__wrap');
   var current_color = $(this).attr('data-color');
+  var hidden_input = $(this).find('.hidden_color_attr');
+  var this_id = $(this).find('.hidden_color_attr').data('item_attribute_value_id');
+  console.log('this_id: ', this_id);
+  $(wrap).find('.color_change_name').attr('data-item_attribute_value_id', this_id);
+  var this_value = $(this).attr('data-value');
+  $(wrap).find('.color_change_name').text($(hidden_input).val());
 
   if ($(this).hasClass('white_color_change_oval')) {
     $(wrap).find('.main_color_change_oval').addClass('border_for_oval');
@@ -1098,6 +1120,7 @@ $('.color_change_select').on('click', function () {
   $(wrap).find('.color_change_select').find('.success_color').removeClass('success_color_active');
   $(this).find('.success_color').addClass('success_color_active');
 });
+$('.change_attribute').on('click', function () {});
 $(".item_tab_link").on("click", function () {
   $(this)[0].dataset.tab;
   var className = $(this)[0].dataset.tab;
@@ -1219,7 +1242,9 @@ function create_comment(content) {
 }
 
 $('.price_option').on('click', function () {
+  show_addit_option();
   var all_price__block = $('.additional_price');
+  var absolute_additional_price = $('.absolute_additional_price');
   var all_summ = Number($(all_price__block).text());
   console.log('all_summ: ', all_summ);
   var current_sum = $(this).attr('data-price-option');
@@ -1227,16 +1252,20 @@ $('.price_option').on('click', function () {
 
   if ($(this).hasClass('option_content_prof_active')) {
     $(all_price__block).text(all_summ - Number(current_sum));
+    $(absolute_additional_price).text(all_summ - Number(current_sum));
   } else {
     $(all_price__block).text(all_summ + Number(current_sum));
+    $(absolute_additional_price).text(all_summ + Number(current_sum));
   }
 });
 $('.price_multiple_option').on('click', function () {
   $(this).toggleClass('option_content_prof_active');
 });
 $('.price_simple_option').on('click', function () {
+  show_addit_option();
   var active_sum;
   var all_price__block = $('.additional_price');
+  var absolute_additional_price = $('.absolute_additional_price');
   var all_summ = Number($(all_price__block).text());
   var current_sum = $(this).attr('data-price-option');
   var wrapper = $(this).parents('.color_change_content_wrap');
@@ -1250,12 +1279,23 @@ $('.price_simple_option').on('click', function () {
   if ($(this).hasClass('option_content_prof_active')) {
     $(this).removeClass('option_content_prof_active');
     $(all_price__block).text(all_summ - Number(current_sum));
+    $(absolute_additional_price).text(all_summ - Number(current_sum));
   } else {
     $(wrapper).find('.option_content_prof').removeClass('option_content_prof_active');
     $(this).addClass('option_content_prof_active');
     $(all_price__block).text(all_summ - Number(active_sum) + Number(current_sum));
+    $(absolute_additional_price).text(all_summ - Number(active_sum) + Number(current_sum));
   }
 });
+
+function show_addit_option() {
+  var block = $('.absolute_additional__block');
+  $(block).css('right', '0px');
+  setTimeout(function () {
+    $(block).css('right', '-100%');
+  }, 1000);
+}
+
 $('.item_btn_price').on('click', function () {
   var item_id = $('.item_name').attr('data-id-name');
   var body = {
@@ -1271,6 +1311,45 @@ $('.item_btn_price').on('click', function () {
     }
   });
 });
+var slickFinder2 = $('.best-sales-block').length;
+
+if (slickFinder2 >= 1) {
+  $('.best-sales-block').slick({
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    // autoplay: true,
+    arrows: true,
+    prevArrow: '<div class="slick-first"><</div>',
+    nextArrow: '<div class="slick-second">></div>',
+    lazyLoad: "ondemand",
+    responsive: [{
+      breakpoint: 1220,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 750,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 452,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }]
+  });
+  $('.slick-first').click(function () {
+    $(".best-sales-block").slick('slickPrev');
+  });
+  $('.slick-second').click(function () {
+    $(".best-sales-block").slick('slickNext');
+  });
+}
 
 /***/ }),
 
