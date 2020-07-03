@@ -263,7 +263,7 @@ item_section__wrapper
             <div class="color_change__block">
               <div class="color_change_prof">
                 <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-                  {{attribute.attribute.name}}
+                  {{attribute.attribute.name}} : {{attribute.get_values.first.value.value}} ({{attribute.get_values.first.id}})
                 </div>
               </div>
               <div class="color_change_btn">
@@ -317,7 +317,7 @@ item_section__wrapper
                     <!-- .... -->
                     <!-- Код кольору вибраного значення -->
                   </div>
-                  <div 
+                  <div
                   class="color_change_name sub_title sub_title_2 color_black" 
                   data-item_attribute_value_id="{{value.id}}" 
                   data-item_attribute_id="{{value.item_attribute.id}}">
