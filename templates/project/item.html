@@ -259,7 +259,7 @@ item_section__wrapper
       <!-- Атрибути без категорій -->
       {% for attribute in item.get_attributes_without_categories %}
         {% if not attribute.is_option %}
-          <div data-item_attribute_value_id=""="{{attribute.get_values.first.id}}" class="color_change__wrap">
+          <div data-item_attribute_value_id="{{attribute.get_values.first.id}}" class="color_change__wrap">
             <div class="color_change__block">
               <div class="color_change_prof">
                 <div class="color_change_title main_sub_title main_sub_title_3 color_black">
