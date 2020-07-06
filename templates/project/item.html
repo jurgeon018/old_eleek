@@ -549,7 +549,7 @@ item_section__wrapper
   </div>
 </section>
 <form method="POST" action="/api/create_review/" class="comment_form" id="comment_form" style="display:none;">
-  <input type="hidden" name='item_id' value="{{item.id}}">
+  <input type="hidden" name='product_id' value="{{item.id}}">
   <div class="search_menu_title">
     <div class="main__title main__title_4 color_black">
       Новий відгук
@@ -615,7 +615,7 @@ item_section__wrapper
   </div>
 </form>
 <form method="POST" action="/api/order_request/" class="comment_form form_cons" id="form_cons" style="display:none;">
-  <input type="hidden" name='item_id' value="{{item.id}}">
+  <input type="hidden" name='product_id' value="{{item.id}}">
   <div class="search_menu_title">
     <div class="main__title main__title_4 color_black">
       {% trans 'Швидка покупка' %}
@@ -657,7 +657,7 @@ item_section__wrapper
   </div>
 </form>
 <form method="POST" action="/api/item_info/" class="comment_form form_cons" id="form_qustion" style="display:none;">
-  <input type="hidden" name='item_id' value="{{item.id}}">
+  <input type="hidden" name='product_id' value="{{item.id}}">
   <div class="search_menu_title">
     <div class="main__title main__title_4 color_black">
       {% trans 'На даний момент товару немає у наявності, залиште заявку на інформацію про товар' %}
