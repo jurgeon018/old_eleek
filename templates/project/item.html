@@ -91,9 +91,20 @@ item_section__wrapper
           <!-- {{item.price}} {{item.currency.code}} -->
           {{item.converted_price}} {{item.main_currency.symbol}}
         </div>
-        <div class="item_btn_price btn_standart btn_standart_black color_white">
-          {% trans 'Купити' %}
+        <div class="item_btn_wrapper">
+          <div data-src='#form_qustion' class="fast_btn sale_one_click btn_standart btn_standart_black color_white">
+            {% trans 'Інфорація про товар' %}
+          </div>
+          <div data-src='#form_cons' class="fast_btn sale_one_click btn_standart btn_standart_black color_white">
+            {% trans 'Швидка покупка' %}
+          </div>
+          <div class="main_item_btn item_btn_price btn_standart btn_standart_black color_white">
+            {% trans 'Купити' %}
+          </div>
         </div>
+        <!-- <div class="main_item_btn btn_standart color_white NoActiveBtn">
+          {% trans 'Куплено' %}
+        </div> -->
       </div>
 
       
@@ -603,6 +614,91 @@ item_section__wrapper
     <input type="submit" value="Додати відгук" class="generate_comment btn_standart btn_standart_black">
   </div>
 </form>
+<form method="POST" action="/api/order_request/" class="comment_form form_cons" id="form_cons" style="display:none;">
+  <input type="hidden" name='item_id' value="{{item.id}}">
+  <div class="search_menu_title">
+    <div class="main__title main__title_4 color_black">
+      {% trans 'Швидка покупка' %}
+    </div>
+    <img class="modal_comm modal_search_close" src="/static/source/img/index/close.svg" alt="">
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_name" class="footer_label label__style color_black">
+      Ім'я
+    </label>
+    <input type="text" id="comment_name" name='name' class="comment_name footer_input input_focus">
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_phone" class="footer_label label__style color_black">
+      Телефон
+    </label>
+    <input type="text" id="comment_phone" name='phone' class="comment_phone footer_input input_focus">
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_email" class="footer_label label__style color_black">
+      Email
+    </label>
+    <input type="text" id="comment_email" name='email' class="comment_email footer_input input_focus">
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_adress" class="footer_label label__style color_black">
+      Адреса
+    </label>
+    <input type="text" id="comment_adress" name='adress' class="comment_adress footer_input input_focus">
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_send" class="footer_label label__style color_black">
+      Коментар
+    </label>
+    <textarea name='text' id="comment_send" class="comment_send user_send footer_input input_focus"></textarea>
+  </div>
+  <div class="wrap_for_footer_btn">
+    <input type="submit" value="Відправити" class="generate_comment btn_standart btn_standart_black">
+  </div>
+</form>
+<form method="POST" action="/api/item_info/" class="comment_form form_cons" id="form_qustion" style="display:none;">
+  <input type="hidden" name='item_id' value="{{item.id}}">
+  <div class="search_menu_title">
+    <div class="main__title main__title_4 color_black">
+      {% trans 'На даний момент товару немає у наявності, залиште заявку на інформацію про товар' %}
+    </div>
+    <img class="modal_comm modal_search_close" src="/static/source/img/index/close.svg" alt="">
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_name" class="footer_label label__style color_black">
+      Ім'я
+    </label>
+    <input type="text" id="comment_name" name='name' class="comment_name footer_input input_focus">
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_phone" class="footer_label label__style color_black">
+      Телефон
+    </label>
+    <input type="text" id="comment_phone" name='phone' class="comment_phone footer_input input_focus">
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_email" class="footer_label label__style color_black">
+      Email
+    </label>
+    <input type="text" id="comment_email" name='email' class="comment_email footer_input input_focus">
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_adress" class="footer_label label__style color_black">
+      Адреса
+    </label>
+    <input type="text" id="comment_adress" name='adress' class="comment_adress footer_input input_focus">
+  </div>
+  <div class="footer_input__wrap inp-vak-wrap">
+    <label for="comment_send" class="footer_label label__style color_black">
+      Коментар
+    </label>
+    <textarea name='text' id="comment_send" class="comment_send user_send footer_input input_focus"></textarea>
+  </div>
+  <div class="wrap_for_footer_btn">
+    <input type="submit" value="Відправити" class="generate_comment btn_standart btn_standart_black">
+  </div>
+</form>
+
 {% endblock content %}
 {% block scripts %}
 <script src="/static/source/lib/jquery/index.js"></script> 
@@ -612,7 +708,7 @@ item_section__wrapper
 <script src="/static/source/lib/validation/validation.min.js"></script> 
 <script src="/static/development/components/module/form_errors/index.js"></script> 
 <script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
-<script src="/static/source/pages/item/index.js"></script> 
+<script src="/static/source/pages/item/index.js?v=3"></script> 
 {% endblock scripts %}
 
 

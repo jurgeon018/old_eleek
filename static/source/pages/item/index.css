@@ -2045,6 +2045,28 @@ input::-webkit-inner-spin-button {
   margin-top: 55px;
   margin-bottom: 25px; }
 
+.main_item_btn {
+  transition: all;
+  width: 115px;
+  padding: 17px 0px !important;
+  background-color: #2b2a27;
+  color: #ffffff;
+  border: solid 1px transparent; }
+
+.form_cons .comment_form .footer_input {
+  width: 100% !important; }
+
+.sale_one_click {
+  margin-right: 10px; }
+
+.item_btn_wrapper {
+  display: flex;
+  align-items: center; }
+
+.NoActiveBtn {
+  background-color: #a9a7a1;
+  cursor: default; }
+
 .color_change__block {
   display: flex;
   align-items: center;
