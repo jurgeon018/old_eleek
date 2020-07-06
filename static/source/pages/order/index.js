@@ -1113,6 +1113,26 @@ $('.radio_block').on('click', function () {
   var wrap = $(this).parents('.step__wrap');
   $(wrap).find('.radio_center').removeClass('radio_center_active');
   $(this).find('.radio_center').addClass('radio_center_active');
+
+  if ($(this).hasClass('add_one_inp')) {
+    $('.step_content_delivery').addClass('only_one_input');
+    $('.step_content_delivery').removeClass('only_two_input');
+    $('.step_content_delivery').removeClass('only_none_input');
+    $('.two_input__wrap').addClass('hidden_input__wrap');
+    $('.one_input__wrap').removeClass('hidden_input__wrap');
+  } else if ($(this).hasClass('add_two_inp')) {
+    $('.step_content_delivery').removeClass('only_one_input');
+    $('.step_content_delivery').addClass('only_two_input');
+    $('.step_content_delivery').removeClass('only_none_input');
+    $('.one_input__wrap').addClass('hidden_input__wrap');
+    $('.two_input__wrap').removeClass('hidden_input__wrap');
+  } else if ($(this).hasClass('remove_input')) {
+    $('.step_content_delivery').removeClass('only_one_input');
+    $('.step_content_delivery').removeClass('only_two_input');
+    $('.step_content_delivery').addClass('only_none_input');
+    $('.one_input__wrap').addClass('hidden_input__wrap');
+    $('.two_input__wrap').addClass('hidden_input__wrap');
+  }
 });
 
 function check_next_step() {
@@ -1120,13 +1140,21 @@ function check_next_step() {
   var counter = 0;
 
   if ($(this).attr('data-step-btn') == 2) {
-    var check_city = $('.select_city').val();
-    var check_aria = $('.select_aria').val();
-    console.log('check_aria: ', check_aria);
-    console.log('check_city: ', check_city);
+    if ($('.step_content_delivery').hasClass('only_two_input')) {
+      var check_city = $('.select_city').val();
+      var check_aria = $('.select_aria').val();
+      console.log('check_aria: ', check_aria);
+      console.log('check_city: ', check_city);
 
-    if (check_city == null || check_aria == null) {
-      counter++;
+      if (check_city == null || check_aria == null) {
+        counter++;
+      }
+
+      $('#order_adress').removeClass('input_requared');
+    } else if ($('.step_content_delivery').hasClass('only_none_input')) {
+      $('#order_adress').removeClass('input_requared');
+    } else if ($('.step_content_delivery').hasClass('only_one_input')) {
+      $('#order_adress').addClass('input_requared');
     }
   }
 
@@ -1346,13 +1374,21 @@ $('.submit_order_btn').on('click', function () {
   //     let current_sum = $(value).find('.option_content_prof_active').attr('data-price-option');
   // })
 
+  var current_adress;
+
+  if ($('.step_content_delivery').hasClass('only_one_input')) {
+    current_adress = $('#order_adress');
+  } else if ($('.step_content_delivery').hasClass('only_two_input')) {
+    current_adress = "".concat(current_delivery.trim(), ", ").concat($('.select_city').val(), ", ").concat($('.select_aria').val());
+  } else if ($('.step_content_delivery').hasClass('only_none_input')) {
+    current_adress = "\u041A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u043E\u0431\u0440\u0430\u0432 \u0441\u0430\u043C\u043E\u0432\u0438\u0432\u0456\u0437";
+  }
+
   var body = {
     "name": $('#order_name').val(),
     "email": $('#order_email').val(),
     "phone": $('#order_phone').val(),
-    "delivery_opt": "".concat(current_delivery.trim(), ", ").concat($('.select_city').val(), ", ").concat($('.select_aria').val()),
-    // "city": $('.select_city').val(),
-    // "warehouse": $('.select_aria').val(),
+    "delivery_opt": current_adress,
     "payment_opt": current_payment.trim()
   };
   fetch(action, {
