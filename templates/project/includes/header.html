@@ -5,7 +5,7 @@
 <form method="POST" action="" class="true_form absolute_center" id="modal_form_change_profile" style="display:none;">
   <img class="form_true_img" src="/static/source/img/index/123.png" alt="">
   <div class="usually_modal_text standart_title standart_title_6 color_black">
-      Ваші дані успішно змінені
+      {% trans 'Ваші дані успішно змінені' %}
   </div>
 </form>
 <header class="nav_bar">
@@ -159,7 +159,7 @@
                 </div>
                 <div class="scroll_vallute__block">
                   {% for currency in currencies %}
-                    {% if currency.code == request.session.current_currency %}
+                    {% if currency.code == current_currency_code %}
                       <a class="scroll_vallute scroll_changer sub_title sub_title_2 color_white scroll_changer_active">
                     {% else %}
                       <a href="{% url 'set_currency' currency.code %}" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white">
@@ -168,12 +168,6 @@
                       </a>
                   {% endfor %}
 
-                  <a href="{% url 'set_currency' 'UAH' %}" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white {% if request.session.current_currency == 'UAH' %}scroll_changer_active{% endif %}">
-                    uah
-                  </a>
-                  <a href="{% url 'set_currency' 'USD' %}" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white {% if request.session.current_currency == 'USD' %}scroll_changer_active{% endif %}">
-                    usd
-                  </a>
 
                 </div>
               </div>

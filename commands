@@ -44,7 +44,6 @@ python3 manage.py runserver 127.0.0.1:8000
 
 
 
-
 # створюєш юзера в БД. Вводиш 1 раз перед початком розробки. 
 sudo -u postgres psql -c "create user jurgeon with password '69018'; alter role jurgeon set client_encoding to 'utf8'; alter role jurgeon set default_transaction_isolation to 'read committed'; alter role jurgeon set timezone to 'UTC';"
 
