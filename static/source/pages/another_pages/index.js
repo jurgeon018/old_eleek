@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./another_pages.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1047,603 +1047,35 @@ function valide_form(id_form, error_inp_wrap, check_request) {
 
 /***/ }),
 
-/***/ "../components/pages/index/five_section.scss":
-/*!***************************************************!*\
-  !*** ../components/pages/index/five_section.scss ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-    if(false) { var cssReload; }
-  
-
-/***/ }),
-
-/***/ "../components/pages/index/four_section.scss":
-/*!***************************************************!*\
-  !*** ../components/pages/index/four_section.scss ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-    if(false) { var cssReload; }
-  
-
-/***/ }),
-
-/***/ "../components/pages/index/index.js":
-/*!******************************************!*\
-  !*** ../components/pages/index/index.js ***!
-  \******************************************/
+/***/ "../components/pages/another_pages/index.js":
+/*!**************************************************!*\
+  !*** ../components/pages/another_pages/index.js ***!
+  \**************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/pages/index/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/pages/another_pages/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _second_section_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./second_section.scss */ "../components/pages/index/second_section.scss");
-/* harmony import */ var _second_section_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_second_section_scss__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _three_section_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./three_section.scss */ "../components/pages/index/three_section.scss");
-/* harmony import */ var _three_section_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_three_section_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _four_section_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./four_section.scss */ "../components/pages/index/four_section.scss");
-/* harmony import */ var _four_section_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_four_section_scss__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _five_section_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./five_section.scss */ "../components/pages/index/five_section.scss");
-/* harmony import */ var _five_section_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_five_section_scss__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _six_section_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./six_section.scss */ "../components/pages/index/six_section.scss");
-/* harmony import */ var _six_section_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_six_section_scss__WEBPACK_IMPORTED_MODULE_5__);
 
+$('.color_change_btn').on('click', function () {
+  var wrap_content = $(this).parents('.color_change__wrap').find('.color_change_content');
 
-
-
-
-
-
-$.fn.visible = function (partial) {
-  var $t = $(this),
-      $w = $(window),
-      viewTop = $w.scrollTop(),
-      viewBottom = viewTop + $w.height(),
-      _top = $t.offset().top,
-      _bottom = _top + $t.height(),
-      compareTop = partial === true ? _bottom : _top,
-      compareBottom = partial === true ? _top : _bottom;
-
-  return compareBottom <= viewBottom && compareTop >= viewTop;
-};
-
-function parallaxEffect(target, data_smooth) {
-  var element = $(target);
-  element.each(function (i, el) {
-    var move = $(el);
-    $(window).scroll(function (event) {
-      var top = move.offset().top - $(this).scrollTop();
-
-      if (move.visible(true)) {
-        move.addClass("moving-target").css({
-          "transform": "translateY(" + top / data_smooth + "px)",
-          "-webkit-transform": "translateY(" + top / data_smooth + "px)",
-          "-moz-transform": "translateY(" + top / data_smooth + "px)"
-        });
-      } else {
-        move.removeClass("moving-target");
-      }
-    });
-  });
-}
-
-parallaxEffect('.absolute_product_profile_1', 5);
-parallaxEffect('.absolute_product_profile_2', 7);
-parallaxEffect('.absolute_product_profile_3', 5);
-parallaxEffect('.absolute_product_profile_4', 7);
-parallaxEffect('.absolute_product_profile_5', 5);
-parallaxEffect('.eleek_title__wrap', 10);
-/** @preserve jQuery animateNumber plugin v0.0.14
- * (c) 2013, Alexandr Borisov.
- * https://github.com/aishek/jquery-animateNumber
- */
-// ['...'] notation using to avoid names minification by Google Closure Compiler
-
-(function ($) {
-  var reverse = function reverse(value) {
-    return value.split('').reverse().join('');
-  };
-
-  var defaults = {
-    numberStep: function numberStep(now, tween) {
-      var floored_number = Math.floor(now),
-          target = $(tween.elem);
-      target.text(floored_number);
-    }
-  };
-
-  var handle = function handle(tween) {
-    var elem = tween.elem;
-
-    if (elem.nodeType && elem.parentNode) {
-      var handler = elem._animateNumberSetter;
-
-      if (!handler) {
-        handler = defaults.numberStep;
-      }
-
-      handler(tween.now, tween);
-    }
-  };
-
-  if (!$.Tween || !$.Tween.propHooks) {
-    $.fx.step.number = handle;
+  if ($(this).hasClass('color_change_btn_active')) {
+    $(this).removeClass('color_change_btn_active');
+    $(wrap_content).removeClass('color_change_content_active');
   } else {
-    $.Tween.propHooks.number = {
-      set: handle
-    };
+    $(this).addClass('color_change_btn_active');
+    $(wrap_content).addClass('color_change_content_active');
   }
-
-  var extract_number_parts = function extract_number_parts(separated_number, group_length) {
-    var numbers = separated_number.split('').reverse(),
-        number_parts = [],
-        current_number_part,
-        current_index,
-        q;
-
-    for (var i = 0, l = Math.ceil(separated_number.length / group_length); i < l; i++) {
-      current_number_part = '';
-
-      for (q = 0; q < group_length; q++) {
-        current_index = i * group_length + q;
-
-        if (current_index === separated_number.length) {
-          break;
-        }
-
-        current_number_part = current_number_part + numbers[current_index];
-      }
-
-      number_parts.push(current_number_part);
-    }
-
-    return number_parts;
-  };
-
-  var remove_precending_zeros = function remove_precending_zeros(number_parts) {
-    var last_index = number_parts.length - 1,
-        last = reverse(number_parts[last_index]);
-    number_parts[last_index] = reverse(parseInt(last, 10).toString());
-    return number_parts;
-  };
-
-  $.animateNumber = {
-    numberStepFactories: {
-      /**
-       * Creates numberStep handler, which appends string to floored animated number on each step.
-       *
-       * @example
-       * // will animate to 100 with "1 %", "2 %", "3 %", ...
-       * $('#someid').animateNumber({
-       *   number: 100,
-       *   numberStep: $.animateNumber.numberStepFactories.append(' %')
-       * });
-       *
-       * @params {String} suffix string to append to animated number
-       * @returns {Function} numberStep-compatible function for use in animateNumber's parameters
-       */
-      append: function append(suffix) {
-        return function (now, tween) {
-          var floored_number = Math.floor(now),
-              target = $(tween.elem);
-          target.prop('number', now).text(floored_number + suffix);
-        };
-      },
-
-      /**
-       * Creates numberStep handler, which format floored numbers by separating them to groups.
-       *
-       * @example
-       * // will animate with 1 ... 217,980 ... 95,217,980 ... 7,095,217,980
-       * $('#world-population').animateNumber({
-       *    number: 7095217980,
-       *    numberStep: $.animateNumber.numberStepFactories.separator(',')
-       * });
-       * @example
-       * // will animate with 1% ... 217,980% ... 95,217,980% ... 7,095,217,980%
-       * $('#salesIncrease').animateNumber({
-       *   number: 7095217980,
-       *   numberStep: $.animateNumber.numberStepFactories.separator(',', 3, '%')
-       * });
-       *
-       * @params {String} [separator=' '] string to separate number groups
-       * @params {String} [group_length=3] number group length
-       * @params {String} [suffix=''] suffix to append to number
-       * @returns {Function} numberStep-compatible function for use in animateNumber's parameters
-       */
-      separator: function separator(_separator, group_length, suffix) {
-        _separator = _separator || ' ';
-        group_length = group_length || 3;
-        suffix = suffix || '';
-        return function (now, tween) {
-          var negative = now < 0,
-              floored_number = Math.floor((negative ? -1 : 1) * now),
-              separated_number = floored_number.toString(),
-              target = $(tween.elem);
-
-          if (separated_number.length > group_length) {
-            var number_parts = extract_number_parts(separated_number, group_length);
-            separated_number = remove_precending_zeros(number_parts).join(_separator);
-            separated_number = reverse(separated_number);
-          }
-
-          target.prop('number', now).text((negative ? '-' : '') + separated_number + suffix);
-        };
-      }
-    }
-  };
-
-  $.fn.animateNumber = function () {
-    var options = arguments[0],
-        settings = $.extend({}, defaults, options),
-        target = $(this),
-        args = [settings];
-
-    for (var i = 1, l = arguments.length; i < l; i++) {
-      args.push(arguments[i]);
-    } // needs of custom step function usage
-
-
-    if (options.numberStep) {
-      // assigns custom step functions
-      var items = this.each(function () {
-        this._animateNumberSetter = options.numberStep;
-      }); // cleanup of custom step functions after animation
-
-      var generic_complete = settings.complete;
-
-      settings.complete = function () {
-        items.each(function () {
-          delete this._animateNumberSetter;
-        });
-
-        if (generic_complete) {
-          generic_complete.apply(this, arguments);
-        }
-      };
-    }
-
-    return target.animate.apply(target, args);
-  };
-})(jQuery);
-
-var slickFinder1 = $('.bike_trailer__block').length;
-
-if (slickFinder1 >= 1) {
-  $('.bike_trailer__block').on('init', function (event, slick) {
-    $('.slick-active .slide-name').removeClass('anim_text');
-    $('.slick-active .slide-img').removeClass('anim_img'); //applyHiddenClass();
-  });
-  $('.bike_trailer__block').slick({
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    arrows: true,
-    prevArrow: '<div class="slick-first"><</div>',
-    nextArrow: '<div class="slick-second">></div>',
-    lazyLoad: "ondemand",
-    speed: 1000,
-    cssEase: 'linear',
-    swipe: false
-  });
-  $('.slick-first').click(function () {
-    $(".bike_trailer__block").slick('slickPrev');
-  });
-  $('.slick-second').click(function () {
-    $(".bike_trailer__block").slick('slickNext');
-  });
-  find_width_progress();
-  $('.bike_trailer__block').on('afterChange', function (event, slick, currentSlide, nextSlide) {
-    var count_cloned = $('.bike_trailer__block').find('.slick-cloned').length;
-    var count_block = $('.bike_trailer__block').find('.slick-slide').length;
-    var main_sum = count_block - count_cloned;
-    var current_slide = currentSlide + 1;
-    var one_slide = 100 / main_sum;
-    var reuslt = one_slide * current_slide;
-    $('.line_active').css('width', "".concat(reuslt, "%"));
-  });
-  $('.bike_trailer__block').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-    $('.slide-name').css('left', '0%');
-    $('.slick-active .slide-name').css('left', '-150%');
-  }); //
-
-  var currSlide = 0;
-  var nextSlide = 0;
-
-  function applyHiddenClass() {
-    $.each($('.slick-slide'), function () {
-      if ($(this).attr('aria-hidden') == 'true') {
-        $(this).find('.slide-name').addClass('anim_text');
-        $(this).find('.slide-img').addClass('anim_img');
-      } else {
-        $(this).find('.slide-name').removeClass('anim_text');
-        $(this).find('.slide-img').removeClass('anim_img');
-      }
-    });
-  }
-
-  $('.bike_trailer__block').on('afterChange', function (event, slick, currentSlide) {
-    nextSlide = currentSlide;
-
-    if (nextSlide !== currSlide) {
-      $('.slick-active .slide-name').removeClass('animated zoomIn');
-      $('.slick-active .slide-name').addClass('anim_text');
-      $('.slick-active .slide-img').addClass('anim_img');
-    }
-  });
-  $('.bike_trailer__block').on('setPosition', function (event, slick, currentSlide) {
-    if (nextSlide !== currSlide) {
-      $('.slick-active .slide-name').removeClass('anim_text');
-      $('.slick-active .slide-img').removeClass('anim_img');
-      $('.slick-active .slide-name').addClass('animated zoomIn');
-    }
-
-    applyHiddenClass();
-  });
-  $('.bike_trailer__block').on('beforeChange', function (event, slick, currentSlide) {
-    currSlide = currentSlide;
-  }); //
-}
-
-function find_width_progress() {
-  var count_cloned = $('.bike_trailer__block').find('.slick-cloned').length;
-  var count_block = $('.bike_trailer__block').find('.slick-slide').length;
-  var main_sum = count_block - count_cloned;
-  var text_num;
-
-  if (main_sum <= 9) {
-    text_num = '0' + main_sum;
-  } else {
-    text_num = main_sum;
-  }
-
-  $('.last_click_num').text(text_num);
-  $('.line_active').css('width', "".concat(100 / main_sum, "%"));
-  return main_sum;
-}
-
-var slickFinder2 = $('.eleek_slider__wrap').length;
-
-if (slickFinder2 >= 1) {
-  function setSlideVisibility() {
-    //Find the visible slides i.e. where aria-hidden="false"
-    var visibleSlides = $('.eleek_prev_arrow').find('.slick-slideshow__slide[aria-hidden="false"]'); //Make sure all of the visible slides have an opacity of 1
-
-    $(visibleSlides).each(function () {
-      $(this).css('opacity', 1);
-    }); //Set the opacity of the first and last partial slides.
-
-    $(visibleSlides).first().prev().css('opacity', 0);
-  }
-
-  $('.eleek_slider__wrap').slick({
-    infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: true,
-    centerMode: true,
-    centerPadding: '450px',
-    arrows: true,
-    prevArrow: '<div class="eleek_prev_arrow"></div>',
-    nextArrow: '<div class="eleek_next_arrow"></div>',
-    lazyLoad: "ondemand",
-    responsive: [{
-      breakpoint: 1710,
-      settings: {
-        centerPadding: '250px'
-      }
-    }, {
-      breakpoint: 1000,
-      settings: {
-        centerPadding: '150px'
-      }
-    }, {
-      breakpoint: 650,
-      settings: {
-        slidesToShow: 1,
-        centerPadding: '0px'
-      }
-    }]
-  });
-  $('.eleek_slider__wrap').slick('slickGoTo', 1);
-  setSlideVisibility();
-  $('.eleek_slider__wrap').on('afterChange', function () {
-    setSlideVisibility();
-  });
-  $('.eleek_prev_arrow').click(function () {
-    $(".eleek_slider__wrap").slick('slickPrev');
-  });
-  $('.eleek_next_arrow').click(function () {
-    $(".eleek_slider__wrap").slick('slickNext');
-  });
-  $('.complect__wrap').slick({
-    infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    // autoplay: true,
-    centerMode: true,
-    centerPadding: '200px',
-    // arrows: true,
-    lazyLoad: "ondemand",
-    responsive: [{
-      breakpoint: 934,
-      settings: {
-        centerPadding: '150px'
-      }
-    }, {
-      breakpoint: 676,
-      settings: {
-        centerPadding: '100px'
-      }
-    }, {
-      breakpoint: 419,
-      settings: {
-        slidesToShow: 2,
-        centerPadding: '0'
-      }
-    }]
-  });
-  $('.complect__wrap').slick('slickGoTo', 1);
-  setSlideVisibility();
-  $('.complect__wrap').on('afterChange', function () {
-    setSlideVisibility();
-  });
-}
-
-var index_wow_1 = new WOW({
-  boxClass: 'preferens__wrap',
-  // animated element css class (default is wow)
-  animateClass: 'preferens_anim',
-  // animation css class (default is animated)
-  offset: 85,
-  // distance to the element when triggering the animation (default is 0)
-  mobile: true,
-  // trigger animations on mobile devices (default is true)
-  live: true,
-  // act on asynchronously loaded content (default is true)
-  scrollContainer: null,
-  // optional scroll container selector, otherwise use window,
-  resetAnimation: true
-});
-index_wow_1.init();
-var index_wow_2 = new WOW({
-  boxClass: 'down_wrap',
-  // animated element css class (default is wow)
-  animateClass: 'fadeInUp',
-  // animation css class (default is animated)
-  offset: 85,
-  // distance to the element when triggering the animation (default is 0)
-  mobile: true,
-  // trigger animations on mobile devices (default is true)
-  live: true,
-  // act on asynchronously loaded content (default is true)
-  scrollContainer: null,
-  // optional scroll container selector, otherwise use window,
-  resetAnimation: true
-});
-index_wow_2.init();
-var check_num = setInterval(function () {
-  console.log(1);
-
-  if ($('.preferens__wrap').hasClass('preferens_anim')) {
-    console.log('!!!');
-    $({
-      blurRadius: 5
-    }).animate({
-      blurRadius: 0
-    }, {
-      duration: 2000,
-      easing: "swing",
-      step: function step() {
-        $(".lines").css({
-          "-webkit-filter": "blur(" + this.blurRadius + "px)",
-          filter: "blur(" + this.blurRadius + "px)"
-        });
-      }
-    });
-    var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(" ");
-    $(".lines").each(function () {
-      var tcount = $(this).data("count");
-      $(this).animateNumber({
-        number: tcount,
-        easing: "easeInQuad",
-        // "font-size": "40px",
-        numberStep: comma_separator_number_step
-      }, 2000);
-    });
-    clearInterval(check_num);
-  }
-}, 500);
-check_num; // var index_wow_1 = new WOW(
-//   {
-//     boxClass:     'video_block',      // animated element css class (default is wow)
-//     animateClass: 'video_style', // animation css class (default is animated)
-//     offset:       85,          // distance to the element when triggering the animation (default is 0)
-//     mobile:       true,       // trigger animations on mobile devices (default is true)
-//     live:         true,       // act on asynchronously loaded content (default is true)
-//     scrollContainer: null,    // optional scroll container selector, otherwise use window,
-//     resetAnimation: true, 
-//   }
-// );
-// index_wow_1.init();
-// var animFinder = $('.first_section').length;
-// if (animFinder >= 1) {
-//   setInterval(() => {
-//     if ($('.eleek_video').hasClass('video_style')) {
-//       $('.eleek_video').attr('autoplay', 'autoplay');
-//     }
-//   }, 100);
-// }
-
-$(window).resize(function () {// create_slider();
-}); // create_slider();
-// function create_slider() {
-//   let width = window.innerWidth;
-//   console.log('width: ', width);
-// }
-// $('.glo').on('mouseout', function(event) {
-//   /* event.target: внешний элемент */
-//   console.log(1);
-// });
-
-$(".btn_standart_transparent").hover(function () {
-  $(this).removeClass('out').addClass('over');
-}, function () {
-  $(this).removeClass('over').addClass('out');
 });
 
 /***/ }),
 
-/***/ "../components/pages/index/index.scss":
-/*!********************************************!*\
-  !*** ../components/pages/index/index.scss ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-    if(false) { var cssReload; }
-  
-
-/***/ }),
-
-/***/ "../components/pages/index/second_section.scss":
-/*!*****************************************************!*\
-  !*** ../components/pages/index/second_section.scss ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-    if(false) { var cssReload; }
-  
-
-/***/ }),
-
-/***/ "../components/pages/index/six_section.scss":
-/*!**************************************************!*\
-  !*** ../components/pages/index/six_section.scss ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-    if(false) { var cssReload; }
-  
-
-/***/ }),
-
-/***/ "../components/pages/index/three_section.scss":
+/***/ "../components/pages/another_pages/index.scss":
 /*!****************************************************!*\
-  !*** ../components/pages/index/three_section.scss ***!
+  !*** ../components/pages/another_pages/index.scss ***!
   \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1654,23 +1086,23 @@ $(".btn_standart_transparent").hover(function () {
 
 /***/ }),
 
-/***/ "./index.js":
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
+/***/ "./another_pages.js":
+/*!**************************!*\
+  !*** ./another_pages.js ***!
+  \**************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_common_componentc_normalize_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../components/common_componentc/normalize/index */ "../components/common_componentc/normalize/index.js");
-/* harmony import */ var _components_interface_grid_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../components/interface/grid/index */ "../components/interface/grid/index.js");
-/* harmony import */ var _components_interface_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../components/interface/button */ "../components/interface/button/index.js");
-/* harmony import */ var _components_module_form_errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../components/module/form_errors */ "../components/module/form_errors/index.js");
-/* harmony import */ var _components_common_componentc_admin_panel_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../components/common_componentc/admin_panel/index */ "../components/common_componentc/admin_panel/index.js");
-/* harmony import */ var _components_common_componentc_header_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../components/common_componentc/header/index */ "../components/common_componentc/header/index.js");
-/* harmony import */ var _components_common_componentc_footer_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../components/common_componentc/footer/index */ "../components/common_componentc/footer/index.js");
-/* harmony import */ var _components_pages_index_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../components/pages/index/index */ "../components/pages/index/index.js");
+/* harmony import */ var _components_common_componentc_normalize_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/common_componentc/normalize/index */ "../components/common_componentc/normalize/index.js");
+/* harmony import */ var _components_interface_grid_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/interface/grid/index */ "../components/interface/grid/index.js");
+/* harmony import */ var _components_interface_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/interface/button */ "../components/interface/button/index.js");
+/* harmony import */ var _components_module_form_errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/module/form_errors */ "../components/module/form_errors/index.js");
+/* harmony import */ var _components_common_componentc_admin_panel_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/common_componentc/admin_panel/index */ "../components/common_componentc/admin_panel/index.js");
+/* harmony import */ var _components_common_componentc_header_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/common_componentc/header/index */ "../components/common_componentc/header/index.js");
+/* harmony import */ var _components_common_componentc_footer_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/common_componentc/footer/index */ "../components/common_componentc/footer/index.js");
+/* harmony import */ var _components_pages_another_pages_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/pages/another_pages/index */ "../components/pages/another_pages/index.js");
 // script interface
 
 

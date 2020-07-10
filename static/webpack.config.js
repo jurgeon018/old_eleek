@@ -51,6 +51,7 @@ module.exports = {
         about:  './about.js' ,
         profile:  './profile.js' ,
         password_reset:  './password_reset.js' ,
+        another_pages:  './another_pages.js' ,
     },
     output:{
         filename:'[name]/index.js',

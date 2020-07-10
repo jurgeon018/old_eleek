@@ -1,26 +1,165 @@
-{% extends 'project/base.html' %}
-{% load i18n sw_content %}
+{% extends "project/base.html" %}
+{% load sw_content i18n %}
 {% block styles %}
-<link rel="stylesheet" href="/static/source/pages/items/index.css.map">
-<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css">
-<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css">
+<link rel="stylesheet" href="/static/source/pages/about/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/select2/select2.min.css">
 <link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
-<link rel="stylesheet" href="/static/source/pages/item/index.css?v=3">
+<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css">
+<link rel="stylesheet" href="/static/source/pages/login/index.css">
+<link rel="stylesheet" href="/static/source/pages/about/index.css">
+<link rel="stylesheet" href="/static/source/pages/another_pages/index.css">
 {% endblock styles %}
+
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
+
 {% block content %}
-
-
-
-{% endblock content %}
+<div class="bg_for_usually_page">
+  <!-- <video class="eleek_video" data-src="/static/source/img/index/video.mp4" autoplay muted poster="/static/source/img/index/post.png">
+    Sorry, your browser doesn't support embedded videos, 
+    but don't worry, you can <a href="/static/source/img/index/video.mp4">download it</a>
+    and watch it with your favorite video player!
+  </video> -->
+  <img class="eleek_video" src="/static/source/img/another/header-bg.png" alt="">
+</div>
+<section class="another_pages">
+    <div class="another_container">
+      <h1 class="faq_title main__title main__title_2">
+        Питання та відповіді
+      </h1>
+      <div class="color_change__wrap current_attribute_change__wrap">
+        <div class="color_change__block">
+          <div class="color_change_prof">
+            <div class="color_change_title standart_title standart_title_3 color_black">
+              Як вибрати велосипед?
+            </div>
+          </div>
+          <div class="color_change_btn color_change_btn_active">
+            <img src="/static/source/img/item/close.svg" alt="">
+          </div>
+        </div>
+        <div class="color_change_content color_change_content_active sub_title sub_title_2">
+          Кращий електровелосипед – це Ваш електровелосипед.
+          <br>
+          <br>
+          Саме той, який підходить Вам: за ростом, вагою, потужністю, системі гальм, комфорту чи спортивності, розміром коліс, типу рами і за багатьма іншими чинниками.
+          <br>
+          <br>
+          Індустрія велосипедів на сьогоднішній день – це океан можливостей, на ринку представлені мільйони велосипедів.
+          <br>
+          <br>
+          І, якщо Ви дійсно спантеличені покупкою, яка повинна задовольнити Вас – Ви зрозумієте, що нюансів багато, але вибір є!
+          <br>
+          <br>
+          Однак, куди більш скромна картина Вас чекає якщо Ви вирішили обзавестись хорошим електровелосипедом.
+          <br>
+          <br>
+          Перед Вами постане вибір:
+          <br>
+          <br>
+          – Зовсім недорогий азіатський тип (300-500 $ важкий скрипучий незрозумілого вигляду мопед з педалями і безліччю багажників);
+          <br>
+          <br>
+          – Середньої ціни європейський тип китайського виробництва (1000-2000 $ непогані “велики”, урізані європейськими законами до незначної потужності 250Вт, 25км / год і без ручки газу);
+          <br>
+          <br>
+          – Дорогі брендові (від 4-5000$), але класні електровелосипеди.
+        </div>
+      </div>
+      <div class="color_change__wrap current_attribute_change__wrap">
+        <div class="color_change__block">
+          <div class="color_change_prof">
+            <div class="color_change_title standart_title standart_title_3 color_black">
+              Як вибрати велосипед?
+            </div>
+          </div>
+          <div class="color_change_btn">
+            <img src="/static/source/img/item/close.svg" alt="">
+          </div>
+        </div>
+        <div class="color_change_content sub_title sub_title_2">
+          Кращий електровелосипед – це Ваш електровелосипед.
+          <br>
+          <br>
+          Саме той, який підходить Вам: за ростом, вагою, потужністю, системі гальм, комфорту чи спортивності, розміром коліс, типу рами і за багатьма іншими чинниками.
+          <br>
+          <br>
+          Індустрія велосипедів на сьогоднішній день – це океан можливостей, на ринку представлені мільйони велосипедів.
+          <br>
+          <br>
+          І, якщо Ви дійсно спантеличені покупкою, яка повинна задовольнити Вас – Ви зрозумієте, що нюансів багато, але вибір є!
+          <br>
+          <br>
+          Однак, куди більш скромна картина Вас чекає якщо Ви вирішили обзавестись хорошим електровелосипедом.
+          <br>
+          <br>
+          Перед Вами постане вибір:
+          <br>
+          <br>
+          – Зовсім недорогий азіатський тип (300-500 $ важкий скрипучий незрозумілого вигляду мопед з педалями і безліччю багажників);
+          <br>
+          <br>
+          – Середньої ціни європейський тип китайського виробництва (1000-2000 $ непогані “велики”, урізані європейськими законами до незначної потужності 250Вт, 25км / год і без ручки газу);
+          <br>
+          <br>
+          – Дорогі брендові (від 4-5000$), але класні електровелосипеди.
+        </div>
+      </div>
+      <div class="color_change__wrap current_attribute_change__wrap">
+        <div class="color_change__block">
+          <div class="color_change_prof">
+            <div class="color_change_title standart_title standart_title_3 color_black">
+              Як вибрати велосипед?
+            </div>
+          </div>
+          <div class="color_change_btn">
+            <img src="/static/source/img/item/close.svg" alt="">
+          </div>
+        </div>
+        <div class="color_change_content sub_title sub_title_2">
+          Кращий електровелосипед – це Ваш електровелосипед.
+          <br>
+          <br>
+          Саме той, який підходить Вам: за ростом, вагою, потужністю, системі гальм, комфорту чи спортивності, розміром коліс, типу рами і за багатьма іншими чинниками.
+          <br>
+          <br>
+          Індустрія велосипедів на сьогоднішній день – це океан можливостей, на ринку представлені мільйони велосипедів.
+          <br>
+          <br>
+          І, якщо Ви дійсно спантеличені покупкою, яка повинна задовольнити Вас – Ви зрозумієте, що нюансів багато, але вибір є!
+          <br>
+          <br>
+          Однак, куди більш скромна картина Вас чекає якщо Ви вирішили обзавестись хорошим електровелосипедом.
+          <br>
+          <br>
+          Перед Вами постане вибір:
+          <br>
+          <br>
+          – Зовсім недорогий азіатський тип (300-500 $ важкий скрипучий незрозумілого вигляду мопед з педалями і безліччю багажників);
+          <br>
+          <br>
+          – Середньої ціни європейський тип китайського виробництва (1000-2000 $ непогані “велики”, урізані європейськими законами до незначної потужності 250Вт, 25км / год і без ручки газу);
+          <br>
+          <br>
+          – Дорогі брендові (від 4-5000$), але класні електровелосипеди.
+        </div>
+      </div>
+    </div>
+   
+</section>
+<!-- /.another_pages -->
+{% endblock content%}
 {% block scripts %}
 <script src="/static/source/lib/jquery/index.js"></script> 
-<script src="/static/source/lib/slick/slick.min.js"></script> 
-<script src="/static/source/lib/wow/wow.min.js"></script> 
 <script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
 <script src="/static/source/lib/validation/validation.min.js"></script> 
 <script src="/static/development/components/module/form_errors/index.js"></script> 
 <script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
-<script src="/static/source/pages/item/index.js"></script> 
+<script src="/static/source/lib/slick/slick.min.js"></script> 
+<script src="/static/source/lib/select2/select2.full.min.js"></script> 
+<script src="/static/source/pages/another_pages/index.js"></script> 
 {% endblock scripts %}
 
 
