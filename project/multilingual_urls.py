@@ -109,6 +109,18 @@ def register(request):
     page = Page.objects.get(code='register')
     return render(request, 'project/auth/register.html', locals())
 
+def page1(request):
+    return render(request, 'project/page1.html', locals())
+
+def page2(request):
+    return render(request, 'project/page2.html', locals())
+
+def page3(request):
+    return render(request, 'project/page3.html', locals())
+
+def page4(request):
+    return render(request, 'project/page4.html', locals())
+
 
 from django.urls import path, include 
 
@@ -132,6 +144,10 @@ urlpatterns = [
     path('login/',       login,       name='login'),
     path('register/',    register,    name='register'),
     path('thank_you/',    thank_you,    name='thank_you'),
+    path('page1/',    page1,    name='page1'),
+    path('page2/',    page2,    name='page2'),
+    path('page3/',    page3,    name='page3'),
+    path('page4/',    page4,    name='page4'),
 ]
 
 

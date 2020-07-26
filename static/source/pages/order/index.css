@@ -438,6 +438,8 @@ main {
   letter-spacing: normal;
   font-family: 'Oswald', sans-serif;
   font-weight: 400; }
+  .standart_title_1 {
+    font-size: 45px; }
   .standart_title_3 {
     font-size: 24px; }
   .standart_title_4 {
@@ -1768,8 +1770,8 @@ input::-webkit-inner-spin-button {
   .logo_header {
     width: 153px; }
     .logo_header:after {
-      top: -14px;
-      right: 19px; }
+      top: -0px;
+      right: 11px; }
   .logo__wrap {
     width: 185px; }
   .nav_menu_burger {
@@ -2016,6 +2018,24 @@ input::-webkit-inner-spin-button {
     margin-top: 20px; }
   .section_order .btn_standart {
     padding: 17px 25px; }
+
+.one_input__wrap {
+  position: relative;
+  transition: all .2s;
+  opacity: 1;
+  max-height: 1000px;
+  margin-top: 20px; }
+
+.two_input__wrap {
+  position: relative;
+  transition: all .2s;
+  opacity: 1;
+  max-height: 1000px; }
+
+.hidden_input__wrap {
+  left: -200%;
+  opacity: 0;
+  max-height: 0px; }
 
 .order__wrap {
   display: flex;

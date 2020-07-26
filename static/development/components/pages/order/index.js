@@ -58,6 +58,29 @@ $('.radio_block').on('click', function() {
     let wrap = $(this).parents('.step__wrap');
     $(wrap).find('.radio_center').removeClass('radio_center_active');
     $(this).find('.radio_center').addClass('radio_center_active');
+
+    if ($(this).hasClass('add_one_inp')) {
+      $('.step_content_delivery').addClass('only_one_input');
+      $('.step_content_delivery').removeClass('only_two_input');
+      $('.step_content_delivery').removeClass('only_none_input');
+
+      $('.two_input__wrap').addClass('hidden_input__wrap');
+      $('.one_input__wrap').removeClass('hidden_input__wrap');
+    } else if ($(this).hasClass('add_two_inp')) {
+      $('.step_content_delivery').removeClass('only_one_input');
+      $('.step_content_delivery').addClass('only_two_input');
+      $('.step_content_delivery').removeClass('only_none_input');
+
+      $('.one_input__wrap').addClass('hidden_input__wrap');
+      $('.two_input__wrap').removeClass('hidden_input__wrap');
+    } else if ($(this).hasClass('remove_input')) {
+      $('.step_content_delivery').removeClass('only_one_input');
+      $('.step_content_delivery').removeClass('only_two_input');
+      $('.step_content_delivery').addClass('only_none_input');
+
+      $('.one_input__wrap').addClass('hidden_input__wrap');
+      $('.two_input__wrap').addClass('hidden_input__wrap');
+    }
 })
 
 
@@ -65,14 +88,26 @@ function check_next_step() {
     let wrap = $(this).parents('.step__wrap');
     let counter = 0;
     if ($(this).attr('data-step-btn') == 2) {
-        let check_city = $('.select_city').val();
-        let check_aria = $('.select_aria').val();
-        console.log('check_aria: ', check_aria);
-            console.log('check_city: ', check_city);
-        if (check_city == null || check_aria == null) {
-            counter++;
 
+
+        if ($('.step_content_delivery').hasClass('only_two_input')) {
+          let check_city = $('.select_city').val();
+          let check_aria = $('.select_aria').val();
+          console.log('check_aria: ', check_aria);
+              console.log('check_city: ', check_city);
+          if (check_city == null || check_aria == null) {
+              counter++;
+          }
+          $('#order_adress').removeClass('input_requared');
+        } else if ($('.step_content_delivery').hasClass('only_none_input')) {
+          $('#order_adress').removeClass('input_requared');
+        } else if ($('.step_content_delivery').hasClass('only_one_input')) {
+          $('#order_adress').addClass('input_requared');
         }
+
+
+
+        
     }
     let all_input = $(wrap).find('.input_requared');
 
@@ -348,14 +383,19 @@ $('.submit_order_btn').on('click', function() {
     // $.each(all_attr,function(index,value){
     //     let current_sum = $(value).find('.option_content_prof_active').attr('data-price-option');
     // })
-
+    let current_adress;
+    if ($('.step_content_delivery').hasClass('only_one_input')) {
+      current_adress = $('#order_adress');
+    } else if ($('.step_content_delivery').hasClass('only_two_input')) {
+      current_adress = `${current_delivery.trim()}, ${$('.select_city').val()}, ${$('.select_aria').val()}`;
+    } else if ($('.step_content_delivery').hasClass('only_none_input')) {
+      current_adress = `Користувач обрав самовивіз`;
+    }
     let body = {
         "name": $('#order_name').val(),
         "email": $('#order_email').val(),
         "phone": $('#order_phone').val(),
-        "delivery_opt": `${current_delivery.trim()}, ${$('.select_city').val()}, ${$('.select_aria').val()}`,
-        // "city": $('.select_city').val(),
-        // "warehouse": $('.select_aria').val(),
+        "delivery_opt": current_adress,
         "payment_opt": current_payment.trim(),
       }
       fetch(action, {

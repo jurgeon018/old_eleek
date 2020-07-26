@@ -1,10 +1,31 @@
 import './index.scss';
 import './best_sales.scss';
 
-console.log(1);
+
+
+$('.main_item_btn').on('click', function() {
+
+  if ($(this).hasClass('NoActiveBtn')) {
+    
+  } else {
+    $(this).addClass('NoActiveBtn');
+    $(this).removeClass('item_btn_price');
+    $(this).removeClass('btn_standart_black');
+    $(this).text('Куплено');
+  }
+});
+
+
+
+
+  $('.fast_btn').fancybox({
+    touch: false,
+    scrolling: 'hidden',
+  });
+
+
 let slickFinder0 = $('.item_slider__block').length;
   if (slickFinder0 >= 1) {
-console.log(2);
 
     // $('.main_card_slider').slick({
     //   slidesToShow: 1,

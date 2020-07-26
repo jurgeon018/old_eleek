@@ -67,8 +67,8 @@ item_section__wrapper
               <!-- Крок 2. Спосіб доставки -->
             </div>
           </div>
-          <div class="step_content step_content_delivery">
-            <div data-radio='1' class="radio_block">
+          <div class="step_content step_content_delivery only_two_input">
+            <div data-radio='1' class="radio_block add_one_inp">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
               </div>
@@ -76,7 +76,7 @@ item_section__wrapper
                 {% trans 'Доставка від Eleek' %}
               </div>
             </div>
-            <div data-radio='2' class="radio_block">
+            <div data-radio='2' class="radio_block add_two_inp">
               <div class="radio_tchk">
                 <div class="radio_center radio_center_active absolute_center"></div>
               </div>
@@ -84,7 +84,7 @@ item_section__wrapper
                 {% trans 'Нова пошта' %}
               </div>
             </div>
-            <div data-radio='3' class="radio_block">
+            <div data-radio='3' class="radio_block add_two_inp">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
               </div>
@@ -92,7 +92,7 @@ item_section__wrapper
                 Delivery
               </div>
             </div>
-            <div data-radio='4' class="radio_block">
+            <div data-radio='4' class="radio_block add_two_inp">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
               </div>
@@ -100,7 +100,7 @@ item_section__wrapper
                 {% trans 'Укр пошта' %}
               </div>
             </div>
-            <div data-radio="5" class="radio_block">
+            <div data-radio="5" class="radio_block add_two_inp">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
               </div>
@@ -108,7 +108,15 @@ item_section__wrapper
                 DHL
               </div>
             </div>
-            <div data-radio='6' class="radio_block">
+            <div data-radio="6" class="radio_block add_one_inp">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              <div class="radio_title standart_title standart_title_6 color_black">
+                TNT
+              </div>
+            </div>
+            <div data-radio='7' class="radio_block remove_input">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
               </div>
@@ -116,23 +124,33 @@ item_section__wrapper
                 {% trans 'Самовивіз з магазину' %}
               </div>
             </div>
-            <div class="select-block">
-              <input type="hidden" name="nova_pochta_department" class="nova_city nova_pochta_hidden">
-              <div class="select_label sub_title sub_title_3 color_black">
-                {% trans 'Місто' %}
+            <div class="two_input__wrap">
+              <div class="select-block">
+                <input type="hidden" name="nova_pochta_department" class="nova_city nova_pochta_hidden">
+                <div class="select_label sub_title sub_title_3 color_black">
+                  {% trans 'Місто' %}
+                </div>
+                <select name="" id="" style="width: 100%;" class="select_city">
+                  
+                </select>
               </div>
-              <select name="" id="" style="width: 100%;" class="select_city">
-                
-              </select>
+              <div class="select-block">
+                <input type="hidden" name="nova_pochta_department" class="nova_pochta_hidden">
+                <div class="select_label sub_title sub_title_3 color_black">
+                  {% trans 'Номер відділення' %}
+                </div>
+                <select name="" id="" style="width: 100%;" class="select_aria">
+                  
+                </select>
+              </div>
             </div>
-            <div class="select-block">
-              <input type="hidden" name="nova_pochta_department" class="nova_pochta_hidden">
-              <div class="select_label sub_title sub_title_3 color_black">
-                {% trans 'Номер відділення' %}
+            <div class="one_input__wrap hidden_input__wrap">
+              <div class="footer_input__wrap inp-vak-wrap">
+                <label for="order_adress" class="order_label label__style color_black">
+                  Адреса
+                </label>
+                <input type="text" id="order_adress" name='adress' class="order_input input_focus input_requared">
               </div>
-              <select name="" id="" style="width: 100%;" class="select_aria">
-                
-              </select>
             </div>
             <div class="wrap_for_footer_btn">
               <div data-step-btn='2' class="btn_standart btn_standart_yellow next_step_btn">

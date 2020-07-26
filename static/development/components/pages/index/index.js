@@ -7,6 +7,62 @@ import './six_section.scss';
 
 
 
+$.fn.visible = function(partial) {
+
+  var $t            = $(this),
+      $w            = $(window),
+      viewTop       = $w.scrollTop(),
+      viewBottom    = viewTop + $w.height(),
+      _top          = $t.offset().top,
+      _bottom       = _top + $t.height(),
+      compareTop    = partial === true ? _bottom : _top,
+      compareBottom = partial === true ? _top : _bottom;
+
+  return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+
+};
+
+function parallaxEffect(target, data_smooth) {
+  var element = $(target);
+
+  element.each(function (i, el) {
+
+      var move = $(el);
+
+      $(window).scroll(function (event) {
+
+         
+         var top =  move.offset().top - $(this).scrollTop();
+        
+        
+          if (move.visible(true)) {
+              move.addClass("moving-target").css({
+                  "transform": "translateY(" + top / data_smooth + "px)",
+                  "-webkit-transform": "translateY(" + top / data_smooth + "px)",
+                  "-moz-transform": "translateY(" + top / data_smooth + "px)"
+              });
+          } else {
+              move.removeClass("moving-target");
+          }
+
+      });
+  });
+}
+
+
+
+parallaxEffect('.absolute_product_profile_1', 5);
+parallaxEffect('.absolute_product_profile_2', 7);
+parallaxEffect('.absolute_product_profile_3', 5);
+parallaxEffect('.absolute_product_profile_4', 7);
+parallaxEffect('.absolute_product_profile_5', 5);
+parallaxEffect('.eleek_title__wrap', 10);
+
+
+
+
+
+
 /** @preserve jQuery animateNumber plugin v0.0.14
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber

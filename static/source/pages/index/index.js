@@ -754,6 +754,7 @@ function Onload() {
   valide_form('#comment_form', '.inp-vak-wrap', false);
   valide_form('.registery_form', '.inp-vak-wrap', false);
   valide_form('.drive__form_last', '.inp-vak-wrap', true);
+  valide_form('.form_cons', '.inp-vak-wrap', true);
 }
 
 function location_leng() {
@@ -815,6 +816,9 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         username: {
           required: true
         },
+        adress: {
+          required: true
+        },
         old_password: {
           required: true
         },
@@ -855,6 +859,9 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           required: error_text.required
         },
         address: {
+          required: error_text.required
+        },
+        adress: {
           required: error_text.required
         },
         old_password: {
@@ -1093,6 +1100,46 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+$.fn.visible = function (partial) {
+  var $t = $(this),
+      $w = $(window),
+      viewTop = $w.scrollTop(),
+      viewBottom = viewTop + $w.height(),
+      _top = $t.offset().top,
+      _bottom = _top + $t.height(),
+      compareTop = partial === true ? _bottom : _top,
+      compareBottom = partial === true ? _top : _bottom;
+
+  return compareBottom <= viewBottom && compareTop >= viewTop;
+};
+
+function parallaxEffect(target, data_smooth) {
+  var element = $(target);
+  element.each(function (i, el) {
+    var move = $(el);
+    $(window).scroll(function (event) {
+      var top = move.offset().top - $(this).scrollTop();
+
+      if (move.visible(true)) {
+        move.addClass("moving-target").css({
+          "transform": "translateY(" + top / data_smooth + "px)",
+          "-webkit-transform": "translateY(" + top / data_smooth + "px)",
+          "-moz-transform": "translateY(" + top / data_smooth + "px)"
+        });
+      } else {
+        move.removeClass("moving-target");
+      }
+    });
+  });
+}
+
+parallaxEffect('.absolute_product_profile_1', 5);
+parallaxEffect('.absolute_product_profile_2', 7);
+parallaxEffect('.absolute_product_profile_3', 5);
+parallaxEffect('.absolute_product_profile_4', 7);
+parallaxEffect('.absolute_product_profile_5', 5);
+parallaxEffect('.eleek_title__wrap', 10);
 /** @preserve jQuery animateNumber plugin v0.0.14
  * (c) 2013, Alexandr Borisov.
  * https://github.com/aishek/jquery-animateNumber

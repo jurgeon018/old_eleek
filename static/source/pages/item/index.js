@@ -754,6 +754,7 @@ function Onload() {
   valide_form('#comment_form', '.inp-vak-wrap', false);
   valide_form('.registery_form', '.inp-vak-wrap', false);
   valide_form('.drive__form_last', '.inp-vak-wrap', true);
+  valide_form('.form_cons', '.inp-vak-wrap', true);
 }
 
 function location_leng() {
@@ -815,6 +816,9 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         username: {
           required: true
         },
+        adress: {
+          required: true
+        },
         old_password: {
           required: true
         },
@@ -855,6 +859,9 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           required: error_text.required
         },
         address: {
+          required: error_text.required
+        },
+        adress: {
           required: error_text.required
         },
         old_password: {
@@ -1068,11 +1075,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _best_sales_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_best_sales_scss__WEBPACK_IMPORTED_MODULE_1__);
 
 
-console.log(1);
+$('.main_item_btn').on('click', function () {
+  if ($(this).hasClass('NoActiveBtn')) {} else {
+    $(this).addClass('NoActiveBtn');
+    $(this).removeClass('item_btn_price');
+    $(this).removeClass('btn_standart_black');
+    $(this).text('Куплено');
+  }
+});
+$('.fast_btn').fancybox({
+  touch: false,
+  scrolling: 'hidden'
+});
 var slickFinder0 = $('.item_slider__block').length;
 
 if (slickFinder0 >= 1) {
-  console.log(2); // $('.main_card_slider').slick({
+  // $('.main_card_slider').slick({
   //   slidesToShow: 1,
   //   slidesToScroll: 1,
   //   arrows: false,
@@ -1088,7 +1106,6 @@ if (slickFinder0 >= 1) {
   //   focusOnSelect: true,
   //   asNavFor: '.main_card_slider',
   // });
-
   $('.main_card_slider').slick({
     slidesToShow: 1,
     slidesToScroll: 1,

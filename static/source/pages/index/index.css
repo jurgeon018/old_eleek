@@ -438,6 +438,8 @@ main {
   letter-spacing: normal;
   font-family: 'Oswald', sans-serif;
   font-weight: 400; }
+  .standart_title_1 {
+    font-size: 45px; }
   .standart_title_3 {
     font-size: 24px; }
   .standart_title_4 {
@@ -1768,8 +1770,8 @@ input::-webkit-inner-spin-button {
   .logo_header {
     width: 153px; }
     .logo_header:after {
-      top: -14px;
-      right: 19px; }
+      top: -0px;
+      right: 11px; }
   .logo__wrap {
     width: 185px; }
   .nav_menu_burger {
@@ -2232,7 +2234,7 @@ input::-webkit-inner-spin-button {
 .anim_img {
   position: relative;
   opacity: 0;
-  animation-duration: 1.5s;
+  animation-duration: 0.5s;
   animation-name: anim_end_img; }
 
 @keyframes anim_start_img {
@@ -2241,6 +2243,13 @@ input::-webkit-inner-spin-button {
   50% { }
   100% {
     right: 0%; } }
+
+@keyframes anim_end_img {
+  0% {
+    opacity: 1; }
+  30% {
+    opacity: 0; }
+  100% { } }
 
 @media (max-width: 1309px) {
   .first_section {

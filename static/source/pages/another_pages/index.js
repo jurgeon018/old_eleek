@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./drive.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./another_pages.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1047,29 +1047,36 @@ function valide_form(id_form, error_inp_wrap, check_request) {
 
 /***/ }),
 
-/***/ "../components/pages/drive/index.js":
-/*!******************************************!*\
-  !*** ../components/pages/drive/index.js ***!
-  \******************************************/
+/***/ "../components/pages/another_pages/index.js":
+/*!**************************************************!*\
+  !*** ../components/pages/another_pages/index.js ***!
+  \**************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/pages/drive/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/pages/another_pages/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
-$('.select_drive').select2({
-  dropdownAutoWidth: true,
-  width: 'resolve'
+$('.color_change_btn').on('click', function () {
+  var wrap_content = $(this).parents('.color_change__wrap').find('.color_change_content');
+
+  if ($(this).hasClass('color_change_btn_active')) {
+    $(this).removeClass('color_change_btn_active');
+    $(wrap_content).removeClass('color_change_content_active');
+  } else {
+    $(this).addClass('color_change_btn_active');
+    $(wrap_content).addClass('color_change_content_active');
+  }
 });
 
 /***/ }),
 
-/***/ "../components/pages/drive/index.scss":
-/*!********************************************!*\
-  !*** ../components/pages/drive/index.scss ***!
-  \********************************************/
+/***/ "../components/pages/another_pages/index.scss":
+/*!****************************************************!*\
+  !*** ../components/pages/another_pages/index.scss ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1079,10 +1086,10 @@ $('.select_drive').select2({
 
 /***/ }),
 
-/***/ "./drive.js":
-/*!******************!*\
-  !*** ./drive.js ***!
-  \******************/
+/***/ "./another_pages.js":
+/*!**************************!*\
+  !*** ./another_pages.js ***!
+  \**************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1092,10 +1099,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_interface_grid_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/interface/grid/index */ "../components/interface/grid/index.js");
 /* harmony import */ var _components_interface_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/interface/button */ "../components/interface/button/index.js");
 /* harmony import */ var _components_module_form_errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/module/form_errors */ "../components/module/form_errors/index.js");
-/* harmony import */ var _components_common_componentc_admin_panel_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../components/common_componentc/admin_panel/index */ "../components/common_componentc/admin_panel/index.js");
+/* harmony import */ var _components_common_componentc_admin_panel_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/common_componentc/admin_panel/index */ "../components/common_componentc/admin_panel/index.js");
 /* harmony import */ var _components_common_componentc_header_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/common_componentc/header/index */ "../components/common_componentc/header/index.js");
 /* harmony import */ var _components_common_componentc_footer_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/common_componentc/footer/index */ "../components/common_componentc/footer/index.js");
-/* harmony import */ var _components_pages_drive_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/pages/drive/index */ "../components/pages/drive/index.js");
+/* harmony import */ var _components_pages_another_pages_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/pages/another_pages/index */ "../components/pages/another_pages/index.js");
 // script interface
 
 

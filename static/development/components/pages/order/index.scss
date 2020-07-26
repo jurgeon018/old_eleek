@@ -10,11 +10,28 @@
         padding: 17px 25px;
     }
 }
+.one_input__wrap {
+ position: relative;
+ transition: all .2s;
+ opacity: 1;
+ max-height: 1000px;
+ margin-top: 20px;
+}
+.two_input__wrap {
+ position: relative;
+ transition: all .2s;
+ opacity: 1;
+ max-height: 1000px
+}
+.hidden_input__wrap {
+    left: -200%;
+    opacity: 0;
+    max-height: 0px;
+}
 .order {
     &__wrap {
         display: flex;
         justify-content: space-between;
-
     }
     &_label {
         position: absolute;
