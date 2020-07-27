@@ -53,12 +53,13 @@ function Onload() {
   //     console.log(dinamic_main_id);
   //     valide_form(dinamic_main_id, '.inp-mini-wrap', false);
   // }
-
   valide_form('.footer_form', '.inp-vak-wrap', true);
   valide_form('#comment_form', '.inp-vak-wrap', false);
   valide_form('.registery_form', '.inp-vak-wrap', false);
   valide_form('.drive__form_last', '.inp-vak-wrap', true);
   valide_form('.form_cons', '.inp-vak-wrap', true);
+  valide_form('#form_qustion', '.inp-vak-wrap', true);
+  valide_form('#form_cons', '.inp-vak-wrap', true);
 }
 
 function location_leng() {

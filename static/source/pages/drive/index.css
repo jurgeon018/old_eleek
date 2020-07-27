@@ -784,6 +784,13 @@ main {
   line-height: normal;
   letter-spacing: normal; }
 
+input[type='number'] {
+  -moz-appearance: textfield; }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none; }
+
 @media (max-width: 600px) {
   .true_form {
     width: 85%; }
