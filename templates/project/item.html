@@ -92,15 +92,18 @@ item_section__wrapper
           {{item.converted_price}} {{item.main_currency.symbol}}
         </div>
         <div class="item_btn_wrapper">
+          {% if item.in_stock and not item.in_stock.availability or not item.amount %}
           <div data-src='#form_qustion' class="fast_btn sale_one_click btn_standart btn_standart_black color_white">
             {% trans 'Інфорація про товар' %}
           </div>
+          {% else %}
           <div data-src='#form_cons' class="fast_btn sale_one_click btn_standart btn_standart_black color_white">
             {% trans 'Швидка покупка' %}
           </div>
           <div class="main_item_btn item_btn_price btn_standart btn_standart_black color_white">
             {% trans 'Купити' %}
           </div>
+          {% endif %}
         </div>
         <!-- <div class="main_item_btn btn_standart color_white NoActiveBtn">
           {% trans 'Куплено' %}
@@ -209,39 +212,32 @@ item_section__wrapper
         {% trans 'Ціна' %}:
       </div>
       <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
-          {{item.price}} {{item.currency}}
+          {{item.price}} {{item.currency}} 222
       </div>
     </div>
     {% else%}
     {% endif %}
 
-    <div class="additional__block">
+    <!-- <div class="additional__block">
       <div class="addit_name sub_title sub_title_3 color_black">
-        ціна
+        ціна у вибраній валюті
       </div>
       <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
           {% get_price_by_currency item current_currency %} {{current_currency.code}}
-          <!-- https://docs.google.com/spreadsheets/d/1-v34aSjScQw6AVVaByppAX5l3cDD0WILrV6J_zsPkrk/edit#gid=0 -->
-      </div>
-    </div>
+        </div>
+      </div> 
+    -->
+    <!-- https://docs.google.com/spreadsheets/d/1-v34aSjScQw6AVVaByppAX5l3cDD0WILrV6J_zsPkrk/edit#gid=0 -->
 
-
-
-
-
-
-
-
-
-
-      <div class="kredit__block">
+      <!-- <div class="kredit__block">
         <div class="kredit_text sub_title sub_title_2 color_black">
           Від 10 057/місяць при купівлі товару в кредит або оплаті частинами
         </div>
         <div class="kredit_btn btn_standart btn_standart_yellow standart_title standart_title_5 color_black">
           {% trans 'Купити в кредит' %}
         </div>
-      </div>
+      </div> -->
+
       <div class="item_char_title main__title main__title_4">
         {% trans 'Характеристики' %}
       </div>
@@ -549,7 +545,7 @@ item_section__wrapper
   </div>
 </section>
 <form method="POST" action="/api/create_review/" class="comment_form" id="comment_form" style="display:none;">
-  <input type="hidden" name='product_id' value="{{item.id}}">
+  <input type="hidden" name='item_id' value="{{item.id}}">
   <div class="search_menu_title">
     <div class="main__title main__title_4 color_black">
       Новий відгук
