@@ -221,7 +221,7 @@ item_section__wrapper
       </div>
       <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
           {% get_price_by_currency item current_currency %} {{current_currency.code}}
-          https://docs.google.com/spreadsheets/d/1-v34aSjScQw6AVVaByppAX5l3cDD0WILrV6J_zsPkrk/edit#gid=0
+          <!-- https://docs.google.com/spreadsheets/d/1-v34aSjScQw6AVVaByppAX5l3cDD0WILrV6J_zsPkrk/edit#gid=0 -->
       </div>
     </div>
 
@@ -614,6 +614,7 @@ item_section__wrapper
     <input type="submit" value="Додати відгук" class="generate_comment btn_standart btn_standart_black">
   </div>
 </form>
+
 <form method="POST" action="/api/order_request/" class="comment_form form_cons" id="form_cons" style="display:none;">
   <input type="hidden" name='product_id' value="{{item.id}}">
   <div class="search_menu_title">
@@ -656,6 +657,7 @@ item_section__wrapper
     <input type="submit" value="Відправити" class="generate_comment btn_standart btn_standart_black">
   </div>
 </form>
+
 <form method="POST" action="/api/item_info/" class="comment_form form_cons" id="form_qustion" style="display:none;">
   <input type="hidden" name='product_id' value="{{item.id}}">
   <div class="search_menu_title">
