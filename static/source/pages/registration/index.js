@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/common_componentc/admin_panel/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
-console.log(1313); // admin panel ============================>
+sessionStorage.setItem('admin_panell', 1); // admin panel ============================>
 // сторінка повина починатись по стандарту з admin_check = 1
 
 var only_on_click = true;
@@ -110,6 +110,7 @@ if (admin_check == 0) {
   only_on_click = false;
   $('.admin_button').attr('data-title', 'Виключити редагування');
   $('.admin_checkbox').attr('checked', '');
+  $('.db_content').addClass('db_content_active');
   admin_check = sessionStorage.getItem('admin_panell');
   admin_panels.forEach(function (item, index, array) {
     var link_adress = $(item).data('admin_url');
@@ -127,11 +128,18 @@ if (admin_check == 0) {
 $('.svg_power').on('click', function () {
   admin_func();
 });
+$('.db_content').on('click', function () {
+  if ($(this).hasClass('db_content_active')) {
+    var current_url = $(this).attr('data-admin_url');
+    window.open(current_url);
+  }
+});
 
 function admin_func() {
   if (only_on_click) {
     only_on_click = false;
     $('.admin_button').attr('data-title', 'Виключити редагування');
+    $('.db_content').addClass('db_content_active');
     sessionStorage.setItem('admin_panell', 0);
     admin_check = sessionStorage.getItem('admin_panell');
     admin_panels.forEach(function (item, index, array) {
@@ -147,6 +155,7 @@ function admin_func() {
     });
   } else {
     $('.admin_button').attr('data-title', 'Включити редагування');
+    $('.db_content').removeClass('db_content_active');
     only_on_click = true;
     sessionStorage.setItem('admin_panell', 1);
     admin_check = sessionStorage.getItem('admin_panell');

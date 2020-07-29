@@ -827,6 +827,9 @@ input::-webkit-inner-spin-button {
   .db_content:hover .db_hidden_content {
     visibility: visible;
     opacity: 1; }
+  .db_content_active {
+    cursor: pointer;
+    border: 1px dashed #ffd10a; }
 
 .absolute_admin__block {
   position: absolute;
