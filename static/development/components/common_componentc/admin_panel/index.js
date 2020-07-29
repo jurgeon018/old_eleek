@@ -1,7 +1,7 @@
 import './index.scss'
 
-
   sessionStorage.setItem('admin_panell', 1);
+  console.log('finish');
   // admin panel ============================>
   // сторінка повина починатись по стандарту з admin_check = 1
   var only_on_click = true;

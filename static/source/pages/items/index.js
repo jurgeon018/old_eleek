@@ -98,7 +98,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/common_componentc/admin_panel/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
-sessionStorage.setItem('admin_panell', 1); // admin panel ============================>
+sessionStorage.setItem('admin_panell', 1);
+console.log('finish'); // admin panel ============================>
 // сторінка повина починатись по стандарту з admin_check = 1
 
 var only_on_click = true;
