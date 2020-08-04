@@ -1055,6 +1055,14 @@ body .dribbble img {
   position: fixed;
   z-index: 999; }
 
+.basket_nobtn_wrap {
+  display: none;
+  opacity: 0.6;
+  position: relative;
+  height: 100%;
+  padding-top: 10px;
+  cursor: default; }
+
 .load_spin {
   display: none; }
 
@@ -1830,6 +1838,10 @@ input::-webkit-inner-spin-button {
   .nav_bar {
     background: #fff; } }
 
+@media (max-width: 705px) {
+  .wrap_for_footer_btn {
+    justify-content: center; } }
+
 @media (max-width: 520px) {
   .search_menu__wrap {
     align-items: flex-start;
@@ -2097,6 +2109,10 @@ input::-webkit-inner-spin-button {
     height: 60vh; }
     .bg_for_usually_page img {
       top: 100px; } }
+
+@media (max-width: 705px) {
+  .drive_form__block .btn_standart {
+    margin: 0 auto; } }
 
 @media (max-width: 533px) {
   .bg_for_usually_page {

@@ -1055,6 +1055,14 @@ body .dribbble img {
   position: fixed;
   z-index: 999; }
 
+.basket_nobtn_wrap {
+  display: none;
+  opacity: 0.6;
+  position: relative;
+  height: 100%;
+  padding-top: 10px;
+  cursor: default; }
+
 .load_spin {
   display: none; }
 
@@ -1829,6 +1837,10 @@ input::-webkit-inner-spin-button {
 @media (max-width: 902px) {
   .nav_bar {
     background: #fff; } }
+
+@media (max-width: 705px) {
+  .wrap_for_footer_btn {
+    justify-content: center; } }
 
 @media (max-width: 520px) {
   .search_menu__wrap {
