@@ -33,6 +33,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
+    "bricks.js": "^1.8.0",
+    "knot.js": "^1.1.5",
     "normalize.css": "^8.0.1"
   }
 }

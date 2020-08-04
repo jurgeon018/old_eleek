@@ -249,7 +249,6 @@ function matchCustom(params, data) {
     
 
 
-
     // Return `null` if the term should not be displayed
     return null;
 }
