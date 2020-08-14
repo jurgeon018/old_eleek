@@ -18,7 +18,7 @@ item_section__wrapper
         <div class="main_card_slider">
           {% for image in item.images.all %}
           <div class="img-wrap">
-            <img src="{{image.image.url}}" alt="{{image.alt}}">
+            <img src="{{image.image_url}}" alt="{{image.alt}}">
           </div>
           {% endfor %}
         </div>
@@ -39,7 +39,7 @@ item_section__wrapper
           <div class="mini_slider">
             {% for image in item.images.all %}
             <div class="img-wrap">
-              <img src="{{image.image.url}}" alt="{{image.alt}}">
+              <img src="{{image.image_url}}" alt="{{image.alt}}">
             </div>
             {% endfor %}
           </div>
@@ -212,7 +212,8 @@ item_section__wrapper
         {% trans 'Ціна' %}:
       </div>
       <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
-          {{item.price}} {{item.currency}} 222
+          {{item.price}} {{item.currency}} 
+          <!-- 222222 -->
       </div>
     </div>
     {% else%}
