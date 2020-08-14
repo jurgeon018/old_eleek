@@ -728,7 +728,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/module/form_errors/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
-console.log('block');
+console.log('test');
 $('.mobile').mask("+38(999) 99 99 999");
 var lang_site;
 var curr_lang;
@@ -1037,10 +1037,9 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                 src: '#modal_form_change_profile'
               });
             }, 1500);
-          } else {
-            $.fancybox.close({
-              src: '#modal_form_change_profile'
-            });
+          } else {// $.fancybox.close({
+            //   src: '#modal_form_change_profile',
+            // });
           }
 
           if (check_request === true) {

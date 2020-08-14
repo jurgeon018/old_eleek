@@ -1,7 +1,7 @@
 import './index.scss'
 
 
-console.log('block');
+console.log('test');
 
 $('.mobile').mask("+38(999) 99 99 999");
 
@@ -332,9 +332,10 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                       });
                     }, 1500);
                   } else {
-                    $.fancybox.close({
-                      src: '#modal_form_change_profile',
-                    });
+                    
+                    // $.fancybox.close({
+                    //   src: '#modal_form_change_profile',
+                    // });
                   }
                   if (check_request === true) {
                     console.log('close');
