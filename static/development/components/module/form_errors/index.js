@@ -345,8 +345,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                   if (check_request === true) {
                     console.log('close');
                    
-
-
                     $.fancybox.open({
                       src: '#modal-form_true',
                     });
