@@ -32,6 +32,12 @@ switch (lang_site) {
 
 }
 
+
+jQuery.validator.addMethod("lettersonly", function(value, element) {
+  return this.optional(element) || /[^0-9]+$/i.test(value);
+  }, curr_lang); 
+
+  
 jQuery.validator.addMethod("minLength", function(value, element) {
     if (value.length <= 6) {
       return false
