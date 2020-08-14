@@ -124,9 +124,16 @@ $('.modal_basket').on('click', function() {
           if (checked == 0) {
             $('.none_content_send').text('Ваша корзина порожня');
             $('.none_content_send').addClass('none_content_send_active');
+            $('.discount__block').css('opacity', '0');
+            $('.basket_nobtn_wrap').css('display', 'block');
+            $('.basket_btn_wrap').css('display', 'none');
           } else {
             $('.none_content_send').text('');
             $('.none_content_send').removeClass('none_content_send_active');
+            $('.discount__block').css('opacity', '1');
+            $('.basket_nobtn_wrap').css('display', 'none');
+            $('.basket_btn_wrap').css('display', 'block');
+
           }
         });
        
@@ -134,6 +141,8 @@ $('.modal_basket').on('click', function() {
 });
 
 // корзина ===========+>
+
+
 
 
 $('.basket_input').on('blur', basket_blur);
@@ -182,9 +191,17 @@ function basket_blur() {
         if ($('.basket_content__block').find('.basket_content_profile').length == 0) {
           $('.none_content_send').text('Ваша корзина порожня');
           $('.none_content_send').addClass('none_content_send_active');
+          $('.discount__block').css('opacity', '0');
+          $('.basket_nobtn_wrap').css('display', 'block');
+          $('.basket_btn_wrap').css('display', 'none');
+
         } else {
           $('.none_content_send').text('');
           $('.none_content_send').removeClass('none_content_send_active');
+          $('.discount__block').css('opacity', '1');
+          $('.basket_nobtn_wrap').css('display', 'none');
+          $('.basket_btn_wrap').css('display', 'block');
+
         }
     }, 300);
     

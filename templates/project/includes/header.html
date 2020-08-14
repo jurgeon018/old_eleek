@@ -212,13 +212,13 @@
                 </a>
               </div>
           </div>
-          <a href="#" class="mobile_bottom__block mobile_bottom__block_1">
+          <a href="{% url 'test_drive' %}" class="mobile_bottom__block mobile_bottom__block_1">
             <div class="mobile_bottom_text color_black main__title main__title_5">
               {% trans 'Тест-драйв' %}
             </div>
             <img src="/static/source/img/index/combined-arrow.svg" alt="">
           </a>
-          <a href="#" class="mobile_bottom__block mobile_bottom__block_2">
+          <a href="{% url 'constructor' %}"" class="mobile_bottom__block mobile_bottom__block_2">
             <div class="mobile_bottom_text color_black main__title main__title_5">
               {% trans 'Конструктор Велосипедів' %}
             </div>
@@ -313,6 +313,11 @@
                   ₴ 2 000
                 </div>
             </div>
+        </div>
+      </div>
+      <div class="basket_btn basket_nobtn_wrap">
+        <div class="sub_title sub_title_2">
+          {% trans 'Замовити' %}
         </div>
       </div>
       <a href="{% url 'order' %}" class="basket_btn basket_btn_wrap">

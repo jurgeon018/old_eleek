@@ -447,14 +447,16 @@ item_section__wrapper
 <!-- /.best_sales -->
 <section class="item_tab">
   <div class="tab_container">
-    <div class="item_tab_link__block">
-      {% for feature_category in item.get_feature_categories %}
-      <div data-tab="{{forloop.counter|add:'1'}}" class="item_tab_link standart_title standart_title_3 color_black {% if forloop.counter == 1 %} item_tab_link_active {% endif %}">
-        {{feature_category.name}}
-      </div>
-      {% endfor %}
-      <div data-tab="1" class="item_tab_link item_tab_link_3 standart_title standart_title_3 color_black">
-        {% trans 'Відгуки' %}
+    <div class="item_link__wrapper">
+      <div class="item_tab_link__block">
+        {% for feature_category in item.get_feature_categories %}
+        <div data-tab="{{forloop.counter|add:'1'}}" class="item_tab_link standart_title standart_title_3 color_black {% if forloop.counter == 1 %} item_tab_link_active {% endif %}">
+          {{feature_category.name}}
+        </div>
+        {% endfor %}
+        <div data-tab="1" class="item_tab_link item_tab_link_3 standart_title standart_title_3 color_black">
+          {% trans 'Відгуки' %}
+        </div>
       </div>
     </div>
     <div class="item_tab_content__block">
@@ -701,6 +703,7 @@ item_section__wrapper
 {% endblock content %}
 {% block scripts %}
 <script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
 <script src="/static/source/lib/slick/slick.min.js"></script> 
 <script src="/static/source/lib/wow/wow.min.js"></script> 
 <script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
