@@ -1,10 +1,9 @@
 import './index.scss'
 
 
-
+console.log('test');
 
 $('.mobile').mask("+38(999) 99 99 999");
-
 
 
 let lang_site;
