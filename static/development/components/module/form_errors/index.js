@@ -333,9 +333,17 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                       });
                     }, 1500);
                   } else {
-                    $.fancybox.close();
+                    // $.fancybox.close();
+                    
+                    $.fancybox.close({
+                      src: '#modal-form_true',
+                    });
+                    $.fancybox.close({
+                      src: '#modal_form_change_profile',
+                    });
                   }
                   if (check_request === true) {
+                    console.log('close');
                    
 
 
