@@ -121,6 +121,13 @@ def page3(request):
 def page4(request):
     return render(request, 'project/page4.html', locals())
 
+# from box.apps.payment.liqpay import 
+from box.apps.sw_shop.sw_order.utils import get_order_liqpay_context
+
+def payment(request):
+    context = get_order_liqpay_context(request)
+    return render(request, 'project/payment.html', context)
+
 
 from django.urls import path, include 
 
@@ -140,6 +147,7 @@ urlpatterns = [
     path('profile/',     profile,     name='profile'),
     path('shop/',        shop,        name='shop'),
     path('delivery/',        delivery,        name='delivery'),
+    path('payment/',        payment,        name='payment'),
     
     path('login/',       login,       name='login'),
     path('register/',    register,    name='register'),
