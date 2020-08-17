@@ -1055,6 +1055,14 @@ body .dribbble img {
   position: fixed;
   z-index: 999; }
 
+.basket_nobtn_wrap {
+  display: none;
+  opacity: 0.6;
+  position: relative;
+  height: 100%;
+  padding-top: 10px;
+  cursor: default; }
+
 .load_spin {
   display: none; }
 
@@ -1830,6 +1838,10 @@ input::-webkit-inner-spin-button {
   .nav_bar {
     background: #fff; } }
 
+@media (max-width: 705px) {
+  .wrap_for_footer_btn {
+    justify-content: center; } }
+
 @media (max-width: 520px) {
   .search_menu__wrap {
     align-items: flex-start;
@@ -1996,6 +2008,8 @@ input::-webkit-inner-spin-button {
     text-transform: uppercase; }
 
 @media (max-width: 992px) {
+  .wrap_for_footer_btn .btn_standart_yellow {
+    margin: 0 auto; }
   .footer_main_content {
     flex-direction: column; }
   .footer_accordeon_content {

@@ -3,31 +3,48 @@ import './index.scss'
 
 
 
+$('.mobile').mask("+38(999) 99 99 999");
 
 
 
 let lang_site;
 let curr_lang;
+let curr_lang_length;;
 lang_site = location_leng();
 switch (lang_site) {
     case 'uk':
-    curr_lang = "Ім'я повинно містити лише букви";
+    curr_lang = "Поле повинно містити лише букви";
+    curr_lang_length = "Поле повинно містити більше 6 символів";
     break;
     case 'ru':
-    curr_lang = 'Имя должно содержать только буквы';
+    curr_lang = 'Поле должно содержать только буквы';
+    curr_lang_length = "Поле должно содержать более 6 символов";
+
     break;
     case 'en':
-    curr_lang = 'The name must contain only letters';
+    curr_lang = 'The field must contain only letters';
+    curr_lang_length = "Field must contain more than 6 characters";
+
     break;
     default:
-    curr_lang = "Ім'я повинно містити лише букви.";
+    curr_lang = "Поле повинно містити лише букви.";
+    curr_lang_length = "Поле повинно містити більше 6 символів";
+
 }
 
+
 jQuery.validator.addMethod("lettersonly", function(value, element) {
-return this.optional(element) || /[^0-9]+$/i.test(value);
-}, curr_lang); 
+  return this.optional(element) || /[^0-9]+$/i.test(value);
+  }, curr_lang); 
 
-
+  
+jQuery.validator.addMethod("minLength", function(value, element) {
+    if (value.length <= 6) {
+      return false
+    } else {
+      return true
+    }
+}, curr_lang_length); 
 
 
 
@@ -124,9 +141,12 @@ function valide_form(id_form, error_inp_wrap, check_request) {
               },
               pass1: {
                   required: true,
+                  minLength: true
               },
               address: {
                   required: true,
+                  lettersonly: true
+
               },
               phone_number: {
                   required: true,
@@ -139,6 +159,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
               },
               password2: {
                 required: true,
+                minLength: true
               },
               pas1: {
                   required: true,

@@ -335,9 +335,15 @@ $('.modal_basket').on('click', function () {
     if (checked == 0) {
       $('.none_content_send').text('Ваша корзина порожня');
       $('.none_content_send').addClass('none_content_send_active');
+      $('.discount__block').css('opacity', '0');
+      $('.basket_nobtn_wrap').css('display', 'block');
+      $('.basket_btn_wrap').css('display', 'none');
     } else {
       $('.none_content_send').text('');
       $('.none_content_send').removeClass('none_content_send_active');
+      $('.discount__block').css('opacity', '1');
+      $('.basket_nobtn_wrap').css('display', 'none');
+      $('.basket_btn_wrap').css('display', 'block');
     }
   });
 }); // корзина ===========+>
@@ -389,9 +395,15 @@ function basket_delete() {
     if ($('.basket_content__block').find('.basket_content_profile').length == 0) {
       $('.none_content_send').text('Ваша корзина порожня');
       $('.none_content_send').addClass('none_content_send_active');
+      $('.discount__block').css('opacity', '0');
+      $('.basket_nobtn_wrap').css('display', 'block');
+      $('.basket_btn_wrap').css('display', 'none');
     } else {
       $('.none_content_send').text('');
       $('.none_content_send').removeClass('none_content_send_active');
+      $('.discount__block').css('opacity', '1');
+      $('.basket_nobtn_wrap').css('display', 'none');
+      $('.basket_btn_wrap').css('display', 'block');
     }
   }, 300);
   var item_id = $(this).attr('data-quantity_item_id');
@@ -716,30 +728,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/module/form_errors/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
+$('.mobile').mask("+38(999) 99 99 999");
 var lang_site;
 var curr_lang;
+var curr_lang_length;
+;
 lang_site = location_leng();
 
 switch (lang_site) {
   case 'uk':
-    curr_lang = "Ім'я повинно містити лише букви";
+    curr_lang = "Поле повинно містити лише букви";
+    curr_lang_length = "Поле повинно містити більше 6 символів";
     break;
 
   case 'ru':
-    curr_lang = 'Имя должно содержать только буквы';
+    curr_lang = 'Поле должно содержать только буквы';
+    curr_lang_length = "Поле должно содержать более 6 символов";
     break;
 
   case 'en':
-    curr_lang = 'The name must contain only letters';
+    curr_lang = 'The field must contain only letters';
+    curr_lang_length = "Field must contain more than 6 characters";
     break;
 
   default:
-    curr_lang = "Ім'я повинно містити лише букви.";
+    curr_lang = "Поле повинно містити лише букви.";
+    curr_lang_length = "Поле повинно містити більше 6 символів";
 }
 
 jQuery.validator.addMethod("lettersonly", function (value, element) {
   return this.optional(element) || /[^0-9]+$/i.test(value);
 }, curr_lang);
+jQuery.validator.addMethod("minLength", function (value, element) {
+  if (value.length <= 6) {
+    return false;
+  } else {
+    return true;
+  }
+}, curr_lang_length);
 $(function () {
   Onload();
 }); // /**
@@ -835,10 +861,12 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           required: true
         },
         pass1: {
-          required: true
+          required: true,
+          minLength: true
         },
         address: {
-          required: true
+          required: true,
+          lettersonly: true
         },
         phone_number: {
           required: true
@@ -850,7 +878,8 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           required: true
         },
         password2: {
-          required: true
+          required: true,
+          minLength: true
         },
         pas1: {
           required: true
@@ -1240,144 +1269,15 @@ $('.order_info__block').on('submit', function (evt) {
       'phone': $('.phone').val(),
       'additional_information': $('.additional_information').val(),
       'another_parts': another_array
-    }; // console.log('form_json: ', form_json);
-    // let url_form = $('.order_info__block').attr('action');
-    // console.log('url_form: ', url_form);
-    // fetch(url_form, {
-    //     method: 'POST',
-    //     body: new URLSearchParams($.param(form_json))
-    //   })
-    //   .then(data => {
-    //     return data.json();
-    //   })
-    //   .then(data => {
-    //       console.log(data)
-    //     if(data.status=='OK' && typeof data['status'] !== "undefined"){
-    //     } else if (data.status=='BAD' && typeof data['status'] !== "undefined") {
-    //         // $(".error_block_false").text("Невірний логін або пароль");
-    //       //   $.fancybox.open({
-    //       //     src: '#modal-form_false',
-    //       //   });
-    //     }
-    //   })
+    };
   }
-});
+}); // setInterval(() => {
+//     if ($('.nova_city').hasClass('nova_city_active')) {
+//         // reset_city();
+//         $('.nova_city').removeClass('nova_city_active');
+//     }
+// }, 200);
 
-function matchCustom(params, data) {
-  // If there are no search terms, return all of the data
-  if ($.trim(params.term) === '') {
-    return data;
-  } // Do not display the item if there is no 'text' property
-
-
-  if (typeof data.text === 'undefined') {
-    return null;
-  } // `params.term` should be the term that is used for searching
-  // `data.text` is the text that is displayed for the data object
-
-
-  if (data.text.indexOf(params.term) > -1) {
-    var modifiedData = $.extend({}, data, true);
-    modifiedData.text; // You can return modified objects from here
-    // This includes matching the `children` how you want in nested data sets
-
-    return modifiedData;
-  }
-
-  $('.nova_city').val(params.term);
-  $('.nova_city').addClass('nova_city_active'); // Return `null` if the term should not be displayed
-
-  return null;
-}
-
-setInterval(function () {
-  if ($('.nova_city').hasClass('nova_city_active')) {
-    reset_city();
-    $('.nova_city').removeClass('nova_city_active');
-  }
-}, 200);
-
-function reset_city() {
-  setTimeout(function () {
-    var user_input = $('.nova_city').val();
-    fetch("/api/settlements/".concat(user_input), {
-      method: 'GET'
-    }).then(function (data) {
-      return data.json();
-    }).then(function (body) {
-      console.log('body: ', body);
-
-      if (body.count != 0) {
-        for (var key in body.results) {
-          var option_area = document.createElement('option');
-          option_area.setAttribute('data-attr', body.results[key].title);
-          option_area.textContent = body.results[key].title + ' (' + body.results[key].region.title + ')';
-          $('.select_city')[0].appendChild(option_area);
-        }
-      }
-    });
-  }, 200);
-}
-
-$('.select_aria').select2({
-  dropdownAutoWidth: true,
-  width: 'resolve'
-});
-$('.select_city').select2({
-  dropdownAutoWidth: true,
-  width: 'resolve',
-  matcher: matchCustom
-}); //   for (let i = 0; i < 5; i++) {
-//     let option_area = document.createElement('option');
-//     option_area.textContent = 'test' + i;
-//     $('.select_aria')[0].appendChild(option_area);
-//   }
-
-fetch("/api/settlements/", {
-  method: 'GET'
-}).then(function (data) {
-  return data.json();
-}).then(function (body) {
-  console.log('body: ', body);
-
-  if (body.count != 0) {
-    for (var key in body.results) {
-      var option_area = document.createElement('option');
-      option_area.setAttribute('data-attr', body.results[key].title);
-      option_area.textContent = body.results[key].title + ' (' + body.results[key].region.title + ')';
-      $('.select_city')[0].appendChild(option_area);
-    }
-
-    $('.select_city').val(null).trigger('change');
-  }
-}); //   for (let i = 0; i < 5; i++) {
-//     let option_area = document.createElement('option');
-//     option_area.textContent = 'test' + i;
-//     $('.select_city')[0].appendChild(option_area);
-//   }
-
-$('.select_city').on('select2:select', function (e) {
-  var item = $('.select_city').find(':selected');
-  console.log('item: ', $(item).attr('data-attr'));
-  var adress_check = document.querySelectorAll('.select_aria option');
-  adress_check.forEach(function (item, index, array) {
-    $(item).remove();
-  });
-  fetch("/api/warehouses/?query=".concat($(item).attr('data-attr')), {
-    method: 'GET'
-  }).then(function (data) {
-    return data.json();
-  }).then(function (body) {
-    // console.log('body: ', body);
-    if (body.count != 0) {
-      for (var key in body.results) {
-        var option_area = document.createElement('option');
-        option_area.textContent = body.results[key].title;
-        $('.select_aria')[0].appendChild(option_area);
-      }
-    }
-  });
-});
 $('.submit_order_btn').on('click', function () {
   var action = $('.order_info__block').attr('action');
   var current_delivery = $('.step_content_delivery').find('.radio_center_active').parents('.radio_block').find('.radio_title').text();

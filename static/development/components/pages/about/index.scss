@@ -217,6 +217,10 @@
     .drive_form__block {
         flex-direction: column;
         padding: 0;
+
+        .btn_standart {
+            margin: 0 auto;
+        }        
     }
     .drive__form {
         width: 100%;

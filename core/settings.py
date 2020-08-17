@@ -3,6 +3,23 @@ from box.core.default_settings import *
 INSTALLED_APPS +=[
     'project'
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 TEMPLATES[0]['OPTIONS']['context_processors'].extend([
     'project.context_processors.context',
 ])
@@ -86,3 +103,5 @@ DEFAULT_FROM_EMAIL     = EMAIL_HOST_USER
 FILTER_BY_CATEGORY = False 
 FILTER_BY_SUBCATEGORIES = True
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 56214400
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 56214400
