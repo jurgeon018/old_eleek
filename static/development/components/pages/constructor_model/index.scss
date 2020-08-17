@@ -1,0 +1,36 @@
+.views__visual_control{
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    bottom: 16%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+    transform: translate(-50%);
+}
+.views__visula{
+    &_bg{
+        pointer-events: none;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 2;
+        & img{
+            height: 100%;
+        width: 100%;
+    
+        object-fit: contain;
+        }
+    }
+    &_3d{
+        z-index: 4;
+    }
+}
+// .views__visual_model-img{
+//     position: absolute;
+//     height: 100%;
+//     width: 100%;
+//     top: -15%;
+//     left: -6%;
+// }

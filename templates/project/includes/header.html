@@ -4,14 +4,14 @@
 {% get_language_info_list for LANGUAGES as languages %}
 
 <form method="POST" action="" class="true_form absolute_center" id="modal_form_change_profile" style="display:none;">
-  <img class="form_true_img" src="/static/source/img/index/123.png" alt="">
+  <img class="form_true_img" src="/static/source/img/index/png-123.png" alt="">
   <div class="usually_modal_text standart_title standart_title_6 color_black">
       {% trans 'Ваші дані успішно змінені' %}
   </div>
 </form>
 <header class="nav_bar">
   <form method="POST" action="" class="true_form" id="modal-form_true" style="display:none;">
-    <img class="form_true_img" src="/static/source/img/index/123.png" alt="">
+    <img class="form_true_img" src="/static/source/img/index/png-123.png" alt="">
     <div class="usually_modal_text standart_title standart_title_6 color_black">
       {% trans 'Дякуємо, заявка опрацьована <br>Наші менеджери звяжуться з Вами' %}
     </div>
@@ -213,13 +213,13 @@
                 </a>
               </div>
           </div>
-          <a href="#" class="mobile_bottom__block mobile_bottom__block_1">
+          <a href="{% url 'test_drive' %}" class="mobile_bottom__block mobile_bottom__block_1">
             <div class="mobile_bottom_text color_black main__title main__title_5">
               {% trans 'Тест-драйв' %}
             </div>
             <img src="/static/source/img/index/combined-arrow.svg" alt="">
           </a>
-          <a href="#" class="mobile_bottom__block mobile_bottom__block_2">
+          <a href="{% url 'constructor' %}"" class="mobile_bottom__block mobile_bottom__block_2">
             <div class="mobile_bottom_text color_black main__title main__title_5">
               {% trans 'Конструктор Велосипедів' %}
             </div>
@@ -314,6 +314,11 @@
                   ₴ 2 000
                 </div>
             </div>
+        </div>
+      </div>
+      <div class="basket_btn basket_nobtn_wrap">
+        <div class="sub_title sub_title_2">
+          {% trans 'Замовити' %}
         </div>
       </div>
       <a href="{% url 'order' %}" class="basket_btn basket_btn_wrap">

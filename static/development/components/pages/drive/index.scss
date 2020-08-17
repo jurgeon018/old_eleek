@@ -97,6 +97,11 @@
         }
     }
 }
+@media (max-width: 705px) {
+    .drive_form__block .btn_standart {
+        margin: 0 auto;
+    }
+  }
 @media (max-width: 533px) {
     .bg_for_usually_page {
         height: 300px;

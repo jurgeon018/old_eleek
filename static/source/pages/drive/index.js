@@ -98,7 +98,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/common_componentc/admin_panel/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
-console.log(1313); // admin panel ============================>
+sessionStorage.setItem('admin_panell', 1);
+console.log('finish'); // admin panel ============================>
 // сторінка повина починатись по стандарту з admin_check = 1
 
 var only_on_click = true;
@@ -110,6 +111,7 @@ if (admin_check == 0) {
   only_on_click = false;
   $('.admin_button').attr('data-title', 'Виключити редагування');
   $('.admin_checkbox').attr('checked', '');
+  $('.db_content').addClass('db_content_active');
   admin_check = sessionStorage.getItem('admin_panell');
   admin_panels.forEach(function (item, index, array) {
     var link_adress = $(item).data('admin_url');
@@ -127,11 +129,18 @@ if (admin_check == 0) {
 $('.svg_power').on('click', function () {
   admin_func();
 });
+$('.db_content').on('click', function () {
+  if ($(this).hasClass('db_content_active')) {
+    var current_url = $(this).attr('data-admin_url');
+    window.open(current_url);
+  }
+});
 
 function admin_func() {
   if (only_on_click) {
     only_on_click = false;
     $('.admin_button').attr('data-title', 'Виключити редагування');
+    $('.db_content').addClass('db_content_active');
     sessionStorage.setItem('admin_panell', 0);
     admin_check = sessionStorage.getItem('admin_panell');
     admin_panels.forEach(function (item, index, array) {
@@ -147,6 +156,7 @@ function admin_func() {
     });
   } else {
     $('.admin_button').attr('data-title', 'Включити редагування');
+    $('.db_content').removeClass('db_content_active');
     only_on_click = true;
     sessionStorage.setItem('admin_panell', 1);
     admin_check = sessionStorage.getItem('admin_panell');
@@ -325,9 +335,15 @@ $('.modal_basket').on('click', function () {
     if (checked == 0) {
       $('.none_content_send').text('Ваша корзина порожня');
       $('.none_content_send').addClass('none_content_send_active');
+      $('.discount__block').css('opacity', '0');
+      $('.basket_nobtn_wrap').css('display', 'block');
+      $('.basket_btn_wrap').css('display', 'none');
     } else {
       $('.none_content_send').text('');
       $('.none_content_send').removeClass('none_content_send_active');
+      $('.discount__block').css('opacity', '1');
+      $('.basket_nobtn_wrap').css('display', 'none');
+      $('.basket_btn_wrap').css('display', 'block');
     }
   });
 }); // корзина ===========+>
@@ -379,9 +395,15 @@ function basket_delete() {
     if ($('.basket_content__block').find('.basket_content_profile').length == 0) {
       $('.none_content_send').text('Ваша корзина порожня');
       $('.none_content_send').addClass('none_content_send_active');
+      $('.discount__block').css('opacity', '0');
+      $('.basket_nobtn_wrap').css('display', 'block');
+      $('.basket_btn_wrap').css('display', 'none');
     } else {
       $('.none_content_send').text('');
       $('.none_content_send').removeClass('none_content_send_active');
+      $('.discount__block').css('opacity', '1');
+      $('.basket_nobtn_wrap').css('display', 'none');
+      $('.basket_btn_wrap').css('display', 'block');
     }
   }, 300);
   var item_id = $(this).attr('data-quantity_item_id');
@@ -706,30 +728,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/module/form_errors/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
+$('.mobile').mask("+38(999) 99 99 999");
 var lang_site;
 var curr_lang;
+var curr_lang_length;
+;
 lang_site = location_leng();
 
 switch (lang_site) {
   case 'uk':
-    curr_lang = "Ім'я повинно містити лише букви";
+    curr_lang = "Поле повинно містити лише букви";
+    curr_lang_length = "Поле повинно містити більше 6 символів";
     break;
 
   case 'ru':
-    curr_lang = 'Имя должно содержать только буквы';
+    curr_lang = 'Поле должно содержать только буквы';
+    curr_lang_length = "Поле должно содержать более 6 символов";
     break;
 
   case 'en':
-    curr_lang = 'The name must contain only letters';
+    curr_lang = 'The field must contain only letters';
+    curr_lang_length = "Field must contain more than 6 characters";
     break;
 
   default:
-    curr_lang = "Ім'я повинно містити лише букви.";
+    curr_lang = "Поле повинно містити лише букви.";
+    curr_lang_length = "Поле повинно містити більше 6 символів";
 }
 
 jQuery.validator.addMethod("lettersonly", function (value, element) {
   return this.optional(element) || /[^0-9]+$/i.test(value);
 }, curr_lang);
+jQuery.validator.addMethod("minLength", function (value, element) {
+  if (value.length <= 6) {
+    return false;
+  } else {
+    return true;
+  }
+}, curr_lang_length);
 $(function () {
   Onload();
 }); // /**
@@ -825,10 +861,12 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           required: true
         },
         pass1: {
-          required: true
+          required: true,
+          minLength: true
         },
         address: {
-          required: true
+          required: true,
+          lettersonly: true
         },
         phone_number: {
           required: true
@@ -840,7 +878,8 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           required: true
         },
         password2: {
-          required: true
+          required: true,
+          minLength: true
         },
         pas1: {
           required: true
