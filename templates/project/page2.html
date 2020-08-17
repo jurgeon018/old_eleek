@@ -1,0 +1,81 @@
+{% extends 'project/base.html' %} {% load i18n sw_content %} {% block styles %}
+
+<link rel="stylesheet" href="/static/source/pages/profile/index.css.map" />
+<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css" />
+<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css" />
+<link
+  rel="stylesheet"
+  href="/static/source/lib/fancybox/jquery.fancybox.min.css"
+/>
+<link rel="stylesheet" href="/static/source/pages/item/index.css?v=3" />
+<link rel="stylesheet" href="/static/source/pages//login/index.css" />
+<link rel="stylesheet" href="/static/source/pages/profile/index.css?v=3" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<link
+  rel="stylesheet"
+  href="/static/source/pages/constructor_model/index.css"
+/>
+<link
+  rel="stylesheet"
+  href="/static/source/pages/constructor_model/index.css.map"
+/>
+{% endblock styles %} {% block content %}
+<main>
+  <div class="views">
+    <div class="views__visual">
+      <div class="views__visual_model">
+        <div class="views__visula_bg">
+          <!-- <img class="views__visual_model-img" src="./../../static/source/img/constructor/views_model/gridBacgroundModel@2x.png" alt=""> -->
+        </div>  
+        <div class="views__visula_3d"></div>
+      </div>
+      <div class="views__visual_control">
+        <div class="views__visual_left">
+          <svg
+            width="36"
+            height="15"
+            viewBox="0 0 36 15"
+          >
+            <path
+              fill="#1B1813"
+              fill-rule="evenodd"
+              d="M7.071 0l.707.707L1.91 6.574h33.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"
+            />
+          </svg>
+        </div>
+        <div class="views__visual_right">
+          <svg
+            width="37"
+            height="15"
+            viewBox="0 0 37 15"
+          >
+            <path
+              fill="#1B1813"
+              fill-rule="evenodd"
+              d="M29.087 14.142l-.707-.707 5.87-5.867H.58v-1h33.662L28.38.708 29.087 0l7.072 7.071-7.072 7.071z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="views_parameter"></div>
+  </div>
+</main>
+
+{% endblock content %} {% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script>
+<script src="/static/source/lib/slick/slick.min.js"></script>
+<script src="/static/source/lib/wow/wow.min.js"></script>
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script>
+<script src="/static/source/lib/validation/validation.min.js"></script>
+<script src="/static/development/components/module/form_errors/index.js"></script>
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script>
+
+<script src="/static/source/pages/constructor_model/index.js"></script>
+<script src="/static/source/pages/constructor_model/index.js.map"></script>
+
+{% endblock scripts %}

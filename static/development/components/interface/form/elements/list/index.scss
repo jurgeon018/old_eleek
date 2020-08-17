@@ -160,6 +160,24 @@
                     }
                 }
             }
+            &-black_bord2{
+                background-color: #fff;
+                border: 1px solid #242321;
+                    
+                &:hover{
+                    background-color: #d3d3d1;;
+                }
+                &.form_box__item-active{
+                    background-color: #ffc80d;
+                    border: 1px solid #ffc80d;
+                    & svg path{
+                        fill: #242321;
+                    }
+                    & .name{
+                        color: #242321;
+                    }
+                }
+            }
         }
 
     }
