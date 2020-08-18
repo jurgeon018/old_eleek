@@ -219,7 +219,7 @@ export const default_value = {
                 {
                   name: "Тип гальм",
                   type: "radio_img",
-                  code: "brake_type",
+                  code: "break_type",
                   values: [
                     {
                       name: "Мото",

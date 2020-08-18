@@ -1165,7 +1165,8 @@ label.error {
 .form__radio {
   display: inline-flex;
   align-items: center;
-  cursor: pointer; }
+  cursor: pointer;
+  margin-right: 15px; }
   .form__radio_check {
     position: relative;
     width: 26px;
@@ -2667,7 +2668,7 @@ input::-webkit-inner-spin-button {
       .settings__box_main-card, .settings__box_main1-card {
         max-width: 800px; }
         .settings__box_main-card .settings__box_main_content, .settings__box_main1-card .settings__box_main_content {
-          display: grid;
+          display: grid !important;
           grid-template-columns: repeat(auto-fill, minmax(140px, 172px));
           grid-gap: 15px; }
       .settings__box_main-color, .settings__box_main1-color {
@@ -2811,9 +2812,8 @@ input::-webkit-inner-spin-button {
     .settings__category_hover {
       display: none; }
     .settings__box_main-card .settings__box_main_content, .settings__box_main1-card .settings__box_main_content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
-      grid-gap: 15px; }
+      display: flex;
+      flex-wrap: wrap; }
     .settings__group_back {
       display: inline-flex;
       align-items: center;

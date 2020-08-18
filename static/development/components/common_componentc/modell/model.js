@@ -45,9 +45,15 @@ if (config_model.iframe_type === "Pozitiff") {
  
 
 $('.views__back').on('click',function(){
+   
+
+   let back_url =  Object.keys(config_model).map((key)=>{
+      return `${key}=${encodeURIComponent(config_model[key])}`
+    }).join("&");
+
   // console.log(window.location );
   // console.log(window.location.search );
-  window.location.href =  `/page1/?${params(config_model)}`
+  window.location.href =  `/page1/?${back_url}`
 })
 
 
@@ -74,7 +80,7 @@ $('.views__back').on('click',function(){
 var container;
 let rotateSpeed = 0;
 
-let views__visual_right = false;
+let views__visual_right = false; 
 let views__visual_left = false;
 var camera, scene, renderer, hemiLightHelper, dirLightHeper, theModel;
 

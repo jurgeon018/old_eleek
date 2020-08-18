@@ -51929,7 +51929,7 @@ var params = function params(data) {
   // convert array => url
   return Object.keys(data).map(function (key) {
     return "".concat(data[key].name, "=").concat(encodeURIComponent(data[key].value));
-  }).join('&');
+  }).join("&");
 };
 var colorBike = function colorBike(model, config_model) {
   var bike = model;
@@ -51939,11 +51939,11 @@ var colorBike = function colorBike(model, config_model) {
       o.receiveShadow = true;
     }
 
-    if (o.name.indexOf("Rama_1") !== -1 || o.name.indexOf("Motor_2") !== -1) {
+    if (o.name.indexOf("Rama_1") !== -1 || o.name.indexOf("Motor_2") !== -1 || o.name.indexOf("Motor_2") !== -1 || o.name.indexOf("KolecoZ_4") !== -1 || o.name.indexOf("Bag") !== -1 || o.name.indexOf("Rul_1") !== -1 || o.name.indexOf("Mirror_1") !== -1 || o.name.indexOf("Break_3") !== -1 || o.name.indexOf("Mud") !== -1) {
       // Рама і мотор
       o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
         color: parseInt("0x".concat(config_model.iframe_color)),
-        shininess: 90
+        shininess: 190
       });
     } else if (o.name.indexOf("Rama_2") !== -1) {
       // Панелі на рамі
@@ -51951,7 +51951,93 @@ var colorBike = function colorBike(model, config_model) {
         color: parseInt("0x".concat(config_model.side_panels_colors)),
         shininess: 90
       });
-    } else {}
+    } else if (o.name.indexOf("Seat_velo_2") !== -1 || o.name.indexOf("Seat_velo_3") !== -1 || o.name.indexOf("Seat_moto_2") !== -1) {
+      // Колір заліха сидіння
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x".concat(config_model.iframe_color)),
+        shininess: 90
+      });
+    } else if (o.name.indexOf("Seat_velo_1") !== -1) {
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x".concat(config_model.seat_type_color)),
+        shininess: 90
+      }); // Вело сеління
+    } else if (o.name.indexOf("Seat_moto_1") !== -1) {
+      // Мото сеління
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x".concat(config_model.seat_type_color)),
+        shininess: 90
+      });
+    } else if (o.name.indexOf("Amort") !== -1) {
+      // Амортизатор
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x".concat(config_model.fork_type_color)),
+        shininess: 90
+      });
+    } else if (o.name.indexOf("KolecoZ_2") !== -1 || o.name.indexOf("Koleco_2") !== -1 || o.name.indexOf("KolecoZ_3") !== -1 || o.name.indexOf("Koleco_3") !== -1) {
+      // Амортизатор
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x".concat(config_model.wheel_size_color)),
+        shininess: 90
+      });
+    } else if (o.name.indexOf("Vulka_1") !== -1 || o.name.indexOf("Vulka_3") !== -1) {
+      // Амортизатор
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x".concat(config_model.fork_type_color)),
+        shininess: 90
+      });
+    } else if (o.name.indexOf("Rul_3") !== -1 || o.name.indexOf("Pedali_2") !== -1) {
+      // Педаль
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x2626263"),
+        shininess: 90
+      });
+    } else if (o.name.indexOf("Rama_4") !== -1) {
+      //  Заглушки
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x252525"),
+        shininess: 90
+      });
+    } else if (o.name.indexOf("Rama_4") !== -1 || o.name.indexOf("Vulka_2") !== -1) {
+      //  Заглушки,Перемикачі болти
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x191919"),
+        shininess: 90
+      });
+    } else if (o.name.indexOf("Koleco_1") !== -1 || o.name.indexOf("KolecoZ_1") !== -1 || o.name.indexOf("Pedali_1") !== -1) {
+      //  Елементи колеса покришка,педалі гума
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x262626"),
+        shininess: 90
+      });
+    } else if ( // o.name.indexOf("Pedali_3") !== -1 ||
+    o.name.indexOf("Rul_4") !== -1 || o.name.indexOf("Rama_3") !== -1) {
+      //  Елементи колеса покришка, шпиці, все решта
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x9f9f9f"),
+        shininess: 90
+      });
+    } else if ( // o.name.indexOf("Pedali_3") !== -1 ||
+    o.name.indexOf("Mirror_2") !== -1) {
+      //  Елементи колеса покришка, шпиці, все решта
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0xffffff"),
+        shininess: 30
+      });
+    } else if (o.name.indexOf("Cep") !== -1) {
+      //  Елементи колеса покришка, шпиці, все решта
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x191919"),
+        shininess: 30
+      });
+    } else {
+      // o.material = new THREE.MeshPhongMaterial({
+      //   color: parseInt("0x438AAC"),
+      //   shininess: 30,
+      //   specular: 0x222222,
+      // });
+      console.log(o.name);
+    }
   });
   return bike;
 };
@@ -52814,7 +52900,7 @@ var default_value = {
             parameters: [{
               name: "Тип гальм",
               type: "radio_img",
-              code: "brake_type",
+              code: "break_type",
               values: [{
                 name: "Мото",
                 price: "350 грн",
