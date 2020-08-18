@@ -42,7 +42,7 @@ export const createSettingsBox = (parameters) => {
 
 export const createCheckboxOptions = (properte) => {
 
-  // console.log(properte );
+  console.log(properte );
   
 
   return ` <div class="settings__group settings__group-start">
@@ -52,7 +52,7 @@ export const createCheckboxOptions = (properte) => {
       </svg>
   
       <div class="name"> ${properte.name} </div>
-      <input type="checkbox" name="${properte.code}" value="item" id="" />
+      <input type="checkbox" name="${properte.value_code}" value="true" id="" />
     </div></div>`;
 }
 

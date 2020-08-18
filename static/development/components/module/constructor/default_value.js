@@ -31,6 +31,7 @@ export const default_value = {
       },
     ],
   },
+
  
   iframe_type: {
     Ekross:{
@@ -329,32 +330,32 @@ export const default_value = {
                     {
                       name: "ПОВОРОТ",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "turn",
                     },
                     {
                       name: "CИГНАЛІЗАЦІЯ",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "signaling",
                     },
                     {
                       name: "GPS трекер",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "gps_tracker",
                     },
                     {
                       name: "Дзеркала",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "mirror",
                     },
                     {
                       name: "Педальний привід",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "pedal_drive",
                     },
                     {
                       name: "Підножка",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "ootboard",
                     },
                   ],
                 },
@@ -592,37 +593,37 @@ export const default_value = {
                     {
                       name: "ПОВОРОТ",
                       price: "350 грн",
-                      code: "turn",
+                      value_code: "turn",
                     },
                     {
                       name: "CИГНАЛІЗАЦІЯ",
                       price: "350 грн",
-                      code: "signaking",
+                      value_code: "signaking",
                     },
                     {
                       name: "GPS трекер",
                       price: "350 грн",
-                      code: "gps_trecer",
+                      value_code: "gps_trecer",
                     },
                     {
                       name: "Дзеркала",
                       price: "350 грн",
-                      code: "mirror",
+                      value_code: "mirror",
                     },
                     {
                       name: "Педальний привід",
                       price: "350 грн",
-                      code: "pedal drive",
+                      value_code: "pedal drive",
                     },
                     {
                       name: "Підножка",
                       price: "350 грн",
-                      code: "footboard",
+                      value_code: "footboard",
                     },
                     {
                       name: "Багажник",
                       price: "350 грн",
-                      code: "trunk",
+                      value_code: "trunk",
                     },
                   ],
                 },
@@ -816,37 +817,37 @@ export const default_value = {
                     {
                       name: "ПОВОРОТ",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "turn",
                     },
                     {
                       name: "CИГНАЛІЗАЦІЯ",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "signaling",
                     },
                     {
                       name: "GPS трекер",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "gps_tracker",
                     },
                     {
                       name: "Дзеркала",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "mirror",
                     },
                     {
                       name: "Педальний привід",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "pedal_drive",
                     },
                     {
                       name: "Підножка",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "ootboard",
                     },
                     {
                       name: "Багажник",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "trunk",
                     },
                   ],
                 },
@@ -926,12 +927,12 @@ export const default_value = {
                     {
                       name: "ДОДАТКОВА БАТАРЕЯ",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "additional_battery",
                     },
                     {
                       name: "БРИЗГОВИК",
                       price: "350 грн",
-                      value_id: "1",
+                      value_code: "mushrooms",
                     },
                     
                   ],
@@ -944,3 +945,9 @@ export const default_value = {
     },
   }
 };
+
+
+
+
+
+ 

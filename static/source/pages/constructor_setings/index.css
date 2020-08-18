@@ -961,6 +961,7 @@ label.error {
     margin-right: 20px;
     height: 26px;
     width: 26px;
+    min-width: 26px;
     border: 1px solid #000;
     border-radius: 50%;
     display: flex;
@@ -1169,6 +1170,7 @@ label.error {
     position: relative;
     width: 26px;
     height: 26px;
+    min-width: 26px;
     border: solid 1px #242321;
     border-radius: 50%;
     margin-right: 10px; }
@@ -2666,7 +2668,7 @@ input::-webkit-inner-spin-button {
         max-width: 800px; }
         .settings__box_main-card .settings__box_main_content, .settings__box_main1-card .settings__box_main_content {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(140px, 152px));
+          grid-template-columns: repeat(auto-fill, minmax(140px, 172px));
           grid-gap: 15px; }
       .settings__box_main-color, .settings__box_main1-color {
         max-width: 600px; }
