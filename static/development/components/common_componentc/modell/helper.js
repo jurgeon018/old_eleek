@@ -41,6 +41,45 @@ export const  addCircleToBacground = (inner_radius,outer_radius,number_particles
   var mesh = new THREE.Mesh(geometry, material);
 
   mesh.up.x = 1;
-  mesh.rotateX( addCircleToBacground);  
+  mesh.up.y = 4;
+  mesh.up.z = 5;
+  mesh.rotateX( Math.PI/2);  
+
+
+
   return mesh;
+}
+
+
+export const  params = (data) => {
+
+  // convert array => url
+  return Object.keys(data).map(key => `${data[key].name}=${encodeURIComponent(data[key].value)}`).join('&');
+}
+
+export const colorBike=(model,config_model)=>{
+  let bike = model;
+  bike.traverse((o) => {
+    if (o.isMesh) {
+      o.castShadow = true;
+      o.receiveShadow = true;
+    }
+
+    if (o.name.indexOf("Rama_1") !== -1 || o.name.indexOf("Motor_2") !== -1) {
+      // Рама і мотор
+       o.material = new THREE.MeshPhongMaterial({
+         color: parseInt(`0x${config_model.iframe_color}`),
+         shininess: 90,
+       })
+      } else if ( o.name.indexOf("Rama_2") !== -1) {
+            // Панелі на рамі
+            o.material = new THREE.MeshPhongMaterial({
+              color: parseInt(`0x${config_model.side_panels_colors}`),
+              shininess: 90,
+            });
+      }else{
+
+      }
+  })
+  return bike;
 }

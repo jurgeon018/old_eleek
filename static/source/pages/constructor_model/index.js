@@ -57554,7 +57554,7 @@ function basket_plus() {
 /*!********************************************************!*\
   !*** ../components/common_componentc/modell/helper.js ***!
   \********************************************************/
-/*! exports provided: HelperCordinates, HelperShadowCamera, HelperSphereShadows, HelperPlaneShadows, addCircleToBacground */
+/*! exports provided: HelperCordinates, HelperShadowCamera, HelperSphereShadows, HelperPlaneShadows, addCircleToBacground, params, colorBike */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57564,6 +57564,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HelperSphereShadows", function() { return HelperSphereShadows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HelperPlaneShadows", function() { return HelperPlaneShadows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCircleToBacground", function() { return addCircleToBacground; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "params", function() { return params; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colorBike", function() { return colorBike; });
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "../../node_modules/three/build/three.module.js");
 
 var HelperCordinates = function HelperCordinates(scene, width_helper_line) {
@@ -57609,8 +57611,40 @@ var addCircleToBacground = function addCircleToBacground(inner_radius, outer_rad
   });
   var mesh = new three__WEBPACK_IMPORTED_MODULE_0__["Mesh"](geometry, material);
   mesh.up.x = 1;
-  mesh.rotateX(addCircleToBacground);
+  mesh.up.y = 4;
+  mesh.up.z = 5;
+  mesh.rotateX(Math.PI / 2);
   return mesh;
+};
+var params = function params(data) {
+  // convert array => url
+  return Object.keys(data).map(function (key) {
+    return "".concat(data[key].name, "=").concat(encodeURIComponent(data[key].value));
+  }).join('&');
+};
+var colorBike = function colorBike(model, config_model) {
+  var bike = model;
+  bike.traverse(function (o) {
+    if (o.isMesh) {
+      o.castShadow = true;
+      o.receiveShadow = true;
+    }
+
+    if (o.name.indexOf("Rama_1") !== -1 || o.name.indexOf("Motor_2") !== -1) {
+      // Рама і мотор
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x".concat(config_model.iframe_color)),
+        shininess: 90
+      });
+    } else if (o.name.indexOf("Rama_2") !== -1) {
+      // Панелі на рамі
+      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+        color: parseInt("0x".concat(config_model.side_panels_colors)),
+        shininess: 90
+      });
+    } else {}
+  });
+  return bike;
 };
 
 /***/ }),
@@ -57635,6 +57669,43 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var params_search = window.location.search.split("?")[1].split("&");
+var config_model = {};
+params_search.map(function (item) {
+  var param = item.split("=");
+  param[1] = param[1].replace("%23", "");
+  param[1] = param[1].replace("%20", "");
+  config_model[param[0]] = param[1];
+});
+
+if (config_model.iframe_type === "Pozitiff") {
+  config_model['url'] = "/static/source/model/Pozitif_v11.glb";
+} else if (config_model.iframe_type === "Neo") {
+  config_model['url'] = "/static/source/model/Neo_v23.glb";
+} else if (config_model.iframe_type === "Ekross") {
+  config_model['url'] = "/static/source/model/Ekros_saturn_26_v1.glb";
+}
+
+$('.views__back').on('click', function () {
+  // console.log(window.location );
+  // console.log(window.location.search );
+  window.location.href = "/page1/?".concat(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["params"])(config_model));
+}); /////||||///////
+/////||||///////
+/////||||///////
+/////||||///////
+//||/||||/||////
+///||||||||/////
+////||||||//////
+/////||||///////
+//////||////////
+////////////////
+// RENDER 3D 
+// RENDER 3D 
+// RENDER 3D 
+// RENDER 3D 
+// RENDER 3D 
+
 var container;
 var rotateSpeed = 0;
 var views__visual_right = false;
@@ -57642,7 +57713,8 @@ var views__visual_left = false;
 var camera, scene, renderer, hemiLightHelper, dirLightHeper, theModel;
 var mouseX = 0,
     mouseY = 0;
-var windowHalfX = window.innerWidth / 2;
+var views__visula_3d = document.getElementsByClassName('views__visula_3d')[0];
+var windowHalfX = views__visula_3d.offsetWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 var INITIAL_MTL = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
   color: 0xf1f1f1,
@@ -57654,9 +57726,9 @@ animate();
 
 function init() {
   container = document.createElement("div");
-  document.getElementsByClassName('views__visula_3d')[0].appendChild(container); // document.body
-
-  camera = new three__WEBPACK_IMPORTED_MODULE_0__["PerspectiveCamera"](60, window.innerWidth / window.innerHeight, 1, 2000);
+  document.getElementsByClassName('views__visula_3d')[0].appendChild(container);
+  console.log(views__visula_3d.offsetWidth);
+  camera = new three__WEBPACK_IMPORTED_MODULE_0__["PerspectiveCamera"](60, views__visula_3d.offsetWidth / window.innerHeight, 1, 2000);
   camera.position.z = 170;
   camera.position.y = 80;
   scene = new three__WEBPACK_IMPORTED_MODULE_0__["Scene"]();
@@ -57664,57 +57736,98 @@ function init() {
   scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__["Fog"](0xdfdfdf, 100, 1200); // Init the object loader
 
   var loader = new three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_2__["GLTFLoader"]();
-  loader.load("/static/source/model/Neo_v23.glb", // "/static/source/model/Neo_v20.glb",
+  console.log(config_model);
+  loader.load(config_model.url, // "/static/source/model/Neo_v20.glb",
   function (gltf) {
     theModel = gltf.scene;
     console.log(theModel);
     var flag = 0; // Set the models initial scale
 
-    theModel.scale.set(0.05, 0.05, 0.05);
-    theModel.position.y = 13;
+    theModel.scale.set(0.05, 0.05, 0.05); // theModel.position.y = 13;
+
     theModel.rotation.y = -Math.PI / 2 + 40;
-    theModel.traverse(function (o) {
-      if (o.isMesh) {
-        o.castShadow = true;
-        o.receiveShadow = true;
-      }
+    var theModelColor = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["colorBike"])(theModel, config_model); // theModelColor.traverse((o) => {
+    //   if (o.isMesh) {
+    //     o.castShadow = true;
+    //     o.receiveShadow = true;
+    //   }
+    //   if (o.name.indexOf("Rama_1") !== -1  !== -1 || o.name.indexOf("Motor_2") !== -1) {
+    //    // Рама і мотор
+    //     // o.material = new THREE.MeshPhongMaterial({
+    //     //   // color: parseInt(`0x${config_model.iframe_color}`),
+    //     //   shininess: 90,
+    //     // });
+    //   // } else if ( o.name.indexOf("Rama_2") !== -1) {
+    //   //   // Панелі на рамі
+    //   //   o.material = new THREE.MeshPhongMaterial({
+    //   //     color: parseInt(`0x${config_model.side_panels_colors}`),
+    //   //     shininess: 90,
+    //   //   });
+    //   // } else if (o.name.indexOf("Seat_velo_1") !== -1 || o.name.indexOf("Seat_velo_2") !== -1 || o.name.indexOf("Seat_velo_3") !== -1  ) {
+    //   //   // Вело сеління
+    //   //   o.visible = false;
+    //   // } else if (o.name.indexOf("Seat_moto_2") !== -1 || o.name.indexOf("Seat_velo_2") !== -1 || o.name.indexOf("Seat_velo_3") !== -1  ) {
+    //   //   // Вело сеління
+    //   //   o.visible = false;
+    //   // } else if ( o.name.indexOf("Koleco_2") !== -1 || o.name.indexOf("KolecoZ_2") !== -1
+    //   // ) {
+    //   //   o.material = new THREE.MeshPhongMaterial({
+    //   //     color: parseInt(`0x${config_model.fork_type_color}`),
+    //   //     // shininess: 150,
+    //   //     // specular: 0x222222,
+    //   //   });
+    //   // } else if (
+    //   //   o.name.indexOf("Koleco_3") !== -1 ||
+    //   //   o.name.indexOf("KolecoZ_3") !== -1
+    //   // ) {
+    //   //   o.material = new THREE.MeshPhongMaterial({
+    //   //     color: parseInt(`0x${config_model.wheel_size_color}`),
+    //   //     shininess: 150,
+    //   //     specular: 0x222222,
+    //   //   });
+    //   // } else if (o.name.indexOf("Vulka_1") !== -1 || o.name.indexOf("Vulka_3") !== -1) {
+    //   //   o.material = new THREE.MeshPhongMaterial({
+    //   //     color: parseInt( `0x${config_model.fork_type_color}`),
+    //   //     shininess: 150,
+    //   //     specular: 0x222222,
+    //   //   });
+    //   // } else if (o.name.indexOf("Amort") !== -1) {
+    //   //   o.material = new THREE.MeshPhongMaterial({
+    //   //     color: parseInt("0x119911"),
+    //   //     shininess: 150,
+    //   //     specular: 0x222222,
+    //   //   });
+    //   // } else if (o.name.indexOf("Rama_4") !== -1) {
+    //   //   o.material = new THREE.MeshPhongMaterial({
+    //   //     color: parseInt("0x0f0f0f"),
+    //   //     shininess: 150,
+    //   //     specular: 0x222222,
+    //   //   });
+    //   }  else {
+    //     o.material = new THREE.MeshPhongMaterial({
+    //       color: parseInt("0x438AAC"),
+    //       shininess: 30,
+    //       specular: 0x222222,
+    //     });
+    //     console.log(o.name );
+    //   }
+    //   flag++;
+    // });
 
-      if (o.name.indexOf("Koleco_1") !== -1 || o.name.indexOf("KolecoZ_1") !== -1) {
-        o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
-          color: parseInt("0x292929")
-        });
-      } else if (o.name.indexOf("Koleco_2") !== -1 || o.name.indexOf("KolecoZ_2") !== -1) {
-        o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
-          color: parseInt("0xf44345")
-        });
-      } else if (o.name.indexOf("Koleco_3") !== -1 || o.name.indexOf("KolecoZ_3") !== -1) {
-        o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
-          color: parseInt("0x292929")
-        });
-      } else if (o.name.indexOf("Rama") !== -1) {
-        o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
-          color: parseInt("0x292929")
-        }); // o.visible = false;
-      } else if (o.name.indexOf("Vulka") !== -1) {
-        o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
-          color: parseInt("0x494949")
-        });
-      } else if (o.name.indexOf("Amort") !== -1) {
-        o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
-          color: parseInt("0x119911")
-        });
-      } else {
-        o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
-          color: parseInt("0x438AAC")
-        });
-      }
-
-      flag++;
-    });
-    scene.add(theModel);
+    scene.add(theModelColor);
   }, undefined, function (error) {
     console.error(error);
-  });
+  }); // var geometry = new THREE.RingGeometry(64.8, 65, 120);
+  // var material = new THREE.MeshBasicMaterial({
+  //   color: 0x292929,
+  //   side: THREE.DoubleSide,
+  // });
+  // var mesh = new THREE.Mesh(geometry, material);
+  // mesh.up.x = 2;
+  // // mesh.rotateX( addCircleToBacground);  
+  // scene.add(mesh);
+
+  console.log(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(69.8, 70, 120));
   scene.add(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(64.8, 65, 120));
   scene.add(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(69.8, 70, 120)); // // Add lights
 
@@ -57724,19 +57837,19 @@ function init() {
   scene.add(hemiLight); //Create a DirectionalLight and turn on shadows for the light
 
   var light = new three__WEBPACK_IMPORTED_MODULE_0__["DirectionalLight"](0xffffff, 1, 100);
-  light.position.set(-350, 480, 110); //default; light shining from top
+  light.position.set(-450, 400, 120); //default; light shining from top
 
   light.castShadow = true; // default false
 
   scene.add(light);
   light.shadow.camera.top = 50;
-  light.shadow.camera.bottom = -50;
-  light.shadow.camera.left = -50;
-  light.shadow.camera.right = 50; //Set up shadow properties for the light
+  light.shadow.camera.bottom = -60;
+  light.shadow.camera.left = -70;
+  light.shadow.camera.right = 70; //Set up shadow properties for the light
 
-  light.shadow.mapSize.width = 512; // default
+  light.shadow.mapSize.width = 612; // default
 
-  light.shadow.mapSize.height = 512; // default
+  light.shadow.mapSize.height = 612; // default
 
   light.shadow.camera.near = 0.5; // default
 
@@ -57762,7 +57875,7 @@ function init() {
   renderer.shadowMap.type = three__WEBPACK_IMPORTED_MODULE_0__["PCFSoftShadowMap"]; // default THREE.PCFShadowMap
 
   renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(views__visula_3d.offsetWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
   var controls = new three_examples_jsm_controls_OrbitControls_js__WEBPACK_IMPORTED_MODULE_3__["OrbitControls"](camera, renderer.domElement);
   controls.maxPolarAngle = Math.PI / 2;
@@ -57772,32 +57885,46 @@ function init() {
   controls.dampingFactor = 0.1;
   controls.autoRotate = false; // Toggle this if you'd like the chair to automatically rotate
 
-  controls.autoRotateSpeed = 0.2; // //  Щар що відкидає тінь
+  controls.autoRotateSpeed = 0.2; // // Щар що відкидає тінь
   // HelperSphereShadows(scene);
   // //   Площина яка невідеидає тінь
   // HelperPlaneShadows(scene,light);
-  // Помічник показує камеру для того зоб бачити куди буде падати тінь
+  // // Помічник показує камеру для того зоб бачити куди буде падати тінь
   // HelperShadowCamera(scene, light.shadow.camera);
-  // // Додає до сцени вісі кординат
+  // // // Додає до сцени вісі кординат
+  // HelperCordinates(scene, 40);
 
-  Object(_helper__WEBPACK_IMPORTED_MODULE_4__["HelperCordinates"])(scene, 40);
-  window.addEventListener("resize", onWindowResize, false);
+  window.addEventListener("resize", onWindowResize, false); //   var geometry123 = new THREE.RingGeometry( 1, 5, 32 );
+  // var material123 = new THREE.MeshBasicMaterial( { color: 0x12ff00, side: THREE.DoubleSide } );
+  // var mesh123 = new THREE.Mesh( geometry123, mesh123 );
+
+  $('.views__order_go').on('click', function () {
+    event.preventDefault();
+    $('.views__order').addClass('views__order-hidden');
+    $('.views__parameter').addClass('views__parameter-active');
+    $('.views__visual').addClass('views__visual-compress');
+    setTimeout(function () {
+      onWindowResize();
+    }, 300); // resizeRendererToDisplaySize();
+  }); // scene.add( mesh123 );
 }
 
 function onWindowResize() {
-  windowHalfX = window.innerWidth / 2;
+  console.log(views__visula_3d.offsetWidth);
+  windowHalfX = views__visula_3d.offsetWidth / 2;
   windowHalfY = window.innerHeight / 2;
-  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.aspect = views__visula_3d.offsetWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(views__visula_3d.offsetWidth, window.innerHeight);
 }
 
 function resizeRendererToDisplaySize(renderer) {
   var canvas = renderer.domElement;
-  var width = window.innerWidth;
+  var width = views__visula_3d.offsetWidth;
   var height = window.innerHeight;
   var canvasPixelWidth = canvas.width / window.devicePixelRatio;
-  var canvasPixelHeight = canvas.height / window.devicePixelRatio;
+  var canvasPixelHeight = canvas.height / window.devicePixelRatio; // canvas.css({transition:'.3s'})
+
   var needResize = canvasPixelWidth !== width || canvasPixelHeight !== height;
 
   if (needResize) {
@@ -57811,7 +57938,8 @@ function animate() {
   requestAnimationFrame(animate);
 
   if (resizeRendererToDisplaySize(renderer)) {
-    var canvas = renderer.domElement;
+    var canvas = renderer.domElement; // console.log(canvas );
+
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
   }
@@ -58344,12 +58472,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickRadio_v1", function() { return onClickRadio_v1; });
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/interface/form/elements/radio_v1/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _pages_constructor_setings_helpersEvent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../pages/constructor_setings/helpersEvent */ "../components/pages/constructor_setings/helpersEvent.js");
+
 
 function onClickRadio_v1() {
   $(".form__radio").on("click", function () {
     if (!$(this).hasClass('form__radio-hiden')) {
       $(this).parents('.settings__box_main_content').find('.form__radio').removeClass("form__radio-active");
       $(this).addClass("form__radio-active");
+    }
+
+    var cardFormRadio = $(this);
+
+    if (!!cardFormRadio.data("childrens")) {
+      var children_element = cardFormRadio.data("childrens");
+      Object(_pages_constructor_setings_helpersEvent__WEBPACK_IMPORTED_MODULE_1__["childrensСonnections"])(children_element);
     }
   });
 }
@@ -58520,7 +58657,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/module/form_errors/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
-$('.mobile').mask("+38(999) 99 99 999");
+
+if ($('.mobile').length > 0) {
+  $('.mobile').mask("+38(999) 99 99 999");
+}
+
 var lang_site;
 var curr_lang;
 var curr_lang_length;
@@ -58907,6 +59048,110 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
     if(false) { var cssReload; }
   
+
+/***/ }),
+
+/***/ "../components/pages/constructor_setings/helpersEvent.js":
+/*!***************************************************************!*\
+  !*** ../components/pages/constructor_setings/helpersEvent.js ***!
+  \***************************************************************/
+/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLoadInfoActive", function() { return onLoadInfoActive; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLoadInfoRemote", function() { return onLoadInfoRemote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickSettingsCardImg", function() { return onClickSettingsCardImg; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onChengeRadioV1", function() { return onChengeRadioV1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearGroup", function() { return clearGroup; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "childrensСonnections", function() { return childrensСonnections; });
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var onLoadInfoActive = function onLoadInfoActive() {
+  $(".settings__box_main").addClass("settings__box_main-hidden");
+  $(".settings__box_main").addClass("settings__box_main-loader");
+};
+var onLoadInfoRemote = function onLoadInfoRemote() {
+  $(".settings__box_main").removeClass("settings__box_main-hidden");
+  $(".settings__box_main").removeClass("settings__box_main-loader");
+};
+var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
+  // Переключення карточок з фото
+  $(".settings__card_img").on("click", function () {
+    var paretnConteiner = $(this).parents(parent_box);
+    var neighboringElements = $(this).parents(parent_box).find(".form__radio");
+    var cardFormRadio = $(this).parent().children(".form__radio");
+    var value = cardFormRadio.data("value");
+
+    if (!!cardFormRadio.data("childrens")) {
+      var children_element = cardFormRadio.data("childrens");
+      childrensСonnections(children_element);
+    } else {}
+
+    neighboringElements.removeClass("form__radio-active");
+    cardFormRadio.addClass("form__radio-active");
+    paretnConteiner.children("input[type=hidden]").val(value);
+  });
+};
+var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
+  $(".form__radio").on("click", function () {
+    if (!$(this).hasClass("form__radio-hiden")) {
+      var value = $(this).data("value");
+      $(this).parents(parent_box).children("input[type=hidden]").val(value);
+    }
+  });
+};
+var clearGroup = function clearGroup(className) {
+  // Очистка груп конструктора перед вставкою нових елементів
+  _toConsumableArray($(className).children()).map(function (item) {
+    if (!item.classList.contains("settings__group-start")) {
+      item.remove();
+    }
+  });
+};
+var childrensСonnections = function childrensСonnections(children_element) {
+  for (var key in children_element) {
+    if (children_element.hasOwnProperty(key)) {
+      (function () {
+        var element = children_element[key];
+        var data_element = $("[data-input_value=\"".concat(key, "\"]"));
+
+        if (data_element.hasClass("settings__box_main-card")) {
+          var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
+
+          var flag = true;
+          all_elements.map(function (item) {
+            var inputValue = $(item).data("value");
+
+            if (element.indexOf(inputValue) != -1) {
+              $(item).removeClass("form__radio-hiden");
+
+              if (!!flag) {
+                flag = false;
+                $(item).addClass("form__radio-active");
+                $(item).parents(".settings__box_main").children("input[type=hidden]").val(inputValue);
+              }
+            } else {
+              $(item).addClass("form__radio-hiden");
+              $(item).removeClass("form__radio-active");
+            }
+          });
+        } else {}
+      })();
+    }
+  }
+};
 
 /***/ }),
 

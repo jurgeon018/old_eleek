@@ -12,6 +12,7 @@ import {
   childrensСonnections,
 } from "./helpersEvent";
 import { creatingSettings } from "./helperCreate";
+import { params } from "../../common_componentc/modell/helper";
 
 let bike_values = default_value.iframe_value;
 
@@ -71,8 +72,13 @@ function onChengeIframe() {
 onChengeIframe();
 
 $(".vizual_3d").on("click", function () {
-  console.log($(".constructor_setings").serializeArray());
+  let string_params = $(".constructor_setings").serializeArray();
+ console.log(string_params );
+ 
+  window.location.href =  `/page2/?${params(string_params)}`
 });
+
+
 
 function onSelectFirstItem() {
   let settingsBox = [...$(".settings__box_main")];

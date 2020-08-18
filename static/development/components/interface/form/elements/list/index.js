@@ -4,6 +4,7 @@ export function onClickCheckboxOptions() {
   $(".form_box__item").on("click", function () {
     $(this).toggleClass("form_box__item-active");
     let item_input = $(this).find("input");
+ 
 
     if (item_input.prop("checked") == true) {
       item_input.prop("checked", false);

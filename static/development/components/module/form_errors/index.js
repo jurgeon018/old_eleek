@@ -2,8 +2,12 @@ import './index.scss'
 
 
 
+if($('.mobile').length>0){
+  $('.mobile').mask("+38(999) 99 99 999");
 
-$('.mobile').mask("+38(999) 99 99 999");
+   }
+   
+    
 
 
 
