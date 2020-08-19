@@ -57765,11 +57765,11 @@ params_search.map(function (item) {
 });
 
 if (config_model.iframe_type === "Pozitiff") {
-  config_model['url'] = "/static/source/model/scene7_v5.gltf";
+  config_model['url'] = "/static/source/model/Pozit10.gltf";
 } else if (config_model.iframe_type === "Neo") {
-  config_model['url'] = "/static/source/model/scene7_v5.gltf";
+  config_model['url'] = "/static/source/model/Pozit10.gltf";
 } else if (config_model.iframe_type === "Ekross") {
-  config_model['url'] = "/static/source/model/scene7_v5.gltf";
+  config_model['url'] = "/static/source/model/Pozit10.gltf";
 }
 
 $('.views__back').on('click', function () {
@@ -57806,7 +57806,7 @@ var views__visula_3d = document.getElementsByClassName('views__visula_3d')[0];
 var windowHalfX = views__visula_3d.offsetWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 var INITIAL_MTL = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
-  color: 0x121212,
+  color: 0xb4b4b4,
   shininess: 10
 });
 var object;
@@ -57821,8 +57821,8 @@ function init() {
   camera.position.z = 170;
   camera.position.y = 80;
   scene = new three__WEBPACK_IMPORTED_MODULE_0__["Scene"]();
-  scene.background = new three__WEBPACK_IMPORTED_MODULE_0__["Color"]('white');
-  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__["Fog"](0x121212, 100, 1200); // Init the object loader
+  scene.background = new three__WEBPACK_IMPORTED_MODULE_0__["Color"]('0xffffff');
+  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__["Fog"](0xb4b4b4, 100, 1200); // Init the object loader
 
   var loader = new three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_2__["GLTFLoader"](); // console.log(config_model );
 
@@ -57839,81 +57839,19 @@ function init() {
 
     theModel.traverse(function (o) {
       if (o.isMesh) {
-        o.castShadow = true;
-        o.receiveShadow = true;
+        o.castShadow = true; // o.receiveShadow = true;
 
-        if (o.name == 'Pozitif___1') {// o.visible=false;
-        } else if (o.name == 'Pozitif___2') {} // o.visible=false;
-        // o.material = new THREE.MeshPhongMaterial({
-        //   color: parseInt(`0x121212`),
-        //   shininess: 90,
-        // });
-        // o.receiveShadow = true;
+        if (o.material.name == 'Powder_Coat_(Green)') {
+          o.material.metalness = 0.7;
+        } else if (o.material.name == 'Powder_Coat_(Green)_(1)') {
+          o.material.metalness = 0;
+        } // console.log(o.material.name );
+        // console.log(o.material.metalness );
 
       }
-    }); //   if (o.name.indexOf("Rama_1") !== -1  !== -1 || o.name.indexOf("Motor_2") !== -1) {
-    //    // Рама і мотор
-    //     // o.material = new THREE.MeshPhongMaterial({
-    //     //   // color: parseInt(`0x${config_model.iframe_color}`),
-    //     //   shininess: 90,
-    //     // });
-    //   // } else if ( o.name.indexOf("Rama_2") !== -1) {
-    //   //   // Панелі на рамі
-    //   //   o.material = new THREE.MeshPhongMaterial({
-    //   //     color: parseInt(`0x${config_model.side_panels_colors}`),
-    //   //     shininess: 90,
-    //   //   });
-    //   // } else if (o.name.indexOf("Seat_velo_1") !== -1 || o.name.indexOf("Seat_velo_2") !== -1 || o.name.indexOf("Seat_velo_3") !== -1  ) {
-    //   //   // Вело сеління
-    //   //   o.visible = false;
-    //   // } else if (o.name.indexOf("Seat_moto_2") !== -1 || o.name.indexOf("Seat_velo_2") !== -1 || o.name.indexOf("Seat_velo_3") !== -1  ) {
-    //   //   // Вело сеління
-    //   //   o.visible = false;
-    //   // } else if ( o.name.indexOf("Koleco_2") !== -1 || o.name.indexOf("KolecoZ_2") !== -1
-    //   // ) {
-    //   //   o.material = new THREE.MeshPhongMaterial({
-    //   //     color: parseInt(`0x${config_model.fork_type_color}`),
-    //   //     // shininess: 150,
-    //   //     // specular: 0x222222,
-    //   //   });
-    //   // } else if (
-    //   //   o.name.indexOf("Koleco_3") !== -1 ||
-    //   //   o.name.indexOf("KolecoZ_3") !== -1
-    //   // ) {
-    //   //   o.material = new THREE.MeshPhongMaterial({
-    //   //     color: parseInt(`0x${config_model.wheel_size_color}`),
-    //   //     shininess: 150,
-    //   //     specular: 0x222222,
-    //   //   });
-    //   // } else if (o.name.indexOf("Vulka_1") !== -1 || o.name.indexOf("Vulka_3") !== -1) {
-    //   //   o.material = new THREE.MeshPhongMaterial({
-    //   //     color: parseInt( `0x${config_model.fork_type_color}`),
-    //   //     shininess: 150,
-    //   //     specular: 0x222222,
-    //   //   });
-    //   // } else if (o.name.indexOf("Amort") !== -1) {
-    //   //   o.material = new THREE.MeshPhongMaterial({
-    //   //     color: parseInt("0x119911"),
-    //   //     shininess: 150,
-    //   //     specular: 0x222222,
-    //   //   });
-    //   // } else if (o.name.indexOf("Rama_4") !== -1) {
-    //   //   o.material = new THREE.MeshPhongMaterial({
-    //   //     color: parseInt("0x0f0f0f"),
-    //   //     shininess: 150,
-    //   //     specular: 0x222222,
-    //   //   });
-    //   }  else {
-    //     o.material = new THREE.MeshPhongMaterial({
-    //       color: parseInt("0x438AAC"),
-    //       shininess: 30,
-    //       specular: 0x222222,
-    //     });
-    //     console.log(o.name );
-    //   }
-    //   flag++;
-    // });
-
+    });
+    theModel.children[0].visible = false;
+    Object(_helper__WEBPACK_IMPORTED_MODULE_4__["HelperShadowCamera"])(scene, theModel.children[0].children[0].shadow.camera);
     scene.add(theModel);
   }, undefined, function (error) {
     console.error(error);
@@ -57924,8 +57862,8 @@ function init() {
     color: '#8AC'
   });
   var mesh12 = new three__WEBPACK_IMPORTED_MODULE_0__["Mesh"](cubeGeo, cubeMat);
-  mesh12.castShadow = true;
-  mesh12.receiveShadow = true;
+  mesh12.castShadow = true; // mesh12.receiveShadow = true;
+
   mesh12.position.set(cubeSize + 1, cubeSize / 2, 0);
   scene.add(mesh12); // var geometry = new THREE.RingGeometry(64.8, 65, 120);
   // var material = new THREE.MeshBasicMaterial({
@@ -57944,17 +57882,31 @@ function init() {
   var hemiLight = new three__WEBPACK_IMPORTED_MODULE_0__["HemisphereLight"](0xffffff, 0xffffff, 0.61);
   hemiLight.position.set(0, 50, 0); // Add hemisphere light to scene
 
-  scene.add(hemiLight);
-  var color = 0xFFFFFF;
-  var intensity = 1;
-  var light = new three__WEBPACK_IMPORTED_MODULE_0__["DirectionalLight"](color, intensity);
-  light.castShadow = true;
-  light.position.set(-5, 15, 75);
-  light.rotation.x = Math.PI / 7;
-  light.target.position.set(-10, 2, -25);
+  scene.add(hemiLight); //Create a DirectionalLight and turn on shadows for the light
+
+  var light = new three__WEBPACK_IMPORTED_MODULE_0__["DirectionalLight"](0xffffff, 1, 100);
+  light.position.set(-200, 100, 200); //default; light shining from top
+
+  light.intensity = 600; // default false
+
+  light.castShadow = true; // default false
+
   scene.add(light);
-  scene.add(light.target);
-  console.log(scene); // Floor
+  light.shadow.camera.top = 120;
+  light.shadow.camera.bottom = -50;
+  light.shadow.camera.left = -70;
+  light.shadow.camera.right = 70;
+  light.intensity = 1; //Set up shadow properties for the light
+
+  light.shadow.mapSize.width = 1212; // default
+
+  light.shadow.mapSize.height = 1212; // default
+
+  light.shadow.camera.near = 0.5; // default
+
+  light.shadow.camera.far = 700; // default
+  // console.log(light );
+  // Floor
 
   var floorGeometry = new three__WEBPACK_IMPORTED_MODULE_0__["PlaneGeometry"](9000, 9000, 1, 1);
   var floorMaterial = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
@@ -57985,13 +57937,15 @@ function init() {
   controls.dampingFactor = 0.1;
   controls.autoRotate = false; // Toggle this if you'd like the chair to automatically rotate
 
-  controls.autoRotateSpeed = 0.2; // // Щар що відкидає тінь
+  controls.autoRotateSpeed = 0.2;
+  console.log(scene); // // Щар що відкидає тінь
 
   Object(_helper__WEBPACK_IMPORTED_MODULE_4__["HelperSphereShadows"])(scene); // //   Площина яка невідеидає тінь
   // HelperPlaneShadows(scene,light);
   // Помічник показує камеру для того зоб бачити куди буде падати тінь
 
-  Object(_helper__WEBPACK_IMPORTED_MODULE_4__["HelperShadowCamera"])(scene, light.shadow.camera); // // // Додає до сцени вісі кординат
+  Object(_helper__WEBPACK_IMPORTED_MODULE_4__["HelperShadowCamera"])(scene, light.shadow.camera); // HelperShadowCamera(scene, scene.shadow.camera);
+  // // // Додає до сцени вісі кординат
   // HelperCordinates(scene, 40);
 
   window.addEventListener("resize", onWindowResize, false); //   var geometry123 = new THREE.RingGeometry( 1, 5, 32 );
@@ -58045,11 +57999,11 @@ function animate() {
   }
 
   if (views__visual_left) {
-    theModel.rotation.y += Math.PI / 180;
+    theModel.children[2].rotation.z += Math.PI / 180;
   }
 
   if (views__visual_right) {
-    theModel.rotation.y -= Math.PI / 180;
+    theModel.children[2].rotation.z -= Math.PI / 180;
   }
 
   renderer.render(scene, camera);

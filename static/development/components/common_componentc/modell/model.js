@@ -35,11 +35,11 @@ params_search.map((item) => {
  
 
 if (config_model.iframe_type === "Pozitiff") {
-  config_model['url'] = "/static/source/model/scene7_v5.gltf";
+  config_model['url'] = "/static/source/model/Pozit10.gltf";
 } else if (config_model.iframe_type === "Neo") {
-  config_model['url'] = "/static/source/model/scene7_v5.gltf";
+  config_model['url'] = "/static/source/model/Pozit10.gltf";
 } else if (config_model.iframe_type === "Ekross") {
-  config_model['url'] = "/static/source/model/scene7_v5.gltf";
+  config_model['url'] = "/static/source/model/Pozit10.gltf";
 }
 
  
@@ -91,8 +91,9 @@ var mouseX = 0,
 var windowHalfX = views__visula_3d.offsetWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 const INITIAL_MTL = new THREE.MeshPhongMaterial({
-  color: 0x121212,
-  shininess: 10,
+  color: 0xb4b4b4,
+  shininess: 10, 
+
 });
 
 var object;
@@ -116,8 +117,8 @@ console.log(views__visula_3d.offsetWidth );
   camera.position.y = 80;
 
   scene = new THREE.Scene();
-  scene.background   = new THREE.Color('white');
-  scene.fog = new THREE.Fog(0x121212, 100, 1200);
+  scene.background   = new THREE.Color('0xffffff');
+  scene.fog = new THREE.Fog(0xb4b4b4, 100, 1200);
  
   // Init the object loader
   var loader = new GLTFLoader();
@@ -140,96 +141,27 @@ console.log(views__visula_3d.offsetWidth );
 
 
       // let theModelColor = colorBike(theModel,config_model);
+    
       theModel.traverse((o) => {
         if (o.isMesh) {
           o.castShadow = true;
-          o.receiveShadow = true;
-        
-          
-          if(o.name== 'Pozitif___1'){
-            // o.visible=false;
-          }else if(o.name == 'Pozitif___2'){
-            // o.visible=false;
-          }
-          // o.material = new THREE.MeshPhongMaterial({
-          //   color: parseInt(`0x121212`),
-          //   shininess: 90,
-          // });
           // o.receiveShadow = true;
+        
+          if(o.material.name=='Powder_Coat_(Green)'){
+            o.material.metalness=0.7;
+          }else if(o.material.name=='Powder_Coat_(Green)_(1)'){
+            o.material.metalness=0;
+          }
+          // console.log(o.material.name );
+          // console.log(o.material.metalness );
+          
+          
         }
       })
-      
-      //   if (o.name.indexOf("Rama_1") !== -1  !== -1 || o.name.indexOf("Motor_2") !== -1) {
-      //    // Рама і мотор
-      //     // o.material = new THREE.MeshPhongMaterial({
-      //     //   // color: parseInt(`0x${config_model.iframe_color}`),
-      //     //   shininess: 90,
-      //     // });
-        
-      //   // } else if ( o.name.indexOf("Rama_2") !== -1) {
-      //   //   // Панелі на рамі
-      //   //   o.material = new THREE.MeshPhongMaterial({
-      //   //     color: parseInt(`0x${config_model.side_panels_colors}`),
-      //   //     shininess: 90,
-      //   //   });
- 
-      //   // } else if (o.name.indexOf("Seat_velo_1") !== -1 || o.name.indexOf("Seat_velo_2") !== -1 || o.name.indexOf("Seat_velo_3") !== -1  ) {
-      //   //   // Вело сеління
-      //   //   o.visible = false;
-         
- 
-      //   // } else if (o.name.indexOf("Seat_moto_2") !== -1 || o.name.indexOf("Seat_velo_2") !== -1 || o.name.indexOf("Seat_velo_3") !== -1  ) {
-      //   //   // Вело сеління
-      //   //   o.visible = false;
-         
-      //   // } else if ( o.name.indexOf("Koleco_2") !== -1 || o.name.indexOf("KolecoZ_2") !== -1
-      //   // ) {
-      //   //   o.material = new THREE.MeshPhongMaterial({
-      //   //     color: parseInt(`0x${config_model.fork_type_color}`),
-      //   //     // shininess: 150,
-      //   //     // specular: 0x222222,
-      //   //   });
-      //   // } else if (
-      //   //   o.name.indexOf("Koleco_3") !== -1 ||
-      //   //   o.name.indexOf("KolecoZ_3") !== -1
-      //   // ) {
-      //   //   o.material = new THREE.MeshPhongMaterial({
-      //   //     color: parseInt(`0x${config_model.wheel_size_color}`),
-      //   //     shininess: 150,
-      //   //     specular: 0x222222,
-      //   //   });
        
-      //   // } else if (o.name.indexOf("Vulka_1") !== -1 || o.name.indexOf("Vulka_3") !== -1) {
-      //   //   o.material = new THREE.MeshPhongMaterial({
-      //   //     color: parseInt( `0x${config_model.fork_type_color}`),
-      //   //     shininess: 150,
-      //   //     specular: 0x222222,
-      //   //   });
-      //   // } else if (o.name.indexOf("Amort") !== -1) {
-      //   //   o.material = new THREE.MeshPhongMaterial({
-      //   //     color: parseInt("0x119911"),
-      //   //     shininess: 150,
-      //   //     specular: 0x222222,
-      //   //   });
-        
-      //   // } else if (o.name.indexOf("Rama_4") !== -1) {
-      //   //   o.material = new THREE.MeshPhongMaterial({
-      //   //     color: parseInt("0x0f0f0f"),
-      //   //     shininess: 150,
-      //   //     specular: 0x222222,
-      //   //   });
-      //   }  else {
-      //     o.material = new THREE.MeshPhongMaterial({
-      //       color: parseInt("0x438AAC"),
-      //       shininess: 30,
-      //       specular: 0x222222,
-      //     });
-      //     console.log(o.name );
-          
-      //   }
-
-      //   flag++;
-      // });
+      theModel.children[0].visible=false;
+  
+      HelperShadowCamera(scene, theModel.children[0].children[0].shadow.camera);
       scene.add(theModel);
     },
     undefined,
@@ -243,9 +175,11 @@ console.log(views__visula_3d.offsetWidth );
   const cubeMat = new THREE.MeshPhongMaterial({color: '#8AC'});
   const mesh12 = new THREE.Mesh(cubeGeo, cubeMat);
   mesh12.castShadow = true;
-  mesh12.receiveShadow = true;
+  // mesh12.receiveShadow = true;
   mesh12.position.set(cubeSize + 1, cubeSize / 2, 0);
   scene.add(mesh12);
+
+
 
   // var geometry = new THREE.RingGeometry(64.8, 65, 120);
   // var material = new THREE.MeshBasicMaterial({
@@ -269,17 +203,28 @@ console.log(addCircleToBacground(69.8, 70, 120) );
   // Add hemisphere light to scene
   scene.add(hemiLight);
 
-  const color = 0xFFFFFF;
-  const intensity = 1;
-  const light = new THREE.DirectionalLight(color, intensity);
-  light.castShadow = true;
+  
 
-  light.position.set(-5, 15, 75);
-  light.rotation.x = Math.PI/7;
-  light.target.position.set(-10, 2, -25);
+
+  //Create a DirectionalLight and turn on shadows for the light
+  var light = new THREE.DirectionalLight(0xffffff, 1, 100);
+  light.position.set(-200, 100, 200); //default; light shining from top
+  light.intensity = 600; // default false
+  light.castShadow = true; // default false
   scene.add(light);
-  scene.add(light.target);
-  console.log(scene );
+  light.shadow.camera.top = 120;
+  light.shadow.camera.bottom = -50;
+  light.shadow.camera.left = -70;
+  light.shadow.camera.right = 70;
+  light.intensity = 1;
+
+  //Set up shadow properties for the light
+  light.shadow.mapSize.width = 1212; // default
+  light.shadow.mapSize.height = 1212; // default
+  light.shadow.camera.near = 0.5; // default
+  light.shadow.camera.far = 700; // default
+
+// console.log(light );
 
   // Floor
   var floorGeometry = new THREE.PlaneGeometry(9000, 9000, 1, 1);
@@ -312,6 +257,9 @@ console.log(addCircleToBacground(69.8, 70, 120) );
   controls.autoRotate = false; // Toggle this if you'd like the chair to automatically rotate
   controls.autoRotateSpeed = 0.2;
 
+console.log(scene );
+
+
   // // Щар що відкидає тінь
   HelperSphereShadows(scene);
 
@@ -320,6 +268,7 @@ console.log(addCircleToBacground(69.8, 70, 120) );
 
   // Помічник показує камеру для того зоб бачити куди буде падати тінь
   HelperShadowCamera(scene, light.shadow.camera);
+  // HelperShadowCamera(scene, scene.shadow.camera);
 
   // // // Додає до сцени вісі кординат
   // HelperCordinates(scene, 40);
@@ -393,15 +342,15 @@ function animate() {
   }
   
   if(views__visual_left){
-    theModel.rotation.y += Math.PI / 180;
+    theModel.children[2].rotation.z += Math.PI / 180;
   }
   
   if(views__visual_right){
-    theModel.rotation.y -= Math.PI / 180;
+    theModel.children[2].rotation.z -= Math.PI / 180;
   }
  
   
-  
+    
   renderer.render(scene, camera);
   
 }
