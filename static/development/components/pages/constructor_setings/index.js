@@ -78,7 +78,27 @@ $(".vizual_3d").on("click", function () {
   window.location.href =  `/page2/?${params(string_params)}`
 });
 
+$('.next_tab').on('click',function(){
+  console.log('next_tab' );
+  
+  let activeTab = $('.settings__parameters-active').data('tab_main');
+  activeTab++;
 
+  if(activeTab>3){
+    activeTab=1;
+  }
+
+  $(`.settings__parameters`).removeClass('settings__parameters-active');  
+  $(`.settings__category`).removeClass('settings__category-active');  
+
+  
+  $(`[data-tab_main="${activeTab}"]`).addClass('settings__parameters-active');
+  $(`[data-tab_header="${activeTab}"]`).addClass('settings__category-active');
+
+  setTimeout(function(){
+    onChengeSetingsHeight();
+   },400)
+})
 
 function onSelectFirstItem() {
   let settingsBox = [...$(".settings__box_main")];
@@ -219,7 +239,7 @@ $(".settings__category").on("click", function () {
 });
 
 function onBackMobile() {
-  if ($(window).width() < 800) {
+  if ($(window).width() <= 800) {
     $(".settings__group_back").on("click", function () {
       $(".settings")[0].style.minHeight = 25 + "px";
 
@@ -241,8 +261,8 @@ setTimeout(function(){
 function onChengeSetingsHeight() {
   console.log($(window).width() );
   
-    if ($(window).width() < 800) {
-      console.log('213123' );
+    if ($(window).width() <= 800) {
+    
       
       let settings_heights = $(".settings__parameters_wrap").find('.settings__parameters-active').outerHeight();
        console.log(settings_heights );

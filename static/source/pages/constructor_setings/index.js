@@ -54064,6 +54064,23 @@ $(".vizual_3d").on("click", function () {
   console.log(string_params);
   window.location.href = "/page2/?".concat(Object(_common_componentc_modell_helper__WEBPACK_IMPORTED_MODULE_7__["params"])(string_params));
 });
+$('.next_tab').on('click', function () {
+  console.log('next_tab');
+  var activeTab = $('.settings__parameters-active').data('tab_main');
+  activeTab++;
+
+  if (activeTab > 3) {
+    activeTab = 1;
+  }
+
+  $(".settings__parameters").removeClass('settings__parameters-active');
+  $(".settings__category").removeClass('settings__category-active');
+  $("[data-tab_main=\"".concat(activeTab, "\"]")).addClass('settings__parameters-active');
+  $("[data-tab_header=\"".concat(activeTab, "\"]")).addClass('settings__category-active');
+  setTimeout(function () {
+    onChengeSetingsHeight();
+  }, 400);
+});
 
 function onSelectFirstItem() {
   var settingsBox = _toConsumableArray($(".settings__box_main"));
@@ -54158,7 +54175,7 @@ $(".settings__category").on("click", function () {
 });
 
 function onBackMobile() {
-  if ($(window).width() < 800) {
+  if ($(window).width() <= 800) {
     $(".settings__group_back").on("click", function () {
       $(".settings")[0].style.minHeight = 25 + "px";
       $(".settings__categories_wrap").addClass("settings__categories_wrap-active");
@@ -54174,8 +54191,7 @@ setTimeout(function () {
 function onChengeSetingsHeight() {
   console.log($(window).width());
 
-  if ($(window).width() < 800) {
-    console.log('213123');
+  if ($(window).width() <= 800) {
     var settings_heights = $(".settings__parameters_wrap").find('.settings__parameters-active').outerHeight();
     console.log(settings_heights);
     $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
