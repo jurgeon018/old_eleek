@@ -35,11 +35,11 @@ params_search.map((item) => {
  
 
 if (config_model.iframe_type === "Pozitiff") {
-  config_model['url'] = "/static/source/model/Pozitif_v11.glb";
+  config_model['url'] = "/static/source/model/scene7_v5.gltf";
 } else if (config_model.iframe_type === "Neo") {
-  config_model['url'] = "/static/source/model/Neo_v23.glb";
+  config_model['url'] = "/static/source/model/scene7_v5.gltf";
 } else if (config_model.iframe_type === "Ekross") {
-  config_model['url'] = "/static/source/model/Ekros_saturn_26_v1.glb";
+  config_model['url'] = "/static/source/model/scene7_v5.gltf";
 }
 
  
@@ -91,7 +91,7 @@ var mouseX = 0,
 var windowHalfX = views__visula_3d.offsetWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 const INITIAL_MTL = new THREE.MeshPhongMaterial({
-  color: 0xf1f1f1,
+  color: 0x121212,
   shininess: 10,
 });
 
@@ -116,33 +116,48 @@ console.log(views__visula_3d.offsetWidth );
   camera.position.y = 80;
 
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xdfdfdf);
-  scene.fog = new THREE.Fog(0xdfdfdf, 100, 1200);
+  scene.background   = new THREE.Color('white');
+  scene.fog = new THREE.Fog(0x121212, 100, 1200);
  
   // Init the object loader
   var loader = new GLTFLoader();
 
-console.log(config_model );
+// console.log(config_model );
 
   loader.load(
     config_model.url,
     // "/static/source/model/Neo_v20.glb",
     function (gltf) {
+      console.log(gltf );
+      
       theModel = gltf.scene;
       console.log(theModel);
       let flag = 0;
       // Set the models initial scale
       theModel.scale.set(0.05, 0.05, 0.05);
-      // theModel.position.y = 13;
+      theModel.position.y = 13;
       theModel.rotation.y = -Math.PI / 2 + 40;
 
 
-      let theModelColor = colorBike(theModel,config_model);
-      // theModelColor.traverse((o) => {
-      //   if (o.isMesh) {
-      //     o.castShadow = true;
-      //     o.receiveShadow = true;
-      //   }
+      // let theModelColor = colorBike(theModel,config_model);
+      theModel.traverse((o) => {
+        if (o.isMesh) {
+          o.castShadow = true;
+          o.receiveShadow = true;
+        
+          
+          if(o.name== 'Pozitif___1'){
+            // o.visible=false;
+          }else if(o.name == 'Pozitif___2'){
+            // o.visible=false;
+          }
+          // o.material = new THREE.MeshPhongMaterial({
+          //   color: parseInt(`0x121212`),
+          //   shininess: 90,
+          // });
+          // o.receiveShadow = true;
+        }
+      })
       
       //   if (o.name.indexOf("Rama_1") !== -1  !== -1 || o.name.indexOf("Motor_2") !== -1) {
       //    // Рама і мотор
@@ -215,7 +230,7 @@ console.log(config_model );
 
       //   flag++;
       // });
-      scene.add(theModelColor);
+      scene.add(theModel);
     },
     undefined,
     function (error) {
@@ -223,6 +238,14 @@ console.log(config_model );
     }
   );
 
+  const cubeSize = 4;
+  const cubeGeo = new THREE.BoxBufferGeometry(cubeSize, cubeSize, cubeSize);
+  const cubeMat = new THREE.MeshPhongMaterial({color: '#8AC'});
+  const mesh12 = new THREE.Mesh(cubeGeo, cubeMat);
+  mesh12.castShadow = true;
+  mesh12.receiveShadow = true;
+  mesh12.position.set(cubeSize + 1, cubeSize / 2, 0);
+  scene.add(mesh12);
 
   // var geometry = new THREE.RingGeometry(64.8, 65, 120);
   // var material = new THREE.MeshBasicMaterial({
@@ -246,24 +269,20 @@ console.log(addCircleToBacground(69.8, 70, 120) );
   // Add hemisphere light to scene
   scene.add(hemiLight);
 
-  //Create a DirectionalLight and turn on shadows for the light
-  var light = new THREE.DirectionalLight(0xffffff, 1, 100);
-  light.position.set(-450, 400, 120); //default; light shining from top
-  light.castShadow = true; // default false
-  scene.add(light);
-  light.shadow.camera.top = 50;
-  light.shadow.camera.bottom = -60;
-  light.shadow.camera.left = -70;
-  light.shadow.camera.right = 70;
+  const color = 0xFFFFFF;
+  const intensity = 1;
+  const light = new THREE.DirectionalLight(color, intensity);
+  light.castShadow = true;
 
-  //Set up shadow properties for the light
-  light.shadow.mapSize.width = 612; // default
-  light.shadow.mapSize.height = 612; // default
-  light.shadow.camera.near = 0.5; // default
-  light.shadow.camera.far = 700; // default
+  light.position.set(-5, 15, 75);
+  light.rotation.x = Math.PI/7;
+  light.target.position.set(-10, 2, -25);
+  scene.add(light);
+  scene.add(light.target);
+  console.log(scene );
 
   // Floor
-  var floorGeometry = new THREE.PlaneGeometry(5000, 5000, 1, 1);
+  var floorGeometry = new THREE.PlaneGeometry(9000, 9000, 1, 1);
   var floorMaterial = new THREE.MeshPhongMaterial({
     color: 0xf1f1f1,
     shininess: 0,
@@ -294,13 +313,13 @@ console.log(addCircleToBacground(69.8, 70, 120) );
   controls.autoRotateSpeed = 0.2;
 
   // // Щар що відкидає тінь
-  // HelperSphereShadows(scene);
+  HelperSphereShadows(scene);
 
   // //   Площина яка невідеидає тінь
   // HelperPlaneShadows(scene,light);
 
-  // // Помічник показує камеру для того зоб бачити куди буде падати тінь
-  // HelperShadowCamera(scene, light.shadow.camera);
+  // Помічник показує камеру для того зоб бачити куди буде падати тінь
+  HelperShadowCamera(scene, light.shadow.camera);
 
   // // // Додає до сцени вісі кординат
   // HelperCordinates(scene, 40);
