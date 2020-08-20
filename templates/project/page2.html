@@ -57,6 +57,11 @@
     </div>
 
     <div class="views__parameter">
+      <div class="views__parameter_close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+          <path fill="#2B2A27" fill-rule="evenodd" d="M31.113 0l.707.707L16.617 15.91 31.82 31.113l-.707.707L15.91 16.617.707 31.82 0 31.113 15.203 15.91 0 .707.707 0 15.91 15.203 31.113 0z"/>
+      </svg>
+      </div>
       <div class="views__parameter_title">Технічні характеристики</div>
       <div class="settings__group_wrap">
         <div class="settings__group">
@@ -506,6 +511,7 @@
       <div class="views__back_text">Конструктор</div>
     </div>
 
+    <div class="views__order_wrap">
     <div class="views__order">
       <div class="views__order_price">
         <div class="views__order_title">Загальна ціна</div>
@@ -515,8 +521,42 @@
         >Перейти до замовлення</a
       >
     </div>
+    </div>
   </div>
 </main>
+<!-- <div class="">
+  <form action="{% url 'sw_contact' %}" method="POST" id="order__form_constructor" class="order__form_constructor">
+    <div class="footer_input__wrap inp-vak-wrap">
+      <label for="footer_name" class="footer_label label__style color_white">
+        {% trans "Ім'я" %}
+      </label>
+      <input type="text" id="footer_name" name='name' class="footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      <label for="footer_email" class="footer_label label__style color_white">
+        Телефон
+      </label>
+      <input type="tel" id="footer_email" name='tel' class="footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      <label for="footer_email" class="footer_label label__style color_white">
+        Email
+      </label>
+      <input type="text" id="footer_email" name='email' class="footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      <label for="footer_email" class="footer_label label__style color_white">
+        {% trans 'Повідомлення' %}
+      </label>
+      <textarea name='message' id="user_send" class="user_send footer_input input_focus"></textarea>
+    </div>
+    <div class="wrap_for_footer_btn">
+      <input type="submit" value="Відправити" class="btn_standart btn_standart_yellow">
+    </div>
+  </form>
+  
+</div> -->
+
 
 {% endblock content %} {% block scripts %}
 <script src="/static/source/lib/jquery/index.js"></script>

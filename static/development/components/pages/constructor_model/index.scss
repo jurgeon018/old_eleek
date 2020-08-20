@@ -1,3 +1,6 @@
+canvas {
+  // transition:.1s !important ;
+}
 .views {
   display: flex;
   align-items: center;
@@ -69,6 +72,31 @@
 
     right: -100%;
     transition: 0.3s;
+
+    &_close {
+      width: 35px;
+      position: absolute;
+      right: 40px;
+      top: 110px;
+      display: block;
+      & svg {
+        width: 100%;
+        & path {
+          transition: 0.3s;
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        & svg {
+          transition: 0.3s;
+          transform: rotate(90deg);
+          & path {
+            transition: 0.3s;
+            fill: #ffd10a;
+          }
+        }
+      }
+    }
     &-active {
       right: 0;
       transition: 0.3s;
@@ -162,7 +190,6 @@
         }
       }
     }
-    
   }
   &__back {
     display: flex;
@@ -206,6 +233,81 @@
       align-items: baseline;
       justify-content: center;
       margin-right: 25px;
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .views__parameter {
+    width: 100%;
+  }
+  .views__order {
+    left: -50%;
+    transform: translate(calc(100vw - 50%), 0px);
+  }
+  .views__back {
+    top: 90px;
+    bottom: unset;
+    background: #fff;
+    padding: 10px;
+    left: 0;
+    border: 1px solid #2b2a27;
+    border-left: none;
+  }
+  .views__parameter_close {
+    width: 35px;
+    position: absolute;
+    right: 40px;
+    top: 110px;
+    & svg {
+      width: 100%;
+      & path {
+        transition: 0.3s;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+      & svg {
+        transition: 0.3s;
+        transform: rotate(90deg);
+        & path {
+          transition: 0.3s;
+          fill: #ffd10a;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .views__parameter_title {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  .views__parameter .settings__group_wrap {
+    height: calc(100% - 10px - 55px - 60px);
+    overflow: auto;
+}
+  .settings__group:first-child{
+    margin-top: 0;
+  }
+}
+@media only screen and (max-width: 510px) {
+  .views__order {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    &_price {
+      width: 100%;
+      margin: 0;
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      // /* padding: 0
     }
   }
 }

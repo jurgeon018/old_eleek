@@ -31,9 +31,9 @@ if (config_model.iframe_type === "Pozitiff") {
 } else if (config_model.iframe_type === "Neo") {
   config_model["url"] = "/static/source/model/Neo.gltf";
 } else if (config_model.iframe_type === "Ekross") {
-  config_model["url"] = "/static/source/model/EKros1.gltf";
+  config_model["url"] = "/static/source/model/Ekros777.gltf";
 } else {
-  config_model["url"] = "/static/source/model/EKros1.gltf";
+  config_model["url"] = "/static/source/model/Ekros777.gltf";
 }
 
 $(".views__back").on("click", function () {
@@ -45,6 +45,7 @@ $(".views__back").on("click", function () {
 
   // console.log(window.location );
   // console.log(window.location.search );
+
   window.location.href = `/page1/?${back_url}`;
 });
 
@@ -237,14 +238,28 @@ function init() {
 
   $(".views__order_go").on("click", function () {
     event.preventDefault();
-    $(".views__order").addClass("views__order-hidden");
     $(".views__parameter").addClass("views__parameter-active");
-    $(".views__visual").addClass("views__visual-compress");
-    setTimeout(function () {
-      onWindowResize();
-    }, 300);
+    $(".views__order").addClass("views__order-hidden");
+    if ($(window).width() > 992) {
+      $(".views__visual").addClass("views__visual-compress");
+     
+      setTimeout(function () {
+        onWindowResize();
+      }, 300);
+    }
     // resizeRendererToDisplaySize();
   });
+
+  $('.views__parameter_close').on('click',function(){
+    $(".views__order").removeClass("views__order-hidden");
+    $(".views__parameter").removeClass("views__parameter-active");
+    $(".views__visual").removeClass("views__visual-compress");
+    if ($(window).width() > 992) {
+      setTimeout(function () {
+        onWindowResize();
+      }, 300);
+    }
+})
 
   // scene.add( mesh123 );
 }
@@ -372,3 +387,5 @@ $(".form_box__item").on("click", function () {
     });
   }
 });
+
+
