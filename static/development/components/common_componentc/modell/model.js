@@ -14,13 +14,6 @@ import {
   colorBike,
 } from "./helper";
 
-
-
-
-
-
-
-
 let params_search = window.location.search.split("?")[1].split("&");
 let config_model = {};
 
@@ -32,32 +25,28 @@ params_search.map((item) => {
 
   config_model[param[0]] = param[1];
 });
- 
 
 if (config_model.iframe_type === "Pozitiff") {
-  config_model['url'] = "/static/source/model/Pozit10.gltf";
+  config_model["url"] = "/static/source/model/Pozitif.gltf";
 } else if (config_model.iframe_type === "Neo") {
-  config_model['url'] = "/static/source/model/Pozit10.gltf";
+  config_model["url"] = "/static/source/model/Neo.gltf";
 } else if (config_model.iframe_type === "Ekross") {
-  config_model['url'] = "/static/source/model/Pozit10.gltf";
+  config_model["url"] = "/static/source/model/EKros1.gltf";
+} else {
+  config_model["url"] = "/static/source/model/EKros1.gltf";
 }
 
- 
-
-$('.views__back').on('click',function(){
-   
-
-   let back_url =  Object.keys(config_model).map((key)=>{
-      return `${key}=${encodeURIComponent(config_model[key])}`
-    }).join("&");
+$(".views__back").on("click", function () {
+  let back_url = Object.keys(config_model)
+    .map((key) => {
+      return `${key}=${encodeURIComponent(config_model[key])}`;
+    })
+    .join("&");
 
   // console.log(window.location );
   // console.log(window.location.search );
-  window.location.href =  `/page1/?${back_url}`
-})
-
-
-
+  window.location.href = `/page1/?${back_url}`;
+});
 
 /////||||///////
 /////||||///////
@@ -69,31 +58,30 @@ $('.views__back').on('click',function(){
 /////||||///////
 //////||////////
 ////////////////
-// RENDER 3D 
-// RENDER 3D 
-// RENDER 3D 
-// RENDER 3D 
-// RENDER 3D 
+// RENDER 3D
+// RENDER 3D
+// RENDER 3D
+// RENDER 3D
+// RENDER 3D
 
- 
+let visibleBag = false;
 
 var container;
 let rotateSpeed = 0;
 
-let views__visual_right = false; 
+let views__visual_right = false;
 let views__visual_left = false;
 var camera, scene, renderer, hemiLightHelper, dirLightHeper, theModel;
 
 var mouseX = 0,
   mouseY = 0;
-  let views__visula_3d = document.getElementsByClassName('views__visula_3d')[0];
-  
+let views__visula_3d = document.getElementsByClassName("views__visula_3d")[0];
+
 var windowHalfX = views__visula_3d.offsetWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 const INITIAL_MTL = new THREE.MeshPhongMaterial({
   color: 0xb4b4b4,
-  shininess: 10, 
-
+  shininess: 10,
 });
 
 var object;
@@ -104,8 +92,8 @@ animate();
 function init() {
   container = document.createElement("div");
 
-  document.getElementsByClassName('views__visula_3d')[0].appendChild(container);
-console.log(views__visula_3d.offsetWidth );
+  document.getElementsByClassName("views__visula_3d")[0].appendChild(container);
+  console.log(views__visula_3d.offsetWidth);
 
   camera = new THREE.PerspectiveCamera(
     60,
@@ -117,52 +105,27 @@ console.log(views__visula_3d.offsetWidth );
   camera.position.y = 80;
 
   scene = new THREE.Scene();
-  scene.background   = new THREE.Color('0xffffff');
+  scene.background = new THREE.Color("0xffffff");
   scene.fog = new THREE.Fog(0xb4b4b4, 100, 1200);
- 
+
   // Init the object loader
   var loader = new GLTFLoader();
 
-// console.log(config_model );
-
   loader.load(
     config_model.url,
-    // "/static/source/model/Neo_v20.glb",
     function (gltf) {
-      console.log(gltf );
-      
+      console.log(gltf);
+
       theModel = gltf.scene;
       console.log(theModel);
       let flag = 0;
       // Set the models initial scale
       theModel.scale.set(0.05, 0.05, 0.05);
-      theModel.position.y = 13;
-      theModel.rotation.y = -Math.PI / 2 + 40;
+      theModel.children[0].visible = false;
 
+      let theModelColor = colorBike(theModel, config_model);
 
-      // let theModelColor = colorBike(theModel,config_model);
-    
-      theModel.traverse((o) => {
-        if (o.isMesh) {
-          o.castShadow = true;
-          // o.receiveShadow = true;
-        
-          if(o.material.name=='Powder_Coat_(Green)'){
-            o.material.metalness=0.7;
-          }else if(o.material.name=='Powder_Coat_(Green)_(1)'){
-            o.material.metalness=0;
-          }
-          // console.log(o.material.name );
-          // console.log(o.material.metalness );
-          
-          
-        }
-      })
-       
-      theModel.children[0].visible=false;
-  
-      HelperShadowCamera(scene, theModel.children[0].children[0].shadow.camera);
-      scene.add(theModel);
+      scene.add(theModelColor);
     },
     undefined,
     function (error) {
@@ -172,14 +135,12 @@ console.log(views__visula_3d.offsetWidth );
 
   const cubeSize = 4;
   const cubeGeo = new THREE.BoxBufferGeometry(cubeSize, cubeSize, cubeSize);
-  const cubeMat = new THREE.MeshPhongMaterial({color: '#8AC'});
+  const cubeMat = new THREE.MeshPhongMaterial({ color: "#8AC" });
   const mesh12 = new THREE.Mesh(cubeGeo, cubeMat);
   mesh12.castShadow = true;
   // mesh12.receiveShadow = true;
   mesh12.position.set(cubeSize + 1, cubeSize / 2, 0);
   scene.add(mesh12);
-
-
 
   // var geometry = new THREE.RingGeometry(64.8, 65, 120);
   // var material = new THREE.MeshBasicMaterial({
@@ -189,10 +150,9 @@ console.log(views__visula_3d.offsetWidth );
   // var mesh = new THREE.Mesh(geometry, material);
 
   // mesh.up.x = 2;
-  // // mesh.rotateX( addCircleToBacground);  
+  // // mesh.rotateX( addCircleToBacground);
   // scene.add(mesh);
-console.log(addCircleToBacground(69.8, 70, 120) );
-
+  console.log(addCircleToBacground(69.8, 70, 120));
 
   scene.add(addCircleToBacground(64.8, 65, 120));
   scene.add(addCircleToBacground(69.8, 70, 120));
@@ -203,12 +163,9 @@ console.log(addCircleToBacground(69.8, 70, 120) );
   // Add hemisphere light to scene
   scene.add(hemiLight);
 
-  
-
-
   //Create a DirectionalLight and turn on shadows for the light
   var light = new THREE.DirectionalLight(0xffffff, 1, 100);
-  light.position.set(-200, 100, 200); //default; light shining from top
+  light.position.set(-100, 100, 100); //default; light shining from top
   light.intensity = 600; // default false
   light.castShadow = true; // default false
   scene.add(light);
@@ -224,7 +181,7 @@ console.log(addCircleToBacground(69.8, 70, 120) );
   light.shadow.camera.near = 0.5; // default
   light.shadow.camera.far = 700; // default
 
-// console.log(light );
+  // console.log(light );
 
   // Floor
   var floorGeometry = new THREE.PlaneGeometry(9000, 9000, 1, 1);
@@ -257,17 +214,16 @@ console.log(addCircleToBacground(69.8, 70, 120) );
   controls.autoRotate = false; // Toggle this if you'd like the chair to automatically rotate
   controls.autoRotateSpeed = 0.2;
 
-console.log(scene );
-
+  console.log(scene);
 
   // // Щар що відкидає тінь
-  HelperSphereShadows(scene);
+  // HelperSphereShadows(scene);
 
   // //   Площина яка невідеидає тінь
   // HelperPlaneShadows(scene,light);
 
   // Помічник показує камеру для того зоб бачити куди буде падати тінь
-  HelperShadowCamera(scene, light.shadow.camera);
+  // HelperShadowCamera(scene, light.shadow.camera);
   // HelperShadowCamera(scene, scene.shadow.camera);
 
   // // // Додає до сцени вісі кординат
@@ -275,34 +231,27 @@ console.log(scene );
 
   window.addEventListener("resize", onWindowResize, false);
 
+  //   var geometry123 = new THREE.RingGeometry( 1, 5, 32 );
+  // var material123 = new THREE.MeshBasicMaterial( { color: 0x12ff00, side: THREE.DoubleSide } );
+  // var mesh123 = new THREE.Mesh( geometry123, mesh123 );
 
-    
-//   var geometry123 = new THREE.RingGeometry( 1, 5, 32 );
-// var material123 = new THREE.MeshBasicMaterial( { color: 0x12ff00, side: THREE.DoubleSide } );
-// var mesh123 = new THREE.Mesh( geometry123, mesh123 );
- 
+  $(".views__order_go").on("click", function () {
+    event.preventDefault();
+    $(".views__order").addClass("views__order-hidden");
+    $(".views__parameter").addClass("views__parameter-active");
+    $(".views__visual").addClass("views__visual-compress");
+    setTimeout(function () {
+      onWindowResize();
+    }, 300);
+    // resizeRendererToDisplaySize();
+  });
 
-$('.views__order_go').on('click',function(){
-  event.preventDefault();
-  $('.views__order').addClass('views__order-hidden');
-  $('.views__parameter').addClass('views__parameter-active')
-  $('.views__visual').addClass('views__visual-compress');
-  setTimeout(function() {
-    onWindowResize();
-  },300)
-  // resizeRendererToDisplaySize();
-})
-
-
-// scene.add( mesh123 );
+  // scene.add( mesh123 );
 }
 
 function onWindowResize() {
+  console.log(views__visula_3d.offsetWidth);
 
-  console.log(views__visula_3d.offsetWidth );
-
- 
-  
   windowHalfX = views__visula_3d.offsetWidth / 2;
   windowHalfY = window.innerHeight / 2;
   camera.aspect = views__visula_3d.offsetWidth / window.innerHeight;
@@ -319,17 +268,12 @@ function resizeRendererToDisplaySize(renderer) {
 
   // canvas.css({transition:'.3s'})
 
-
   const needResize = canvasPixelWidth !== width || canvasPixelHeight !== height;
   if (needResize) {
     renderer.setSize(width, height, false);
   }
   return needResize;
 }
-
-
-
-
 
 function animate() {
   requestAnimationFrame(animate);
@@ -340,27 +284,91 @@ function animate() {
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
   }
-  
-  if(views__visual_left){
+
+  if (views__visual_left) {
     theModel.children[2].rotation.z += Math.PI / 180;
   }
-  
-  if(views__visual_right){
+
+  if (views__visual_right) {
     theModel.children[2].rotation.z -= Math.PI / 180;
   }
- 
-  
-    
+  //   if( theModel!='undefined' && true){
+  //     console.log(theModel.children[2].children );
+
+  // //     if(.children.name == 'Ekros 1_16'){
+  // // console.log(theModel.children[2].children );
+
+  // //     }
+  //   }
+
+  // if(!!visibleBag){
+  //   theModel.traverse ( function (child) {
+  //     if(theModel.children[2].children.material.name.indexOf("Bag") !== -1){
+  //       theModel.children[2].children.visible=false;
+  //     }
+  //   });
+  // }
+
   renderer.render(scene, camera);
-  
 }
 
-$('.views__visual_left')[0].addEventListener('mousedown', () => views__visual_left = true,false);
-$('.views__visual_left')[0].addEventListener('mouseup', () => views__visual_left = false,false);
+$(".views__visual_left")[0].addEventListener(
+  "mousedown",
+  () => (views__visual_left = true),
+  false
+);
+$(".views__visual_left")[0].addEventListener(
+  "mouseup",
+  () => (views__visual_left = false),
+  false
+);
 
-$('.views__visual_right')[0].addEventListener('mousedown', () => views__visual_right = true,false);
-$('.views__visual_right')[0].addEventListener('mouseup', () => views__visual_right = false,false);
-    
- 
+$(".views__visual_right")[0].addEventListener(
+  "mousedown",
+  () => (views__visual_right = true),
+  false
+);
+$(".views__visual_right")[0].addEventListener(
+  "mouseup",
+  () => (views__visual_right = false),
+  false
+);
+$(".views__visual_right")[0].addEventListener(
+  "mouseup",
+  () => (visibleBag = false),
+  false
+);
 
+$(".form_box__item").on("click", function () {
+  if ($(this).find('input[type="checkbox"]')[0].name === "mirrors") {
+    let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
 
+    theModel.children[2].children.map((item) => {
+      // багажник
+      if (
+        item.material.name.indexOf("Mirror_1") !== -1 ||
+        item.material.name.indexOf("Mirror_2") !== -1
+      ) {
+        item.visible = valueChecked;
+      }
+    });
+  } else if ($(this).find('input[type="checkbox"]')[0].name === "mud") {
+    let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
+
+    theModel.children[2].children.map((item) => {
+      // багажник
+      if (item.material.name.indexOf("Mud") !== -1) {
+        item.visible = valueChecked;
+      }
+    });
+  } else if ($(this).find('input[type="checkbox"]')[0].name === "trunk") {
+    let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
+
+    theModel.children[2].children.map((item) => {
+      // багажник
+      if (item.material.name.indexOf("Bag") !== -1) {
+        item.visible = valueChecked;
+      }
+    });
+  }
+});
