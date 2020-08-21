@@ -2231,7 +2231,7 @@ input::-webkit-inner-spin-button {
   height: unset; }
   .product_filter .filter-content {
     padding: 16px 14px;
-    border: 2px solid #3d3c3a;
+    border: 1px solid #3d3c3a;
     margin-top: 14px;
     transition: all .2s;
     display: block; }
@@ -2438,7 +2438,7 @@ input::-webkit-inner-spin-button {
   padding-right: 0; }
 
 .product_card-prof {
-  border: 2px solid #3d3c3a; }
+  border: 1px solid #3d3c3a; }
 
 .prod_card-info {
   height: 40px; }
