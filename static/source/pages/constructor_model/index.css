@@ -2573,7 +2573,8 @@ input::-webkit-inner-spin-button {
   align-items: center;
   width: 100%;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  height: 100vh; }
   .views__visual {
     width: 100%;
     position: relative;
@@ -2786,6 +2787,10 @@ input::-webkit-inner-spin-button {
     overflow: auto; }
   .settings__group:first-child {
     margin-top: 0; } }
+
+@media only screen and (max-width: 776px) {
+  .views__visual_control {
+    bottom: 20%; } }
 
 @media only screen and (max-width: 510px) {
   .views__order {

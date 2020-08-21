@@ -7,7 +7,7 @@ canvas {
   width: 100%;
   position: relative;
   overflow: hidden;
-
+  height: 100vh;
   &__visual {
     width: 100%;
     position: relative;
@@ -289,6 +289,12 @@ canvas {
 }
   .settings__group:first-child{
     margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 776px) {
+  .views__visual_control {
+    bottom: 20%;
   }
 }
 @media only screen and (max-width: 510px) {

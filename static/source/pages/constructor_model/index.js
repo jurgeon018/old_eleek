@@ -57874,13 +57874,13 @@ params_search.map(function (item) {
 });
 
 if (config_model.iframe_type === "Pozitiff") {
-  config_model["url"] = "/static/source/model/Pozitif.gltf";
+  config_model["url"] = "/static/source/model/Pozitif_v1.gltf";
 } else if (config_model.iframe_type === "Neo") {
-  config_model["url"] = "/static/source/model/Neo.gltf";
+  config_model["url"] = "/static/source/model/Neo_v1.gltf";
 } else if (config_model.iframe_type === "Ekross") {
-  config_model["url"] = "/static/source/model/Ekros777.gltf";
+  config_model["url"] = "/static/source/model/Ekros_v1.gltf";
 } else {
-  config_model["url"] = "/static/source/model/Ekros777.gltf";
+  config_model["url"] = "/static/source/model/E1kros_v1.gltf";
 }
 
 $(".views__back").on("click", function () {
@@ -57906,7 +57906,6 @@ $(".views__back").on("click", function () {
 // RENDER 3D
 // RENDER 3D
 
-var visibleBag = false;
 var container;
 var rotateSpeed = 0;
 var views__visual_right = false;
@@ -58113,20 +58112,7 @@ function animate() {
 
   if (views__visual_right) {
     theModel.children[2].rotation.z -= Math.PI / 180;
-  } //   if( theModel!='undefined' && true){
-  //     console.log(theModel.children[2].children );
-  // //     if(.children.name == 'Ekros 1_16'){
-  // // console.log(theModel.children[2].children );
-  // //     }
-  //   }
-  // if(!!visibleBag){
-  //   theModel.traverse ( function (child) {
-  //     if(theModel.children[2].children.material.name.indexOf("Bag") !== -1){
-  //       theModel.children[2].children.visible=false;
-  //     }
-  //   });
-  // }
-
+  }
 
   renderer.render(scene, camera);
 }
@@ -58134,18 +58120,19 @@ function animate() {
 $(".views__visual_left")[0].addEventListener("mousedown", function () {
   return views__visual_left = true;
 }, false);
-$(".views__visual_left")[0].addEventListener("mouseup", function () {
-  return views__visual_left = false;
-}, false);
 $(".views__visual_right")[0].addEventListener("mousedown", function () {
   return views__visual_right = true;
+}, false);
+$(".views__visual_left")[0].addEventListener("mouseup", function () {
+  return views__visual_left = false;
 }, false);
 $(".views__visual_right")[0].addEventListener("mouseup", function () {
   return views__visual_right = false;
 }, false);
-$(".views__visual_right")[0].addEventListener("mouseup", function () {
-  return visibleBag = false;
-}, false);
+window.addEventListener('mouseup', function (event) {
+  views__visual_left = false;
+  views__visual_right = false;
+});
 $(".form_box__item").on("click", function () {
   if ($(this).find('input[type="checkbox"]')[0].name === "mirrors") {
     var valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
