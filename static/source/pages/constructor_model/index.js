@@ -58047,7 +58047,7 @@ function init() {
 
   $(".views__order_go").on("click", function () {
     event.preventDefault();
-    $(".views__parameter").addClass("views__parameter-active");
+    $(".views__parameter_wrap").addClass("views__parameter_wrap-active");
     $(".views__order").addClass("views__order-hidden");
 
     if ($(window).width() > 992) {
@@ -58060,7 +58060,18 @@ function init() {
   });
   $('.views__parameter_close').on('click', function () {
     $(".views__order").removeClass("views__order-hidden");
-    $(".views__parameter").removeClass("views__parameter-active");
+    $(".views__parameter_wrap").removeClass("views__parameter_wrap-active");
+    $(".views__visual").removeClass("views__visual-compress");
+
+    if ($(window).width() > 992) {
+      setTimeout(function () {
+        onWindowResize();
+      }, 300);
+    }
+  });
+  $('.views__parameter_back').on('click', function () {
+    $(".views__order").removeClass("views__order-hidden");
+    $(".views__parameter_wrap").removeClass("views__parameter_wrap-active");
     $(".views__visual").removeClass("views__visual-compress");
 
     if ($(window).width() > 992) {
