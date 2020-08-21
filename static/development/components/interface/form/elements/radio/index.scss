@@ -87,8 +87,9 @@
         margin-right: 20px;
         height: 26px;
         width: 26px;
+        min-width: 26px;
         border: 1px solid #000;
-        border-radius: 50%;
+        border-radius: 50%;  
         display: flex;
         align-items: center;
         justify-content: center;

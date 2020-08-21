@@ -52,6 +52,8 @@ module.exports = {
         profile:  './profile.js' ,
         password_reset:  './password_reset.js' ,
         another_pages:  './another_pages.js' ,
+        constructor_setings:  './constructor_setings.js' ,
+        constructor_model:  './constructor_model.js' ,
     },
     output:{
         filename:'[name]/index.js',
