@@ -2623,7 +2623,8 @@ input::-webkit-inner-spin-button {
     .settings__category_footer {
       display: flex;
       flex-direction: column;
-      align-items: baseline; }
+      align-items: baseline;
+      margin: 20px auto 0; }
       .settings__category_footer .btn_standart {
         margin-top: 20px; }
   .settings__parameters {
@@ -2704,6 +2705,12 @@ input::-webkit-inner-spin-button {
         .settings__box_main-checkbox .settings__box_main_content, .settings__box_main1-checkbox .settings__box_main_content {
           display: flex;
           flex-wrap: wrap; }
+      .settings__box_main-radio, .settings__box_main1-radio {
+        max-width: 800px; }
+        .settings__box_main-radio .settings__box_main_content, .settings__box_main1-radio .settings__box_main_content {
+          display: flex;
+          flex-wrap: wrap;
+          grid-gap: 15px; }
       .settings__box_main-card, .settings__box_main1-card {
         max-width: 800px; }
         .settings__box_main-card .settings__box_main_content, .settings__box_main1-card .settings__box_main_content {
@@ -2733,12 +2740,15 @@ input::-webkit-inner-spin-button {
       width: 100%; }
 
 .settings__category {
-  transform: scale(1);
   transition: 0.3s; }
+  .settings__category .settings__category_title {
+    color: #1e1b15;
+    transition: 0.3s; }
   .settings__category:hover:not(.settings__category-active) {
-    cursor: pointer;
-    transform: scale(1.03);
-    translate: 0.3s; }
+    cursor: pointer; }
+    .settings__category:hover:not(.settings__category-active) .settings__category_title {
+      transition: 0.3s;
+      color: #ffd10a; }
   .settings__category-active .settings__category_hover {
     position: absolute;
     background: #fff;
@@ -2820,6 +2830,19 @@ input::-webkit-inner-spin-button {
     transform: translate(24px, 0); } }
 
 @media only screen and (max-width: 992px) {
+  .settings__categories_wrap {
+    padding-left: 20px; }
+  .settings__category_footer {
+    margin-right: 10px; }
+  .settings__category_img {
+    width: 115px;
+    min-width: 115px;
+    max-height: 70px;
+    margin-right: 10px; }
+    .settings__category_img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; }
   .settings__parameters_navigation {
     width: 100%; }
     .settings__parameters_navigation .next_tab {
@@ -2902,7 +2925,7 @@ input::-webkit-inner-spin-button {
     padding: 0;
     border: none;
     box-sizing: border-box;
-    padding: 0; }
+    padding-bottom: 15px; }
     .settings__parameters_navigation .price {
       flex-direction: row;
       width: 100%;

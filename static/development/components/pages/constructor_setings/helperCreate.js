@@ -114,7 +114,7 @@ export const  checkCardType=(item)=> {
       item.values.map((item) => {
         obj.elemens += createRadioSmal(item);
       });
-      obj.tupeBox = "settings__box_main-card";
+      obj.tupeBox = "settings__box_main-radio";
     } else if (item.type === "checkbox_options") {
       item.values.map((item) => {
         obj.elemens += createCheckboxOptions(item);

@@ -58428,27 +58428,14 @@ if (field_inputs.length > 0) {
 /*!***********************************************************!*\
   !*** ../components/interface/form/elements/list/index.js ***!
   \***********************************************************/
-/*! exports provided: onClickCheckboxOptions */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickCheckboxOptions", function() { return onClickCheckboxOptions; });
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/interface/form/elements/list/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
-function onClickCheckboxOptions() {
-  $(".form_box__item").on("click", function () {
-    $(this).toggleClass("form_box__item-active");
-    var item_input = $(this).find("input");
-
-    if (item_input.prop("checked") == true) {
-      item_input.prop("checked", false);
-    } else {
-      item_input.prop("checked", true);
-    }
-  });
-}
 $(".form_box__item").on("click", function () {
   $(this).toggleClass("form_box__item-active");
   var item_input = $(this).find("input");
@@ -59261,7 +59248,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************************************!*\
   !*** ../components/pages/constructor_setings/helpersEvent.js ***!
   \***************************************************************/
-/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections */
+/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, onClickCheckboxOptions */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59272,6 +59259,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onChengeRadioV1", function() { return onChengeRadioV1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearGroup", function() { return clearGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "childrensСonnections", function() { return childrensСonnections; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickCheckboxOptions", function() { return onClickCheckboxOptions; });
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -59308,6 +59296,12 @@ var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
     neighboringElements.removeClass("form__radio-active");
     cardFormRadio.addClass("form__radio-active");
     paretnConteiner.children("input[type=hidden]").val(value);
+    var input_name = paretnConteiner.children("input[type=hidden]")[0];
+
+    if (!!input_name && input_name.name != 'iframe_type') {
+      var string_params = $(".constructor_setings").serializeArray();
+      chengePrice(string_params);
+    }
   });
 };
 var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
@@ -59316,6 +59310,9 @@ var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
       var value = $(this).data("value");
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
     }
+
+    var string_params = $(".constructor_setings").serializeArray();
+    chengePrice(string_params);
   });
 };
 var clearGroup = function clearGroup(className) {
@@ -59358,6 +59355,40 @@ var childrensСonnections = function childrensСonnections(children_element) {
     }
   }
 };
+
+function chengePrice(data) {
+  var objectParameter = {};
+  data.map(function (item) {
+    if (item.name != 'undefined') {
+      objectParameter[item.name] = item.value;
+    }
+  }); // fetch(url_form, {
+  //   method: current_method,
+  //   body: JSON.stringify(objectParameter),
+  // })
+  // .then(data => {
+  // })
+
+  setTimeout(function () {
+    $('.settings__parameters_navigation').find('.price').children('.value').text('121 340грн');
+  }, 1000);
+}
+
+function onClickCheckboxOptions() {
+  $(".form_box__item").on("click", function () {
+    $(this).toggleClass("form_box__item-active");
+    var item_input = $(this).find("input");
+
+    if (item_input.prop("checked") == true) {
+      item_input.prop("checked", false);
+    } else {
+      item_input.prop("checked", true);
+    }
+
+    var string_params = $(".constructor_setings").serializeArray();
+    chengePrice(string_params);
+  });
+}
 
 /***/ }),
 

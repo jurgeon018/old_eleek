@@ -221,7 +221,7 @@ export const default_value = {
               parameters: [
                 {
                   name: "Тип гальм",
-                  type: "radio_img",
+                  type: "radio_small",
                   code: "break_type",
                   values: [
                     {
