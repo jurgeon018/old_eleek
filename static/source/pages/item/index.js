@@ -728,7 +728,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/module/form_errors/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
-$('.mobile').mask("+38(999) 99 99 999");
+
+if ($('.mobile').length > 0) {
+  $('.mobile').mask("+38(999) 99 99 999");
+}
+
 var lang_site;
 var curr_lang;
 var curr_lang_length;

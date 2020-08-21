@@ -1,0 +1,518 @@
+{% extends 'project/base.html' %} {% load i18n sw_content %} {% block styles %}
+
+<link rel="stylesheet" href="/static/source/pages/profile/index.css.map" />
+<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css" />
+<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css" />
+<link
+  rel="stylesheet"
+  href="/static/source/lib/fancybox/jquery.fancybox.min.css"
+/>
+<link rel="stylesheet" href="/static/source/pages/item/index.css?v=3" />
+<link rel="stylesheet" href="/static/source/pages//login/index.css" />
+<link rel="stylesheet" href="/static/source/pages/profile/index.css?v=3" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<link
+  rel="stylesheet"
+  href="/static/source/pages/constructor_model/index.css"
+/>
+<link
+  rel="stylesheet"
+  href="/static/source/pages/constructor_model/index.css.map"
+/>
+{% endblock styles %} {% block content %}
+<main>
+  <div class="views">
+    <div class="views__visual">
+      <div class="views__visual_model">
+        <div class="views__visula_bg">
+          <!-- <img class="views__visual_model-img" src="./../../static/source/img/constructor/views_model/gridBacgroundModel@2x.png" alt=""> -->
+        </div>
+        <div class="views__visula_3d"></div>
+      </div>
+      <div class="views__visual_control">
+        <div class="views__visual_left">
+          <svg width="36" height="15" viewBox="0 0 36 15">
+            <path
+              fill="#1B1813"
+              fill-rule="evenodd"
+              d="M7.071 0l.707.707L1.91 6.574h33.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"
+            />
+          </svg>
+        </div>
+        <div class="views__visual_right">
+          <svg width="37" height="15" viewBox="0 0 37 15">
+            <path
+              fill="#1B1813"
+              fill-rule="evenodd"
+              d="M29.087 14.142l-.707-.707 5.87-5.867H.58v-1h33.662L28.38.708 29.087 0l7.072 7.071-7.072 7.071z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="views__parameter">
+      <div class="views__parameter_title">Технічні характеристики</div>
+      <div class="settings__group_wrap">
+        <div class="settings__group">
+          <div class="settings__group_title"></div>
+          <div class="settings__box">
+            <div class="settings__box_title">Мотор</div>
+            <div
+              class="settings__box_main settings__box_main-card"
+              data-input_value="motor"
+            >
+              <div class="settings__box_loader">
+                <div class="lds-ellipsis">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+              <input
+                type="hidden"
+                value="1"
+                name="motor"
+                id="motor"
+                class="motor"
+              />
+              <div class="settings__box_main_content">
+                <div
+                  class="form__radio form__radio-active"
+                  data-childrens='{"controller":["val2","val3"]}'
+                  data-value="1"
+                >
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">350 Вт</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div
+                  class="form__radio"
+                  data-value="1"
+                  data-childrens='{"controller":["val4","val1"]}'
+                >
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">1000 Вт</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div class="form__radio" data-value="1" data-childrens='{"controller":["val3","val1"]}'>
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">5000 Вт</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="settings__group">
+          <div class="settings__group_title"></div>
+          <div class="settings__box">
+            <div class="settings__box_title">Контролер</div>
+            <div
+              class="settings__box_main settings__box_main-card"
+              data-input_value="controller"
+            >
+              <div class="settings__box_loader">
+                <div class="lds-ellipsis">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+              <input
+                type="hidden"
+                value="1"
+                name="controller"
+                id="controller"
+                class="controller"
+              />
+              <div class="settings__box_main_content">
+                <div class="form__radio form__radio-active" data-value="val1">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">evel 48V 40A1</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div class="form__radio" data-value="val2">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">Kelly lks 7230s2</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div class="form__radio" data-value="val3">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">Kelly lks 7230s3</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div class="form__radio" data-value="val4">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">Kelly lks 7230s4</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="settings__group">
+          <div class="settings__group_title"></div>
+          <div class="settings__box">
+            <div class="settings__box_title">Контролер</div>
+            <div
+              class="settings__box_main settings__box_main-card"
+              data-input_value="controller"
+            >
+              <div class="settings__box_loader">
+                <div class="lds-ellipsis">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+              <input
+                type="hidden"
+                value="1"
+                name="controller"
+                id="controller"
+                class="controller"
+              />
+              <div class="settings__box_main_content">
+                <div class="form__radio form__radio-active" data-value="val1">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">evel 48V 40A1</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div class="form__radio" data-value="val2">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">Kelly lks 7230s2</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div class="form__radio" data-value="val3">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">Kelly lks 7230s3</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div class="form__radio" data-value="val4">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">Kelly lks 7230s4</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="settings__group">
+          <div class="settings__group_title"></div>
+          <div class="settings__box">
+            <div class="settings__box_title">Контролер</div>
+            <div
+              class="settings__box_main settings__box_main-card"
+              data-input_value="controller"
+            >
+              <div class="settings__box_loader">
+                <div class="lds-ellipsis">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+              <input
+                type="hidden"
+                value="1"
+                name="controller"
+                id="controller"
+                class="controller"
+              />
+              <div class="settings__box_main_content">
+                <div class="form__radio form__radio-active" data-value="val1">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">evel 48V 40A1</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div class="form__radio" data-value="val2">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">Kelly lks 7230s2</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div class="form__radio" data-value="val3">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">Kelly lks 7230s3</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div class="form__radio" data-value="val4">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">Kelly lks 7230s4</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="settings__group">
+          <div class="settings__group_title"></div>
+          <div class="settings__box">
+            <div class="settings__box_title">Контролер</div>
+            <div
+              class="settings__box_main settings__box_main-card"
+              data-input_value="controller"
+            >
+              <div class="settings__box_loader">
+                <div class="lds-ellipsis">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+              <input
+                type="hidden"
+                value="1"
+                name="controller"
+                id="controller"
+                class="controller"
+              />
+              <div class="settings__box_main_content">
+                <div class="form__radio form__radio-active" data-value="val1">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">evel 48V 40A1</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div class="form__radio" data-value="val2">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">Kelly lks 7230s2</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div class="form__radio" data-value="val3">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">Kelly lks 7230s3</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+                <div class="form__radio" data-value="val4">
+                  <div class="form__radio_check"></div>
+                  <div class="form__radio_main">
+                    <div class="form__radio_title">Kelly lks 7230s4</div>
+                    <div class="form__radio_price">350 грн</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="settings__group">
+          <div class="settings__group_title">Опції</div>
+          <div class="settings__box">
+            <div class="settings__box_title"></div>
+            <div
+              class="settings__box_main settings__box_main-checkbox"
+              data-input_value="undefined"
+            >
+              <div class="settings__box_loader">
+                <div class="lds-ellipsis">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+              <input
+                type="hidden"
+                value=""
+                name="undefined"
+                id="undefined"
+                class="undefined"
+              />
+              <div class="settings__box_main_content">
+                <div class="settings__group settings__group-start">
+                  <div class="form_box__item form_box__item-black_bord2">
+                    <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                      <path
+                        fill="#242321"
+                        fill-rule="evenodd"
+                        d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"
+                      ></path>
+                    </svg>
+  
+                    <div class="name">ПОВОРОТ</div>
+                    <input type="checkbox" name="undefined" value="item" id="" />
+                  </div>
+                </div>
+                <div class="settings__group settings__group-start">
+                  <div class="form_box__item form_box__item-black_bord2">
+                    <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                      <path
+                        fill="#242321"
+                        fill-rule="evenodd"
+                        d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"
+                      ></path>
+                    </svg>
+  
+                    <div class="name">CИГНАЛІЗАЦІЯ</div>
+                    <input type="checkbox" name="undefined" value="item" id="" />
+                  </div>
+                </div>
+                <div class="settings__group settings__group-start">
+                  <div class="form_box__item form_box__item-black_bord2">
+                    <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                      <path
+                        fill="#242321"
+                        fill-rule="evenodd"
+                        d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"
+                      ></path>
+                    </svg>
+  
+                    <div class="name">GPS трекер</div>
+                    <input type="checkbox" name="undefined" value="item" id="" />
+                  </div>
+                </div>
+                <div class="settings__group settings__group-start">
+                  <div class="form_box__item  form_box__item-black_bord2" >
+                    <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                      <path
+                        fill="#242321"
+                        fill-rule="evenodd"
+                        d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"
+                      ></path>
+                    </svg>
+  
+                    <div class="name">Дзеркала</div>
+                    <input type="checkbox" name="mirrors" value="item" id="" />
+                  </div>
+                </div>
+                <div class="settings__group settings__group-start">
+                  <div class="form_box__item form_box__item-black_bord2">
+                    <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                      <path
+                        fill="#242321"
+                        fill-rule="evenodd"
+                        d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"
+                      ></path>
+                    </svg>
+  
+                    <div class="name">Педальний привід</div>
+                    <input type="checkbox" name="undefined" value="item" id="" />
+                  </div>
+                </div>
+                <div class="settings__group settings__group-start">
+                  <div class="form_box__item form_box__item-black_bord2">
+                    <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                      <path
+                        fill="#242321"
+                        fill-rule="evenodd"
+                        d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"
+                      ></path>
+                    </svg>
+  
+                    <div class="name">Підножка</div>
+                    <input type="checkbox" name="undefined" value="item" id="" />
+                  </div>
+                </div>
+                <div class="settings__group settings__group-start">
+                  <div class="form_box__item form_box__item-black_bord2">
+                    <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                      <path
+                        fill="#242321"
+                        fill-rule="evenodd"
+                        d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"
+                      ></path>
+                    </svg>
+  
+                    <div class="name">Багажник</div>
+                    <input type="checkbox" name="undefined" value="item" id="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="views__parameter_footer">
+        <div class="price">
+          <div class="title">Загальна ціна</div>
+          <div class="value">102 500 грн.</div>
+        </div>
+        <div class="">
+          <a class=" btn_standart btn_standart_yellow " href="">Замовити</a>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="views__back">
+      <div class="views__back_icon">
+        <svg width="36" height="15" viewBox="0 0 36 15">
+          <path
+            fill="#1B1813"
+            fill-rule="evenodd"
+            d="M7.071 0l.707.707L1.91 6.574h33.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"
+          ></path>
+        </svg>
+      </div>
+      <div class="views__back_text">Конструктор</div>
+    </div>
+
+    <div class="views__order">
+      <div class="views__order_price">
+        <div class="views__order_title">Загальна ціна</div>
+        <div class="views__order_value">10 000грн</div>
+      </div>
+      <a class="views__order_go btn_standart btn_standart_yellow" href=""
+        >Перейти до замовлення</a
+      >
+    </div>
+  </div>
+</main>
+
+{% endblock content %} {% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script>
+<script src="/static/source/lib/slick/slick.min.js"></script>
+<script src="/static/source/lib/wow/wow.min.js"></script>
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script>
+<script src="/static/source/lib/validation/validation.min.js"></script>
+<script src="/static/development/components/module/form_errors/index.js"></script>
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script>
+
+<script src="/static/source/pages/constructor_model/index.js"></script>
+<script src="/static/source/pages/constructor_model/index.js.map"></script>
+
+{% endblock scripts %}
