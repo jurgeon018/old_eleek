@@ -3,6 +3,9 @@ const color_object = [
   { value_id: "greey", value: "#919191" },
   { value_id: "yelow", value: "#ffff00" },
   { value_id: "yelow", value: "#bc0a0a" },
+  { value_id: "green_small", value: "#90d52d" },
+  { value_id: "porpul", value: "#da277c" },
+  { value_id: "blue_small", value: "#32a1b5" },
 ];
 
 export const default_value = {
@@ -85,17 +88,17 @@ export const default_value = {
                     {
                       name: "Мото",
                       price: "350 грн",
-                      value_id: "3211",
+                      value_id: "moto",
                     },
                     {
                       name: "Вело",
                       price: "320 грн",
-                      value_id: "1123",
+                      value_id: "velo",
                     },
                   ],
                 },
                 {
-                  name: "Колір панелей",
+                  name: "Колір сидіння",
                   type: "radio_color",
                   code: "seat_type_color",
                   values: color_object,
@@ -218,8 +221,8 @@ export const default_value = {
               parameters: [
                 {
                   name: "Тип гальм",
-                  type: "radio_img",
-                  code: "brake_type",
+                  type: "radio_small",
+                  code: "break_type",
                   values: [
                     {
                       name: "Мото",
@@ -341,6 +344,11 @@ export const default_value = {
                       name: "GPS трекер",
                       price: "350 грн",
                       value_code: "gps_tracker",
+                    },
+                    {
+                      name: "Дзеркала",
+                      price: "350 грн",
+                      value_code: "mirror",
                     },
                     {
                       name: "Дзеркала",
@@ -496,6 +504,7 @@ export const default_value = {
                     },
                   ],
                 },
+                
               ],
             },
           ],
@@ -590,6 +599,7 @@ export const default_value = {
                   type: "checkbox_options",
                   // code: "rear_star",
                   values: [
+                    
                     {
                       name: "ПОВОРОТ",
                       price: "350 грн",
