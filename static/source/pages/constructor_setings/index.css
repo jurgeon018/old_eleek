@@ -2608,10 +2608,16 @@ input::-webkit-inner-spin-button {
     position: relative; }
     .settings__category_img {
       width: 135px;
+      min-width: 135px;
+      height: 75px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-right: 20px; }
+      .settings__category_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; }
     .settings__category_main {
       display: flex;
       z-index: 4; }

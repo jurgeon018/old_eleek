@@ -386,3 +386,12 @@ $(".form_box__item").on("click", function () {
 });
 
 
+
+
+$('.order_constructor').on('click', function() {
+  event.preventDefault();
+  $.fancybox.open({
+      src: '#order__form_constructor',
+      touch: false
+  });
+});

@@ -2571,6 +2571,14 @@ input::-webkit-inner-spin-button {
 .footer_form_constructor {
   display: none; }
 
+#order__form_constructor {
+  background: #2b2a27;
+  width: 30%;
+  padding: 45px 30px 20px;
+  min-width: 300px; }
+  #order__form_constructor .button.fancybox-button.fancybox-close-small {
+    color: #fff; }
+
 .views {
   display: flex;
   align-items: center;
