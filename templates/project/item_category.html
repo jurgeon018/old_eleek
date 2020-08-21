@@ -49,12 +49,12 @@ item_section__wrapper
                     </a>
                     {% if category.get_children %}
                     <div class="items_filter_content">
-                      {% for subcategory in category.get_children %}
+                      <!-- {% for subcategory in category.get_children %}
                       <div class="radio_block">
                         <input class="input_radio input_all_arr" name="discount" value="{{subcategory.id}}" type="checkbox" id="rb-{{subcategory.id}}"> 
                         <label class="label_radio standart_title standart_title_6 color_black" for="rb-{{subcategory.id}}">{{subcategory.title}}</label>
                       </div>
-                      {% endfor %}
+                      {% endfor %} -->
                     </div>
                     {% endif %}
                   </div>
@@ -113,7 +113,7 @@ item_section__wrapper
             {% for item in items %}
               <div class="product_card-prof">
                   <a href="{{item.get_absolute_url}}" class="prod_card_link">
-                      <img src="/static/source/img/item/img-0041.jpg" alt="" class="prod_card-img">
+                      <img src="{{item.image_url}}" alt="" class="prod_card-img">
                   </a>
                   <div class="prod_card_info__wrap">
                     <div class="prod_card-name standart_title standart_title_4 color_black">
