@@ -2568,6 +2568,9 @@ input::-webkit-inner-spin-button {
   .footer_starway__block {
     margin-top: 10px; } }
 
+.footer_form_constructor {
+  display: none; }
+
 .views {
   display: flex;
   align-items: center;
@@ -2860,7 +2863,8 @@ input::-webkit-inner-spin-button {
   .views__parameter_footer {
     display: flex;
     justify-content: space-between;
-    padding: 0 17px; } }
+    padding: 0 17px;
+    width: 100%; } }
 
 
 /*# sourceMappingURL=index.css.map*/
