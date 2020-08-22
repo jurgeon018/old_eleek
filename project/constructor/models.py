@@ -96,12 +96,19 @@ class FrameType(GeneralMixin):
     LITE_CODE     = 'lite'
     EKROSS_CODE   = 'ekross'
     item = models.ForeignKey(verbose_name="Товар", to="sw_catalog.Item", on_delete=models.SET_NULL, blank=True, null=True,)
+
     def get_tabs(self):
         return Tab.objects.filter(frame=self, is_active=True)
     
     def get_colors(self):
         return FrameColor.objects.filter(frame=self, is_active=True)
-    
+    @classmethod 
+    def get_initial_price(self):
+        initial_price = 0
+        frame = self.objects.filter(is_active=True).first()
+        for value in Value.objects.filter(parameter__tab_group__tab__frame=frame):
+            initial_price += value.price 
+        return initial_price
     class Meta: 
         ordering = ['order']
         verbose_name = "Тип рами"
