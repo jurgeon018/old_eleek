@@ -87,9 +87,9 @@
 /******/ ({
 
 /***/ "../../node_modules/three/build/three.module.js":
-/*!**************************************************************************************************!*\
-  !*** /Users/macbook/Desktop/work/Projects/eleek/static/node_modules/three/build/three.module.js ***!
-  \**************************************************************************************************/
+/*!**************************************************************************************!*\
+  !*** /Users/air/Documents/GIT/eleek/static/node_modules/three/build/three.module.js ***!
+  \**************************************************************************************/
 /*! exports provided: ACESFilmicToneMapping, AddEquation, AddOperation, AdditiveAnimationBlendMode, AdditiveBlending, AlphaFormat, AlwaysDepth, AlwaysStencilFunc, AmbientLight, AmbientLightProbe, AnimationClip, AnimationLoader, AnimationMixer, AnimationObjectGroup, AnimationUtils, ArcCurve, ArrayCamera, ArrowHelper, Audio, AudioAnalyser, AudioContext, AudioListener, AudioLoader, AxesHelper, AxisHelper, BackSide, BasicDepthPacking, BasicShadowMap, BinaryTextureLoader, Bone, BooleanKeyframeTrack, BoundingBoxHelper, Box2, Box3, Box3Helper, BoxBufferGeometry, BoxGeometry, BoxHelper, BufferAttribute, BufferGeometry, BufferGeometryLoader, ByteType, Cache, Camera, CameraHelper, CanvasRenderer, CanvasTexture, CatmullRomCurve3, CineonToneMapping, CircleBufferGeometry, CircleGeometry, ClampToEdgeWrapping, Clock, ClosedSplineCurve3, Color, ColorKeyframeTrack, CompressedTexture, CompressedTextureLoader, ConeBufferGeometry, ConeGeometry, CubeCamera, CubeGeometry, CubeReflectionMapping, CubeRefractionMapping, CubeTexture, CubeTextureLoader, CubeUVReflectionMapping, CubeUVRefractionMapping, CubicBezierCurve, CubicBezierCurve3, CubicInterpolant, CullFaceBack, CullFaceFront, CullFaceFrontBack, CullFaceNone, Curve, CurvePath, CustomBlending, CustomToneMapping, CylinderBufferGeometry, CylinderGeometry, Cylindrical, DataTexture, DataTexture2DArray, DataTexture3D, DataTextureLoader, DecrementStencilOp, DecrementWrapStencilOp, DefaultLoadingManager, DepthFormat, DepthStencilFormat, DepthTexture, DirectionalLight, DirectionalLightHelper, DirectionalLightShadow, DiscreteInterpolant, DodecahedronBufferGeometry, DodecahedronGeometry, DoubleSide, DstAlphaFactor, DstColorFactor, DynamicBufferAttribute, DynamicCopyUsage, DynamicDrawUsage, DynamicReadUsage, EdgesGeometry, EdgesHelper, EllipseCurve, EqualDepth, EqualStencilFunc, EquirectangularReflectionMapping, EquirectangularRefractionMapping, Euler, EventDispatcher, ExtrudeBufferGeometry, ExtrudeGeometry, Face3, Face4, FaceColors, FileLoader, FlatShading, Float32Attribute, Float32BufferAttribute, Float64Attribute, Float64BufferAttribute, FloatType, Fog, FogExp2, Font, FontLoader, FrontSide, Frustum, GammaEncoding, Geometry, GeometryUtils, GreaterDepth, GreaterEqualDepth, GreaterEqualStencilFunc, GreaterStencilFunc, GridHelper, Group, HalfFloatType, HemisphereLight, HemisphereLightHelper, HemisphereLightProbe, IcosahedronBufferGeometry, IcosahedronGeometry, ImageBitmapLoader, ImageLoader, ImageUtils, ImmediateRenderObject, IncrementStencilOp, IncrementWrapStencilOp, InstancedBufferAttribute, InstancedBufferGeometry, InstancedInterleavedBuffer, InstancedMesh, Int16Attribute, Int16BufferAttribute, Int32Attribute, Int32BufferAttribute, Int8Attribute, Int8BufferAttribute, IntType, InterleavedBuffer, InterleavedBufferAttribute, Interpolant, InterpolateDiscrete, InterpolateLinear, InterpolateSmooth, InvertStencilOp, JSONLoader, KeepStencilOp, KeyframeTrack, LOD, LatheBufferGeometry, LatheGeometry, Layers, LensFlare, LessDepth, LessEqualDepth, LessEqualStencilFunc, LessStencilFunc, Light, LightProbe, LightShadow, Line, Line3, LineBasicMaterial, LineCurve, LineCurve3, LineDashedMaterial, LineLoop, LinePieces, LineSegments, LineStrip, LinearEncoding, LinearFilter, LinearInterpolant, LinearMipMapLinearFilter, LinearMipMapNearestFilter, LinearMipmapLinearFilter, LinearMipmapNearestFilter, LinearToneMapping, Loader, LoaderUtils, LoadingManager, LogLuvEncoding, LoopOnce, LoopPingPong, LoopRepeat, LuminanceAlphaFormat, LuminanceFormat, MOUSE, Material, MaterialLoader, Math, MathUtils, Matrix3, Matrix4, MaxEquation, Mesh, MeshBasicMaterial, MeshDepthMaterial, MeshDistanceMaterial, MeshFaceMaterial, MeshLambertMaterial, MeshMatcapMaterial, MeshNormalMaterial, MeshPhongMaterial, MeshPhysicalMaterial, MeshStandardMaterial, MeshToonMaterial, MinEquation, MirroredRepeatWrapping, MixOperation, MultiMaterial, MultiplyBlending, MultiplyOperation, NearestFilter, NearestMipMapLinearFilter, NearestMipMapNearestFilter, NearestMipmapLinearFilter, NearestMipmapNearestFilter, NeverDepth, NeverStencilFunc, NoBlending, NoColors, NoToneMapping, NormalAnimationBlendMode, NormalBlending, NotEqualDepth, NotEqualStencilFunc, NumberKeyframeTrack, Object3D, ObjectLoader, ObjectSpaceNormalMap, OctahedronBufferGeometry, OctahedronGeometry, OneFactor, OneMinusDstAlphaFactor, OneMinusDstColorFactor, OneMinusSrcAlphaFactor, OneMinusSrcColorFactor, OrthographicCamera, PCFShadowMap, PCFSoftShadowMap, PMREMGenerator, ParametricBufferGeometry, ParametricGeometry, Particle, ParticleBasicMaterial, ParticleSystem, ParticleSystemMaterial, Path, PerspectiveCamera, Plane, PlaneBufferGeometry, PlaneGeometry, PlaneHelper, PointCloud, PointCloudMaterial, PointLight, PointLightHelper, Points, PointsMaterial, PolarGridHelper, PolyhedronBufferGeometry, PolyhedronGeometry, PositionalAudio, PropertyBinding, PropertyMixer, QuadraticBezierCurve, QuadraticBezierCurve3, Quaternion, QuaternionKeyframeTrack, QuaternionLinearInterpolant, REVISION, RGBADepthPacking, RGBAFormat, RGBAIntegerFormat, RGBA_ASTC_10x10_Format, RGBA_ASTC_10x5_Format, RGBA_ASTC_10x6_Format, RGBA_ASTC_10x8_Format, RGBA_ASTC_12x10_Format, RGBA_ASTC_12x12_Format, RGBA_ASTC_4x4_Format, RGBA_ASTC_5x4_Format, RGBA_ASTC_5x5_Format, RGBA_ASTC_6x5_Format, RGBA_ASTC_6x6_Format, RGBA_ASTC_8x5_Format, RGBA_ASTC_8x6_Format, RGBA_ASTC_8x8_Format, RGBA_BPTC_Format, RGBA_ETC2_EAC_Format, RGBA_PVRTC_2BPPV1_Format, RGBA_PVRTC_4BPPV1_Format, RGBA_S3TC_DXT1_Format, RGBA_S3TC_DXT3_Format, RGBA_S3TC_DXT5_Format, RGBDEncoding, RGBEEncoding, RGBEFormat, RGBFormat, RGBIntegerFormat, RGBM16Encoding, RGBM7Encoding, RGB_ETC1_Format, RGB_ETC2_Format, RGB_PVRTC_2BPPV1_Format, RGB_PVRTC_4BPPV1_Format, RGB_S3TC_DXT1_Format, RGFormat, RGIntegerFormat, RawShaderMaterial, Ray, Raycaster, RectAreaLight, RedFormat, RedIntegerFormat, ReinhardToneMapping, RepeatWrapping, ReplaceStencilOp, ReverseSubtractEquation, RingBufferGeometry, RingGeometry, SRGB8_ALPHA8_ASTC_10x10_Format, SRGB8_ALPHA8_ASTC_10x5_Format, SRGB8_ALPHA8_ASTC_10x6_Format, SRGB8_ALPHA8_ASTC_10x8_Format, SRGB8_ALPHA8_ASTC_12x10_Format, SRGB8_ALPHA8_ASTC_12x12_Format, SRGB8_ALPHA8_ASTC_4x4_Format, SRGB8_ALPHA8_ASTC_5x4_Format, SRGB8_ALPHA8_ASTC_5x5_Format, SRGB8_ALPHA8_ASTC_6x5_Format, SRGB8_ALPHA8_ASTC_6x6_Format, SRGB8_ALPHA8_ASTC_8x5_Format, SRGB8_ALPHA8_ASTC_8x6_Format, SRGB8_ALPHA8_ASTC_8x8_Format, Scene, SceneUtils, ShaderChunk, ShaderLib, ShaderMaterial, ShadowMaterial, Shape, ShapeBufferGeometry, ShapeGeometry, ShapePath, ShapeUtils, ShortType, Skeleton, SkeletonHelper, SkinnedMesh, SmoothShading, Sphere, SphereBufferGeometry, SphereGeometry, Spherical, SphericalHarmonics3, Spline, SplineCurve, SplineCurve3, SpotLight, SpotLightHelper, SpotLightShadow, Sprite, SpriteMaterial, SrcAlphaFactor, SrcAlphaSaturateFactor, SrcColorFactor, StaticCopyUsage, StaticDrawUsage, StaticReadUsage, StereoCamera, StreamCopyUsage, StreamDrawUsage, StreamReadUsage, StringKeyframeTrack, SubtractEquation, SubtractiveBlending, TOUCH, TangentSpaceNormalMap, TetrahedronBufferGeometry, TetrahedronGeometry, TextBufferGeometry, TextGeometry, Texture, TextureLoader, TorusBufferGeometry, TorusGeometry, TorusKnotBufferGeometry, TorusKnotGeometry, Triangle, TriangleFanDrawMode, TriangleStripDrawMode, TrianglesDrawMode, TubeBufferGeometry, TubeGeometry, UVMapping, Uint16Attribute, Uint16BufferAttribute, Uint32Attribute, Uint32BufferAttribute, Uint8Attribute, Uint8BufferAttribute, Uint8ClampedAttribute, Uint8ClampedBufferAttribute, Uniform, UniformsLib, UniformsUtils, UnsignedByteType, UnsignedInt248Type, UnsignedIntType, UnsignedShort4444Type, UnsignedShort5551Type, UnsignedShort565Type, UnsignedShortType, VSMShadowMap, Vector2, Vector3, Vector4, VectorKeyframeTrack, Vertex, VertexColors, VideoTexture, WebGL1Renderer, WebGLCubeRenderTarget, WebGLMultisampleRenderTarget, WebGLRenderTarget, WebGLRenderTargetCube, WebGLRenderer, WebGLUtils, WireframeGeometry, WireframeHelper, WrapAroundEnding, XHRLoader, ZeroCurvatureEnding, ZeroFactor, ZeroSlopeEnding, ZeroStencilOp, sRGBEncoding */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -51929,32 +51929,227 @@ var params = function params(data) {
   // convert array => url
   return Object.keys(data).map(function (key) {
     return "".concat(data[key].name, "=").concat(encodeURIComponent(data[key].value));
-  }).join('&');
+  }).join("&");
 };
 var colorBike = function colorBike(model, config_model) {
   var bike = model;
+  console.log(config_model);
   bike.traverse(function (o) {
     if (o.isMesh) {
-      o.castShadow = true;
-      o.receiveShadow = true;
-    }
+      o.castShadow = true; // o.receiveShadow = true;
+      // console.log(o.material.name );
 
-    if (o.name.indexOf("Rama_1") !== -1 || o.name.indexOf("Motor_2") !== -1) {
-      // Рама і мотор
-      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
-        color: parseInt("0x".concat(config_model.iframe_color)),
-        shininess: 90
-      });
-    } else if (o.name.indexOf("Rama_2") !== -1) {
-      // Панелі на рамі
-      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
-        color: parseInt("0x".concat(config_model.side_panels_colors)),
-        shininess: 90
-      });
-    } else {}
+      if (o.material.name.indexOf("Rama_1") !== -1) {
+        o.material.color.setHex("0x".concat(config_model.iframe_color));
+        o.material.metalness = 0.7;
+      } else if (o.material.name.indexOf("Seat_velo_2") !== -1 || o.material.name.indexOf("Seat_velo_3") !== -1 || o.material.name.indexOf("Seat_moto_2") !== -1) {
+        // Колір заліза сидіння
+        o.material.color.setHex("0x".concat(config_model.iframe_color));
+        o.material.metalness = 0.8;
+      } else if (o.material.name.indexOf("KolecoZ_2") !== -1 || o.material.name.indexOf("Koleco_2") !== -1 || o.material.name.indexOf("KolecoZ_3") !== -1 || o.material.name.indexOf("Koleco_3") !== -1) {
+        // Колір коліс
+        o.material.color.setHex("0x".concat(config_model.wheel_size_color));
+        o.material.metalness = 0.8;
+      } else if (o.material.name.indexOf("Seat_velo_1") !== -1 || o.material.name.indexOf("Seat_moto_1") !== -1) {
+        // Колір Сидіння
+        o.material.color.setHex("0x".concat(config_model.seat_type_color));
+        o.material.metalness = 0.1;
+      } else if (o.material.name.indexOf("Rama_2") !== -1) {
+        // Панелі на рамі
+        o.material.color.setHex("0x".concat(config_model.side_panels_colors));
+        console.log(o.material.metalness);
+        o.material.metalness = 0.3;
+      } else {
+        console.log(o.name);
+      }
+
+      console.log(config_model.seat_type);
+
+      if (o.material.name.indexOf("Seat_moto_1") !== -1 || o.material.name.indexOf("Seat_moto_2") !== -1) {
+        if (!!config_model.seat_type) {
+          if (config_model.seat_type === "moto") {
+            o.visible = true;
+          } else {
+            o.visible = false;
+          }
+        }
+      } else if (o.material.name.indexOf("Seat_velo_1") !== -1 || o.material.name.indexOf("Seat_velo_2") !== -1 || o.material.name.indexOf("Seat_velo_3") !== -1) {
+        if (!!config_model.seat_type) {
+          if (config_model.seat_type === "velo") {
+            o.visible = true;
+          } else {
+            o.visible = false;
+          }
+        }
+      } else if (o.material.name.indexOf("Bag") !== -1) {
+        console.log('Bag', o.name);
+        console.log(config_model.trunk);
+        console.log(config_model.trunk !== "undefined");
+
+        if (config_model.trunk !== "undefined") {
+          o.visible = false;
+        } else {
+          o.visible = true;
+        }
+      } else if (o.material.name.indexOf("Mud") !== -1) {
+        // console.log('Mud',o.name );
+        if (config_model.mud !== "undefined") {
+          o.visible = false;
+        } else {
+          o.visible = true;
+        }
+      } else if (o.material.name.indexOf("Mirror_1") !== -1 || o.material.name.indexOf("Mirror_2") !== -1) {
+        console.log('Mirror', o.name);
+
+        if (config_model.mirror !== "undefined") {
+          o.visible = false;
+        } else {
+          o.visible = true;
+        }
+      } //  console.log(o.material.name );
+
+    }
   });
   return bike;
-};
+}; // if ( o.material.name.indexOf("Rama_1") !== -1
+// // o.name.indexOf("Motor_2") !== -1 ||
+// // o.name.indexOf("Motor_2") !== -1 ||
+// // o.name.indexOf("KolecoZ_4") !== -1 ||
+// // o.name.indexOf("Bag") !== -1 ||
+// // o.name.indexOf("Rul_1") !== -1 ||
+// // o.name.indexOf("Mirror_1") !== -1 ||
+// // o.name.indexOf("Break_3") !== -1 ||
+// // o.name.indexOf("Mud") !== -1
+// ) {
+// //   console.log(o );
+// //   // Рама і мотор
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.iframe_color}`),
+// //   //   shininess: 190,
+// //   // });
+// // // } else if (o.name.indexOf("Rama_2") !== -1) {
+// //   // Панелі на рамі
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.side_panels_colors}`),
+// //   //   shininess: 90,
+// //   // });
+// // // } else if (
+// //   // o.name.indexOf("Seat_velo_2") !== -1 ||
+// //   // o.name.indexOf("Seat_velo_3") !== -1 ||
+// //   // o.name.indexOf("Seat_moto_2") !== -1
+// // // ) {
+// //   // Колір заліха сидіння
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.iframe_color}`),
+// //   //   shininess: 90,
+// //   // });
+// // // } else if (o.name.indexOf("Seat_velo_1") !== -1) {
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.seat_type_color}`),
+// //   //   shininess: 90,
+// //   // });
+// //   // Вело сеління
+// // // } else if (o.name.indexOf("Seat_moto_1") !== -1) {
+// //   // Мото сеління
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.seat_type_color}`),
+// //   //   shininess: 90,
+// //   // });
+// // // } else if (o.name.indexOf("Amort") !== -1) {
+// //   // Амортизатор
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.fork_type_color}`),
+// //   //   shininess: 90,
+// //   // });
+// // // } else if (
+// //   // o.name.indexOf("KolecoZ_2") !== -1 ||
+// //   // o.name.indexOf("Koleco_2") !== -1 ||
+// //   // o.name.indexOf("KolecoZ_3") !== -1 ||
+// //   // o.name.indexOf("Koleco_3") !== -1
+// // // ) {
+// //   // Амортизатор
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.wheel_size_color}`),
+// //   //   shininess: 90,
+// //   // });
+// // // } else if (
+// //   // o.name.indexOf("Vulka_1") !== -1 ||
+// //   // o.name.indexOf("Vulka_3") !== -1
+// // // ) {
+// //   // Амортизатор
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.fork_type_color}`),
+// //   //   shininess: 90,
+// //   // });
+// // // } else if (
+// // //   o.name.indexOf("Rul_3") !== -1 ||
+// // //   o.name.indexOf("Pedali_2") !== -1
+// // // ) {
+// // //   // Педаль
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0x2626263`),
+// // //   //   shininess: 90,
+// // //   // });
+// // // } else if (o.name.indexOf("Rama_4") !== -1) {
+// // //   //  Заглушки
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0x252525`),
+// // //   //   shininess: 90,
+// // //   // });
+// // // } else if (
+// // //   o.name.indexOf("Rama_4") !== -1 ||
+// // //   o.name.indexOf("Vulka_2") !== -1
+// // // ) {
+// // //   //  Заглушки,Перемикачі болти
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0x191919`),
+// // //   //   shininess: 90,
+// // //   // });
+// // // } else if (
+// // //   o.name.indexOf("Koleco_1") !== -1 ||
+// // //   o.name.indexOf("KolecoZ_1") !== -1 ||
+// // //   o.name.indexOf("Pedali_1") !== -1
+// // // ) {
+// // //   //  Елементи колеса покришка,педалі гума
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0x262626`),
+// // //   //   shininess: 90,
+// // //   // });
+// // // } else if (
+// // //   // o.name.indexOf("Pedali_3") !== -1 ||
+// // //   o.name.indexOf("Rul_4") !== -1 ||
+// // //   o.name.indexOf("Rama_3") !== -1
+// // // ) {
+// // //   //  Елементи колеса покришка, шпиці, все решта
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0x9f9f9f`),
+// // //   //   shininess: 90,
+// // //   // });
+// // // } else if (
+// // //   // o.name.indexOf("Pedali_3") !== -1 ||
+// // //   o.name.indexOf("Mirror_2") !== -1
+// // // ) {
+// // //   //  Елементи колеса покришка, шпиці, все решта
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0xffffff`),
+// // //   //   shininess: 30,
+// // //   // });
+// // // } else if (
+// // //   o.name.indexOf("Cep") !== -1
+// // // ) {
+// // //   //  Елементи колеса покришка, шпиці, все решта
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0x191919`),
+// // //   //   shininess: 30,
+// // //   // });
+// } else {
+// // o.material = new THREE.MeshPhongMaterial({
+// //   color: parseInt("0x438AAC"),
+// //   shininess: 30,
+// //   specular: 0x222222,
+// // });
+// // console.log(o);
+// }
 
 /***/ }),
 
@@ -52210,27 +52405,14 @@ if (field_inputs.length > 0) {
 /*!***********************************************************!*\
   !*** ../components/interface/form/elements/list/index.js ***!
   \***********************************************************/
-/*! exports provided: onClickCheckboxOptions */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickCheckboxOptions", function() { return onClickCheckboxOptions; });
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/interface/form/elements/list/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
-function onClickCheckboxOptions() {
-  $(".form_box__item").on("click", function () {
-    $(this).toggleClass("form_box__item-active");
-    var item_input = $(this).find("input");
-
-    if (item_input.prop("checked") == true) {
-      item_input.prop("checked", false);
-    } else {
-      item_input.prop("checked", true);
-    }
-  });
-}
 $(".form_box__item").on("click", function () {
   $(this).toggleClass("form_box__item-active");
   var item_input = $(this).find("input");
@@ -52655,6 +52837,15 @@ var color_object = [{
 }, {
   value_id: "yelow",
   value: "#bc0a0a"
+}, {
+  value_id: "green_small",
+  value: "#90d52d"
+}, {
+  value_id: "porpul",
+  value: "#da277c"
+}, {
+  value_id: "blue_small",
+  value: "#32a1b5"
 }];
 var default_value = {
   iframe: {
@@ -52716,14 +52907,14 @@ var default_value = {
               values: [{
                 name: "Мото",
                 price: "350 грн",
-                value_id: "3211"
+                value_id: "moto"
               }, {
                 name: "Вело",
                 price: "320 грн",
-                value_id: "1123"
+                value_id: "velo"
               }]
             }, {
-              name: "Колір панелей",
+              name: "Колір сидіння",
               type: "radio_color",
               code: "seat_type_color",
               values: color_object
@@ -52813,8 +53004,8 @@ var default_value = {
             name: "Гальма",
             parameters: [{
               name: "Тип гальм",
-              type: "radio_img",
-              code: "brake_type",
+              type: "radio_small",
+              code: "break_type",
               values: [{
                 name: "Мото",
                 price: "350 грн",
@@ -52904,6 +53095,10 @@ var default_value = {
                 name: "GPS трекер",
                 price: "350 грн",
                 value_code: "gps_tracker"
+              }, {
+                name: "Дзеркала",
+                price: "350 грн",
+                value_code: "mirror"
               }, {
                 name: "Дзеркала",
                 price: "350 грн",
@@ -53756,7 +53951,7 @@ var createColor = function createColor(properte) {
 };
 var createRadioSmal = function createRadioSmal(properte) {
   // console.log(properte );
-  return " <div class=\"form__radio\"  data-value=\"".concat(properte.value_id, "\">\n    <div class=\"form__radio_check\"></div>\n    <div class=\"form__radio_main\">\n      <div class=\"form__radio_title\">").concat(properte.name, "</div>\n      <div class=\"form__radio_price\">").concat(properte.price, "</div>\n    </div>\n  </div>");
+  return " <div class=\"form__radio\"  data-value=\"".concat(properte.value_id, "\">\n    <div class=\"form__radio_check\"></div>\n    <div class=\"form__radio_main\">\n      <div class=\"form__radio_title\">").concat(properte.name, "</div>\n      <div class=\"form__radio_price\">").concat(properte.price, "</div>\n    </div> \n  </div>");
 };
 var createRadioImg = function createRadioImg(properte) {
   return "<div class=\"settings__card\">\n    <div class=\"settings__card_img\">\n      <img\n        src=\"".concat(properte.img_value, "\"\n        alt=\"\"\n      />\n    </div>\n    <div class=\"form__radio\" data-childrens=").concat(JSON.stringify(properte.childrens_group), " data-value=\"").concat(properte.value_id, "\">\n      <div class=\"form__radio_check\"></div>\n      <div class=\"form__radio_main\">\n        <div class=\"form__radio_title\">").concat(properte.name, "</div>\n        <div class=\"form__radio_price\">").concat(properte.price, "</div>\n      </div>\n    </div>\n  </div>");
@@ -53781,7 +53976,7 @@ var checkCardType = function checkCardType(item) {
     item.values.map(function (item) {
       obj.elemens += createRadioSmal(item);
     });
-    obj.tupeBox = "settings__box_main-card";
+    obj.tupeBox = "settings__box_main-radio";
   } else if (item.type === "checkbox_options") {
     item.values.map(function (item) {
       obj.elemens += createCheckboxOptions(item);
@@ -53798,7 +53993,7 @@ var checkCardType = function checkCardType(item) {
 /*!***************************************************************!*\
   !*** ../components/pages/constructor_setings/helpersEvent.js ***!
   \***************************************************************/
-/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections */
+/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, onClickCheckboxOptions */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53809,6 +54004,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onChengeRadioV1", function() { return onChengeRadioV1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearGroup", function() { return clearGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "childrensСonnections", function() { return childrensСonnections; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickCheckboxOptions", function() { return onClickCheckboxOptions; });
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -53845,6 +54041,12 @@ var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
     neighboringElements.removeClass("form__radio-active");
     cardFormRadio.addClass("form__radio-active");
     paretnConteiner.children("input[type=hidden]").val(value);
+    var input_name = paretnConteiner.children("input[type=hidden]")[0];
+
+    if (!!input_name && input_name.name != 'iframe_type') {
+      var string_params = $(".constructor_setings").serializeArray();
+      chengePrice(string_params);
+    }
   });
 };
 var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
@@ -53853,6 +54055,9 @@ var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
       var value = $(this).data("value");
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
     }
+
+    var string_params = $(".constructor_setings").serializeArray();
+    chengePrice(string_params);
   });
 };
 var clearGroup = function clearGroup(className) {
@@ -53896,6 +54101,40 @@ var childrensСonnections = function childrensСonnections(children_element) {
   }
 };
 
+function chengePrice(data) {
+  var objectParameter = {};
+  data.map(function (item) {
+    if (item.name != 'undefined') {
+      objectParameter[item.name] = item.value;
+    }
+  }); // fetch(url_form, {
+  //   method: current_method,
+  //   body: JSON.stringify(objectParameter),
+  // })
+  // .then(data => {
+  // })
+
+  setTimeout(function () {
+    $('.settings__parameters_navigation').find('.price').children('.value').text('121 340грн');
+  }, 1000);
+}
+
+function onClickCheckboxOptions() {
+  $(".form_box__item").on("click", function () {
+    $(this).toggleClass("form_box__item-active");
+    var item_input = $(this).find("input");
+
+    if (item_input.prop("checked") == true) {
+      item_input.prop("checked", false);
+    } else {
+      item_input.prop("checked", true);
+    }
+
+    var string_params = $(".constructor_setings").serializeArray();
+    chengePrice(string_params);
+  });
+}
+
 /***/ }),
 
 /***/ "../components/pages/constructor_setings/index.js":
@@ -53911,11 +54150,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _module_constructor_default_value__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../module/constructor/default_value */ "../components/module/constructor/default_value.js");
 /* harmony import */ var _interface_form_elements_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../interface/form/elements/color */ "../components/interface/form/elements/color/index.js");
-/* harmony import */ var _interface_form_elements_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../interface/form/elements/list */ "../components/interface/form/elements/list/index.js");
-/* harmony import */ var _interface_form_elements_radio_v1__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../interface/form/elements/radio_v1 */ "../components/interface/form/elements/radio_v1/index.js");
-/* harmony import */ var _helpersEvent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpersEvent */ "../components/pages/constructor_setings/helpersEvent.js");
-/* harmony import */ var _helperCreate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./helperCreate */ "../components/pages/constructor_setings/helperCreate.js");
-/* harmony import */ var _common_componentc_modell_helper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common_componentc/modell/helper */ "../components/common_componentc/modell/helper.js");
+/* harmony import */ var _interface_form_elements_radio_v1__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../interface/form/elements/radio_v1 */ "../components/interface/form/elements/radio_v1/index.js");
+/* harmony import */ var _helpersEvent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./helpersEvent */ "../components/pages/constructor_setings/helpersEvent.js");
+/* harmony import */ var _helperCreate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helperCreate */ "../components/pages/constructor_setings/helperCreate.js");
+/* harmony import */ var _common_componentc_modell_helper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common_componentc/modell/helper */ "../components/common_componentc/modell/helper.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -53930,7 +54168,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
-
+ // import { onClickCheckboxOptions } from "../../interface/form/elements/list";
 
 
 
@@ -53942,30 +54180,30 @@ function onChengeIframe() {
   $(".settings__card-iframe").on("click", function () {
     var type_iframe = $(this).children(".form__radio").data("value");
     var info_bike;
-    Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["onLoadInfoActive"])();
+    Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onLoadInfoActive"])();
     setTimeout(function () {
-      info_bike = _module_constructor_default_value__WEBPACK_IMPORTED_MODULE_1__["default_value"].iframe_type[type_iframe];
-      console.log(_module_constructor_default_value__WEBPACK_IMPORTED_MODULE_1__["default_value"]);
+      info_bike = _module_constructor_default_value__WEBPACK_IMPORTED_MODULE_1__["default_value"].iframe_type[type_iframe]; // console.log(default_value);
+
       var info_tab_1 = info_bike.properties.tab_1.group;
       var info_tab_2 = info_bike.properties.tab_2.group;
       var info_tab_3 = info_bike.properties.tab_3.group;
-      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["clearGroup"])('[data-tab_main="1"]');
-      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["clearGroup"])('[data-tab_main="2"]');
-      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["clearGroup"])('[data-tab_main="3"]');
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="1"]');
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="2"]');
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="3"]');
       $('[data-tab_main="1"]')[0].innerHTML += createGrooup(info_tab_1, info_bike.properties.tab_1.name_section);
       $('[data-tab_main="2"]')[0].innerHTML += createGrooup(info_tab_2, info_bike.properties.tab_2.name_section);
       $('[data-tab_main="3"]')[0].innerHTML += createGrooup(info_tab_3, info_bike.properties.tab_3.name_section);
       Object(_interface_form_elements_color__WEBPACK_IMPORTED_MODULE_2__["form_color"])(".form__color");
-      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["onClickSettingsCardImg"])(".settings__box_main");
-      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["onClickSettingsCardImg"])(".settings__box_main1");
-      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["onChengeRadioV1"])(".settings__box_main");
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickSettingsCardImg"])(".settings__box_main1", false);
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickSettingsCardImg"])(".settings__box_main");
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeRadioV1"])(".settings__box_main");
       onClickSettingsColor();
       SettingsInput();
-      Object(_interface_form_elements_list__WEBPACK_IMPORTED_MODULE_3__["onClickCheckboxOptions"])();
-      Object(_interface_form_elements_radio_v1__WEBPACK_IMPORTED_MODULE_4__["onClickRadio_v1"])();
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickCheckboxOptions"])();
+      Object(_interface_form_elements_radio_v1__WEBPACK_IMPORTED_MODULE_3__["onClickRadio_v1"])();
       onChengeIframe();
       onSelectFirstItem();
-      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["onLoadInfoRemote"])();
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onLoadInfoRemote"])();
       onBackMobile();
       onChengeSetingsHeight();
     }, 1000);
@@ -53976,7 +54214,24 @@ onChengeIframe();
 $(".vizual_3d").on("click", function () {
   var string_params = $(".constructor_setings").serializeArray();
   console.log(string_params);
-  window.location.href = "/page2/?".concat(Object(_common_componentc_modell_helper__WEBPACK_IMPORTED_MODULE_7__["params"])(string_params));
+  window.location.href = "/page2/?".concat(Object(_common_componentc_modell_helper__WEBPACK_IMPORTED_MODULE_6__["params"])(string_params));
+});
+$(".next_tab").on("click", function () {
+  console.log("next_tab");
+  var activeTab = $(".settings__parameters-active").data("tab_main");
+  activeTab++;
+
+  if (activeTab > 3) {
+    activeTab = 1;
+  }
+
+  $(".settings__parameters").removeClass("settings__parameters-active");
+  $(".settings__category").removeClass("settings__category-active");
+  $("[data-tab_main=\"".concat(activeTab, "\"]")).addClass("settings__parameters-active");
+  $("[data-tab_header=\"".concat(activeTab, "\"]")).addClass("settings__category-active");
+  setTimeout(function () {
+    onChengeSetingsHeight();
+  }, 400);
 });
 
 function onSelectFirstItem() {
@@ -54001,7 +54256,7 @@ function onSelectFirstItem() {
           var children_element = element.data("childrens");
           var elementValue = element.data("value");
           $(element).parents(".settings__box_main").children("input[type=hidden]").val(elementValue);
-          Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["childrensСonnections"])(children_element);
+          Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["childrensСonnections"])(children_element);
         }
       }
     } else if ($(item).hasClass("settings__box_main-color")) {
@@ -54035,15 +54290,14 @@ function SettingsInput() {
 function createGrooup(groups, name_section) {
   var settingsParameters = "";
   groups.map(function (group) {
-    settingsParameters += Object(_helperCreate__WEBPACK_IMPORTED_MODULE_6__["creatingSettings"])(group);
+    settingsParameters += Object(_helperCreate__WEBPACK_IMPORTED_MODULE_5__["creatingSettings"])(group);
   });
   var GroupBox = "\n  <div>\n ".concat(!!name_section ? " <div class=\"settings__group_back\">\n <div class=\"settings__group_back-icons\">\n   <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25\" height=\"15\" viewBox=\"0 0 25 15\">\n     <path fill=\"#1B1813\" fill-rule=\"evenodd\" d=\"M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z\"></path>\n   </svg>\n   </div>\n   <div class=\"\"> <div class=\"settings__group_title\">".concat(name_section, "</div></div>\n </div>") : "", "\n    <div>\n        ").concat(settingsParameters, "\n    </div>\n    \n  </div>\n  <div class=\"settings__parameters_foter\">\n      <div class=\"settings__parameters_next  btn_standart btn_standart_yellow color_white  \">\u0414\u0410\u041B\u0406</div>\n      <div class=\"settings__parameters_next btn_standart btn_standart_black color_white\">\u041F\u041E\u041A\u0410\u0417\u0410\u0422\u0418 \u0412 3D</div>\n    </div>\n  ");
   return GroupBox;
-}
+} // SettingsInput();
+// onClickSettingsCardImg(".settings__box_main1");
+// onClickSettingsCardImg(".settings__box_main");
 
-SettingsInput();
-Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["onClickSettingsCardImg"])(".settings__box_main");
-Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["onClickSettingsCardImg"])(".settings__box_main1");
 
 function onClickSettingsColor() {
   var form__color = _toConsumableArray($(".form__color"));
@@ -54072,7 +54326,7 @@ $(".settings__category").on("click", function () {
 });
 
 function onBackMobile() {
-  if ($(window).width() < 800) {
+  if ($(window).width() <= 800) {
     $(".settings__group_back").on("click", function () {
       $(".settings")[0].style.minHeight = 25 + "px";
       $(".settings__categories_wrap").addClass("settings__categories_wrap-active");
@@ -54088,9 +54342,8 @@ setTimeout(function () {
 function onChengeSetingsHeight() {
   console.log($(window).width());
 
-  if ($(window).width() < 800) {
-    console.log('213123');
-    var settings_heights = $(".settings__parameters_wrap").find('.settings__parameters-active').outerHeight();
+  if ($(window).width() <= 800) {
+    var settings_heights = $(".settings__parameters_wrap").find(".settings__parameters-active").outerHeight();
     console.log(settings_heights);
     $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
   }
@@ -54103,16 +54356,16 @@ startConstructor();
 
 function startConstructor() {
   Object(_interface_form_elements_color__WEBPACK_IMPORTED_MODULE_2__["form_color"])(".form__color");
-  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["onClickSettingsCardImg"])(".settings__box_main");
-  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["onClickSettingsCardImg"])(".settings__box_main1");
-  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["onChengeRadioV1"])(".settings__box_main");
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickSettingsCardImg"])(".settings__box_main1");
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickSettingsCardImg"])(".settings__box_main");
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeRadioV1"])(".settings__box_main");
   onClickSettingsColor();
   SettingsInput();
-  Object(_interface_form_elements_list__WEBPACK_IMPORTED_MODULE_3__["onClickCheckboxOptions"])();
-  Object(_interface_form_elements_radio_v1__WEBPACK_IMPORTED_MODULE_4__["onClickRadio_v1"])();
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickCheckboxOptions"])();
+  Object(_interface_form_elements_radio_v1__WEBPACK_IMPORTED_MODULE_3__["onClickRadio_v1"])();
   onChengeIframe();
   onSelectFirstItem();
-  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["onLoadInfoRemote"])();
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onLoadInfoRemote"])();
   onBackMobile();
 }
 

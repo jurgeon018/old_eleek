@@ -1,7 +1,7 @@
 import "./index.scss";
 import { default_value } from "../../module/constructor/default_value";
 import { form_color } from "../../interface/form/elements/color";
-import { onClickCheckboxOptions } from "../../interface/form/elements/list";
+// import { onClickCheckboxOptions } from "../../interface/form/elements/list";
 import { onClickRadio_v1 } from "../../interface/form/elements/radio_v1";
 import {
   onLoadInfoActive,
@@ -10,6 +10,7 @@ import {
   clearGroup,
   onChengeRadioV1,
   childrensСonnections,
+  onClickCheckboxOptions,
 } from "./helpersEvent";
 import { creatingSettings } from "./helperCreate";
 import { params } from "../../common_componentc/modell/helper";
@@ -26,7 +27,7 @@ function onChengeIframe() {
     setTimeout(function () {
       info_bike = default_value.iframe_type[type_iframe];
 
-      console.log(default_value);
+      // console.log(default_value);
 
       let info_tab_1 = info_bike.properties.tab_1.group;
       let info_tab_2 = info_bike.properties.tab_2.group;
@@ -49,9 +50,10 @@ function onChengeIframe() {
         info_bike.properties.tab_3.name_section
       );
 
+      
       form_color(".form__color");
+      onClickSettingsCardImg(".settings__box_main1", false);
       onClickSettingsCardImg(".settings__box_main");
-      onClickSettingsCardImg(".settings__box_main1");
       onChengeRadioV1(".settings__box_main");
       onClickSettingsColor();
       SettingsInput();
@@ -73,12 +75,31 @@ onChengeIframe();
 
 $(".vizual_3d").on("click", function () {
   let string_params = $(".constructor_setings").serializeArray();
- console.log(string_params );
- 
-  window.location.href =  `/page2/?${params(string_params)}`
+  console.log(string_params);
+
+  window.location.href = `/page2/?${params(string_params)}`;
 });
 
+$(".next_tab").on("click", function () {
+  console.log("next_tab");
 
+  let activeTab = $(".settings__parameters-active").data("tab_main");
+  activeTab++;
+
+  if (activeTab > 3) {
+    activeTab = 1;
+  }
+
+  $(`.settings__parameters`).removeClass("settings__parameters-active");
+  $(`.settings__category`).removeClass("settings__category-active");
+
+  $(`[data-tab_main="${activeTab}"]`).addClass("settings__parameters-active");
+  $(`[data-tab_header="${activeTab}"]`).addClass("settings__category-active");
+
+  setTimeout(function () {
+    onChengeSetingsHeight();
+  }, 400);
+});
 
 function onSelectFirstItem() {
   let settingsBox = [...$(".settings__box_main")];
@@ -175,10 +196,10 @@ function createGrooup(groups, name_section) {
   return GroupBox;
 }
 
-SettingsInput();
+// SettingsInput();
 
-onClickSettingsCardImg(".settings__box_main");
-onClickSettingsCardImg(".settings__box_main1");
+// onClickSettingsCardImg(".settings__box_main1");
+// onClickSettingsCardImg(".settings__box_main");
 
 function onClickSettingsColor() {
   let form__color = [...$(".form__color")];
@@ -212,14 +233,13 @@ $(".settings__category").on("click", function () {
     "settings__categories_wrap-active"
   );
 
- setTimeout(function(){
-  onChengeSetingsHeight();
- },400)
- 
+  setTimeout(function () {
+    onChengeSetingsHeight();
+  }, 400);
 });
 
 function onBackMobile() {
-  if ($(window).width() < 800) {
+  if ($(window).width() <= 800) {
     $(".settings__group_back").on("click", function () {
       $(".settings")[0].style.minHeight = 25 + "px";
 
@@ -228,28 +248,24 @@ function onBackMobile() {
       );
     });
   }
-
- 
 }
 onBackMobile();
- 
-setTimeout(function(){
-   
-  onChengeSetingsHeight()
-},300)
+
+setTimeout(function () {
+  onChengeSetingsHeight();
+}, 300);
 
 function onChengeSetingsHeight() {
-  console.log($(window).width() );
-  
-    if ($(window).width() < 800) {
-      console.log('213123' );
-      
-      let settings_heights = $(".settings__parameters_wrap").find('.settings__parameters-active').outerHeight();
-       console.log(settings_heights );
-       
-      $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
-    }
- 
+  console.log($(window).width());
+
+  if ($(window).width() <= 800) {
+    let settings_heights = $(".settings__parameters_wrap")
+      .find(".settings__parameters-active")
+      .outerHeight();
+    console.log(settings_heights);
+
+    $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
+  }
 }
 
 $(window).resize(function () {
@@ -259,21 +275,18 @@ $(window).resize(function () {
 startConstructor();
 
 function startConstructor() {
- 
   form_color(".form__color");
-  onClickSettingsCardImg(".settings__box_main");
   onClickSettingsCardImg(".settings__box_main1");
+  onClickSettingsCardImg(".settings__box_main");
   onChengeRadioV1(".settings__box_main");
   onClickSettingsColor();
   SettingsInput();
   onClickCheckboxOptions();
   onClickRadio_v1();
-  
+
   onChengeIframe();
   onSelectFirstItem();
-  
+
   onLoadInfoRemote();
   onBackMobile();
 }
-
-

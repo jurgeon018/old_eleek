@@ -87,9 +87,9 @@
 /******/ ({
 
 /***/ "../../node_modules/three/build/three.module.js":
-/*!**************************************************************************************************!*\
-  !*** /Users/macbook/Desktop/work/Projects/eleek/static/node_modules/three/build/three.module.js ***!
-  \**************************************************************************************************/
+/*!**************************************************************************************!*\
+  !*** /Users/air/Documents/GIT/eleek/static/node_modules/three/build/three.module.js ***!
+  \**************************************************************************************/
 /*! exports provided: ACESFilmicToneMapping, AddEquation, AddOperation, AdditiveAnimationBlendMode, AdditiveBlending, AlphaFormat, AlwaysDepth, AlwaysStencilFunc, AmbientLight, AmbientLightProbe, AnimationClip, AnimationLoader, AnimationMixer, AnimationObjectGroup, AnimationUtils, ArcCurve, ArrayCamera, ArrowHelper, Audio, AudioAnalyser, AudioContext, AudioListener, AudioLoader, AxesHelper, AxisHelper, BackSide, BasicDepthPacking, BasicShadowMap, BinaryTextureLoader, Bone, BooleanKeyframeTrack, BoundingBoxHelper, Box2, Box3, Box3Helper, BoxBufferGeometry, BoxGeometry, BoxHelper, BufferAttribute, BufferGeometry, BufferGeometryLoader, ByteType, Cache, Camera, CameraHelper, CanvasRenderer, CanvasTexture, CatmullRomCurve3, CineonToneMapping, CircleBufferGeometry, CircleGeometry, ClampToEdgeWrapping, Clock, ClosedSplineCurve3, Color, ColorKeyframeTrack, CompressedTexture, CompressedTextureLoader, ConeBufferGeometry, ConeGeometry, CubeCamera, CubeGeometry, CubeReflectionMapping, CubeRefractionMapping, CubeTexture, CubeTextureLoader, CubeUVReflectionMapping, CubeUVRefractionMapping, CubicBezierCurve, CubicBezierCurve3, CubicInterpolant, CullFaceBack, CullFaceFront, CullFaceFrontBack, CullFaceNone, Curve, CurvePath, CustomBlending, CustomToneMapping, CylinderBufferGeometry, CylinderGeometry, Cylindrical, DataTexture, DataTexture2DArray, DataTexture3D, DataTextureLoader, DecrementStencilOp, DecrementWrapStencilOp, DefaultLoadingManager, DepthFormat, DepthStencilFormat, DepthTexture, DirectionalLight, DirectionalLightHelper, DirectionalLightShadow, DiscreteInterpolant, DodecahedronBufferGeometry, DodecahedronGeometry, DoubleSide, DstAlphaFactor, DstColorFactor, DynamicBufferAttribute, DynamicCopyUsage, DynamicDrawUsage, DynamicReadUsage, EdgesGeometry, EdgesHelper, EllipseCurve, EqualDepth, EqualStencilFunc, EquirectangularReflectionMapping, EquirectangularRefractionMapping, Euler, EventDispatcher, ExtrudeBufferGeometry, ExtrudeGeometry, Face3, Face4, FaceColors, FileLoader, FlatShading, Float32Attribute, Float32BufferAttribute, Float64Attribute, Float64BufferAttribute, FloatType, Fog, FogExp2, Font, FontLoader, FrontSide, Frustum, GammaEncoding, Geometry, GeometryUtils, GreaterDepth, GreaterEqualDepth, GreaterEqualStencilFunc, GreaterStencilFunc, GridHelper, Group, HalfFloatType, HemisphereLight, HemisphereLightHelper, HemisphereLightProbe, IcosahedronBufferGeometry, IcosahedronGeometry, ImageBitmapLoader, ImageLoader, ImageUtils, ImmediateRenderObject, IncrementStencilOp, IncrementWrapStencilOp, InstancedBufferAttribute, InstancedBufferGeometry, InstancedInterleavedBuffer, InstancedMesh, Int16Attribute, Int16BufferAttribute, Int32Attribute, Int32BufferAttribute, Int8Attribute, Int8BufferAttribute, IntType, InterleavedBuffer, InterleavedBufferAttribute, Interpolant, InterpolateDiscrete, InterpolateLinear, InterpolateSmooth, InvertStencilOp, JSONLoader, KeepStencilOp, KeyframeTrack, LOD, LatheBufferGeometry, LatheGeometry, Layers, LensFlare, LessDepth, LessEqualDepth, LessEqualStencilFunc, LessStencilFunc, Light, LightProbe, LightShadow, Line, Line3, LineBasicMaterial, LineCurve, LineCurve3, LineDashedMaterial, LineLoop, LinePieces, LineSegments, LineStrip, LinearEncoding, LinearFilter, LinearInterpolant, LinearMipMapLinearFilter, LinearMipMapNearestFilter, LinearMipmapLinearFilter, LinearMipmapNearestFilter, LinearToneMapping, Loader, LoaderUtils, LoadingManager, LogLuvEncoding, LoopOnce, LoopPingPong, LoopRepeat, LuminanceAlphaFormat, LuminanceFormat, MOUSE, Material, MaterialLoader, Math, MathUtils, Matrix3, Matrix4, MaxEquation, Mesh, MeshBasicMaterial, MeshDepthMaterial, MeshDistanceMaterial, MeshFaceMaterial, MeshLambertMaterial, MeshMatcapMaterial, MeshNormalMaterial, MeshPhongMaterial, MeshPhysicalMaterial, MeshStandardMaterial, MeshToonMaterial, MinEquation, MirroredRepeatWrapping, MixOperation, MultiMaterial, MultiplyBlending, MultiplyOperation, NearestFilter, NearestMipMapLinearFilter, NearestMipMapNearestFilter, NearestMipmapLinearFilter, NearestMipmapNearestFilter, NeverDepth, NeverStencilFunc, NoBlending, NoColors, NoToneMapping, NormalAnimationBlendMode, NormalBlending, NotEqualDepth, NotEqualStencilFunc, NumberKeyframeTrack, Object3D, ObjectLoader, ObjectSpaceNormalMap, OctahedronBufferGeometry, OctahedronGeometry, OneFactor, OneMinusDstAlphaFactor, OneMinusDstColorFactor, OneMinusSrcAlphaFactor, OneMinusSrcColorFactor, OrthographicCamera, PCFShadowMap, PCFSoftShadowMap, PMREMGenerator, ParametricBufferGeometry, ParametricGeometry, Particle, ParticleBasicMaterial, ParticleSystem, ParticleSystemMaterial, Path, PerspectiveCamera, Plane, PlaneBufferGeometry, PlaneGeometry, PlaneHelper, PointCloud, PointCloudMaterial, PointLight, PointLightHelper, Points, PointsMaterial, PolarGridHelper, PolyhedronBufferGeometry, PolyhedronGeometry, PositionalAudio, PropertyBinding, PropertyMixer, QuadraticBezierCurve, QuadraticBezierCurve3, Quaternion, QuaternionKeyframeTrack, QuaternionLinearInterpolant, REVISION, RGBADepthPacking, RGBAFormat, RGBAIntegerFormat, RGBA_ASTC_10x10_Format, RGBA_ASTC_10x5_Format, RGBA_ASTC_10x6_Format, RGBA_ASTC_10x8_Format, RGBA_ASTC_12x10_Format, RGBA_ASTC_12x12_Format, RGBA_ASTC_4x4_Format, RGBA_ASTC_5x4_Format, RGBA_ASTC_5x5_Format, RGBA_ASTC_6x5_Format, RGBA_ASTC_6x6_Format, RGBA_ASTC_8x5_Format, RGBA_ASTC_8x6_Format, RGBA_ASTC_8x8_Format, RGBA_BPTC_Format, RGBA_ETC2_EAC_Format, RGBA_PVRTC_2BPPV1_Format, RGBA_PVRTC_4BPPV1_Format, RGBA_S3TC_DXT1_Format, RGBA_S3TC_DXT3_Format, RGBA_S3TC_DXT5_Format, RGBDEncoding, RGBEEncoding, RGBEFormat, RGBFormat, RGBIntegerFormat, RGBM16Encoding, RGBM7Encoding, RGB_ETC1_Format, RGB_ETC2_Format, RGB_PVRTC_2BPPV1_Format, RGB_PVRTC_4BPPV1_Format, RGB_S3TC_DXT1_Format, RGFormat, RGIntegerFormat, RawShaderMaterial, Ray, Raycaster, RectAreaLight, RedFormat, RedIntegerFormat, ReinhardToneMapping, RepeatWrapping, ReplaceStencilOp, ReverseSubtractEquation, RingBufferGeometry, RingGeometry, SRGB8_ALPHA8_ASTC_10x10_Format, SRGB8_ALPHA8_ASTC_10x5_Format, SRGB8_ALPHA8_ASTC_10x6_Format, SRGB8_ALPHA8_ASTC_10x8_Format, SRGB8_ALPHA8_ASTC_12x10_Format, SRGB8_ALPHA8_ASTC_12x12_Format, SRGB8_ALPHA8_ASTC_4x4_Format, SRGB8_ALPHA8_ASTC_5x4_Format, SRGB8_ALPHA8_ASTC_5x5_Format, SRGB8_ALPHA8_ASTC_6x5_Format, SRGB8_ALPHA8_ASTC_6x6_Format, SRGB8_ALPHA8_ASTC_8x5_Format, SRGB8_ALPHA8_ASTC_8x6_Format, SRGB8_ALPHA8_ASTC_8x8_Format, Scene, SceneUtils, ShaderChunk, ShaderLib, ShaderMaterial, ShadowMaterial, Shape, ShapeBufferGeometry, ShapeGeometry, ShapePath, ShapeUtils, ShortType, Skeleton, SkeletonHelper, SkinnedMesh, SmoothShading, Sphere, SphereBufferGeometry, SphereGeometry, Spherical, SphericalHarmonics3, Spline, SplineCurve, SplineCurve3, SpotLight, SpotLightHelper, SpotLightShadow, Sprite, SpriteMaterial, SrcAlphaFactor, SrcAlphaSaturateFactor, SrcColorFactor, StaticCopyUsage, StaticDrawUsage, StaticReadUsage, StereoCamera, StreamCopyUsage, StreamDrawUsage, StreamReadUsage, StringKeyframeTrack, SubtractEquation, SubtractiveBlending, TOUCH, TangentSpaceNormalMap, TetrahedronBufferGeometry, TetrahedronGeometry, TextBufferGeometry, TextGeometry, Texture, TextureLoader, TorusBufferGeometry, TorusGeometry, TorusKnotBufferGeometry, TorusKnotGeometry, Triangle, TriangleFanDrawMode, TriangleStripDrawMode, TrianglesDrawMode, TubeBufferGeometry, TubeGeometry, UVMapping, Uint16Attribute, Uint16BufferAttribute, Uint32Attribute, Uint32BufferAttribute, Uint8Attribute, Uint8BufferAttribute, Uint8ClampedAttribute, Uint8ClampedBufferAttribute, Uniform, UniformsLib, UniformsUtils, UnsignedByteType, UnsignedInt248Type, UnsignedIntType, UnsignedShort4444Type, UnsignedShort5551Type, UnsignedShort565Type, UnsignedShortType, VSMShadowMap, Vector2, Vector3, Vector4, VectorKeyframeTrack, Vertex, VertexColors, VideoTexture, WebGL1Renderer, WebGLCubeRenderTarget, WebGLMultisampleRenderTarget, WebGLRenderTarget, WebGLRenderTargetCube, WebGLRenderer, WebGLUtils, WireframeGeometry, WireframeHelper, WrapAroundEnding, XHRLoader, ZeroCurvatureEnding, ZeroFactor, ZeroSlopeEnding, ZeroStencilOp, sRGBEncoding */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -51342,9 +51342,9 @@ if ( typeof __THREE_DEVTOOLS__ !== 'undefined' ) {
 /***/ }),
 
 /***/ "../../node_modules/three/examples/jsm/controls/OrbitControls.js":
-/*!*******************************************************************************************************************!*\
-  !*** /Users/macbook/Desktop/work/Projects/eleek/static/node_modules/three/examples/jsm/controls/OrbitControls.js ***!
-  \*******************************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/air/Documents/GIT/eleek/static/node_modules/three/examples/jsm/controls/OrbitControls.js ***!
+  \*******************************************************************************************************/
 /*! exports provided: OrbitControls, MapControls */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -52529,9 +52529,9 @@ MapControls.prototype.constructor = MapControls;
 /***/ }),
 
 /***/ "../../node_modules/three/examples/jsm/loaders/GLTFLoader.js":
-/*!***************************************************************************************************************!*\
-  !*** /Users/macbook/Desktop/work/Projects/eleek/static/node_modules/three/examples/jsm/loaders/GLTFLoader.js ***!
-  \***************************************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** /Users/air/Documents/GIT/eleek/static/node_modules/three/examples/jsm/loaders/GLTFLoader.js ***!
+  \***************************************************************************************************/
 /*! exports provided: GLTFLoader */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -56145,9 +56145,9 @@ var GLTFLoader = ( function () {
 /***/ }),
 
 /***/ "../../node_modules/three/examples/jsm/loaders/OBJLoader.js":
-/*!**************************************************************************************************************!*\
-  !*** /Users/macbook/Desktop/work/Projects/eleek/static/node_modules/three/examples/jsm/loaders/OBJLoader.js ***!
-  \**************************************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** /Users/air/Documents/GIT/eleek/static/node_modules/three/examples/jsm/loaders/OBJLoader.js ***!
+  \**************************************************************************************************/
 /*! exports provided: OBJLoader */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -57620,32 +57620,227 @@ var params = function params(data) {
   // convert array => url
   return Object.keys(data).map(function (key) {
     return "".concat(data[key].name, "=").concat(encodeURIComponent(data[key].value));
-  }).join('&');
+  }).join("&");
 };
 var colorBike = function colorBike(model, config_model) {
   var bike = model;
+  console.log(config_model);
   bike.traverse(function (o) {
     if (o.isMesh) {
-      o.castShadow = true;
-      o.receiveShadow = true;
-    }
+      o.castShadow = true; // o.receiveShadow = true;
+      // console.log(o.material.name );
 
-    if (o.name.indexOf("Rama_1") !== -1 || o.name.indexOf("Motor_2") !== -1) {
-      // Рама і мотор
-      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
-        color: parseInt("0x".concat(config_model.iframe_color)),
-        shininess: 90
-      });
-    } else if (o.name.indexOf("Rama_2") !== -1) {
-      // Панелі на рамі
-      o.material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
-        color: parseInt("0x".concat(config_model.side_panels_colors)),
-        shininess: 90
-      });
-    } else {}
+      if (o.material.name.indexOf("Rama_1") !== -1) {
+        o.material.color.setHex("0x".concat(config_model.iframe_color));
+        o.material.metalness = 0.7;
+      } else if (o.material.name.indexOf("Seat_velo_2") !== -1 || o.material.name.indexOf("Seat_velo_3") !== -1 || o.material.name.indexOf("Seat_moto_2") !== -1) {
+        // Колір заліза сидіння
+        o.material.color.setHex("0x".concat(config_model.iframe_color));
+        o.material.metalness = 0.8;
+      } else if (o.material.name.indexOf("KolecoZ_2") !== -1 || o.material.name.indexOf("Koleco_2") !== -1 || o.material.name.indexOf("KolecoZ_3") !== -1 || o.material.name.indexOf("Koleco_3") !== -1) {
+        // Колір коліс
+        o.material.color.setHex("0x".concat(config_model.wheel_size_color));
+        o.material.metalness = 0.8;
+      } else if (o.material.name.indexOf("Seat_velo_1") !== -1 || o.material.name.indexOf("Seat_moto_1") !== -1) {
+        // Колір Сидіння
+        o.material.color.setHex("0x".concat(config_model.seat_type_color));
+        o.material.metalness = 0.1;
+      } else if (o.material.name.indexOf("Rama_2") !== -1) {
+        // Панелі на рамі
+        o.material.color.setHex("0x".concat(config_model.side_panels_colors));
+        console.log(o.material.metalness);
+        o.material.metalness = 0.3;
+      } else {
+        console.log(o.name);
+      }
+
+      console.log(config_model.seat_type);
+
+      if (o.material.name.indexOf("Seat_moto_1") !== -1 || o.material.name.indexOf("Seat_moto_2") !== -1) {
+        if (!!config_model.seat_type) {
+          if (config_model.seat_type === "moto") {
+            o.visible = true;
+          } else {
+            o.visible = false;
+          }
+        }
+      } else if (o.material.name.indexOf("Seat_velo_1") !== -1 || o.material.name.indexOf("Seat_velo_2") !== -1 || o.material.name.indexOf("Seat_velo_3") !== -1) {
+        if (!!config_model.seat_type) {
+          if (config_model.seat_type === "velo") {
+            o.visible = true;
+          } else {
+            o.visible = false;
+          }
+        }
+      } else if (o.material.name.indexOf("Bag") !== -1) {
+        console.log('Bag', o.name);
+        console.log(config_model.trunk);
+        console.log(config_model.trunk !== "undefined");
+
+        if (config_model.trunk !== "undefined") {
+          o.visible = false;
+        } else {
+          o.visible = true;
+        }
+      } else if (o.material.name.indexOf("Mud") !== -1) {
+        // console.log('Mud',o.name );
+        if (config_model.mud !== "undefined") {
+          o.visible = false;
+        } else {
+          o.visible = true;
+        }
+      } else if (o.material.name.indexOf("Mirror_1") !== -1 || o.material.name.indexOf("Mirror_2") !== -1) {
+        console.log('Mirror', o.name);
+
+        if (config_model.mirror !== "undefined") {
+          o.visible = false;
+        } else {
+          o.visible = true;
+        }
+      } //  console.log(o.material.name );
+
+    }
   });
   return bike;
-};
+}; // if ( o.material.name.indexOf("Rama_1") !== -1
+// // o.name.indexOf("Motor_2") !== -1 ||
+// // o.name.indexOf("Motor_2") !== -1 ||
+// // o.name.indexOf("KolecoZ_4") !== -1 ||
+// // o.name.indexOf("Bag") !== -1 ||
+// // o.name.indexOf("Rul_1") !== -1 ||
+// // o.name.indexOf("Mirror_1") !== -1 ||
+// // o.name.indexOf("Break_3") !== -1 ||
+// // o.name.indexOf("Mud") !== -1
+// ) {
+// //   console.log(o );
+// //   // Рама і мотор
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.iframe_color}`),
+// //   //   shininess: 190,
+// //   // });
+// // // } else if (o.name.indexOf("Rama_2") !== -1) {
+// //   // Панелі на рамі
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.side_panels_colors}`),
+// //   //   shininess: 90,
+// //   // });
+// // // } else if (
+// //   // o.name.indexOf("Seat_velo_2") !== -1 ||
+// //   // o.name.indexOf("Seat_velo_3") !== -1 ||
+// //   // o.name.indexOf("Seat_moto_2") !== -1
+// // // ) {
+// //   // Колір заліха сидіння
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.iframe_color}`),
+// //   //   shininess: 90,
+// //   // });
+// // // } else if (o.name.indexOf("Seat_velo_1") !== -1) {
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.seat_type_color}`),
+// //   //   shininess: 90,
+// //   // });
+// //   // Вело сеління
+// // // } else if (o.name.indexOf("Seat_moto_1") !== -1) {
+// //   // Мото сеління
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.seat_type_color}`),
+// //   //   shininess: 90,
+// //   // });
+// // // } else if (o.name.indexOf("Amort") !== -1) {
+// //   // Амортизатор
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.fork_type_color}`),
+// //   //   shininess: 90,
+// //   // });
+// // // } else if (
+// //   // o.name.indexOf("KolecoZ_2") !== -1 ||
+// //   // o.name.indexOf("Koleco_2") !== -1 ||
+// //   // o.name.indexOf("KolecoZ_3") !== -1 ||
+// //   // o.name.indexOf("Koleco_3") !== -1
+// // // ) {
+// //   // Амортизатор
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.wheel_size_color}`),
+// //   //   shininess: 90,
+// //   // });
+// // // } else if (
+// //   // o.name.indexOf("Vulka_1") !== -1 ||
+// //   // o.name.indexOf("Vulka_3") !== -1
+// // // ) {
+// //   // Амортизатор
+// //   // o.material = new THREE.MeshPhongMaterial({
+// //   //   color: parseInt(`0x${config_model.fork_type_color}`),
+// //   //   shininess: 90,
+// //   // });
+// // // } else if (
+// // //   o.name.indexOf("Rul_3") !== -1 ||
+// // //   o.name.indexOf("Pedali_2") !== -1
+// // // ) {
+// // //   // Педаль
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0x2626263`),
+// // //   //   shininess: 90,
+// // //   // });
+// // // } else if (o.name.indexOf("Rama_4") !== -1) {
+// // //   //  Заглушки
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0x252525`),
+// // //   //   shininess: 90,
+// // //   // });
+// // // } else if (
+// // //   o.name.indexOf("Rama_4") !== -1 ||
+// // //   o.name.indexOf("Vulka_2") !== -1
+// // // ) {
+// // //   //  Заглушки,Перемикачі болти
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0x191919`),
+// // //   //   shininess: 90,
+// // //   // });
+// // // } else if (
+// // //   o.name.indexOf("Koleco_1") !== -1 ||
+// // //   o.name.indexOf("KolecoZ_1") !== -1 ||
+// // //   o.name.indexOf("Pedali_1") !== -1
+// // // ) {
+// // //   //  Елементи колеса покришка,педалі гума
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0x262626`),
+// // //   //   shininess: 90,
+// // //   // });
+// // // } else if (
+// // //   // o.name.indexOf("Pedali_3") !== -1 ||
+// // //   o.name.indexOf("Rul_4") !== -1 ||
+// // //   o.name.indexOf("Rama_3") !== -1
+// // // ) {
+// // //   //  Елементи колеса покришка, шпиці, все решта
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0x9f9f9f`),
+// // //   //   shininess: 90,
+// // //   // });
+// // // } else if (
+// // //   // o.name.indexOf("Pedali_3") !== -1 ||
+// // //   o.name.indexOf("Mirror_2") !== -1
+// // // ) {
+// // //   //  Елементи колеса покришка, шпиці, все решта
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0xffffff`),
+// // //   //   shininess: 30,
+// // //   // });
+// // // } else if (
+// // //   o.name.indexOf("Cep") !== -1
+// // // ) {
+// // //   //  Елементи колеса покришка, шпиці, все решта
+// // //   // o.material = new THREE.MeshPhongMaterial({
+// // //   //   color: parseInt(`0x191919`),
+// // //   //   shininess: 30,
+// // //   // });
+// } else {
+// // o.material = new THREE.MeshPhongMaterial({
+// //   color: parseInt("0x438AAC"),
+// //   shininess: 30,
+// //   specular: 0x222222,
+// // });
+// // console.log(o);
+// }
 
 /***/ }),
 
@@ -57679,17 +57874,22 @@ params_search.map(function (item) {
 });
 
 if (config_model.iframe_type === "Pozitiff") {
-  config_model['url'] = "/static/source/model/Pozitif_v11.glb";
+  config_model["url"] = "/static/source/model/Pozitif_v1.gltf";
 } else if (config_model.iframe_type === "Neo") {
-  config_model['url'] = "/static/source/model/Neo_v23.glb";
+  config_model["url"] = "/static/source/model/Neo_v1.gltf";
 } else if (config_model.iframe_type === "Ekross") {
-  config_model['url'] = "/static/source/model/Ekros_saturn_26_v1.glb";
+  config_model["url"] = "/static/source/model/Ekros_v1.gltf";
+} else {
+  config_model["url"] = "/static/source/model/E1kros_v1.gltf";
 }
 
-$('.views__back').on('click', function () {
-  // console.log(window.location );
+$(".views__back").on("click", function () {
+  var back_url = Object.keys(config_model).map(function (key) {
+    return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
+  }).join("&"); // console.log(window.location );
   // console.log(window.location.search );
-  window.location.href = "/page1/?".concat(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["params"])(config_model));
+
+  window.location.href = "/page1/?".concat(back_url);
 }); /////||||///////
 /////||||///////
 /////||||///////
@@ -57700,11 +57900,11 @@ $('.views__back').on('click', function () {
 /////||||///////
 //////||////////
 ////////////////
-// RENDER 3D 
-// RENDER 3D 
-// RENDER 3D 
-// RENDER 3D 
-// RENDER 3D 
+// RENDER 3D
+// RENDER 3D
+// RENDER 3D
+// RENDER 3D
+// RENDER 3D
 
 var container;
 var rotateSpeed = 0;
@@ -57713,11 +57913,11 @@ var views__visual_left = false;
 var camera, scene, renderer, hemiLightHelper, dirLightHeper, theModel;
 var mouseX = 0,
     mouseY = 0;
-var views__visula_3d = document.getElementsByClassName('views__visula_3d')[0];
+var views__visula_3d = document.getElementsByClassName("views__visula_3d")[0];
 var windowHalfX = views__visula_3d.offsetWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 var INITIAL_MTL = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
-  color: 0xf1f1f1,
+  color: 0xb4b4b4,
   shininess: 10
 });
 var object;
@@ -57726,105 +57926,46 @@ animate();
 
 function init() {
   container = document.createElement("div");
-  document.getElementsByClassName('views__visula_3d')[0].appendChild(container);
+  document.getElementsByClassName("views__visula_3d")[0].appendChild(container);
   console.log(views__visula_3d.offsetWidth);
   camera = new three__WEBPACK_IMPORTED_MODULE_0__["PerspectiveCamera"](60, views__visula_3d.offsetWidth / window.innerHeight, 1, 2000);
   camera.position.z = 170;
   camera.position.y = 80;
   scene = new three__WEBPACK_IMPORTED_MODULE_0__["Scene"]();
-  scene.background = new three__WEBPACK_IMPORTED_MODULE_0__["Color"](0xdfdfdf);
-  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__["Fog"](0xdfdfdf, 100, 1200); // Init the object loader
+  scene.background = new three__WEBPACK_IMPORTED_MODULE_0__["Color"]("0xffffff");
+  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__["Fog"](0xb4b4b4, 100, 1200); // Init the object loader
 
   var loader = new three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_2__["GLTFLoader"]();
-  console.log(config_model);
-  loader.load(config_model.url, // "/static/source/model/Neo_v20.glb",
-  function (gltf) {
+  loader.load(config_model.url, function (gltf) {
+    console.log(gltf);
     theModel = gltf.scene;
     console.log(theModel);
     var flag = 0; // Set the models initial scale
 
-    theModel.scale.set(0.05, 0.05, 0.05); // theModel.position.y = 13;
-
-    theModel.rotation.y = -Math.PI / 2 + 40;
-    var theModelColor = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["colorBike"])(theModel, config_model); // theModelColor.traverse((o) => {
-    //   if (o.isMesh) {
-    //     o.castShadow = true;
-    //     o.receiveShadow = true;
-    //   }
-    //   if (o.name.indexOf("Rama_1") !== -1  !== -1 || o.name.indexOf("Motor_2") !== -1) {
-    //    // Рама і мотор
-    //     // o.material = new THREE.MeshPhongMaterial({
-    //     //   // color: parseInt(`0x${config_model.iframe_color}`),
-    //     //   shininess: 90,
-    //     // });
-    //   // } else if ( o.name.indexOf("Rama_2") !== -1) {
-    //   //   // Панелі на рамі
-    //   //   o.material = new THREE.MeshPhongMaterial({
-    //   //     color: parseInt(`0x${config_model.side_panels_colors}`),
-    //   //     shininess: 90,
-    //   //   });
-    //   // } else if (o.name.indexOf("Seat_velo_1") !== -1 || o.name.indexOf("Seat_velo_2") !== -1 || o.name.indexOf("Seat_velo_3") !== -1  ) {
-    //   //   // Вело сеління
-    //   //   o.visible = false;
-    //   // } else if (o.name.indexOf("Seat_moto_2") !== -1 || o.name.indexOf("Seat_velo_2") !== -1 || o.name.indexOf("Seat_velo_3") !== -1  ) {
-    //   //   // Вело сеління
-    //   //   o.visible = false;
-    //   // } else if ( o.name.indexOf("Koleco_2") !== -1 || o.name.indexOf("KolecoZ_2") !== -1
-    //   // ) {
-    //   //   o.material = new THREE.MeshPhongMaterial({
-    //   //     color: parseInt(`0x${config_model.fork_type_color}`),
-    //   //     // shininess: 150,
-    //   //     // specular: 0x222222,
-    //   //   });
-    //   // } else if (
-    //   //   o.name.indexOf("Koleco_3") !== -1 ||
-    //   //   o.name.indexOf("KolecoZ_3") !== -1
-    //   // ) {
-    //   //   o.material = new THREE.MeshPhongMaterial({
-    //   //     color: parseInt(`0x${config_model.wheel_size_color}`),
-    //   //     shininess: 150,
-    //   //     specular: 0x222222,
-    //   //   });
-    //   // } else if (o.name.indexOf("Vulka_1") !== -1 || o.name.indexOf("Vulka_3") !== -1) {
-    //   //   o.material = new THREE.MeshPhongMaterial({
-    //   //     color: parseInt( `0x${config_model.fork_type_color}`),
-    //   //     shininess: 150,
-    //   //     specular: 0x222222,
-    //   //   });
-    //   // } else if (o.name.indexOf("Amort") !== -1) {
-    //   //   o.material = new THREE.MeshPhongMaterial({
-    //   //     color: parseInt("0x119911"),
-    //   //     shininess: 150,
-    //   //     specular: 0x222222,
-    //   //   });
-    //   // } else if (o.name.indexOf("Rama_4") !== -1) {
-    //   //   o.material = new THREE.MeshPhongMaterial({
-    //   //     color: parseInt("0x0f0f0f"),
-    //   //     shininess: 150,
-    //   //     specular: 0x222222,
-    //   //   });
-    //   }  else {
-    //     o.material = new THREE.MeshPhongMaterial({
-    //       color: parseInt("0x438AAC"),
-    //       shininess: 30,
-    //       specular: 0x222222,
-    //     });
-    //     console.log(o.name );
-    //   }
-    //   flag++;
-    // });
-
+    theModel.scale.set(0.05, 0.05, 0.05);
+    theModel.children[0].visible = false;
+    var theModelColor = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["colorBike"])(theModel, config_model);
     scene.add(theModelColor);
   }, undefined, function (error) {
     console.error(error);
-  }); // var geometry = new THREE.RingGeometry(64.8, 65, 120);
+  });
+  var cubeSize = 4;
+  var cubeGeo = new three__WEBPACK_IMPORTED_MODULE_0__["BoxBufferGeometry"](cubeSize, cubeSize, cubeSize);
+  var cubeMat = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+    color: "#8AC"
+  });
+  var mesh12 = new three__WEBPACK_IMPORTED_MODULE_0__["Mesh"](cubeGeo, cubeMat);
+  mesh12.castShadow = true; // mesh12.receiveShadow = true;
+
+  mesh12.position.set(cubeSize + 1, cubeSize / 2, 0);
+  scene.add(mesh12); // var geometry = new THREE.RingGeometry(64.8, 65, 120);
   // var material = new THREE.MeshBasicMaterial({
   //   color: 0x292929,
   //   side: THREE.DoubleSide,
   // });
   // var mesh = new THREE.Mesh(geometry, material);
   // mesh.up.x = 2;
-  // // mesh.rotateX( addCircleToBacground);  
+  // // mesh.rotateX( addCircleToBacground);
   // scene.add(mesh);
 
   console.log(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(69.8, 70, 120));
@@ -57837,26 +57978,30 @@ function init() {
   scene.add(hemiLight); //Create a DirectionalLight and turn on shadows for the light
 
   var light = new three__WEBPACK_IMPORTED_MODULE_0__["DirectionalLight"](0xffffff, 1, 100);
-  light.position.set(-450, 400, 120); //default; light shining from top
+  light.position.set(-100, 100, 100); //default; light shining from top
+
+  light.intensity = 600; // default false
 
   light.castShadow = true; // default false
 
   scene.add(light);
-  light.shadow.camera.top = 50;
-  light.shadow.camera.bottom = -60;
+  light.shadow.camera.top = 120;
+  light.shadow.camera.bottom = -50;
   light.shadow.camera.left = -70;
-  light.shadow.camera.right = 70; //Set up shadow properties for the light
+  light.shadow.camera.right = 70;
+  light.intensity = 1; //Set up shadow properties for the light
 
-  light.shadow.mapSize.width = 612; // default
+  light.shadow.mapSize.width = 1212; // default
 
-  light.shadow.mapSize.height = 612; // default
+  light.shadow.mapSize.height = 1212; // default
 
   light.shadow.camera.near = 0.5; // default
 
   light.shadow.camera.far = 700; // default
+  // console.log(light );
   // Floor
 
-  var floorGeometry = new three__WEBPACK_IMPORTED_MODULE_0__["PlaneGeometry"](5000, 5000, 1, 1);
+  var floorGeometry = new three__WEBPACK_IMPORTED_MODULE_0__["PlaneGeometry"](9000, 9000, 1, 1);
   var floorMaterial = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
     color: 0xf1f1f1,
     shininess: 0
@@ -57885,12 +58030,14 @@ function init() {
   controls.dampingFactor = 0.1;
   controls.autoRotate = false; // Toggle this if you'd like the chair to automatically rotate
 
-  controls.autoRotateSpeed = 0.2; // // Щар що відкидає тінь
+  controls.autoRotateSpeed = 0.2;
+  console.log(scene); // // Щар що відкидає тінь
   // HelperSphereShadows(scene);
   // //   Площина яка невідеидає тінь
   // HelperPlaneShadows(scene,light);
-  // // Помічник показує камеру для того зоб бачити куди буде падати тінь
+  // Помічник показує камеру для того зоб бачити куди буде падати тінь
   // HelperShadowCamera(scene, light.shadow.camera);
+  // HelperShadowCamera(scene, scene.shadow.camera);
   // // // Додає до сцени вісі кординат
   // HelperCordinates(scene, 40);
 
@@ -57898,14 +58045,40 @@ function init() {
   // var material123 = new THREE.MeshBasicMaterial( { color: 0x12ff00, side: THREE.DoubleSide } );
   // var mesh123 = new THREE.Mesh( geometry123, mesh123 );
 
-  $('.views__order_go').on('click', function () {
+  $(".views__order_go").on("click", function () {
     event.preventDefault();
-    $('.views__order').addClass('views__order-hidden');
-    $('.views__parameter').addClass('views__parameter-active');
-    $('.views__visual').addClass('views__visual-compress');
-    setTimeout(function () {
-      onWindowResize();
-    }, 300); // resizeRendererToDisplaySize();
+    $(".views__parameter_wrap").addClass("views__parameter_wrap-active");
+    $(".views__order").addClass("views__order-hidden");
+
+    if ($(window).width() > 992) {
+      $(".views__visual").addClass("views__visual-compress");
+      setTimeout(function () {
+        onWindowResize();
+      }, 300);
+    } // resizeRendererToDisplaySize();
+
+  });
+  $('.views__parameter_close').on('click', function () {
+    $(".views__order").removeClass("views__order-hidden");
+    $(".views__parameter_wrap").removeClass("views__parameter_wrap-active");
+    $(".views__visual").removeClass("views__visual-compress");
+
+    if ($(window).width() > 992) {
+      setTimeout(function () {
+        onWindowResize();
+      }, 300);
+    }
+  });
+  $('.views__parameter_back').on('click', function () {
+    $(".views__order").removeClass("views__order-hidden");
+    $(".views__parameter_wrap").removeClass("views__parameter_wrap-active");
+    $(".views__visual").removeClass("views__visual-compress");
+
+    if ($(window).width() > 992) {
+      setTimeout(function () {
+        onWindowResize();
+      }, 300);
+    }
   }); // scene.add( mesh123 );
 }
 
@@ -57945,28 +58118,59 @@ function animate() {
   }
 
   if (views__visual_left) {
-    theModel.rotation.y += Math.PI / 180;
+    theModel.children[2].rotation.z += Math.PI / 180;
   }
 
   if (views__visual_right) {
-    theModel.rotation.y -= Math.PI / 180;
+    theModel.children[2].rotation.z -= Math.PI / 180;
   }
 
   renderer.render(scene, camera);
 }
 
-$('.views__visual_left')[0].addEventListener('mousedown', function () {
+$(".views__visual_left")[0].addEventListener("mousedown", function () {
   return views__visual_left = true;
 }, false);
-$('.views__visual_left')[0].addEventListener('mouseup', function () {
-  return views__visual_left = false;
-}, false);
-$('.views__visual_right')[0].addEventListener('mousedown', function () {
+$(".views__visual_right")[0].addEventListener("mousedown", function () {
   return views__visual_right = true;
 }, false);
-$('.views__visual_right')[0].addEventListener('mouseup', function () {
+$(".views__visual_left")[0].addEventListener("mouseup", function () {
+  return views__visual_left = false;
+}, false);
+$(".views__visual_right")[0].addEventListener("mouseup", function () {
   return views__visual_right = false;
 }, false);
+window.addEventListener('mouseup', function (event) {
+  views__visual_left = false;
+  views__visual_right = false;
+});
+$(".form_box__item").on("click", function () {
+  if ($(this).find('input[type="checkbox"]')[0].name === "mirrors") {
+    var valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
+    theModel.children[2].children.map(function (item) {
+      // багажник
+      if (item.material.name.indexOf("Mirror_1") !== -1 || item.material.name.indexOf("Mirror_2") !== -1) {
+        item.visible = valueChecked;
+      }
+    });
+  } else if ($(this).find('input[type="checkbox"]')[0].name === "mud") {
+    var _valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
+    theModel.children[2].children.map(function (item) {
+      // багажник
+      if (item.material.name.indexOf("Mud") !== -1) {
+        item.visible = _valueChecked;
+      }
+    });
+  } else if ($(this).find('input[type="checkbox"]')[0].name === "trunk") {
+    var _valueChecked2 = $(this).find('input[type="checkbox"]')[0].checked;
+    theModel.children[2].children.map(function (item) {
+      // багажник
+      if (item.material.name.indexOf("Bag") !== -1) {
+        item.visible = _valueChecked2;
+      }
+    });
+  }
+});
 
 /***/ }),
 
@@ -58222,27 +58426,14 @@ if (field_inputs.length > 0) {
 /*!***********************************************************!*\
   !*** ../components/interface/form/elements/list/index.js ***!
   \***********************************************************/
-/*! exports provided: onClickCheckboxOptions */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickCheckboxOptions", function() { return onClickCheckboxOptions; });
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/interface/form/elements/list/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
-function onClickCheckboxOptions() {
-  $(".form_box__item").on("click", function () {
-    $(this).toggleClass("form_box__item-active");
-    var item_input = $(this).find("input");
-
-    if (item_input.prop("checked") == true) {
-      item_input.prop("checked", false);
-    } else {
-      item_input.prop("checked", true);
-    }
-  });
-}
 $(".form_box__item").on("click", function () {
   $(this).toggleClass("form_box__item-active");
   var item_input = $(this).find("input");
@@ -59055,7 +59246,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************************************!*\
   !*** ../components/pages/constructor_setings/helpersEvent.js ***!
   \***************************************************************/
-/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections */
+/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, onClickCheckboxOptions */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59066,6 +59257,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onChengeRadioV1", function() { return onChengeRadioV1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearGroup", function() { return clearGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "childrensСonnections", function() { return childrensСonnections; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickCheckboxOptions", function() { return onClickCheckboxOptions; });
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -59102,6 +59294,12 @@ var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
     neighboringElements.removeClass("form__radio-active");
     cardFormRadio.addClass("form__radio-active");
     paretnConteiner.children("input[type=hidden]").val(value);
+    var input_name = paretnConteiner.children("input[type=hidden]")[0];
+
+    if (!!input_name && input_name.name != 'iframe_type') {
+      var string_params = $(".constructor_setings").serializeArray();
+      chengePrice(string_params);
+    }
   });
 };
 var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
@@ -59110,6 +59308,9 @@ var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
       var value = $(this).data("value");
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
     }
+
+    var string_params = $(".constructor_setings").serializeArray();
+    chengePrice(string_params);
   });
 };
 var clearGroup = function clearGroup(className) {
@@ -59152,6 +59353,40 @@ var childrensСonnections = function childrensСonnections(children_element) {
     }
   }
 };
+
+function chengePrice(data) {
+  var objectParameter = {};
+  data.map(function (item) {
+    if (item.name != 'undefined') {
+      objectParameter[item.name] = item.value;
+    }
+  }); // fetch(url_form, {
+  //   method: current_method,
+  //   body: JSON.stringify(objectParameter),
+  // })
+  // .then(data => {
+  // })
+
+  setTimeout(function () {
+    $('.settings__parameters_navigation').find('.price').children('.value').text('121 340грн');
+  }, 1000);
+}
+
+function onClickCheckboxOptions() {
+  $(".form_box__item").on("click", function () {
+    $(this).toggleClass("form_box__item-active");
+    var item_input = $(this).find("input");
+
+    if (item_input.prop("checked") == true) {
+      item_input.prop("checked", false);
+    } else {
+      item_input.prop("checked", true);
+    }
+
+    var string_params = $(".constructor_setings").serializeArray();
+    chengePrice(string_params);
+  });
+}
 
 /***/ }),
 

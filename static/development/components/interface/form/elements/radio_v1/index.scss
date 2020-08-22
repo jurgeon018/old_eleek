@@ -2,6 +2,7 @@
   display: inline-flex;
   align-items: center;
   cursor: pointer;
+  margin-right: 15px;
   &_check {
     position: relative;
     width: 26px;
@@ -24,15 +25,15 @@
       transform: translate(-50%, -50%);
     }
   }
-  &-active{
-    & .form__radio_check{
-        &::before {
-           background-color: #ffd10a;
-          } 
+  &-active {
+    & .form__radio_check {
+      &::before {
+        background-color: #ffd10a;
+      }
     }
   }
-  &-hiden{
-    opacity: .5;
+  &-hiden {
+    opacity: 0.5;
     cursor: default !important;
   }
   &_title {
@@ -46,5 +47,12 @@
     font-size: 14px;
     line-height: 1.5;
     color: #969696;
+  }
+}
+
+@media only screen and (max-width: 445px) {
+  .form__color {
+    min-height: 35px;
+    min-width: 35px;
   }
 }

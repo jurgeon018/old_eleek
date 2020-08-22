@@ -28,7 +28,20 @@ export const onClickSettingsCardImg = (parent_box) => {
     cardFormRadio.addClass("form__radio-active");
 
     paretnConteiner.children("input[type=hidden]").val(value);
+
+    let input_name = paretnConteiner.children("input[type=hidden]")[0];
+  
+ 
+     if(!!input_name  && input_name.name!='iframe_type'){
+      let string_params = $(".constructor_setings").serializeArray();
+      chengePrice(string_params)
+     }
+     
+     
+
   });
+
+  
 };
 
 export const onChengeRadioV1 = (parent_box) => {
@@ -37,7 +50,13 @@ export const onChengeRadioV1 = (parent_box) => {
       let value = $(this).data("value");
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
     }
+    let string_params = $(".constructor_setings").serializeArray();
+    
+    chengePrice(string_params)
   });
+
+
+  
 };
 
 export const clearGroup = (className) => {
@@ -88,3 +107,47 @@ export const childrensСonnections = (children_element) => {
     }
   }
 };
+
+
+function chengePrice(data){
+
+  let objectParameter = {}
+
+ data.map(item=>{
+   if(item.name!='undefined'){
+     objectParameter[item.name]=item.value;
+   }
+ })
+ 
+
+// fetch(url_form, {
+//   method: current_method,
+//   body: JSON.stringify(objectParameter),
+// })
+// .then(data => {
+  
+// })
+
+ setTimeout(function(){
+  $('.settings__parameters_navigation').find('.price').children('.value').text('121 340грн')
+ },1000)
+
+}
+
+export function onClickCheckboxOptions() {
+  $(".form_box__item").on("click", function () {
+    $(this).toggleClass("form_box__item-active");
+    let item_input = $(this).find("input");
+ 
+
+    if (item_input.prop("checked") == true) {
+      item_input.prop("checked", false);
+    } else {
+      item_input.prop("checked", true);
+    }
+    
+    let string_params = $(".constructor_setings").serializeArray();
+    
+    chengePrice(string_params)
+  });
+}
