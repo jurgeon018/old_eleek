@@ -1,26 +1,15 @@
 {% extends 'project/base.html' %} {% load i18n sw_content %} {% block styles %}
-<link
-  rel="stylesheet"
-  href="/static/source/pages/constructor_setings/index.css"
-/>
-<link
-  rel="stylesheet"
-  href="/static/source/pages/constructor_setings/index.css.map"
-/>
+<link rel="stylesheet" href="/static/source/pages/constructor_setings/index.css" />
+<link rel="stylesheet" href="/static/source/pages/constructor_setings/index.css.map" />
 <link rel="stylesheet" href="/static/source/pages/profile/index.css.map" />
 <link rel="stylesheet" href="/static/source/lib/slick/slick.min.css" />
 <link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css" />
-<link
-  rel="stylesheet"
-  href="/static/source/lib/fancybox/jquery.fancybox.min.css"
-/>
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css" />
 <link rel="stylesheet" href="/static/source/pages/item/index.css?v=3" />
 <link rel="stylesheet" href="/static/source/pages//login/index.css" />
 <link rel="stylesheet" href="/static/source/pages/profile/index.css?v=3" />
-<link
-  href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
-  rel="stylesheet"
-/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+  rel="stylesheet" />
 {% endblock styles %} {% block content %}
 <section class="padding_sect">
   <div class="settings">
@@ -29,17 +18,11 @@
         <div class="settings__categories_title">Конструктор</div>
         <div class="settings__categories_main">
           <div class="settings__category_wrap">
-            <div
-              data-tab_header="1"
-              class="settings__category settings__category-active"
-            >
+            <div data-tab_header="1" class="settings__category settings__category-active">
               <div class="settings__category_main">
                 <div class="settings__category_img">
-                  <img
-                    src="./../../static/source/img/constructor/setings/constructor_category_1.png"
-                    alt=""
-                    srcset=""
-                  />
+                  <img src="./../../static/source/img/constructor/setings/constructor_category_1.png" alt=""
+                    srcset="" />
                 </div>
                 <div class="settings__category_description">
                   <div class="settings__category_title">Рама</div>
@@ -56,11 +39,8 @@
             <div data-tab_header="2" class="settings__category">
               <div class="settings__category_main">
                 <div class="settings__category_img">
-                  <img
-                    src="./../../static/source/img/constructor/setings/constructor_category_2.png"
-                    alt=""
-                    srcset=""
-                  />
+                  <img src="./../../static/source/img/constructor/setings/constructor_category_2.png" alt=""
+                    srcset="" />
                 </div>
                 <div class="settings__category_description">
                   <div class="settings__category_title">Підвіска</div>
@@ -77,11 +57,8 @@
             <div data-tab_header="3" class="settings__category">
               <div class="settings__category_main">
                 <div class="settings__category_img">
-                  <img
-                    src="./../../static/source/img/constructor/setings/constructor_category_2.png"
-                    alt=""
-                    srcset=""
-                  />
+                  <img src="./../../static/source/img/constructor/setings/constructor_category_2.png" alt=""
+                    srcset="" />
                 </div>
                 <div class="settings__category_description">
                   <div class="settings__category_title">
@@ -98,656 +75,622 @@
               </div>
             </div>
           </div>
-
           <div class="settings__category_footer">
             <div class="">
               Для того, щоб побачити усі внесені зміни нажміть на кнопку
               “Показати в 3D”
             </div>
-            <a class="btn_standart btn_standart_black color_white  vizual_3d" href="#"
-              >Показати в 3D</a
-            >
+            <a class="btn_standart btn_standart_black color_white  vizual_3d" href="#">Показати в 3D</a>
           </div>
         </div>
       </div>
     </div>
-
     <div class="settings__parameters_wrap">
-       
       <form class="constructor_setings">
         <div data-tab_main="1" class="settings__parameters settings__parameters-active">
-        <div class="settings__group settings__group-start">
-           
-          <div class="settings__group_back">
-            <div class="settings__group_back-icons">
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-                <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"></path>
-            </svg>
+          <div class="settings__group settings__group-start">
+
+            <div class="settings__group_back">
+              <div class="settings__group_back-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                  <path fill="#1B1813" fill-rule="evenodd"
+                    d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"></path>
+                </svg>
+              </div>
+              <div class="">
+                <div class="settings__group_title">Рами</div>
+              </div>
             </div>
-            <div class=""> <div class="settings__group_title">Рами</div></div>
-          </div>
-          <div class="settings__group_title">Рами</div>
-          <div class="settings__box">
-            <div class="settings__box_title">Тип рами</div>
-            <div class="settings__box_main1 settings__box_main-card" data-input_value="iframe_type">
-              <input type="hidden" name="iframe_type" id="iframe_type" value="Pozitiff">
-              <div class="settings__box_main_content">
-                <div class="settings__card settings__card-iframe">
-                  <div class="settings__card_img">
-                    <img src="./../../static/source/img/constructor/setings/frame_1.jpg" alt="">
+            <div class="settings__group_title">Рами</div>
+            <div class="settings__box">
+              <div class="settings__box_title">Тип рами</div>
+              <div class="settings__box_main1 settings__box_main-card" data-input_value="iframe_type">
+                <input type="hidden" name="iframe_type" id="iframe_type" value="Pozitiff">
+                <div class="settings__box_main_content">
+                  <div class="settings__card settings__card-iframe">
+                    <div class="settings__card_img">
+                      <img src="./../../static/source/img/constructor/setings/frame_1.jpg" alt="">
+                    </div>
+                    <div class="form__radio form__radio-active" data-value="Pozitiff">
+                      <div class="form__radio_check"></div>
+                      <div class="form__radio_main">
+                        <div class="form__radio_title">Pozitiff</div>
+                        <div class="form__radio_price">350 грн.</div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="form__radio form__radio-active" data-value="Pozitiff">
-                    <div class="form__radio_check"></div>
-                    <div class="form__radio_main">
-                      <div class="form__radio_title">Pozitiff</div>
-                      <div class="form__radio_price">350 грн.</div>
+                  <div class="settings__card settings__card-iframe">
+                    <div class="settings__card_img">
+                      <img src="./../../static/source/img/constructor/setings/frame_2.jpg" alt="">
+                    </div>
+                    <div class="form__radio" data-value="Ekross">
+                      <div class="form__radio_check"></div>
+                      <div class="form__radio_main">
+                        <div class="form__radio_title">Ekross</div>
+                        <div class="form__radio_price">350 грн.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="settings__card settings__card-iframe">
+                    <div class="settings__card_img">
+                      <img src="./../../static/source/img/constructor/setings/frame_3.jpg" alt="">
+                    </div>
+                    <div class="form__radio" data-value="Lite">
+                      <div class="form__radio_check"></div>
+                      <div class="form__radio_main">
+                        <div class="form__radio_title">Lite</div>
+                        <div class="form__radio_price">350 грн.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="settings__card settings__card-iframe">
+                    <div class="settings__card_img">
+                      <img src="./../../static/source/img/constructor/setings/frame_4.jpg" alt="">
+                    </div>
+                    <div class="form__radio" data-value="Neo">
+                      <div class="form__radio_check"></div>
+                      <div class="form__radio_main">
+                        <div class="form__radio_title">Neo</div>
+                        <div class="form__radio_price">350 грн.</div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="settings__card settings__card-iframe">
-                  <div class="settings__card_img">
-                    <img src="./../../static/source/img/constructor/setings/frame_2.jpg" alt="">
-                  </div>
-                  <div class="form__radio" data-value="Ekross">
-                    <div class="form__radio_check"></div>
-                    <div class="form__radio_main">
-                      <div class="form__radio_title">Ekross</div>
-                      <div class="form__radio_price">350 грн.</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="settings__card settings__card-iframe">
-                  <div class="settings__card_img">
-                    <img src="./../../static/source/img/constructor/setings/frame_3.jpg" alt="">
-                  </div>
-                  <div class="form__radio" data-value="Lite">
-                    <div class="form__radio_check"></div>
-                    <div class="form__radio_main">
-                      <div class="form__radio_title">Lite</div>
-                      <div class="form__radio_price">350 грн.</div>
-                    </div>
+              </div>
+            </div>
+            <div class="settings__box">
+              <div class="settings__box_title">Колір рами</div>
+              <div class="settings__box_main settings__box_main-color" data-input_value="iframe_color">
+                <div class="settings__box_loader">
+                  <div class="lds-ellipsis">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                   </div>
                 </div>
-                <div class="settings__card settings__card-iframe">
-                  <div class="settings__card_img">
-                    <img src="./../../static/source/img/constructor/setings/frame_4.jpg" alt="">
+                <input type="hidden" value="#090909" name="iframe_color" id="iframe_color" class="iframe_color">
+                <div class="settings__box_main_content">
+                  <div class="form__color form__color-active" data-color="#090909" style="background: rgb(9, 9, 9);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
                   </div>
-                  <div class="form__radio" data-value="Neo">
-                    <div class="form__radio_check"></div>
-                    <div class="form__radio_main">
-                      <div class="form__radio_title">Neo</div>
-                      <div class="form__radio_price">350 грн.</div>
+                  <div class="form__color" data-color="#2a2a2a" style="background: rgb(42, 42, 42);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#ffffff"
+                    style="background: rgb(255, 255, 255); border: 1px solid rgb(151, 151, 151);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#bc0a0a" style="background: rgb(188, 10, 10);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#900909" style="background: rgb(144, 9, 9);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#38951d" style="background: rgb(56, 149, 29);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#e6cd00" style="background: rgb(230, 205, 0);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#848484" style="background: rgb(132, 132, 132);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#a9a9a9" style="background: rgb(169, 169, 169);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#616161" style="background: rgb(97, 97, 97);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#9d9d9d" style="background: rgb(157, 157, 157);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#3e6532" style="background: rgb(62, 101, 50);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#295ccd" style="background: rgb(41, 92, 205);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#ec7300" style="background: rgb(236, 115, 0);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#f6db00" style="background: rgb(246, 219, 0);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
+                    </div>
+                  </div>
+                  <div class="form__color" data-color="#169dff" style="background: rgb(22, 157, 255);">
+                    <div class="form__color_check">
+                      <img src="./../../static/source/img/interface/check.svg">
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="settings__box">
-            <div class="settings__box_title">Колір рами</div>
-            <div class="settings__box_main settings__box_main-color" data-input_value="iframe_color">
-              <div class="settings__box_loader">
-                <div class="lds-ellipsis">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
+          <div>
+            <div>
+            </div>
+          </div>
+          <div class="settings__parameters_foter">
+            <div class="settings__parameters_next  btn_standart btn_standart_yellow color_white  ">ДАЛІ</div>
+            <div class="settings__parameters_next btn_standart btn_standart_black color_white">ПОКАЗАТИ В 3D</div>
+          </div>
+        </div>
+        <div data-tab_main="2" class="settings__parameters">
+          <div>
+            <div class="settings__group_back">
+              <div class="settings__group_back-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                  <path fill="#1B1813" fill-rule="evenodd"
+                    d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"></path>
+                </svg>
               </div>
-              <input type="hidden" value="#090909" name="iframe_color" id="iframe_color" class="iframe_color">
-              <div class="settings__box_main_content">
-                <div class="form__color form__color-active" data-color="#090909" style="background: rgb(9, 9, 9);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
+              <div class="">
+                <div class="settings__group_title">Підвіска</div>
+              </div>
+            </div>
+            <div>
+              <div class="settings__group">
+                <div class="settings__group_title">Вилки</div>
+                <div class="settings__box">
+                  <div class="settings__box_title">Тип вилки</div>
+                  <div class="settings__box_main settings__box_main-card" data-input_value="fork_type">
+                    <div class="settings__box_loader">
+                      <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <input type="hidden" value="DNM_USD_8 " name="fork_type" id="fork_type" class="fork_type">
+                    <div class="settings__box_main_content">
+                      <div class="settings__card">
+                        <div class="settings__card_img">
+                          <img src="./../../static/source/img/constructor/setings/frame_4.jpg" alt="">
+                        </div>
+                        <div class="form__radio form__radio-active" data-childrens="undefined" data-value="DNM_USD_8 ">
+                          <div class="form__radio_check"></div>
+                          <div class="form__radio_main">
+                            <div class="form__radio_title">DNM USD 8 </div>
+                            <div class="form__radio_price">350 грн</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="form__color" data-color="#2a2a2a" style="background: rgb(42, 42, 42);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#ffffff" style="background: rgb(255, 255, 255); border: 1px solid rgb(151, 151, 151);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#bc0a0a" style="background: rgb(188, 10, 10);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#900909" style="background: rgb(144, 9, 9);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#38951d" style="background: rgb(56, 149, 29);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#e6cd00" style="background: rgb(230, 205, 0);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#848484" style="background: rgb(132, 132, 132);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#a9a9a9" style="background: rgb(169, 169, 169);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#616161" style="background: rgb(97, 97, 97);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#9d9d9d" style="background: rgb(157, 157, 157);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#3e6532" style="background: rgb(62, 101, 50);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#295ccd" style="background: rgb(41, 92, 205);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#ec7300" style="background: rgb(236, 115, 0);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#f6db00" style="background: rgb(246, 219, 0);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
-                  </div>
-                </div>
-                <div class="form__color" data-color="#169dff" style="background: rgb(22, 157, 255);">
-                  <div class="form__color_check">
-                    <img src="./../../static/source/img/interface/check.svg">
+                <div class="settings__box">
+                  <div class="settings__box_title">Колір вилки</div>
+                  <div class="settings__box_main settings__box_main-color" data-input_value="fork_type_color">
+                    <div class="settings__box_loader">
+                      <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <input type="hidden" value="#000000" name="fork_type_color" id="fork_type_color"
+                      class="fork_type_color">
+                    <div class="settings__box_main_content">
+                      <div class="form__color form__color-active" data-color="#000000"
+                        style="background: rgb(0, 0, 0);">
+                        <div class="form__color_check">
+                          <img src="./../../static/source/img/interface/check.svg">
+                        </div>
+                      </div>
+                      <div class="form__color" data-color="#919191" style="background: rgb(145, 145, 145);">
+                        <div class="form__color_check">
+                          <img src="./../../static/source/img/interface/check.svg">
+                        </div>
+                      </div>
+                      <div class="form__color" data-color="#ffff00" style="background: rgb(255, 255, 0);">
+                        <div class="form__color_check">
+                          <img src="./../../static/source/img/interface/check.svg">
+                        </div>
+                      </div>
+                      <div class="form__color" data-color="#bc0a0a" style="background: rgb(188, 10, 10);">
+                        <div class="form__color_check">
+                          <img src="./../../static/source/img/interface/check.svg">
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div class="settings__group">
+                <div class="settings__group_title">Колеса</div>
+                <div class="settings__box">
+                  <div class="settings__box_title">Розмір колеса</div>
+                  <div class="settings__box_main settings__box_main-card" data-input_value="wheel_size">
+                    <div class="settings__box_loader">
+                      <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <input type="hidden" value="1" name="wheel_size" id="wheel_size" class="wheel_size">
+                    <div class="settings__box_main_content">
+                      <div class="form__radio form__radio-active" data-value="1">
+                        <div class="form__radio_check"></div>
+                        <div class="form__radio_main">
+                          <div class="form__radio_title">переднє 19" - заднє 17"</div>
+                          <div class="form__radio_price">350 грн</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="settings__box">
+                  <div class="settings__box_title">Колір колеса</div>
+                  <div class="settings__box_main settings__box_main-color" data-input_value="wheel_size_color">
+                    <div class="settings__box_loader">
+                      <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <input type="hidden" value="#000000" name="wheel_size_color" id="wheel_size_color"
+                      class="wheel_size_color">
+                    <div class="settings__box_main_content">
+                      <div class="form__color form__color-active" data-color="#000000"
+                        style="background: rgb(0, 0, 0);">
+                        <div class="form__color_check">
+                          <img src="./../../static/source/img/interface/check.svg">
+                        </div>
+                      </div>
+                      <div class="form__color" data-color="#919191" style="background: rgb(145, 145, 145);">
+                        <div class="form__color_check">
+                          <img src="./../../static/source/img/interface/check.svg">
+                        </div>
+                      </div>
+                      <div class="form__color" data-color="#ffff00" style="background: rgb(255, 255, 0);">
+                        <div class="form__color_check">
+                          <img src="./../../static/source/img/interface/check.svg">
+                        </div>
+                      </div>
+                      <div class="form__color" data-color="#bc0a0a" style="background: rgb(188, 10, 10);">
+                        <div class="form__color_check">
+                          <img src="./../../static/source/img/interface/check.svg">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="settings__group">
+                <div class="settings__group_title">Гальма</div>
+                <div class="settings__box">
+                  <div class="settings__box_title">Тип гальм</div>
+                  <div class="settings__box_main settings__box_main-card" data-input_value="brake_type">
+                    <div class="settings__box_loader">
+                      <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <input type="hidden" value="1" name="brake_type" id="brake_type" class="brake_type">
+                    <div class="settings__box_main_content">
+                      <div class="settings__card">
+                        <div class="settings__card_img">
+                          <img src="undefined" alt="">
+                        </div>
+                        <div class="form__radio form__radio-active" data-childrens="undefined" data-value="1">
+                          <div class="form__radio_check"></div>
+                          <div class="form__radio_main">
+                            <div class="form__radio_title">Мото</div>
+                            <div class="form__radio_price">350 грн</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="settings__card">
+                        <div class="settings__card_img">
+                          <img src="undefined" alt="">
+                        </div>
+                        <div class="form__radio" data-childrens="undefined" data-value="1">
+                          <div class="form__radio_check"></div>
+                          <div class="form__radio_main">
+                            <div class="form__radio_title">Вело</div>
+                            <div class="form__radio_price">350 грн</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+          <div class="settings__parameters_foter">
+            <div class="settings__parameters_next  btn_standart btn_standart_yellow color_white  ">ДАЛІ</div>
+            <div class="settings__parameters_next btn_standart btn_standart_black color_white">ПОКАЗАТИ В 3D</div>
+          </div>
         </div>
-        
-        
-      
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div>
-   
-      <div>
-          
-      </div>
-      
-    </div>
-    <div class="settings__parameters_foter">
-        <div class="settings__parameters_next  btn_standart btn_standart_yellow color_white  ">ДАЛІ</div>
-        <div class="settings__parameters_next btn_standart btn_standart_black color_white">ПОКАЗАТИ В 3D</div>
-      </div>
-    </div>
-  
-      <div data-tab_main="2" class="settings__parameters">
-        
-  
-        
-        
-      
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div>
-    <div class="settings__group_back">
-   <div class="settings__group_back-icons">
-     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-       <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"></path>
-     </svg>
-     </div>
-     <div class=""> <div class="settings__group_title">Підвіска</div></div>
-   </div>
-      <div>
-          
-    
-      <div class="settings__group">
-  
-        <div class="settings__group_title">Вилки</div>
-        <div class="settings__box">
-        <div class="settings__box_title">Тип вилки</div>
-        <div class="settings__box_main settings__box_main-card" data-input_value="fork_type">
-          <div class="settings__box_loader">
-            <div class="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
+        <div data-tab_main="3" class="settings__parameters">
+          <div>
+            <div class="settings__group_back">
+              <div class="settings__group_back-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                  <path fill="#1B1813" fill-rule="evenodd"
+                    d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"></path>
+                </svg>
+              </div>
+              <div class="">
+                <div class="settings__group_title">Додаткові комплектуючі</div>
+              </div>
+            </div>
+            <div>
+              <div class="settings__group">
+                <div class="settings__group_title"></div>
+                <div class="settings__box">
+                  <div class="settings__box_title">Мотор</div>
+                  <div class="settings__box_main settings__box_main-card" data-input_value="motor">
+                    <div class="settings__box_loader">
+                      <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <input type="hidden" value="1" name="motor" id="motor" class="motor">
+                    <div class="settings__box_main_content">
+                      <div class="form__radio form__radio-active" data-value="1">
+                        <div class="form__radio_check"></div>
+                        <div class="form__radio_main">
+                          <div class="form__radio_title">350 Вт</div>
+                          <div class="form__radio_price">350 грн</div>
+                        </div>
+                      </div>
+                      <div class="form__radio" data-value="1">
+                        <div class="form__radio_check"></div>
+                        <div class="form__radio_main">
+                          <div class="form__radio_title">1000 Вт</div>
+                          <div class="form__radio_price">350 грн</div>
+                        </div>
+                      </div>
+                      <div class="form__radio" data-value="1">
+                        <div class="form__radio_check"></div>
+                        <div class="form__radio_main">
+                          <div class="form__radio_title">5000 Вт</div>
+                          <div class="form__radio_price">350 грн</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="settings__group">
+                <div class="settings__group_title"></div>
+                <div class="settings__box">
+                  <div class="settings__box_title">Контролер</div>
+                  <div class="settings__box_main settings__box_main-card" data-input_value="controller">
+                    <div class="settings__box_loader">
+                      <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <input type="hidden" value="1" name="controller" id="controller" class="controller">
+                    <div class="settings__box_main_content">
+                      <div class="form__radio form__radio-active" data-value="1">
+                        <div class="form__radio_check"></div>
+                        <div class="form__radio_main">
+                          <div class="form__radio_title">evel 48V 40A</div>
+                          <div class="form__radio_price">350 грн</div>
+                        </div>
+                      </div>
+                      <div class="form__radio" data-value="1">
+                        <div class="form__radio_check"></div>
+                        <div class="form__radio_main">
+                          <div class="form__radio_title">Kelly lks 7230s</div>
+                          <div class="form__radio_price">350 грн</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="settings__group">
+                <div class="settings__group_title"></div>
+                <div class="settings__box">
+                  <div class="settings__box_title">Зірка задня</div>
+                  <div class="settings__box_main settings__box_main-card" data-input_value="rear_star">
+                    <div class="settings__box_loader">
+                      <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <input type="hidden" value="1" name="rear_star" id="rear_star" class="rear_star">
+                    <div class="settings__box_main_content">
+                      <div class="form__radio form__radio-active" data-value="1">
+                        <div class="form__radio_check"></div>
+                        <div class="form__radio_main">
+                          <div class="form__radio_title">41Т</div>
+                          <div class="form__radio_price">350 грн</div>
+                        </div>
+                      </div>
+                      <div class="form__radio" data-value="1">
+                        <div class="form__radio_check"></div>
+                        <div class="form__radio_main">
+                          <div class="form__radio_title">50Т</div>
+                          <div class="form__radio_price">350 грн</div>
+                        </div>
+                      </div>
+                      <div class="form__radio" data-value="1">
+                        <div class="form__radio_check"></div>
+                        <div class="form__radio_main">
+                          <div class="form__radio_title">60Т</div>
+                          <div class="form__radio_price">350 грн</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="settings__group">
+                <div class="settings__group_title">Опції</div>
+                <div class="settings__box">
+                  <div class="settings__box_title"></div>
+                  <div class="settings__box_main settings__box_main-checkbox" data-input_value="undefined">
+                    <div class="settings__box_loader">
+                      <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <input type="hidden" value="" name="undefined" id="undefined" class="undefined">
+                    <div class="settings__box_main_content">
+                      <div class="settings__group settings__group-start">
+                        <div class="form_box__item form_box__item-black_bord2">
+                          <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                            <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
+                          </svg>
+
+                          <div class="name"> ПОВОРОТ </div>
+                          <input type="checkbox" name="undefined" value="item" id="">
+                        </div>
+                      </div>
+                      <div class="settings__group settings__group-start">
+                        <div class="form_box__item form_box__item-black_bord2">
+                          <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                            <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
+                          </svg>
+
+                          <div class="name"> CИГНАЛІЗАЦІЯ </div>
+                          <input type="checkbox" name="undefined" value="item" id="">
+                        </div>
+                      </div>
+                      <div class="settings__group settings__group-start">
+                        <div class="form_box__item form_box__item-black_bord2">
+                          <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                            <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
+                          </svg>
+
+                          <div class="name"> GPS трекер </div>
+                          <input type="checkbox" name="undefined" value="item" id="">
+                        </div>
+                      </div>
+                      <div class="settings__group settings__group-start">
+                        <div class="form_box__item form_box__item-black_bord2">
+                          <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                            <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
+                          </svg>
+
+                          <div class="name"> Дзеркала </div>
+                          <input type="checkbox" name="undefined" value="item" id="">
+                        </div>
+                      </div>
+                      <div class="settings__group settings__group-start">
+                        <div class="form_box__item form_box__item-black_bord2">
+                          <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                            <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
+                          </svg>
+
+                          <div class="name"> Педальний привід </div>
+                          <input type="checkbox" name="undefined" value="item" id="">
+                        </div>
+                      </div>
+                      <div class="settings__group settings__group-start">
+                        <div class="form_box__item form_box__item-black_bord2">
+                          <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                            <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
+                          </svg>
+
+                          <div class="name"> Підножка </div>
+                          <input type="checkbox" name="undefined" value="item" id="">
+                        </div>
+                      </div>
+                      <div class="settings__group settings__group-start">
+                        <div class="form_box__item form_box__item-black_bord2">
+                          <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                            <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
+                          </svg>
+
+                          <div class="name"> Багажник </div>
+                          <input type="checkbox" name="undefined" value="item" id="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <input type="hidden" value="DNM_USD_8 " name="fork_type" id="fork_type" class="fork_type">
-          <div class="settings__box_main_content">
-             <div class="settings__card">
-      <div class="settings__card_img">
-        <img src="./../../static/source/img/constructor/setings/frame_4.jpg" alt="">
-      </div>
-      <div class="form__radio form__radio-active" data-childrens="undefined" data-value="DNM_USD_8 ">
-        <div class="form__radio_check"></div>
-        <div class="form__radio_main">
-          <div class="form__radio_title">DNM USD 8 </div>
-          <div class="form__radio_price">350 грн</div>
-        </div>
-      </div>
-    </div>
+          <div class="settings__parameters_foter">
+            <div class="settings__parameters_next  btn_standart btn_standart_yellow color_white  ">ДАЛІ</div>
+            <div class="settings__parameters_next btn_standart btn_standart_black color_white">ПОКАЗАТИ В 3D</div>
           </div>
         </div>
-      </div><div class="settings__box">
-        <div class="settings__box_title">Колір вилки</div>
-        <div class="settings__box_main settings__box_main-color" data-input_value="fork_type_color">
-          <div class="settings__box_loader">
-            <div class="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-          <input type="hidden" value="#000000" name="fork_type_color" id="fork_type_color" class="fork_type_color">
-          <div class="settings__box_main_content">
-              <div class="form__color form__color-active" data-color="#000000" style="background: rgb(0, 0, 0);">
-     <div class="form__color_check">
-       <img src="./../../static/source/img/interface/check.svg">
-     </div>
-    </div> <div class="form__color" data-color="#919191" style="background: rgb(145, 145, 145);">
-     <div class="form__color_check">
-       <img src="./../../static/source/img/interface/check.svg">
-     </div>
-    </div> <div class="form__color" data-color="#ffff00" style="background: rgb(255, 255, 0);">
-     <div class="form__color_check">
-       <img src="./../../static/source/img/interface/check.svg">
-     </div>
-    </div> <div class="form__color" data-color="#bc0a0a" style="background: rgb(188, 10, 10);">
-     <div class="form__color_check">
-       <img src="./../../static/source/img/interface/check.svg">
-     </div>
-    </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      
-    
-      <div class="settings__group">
-  
-        <div class="settings__group_title">Колеса</div>
-        <div class="settings__box">
-        <div class="settings__box_title">Розмір колеса</div>
-        <div class="settings__box_main settings__box_main-card" data-input_value="wheel_size">
-          <div class="settings__box_loader">
-            <div class="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-          <input type="hidden" value="1" name="wheel_size" id="wheel_size" class="wheel_size">
-          <div class="settings__box_main_content">
-              <div class="form__radio form__radio-active" data-value="1">
-      <div class="form__radio_check"></div>
-      <div class="form__radio_main">
-        <div class="form__radio_title">переднє 19" - заднє 17"</div>
-        <div class="form__radio_price">350 грн</div>
-      </div>
-    </div>
-          </div>
-        </div>
-      </div><div class="settings__box">
-        <div class="settings__box_title">Колір колеса</div>
-        <div class="settings__box_main settings__box_main-color" data-input_value="wheel_size_color">
-          <div class="settings__box_loader">
-            <div class="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-          <input type="hidden" value="#000000" name="wheel_size_color" id="wheel_size_color" class="wheel_size_color">
-          <div class="settings__box_main_content">
-              <div class="form__color form__color-active" data-color="#000000" style="background: rgb(0, 0, 0);">
-     <div class="form__color_check">
-       <img src="./../../static/source/img/interface/check.svg">
-     </div>
-    </div> <div class="form__color" data-color="#919191" style="background: rgb(145, 145, 145);">
-     <div class="form__color_check">
-       <img src="./../../static/source/img/interface/check.svg">
-     </div>
-    </div> <div class="form__color" data-color="#ffff00" style="background: rgb(255, 255, 0);">
-     <div class="form__color_check">
-       <img src="./../../static/source/img/interface/check.svg">
-     </div>
-    </div> <div class="form__color" data-color="#bc0a0a" style="background: rgb(188, 10, 10);">
-     <div class="form__color_check">
-       <img src="./../../static/source/img/interface/check.svg">
-     </div>
-    </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      
-    
-      <div class="settings__group">
-  
-        <div class="settings__group_title">Гальма</div>
-        <div class="settings__box">
-        <div class="settings__box_title">Тип гальм</div>
-        <div class="settings__box_main settings__box_main-card" data-input_value="brake_type">
-          <div class="settings__box_loader">
-            <div class="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-          <input type="hidden" value="1" name="brake_type" id="brake_type" class="brake_type">
-          <div class="settings__box_main_content">
-             <div class="settings__card">
-      <div class="settings__card_img">
-        <img src="undefined" alt="">
-      </div>
-      <div class="form__radio form__radio-active" data-childrens="undefined" data-value="1">
-        <div class="form__radio_check"></div>
-        <div class="form__radio_main">
-          <div class="form__radio_title">Мото</div>
-          <div class="form__radio_price">350 грн</div>
-        </div>
-      </div>
-    </div><div class="settings__card">
-      <div class="settings__card_img">
-        <img src="undefined" alt="">
-      </div>
-      <div class="form__radio" data-childrens="undefined" data-value="1">
-        <div class="form__radio_check"></div>
-        <div class="form__radio_main">
-          <div class="form__radio_title">Вело</div>
-          <div class="form__radio_price">350 грн</div>
-        </div>
-      </div>
-    </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      
-      </div>
-      
-    </div>
-    <div class="settings__parameters_foter">
-        <div class="settings__parameters_next  btn_standart btn_standart_yellow color_white  ">ДАЛІ</div>
-        <div class="settings__parameters_next btn_standart btn_standart_black color_white">ПОКАЗАТИ В 3D</div>
-      </div>
-    </div>
-      <div data-tab_main="3" class="settings__parameters">
-        
-        
-        
-      
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div>
-    <div class="settings__group_back">
-   <div class="settings__group_back-icons">
-     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-       <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"></path>
-     </svg>
-     </div>
-     <div class=""> <div class="settings__group_title">Додаткові комплектуючі</div></div>
-   </div>
-      <div>
-          
-    
-      <div class="settings__group">
-  
-        <div class="settings__group_title"></div>
-        <div class="settings__box">
-        <div class="settings__box_title">Мотор</div>
-        <div class="settings__box_main settings__box_main-card" data-input_value="motor">
-          <div class="settings__box_loader">
-            <div class="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-          <input type="hidden" value="1" name="motor" id="motor" class="motor">
-          <div class="settings__box_main_content">
-              <div class="form__radio form__radio-active" data-value="1">
-      <div class="form__radio_check"></div>
-      <div class="form__radio_main">
-        <div class="form__radio_title">350 Вт</div>
-        <div class="form__radio_price">350 грн</div>
-      </div>
-    </div> <div class="form__radio" data-value="1">
-      <div class="form__radio_check"></div>
-      <div class="form__radio_main">
-        <div class="form__radio_title">1000 Вт</div>
-        <div class="form__radio_price">350 грн</div>
-      </div>
-    </div> <div class="form__radio" data-value="1">
-      <div class="form__radio_check"></div>
-      <div class="form__radio_main">
-        <div class="form__radio_title">5000 Вт</div>
-        <div class="form__radio_price">350 грн</div>
-      </div>
-    </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      
-    
-      <div class="settings__group">
-  
-        <div class="settings__group_title"></div>
-        <div class="settings__box">
-        <div class="settings__box_title">Контролер</div>
-        <div class="settings__box_main settings__box_main-card" data-input_value="controller">
-          <div class="settings__box_loader">
-            <div class="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-          <input type="hidden" value="1" name="controller" id="controller" class="controller">
-          <div class="settings__box_main_content">
-              <div class="form__radio form__radio-active" data-value="1">
-      <div class="form__radio_check"></div>
-      <div class="form__radio_main">
-        <div class="form__radio_title">evel 48V 40A</div>
-        <div class="form__radio_price">350 грн</div>
-      </div>
-    </div> <div class="form__radio" data-value="1">
-      <div class="form__radio_check"></div>
-      <div class="form__radio_main">
-        <div class="form__radio_title">Kelly lks 7230s</div>
-        <div class="form__radio_price">350 грн</div>
-      </div>
-    </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      
-    
-      <div class="settings__group">
-  
-        <div class="settings__group_title"></div>
-        <div class="settings__box">
-        <div class="settings__box_title">Зірка задня</div>
-        <div class="settings__box_main settings__box_main-card" data-input_value="rear_star">
-          <div class="settings__box_loader">
-            <div class="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-          <input type="hidden" value="1" name="rear_star" id="rear_star" class="rear_star">
-          <div class="settings__box_main_content">
-              <div class="form__radio form__radio-active" data-value="1">
-      <div class="form__radio_check"></div>
-      <div class="form__radio_main">
-        <div class="form__radio_title">41Т</div>
-        <div class="form__radio_price">350 грн</div>
-      </div>
-    </div> <div class="form__radio" data-value="1">
-      <div class="form__radio_check"></div>
-      <div class="form__radio_main">
-        <div class="form__radio_title">50Т</div>
-        <div class="form__radio_price">350 грн</div>
-      </div>
-    </div> <div class="form__radio" data-value="1">
-      <div class="form__radio_check"></div>
-      <div class="form__radio_main">
-        <div class="form__radio_title">60Т</div>
-        <div class="form__radio_price">350 грн</div>
-      </div>
-    </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      
-    
-      <div class="settings__group">
-  
-        <div class="settings__group_title">Опції</div>
-        <div class="settings__box">
-        <div class="settings__box_title"></div>
-        <div class="settings__box_main settings__box_main-checkbox" data-input_value="undefined">
-          <div class="settings__box_loader">
-            <div class="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-          <input type="hidden" value="" name="undefined" id="undefined" class="undefined">
-          <div class="settings__box_main_content">
-              <div class="settings__group settings__group-start">
-      <div class="form_box__item form_box__item-black_bord2">
-        <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
-          <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
-        </svg>
-    
-        <div class="name"> ПОВОРОТ </div>
-        <input type="checkbox" name="undefined" value="item" id="">
-      </div></div> <div class="settings__group settings__group-start">
-      <div class="form_box__item form_box__item-black_bord2">
-        <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
-          <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
-        </svg>
-    
-        <div class="name"> CИГНАЛІЗАЦІЯ </div>
-        <input type="checkbox" name="undefined" value="item" id="">
-      </div></div> <div class="settings__group settings__group-start">
-      <div class="form_box__item form_box__item-black_bord2">
-        <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
-          <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
-        </svg>
-    
-        <div class="name"> GPS трекер </div>
-        <input type="checkbox" name="undefined" value="item" id="">
-      </div></div> <div class="settings__group settings__group-start">
-      <div class="form_box__item form_box__item-black_bord2">
-        <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
-          <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
-        </svg>
-    
-        <div class="name"> Дзеркала </div>
-        <input type="checkbox" name="undefined" value="item" id="">
-      </div></div> <div class="settings__group settings__group-start">
-      <div class="form_box__item form_box__item-black_bord2">
-        <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
-          <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
-        </svg>
-    
-        <div class="name"> Педальний привід </div>
-        <input type="checkbox" name="undefined" value="item" id="">
-      </div></div> <div class="settings__group settings__group-start">
-      <div class="form_box__item form_box__item-black_bord2">
-        <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
-          <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
-        </svg>
-    
-        <div class="name"> Підножка </div>
-        <input type="checkbox" name="undefined" value="item" id="">
-      </div></div> <div class="settings__group settings__group-start">
-      <div class="form_box__item form_box__item-black_bord2">
-        <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
-          <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
-        </svg>
-    
-        <div class="name"> Багажник </div>
-        <input type="checkbox" name="undefined" value="item" id="">
-      </div></div>
-          </div>
-        </div>
-      </div>
-      </div>
-      
-      </div>
-      
-    </div>
-    <div class="settings__parameters_foter">
-        <div class="settings__parameters_next  btn_standart btn_standart_yellow color_white  ">ДАЛІ</div>
-        <div class="settings__parameters_next btn_standart btn_standart_black color_white">ПОКАЗАТИ В 3D</div>
-      </div>
-    </div>
-       </form>
-    
+      </form>
     </div>
     <!-- <div class="settings__parameters_message">
       <div class="settings__parameters_message">
         <div class="">Виберіть конфігурацію велосипела</div>
       </div>
-      
       <div class="">
         <div class="">
           <div class="">Загальна ціна</div>
@@ -755,7 +698,6 @@
         </div>
         <a class=" btn_standart btn_standart_yellow" href="#">Перейти до Замовлення</a>
       </div>
-      
     </div> -->
   </div>
 </section>
