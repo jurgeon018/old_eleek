@@ -1,43 +1,30 @@
-Frame 
-
-Tab: (рама, підвіска, додаткові комплектуючі)
-  frame 
-  name 
-  description 
-  image  
-
-Group: (
-  вилки, амортизатори, колеса, гальма, бічні панелі, сидіння,
-  опції 
-  ):
-  tab 
-  name 
-  type 
-  
-Parameter: (
-    товщина панелей, колір панелей,
-    тип сидіння, колір сидіння,
-
-    контроллер, мотор, задня зірка, акумулятор,
-  )
-  group 
-  type 
-  code 
-  name 
-
-Value 
-  parameter 
-  name 
-  price 
-  code 
-  image 
-  color 
+radio_small
+radio_color
+radio_img
+checkbox_options
 
 
-
-
-
-
+side_panels
+side_panels_colors
+seat_type
+seat_type_color
+fork_type
+fork_type_color
+shock_absorber
+shock_absorber_color
+wheel_size
+wheel_size_color
+turn
+signaking
+gps_trecer
+mirror
+pedal
+footboard
+trunk
+brake_type
+motor
+controller
+rear_star
 
 
 
@@ -163,7 +150,7 @@ export const default_value = {
                 {
                   name: "Тип сидіння",
                   type: "radio_small",
-                  code: "seat_type",
+                  code: "",
                   values: [
                     {
                       name: "Мото",
@@ -196,7 +183,7 @@ export const default_value = {
                 {
                   name: "Тип вилки",
                   type: "radio_img",
-                  code: "fork_type",
+                  code: "",
                   values: [
                     {
                       img_value:
@@ -708,7 +695,7 @@ export const default_value = {
                     {
                       name: "Педальний привід",
                       price: "350 грн",
-                      code: "pedal drive",
+                      code: "pedal_drive",
                     },
                     {
                       name: "Підножка",

@@ -20,7 +20,7 @@ class TimestampMixin(models.Model):
 
 
 class CodeMixin(models.Model):
-    code = models.CharField(verbose_name="Код", max_length=255, unique=True, blank=True, null=True)
+    code = models.CharField(verbose_name="Код", max_length=255, blank=True, null=True)
 
     class Meta: 
         abstract = True 
@@ -98,6 +98,10 @@ class FrameType(GeneralMixin):
     item = models.ForeignKey(verbose_name="Товар", to="sw_catalog.Item", on_delete=models.SET_NULL, blank=True, null=True,)
     def get_tabs(self):
         return Tab.objects.filter(frame=self, is_active=True)
+    
+    def get_colors(self):
+        return FrameColor.objects.filter(frame=self, is_active=True)
+    
     class Meta: 
         ordering = ['order']
         verbose_name = "Тип рами"
@@ -146,7 +150,18 @@ class TabGroup(BaseMixin, NameMixin):
 
 
 class Parameter(BaseMixin, NameMixin):
+    radio_small = 'radio_small'
+    radio_color = 'radio_color'
+    radio_img = 'radio_img'
+    checkbox_options = 'checkbox_options'
+    type_choices = (
+        ("radio_small","radio_small"),
+        ("radio_color","radio_color"),
+        ("radio_img","radio_img"),
+        ("checkbox_options","checkbox_options"),
+    )
     tab_group = models.ForeignKey(verbose_name="Група", to="constructor.TabGroup", on_delete=models.SET_NULL, blank=True, null=True)
+    type      = models.CharField(verbose_name="Тип", blank=True, null=True, choices=type_choices, max_length=30)
 
     def get_values(self): 
         return Value.objects.filter(is_active=True, parameter=self)
