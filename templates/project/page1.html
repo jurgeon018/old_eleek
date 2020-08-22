@@ -18,54 +18,19 @@
         <div class="settings__categories_title">Конструктор</div>
         <div class="settings__categories_main">
           <div class="settings__category_wrap">
-            <div data-tab_header="1" class="settings__category settings__category-active">
+            {% for tab in frames.first.get_tabs %}
+            <div data-tab_header="{{tab.id}}" class="settings__category {%if forloop.counter == 1%}settings__category-active{% endif %}">
               <div class="settings__category_main">
                 <div class="settings__category_img">
-                  <img src="./../../static/source/img/constructor/setings/constructor_category_1.png" alt=""
-                    srcset="" />
-                </div>
-                <div class="settings__category_description">
-                  <div class="settings__category_title">Рама</div>
-                  <div class="settings__category_subtitle">
-                    Рама, бокові панелі, сидіння
-                  </div>
-                </div>
-              </div>
-              <div class="settings__category_hover">
-                <div class="settings__category_hover_sqar"></div>
-                <div class="settings__category_hover_triangl"></div>
-              </div>
-            </div>
-            <div data-tab_header="2" class="settings__category">
-              <div class="settings__category_main">
-                <div class="settings__category_img">
-                  <img src="./../../static/source/img/constructor/setings/constructor_category_2.png" alt=""
-                    srcset="" />
-                </div>
-                <div class="settings__category_description">
-                  <div class="settings__category_title">Підвіска</div>
-                  <div class="settings__category_subtitle">
-                    Вилка, амортизатор, колеса, гальма
-                  </div>
-                </div>
-              </div>
-              <div class="settings__category_hover">
-                <div class="settings__category_hover_sqar"></div>
-                <div class="settings__category_hover_triangl"></div>
-              </div>
-            </div>
-            <div data-tab_header="3" class="settings__category">
-              <div class="settings__category_main">
-                <div class="settings__category_img">
-                  <img src="./../../static/source/img/constructor/setings/constructor_category_2.png" alt=""
+                  <img src="{{tab.image_url}}" alt=""
                     srcset="" />
                 </div>
                 <div class="settings__category_description">
                   <div class="settings__category_title">
-                    Додаткові комплектуючі
+                    {{tab.name}}
                   </div>
                   <div class="settings__category_subtitle">
-                    Багажник, дзеркала, бризговики
+                    {{tab.description}}
                   </div>
                 </div>
               </div>
@@ -74,6 +39,7 @@
                 <div class="settings__category_hover_triangl"></div>
               </div>
             </div>
+            {% endfor %}
           </div>
           <div class="settings__category_footer">
             <div class="">

@@ -108,8 +108,9 @@ def login(request):
 def register(request):
     page = Page.objects.get(code='register')
     return render(request, 'project/auth/register.html', locals())
-
+from project.constructor.models import * 
 def page1(request):
+    frames = FrameType.objects.filter(is_active=True)
     return render(request, 'project/page1.html', locals())
 
 def page2(request):

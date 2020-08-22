@@ -96,7 +96,8 @@ class FrameType(GeneralMixin):
     LITE_CODE     = 'lite'
     EKROSS_CODE   = 'ekross'
     item = models.ForeignKey(verbose_name="Товар", to="sw_catalog.Item", on_delete=models.SET_NULL, blank=True, null=True,)
-
+    def get_tabs(self):
+        return Tab.objects.filter(frame=self, is_active=True)
     class Meta: 
         ordering = ['order']
         verbose_name = "Тип рами"
