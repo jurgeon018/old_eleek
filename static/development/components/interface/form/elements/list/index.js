@@ -37,7 +37,7 @@ import "./index.scss";
 //     }
 //   }
 // });
-
+ 
 $(".form_box__header").on("click", function () {
   let this_box = $(this);
   $(this).toggleClass("form_box__header-active");

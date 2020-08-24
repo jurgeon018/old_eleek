@@ -59400,27 +59400,6 @@ function onClickCheckboxOptions() {
       item_input.prop("checked", true);
     }
 
-    var form_box__header = $(this).parents(".form_box").find(".form_box__header");
-    var box_item = $(this).parents(".form_box__main").find(".form_box__item");
-
-    if (box_item.length > 0) {
-      var count_item_active = 0;
-
-      for (var key in box_item) {
-        if (box_item.hasOwnProperty(key)) {
-          if ($(box_item[key]).hasClass("form_box__item") && $(box_item[key]).hasClass("form_box__item-active")) {
-            count_item_active++;
-          }
-        }
-      }
-
-      if (count_item_active == box_item.length) {
-        form_box__header.addClass("form_box__header-active");
-      } else {
-        form_box__header.removeClass("form_box__header-active");
-      }
-    }
-
     var string_params = $(".constructor_setings").serializeArray();
     chengePrice(string_params);
   });
