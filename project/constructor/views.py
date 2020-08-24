@@ -1,345 +1,26 @@
 from django.http import JsonResponse
+from django.core.mail import send_mail 
+from django.conf import settings 
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+import json 
+
 from .serializers import *
 from .models import *
 
-
-# def generate_options(request, code):
-#   options = []
-#   for attribute_category in BikeAttributeCategory.objects.filter(frame__code=code):
-#     parameters = [
-#       {
-#         "name":attribute_category.name,
-#         "type":"radio_small",
-#         "code":attribute_category.code,
-#         "values":[],
-#       },
-#     ]
-#     for attribute in attribute_category.attributes:
-#       parameters[0]['values'].append({
-#         "name":attribute.name,
-#         "price":attribute.price,
-#         "value_id":attribute.id,
-#       })
-#     options.append({
-#       "name":"",
-#       "parameters":parameters,
-#     })
-#   options.append({
-#     "name":"Опції",
-#     "type":"checkbox_options",
-#     "parameters":[
-#       {
-#         "type":"checkbox_options",
-#         "values":OptionSerializer(Option.objects.filter(frame__code=code), many=True).data,
-#       },
-#     ]
-#   })
-#   return options 
-
-
-def generate_ekross():
-  ekross = {}
-  ekross['properties'] = {
-    "tab_1": {
-      "iframe_color":FrameColorSerializer(FrameColor.objects.all(), many=True).data,
-      "group":[
-        {
-          "name":"Бокові панелі",
-          "parameters":[
-            {
-              "name":"Товщина",
-              "type":"radio_small",
-              "code":"side_panels",
-              "values":PanelWidthSerializer(PanelWidth.objects.filter(frame__code=FrameType.EKROSS_CODE),many=True).data,
-            },
-            {
-              "name":"Колір",
-              "type":"radio_color",
-              "code":"side_panels_colors",
-              "values":PanelColorSerializer(PanelColor.objects.filter(frame__code=FrameType.EKROSS_CODE),many=True).data,
-            },
-          ],
-        },
-        {
-          "name":"Сидіння",
-          "parameters":[
-            {
-              "name":"Тип сидіння",
-              "type":"radio_small",
-              "code":"seat_type",
-              "values":SeatTypeSerializer(SeatType.objects.filter(frame__code=FrameType.EKROSS_CODE), many=True).data
-            },
-            {
-              "name":"Колір сидіння",
-              "type":"Колір сидіння",
-              "code":"Колір сидіння",
-              "values":SeatColorSerializer(SeatColor.objects.filter(frame__code=FrameType.EKROSS_CODE), many=True).data
-            },
-          ]
-        },
-      ]
-    },
-    "tab_2": {
-      "name_section":"Підвіска",
-      "group":[
-        {
-          "name":"Вилки",
-          "parameters":[
-            {
-              "name":"Тип вилки",
-              "type":"radio_img",
-              "code":"fork_type",
-              "values":ForkTypeSerializer(ForkType.objects.filter(frame__code=FrameType.EKROSS_CODE), many=True).data,
-            },
-            {
-              "name":"Колір вилки",
-              "type": "radio_color",
-              "code":"fork_type_color",
-              "values":ForkColorSerializer(ForkColor.objects.filter(frame__code=FrameType.EKROSS_CODE), many=True).data,
-            },
-          ],
-        },
-        {
-          "name":"Амортизатори",
-          "parametrs":[
-            {
-              "name":"Амортизатор",
-              "type":"radio_img",
-              "code":"shock_absorber",
-              "values": AbsorberSerializer(Absorber.objects.filter(frame__code=FrameType.EKROSS_CODE), many=True).data,
-            },
-            {
-              "name":"Колір амортизатора",
-              "type":"radio_color",
-              "code":"shock_absorber_color",
-              "values": AbsorberColorSerializer(AbsorberColor.objects.filter(frame__code=FrameType.EKROSS_CODE), many=True).data,
-            },
-          ]
-        },
-        {
-          "name":"Колеса",
-          "parametrs":[
-            {
-              "name":"розмір",
-              "type":"radio_small",
-              "code":"wheel_size",
-              "values":WheelSerializer(Wheel.objects.filter(frame__code=FrameType.EKROSS_CODE), many=True).data
-            },
-            {
-              "name":"колір",
-              "type":"radio_small",
-              "code":"wheel_size_color",
-              "values": WheelColorSerializer(WheelColor.objects.filter(frame__code=FrameType.EKROSS_CODE), many=True).data,
-            },
-          ]
-        },
-        {
-          "name":"Гальма",
-          "parametrs":[
-            {
-              "name":"тип гальм",
-              "type":"radio_img",
-              "code":"brake_type",
-              "values":BreakTypeSerializer(BreakType.objects.filter(frame__code=FrameType.EKROSS_CODE), many=True).data,
-            },
-          ]
-        },
-      ]
-    },
-    "tab_3": {
-      "name_section":"Додаткові комплектуючі",
-      # "group":Ekross_complect,
-    },
-  }
-  return ekross
-
-
-def generate_lite():
-  lite = {}
-  lite['properties'] = {
-    "tab_1": {
-      "iframe_color":FrameColorSerializer(FrameColor.objects.all(), many=True).data,
-      "group":[]
-    },
-    "tab_2": {
-      "name_section":"Підвіска",
-      "group":[
-        {
-          "name":"Вилки",
-          "parameters":[
-            {
-              "name":"Тип",
-              "type":"radio_img",
-              "code":"fork_type",
-              "values":ForkTypeSerializer(ForkType.objects.filter(frame__code=FrameType.LITE_CODE), many=True).data,
-            },
-            {
-              "name":"Колір",
-              "type":"radio_color",
-              "code":"fork_type_color",
-              "values":ForkColorSerializer(ForkColor.objects.filter(frame__code=FrameType.LITE_CODE), many=True).data,
-            },
-          ],
-        },
-        {
-          "name":"Колеса",
-          "parameters":[
-            {
-              "name":"Розмір",
-              "type":"radio_small",
-              "code":"wheel_size",
-              "values": WheelSerializer(Wheel.objects.filter(frame__code=FrameType.LITE_CODE), many=True).data,
-            },
-            {
-              "name":"Колір",
-              "type":"radio_color",
-              "code":"wheel_size_color",
-              "values": WheelColorSerializer(WheelColor.objects.filter(frame__code=FrameType.LITE_CODE), many=True).data,
-            },
-          ]
-        },
-        {
-          "name":"Гальма",
-          "parameters":[
-            {
-              "name":"Тип",
-              "type":"radio_img",
-              "code":"brake_type",
-              "values": BreakTypeSerializer(BreakType.objects.filter(frame__code=FrameType.LITE_CODE), many=True).data, 
-            },
-          ]
-        },
-      ],
-    },
-    "tab_3": {
-      "name_section":"Додаткові комплектуючі",
-      # "group": lite_complect
-    },
-  }
-  return lite
-
-
-def generate_pozitiff():
-  pozitiff = {}
-  pozitiff['properties'] = {
-    "tab_1": {
-      "iframe_color":FrameColorSerializer(FrameColor.objects.all(), many=True).data,
-      "group":[],
-    },
-    "tab_2": {
-      "name_section":"Підвіска",
-      "group":[
-        {
-          "name":"вилки",
-          "parameters":[
-            {
-              "name":"Тип",
-              "type":"radio_img",
-              "code":"fork_type",
-              "values": ForkTypeSerializer(ForkType.objects.filter(frame__code=FrameType.POZITIFF_CODE), many=True).data
-            },
-            {
-              "name":"Колір",
-              "type":"radio_color",
-              "code":"fork_type_color",
-              "values": ForkColorSerializer(ForkColor.objects.filter(frame__code=FrameType.POZITIFF_CODE), many=True).data
-            },
-          ]
-        },
-        {
-          "name":"колеса",
-          "parameters":[
-            {
-              "name":"Розмір",
-              "type":"radio_small",
-              "code":"wheel_size",
-              "values": WheelSerializer(Wheel.objects.filter(frame__code=FrameType.POZITIFF_CODE), many=True).data
-            },
-            {
-              "name":"Колір",
-              "type":"radio_color",
-              "code":"wheel_size_color",
-              "values": WheelColorSerializer(WheelColor.objects.filter(frame__code=FrameType.POZITIFF_CODE), many=True).data
-            }
-          ]
-        },
-        {
-          "name":"гальма",
-          "parameters":[
-            {
-              "name":"Тип",
-              "type":"radio_img",
-              "code":"brake_type",
-              "values":BreakTypeSerializer(BreakType.objects.filter(frame__code=FrameType.POZITIFF_CODE), many=True).data,
-            },
-          ]
-        },
-      ]
-    },
-    "tab_3": {
-      "name_section":"Додаткові комплектуючі",
-      # "group":pozitiff_complect
-    },
-  }
-  return pozitiff
-
-
-def generate_neo():
-  neo = {}
-  neo['properties'] = {
-    "tab_1": {
-      "iframe_color":FrameColorSerializer(FrameColor.objects.all(), many=True).data,
-      "group":[]
-    },
-    "tab_2": {
-      "name_section":"Підвіска",
-      "group":[
-        {
-          "name":"Колеса",
-          "parameters":[
-            {
-              "name":"Тип",
-              "type":"radio_small",
-              "code":"wheel_size",
-              "values": WheelSerializer(Wheel.objects.filter(frame__code=FrameType.NEO_CODE), many=True).data,
-            },
-            {
-              "name":"Колір",
-              "type":"radio_color",
-              "code":"wheel_size_color",
-              "values":WheelColorSerializer(WheelColor.objects.filter(frame__code=FrameType.NEO_CODE), many=True).data
-            },
-          ]
-        },
-      ]
-    },
-    "tab_3": {
-      "name_section":"Додаткові комплектуючі",
-      "group":[
-        {
-          "name":"Опції",
-          "type": "checkbox_options",
-          "parameters":[
-            {
-              "type": "checkbox_options",
-              "values":OptionSerializer(Option.objects.filter(frame__code=FrameType.NEO_CODE), many=True).data,
-            },
-          ]
-        },
-      ],
-    },
-  }
-  return neo
 
 
 def generate_children():
   children = []
   return children
+
+
 def generate_parents():
   parents = []
   return parents
+
 
 def generate_values(parameter):
   result = []
@@ -422,8 +103,6 @@ def get_info(request):
   })
 
 
-import json 
-
 
 @api_view(['GET','POST'])
 def get_price(request):
@@ -438,7 +117,6 @@ def get_price(request):
     result += Value.objects.get(id=value).price
   return Response(result)#.data
 
-from django.core.mail import send_mail 
 
 @api_view(['GET','POST'])
 def make_eleek_order(request):
