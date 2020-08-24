@@ -116,7 +116,7 @@ from project.constructor.models import *
 def page1(request):
     frames = FrameType.objects.filter(is_active=True)
     frame_colors = FrameColor.objects.filter(is_active=True)
-    initial_price = FrameType.get_initial_price()
+    initial_price = frames.first().get_initial_price()
     return render(request, 'project/page1.html', locals())
 
 
