@@ -1,0 +1,5 @@
+id,is_active,item,code,image,price,color,name,name_uk,name_ru,name_en
+1,1,,"ekross","constructor/frame_1.jpg","","","Ekroos","Ekroos","Ekroos","Ekroos"
+2,1,,"lite","constructor/frame_2.jpg","","","Lite","Lite","Lite","Lite"
+3,1,,"pozitiff","constructor/frame_3.jpg","","","PozitiffMD","PozitiffMD","PozitiffMD","PozitiffMD"
+4,1,,"neo","constructor/frame_4.jpg","","","NEO","NEO","NEO","NEO"

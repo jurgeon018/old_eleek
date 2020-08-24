@@ -52869,7 +52869,7 @@ var default_value = {
     }]
   },
   iframe_type: {
-    Ekross: {
+    ekross: {
       properties: {
         tab_1: {
           iframe_color: color_object,
@@ -53117,7 +53117,7 @@ var default_value = {
         }
       }
     },
-    Lite: {
+    lite: {
       properties: {
         tab_1: {
           iframe_color: color_object,
@@ -53320,7 +53320,7 @@ var default_value = {
         }
       }
     },
-    Pozitiff: {
+    pozitiff: {
       properties: {
         tab_1: {
           iframe_color: color_object,
@@ -53480,7 +53480,7 @@ var default_value = {
         }
       }
     },
-    Neo: {
+    neo: {
       properties: {
         tab_1: {
           iframe_color: color_object,
@@ -54187,6 +54187,9 @@ function onChengeIframe() {
       var info_tab_1 = info_bike.properties.tab_1.group;
       var info_tab_2 = info_bike.properties.tab_2.group;
       var info_tab_3 = info_bike.properties.tab_3.group;
+      console.log(info_tab_1);
+      console.log(info_tab_2);
+      console.log(info_tab_3);
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="1"]');
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="2"]');
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="3"]');

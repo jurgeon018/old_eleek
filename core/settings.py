@@ -1,7 +1,8 @@
 from box.core.default_settings import * 
 
 INSTALLED_APPS +=[
-    'project'
+    'project',
+    'project.constructor',
 ]
 
 
@@ -69,7 +70,7 @@ LIQPAY_PRIVATE_KEY = 'sdf'
 LIQPAY_SANDBOX_PUBLIC_KEY = 'sdf'
 LIQPAY_SANDBOX_PRIVATE_KEY = 'sdf'
 
-LIQPAY_SANDBOX_MODE = 'sdf'
+LIQPAY_SANDBOX_MODE = True 
 
 
 LOGIN_REDIRECT_URL = 'profile'

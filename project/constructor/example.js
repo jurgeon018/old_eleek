@@ -1,12 +1,69 @@
-const color_object = [
+radio_small
+radio_color
+radio_img
+checkbox_options
+
+
+side_panels
+side_panels_colors
+seat_type
+seat_type_color
+fork_type
+fork_type_color
+shock_absorber
+shock_absorber_color
+wheel_size
+wheel_size_color
+turn
+signaking
+gps_trecer
+mirror
+pedal
+footboard
+trunk
+brake_type
+motor
+controller
+rear_star
+
+
+
+
+
+// https://starway.atlassian.net/wiki/spaces/ELEEK/pages/54689826
+color_object = [
   { value_id: "blask", value: "#000000" },
   { value_id: "greey", value: "#919191" },
   { value_id: "yelow", value: "#ffff00" },
   { value_id: "yelow", value: "#bc0a0a" },
-  { value_id: "green_small", value: "#90d52d" },
-  { value_id: "porpul", value: "#da277c" },
-  { value_id: "blue_small", value: "#32a1b5" },
 ];
+group: [
+  {
+    name: "Бокові панелі", // - назва групи,
+    parameters: [   // параметри групи 
+      {
+        name: "Товщина",  // - назва категорії,
+        type: "radio_small",  // - тип категорії (radio_small,radio_img,radio_color,checkbox_options ),
+        code: "side_panels", // - код категорії назва name в input
+        values: [
+          {
+            name: "120 мм", // - назва для виводу
+            price: "350 грн", // -  ціна для виводу
+            value_id: "1", // - id || code для відсилання на сервер
+            img_value:'', // url для картинки якщо, тип категорії radio_img 
+          },
+          {
+            name: "120 мм", // - назва для виводу
+            price: "350 грн", // -  ціна для виводу
+            value_id: "1", // - id || code для відсилання на сервер
+            img_value:'', // url для картинки якщо, тип категорії radio_img 
+            childrens_group:{wheel_size:['size_18','size_20','size_24','size_26']}, // {name_categore:[value_id,value_id,value_id,value_id],name_categore:[value_id,value_id,value_id,value_id]} 
+          },
+        ],
+      },
+    ],
+  },
+],
 
 export const default_value = {
   iframe: {
@@ -34,15 +91,24 @@ export const default_value = {
       },
     ],
   },
-
- 
   iframe_type: {
-    ekross:{
-      
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Ekross:{
       properties: {
         tab_1: {
           iframe_color: color_object,
-           
           group: [
             {
               name: "Бокові панелі",
@@ -83,22 +149,22 @@ export const default_value = {
                 {
                   name: "Тип сидіння",
                   type: "radio_small",
-                  code: "seat_type",
+                  code: "",
                   values: [
                     {
                       name: "Мото",
                       price: "350 грн",
-                      value_id: "moto",
+                      value_id: "3211",
                     },
                     {
                       name: "Вело",
                       price: "320 грн",
-                      value_id: "velo",
+                      value_id: "1123",
                     },
                   ],
                 },
                 {
-                  name: "Колір сидіння",
+                  name: "Колір панелей",
                   type: "radio_color",
                   code: "seat_type_color",
                   values: color_object,
@@ -116,7 +182,7 @@ export const default_value = {
                 {
                   name: "Тип вилки",
                   type: "radio_img",
-                  code: "fork_type",
+                  code: "",
                   values: [
                     {
                       img_value:
@@ -221,8 +287,8 @@ export const default_value = {
               parameters: [
                 {
                   name: "Тип гальм",
-                  type: "radio_small",
-                  code: "break_type",
+                  type: "radio_img",
+                  code: "brake_type",
                   values: [
                     {
                       name: "Мото",
@@ -240,7 +306,6 @@ export const default_value = {
             },
           ],
         },
-
         tab_3: {
           name_section:"Додаткові комплектуючі",
           group: [
@@ -323,7 +388,6 @@ export const default_value = {
             {
               name: "Опції",
               type: "checkbox_options",
-
               parameters: [
                 {
                   // name: "Зірка задня",
@@ -333,37 +397,32 @@ export const default_value = {
                     {
                       name: "ПОВОРОТ",
                       price: "350 грн",
-                      value_code: "turn",
+                      value_id: "1",
                     },
                     {
                       name: "CИГНАЛІЗАЦІЯ",
                       price: "350 грн",
-                      value_code: "signaling",
+                      value_id: "1",
                     },
                     {
                       name: "GPS трекер",
                       price: "350 грн",
-                      value_code: "gps_tracker",
+                      value_id: "1",
                     },
                     {
                       name: "Дзеркала",
                       price: "350 грн",
-                      value_code: "mirror",
-                    },
-                    {
-                      name: "Дзеркала",
-                      price: "350 грн",
-                      value_code: "mirror",
+                      value_id: "1",
                     },
                     {
                       name: "Педальний привід",
                       price: "350 грн",
-                      value_code: "pedal_drive",
+                      value_id: "1",
                     },
                     {
                       name: "Підножка",
                       price: "350 грн",
-                      value_code: "ootboard",
+                      value_id: "1",
                     },
                   ],
                 },
@@ -373,15 +432,31 @@ export const default_value = {
         },
       },
     },
-    lite:{
-      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Lite:{
       properties: {
         tab_1: {
-          
           iframe_color: color_object,
           group: [
-            
-            
           ],
         },
         tab_2: {
@@ -437,7 +512,6 @@ export const default_value = {
                 },
               ],
             },
-            
             {
               name: "Колеса",
               parameters: [
@@ -504,12 +578,10 @@ export const default_value = {
                     },
                   ],
                 },
-                
               ],
             },
           ],
         },
-
         tab_3: {
           name_section:"Додаткові комплектуючі",
           group: [
@@ -599,41 +671,40 @@ export const default_value = {
                   type: "checkbox_options",
                   // code: "rear_star",
                   values: [
-                    
                     {
                       name: "ПОВОРОТ",
                       price: "350 грн",
-                      value_code: "turn",
+                      code: "turn",
                     },
                     {
                       name: "CИГНАЛІЗАЦІЯ",
                       price: "350 грн",
-                      value_code: "signaking",
+                      code: "signaking",
                     },
                     {
                       name: "GPS трекер",
                       price: "350 грн",
-                      value_code: "gps_trecer",
+                      code: "gps_trecer",
                     },
                     {
                       name: "Дзеркала",
                       price: "350 грн",
-                      value_code: "mirror",
+                      code: "mirror",
                     },
                     {
                       name: "Педальний привід",
                       price: "350 грн",
-                      value_code: "pedal drive",
+                      code: "pedal_drive",
                     },
                     {
                       name: "Підножка",
                       price: "350 грн",
-                      value_code: "footboard",
+                      code: "footboard",
                     },
                     {
                       name: "Багажник",
                       price: "350 грн",
-                      value_code: "trunk",
+                      code: "trunk",
                     },
                   ],
                 },
@@ -643,15 +714,31 @@ export const default_value = {
         },
       },
     },
-    pozitiff:{
-      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Pozitiff:{
       properties: {
         tab_1: {
-          
           iframe_color: color_object,
           group: [
-            
-            
           ],
         },
         tab_2: {
@@ -683,7 +770,6 @@ export const default_value = {
                 },
               ],
             },
-            
             {
               name: "Колеса",
               parameters: [
@@ -734,7 +820,6 @@ export const default_value = {
             },
           ],
         },
-
         tab_3: {
           name_section:"Додаткові комплектуючі",
           group: [
@@ -827,37 +912,37 @@ export const default_value = {
                     {
                       name: "ПОВОРОТ",
                       price: "350 грн",
-                      value_code: "turn",
+                      value_id: "1",
                     },
                     {
                       name: "CИГНАЛІЗАЦІЯ",
                       price: "350 грн",
-                      value_code: "signaling",
+                      value_id: "1",
                     },
                     {
                       name: "GPS трекер",
                       price: "350 грн",
-                      value_code: "gps_tracker",
+                      value_id: "1",
                     },
                     {
                       name: "Дзеркала",
                       price: "350 грн",
-                      value_code: "mirror",
+                      value_id: "1",
                     },
                     {
                       name: "Педальний привід",
                       price: "350 грн",
-                      value_code: "pedal_drive",
+                      value_id: "1",
                     },
                     {
                       name: "Підножка",
                       price: "350 грн",
-                      value_code: "ootboard",
+                      value_id: "1",
                     },
                     {
                       name: "Багажник",
                       price: "350 грн",
-                      value_code: "trunk",
+                      value_id: "1",
                     },
                   ],
                 },
@@ -867,11 +952,30 @@ export const default_value = {
         },
       },
     },
-    neo: {
-       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Neo: { 
       properties: {
         tab_1: {
-         
           iframe_color: color_object,
           group: [
             
@@ -917,7 +1021,6 @@ export const default_value = {
             
           ],
         },
-
         tab_3: {
           name_section:"Додаткові комплектуючі",
           group: [
@@ -937,12 +1040,12 @@ export const default_value = {
                     {
                       name: "ДОДАТКОВА БАТАРЕЯ",
                       price: "350 грн",
-                      value_code: "additional_battery",
+                      value_id: "1",
                     },
                     {
                       name: "БРИЗГОВИК",
                       price: "350 грн",
-                      value_code: "mushrooms",
+                      value_id: "1",
                     },
                     
                   ],
@@ -953,11 +1056,21 @@ export const default_value = {
         },
       },
     },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
 };
 
 
-
-
-
- 
