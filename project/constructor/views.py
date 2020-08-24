@@ -335,18 +335,20 @@ def generate_neo():
 
 
 def generate_children():
+  children = []
   return children
 def generate_parents():
+  parents = []
   return parents
 
 def generate_values(parameter):
   result = []
   values = Value.objects.filter(is_active=True, parameter=parameter)
   for value in values:
-    children  = value.get_children()#.values_list('code', flat=True),
-    parents   = value.get_parents()#.values_list('code', flat=True),
-    children  = ValueSerializer(children, many=True).data
-    parents   = ValueSerializer(parents, many=True).data
+    # children  = value.get_children()#.values_list('code', flat=True),
+    # parents   = value.get_parents()#.values_list('code', flat=True),
+    # children  = ValueSerializer(children, many=True).data
+    # parents   = ValueSerializer(parents, many=True).data
     result.append({
       "img_value":value.image_url,
       "name":value.name,
