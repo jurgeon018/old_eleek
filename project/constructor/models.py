@@ -203,6 +203,19 @@ class Value(GeneralMixin):
         verbose_name="Параметр", to="constructor.Parameter", 
         on_delete=models.SET_NULL, blank=True, null=True,
     )
+
+    def get_children(self):
+        children = Relationship.objects.filter(parent=self)
+        children = children.values_list('children__id', flat=True)
+        children = Value.objects.filter(id__in=children)
+        return children
+
+    def get_parents(self):
+        parents = Relationship.objects.filter(children=self)
+        parents = parents.values_list('parent__id', flat=True)
+        parents = Value.objects.filter(id__in=parents)
+        return parents
+
     def __str__(self):
         return f'{self.id}. {self.parameter.tab_group.tab.frame.name} -> {self.parameter.tab_group.tab.name} -> {self.parameter.tab_group.name} -> {self.parameter.name} -> {self.name}'
 
@@ -215,13 +228,30 @@ class Value(GeneralMixin):
 class Relationship(models.Model):
     parent   = models.ForeignKey(Value, related_name='parent_relationships', on_delete=models.CASCADE)
     children = models.ForeignKey(Value, related_name='child_relationships', on_delete=models.CASCADE)
+
     def __str__(self):
         return f'{self.id}.{self.parent} -> {self.children}'
+
     class Meta:
         verbose_name = "Звязок між елементами"
         verbose_name_plural = "Звязки між елементами"
         unique_together = [
-            'parent','children'
+            'parent',
+            'children',
         ]
 
+
+class ConstructorForm(models.Model):
+    name    = models.CharField(verbose_name="Імя", blank=True, null=True, max_length=255)
+    email   = models.CharField(verbose_name="Емейл", blank=True, null=True, max_length=255)
+    phone   = models.CharField(verbose_name="Телефон", blank=True, null=True, max_length=255)
+    message = models.TextField(verbose_name="Повідомлення", blank=True, null=True)
+    values  = models.ManyToManyField(verbose_name="Вибрані елементи", to="constructor.Value", blank=True)
+
+    def __str__(self):
+        return f'{self.id}. {self.name}'
+    
+    class Meta:
+        verbose_name = "Заявка з конструктора"
+        verbose_name_plural = "Заявки з конструктора"
 
