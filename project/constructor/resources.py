@@ -44,3 +44,8 @@ class ValueResource(BaseResource):
     class Meta: 
         model = Value; 
         exclude = base_exclude; 
+
+class RelationshipResource(BaseResource):
+    class Meta: 
+        model = Relationship; 
+        exclude = base_exclude; 

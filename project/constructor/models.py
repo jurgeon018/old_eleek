@@ -71,7 +71,7 @@ class FrameMixin(models.Model):
 
 
 class BaseMixin(ActiveMixin, TimestampMixin):
-    order = models.IntegerField(verbose_name="Порядок", default=0)
+    order = models.IntegerField(verbose_name="Порядок", default=0, blank=False, null=False)
 
     class Meta: 
         abstract = True 
@@ -79,7 +79,7 @@ class BaseMixin(ActiveMixin, TimestampMixin):
     def get_admin_url(self):
         return get_admin_url(self)
 
-class GeneralMixin(BaseMixin,CodeMixin,NameMixin,ImageMixin,PriceMixin,ColorMixin):
+class GeneralMixin(BaseMixin,ColorMixin,PriceMixin,NameMixin,ImageMixin,CodeMixin):
 
     class Meta: 
         abstract = True 
@@ -102,6 +102,7 @@ class FrameType(GeneralMixin):
     
     def get_colors(self):
         return FrameColor.objects.filter(frame=self, is_active=True)
+
     @classmethod 
     def get_initial_price(self):
         initial_price = 0
@@ -109,6 +110,7 @@ class FrameType(GeneralMixin):
         for value in Value.objects.filter(parameter__tab_group__tab__frame=frame):
             initial_price += value.price 
         return initial_price
+    
     class Meta: 
         ordering = ['order']
         verbose_name = "Тип рами"
@@ -127,11 +129,13 @@ class Tab(BaseMixin, NameMixin, CodeMixin, ImageMixin, FrameMixin):
 
     def get_tab_groups(self): 
         return TabGroup.objects.filter(is_active=True, tab=self)
+
     @classmethod
     def modeltranslation_fields(self):
         return super().modeltranslation_fields() + ['description']
+
     def __str__(self):
-         return f'Назва рами:{self.frame.name}, Назва:{self.name}'
+         return f'{self.id}.{self.frame.name} -> {self.name}'
     
     class Meta: 
         ordering = ['order']
@@ -141,13 +145,24 @@ class Tab(BaseMixin, NameMixin, CodeMixin, ImageMixin, FrameMixin):
 
 
 class TabGroup(BaseMixin, NameMixin):
+    # radio_small = 'radio_small'
+    # radio_color = 'radio_color'
+    # radio_img = 'radio_img'
+    checkbox_options = 'checkbox_options'
+    type_choices = (
+        # (radio_small,"Одиночний вибір"),
+        # (radio_color,"Колір"),
+        # (radio_img,"Одиночний вибір з зображенням"),
+        (checkbox_options,"Вибір чекбоксом"),
+    )
+    type      = models.CharField(verbose_name="Тип", blank=True, null=True, choices=type_choices, max_length=30)
     tab = models.ForeignKey(verbose_name="Вкладка", to="constructor.Tab", on_delete=models.SET_NULL, blank=True, null=True)
 
     def get_parameters(self): 
         return Parameter.objects.filter(is_active=True, tab_group=self)
 
     def __str__(self):
-         return f'Назва вкладки:{self.tab.name}, Назва:{self.name}'
+         return f'{self.id}.{self.tab.frame.name} -> {self.tab.name} -> {self.name}'
     
     class Meta: 
         ordering = ['order']
@@ -156,25 +171,25 @@ class TabGroup(BaseMixin, NameMixin):
          
 
 
-class Parameter(BaseMixin, NameMixin):
+class Parameter(BaseMixin, NameMixin, CodeMixin):
     radio_small = 'radio_small'
     radio_color = 'radio_color'
     radio_img = 'radio_img'
     checkbox_options = 'checkbox_options'
     type_choices = (
-        ("radio_small","radio_small"),
-        ("radio_color","radio_color"),
-        ("radio_img","radio_img"),
-        ("checkbox_options","checkbox_options"),
+        (radio_small,"Одиночний вибір"),
+        (radio_color,"Колір"),
+        (radio_img,"Одиночний вибір з зображенням"),
+        (checkbox_options,"Вибір чекбоксом"),
     )
-    tab_group = models.ForeignKey(verbose_name="Група", to="constructor.TabGroup", on_delete=models.SET_NULL, blank=True, null=True)
     type      = models.CharField(verbose_name="Тип", blank=True, null=True, choices=type_choices, max_length=30)
+    tab_group = models.ForeignKey(verbose_name="Група", to="constructor.TabGroup", on_delete=models.SET_NULL, blank=True, null=True)
 
     def get_values(self): 
         return Value.objects.filter(is_active=True, parameter=self)
 
     def __str__(self):
-         return f'Назва групи:{self.tab_group.name}, Назва:{self.name}'
+         return f'{self.id}.{self.tab_group.tab.frame.name} -> {self.tab_group.tab.name} -> {self.tab_group.name} -> {self.name}'
     
     class Meta: 
         ordering = ['order']
@@ -184,13 +199,29 @@ class Parameter(BaseMixin, NameMixin):
 
 
 class Value(GeneralMixin):
-    parameter = models.ForeignKey(verbose_name="Параметр", to="constructor.Parameter", on_delete=models.SET_NULL, blank=True, null=True)
-
+    parameter = models.ForeignKey(
+        verbose_name="Параметр", to="constructor.Parameter", 
+        on_delete=models.SET_NULL, blank=True, null=True,
+    )
     def __str__(self):
-        return f'Назва параметра:{self.parameter.name} ' + super().__str__() 
+        return f'{self.id}. {self.parameter.tab_group.tab.frame.name} -> {self.parameter.tab_group.tab.name} -> {self.parameter.tab_group.name} -> {self.parameter.name} -> {self.name}'
 
     class Meta: 
         ordering = ['order']
         verbose_name = "Значення параметра"
         verbose_name_plural = "Значення параметра"
+
+
+class Relationship(models.Model):
+    parent   = models.ForeignKey(Value, related_name='parent_relationships', on_delete=models.CASCADE)
+    children = models.ForeignKey(Value, related_name='child_relationships', on_delete=models.CASCADE)
+    def __str__(self):
+        return f'{self.id}.{self.parent} -> {self.children}'
+    class Meta:
+        verbose_name = "Звязок між елементами"
+        verbose_name_plural = "Звязки між елементами"
+        unique_together = [
+            'parent','children'
+        ]
+
 

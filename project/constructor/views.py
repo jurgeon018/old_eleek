@@ -347,44 +347,43 @@ def generate_values(parameter):
       # "children":value.children,
       # "parent":parent,
     })
-  return ValueSerializer(result, many=True).data 
+  return Response(result).data
 
 
-def generate_parameters(group):
+def generate_parameters(tab_group):
   result = []
-  parameters = Parameter.objects.filter(is_active=True, tab_group=group)
+  parameters = Parameter.objects.filter(is_active=True, tab_group=tab_group)
   for parameter in parameters:
     result.append({
       "name":parameter.name,
-      # "type":parameter.type,
-      # "code":parameter.code,
+      "type":parameter.type,
+      "code":parameter.code,
       "values":generate_values(parameter),
     })
-  return ParameterSerializer(result, many=True).data 
+  return Response(result).data
 
 
 def generate_groups(tab):
   result = []
-  groups = TabGroup.objects.filter(is_active=True, tab=tab)
-  for group in groups:
+  tab_groups = TabGroup.objects.filter(is_active=True, tab=tab)
+  for tab_group in tab_groups:
     result.append({
-      "name":group.name,
-      # "type":group.type,
-      "parameters":generate_parameters(group),
+      "name":tab_group.name,
+      "type":tab_group.type,
+      "parameters":generate_parameters(tab_group),
     }) 
-  return TabGroupSerializer(result, many=True).data 
+  return Response(result).data
 
 
 def generate_tabs(frame):
   result = {"properties":{}}
-  tabs = Tab.objects.filter(is_active=True)
+  tabs = Tab.objects.filter(is_active=True, frame=frame)
   for tab in tabs:
     result['properties'].update({
       f"tab_{list(tabs).index(tab)+1}":{
         "description":tab.description,
         "image":tab.image_url,
         "name_section":tab.name,
-        # "type":tab.type,
         "code":tab.code,
         "groups":generate_groups(tab),
       },
@@ -396,6 +395,12 @@ def generate_tabs(frame):
 @api_view(['GET'])
 def get_info(request):
   result = {}
+  query = request.data or request.query_params 
+  if query.get('frame_code'):
+    frame = FrameType.objects.get(code=query['frame_code'])
+    result = generate_tabs(frame)
+    print("result!!!", result)
+    return Response(result)
   for frame_type in FrameType.objects.filter(is_active=True):
     result.update({frame_type.code:generate_tabs(frame_type)})
   return Response({

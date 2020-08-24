@@ -127,14 +127,14 @@
                 <div class="settings__box">
                   <div class="settings__box_title">{{parameter.name}}</div>
                     {% if parameter.type == 'radio_color' %}
-                    <div class="settings__box_main settings__box_main-color" data-input_value="{{parameter.code}}">
+                    <div class="settings__box_main settings__box_main-color" data-input_value="{{parameter.id}}">
                     {% elif parameter.type == 'checkbox_options' %}
-                    <div class="settings__box_main settings__box_main-checkbox" data-input_value="{{parameter.code}}">
+                    <div class="settings__box_main settings__box_main-checkbox" data-input_value="{{parameter.id}}">
                     {% else %}
-                    <div class="settings__box_main settings__box_main-card" data-input_value="{{parameter.code}}">
+                    <div class="settings__box_main settings__box_main-card" data-input_value="{{parameter.id}}">
                     {% endif %}
                     <div class="settings__box_loader"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
-                    <input type="hidden" value="{{parameter.get_values.first.id}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
+                    <input type="hidden" value="{{parameter.get_values.first.id}}" name="{{parameter.id}}" id="{{parameter.id}}" class="{{parameter.id}}">
                     <div class="settings__box_main_content">
                       {% for value in parameter.get_values %}
                         {% if parameter.type == 'radio_color' %}

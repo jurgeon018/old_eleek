@@ -11,33 +11,59 @@ from box.core.utils import AdminImageWidget
 from .models import * 
 from .resources import * 
 
-class BaseAdmin(
-    ImportExportModelAdmin,
-    TabbedTranslationAdmin,
+
+class ChildrenRelationshipInline(NestedTabularInline):
+    verbose_name = "Дочірній елемент"
+    verbose_name_plural = "Дочірні елементи"
+    autocomplete_fields = ['children']
+    model = Relationship
+    exclude = []
+    extra = 0
+    classes = ['collapse']
+    fk_name = 'parent'
+    def has_add_permission(self, request, obj):
+        return False
+
+
+class ParentRelationshipInline(NestedTabularInline):
+    verbose_name = "Батьківський елемент"
+    verbose_name_plural = "Батьківські елементи"
+    autocomplete_fields = ['parent']
+    model = Relationship
+    exclude = []
+    extra = 0
+    classes = ['collapse']
+    fk_name = 'children'
+    def has_add_permission(self, request, obj):
+        return False
+
+
+class ValueInline(
+    # SortableInlineAdminMixin,
+    NestedTabularInline,
+    admin.TabularInline
+    # # # # TranslationTabularInline,
     ):
+    model = Value
+    exclude = []
+    extra = 0
+    classes = ['collapse']
+    # inlines = [
+    #     ChildrenRelationshipInline,
+    #     ParentRelationshipInline,
+    # ]
     readonly_fields = ['code']
     formfield_overrides = {
         models.ImageField:{"widget":AdminImageWidget},
         models.TextField: {'widget': Textarea(attrs={'rows': 1,'cols': 40})},
     }
 
-# # # # # # # # # # # # #
-
-
-class ValueInline(
-    BaseAdmin,
-    NestedTabularInline,
-    # SortableInlineAdminMixin,
-    ):
-    model = Value
-    exclude = []
-    extra = 0
-    classes = ['collapse']
 
 class ParameterInline(
-    BaseAdmin,
-    NestedTabularInline,
     # SortableInlineAdminMixin,
+    NestedTabularInline,
+    admin.TabularInline,
+    # # # # TranslationTabularInline,
     ):
     model = Parameter
     exclude = []
@@ -46,11 +72,17 @@ class ParameterInline(
     inlines = [
         ValueInline,
     ]
+    formfield_overrides = {
+        models.ImageField:{"widget":AdminImageWidget},
+        models.TextField: {'widget': Textarea(attrs={'rows': 1,'cols': 40})},
+    }
+
 
 class TabGroupInline(
-    BaseAdmin,
-    NestedTabularInline,
     # SortableInlineAdminMixin,
+    NestedTabularInline,
+    # admin.TabularInline,
+    # # # # TranslationTabularInline,
     ):
     model = TabGroup
     exclude = []
@@ -59,22 +91,36 @@ class TabGroupInline(
     inlines = [
         ParameterInline,
     ]
+    formfield_overrides = {
+        models.ImageField:{"widget":AdminImageWidget},
+        models.TextField: {'widget': Textarea(attrs={'rows': 1,'cols': 40})},
+    }
+
 
 class TabInline(
+    # SortableInlineAdminMixin,
     NestedTabularInline,
     TranslationTabularInline,
-    # SortableInlineAdminMixin,
+    # admin.TabularInline,
     ):
     model = Tab 
     exclude = []
     extra = 0
     classes = ['collapse']
     inlines = [
-        # TabGroupInline,
+        TabGroupInline,
     ]
+    readonly_fields = ['code']
+    formfield_overrides = {
+        models.ImageField:{"widget":AdminImageWidget},
+        models.TextField: {'widget': Textarea(attrs={'rows': 1,'cols': 40})},
+    }
+
 
 class FrameColorInline(
+    # SortableInlineAdminMixin,
     NestedTabularInline,
+    # admin.TabularInline,
     TranslationTabularInline,
     ):
     model = FrameColor 
@@ -83,9 +129,9 @@ class FrameColorInline(
     classes = ['collapse']
     
 
+
 @admin.register(FrameType)
 class FrameTypeAdmin(
-    BaseAdmin,
     NestedModelAdmin,
     SortableAdminMixin,
     ImportExportModelAdmin,
@@ -93,39 +139,112 @@ class FrameTypeAdmin(
     ):
     resource_class = FrameTypeResource
     exclude = ['color']
+    search_fields = ['name','code']
     inlines = [
         TabInline, 
         FrameColorInline,
     ]
-
-
-@admin.register(FrameColor)
-class FrameColorAdmin(BaseAdmin):
-    resource_class = FrameColorResource
-
-
-@admin.register(Tab)
-class TabAdmin(ImportExportModelAdmin, TabbedTranslationAdmin):
-    resource_class = TabResource
-
-
-@admin.register(TabGroup)
-class TabGroupAdmin(ImportExportModelAdmin, TabbedTranslationAdmin):
-    resource_class = TabGroupResource
-
-
-@admin.register(Parameter)
-class ParameterAdmin(ImportExportModelAdmin, TabbedTranslationAdmin):
-    resource_class = ParameterResource
-
-
-@admin.register(Value)
-class ValueAdmin(BaseAdmin):
-    resource_class = ValueResource
+    readonly_fields = ['code']
+    autocomplete_fields = ['item']
     formfield_overrides = {
-        models.ImageField: {'widget':AdminImageWidget}
+        models.ImageField:{"widget":AdminImageWidget},
+        models.TextField: {'widget': Textarea(attrs={'rows': 1,'cols': 40})},
     }
 
 
+@admin.register(Tab)
+class TabAdmin(
+    ImportExportModelAdmin, 
+    TabbedTranslationAdmin,
+    SortableAdminMixin,
+    NestedModelAdmin,
+    ):
+    resource_class = TabResource
+    readonly_fields = ['code']
+    formfield_overrides = {
+        models.ImageField:{"widget":AdminImageWidget},
+        models.TextField: {'widget': Textarea(attrs={'rows': 1,'cols': 40})},
+    }
+    inlines = [
+        TabGroupInline,
+    ]
+    search_fields = ['name']
+    autocomplete_fields = ['frame']
 
+
+@admin.register(TabGroup)
+class TabGroupAdmin(
+    ImportExportModelAdmin, 
+    TabbedTranslationAdmin,
+    SortableAdminMixin,
+    NestedModelAdmin,
+    ):
+    resource_class = TabGroupResource
+    formfield_overrides = {
+        models.ImageField:{"widget":AdminImageWidget},
+        models.TextField: {'widget': Textarea(attrs={'rows': 1,'cols': 40})},
+    }
+    inlines = [
+        ParameterInline,
+    ]
+    search_fields = ['name']
+    autocomplete_fields = ['tab']
+
+
+@admin.register(Parameter)
+class ParameterAdmin(
+    SortableAdminMixin,
+    ImportExportModelAdmin, 
+    TabbedTranslationAdmin,
+    NestedModelAdmin,
+    ):
+    resource_class = ParameterResource
+    formfield_overrides = {
+        models.ImageField:{"widget":AdminImageWidget},
+        models.TextField: {'widget': Textarea(attrs={'rows': 1,'cols': 40})},
+    }
+    inlines = [
+        ValueInline,
+    ]
+    search_fields = ['name']
+    # autocomplete_fields = ['tab_group']
+
+
+@admin.register(Value)
+class ValueAdmin(
+    TabbedTranslationAdmin,
+    ImportExportModelAdmin,
+    SortableAdminMixin,
+    ):
+    resource_class = ValueResource
+    inlines = [
+        ChildrenRelationshipInline,
+        ParentRelationshipInline,
+    ]
+    search_fields = [
+        'name','code','color'
+    ]
+    autocomplete_fields = ['parameter']
+    readonly_fields = ['code']
+    formfield_overrides = {
+        models.ImageField:{"widget":AdminImageWidget},
+        models.TextField: {'widget': Textarea(attrs={'rows': 1,'cols': 40})},
+    }
+
+
+@admin.register(Relationship)
+class RelationshipAdmin(admin.ModelAdmin):
+    search_fields = ['name']
+
+
+@admin.register(FrameColor)
+class FrameColorAdmin(
+    ImportExportModelAdmin,
+    ):
+    resource_class = FrameColorResource
+    readonly_fields = ['code']
+    formfield_overrides = {
+        models.ImageField:{"widget":AdminImageWidget},
+        models.TextField: {'widget': Textarea(attrs={'rows': 1,'cols': 40})},
+    }
 

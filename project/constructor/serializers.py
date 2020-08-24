@@ -39,3 +39,8 @@ class ValueSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Value; 
         exclude = base_exclude; 
+
+class RelationshipSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Relationship; 
+        exclude = base_exclude; 
