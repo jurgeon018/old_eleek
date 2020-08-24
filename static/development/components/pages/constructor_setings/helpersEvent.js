@@ -151,3 +151,27 @@ export function onClickCheckboxOptions() {
     chengePrice(string_params)
   });
 }
+
+export const resizeTringleCategories = () =>{
+  $('.settings__category_hover_triangl').removeAttr("style");
+  $('.settings__category_hover').removeAttr("style");
+  $('.settings__category_hover_sqar').removeAttr("style");
+
+  [...$('.settings__category')].map(item=>{
+  
+    if(!!$(item).hasClass('settings__category-active')){
+      let width_triangle = item.offsetHeight * 0.7;
+ console.log('width_triangle',width_triangle );
+ 
+      let width_setingts = $(item)[0].offsetWidth
+      
+      console.log('width_setingtsItem',$(item)[0] );
+      console.log('width_setingts',width_setingts );
+      
+      $(item).find('.settings__category_hover_triangl').width(width_triangle);
+      $(item).find('.settings__category_hover_triangl').height(width_triangle);
+      $(item).find('.settings__category_hover').width(width_triangle + width_setingts )
+      $(item).find('.settings__category_hover_sqar').width(width_setingts )
+    }
+  })
+}

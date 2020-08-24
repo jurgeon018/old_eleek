@@ -59261,7 +59261,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************************************!*\
   !*** ../components/pages/constructor_setings/helpersEvent.js ***!
   \***************************************************************/
-/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, onClickCheckboxOptions */
+/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, onClickCheckboxOptions, resizeTringleCategories */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59273,6 +59273,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearGroup", function() { return clearGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "childrensСonnections", function() { return childrensСonnections; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickCheckboxOptions", function() { return onClickCheckboxOptions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resizeTringleCategories", function() { return resizeTringleCategories; });
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -59402,6 +59403,25 @@ function onClickCheckboxOptions() {
     chengePrice(string_params);
   });
 }
+var resizeTringleCategories = function resizeTringleCategories() {
+  $('.settings__category_hover_triangl').removeAttr("style");
+  $('.settings__category_hover').removeAttr("style");
+  $('.settings__category_hover_sqar').removeAttr("style");
+
+  _toConsumableArray($('.settings__category')).map(function (item) {
+    if (!!$(item).hasClass('settings__category-active')) {
+      var width_triangle = item.offsetHeight * 0.7;
+      console.log('width_triangle', width_triangle);
+      var width_setingts = $(item)[0].offsetWidth;
+      console.log('width_setingtsItem', $(item)[0]);
+      console.log('width_setingts', width_setingts);
+      $(item).find('.settings__category_hover_triangl').width(width_triangle);
+      $(item).find('.settings__category_hover_triangl').height(width_triangle);
+      $(item).find('.settings__category_hover').width(width_triangle + width_setingts);
+      $(item).find('.settings__category_hover_sqar').width(width_setingts);
+    }
+  });
+};
 
 /***/ }),
 
