@@ -126,13 +126,7 @@ def page2(request):
     iframe_color    = query.pop('iframe_color')[0]
     frame           = FrameType.objects.get(code=iframe_type)
 
-    # value_codes     = query.values()
-    # parameter_codes = query.keys()
-    # colors          = [] 
-    # for code in value_codes:
-    #     if code.startswith("#"):
-    #         colors.append(value_codes.pop(code))
-
+    print(query)
     dict_values = []
     for parameter_code, value_code in query.items():
         print(parameter_code)
