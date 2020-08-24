@@ -334,6 +334,11 @@ def generate_neo():
   return neo
 
 
+def generate_children():
+  return children
+def generate_parents():
+  return parents
+
 def generate_values(parameter):
   result = []
   values = Value.objects.filter(is_active=True, parameter=parameter)
@@ -348,8 +353,8 @@ def generate_values(parameter):
       "price":value.price,
       "color":value.color,
       "code":value.code,
-      "children":children,
-      "parents":parents,
+      "children":generate_children(),
+      "parents":generate_parents(),
     })
   return Response(result).data
 

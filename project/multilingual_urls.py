@@ -108,7 +108,11 @@ def login(request):
 def register(request):
     page = Page.objects.get(code='register')
     return render(request, 'project/auth/register.html', locals())
+
+
 from project.constructor.models import * 
+
+
 def page1(request):
     frames = FrameType.objects.filter(is_active=True)
     frame_colors = FrameColor.objects.filter(is_active=True)
@@ -116,16 +120,20 @@ def page1(request):
     return render(request, 'project/page1.html', locals())
 
 def page2(request):
+    print(request.GET)
     return render(request, 'project/page2.html', locals())
+
 
 def page3(request):
     return render(request, 'project/page3.html', locals())
+
 
 def page4(request):
     return render(request, 'project/page4.html', locals())
 
 # from box.apps.payment.liqpay import 
 from box.apps.sw_shop.sw_order.utils import get_order_liqpay_context
+
 
 def payment(request):
     context = get_order_liqpay_context(request)
