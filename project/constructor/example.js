@@ -57,7 +57,9 @@ group: [
             price: "350 грн", // -  ціна для виводу
             value_id: "1", // - id || code для відсилання на сервер
             img_value:'', // url для картинки якщо, тип категорії radio_img 
-            childrens_group:{wheel_size:['size_18','size_20','size_24','size_26']}, // {name_categore:[value_id,value_id,value_id,value_id],name_categore:[value_id,value_id,value_id,value_id]} 
+            childrens_group:{
+              wheel_size:['size_18','size_20','size_24','size_26'],
+            }, // {name_categore:[value_id,value_id,value_id,value_id],name_categore:[value_id,value_id,value_id,value_id]} 
           },
         ],
       },
