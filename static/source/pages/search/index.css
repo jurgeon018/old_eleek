@@ -2034,6 +2034,9 @@ input::-webkit-inner-spin-button {
   .footer_starway__block {
     margin-top: 10px; } }
 
+.footer_form_constructor {
+  display: none; }
+
 .search_section {
   min-height: 100vh;
   padding-top: 200px; }

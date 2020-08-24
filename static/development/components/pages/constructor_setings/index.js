@@ -21,6 +21,9 @@ function onChengeIframe() {
   $(".settings__card-iframe").on("click", function () {
     const type_iframe = $(this).children(".form__radio").data("value");
 
+
+   
+
     let info_bike;
     onLoadInfoActive();
 
@@ -32,6 +35,11 @@ function onChengeIframe() {
       let info_tab_1 = info_bike.properties.tab_1.group;
       let info_tab_2 = info_bike.properties.tab_2.group;
       let info_tab_3 = info_bike.properties.tab_3.group;
+
+      console.log(info_tab_1 );
+      console.log(info_tab_2 );
+      console.log(info_tab_3 );
+    
 
       clearGroup('[data-tab_main="1"]');
       clearGroup('[data-tab_main="2"]');

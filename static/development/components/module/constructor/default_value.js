@@ -37,7 +37,7 @@ export const default_value = {
 
  
   iframe_type: {
-    Ekross:{
+    ekross:{
       
       properties: {
         tab_1: {
@@ -373,7 +373,7 @@ export const default_value = {
         },
       },
     },
-    Lite:{
+    lite:{
       
       properties: {
         tab_1: {
@@ -643,7 +643,7 @@ export const default_value = {
         },
       },
     },
-    Pozitiff:{
+    pozitiff:{
       
       properties: {
         tab_1: {
@@ -867,7 +867,7 @@ export const default_value = {
         },
       },
     },
-    Neo: {
+    neo: {
        
       properties: {
         tab_1: {

@@ -2034,6 +2034,9 @@ input::-webkit-inner-spin-button {
   .footer_starway__block {
     margin-top: 10px; } }
 
+.footer_form_constructor {
+  display: none; }
+
 @charset "UTF-8";
 .profile_tab {
   min-height: 100vh;

@@ -27,13 +27,13 @@ params_search.map((item) => {
 });
 
 if (config_model.iframe_type === "Pozitiff") {
-  config_model["url"] = "/static/source/model/Pozitif_v1.gltf";
+  config_model["url"] = "/static/source/model/L.gltf";
 } else if (config_model.iframe_type === "Neo") {
-  config_model["url"] = "/static/source/model/Neo_v1.gltf";
+  config_model["url"] = "/static/source/model/L.gltf";
 } else if (config_model.iframe_type === "Ekross") {
-  config_model["url"] = "/static/source/model/Ekros_v1.gltf";
+  config_model["url"] = "/static/source/model/L.gltf";
 } else {
-  config_model["url"] = "/static/source/model/E1kros_v1.gltf";
+  config_model["url"] = "/static/source/model/L.gltf";
 }
 
 $(".views__back").on("click", function () {
@@ -382,7 +382,25 @@ $(".form_box__item").on("click", function () {
         item.visible = valueChecked;
       }
     });
+  } else if ($(this).find('input[type="checkbox"]')[0].name === "seatKind") {
+    let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
+
+    theModel.children[2].children.map((item) => {
+      // багажник
+      if (item.material.name.indexOf("Seat_kind_1") !== -1 || item.material.name.indexOf("Seat_kind_2") !== -1) {
+        item.visible = valueChecked;
+      }
+    });
   }
 });
 
 
+
+
+$('.order_constructor').on('click', function() {
+  event.preventDefault();
+  $.fancybox.open({
+      src: '#order__form_constructor',
+      touch: false
+  });
+});
