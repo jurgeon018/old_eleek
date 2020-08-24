@@ -41,9 +41,9 @@ export const createSettingsBox = (parameters) => {
 }
 
 export const createCheckboxOptions = (properte) => {
+// console.log(properte );
 
-  console.log(properte );
-  
+   
 
   return ` <div class="settings__group settings__group-start">
     <div class="form_box__item form_box__item-black_bord2">
@@ -52,12 +52,12 @@ export const createCheckboxOptions = (properte) => {
       </svg>
   
       <div class="name"> ${properte.name} </div>
-      <input type="checkbox" name="${properte.value_code}" value="true" id="" />
+      <input type="checkbox" name="${properte.code}" value="true" id="" />
     </div></div>`;
 }
 
 export const createColor = (properte) => {
-  return ` <div class="form__color" data-color="${properte.value}">
+  return ` <div class="form__color" data-color="${properte.color}">
    <div class="form__color_check">
      <img src="./../../static/source/img/interface/check.svg" />
    </div>
@@ -68,7 +68,7 @@ export const createRadioSmal = (properte) => {
   // console.log(properte );
   
 
-  return ` <div class="form__radio"  data-value="${properte.value_id}">
+  return ` <div class="form__radio"  data-value="${properte.code}">
     <div class="form__radio_check"></div>
     <div class="form__radio_main">
       <div class="form__radio_title">${properte.name}</div>
@@ -78,6 +78,7 @@ export const createRadioSmal = (properte) => {
 }
 
 export const createRadioImg = (properte) => {
+//  console.log(properte );
  
   return `<div class="settings__card">
     <div class="settings__card_img">
@@ -86,7 +87,7 @@ export const createRadioImg = (properte) => {
         alt=""
       />
     </div>
-    <div class="form__radio" data-childrens=${JSON.stringify(properte.childrens_group)} data-value="${properte.value_id}">
+    <div class="form__radio" data-childrens=${JSON.stringify(properte.childrens_group)} data-value="${properte.code}">
       <div class="form__radio_check"></div>
       <div class="form__radio_main">
         <div class="form__radio_title">${properte.name}</div>

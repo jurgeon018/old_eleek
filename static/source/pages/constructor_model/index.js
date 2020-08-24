@@ -59411,10 +59411,7 @@ var resizeTringleCategories = function resizeTringleCategories() {
   _toConsumableArray($('.settings__category')).map(function (item) {
     if (!!$(item).hasClass('settings__category-active')) {
       var width_triangle = item.offsetHeight * 0.7;
-      console.log('width_triangle', width_triangle);
       var width_setingts = $(item)[0].offsetWidth;
-      console.log('width_setingtsItem', $(item)[0]);
-      console.log('width_setingts', width_setingts);
       $(item).find('.settings__category_hover_triangl').width(width_triangle);
       $(item).find('.settings__category_hover_triangl').height(width_triangle);
       $(item).find('.settings__category_hover').width(width_triangle + width_setingts);

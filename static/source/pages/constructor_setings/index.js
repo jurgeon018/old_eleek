@@ -52873,7 +52873,7 @@ var default_value = {
       properties: {
         tab_1: {
           iframe_color: color_object,
-          group: [{
+          groups: [{
             name: "Бокові панелі",
             parameters: [{
               name: "Товщина",
@@ -52923,7 +52923,7 @@ var default_value = {
         },
         tab_2: {
           name_section: "Підвіска",
-          group: [{
+          groups: [{
             name: "Вилки",
             parameters: [{
               name: "Тип вилки",
@@ -53020,7 +53020,7 @@ var default_value = {
         },
         tab_3: {
           name_section: "Додаткові комплектуючі",
-          group: [{
+          groups: [{
             name: "",
             parameters: [{
               name: "Мотор",
@@ -53121,11 +53121,11 @@ var default_value = {
       properties: {
         tab_1: {
           iframe_color: color_object,
-          group: []
+          groups: []
         },
         tab_2: {
           name_section: "Підвіска",
-          group: [{
+          groups: [{
             name: "Вилки",
             parameters: [{
               name: "Тип вилки",
@@ -53136,7 +53136,7 @@ var default_value = {
                 name: "Сатурн",
                 price: "350 грн",
                 value_id: "SATURN",
-                childrens_group: {
+                childrens_groups: {
                   wheel_size: ['size_20', 'size_26']
                 }
               }, {
@@ -53144,7 +53144,7 @@ var default_value = {
                 name: "Зум",
                 price: "350 грн",
                 value_id: "ZYM",
-                childrens_group: {
+                childrens_groups: {
                   wheel_size: ['size_18', 'size_20', 'size_24', 'size_26']
                 }
               }, {
@@ -53152,7 +53152,7 @@ var default_value = {
                 name: "DNM",
                 price: "350 грн",
                 value_id: "DNM",
-                childrens_group: {
+                childrens_groups: {
                   wheel_size: ['size_18', 'size_20', 'size_24', 'size_26']
                 }
               }, {
@@ -53160,7 +53160,7 @@ var default_value = {
                 name: "DNM FAT",
                 price: "350 грн",
                 value_id: "DNM_FAT_1",
-                childrens_group: {
+                childrens_groups: {
                   wheel_size: ['size_26_FAT']
                 }
               }]
@@ -53223,7 +53223,7 @@ var default_value = {
         },
         tab_3: {
           name_section: "Додаткові комплектуючі",
-          group: [{
+          groups: [{
             name: "",
             parameters: [{
               name: "Мотор",
@@ -53324,11 +53324,11 @@ var default_value = {
       properties: {
         tab_1: {
           iframe_color: color_object,
-          group: []
+          groups: []
         },
         tab_2: {
           name_section: "Підвіска",
-          group: [{
+          groups: [{
             name: "Вилки",
             parameters: [{
               name: "Тип вилки",
@@ -53383,7 +53383,7 @@ var default_value = {
         },
         tab_3: {
           name_section: "Додаткові комплектуючі",
-          group: [{
+          groups: [{
             name: "",
             parameters: [{
               name: "Мотор",
@@ -53484,11 +53484,11 @@ var default_value = {
       properties: {
         tab_1: {
           iframe_color: color_object,
-          group: []
+          groups: []
         },
         tab_2: {
           name_section: "Підвіска",
-          group: [{
+          groups: [{
             name: "Колеса",
             parameters: [{
               name: "Тип колеса",
@@ -53513,7 +53513,7 @@ var default_value = {
         },
         tab_3: {
           name_section: "Додаткові комплектуючі",
-          group: [{
+          groups: [{
             name: "Опції",
             type: "checkbox_options",
             parameters: [{
@@ -53943,18 +53943,19 @@ var createSettingsBox = function createSettingsBox(parameters) {
   return SetingsBox;
 };
 var createCheckboxOptions = function createCheckboxOptions(properte) {
-  console.log(properte);
-  return " <div class=\"settings__group settings__group-start\">\n    <div class=\"form_box__item form_box__item-black_bord2\">\n      <svg class=\"plus\"  width=\"9\" height=\"9\" viewBox=\"0 0 9 9\" >\n        <path fill=\"#242321\" fill-rule=\"evenodd\"  d=\"M5 0v4h4v1H5v4H4V5H0V4h4V0h1z\" ></path>\n      </svg>\n  \n      <div class=\"name\"> ".concat(properte.name, " </div>\n      <input type=\"checkbox\" name=\"").concat(properte.value_code, "\" value=\"true\" id=\"\" />\n    </div></div>");
+  // console.log(properte );
+  return " <div class=\"settings__group settings__group-start\">\n    <div class=\"form_box__item form_box__item-black_bord2\">\n      <svg class=\"plus\"  width=\"9\" height=\"9\" viewBox=\"0 0 9 9\" >\n        <path fill=\"#242321\" fill-rule=\"evenodd\"  d=\"M5 0v4h4v1H5v4H4V5H0V4h4V0h1z\" ></path>\n      </svg>\n  \n      <div class=\"name\"> ".concat(properte.name, " </div>\n      <input type=\"checkbox\" name=\"").concat(properte.code, "\" value=\"true\" id=\"\" />\n    </div></div>");
 };
 var createColor = function createColor(properte) {
-  return " <div class=\"form__color\" data-color=\"".concat(properte.value, "\">\n   <div class=\"form__color_check\">\n     <img src=\"./../../static/source/img/interface/check.svg\" />\n   </div>\n  </div>");
+  return " <div class=\"form__color\" data-color=\"".concat(properte.color, "\">\n   <div class=\"form__color_check\">\n     <img src=\"./../../static/source/img/interface/check.svg\" />\n   </div>\n  </div>");
 };
 var createRadioSmal = function createRadioSmal(properte) {
   // console.log(properte );
-  return " <div class=\"form__radio\"  data-value=\"".concat(properte.value_id, "\">\n    <div class=\"form__radio_check\"></div>\n    <div class=\"form__radio_main\">\n      <div class=\"form__radio_title\">").concat(properte.name, "</div>\n      <div class=\"form__radio_price\">").concat(properte.price, "</div>\n    </div> \n  </div>");
+  return " <div class=\"form__radio\"  data-value=\"".concat(properte.code, "\">\n    <div class=\"form__radio_check\"></div>\n    <div class=\"form__radio_main\">\n      <div class=\"form__radio_title\">").concat(properte.name, "</div>\n      <div class=\"form__radio_price\">").concat(properte.price, "</div>\n    </div> \n  </div>");
 };
 var createRadioImg = function createRadioImg(properte) {
-  return "<div class=\"settings__card\">\n    <div class=\"settings__card_img\">\n      <img\n        src=\"".concat(properte.img_value, "\"\n        alt=\"\"\n      />\n    </div>\n    <div class=\"form__radio\" data-childrens=").concat(JSON.stringify(properte.childrens_group), " data-value=\"").concat(properte.value_id, "\">\n      <div class=\"form__radio_check\"></div>\n      <div class=\"form__radio_main\">\n        <div class=\"form__radio_title\">").concat(properte.name, "</div>\n        <div class=\"form__radio_price\">").concat(properte.price, "</div>\n      </div>\n    </div>\n  </div>");
+  //  console.log(properte );
+  return "<div class=\"settings__card\">\n    <div class=\"settings__card_img\">\n      <img\n        src=\"".concat(properte.img_value, "\"\n        alt=\"\"\n      />\n    </div>\n    <div class=\"form__radio\" data-childrens=").concat(JSON.stringify(properte.childrens_group), " data-value=\"").concat(properte.code, "\">\n      <div class=\"form__radio_check\"></div>\n      <div class=\"form__radio_main\">\n        <div class=\"form__radio_title\">").concat(properte.name, "</div>\n        <div class=\"form__radio_price\">").concat(properte.price, "</div>\n      </div>\n    </div>\n  </div>");
 };
 var checkCardType = function checkCardType(item) {
   var obj = {
@@ -54143,10 +54144,7 @@ var resizeTringleCategories = function resizeTringleCategories() {
   _toConsumableArray($('.settings__category')).map(function (item) {
     if (!!$(item).hasClass('settings__category-active')) {
       var width_triangle = item.offsetHeight * 0.7;
-      console.log('width_triangle', width_triangle);
       var width_setingts = $(item)[0].offsetWidth;
-      console.log('width_setingtsItem', $(item)[0]);
-      console.log('width_setingts', width_setingts);
       $(item).find('.settings__category_hover_triangl').width(width_triangle);
       $(item).find('.settings__category_hover_triangl').height(width_triangle);
       $(item).find('.settings__category_hover').width(width_triangle + width_setingts);
@@ -54202,20 +54200,13 @@ function onChengeIframe() {
     var info_bike;
     Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onLoadInfoActive"])();
     fetch("/api/get_info/?frame_code=".concat(type_iframe)).then(function (response) {
-      console.log(response); // return response.json()
-    }); // .then((data) => {
-    //   console.log(data);
-    // });
+      return response.json();
+    }).then(function (response) {
+      info_bike = response; // info_bike = default_value.iframe_type[type_iframe];
 
-    setTimeout(function () {
-      info_bike = _module_constructor_default_value__WEBPACK_IMPORTED_MODULE_1__["default_value"].iframe_type[type_iframe];
-      console.log(type_iframe);
-      var info_tab_1 = info_bike.properties.tab_1.group;
-      var info_tab_2 = info_bike.properties.tab_2.group;
-      var info_tab_3 = info_bike.properties.tab_3.group;
-      console.log(info_tab_1);
-      console.log(info_tab_2);
-      console.log(info_tab_3);
+      var info_tab_1 = info_bike.properties.tab_1.groups;
+      var info_tab_2 = info_bike.properties.tab_2.groups;
+      var info_tab_3 = info_bike.properties.tab_3.groups;
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="1"]');
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="2"]');
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="3"]');
@@ -54235,18 +54226,56 @@ function onChengeIframe() {
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onLoadInfoRemote"])();
       onBackMobile();
       onChengeSetingsHeight();
-    }, 1000);
+    }); // .then((data) => {
+    //   console.log(data);
+    // });
+    // setTimeout(function () {
+    //   info_bike = default_value.iframe_type[type_iframe];
+    //   console.log(type_iframe);
+    //   let info_tab_1 = info_bike.properties.tab_1.group;
+    //   let info_tab_2 = info_bike.properties.tab_2.group;
+    //   let info_tab_3 = info_bike.properties.tab_3.group;
+    //   console.log(info_tab_1 );
+    //   console.log(info_tab_2 );
+    //   console.log(info_tab_3 );
+    //   clearGroup('[data-tab_main="1"]');
+    //   clearGroup('[data-tab_main="2"]');
+    //   clearGroup('[data-tab_main="3"]');
+    //   $('[data-tab_main="1"]')[0].innerHTML += createGrooup(
+    //     info_tab_1,
+    //     info_bike.properties.tab_1.name_section
+    //   );
+    //   $('[data-tab_main="2"]')[0].innerHTML += createGrooup(
+    //     info_tab_2,
+    //     info_bike.properties.tab_2.name_section
+    //   );
+    //   $('[data-tab_main="3"]')[0].innerHTML += createGrooup(
+    //     info_tab_3,
+    //     info_bike.properties.tab_3.name_section
+    //   );
+    //   form_color(".form__color");
+    //   onClickSettingsCardImg(".settings__box_main1", false);
+    //   onClickSettingsCardImg(".settings__box_main");
+    //   onChengeRadioV1(".settings__box_main");
+    //   onClickSettingsColor();
+    //   SettingsInput();
+    //   onClickCheckboxOptions();
+    //   onClickRadio_v1();
+    //   onChengeIframe();
+    //   onSelectFirstItem();
+    //   onLoadInfoRemote();
+    //   onBackMobile();
+    //   onChengeSetingsHeight();
+    // }, 1000);
   });
 }
 
 onChengeIframe();
 $(".vizual_3d").on("click", function () {
   var string_params = $(".constructor_setings").serializeArray();
-  console.log(string_params);
   window.location.href = "/page2/?".concat(Object(_common_componentc_modell_helper__WEBPACK_IMPORTED_MODULE_6__["params"])(string_params));
 });
 $(".next_tab").on("click", function () {
-  console.log("next_tab");
   var activeTab = $(".settings__parameters-active").data("tab_main");
   activeTab++;
 
@@ -54258,6 +54287,7 @@ $(".next_tab").on("click", function () {
   $(".settings__category").removeClass("settings__category-active");
   $("[data-tab_main=\"".concat(activeTab, "\"]")).addClass("settings__parameters-active");
   $("[data-tab_header=\"".concat(activeTab, "\"]")).addClass("settings__category-active");
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["resizeTringleCategories"])();
   setTimeout(function () {
     onChengeSetingsHeight();
   }, 400);
@@ -54370,11 +54400,8 @@ setTimeout(function () {
 }, 300);
 
 function onChengeSetingsHeight() {
-  console.log($(window).width());
-
   if ($(window).width() <= 800) {
     var settings_heights = $(".settings__parameters_wrap").find(".settings__parameters-active").outerHeight();
-    console.log(settings_heights);
     $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
   }
 }

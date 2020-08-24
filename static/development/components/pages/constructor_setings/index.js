@@ -30,27 +30,22 @@ function onChengeIframe() {
 
     fetch(`/api/get_info/?frame_code=${type_iframe}`)
     .then((response) => {
-      console.log(response);
-      // return response.json()
+      return response.json()
     })
-    // .then((data) => {
-    //   console.log(data);
-    // });
+    .then((response) => {
 
-    setTimeout(function () {
-      info_bike = default_value.iframe_type[type_iframe];
+      
+      info_bike = response;
+      // info_bike = default_value.iframe_type[type_iframe];
 
-      console.log(type_iframe);
+      
+      
+      let info_tab_1 = info_bike.properties.tab_1.groups;
+      let info_tab_2 = info_bike.properties.tab_2.groups;
+      let info_tab_3 = info_bike.properties.tab_3.groups;
 
-      let info_tab_1 = info_bike.properties.tab_1.group;
-      let info_tab_2 = info_bike.properties.tab_2.group;
-      let info_tab_3 = info_bike.properties.tab_3.group;
-
-      console.log(info_tab_1 );
-      console.log(info_tab_2 );
-      console.log(info_tab_3 );
-    
-
+  
+      
       clearGroup('[data-tab_main="1"]');
       clearGroup('[data-tab_main="2"]');
       clearGroup('[data-tab_main="3"]');
@@ -86,9 +81,63 @@ function onChengeIframe() {
 
       onChengeSetingsHeight();
 
+    })
+    // .then((data) => {
+    //   console.log(data);
+    // });
+
+    // setTimeout(function () {
+    //   info_bike = default_value.iframe_type[type_iframe];
+
+    //   console.log(type_iframe);
+
+    //   let info_tab_1 = info_bike.properties.tab_1.group;
+    //   let info_tab_2 = info_bike.properties.tab_2.group;
+    //   let info_tab_3 = info_bike.properties.tab_3.group;
+
+    //   console.log(info_tab_1 );
+    //   console.log(info_tab_2 );
+    //   console.log(info_tab_3 );
+    
+
+    //   clearGroup('[data-tab_main="1"]');
+    //   clearGroup('[data-tab_main="2"]');
+    //   clearGroup('[data-tab_main="3"]');
+
+    //   $('[data-tab_main="1"]')[0].innerHTML += createGrooup(
+    //     info_tab_1,
+    //     info_bike.properties.tab_1.name_section
+    //   );
+    //   $('[data-tab_main="2"]')[0].innerHTML += createGrooup(
+    //     info_tab_2,
+    //     info_bike.properties.tab_2.name_section
+    //   );
+    //   $('[data-tab_main="3"]')[0].innerHTML += createGrooup(
+    //     info_tab_3,
+    //     info_bike.properties.tab_3.name_section
+    //   );
+
+      
+    //   form_color(".form__color");
+    //   onClickSettingsCardImg(".settings__box_main1", false);
+    //   onClickSettingsCardImg(".settings__box_main");
+    //   onChengeRadioV1(".settings__box_main");
+    //   onClickSettingsColor();
+    //   SettingsInput();
+    //   onClickCheckboxOptions();
+    //   onClickRadio_v1();
+
+    //   onChengeIframe();
+    //   onSelectFirstItem();
+
+    //   onLoadInfoRemote();
+    //   onBackMobile();
+
+    //   onChengeSetingsHeight();
+
      
 
-    }, 1000);
+    // }, 1000);
   });
 }
 
@@ -96,14 +145,12 @@ onChengeIframe();
 
 $(".vizual_3d").on("click", function () {
   let string_params = $(".constructor_setings").serializeArray();
-  console.log(string_params);
 
   window.location.href = `/page2/?${params(string_params)}`;
 });
 
 $(".next_tab").on("click", function () {
-  console.log("next_tab");
-
+   
   let activeTab = $(".settings__parameters-active").data("tab_main");
   activeTab++;
 
@@ -117,6 +164,7 @@ $(".next_tab").on("click", function () {
   $(`[data-tab_main="${activeTab}"]`).addClass("settings__parameters-active");
   $(`[data-tab_header="${activeTab}"]`).addClass("settings__category-active");
 
+  resizeTringleCategories()
   setTimeout(function () {
     onChengeSetingsHeight();
   }, 400);
@@ -277,14 +325,13 @@ setTimeout(function () {
 }, 300);
 
 function onChengeSetingsHeight() {
-  console.log($(window).width());
-
+   
   if ($(window).width() <= 800) {
     let settings_heights = $(".settings__parameters_wrap")
       .find(".settings__parameters-active")
       .outerHeight();
-    console.log(settings_heights);
-
+    
+      
     $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
   }
 }
