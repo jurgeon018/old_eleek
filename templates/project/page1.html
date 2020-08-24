@@ -72,7 +72,7 @@
             <div class="settings__box">
               <div class="settings__box_title">Тип рами</div>
               <div class="settings__box_main1 settings__box_main-card" data-input_value="iframe_type">
-                <input type="hidden" name="iframe_type" id="iframe_type" value="Pozitiff">
+                <input type="hidden" name="iframe_type" id="iframe_type" value="{{frames.first.code}}">
                 <div class="settings__box_main_content">
                   {% for frame in frames %}
                   <div class="settings__card settings__card-iframe">
@@ -127,14 +127,18 @@
                 <div class="settings__box">
                   <div class="settings__box_title">{{parameter.name}}</div>
                     {% if parameter.type == 'radio_color' %}
-                    <div class="settings__box_main settings__box_main-color" data-input_value="{{parameter.id}}">
+                    <div class="settings__box_main settings__box_main-color" data-input_value="{{parameter.code}}">
                     {% elif parameter.type == 'checkbox_options' %}
-                    <div class="settings__box_main settings__box_main-checkbox" data-input_value="{{parameter.id}}">
+                    <div class="settings__box_main settings__box_main-checkbox" data-input_value="{{parameter.code}}">
                     {% else %}
-                    <div class="settings__box_main settings__box_main-card" data-input_value="{{parameter.id}}">
+                    <div class="settings__box_main settings__box_main-card" data-input_value="{{parameter.code}}">
                     {% endif %}
                     <div class="settings__box_loader"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
-                    <input type="hidden" value="{{parameter.get_values.first.id}}" name="{{parameter.id}}" id="{{parameter.id}}" class="{{parameter.id}}">
+                    {% if parameter.type == 'radio_color' %}
+                    <input type="hidden" value="{{parameter.get_values.first.color}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
+                    {% else %}
+                    <input type="hidden" value="{{parameter.get_values.first.code}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
+                    {% endif %}
                     <div class="settings__box_main_content">
                       {% for value in parameter.get_values %}
                         {% if parameter.type == 'radio_color' %}
@@ -159,7 +163,7 @@
                             <div class="settings__card_img">
                               <img src="{{value.image_url}}" alt="">
                             </div>
-                            <div class="form__radio {% if forloop.counter == 1%}form__radio-active{%endif%}" data-childrens="undefined" data-value="DNM_USD_8 ">
+                            <div class="form__radio {% if forloop.counter == 1%}form__radio-active{%endif%}" data-childrens="undefined" data-value="{{value.code}} ">
                               <div class="form__radio_check"></div>
                               <div class="form__radio_main">
                                 <div class="form__radio_title">{{value.name}} </div>
@@ -168,7 +172,7 @@
                             </div>
                           </div>
                         {% elif parameter.type == 'radio_small'  %}
-                          <div class="form__radio {%if forloop.counter == 1 %}form__radio-active{%endif%}" data-value="{{value.id}}">
+                          <div class="form__radio {%if forloop.counter == 1 %}form__radio-active{%endif%}" data-value="{{value.code}}">
                             <div class="form__radio_check"></div>
                             <div class="form__radio_main">
                               <div class="form__radio_title">{{value.name}}</div>
@@ -193,11 +197,10 @@
         {% endfor %}
         </form>
 
-
         <div class="settings__parameters_navigation">	       
           <div class="price">	         <div class="price">
             <div class="title">Загальна ціна</div>	          
-            <div class="value">100 500грн</div>	           
+            <div class="value">{{initial_price}}грн</div>	           
           </div>	         </div>
                    
           <div class="btn_standart btn_standart_yellow next_tab">ДАЛІ</div>	         

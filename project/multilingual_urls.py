@@ -119,8 +119,37 @@ def page1(request):
     initial_price = FrameType.get_initial_price()
     return render(request, 'project/page1.html', locals())
 
+
 def page2(request):
-    print(request.GET)
+    query           = dict(request.GET)
+    iframe_type     = query.pop('iframe_type')[0]
+    iframe_color    = query.pop('iframe_color')[0]
+    frame           = FrameType.objects.get(code=iframe_type)
+
+    # value_codes     = query.values()
+    # parameter_codes = query.keys()
+    # colors          = [] 
+    # for code in value_codes:
+    #     if code.startswith("#"):
+    #         colors.append(value_codes.pop(code))
+
+    dict_values = []
+    for parameter_code, value_code in query.items():
+        print(parameter_code)
+        print(value_code)
+        # print(type(parameter_code))
+        # print(type(value_code))
+        
+        parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=parameter_code)
+        if value_code[0].startswith("#"):
+            value = Value.objects.filter(parameter=parameter, color=value_code[0]).first()
+        else:
+            value = Value.objects.filter(parameter=parameter, code=value_code[0]).first()
+        dict_values.append({ 
+            "parameter":parameter,
+            "value":value,
+            "values":Value.objects.filter(parameter=parameter),
+        })
     return render(request, 'project/page2.html', locals())
 
 
