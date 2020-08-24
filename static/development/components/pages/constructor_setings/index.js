@@ -21,7 +21,7 @@ function onChengeIframe() {
   $(".settings__card-iframe").on("click", function () {
     const type_iframe = $(this).children(".form__radio").data("value");
 
-
+    
    
 
     let info_bike;
@@ -30,7 +30,7 @@ function onChengeIframe() {
     setTimeout(function () {
       info_bike = default_value.iframe_type[type_iframe];
 
-      // console.log(default_value);
+      console.log(type_iframe);
 
       let info_tab_1 = info_bike.properties.tab_1.group;
       let info_tab_2 = info_bike.properties.tab_2.group;
