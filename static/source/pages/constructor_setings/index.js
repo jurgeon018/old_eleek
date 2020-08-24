@@ -53993,7 +53993,7 @@ var checkCardType = function checkCardType(item) {
 /*!***************************************************************!*\
   !*** ../components/pages/constructor_setings/helpersEvent.js ***!
   \***************************************************************/
-/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, onClickCheckboxOptions */
+/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, onClickCheckboxOptions, resizeTringleCategories */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54005,6 +54005,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearGroup", function() { return clearGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "childrensСonnections", function() { return childrensСonnections; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickCheckboxOptions", function() { return onClickCheckboxOptions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resizeTringleCategories", function() { return resizeTringleCategories; });
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -54134,6 +54135,25 @@ function onClickCheckboxOptions() {
     chengePrice(string_params);
   });
 }
+var resizeTringleCategories = function resizeTringleCategories() {
+  $('.settings__category_hover_triangl').removeAttr("style");
+  $('.settings__category_hover').removeAttr("style");
+  $('.settings__category_hover_sqar').removeAttr("style");
+
+  _toConsumableArray($('.settings__category')).map(function (item) {
+    if (!!$(item).hasClass('settings__category-active')) {
+      var width_triangle = item.offsetHeight * 0.7;
+      console.log('width_triangle', width_triangle);
+      var width_setingts = $(item)[0].offsetWidth;
+      console.log('width_setingtsItem', $(item)[0]);
+      console.log('width_setingts', width_setingts);
+      $(item).find('.settings__category_hover_triangl').width(width_triangle);
+      $(item).find('.settings__category_hover_triangl').height(width_triangle);
+      $(item).find('.settings__category_hover').width(width_triangle + width_setingts);
+      $(item).find('.settings__category_hover_sqar').width(width_setingts);
+    }
+  });
+};
 
 /***/ }),
 
@@ -54181,9 +54201,15 @@ function onChengeIframe() {
     var type_iframe = $(this).children(".form__radio").data("value");
     var info_bike;
     Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onLoadInfoActive"])();
-    setTimeout(function () {
-      info_bike = _module_constructor_default_value__WEBPACK_IMPORTED_MODULE_1__["default_value"].iframe_type[type_iframe]; // console.log(default_value);
+    fetch("/api/get_info/?frame_code=".concat(type_iframe)).then(function (response) {
+      console.log(response); // return response.json()
+    }); // .then((data) => {
+    //   console.log(data);
+    // });
 
+    setTimeout(function () {
+      info_bike = _module_constructor_default_value__WEBPACK_IMPORTED_MODULE_1__["default_value"].iframe_type[type_iframe];
+      console.log(type_iframe);
       var info_tab_1 = info_bike.properties.tab_1.group;
       var info_tab_2 = info_bike.properties.tab_2.group;
       var info_tab_3 = info_bike.properties.tab_3.group;
@@ -54322,6 +54348,7 @@ $(".settings__category").on("click", function () {
   $("[data-tab_main=\"".concat(tab_item, "\"]")).addClass("settings__parameters-active");
   $(".settings__category").removeClass("settings__category-active");
   $(this).addClass("settings__category-active");
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["resizeTringleCategories"])();
   $(".settings__categories_wrap").removeClass("settings__categories_wrap-active");
   setTimeout(function () {
     onChengeSetingsHeight();
@@ -54370,7 +54397,14 @@ function startConstructor() {
   onSelectFirstItem();
   Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onLoadInfoRemote"])();
   onBackMobile();
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["resizeTringleCategories"])();
 }
+
+function reportWindowSize() {
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["resizeTringleCategories"])();
+}
+
+window.onresize = reportWindowSize;
 
 /***/ }),
 

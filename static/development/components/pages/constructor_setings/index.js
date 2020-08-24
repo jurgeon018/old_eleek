@@ -11,6 +11,7 @@ import {
   onChengeRadioV1,
   childrensСonnections,
   onClickCheckboxOptions,
+  resizeTringleCategories,
 } from "./helpersEvent";
 import { creatingSettings } from "./helperCreate";
 import { params } from "../../common_componentc/modell/helper";
@@ -26,6 +27,15 @@ function onChengeIframe() {
 
     let info_bike;
     onLoadInfoActive();
+
+    fetch(`/api/get_info/?frame_code=${type_iframe}`)
+    .then((response) => {
+      console.log(response);
+      // return response.json()
+    })
+    // .then((data) => {
+    //   console.log(data);
+    // });
 
     setTimeout(function () {
       info_bike = default_value.iframe_type[type_iframe];
@@ -75,6 +85,9 @@ function onChengeIframe() {
       onBackMobile();
 
       onChengeSetingsHeight();
+
+     
+
     }, 1000);
   });
 }
@@ -236,7 +249,7 @@ $(".settings__category").on("click", function () {
 
   $(".settings__category").removeClass("settings__category-active");
   $(this).addClass("settings__category-active");
-
+  resizeTringleCategories()
   $(".settings__categories_wrap").removeClass(
     "settings__categories_wrap-active"
   );
@@ -297,4 +310,12 @@ function startConstructor() {
 
   onLoadInfoRemote();
   onBackMobile();
+  resizeTringleCategories()
 }
+
+
+function reportWindowSize() {
+  resizeTringleCategories()
+}
+
+window.onresize = reportWindowSize;
