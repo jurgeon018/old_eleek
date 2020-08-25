@@ -30,12 +30,46 @@ if(!!param[0]){
 }
 });
 
-if (config_model.iframe_type === "Pozitiff") {
+if (config_model.iframe_type === "pozitiff") {
   config_model["url"] = "/static/source/model/L.gltf";
-} else if (config_model.iframe_type === "Neo") {
+} else if (config_model.iframe_type === "neo") {
   config_model["url"] = "/static/source/model/L.gltf";
-} else if (config_model.iframe_type === "Ekross") {
-  config_model["url"] = "/static/source/model/L.gltf";
+} else if (config_model.iframe_type === "ekross") {
+  console.log(config_model );
+  console.log(config_model.fork_type );
+  console.log(config_model.wheel_size );
+ 
+  if(config_model.fork_type == 'santur' && config_model.wheel_size == 'size18'  ){
+    config_model["url"] = "/static/source/model/ekros_saturn_18.gltf";
+  }else if(config_model.fork_type == 'santur' && config_model.wheel_size == 'size26'  ){
+    config_model["url"] = "/static/source/model/ekros_saturn_26.gltf";
+  }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size18'  ){
+    config_model["url"] = "/static/source/model/ekros_zum_18.gltf";
+  }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size26'  ){
+    config_model["url"] = "/static/source/model/ekros_zum_26.gltf";
+  }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size18'  ){
+    config_model["url"] = "/static/source/model/ekros_dmn_18.gltf";
+  }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size26'  ){
+    config_model["url"] = "/static/source/model/ekros_dmn_26.gltf";
+  }
+} else if (config_model.iframe_type === "lite") {
+   
+  console.log(config_model.fork_type );
+  console.log(config_model.wheel_size );
+ 
+  if(config_model.fork_type == 'santur' && config_model.wheel_size == 'size18'  ){
+    config_model["url"] = "/static/source/model/ekros_saturn_18.gltf";
+  }else if(config_model.fork_type == 'santur' && config_model.wheel_size == 'size26'  ){
+    config_model["url"] = "/static/source/model/ekros_saturn_26.gltf";
+  }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size18'  ){
+    config_model["url"] = "/static/source/model/ekros_zum_18.gltf";
+  }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size26'  ){
+    config_model["url"] = "/static/source/model/ekros_zum_26.gltf";
+  }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size18'  ){
+    config_model["url"] = "/static/source/model/ekros_dmn_18.gltf";
+  }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size26'  ){
+    config_model["url"] = "/static/source/model/ekros_dmn_26.gltf";
+  }
 } else {
   config_model["url"] = "/static/source/model/L.gltf";
 }
