@@ -55,25 +55,31 @@ if (config_model.iframe_type === "pozitiff") {
     config_model["url"] = "/static/source/model/ekros_dmn_26.gltf";
   }
 } else if (config_model.iframe_type === "lite") {
-  console.log(config_model.fork_type );
-  console.log(config_model.wheel_size );
  
-  if(config_model.fork_type == 'santur' && config_model.wheel_size == 'size18'  ){
-    config_model["url"] = "/static/source/model/ekros_saturn_18.gltf";
+  if(config_model.fork_type == 'santur' && config_model.wheel_size == 'size20'  ){
+    config_model["url"] = "/static/source/model/lite/lite_saturn_20.gltf";
   }else if(config_model.fork_type == 'santur' && config_model.wheel_size == 'size26'  ){
-    config_model["url"] = "/static/source/model/ekros_saturn_26.gltf";
+    config_model["url"] = "/static/source/model/lite/lite_saturn_26.gltf";
   }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size18'  ){
-    config_model["url"] = "/static/source/model/ekros_zum_18.gltf";
+    config_model["url"] = "/static/source/model/lite/lite_zum_18.gltf";
+  }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size20'  ){
+    config_model["url"] = "/static/source/model/lite/lite_zum_20.gltf";
+  }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size24'  ){
+    config_model["url"] = "/static/source/model/lite/lite_zum_24.gltf";
   }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size26'  ){
-    config_model["url"] = "/static/source/model/ekros_zum_26.gltf";
+    config_model["url"] = "/static/source/model/lite/lite_zum_26.gltf";
   }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size18'  ){
-    config_model["url"] = "/static/source/model/ekros_dmn_18.gltf";
+    config_model["url"] = "/static/source/model/lite/lite_dnm_18.gltf";
+  }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size20'  ){
+    config_model["url"] = "/static/source/model/lite/lite_dnm_20.gltf";
+  }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size24'  ){
+    config_model["url"] = "/static/source/model/lite/lite_dnm_24.gltf";
   }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size26'  ){
-    config_model["url"] = "/static/source/model/ekros_dmn_26.gltf";
+    config_model["url"] = "/static/source/model/lite/lite_dnm_26.gltf";
+  }else{
+    config_model["url"] = "/static/source/model/lite/lite_dnmFat_26Fat.gltf";
   }
-} else {
-  config_model["url"] = "/static/source/model/L.gltf";
-}
+}  
 
 $(".views__back").on("click", function () {
   let back_url = createUrl(config_model);
@@ -454,6 +460,8 @@ $(".form_box__item").on("click", function () {
     let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
  
 console.log(valueChecked );
+
+
 
     theModel.children[2].children.map((item) => {
       // багажник
