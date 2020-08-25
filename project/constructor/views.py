@@ -128,37 +128,37 @@ def get_price(request):
 @api_view(['GET','POST'])
 def make_eleek_order(request):
   query   = request.data or request.query_params 
-  values  = query['values']
+  # values  = query['values']
   name    = query.get('name','-----')
   email   = query.get('email','-----')
   phone   = query.get('phone','-----')
   message = query.get('message','-----')
-  model = ConstructorForm.objects.create(
-    name=name,
-    email=email,
-    phone=phone,
-    message=message,
-  )
-  values  = json.loads(values)
-  price   = 0
-  frame   = values.first.parameter.tab_group.tab.frame 
-  for value_id in values:
-    value = Value.objects.get(id=value_id)
-    price += value.price 
-    model.values.add(value)
-  send_mail(
-    subject=f"Заявка з конструктора №{model.id}",
-    message=f""" 
-      Імя:{name};
-      Емейл:{email};
-      Телефон:{phone};
-      Повідомлення:{message};
-      Рама: {frame.name};
-    """,
-    from_email=settings.DEFAULT_FROM_EMAIL,
-    recipient_list=settings.DEFAULT_RECIPIENT_LIST,
-    fail_silently=False,
-  )
+  # model = ConstructorForm.objects.create(
+  #   name=name,
+  #   email=email,
+  #   phone=phone,
+  #   message=message,
+  # )
+  # values  = json.loads(values)
+  # price   = 0
+  # frame   = values.first.parameter.tab_group.tab.frame 
+  # for value_id in values:
+  #   value = Value.objects.get(id=value_id)
+  #   price += value.price 
+  #   model.values.add(value)
+  # send_mail(
+  #   subject=f"Заявка з конструктора №{model.id}",
+  #   message=f""" 
+  #     Імя:{name};
+  #     Емейл:{email};
+  #     Телефон:{phone};
+  #     Повідомлення:{message};
+  #     Рама: {frame.name};
+  #   """,
+  #   from_email=settings.DEFAULT_FROM_EMAIL,
+  #   recipient_list=settings.DEFAULT_RECIPIENT_LIST,
+  #   fail_silently=False,
+  # )
   return Response({
     "status":"OK"
   })
