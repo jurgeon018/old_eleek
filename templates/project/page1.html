@@ -137,14 +137,14 @@
                     {% if parameter.type == 'radio_color' %}
                     <input type="hidden" value="{{parameter.get_values.first.color}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
                     {% elif parameter.type == 'checkbox_options' %}
+                    
                     {% else %}
                     <input type="hidden" value="{{parameter.get_values.first.code}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
                     {% endif %}
                     <div class="settings__box_main_content">
                       {% for value in parameter.get_values %}
                         {% if parameter.type == 'radio_color' %}
-                          <div class="form__color {%if forloop.counter == 1 %}form__color-active{% endif %}" data-color="{{value.color}}"
-                            style="background: rgb(0, 0, 0) none repeat scroll 0% 0%;">
+                          <div class="form__color {% if forloop.counter == 1 %}form__color-active{% endif %}" data-color="{{value.color}}" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%;">
                             <div class="form__color_check">
                               <img src="./../../static/source/img/interface/check.svg">
                             </div>
