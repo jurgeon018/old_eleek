@@ -32,6 +32,15 @@
           <!-- <img class="views__visual_model-img" src="./../../static/source/img/constructor/views_model/gridBacgroundModel@2x.png" alt=""> -->
         </div>
         <div class="views__visula_3d"></div>
+        <div class="views__visula_loading visula__loading_wrap visula__loading_wrap-active">
+          
+            <div class="visula__loading">
+              <div class="visula__loading-line" ></div>
+            <div class="visula__loading-text">0%</div>
+       
+          </div>
+          
+      </div>
       </div>
       <div class="views__visual_control">
         <div class="views__visual_left">
@@ -115,7 +124,7 @@
                     <input
                       type="hidden"
                       value="{{dict_value.parameter.code}}"
-                      name="{{dict_value.parameter.name}}"
+                      name="{{dict_value.parameter.code}}"
                       id="{{dict_value.parameter.id}}"
                       class="motor"
                     />
