@@ -18,7 +18,7 @@
         <div class="settings__categories_title">Конструктор</div>
         <div class="settings__categories_main">
           <div class="settings__category_wrap">
-            {% for tab in frames.first.get_tabs %}
+            {% for tab in frame.get_tabs %}
             <div data-admin_url="{{tab.get_admin_url}}" data-tab_header="{{forloop.counter}}"
               class="db_content settings__category {%if forloop.counter == 1%}settings__category-active{% endif %}">
               <div class="settings__category_main">
@@ -72,7 +72,7 @@
             <div class="settings__box">
               <div class="settings__box_title">Тип рами</div>
               <div class="settings__box_main1 settings__box_main-card" data-input_value="iframe_type">
-                <input type="hidden" name="iframe_type" id="iframe_type" value="{{frames.first.code}}">
+                <input type="hidden" name="iframe_type" id="iframe_type" value="{{frame.code}}">
                 <div class="settings__box_main_content">
                   {% for frame in frames %}
                   <div class="settings__card settings__card-iframe">
@@ -103,9 +103,9 @@
                     <div></div>
                   </div>
                 </div>
-                <input type="hidden" value="{{frames.first.get_colors.first.color}}" name="iframe_color" id="iframe_color" class="iframe_color">
+                <input type="hidden" value="{{frame.get_colors.first.color}}" name="iframe_color" id="iframe_color" class="iframe_color">
                 <div class="settings__box_main_content">
-                  {% for frame_color in frames.first.get_colors %}
+                  {% for frame_color in frame.get_colors %}
                   <div class="form__color {%if forloop.counter == 1%}form__color-active{%endif%}"
                     data-color="{{frame_color.color}}" style="background: rgb(9, 9, 9);">
                     <div class="form__color_check">
@@ -151,7 +151,7 @@
                           </div>
                         {% elif parameter.type == 'checkbox_options' %}
                           <div class="settings__group settings__group-start">
-                            <div class="form_box__item form_box__item-black_bord2">
+                            <div class="{% if value.code in codes %} form_box__item-active {% endif %}form_box__item form_box__item-black_bord2">
                               <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
                                 <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
                               </svg>
