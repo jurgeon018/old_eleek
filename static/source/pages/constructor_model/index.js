@@ -57554,7 +57554,7 @@ function basket_plus() {
 /*!********************************************************!*\
   !*** ../components/common_componentc/modell/helper.js ***!
   \********************************************************/
-/*! exports provided: HelperCordinates, HelperShadowCamera, HelperSphereShadows, HelperPlaneShadows, addCircleToBacground, params, colorBike */
+/*! exports provided: HelperCordinates, HelperShadowCamera, HelperSphereShadows, HelperPlaneShadows, addCircleToBacground, params, colorBike, getFormatUrl, filterObject, chengePriseModel, creteInputHiden */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57566,6 +57566,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCircleToBacground", function() { return addCircleToBacground; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "params", function() { return params; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colorBike", function() { return colorBike; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFormatUrl", function() { return getFormatUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filterObject", function() { return filterObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chengePriseModel", function() { return chengePriseModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "creteInputHiden", function() { return creteInputHiden; });
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "../../node_modules/three/build/three.module.js");
 
 var HelperCordinates = function HelperCordinates(scene, width_helper_line) {
@@ -57835,6 +57839,46 @@ var colorBike = function colorBike(model, config_model) {
 // // console.log(o);
 // }
 
+var getFormatUrl = function getFormatUrl(config_model) {
+  var URL = Object.keys(config_model).map(function (key) {
+    // // console.log('key_old',key );
+    return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
+  }).join("&");
+  return URL;
+};
+var filterObject = function filterObject(config_model) {
+  var tempObject = {};
+  Object.keys(config_model).map(function (key) {
+    if (key != "not_url" && config_model["not_url"].indexOf(key) === -1) {
+      if (key.indexOf("_color") != -1) {
+        tempObject[key] = "#".concat(config_model[key]);
+      } else {
+        tempObject[key] = config_model[key];
+      }
+    }
+  });
+  return tempObject;
+};
+var chengePriseModel = function chengePriseModel(objectParameter) {
+  fetch("/api/get_price/?".concat(getFormatUrl(objectParameter))).then(function (response) {
+    return response.json();
+  }).then(function (response) {
+    function triplets(str) {
+      // \u202f — неразрывный узкий пробел
+      return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202F");
+    }
+
+    $(".views__parameter_footer").find(".price").children(".value").text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
+  });
+};
+var creteInputHiden = function creteInputHiden(name, value) {
+  var product_item = document.createElement("input");
+  product_item.setAttribute('type', 'hidden');
+  product_item.setAttribute('name', name);
+  product_item.setAttribute('value', value);
+  return product_item;
+};
+
 /***/ }),
 
 /***/ "../components/common_componentc/modell/model.js":
@@ -57859,7 +57903,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-Object(_pages_constructor_setings_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["onClickCheckboxOptions"])();
 var params_search = window.location.search.split("?")[1].split("&");
 var config_model = {
   not_url: ["url"]
@@ -57879,39 +57922,39 @@ if (config_model.iframe_type === "pozitiff") {
 } else if (config_model.iframe_type === "neo") {
   config_model["url"] = "/static/source/model/L.gltf";
 } else if (config_model.iframe_type === "ekross") {
-  if (config_model.fork_type == 'santur' && config_model.wheel_size == 'size18') {
+  if (config_model.fork_type == "santur" && config_model.wheel_size == "size18") {
     config_model["url"] = "/static/source/model/ekros_saturn_18.gltf";
-  } else if (config_model.fork_type == 'santur' && config_model.wheel_size == 'size26') {
+  } else if (config_model.fork_type == "santur" && config_model.wheel_size == "size26") {
     config_model["url"] = "/static/source/model/ekros_saturn_26.gltf";
-  } else if (config_model.fork_type == 'zoom' && config_model.wheel_size == 'size18') {
+  } else if (config_model.fork_type == "zoom" && config_model.wheel_size == "size18") {
     config_model["url"] = "/static/source/model/ekros_zum_18.gltf";
-  } else if (config_model.fork_type == 'zoom' && config_model.wheel_size == 'size26') {
+  } else if (config_model.fork_type == "zoom" && config_model.wheel_size == "size26") {
     config_model["url"] = "/static/source/model/ekros_zum_26.gltf";
-  } else if (config_model.fork_type == 'dnm' && config_model.wheel_size == 'size18') {
+  } else if (config_model.fork_type == "dnm" && config_model.wheel_size == "size18") {
     config_model["url"] = "/static/source/model/ekros_dmn_18.gltf";
-  } else if (config_model.fork_type == 'dnm' && config_model.wheel_size == 'size26') {
+  } else if (config_model.fork_type == "dnm" && config_model.wheel_size == "size26") {
     config_model["url"] = "/static/source/model/ekros_dmn_26.gltf";
   }
 } else if (config_model.iframe_type === "lite") {
-  if (config_model.fork_type == 'santur' && config_model.wheel_size == 'size20') {
+  if (config_model.fork_type == "santur" && config_model.wheel_size == "size20") {
     config_model["url"] = "/static/source/model/lite/lite_saturn_20.gltf";
-  } else if (config_model.fork_type == 'santur' && config_model.wheel_size == 'size26') {
+  } else if (config_model.fork_type == "santur" && config_model.wheel_size == "size26") {
     config_model["url"] = "/static/source/model/lite/lite_saturn_26.gltf";
-  } else if (config_model.fork_type == 'zoom' && config_model.wheel_size == 'size18') {
+  } else if (config_model.fork_type == "zoom" && config_model.wheel_size == "size18") {
     config_model["url"] = "/static/source/model/lite/lite_zum_18.gltf";
-  } else if (config_model.fork_type == 'zoom' && config_model.wheel_size == 'size20') {
+  } else if (config_model.fork_type == "zoom" && config_model.wheel_size == "size20") {
     config_model["url"] = "/static/source/model/lite/lite_zum_20.gltf";
-  } else if (config_model.fork_type == 'zoom' && config_model.wheel_size == 'size24') {
+  } else if (config_model.fork_type == "zoom" && config_model.wheel_size == "size24") {
     config_model["url"] = "/static/source/model/lite/lite_zum_24.gltf";
-  } else if (config_model.fork_type == 'zoom' && config_model.wheel_size == 'size26') {
+  } else if (config_model.fork_type == "zoom" && config_model.wheel_size == "size26") {
     config_model["url"] = "/static/source/model/lite/lite_zum_26.gltf";
-  } else if (config_model.fork_type == 'dnm' && config_model.wheel_size == 'size18') {
+  } else if (config_model.fork_type == "dnm" && config_model.wheel_size == "size18") {
     config_model["url"] = "/static/source/model/lite/lite_dnm_18.gltf";
-  } else if (config_model.fork_type == 'dnm' && config_model.wheel_size == 'size20') {
+  } else if (config_model.fork_type == "dnm" && config_model.wheel_size == "size20") {
     config_model["url"] = "/static/source/model/lite/lite_dnm_20.gltf";
-  } else if (config_model.fork_type == 'dnm' && config_model.wheel_size == 'size24') {
+  } else if (config_model.fork_type == "dnm" && config_model.wheel_size == "size24") {
     config_model["url"] = "/static/source/model/lite/lite_dnm_24.gltf";
-  } else if (config_model.fork_type == 'dnm' && config_model.wheel_size == 'size26') {
+  } else if (config_model.fork_type == "dnm" && config_model.wheel_size == "size26") {
     config_model["url"] = "/static/source/model/lite/lite_dnm_26.gltf";
   } else {
     config_model["url"] = "/static/source/model/lite/lite_dnmFat_26Fat.gltf";
@@ -57919,22 +57962,16 @@ if (config_model.iframe_type === "pozitiff") {
 }
 
 $(".views__back").on("click", function () {
-  var back_url = createUrl(config_model);
-  window.location.href = "/page1/?".concat(back_url);
+  var back_url = createUrl(config_model); // window.location.href = `/page1/?${back_url}`;
 });
 
 function createUrl(config_model) {
-  var back_url = Object.keys(config_model).map(function (key) {
-    // console.log('key_old',key );
-    if (key != "not_url" && config_model["not_url"].indexOf(key) === -1) {
-      console.log("key_start", key);
-      console.log("key_index_of", key.indexOf("_color") != -1);
-
-      if (key.indexOf("_color") != -1) {
-        return "".concat(key, "=").concat(encodeURIComponent("#".concat(config_model[key])));
-      } else {
-        return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
-      }
+  console.log(config_model);
+  var back_url = Object.keys(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model)).map(function (key) {
+    if (key.indexOf("_color") != -1) {
+      return "".concat(key, "=").concat(encodeURIComponent("#".concat(config_model[key])));
+    } else {
+      return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
     }
   }).join("&");
   return back_url;
@@ -57943,10 +57980,7 @@ function createUrl(config_model) {
 $(".form__radio").on("click", function () {
   if (!$(this).hasClass("form__radio-hiden")) {
     var value = $(this).data("value");
-    console.log($(this).parents('.settings__box_main-radio').children("input[type=hidden]"));
-    var parametr = $(this).parents('.settings__box_main-radio').children("input[type=hidden]")[0].name;
-    console.log('parametr', parametr);
-    console.log(config_model);
+    var parametr = $(this).parents(".settings__box_main-radio").children("input[type=hidden]")[0].name;
 
     if (parametr.indexOf("_color") != -1) {
       config_model[parametr] = value.replace("#", "");
@@ -57957,7 +57991,25 @@ $(".form__radio").on("click", function () {
     console.log(config_model);
   }
 
-  var back_url = createUrl(config_model).slice(1);
+  console.log(config_model);
+  var back_url = createUrl(config_model);
+  history.pushState(null, null, "/page2/?".concat(back_url));
+});
+$(".form_box__item").on("click", function () {
+  $(this).toggleClass("form_box__item-active");
+  var item_input = $(this).find("input");
+
+  if (item_input.prop("checked") == true) {
+    item_input.prop("checked", false);
+    delete config_model[item_input[0].name];
+  } else {
+    item_input.prop("checked", true);
+    config_model[item_input[0].name] = "true";
+  }
+
+  var tempObject = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model);
+  Object(_helper__WEBPACK_IMPORTED_MODULE_4__["chengePriseModel"])(tempObject);
+  var back_url = createUrl(config_model);
   history.pushState(null, null, "/page2/?".concat(back_url));
 }); /////||||///////
 /////||||///////
@@ -58279,7 +58331,15 @@ $(".order_constructor").on("click", function () {
   event.preventDefault();
   $.fancybox.open({
     src: "#order__form_constructor",
-    touch: false
+    touch: false,
+    afterShow: function afterShow() {
+      Object.keys(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model)).map(function (key) {
+        $(".fancybox-content").append(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["creteInputHiden"])(key, config_model[key]));
+      });
+    },
+    beforeClose: function beforeClose() {
+      $(".fancybox-content").find('input[type=hidden]').remove();
+    }
   });
 });
 
@@ -59026,6 +59086,7 @@ function Onload() {
   valide_form('.form_cons', '.inp-vak-wrap', true);
   valide_form('#form_qustion', '.inp-vak-wrap', true);
   valide_form('#form_cons', '.inp-vak-wrap', true);
+  valide_form('#order__form_constructor', '.inp-vak-wrap', true);
 }
 
 function location_leng() {

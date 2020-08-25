@@ -69,7 +69,7 @@ function onChengeIframe() {
       onChengeRadioV1(".settings__box_main");
       onClickSettingsColor();
       SettingsInput();
-      onClickCheckboxOptions();
+      onClickCheckboxOptions('.constructor_setings');
       onClickRadio_v1();
 
       onChengeIframe();
@@ -370,7 +370,7 @@ function startConstructor() {
   onChengeRadioV1(".settings__box_main");
   onClickSettingsColor();
   SettingsInput();
-  onClickCheckboxOptions();
+  onClickCheckboxOptions('.constructor_setings');
   onClickRadio_v1();
 
   onChengeIframe();

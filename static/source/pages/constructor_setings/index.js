@@ -51863,7 +51863,7 @@ function basket_plus() {
 /*!********************************************************!*\
   !*** ../components/common_componentc/modell/helper.js ***!
   \********************************************************/
-/*! exports provided: HelperCordinates, HelperShadowCamera, HelperSphereShadows, HelperPlaneShadows, addCircleToBacground, params, colorBike */
+/*! exports provided: HelperCordinates, HelperShadowCamera, HelperSphereShadows, HelperPlaneShadows, addCircleToBacground, params, colorBike, getFormatUrl, filterObject, chengePriseModel, creteInputHiden */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51875,6 +51875,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCircleToBacground", function() { return addCircleToBacground; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "params", function() { return params; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colorBike", function() { return colorBike; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFormatUrl", function() { return getFormatUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filterObject", function() { return filterObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chengePriseModel", function() { return chengePriseModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "creteInputHiden", function() { return creteInputHiden; });
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "../../node_modules/three/build/three.module.js");
 
 var HelperCordinates = function HelperCordinates(scene, width_helper_line) {
@@ -52143,6 +52147,46 @@ var colorBike = function colorBike(model, config_model) {
 // // });
 // // console.log(o);
 // }
+
+var getFormatUrl = function getFormatUrl(config_model) {
+  var URL = Object.keys(config_model).map(function (key) {
+    // // console.log('key_old',key );
+    return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
+  }).join("&");
+  return URL;
+};
+var filterObject = function filterObject(config_model) {
+  var tempObject = {};
+  Object.keys(config_model).map(function (key) {
+    if (key != "not_url" && config_model["not_url"].indexOf(key) === -1) {
+      if (key.indexOf("_color") != -1) {
+        tempObject[key] = "#".concat(config_model[key]);
+      } else {
+        tempObject[key] = config_model[key];
+      }
+    }
+  });
+  return tempObject;
+};
+var chengePriseModel = function chengePriseModel(objectParameter) {
+  fetch("/api/get_price/?".concat(getFormatUrl(objectParameter))).then(function (response) {
+    return response.json();
+  }).then(function (response) {
+    function triplets(str) {
+      // \u202f — неразрывный узкий пробел
+      return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202F");
+    }
+
+    $(".views__parameter_footer").find(".price").children(".value").text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
+  });
+};
+var creteInputHiden = function creteInputHiden(name, value) {
+  var product_item = document.createElement("input");
+  product_item.setAttribute('type', 'hidden');
+  product_item.setAttribute('name', name);
+  product_item.setAttribute('value', value);
+  return product_item;
+};
 
 /***/ }),
 
@@ -53611,6 +53655,7 @@ function Onload() {
   valide_form('.form_cons', '.inp-vak-wrap', true);
   valide_form('#form_qustion', '.inp-vak-wrap', true);
   valide_form('#form_cons', '.inp-vak-wrap', true);
+  valide_form('#order__form_constructor', '.inp-vak-wrap', true);
 }
 
 function location_leng() {
@@ -54250,7 +54295,7 @@ function onChengeIframe() {
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeRadioV1"])(".settings__box_main");
       onClickSettingsColor();
       SettingsInput();
-      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickCheckboxOptions"])();
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickCheckboxOptions"])('.constructor_setings');
       Object(_interface_form_elements_radio_v1__WEBPACK_IMPORTED_MODULE_3__["onClickRadio_v1"])();
       onChengeIframe();
       onSelectFirstItem();
@@ -54471,7 +54516,7 @@ function startConstructor() {
   Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeRadioV1"])(".settings__box_main");
   onClickSettingsColor();
   SettingsInput();
-  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickCheckboxOptions"])();
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickCheckboxOptions"])('.constructor_setings');
   Object(_interface_form_elements_radio_v1__WEBPACK_IMPORTED_MODULE_3__["onClickRadio_v1"])();
   onChengeIframe();
   onSelectFirstItem();
