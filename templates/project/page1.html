@@ -137,7 +137,7 @@
                     {% if parameter.type == 'radio_color' %}
                     <input type="hidden" value="{{parameter.get_values.first.color}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
                     {% elif parameter.type == 'checkbox_options' %}
-                    
+
                     {% else %}
                     <input type="hidden" value="{{parameter.get_values.first.code}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
                     {% endif %}
@@ -164,7 +164,7 @@
                             <div class="settings__card_img">
                               <img src="{{value.image_url}}" alt="">
                             </div>
-                            <div class="form__radio {% if forloop.counter == 1%}form__radio-active{%endif%}" data-childrens="undefined" data-value="{{value.code}} ">
+                            <div class="form__radio {% if forloop.counter == 1%}form__radio-active{%endif%}" data-childrens="{{value.generate_children_json}}" data-value="{{value.code}} ">
                               <div class="form__radio_check"></div>
                               <div class="form__radio_main">
                                 <div class="form__radio_title">{{value.name}} </div>
@@ -173,7 +173,7 @@
                             </div>
                           </div>
                         {% elif parameter.type == 'radio_small'  %}
-                          <div class="form__radio {%if forloop.counter == 1 %}form__radio-active{%endif%}" data-value="{{value.code}}">
+                          <div class="form__radio {%if forloop.counter == 1 %}form__radio-active{%endif%}" data-childrens="{{value.generate_children_json}}" data-value="{{value.code}}">
                             <div class="form__radio_check"></div>
                             <div class="form__radio_main">
                               <div class="form__radio_title">{{value.name}}</div>

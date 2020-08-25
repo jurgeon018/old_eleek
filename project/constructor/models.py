@@ -1,7 +1,7 @@
 from django.db import models 
 from colorfield.fields import ColorField
 from box.core.helpers import get_admin_url
-
+import json 
 # # # # # # # # # # # # 
  
 class ActiveMixin(models.Model):
@@ -141,7 +141,6 @@ class Tab(BaseMixin, NameMixin, CodeMixin, ImageMixin, FrameMixin):
         verbose_name_plural = "Вкладки"
          
 
-
 class TabGroup(BaseMixin, NameMixin):
     # radio_small = 'radio_small'
     # radio_color = 'radio_color'
@@ -213,6 +212,19 @@ class Value(GeneralMixin):
         parents = parents.values_list('parent__id', flat=True)
         parents = Value.objects.filter(id__in=parents)
         return parents
+
+    def generate_children(self):
+        result = {}
+        for children in self.get_children():
+            code = children.parameter.code
+            if not result.get(code):
+                result[code] = []
+            result[code].append(children.code)
+        return result
+
+    def generate_children_json(self):
+        result = json.dumps(self.generate_children())
+        return result 
 
     def __str__(self):
         return f'{self.id}. {self.parameter.tab_group.tab.frame.name} -> {self.parameter.tab_group.tab.name} -> {self.parameter.tab_group.name} -> {self.parameter.name} -> {self.name}'
