@@ -72,12 +72,10 @@ export const childrensСonnections = (children_element) => {
   for (const key in children_element) {
     if (children_element.hasOwnProperty(key)) {
       const element = children_element[key];
-console.log( key);
-
+ 
       let data_element = $(`[data-input_value="${key}"]`);
-console.log(data_element );
-
-      if (data_element.hasClass("settings__box_main-card")) {
+ 
+      if (data_element.hasClass("settings__box_main-radio")) {
         let all_elements = [
           ...data_element
             .find(".form__radio")
@@ -105,6 +103,7 @@ console.log(data_element );
          
         });
       } else {
+
       }
     }
   }
@@ -141,8 +140,8 @@ function chengePrice(data){
     
     
 
- setTimeout(function(){
-  },1000)
+//  setTimeout(function(){
+//   },1000)
 
 }
 

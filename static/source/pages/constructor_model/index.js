@@ -59441,11 +59441,9 @@ var childrensСonnections = function childrensСonnections(children_element) {
     if (children_element.hasOwnProperty(key)) {
       (function () {
         var element = children_element[key];
-        console.log(key);
         var data_element = $("[data-input_value=\"".concat(key, "\"]"));
-        console.log(data_element);
 
-        if (data_element.hasClass("settings__box_main-card")) {
+        if (data_element.hasClass("settings__box_main-radio")) {
           var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
 
           var flag = true;
@@ -59488,8 +59486,8 @@ function chengePrice(data) {
     }
 
     $('.settings__parameters_navigation').find('.price').children('.value').text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
-  });
-  setTimeout(function () {}, 1000);
+  }); //  setTimeout(function(){
+  //   },1000)
 }
 
 function onClickCheckboxOptions() {
