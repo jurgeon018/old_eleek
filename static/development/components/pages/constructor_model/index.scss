@@ -6,12 +6,54 @@ canvas {
   width: 30%;
   padding: 45px 30px 20px;
   min-width: 300px;
-  & .button.fancybox-button.fancybox-close-small{
+  & .button.fancybox-button.fancybox-close-small {
     color: #fff;
   }
 }
+.visula {
+  &__loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+    &-line {
+      width: 95%;
+      height: 2px;
+      background: #000;
+      border-radius: 5px;
+      max-width: 0%;
+      align-self: flex-start;
+      margin: 5px 0;
+    }
+    &-text {
+      font-family: "Oswald", sans-serif;
+    }
+    &_wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      opacity: 0;
+      transition: 1s;
+      z-index: -10;
+      &-active{
+        opacity: 1;
+        transition: .1s; 
+        z-index: 2;
+      }
 
+    }
+  }
+}
 .views {
   display: flex;
   align-items: center;
@@ -19,6 +61,7 @@ canvas {
   position: relative;
   overflow: hidden;
   height: 100vh;
+
   &__visual {
     width: 100%;
     position: relative;
@@ -242,7 +285,7 @@ canvas {
     transform: translate(-50%, 0px);
     opacity: 1;
     transition: 0.3s;
-    visibility:visible;
+    visibility: visible;
     &-hidden {
       transform: translate(-50%, 5px);
       opacity: 0;
@@ -392,7 +435,7 @@ canvas {
 }
 
 @media only screen and (max-width: 480px) {
-  .views__parameter_footer{
+  .views__parameter_footer {
     display: flex;
     justify-content: space-between;
     padding: 0 17px;

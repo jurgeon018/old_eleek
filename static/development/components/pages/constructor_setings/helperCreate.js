@@ -16,6 +16,7 @@ export const createSettingsBox = (parameters) => {
   parameters.map((item) => {
     let params = checkCardType(item);
 
+    console.log('item.code',item.code );
     
     SetingsBox += `<div class="settings__box">
       <div class="settings__box_title">${!!item.name ? item.name : ""}</div>

@@ -15,15 +15,19 @@ import {
 } from "./helper";
 
 let params_search = window.location.search.split("?")[1].split("&");
-let config_model = {};
+let config_model = {
+  not_url: ["url"],
+};
 
 params_search.map((item) => {
-  let param = item.split("=");
+  let param = item.split("="); 
+if(!!param[0]){
 
   param[1] = param[1].replace("%23", "");
   param[1] = param[1].replace("%20", "");
 
   config_model[param[0]] = param[1];
+}
 });
 
 if (config_model.iframe_type === "Pozitiff") {
@@ -37,17 +41,53 @@ if (config_model.iframe_type === "Pozitiff") {
 }
 
 $(".views__back").on("click", function () {
-  let back_url = Object.keys(config_model)
-    .map((key) => {
-      return `${key}=${encodeURIComponent(config_model[key])}`;
-    })
-    .join("&");
-
-  // console.log(window.location );
-  // console.log(window.location.search );
+  let back_url = createUrl(config_model);
 
   window.location.href = `/page1/?${back_url}`;
 });
+
+function createUrl(config_model) {
+  let back_url = Object.keys(config_model)
+    .map((key) => {
+      // console.log('key_old',key );
+      if (key != "not_url" && config_model["not_url"].indexOf(key) === -1) {
+        console.log("key_start", key);
+        console.log("key_index_of", key.indexOf("_color") != -1);
+        if (key.indexOf("_color") != -1) {
+          return `${key}=${encodeURIComponent(`#${config_model[key]}`)}`;
+        } else {
+          return `${key}=${encodeURIComponent(config_model[key])}`;
+        }
+      }
+    })
+    .join("&");
+  return back_url;
+}
+
+
+$(".form__radio").on("click", function () {
+  if (!$(this).hasClass("form__radio-hiden")) {
+    let value = $(this).data("value");
+    console.log($(this).parents('.settings__box_main-radio').children("input[type=hidden]") );
+    
+    let parametr = $(this).parents('.settings__box_main-radio').children("input[type=hidden]")[0].name;
+    console.log('parametr',parametr );
+    console.log(config_model );
+    if (parametr.indexOf("_color") != -1) {
+      config_model[parametr]=value.replace("#", "");
+    }else{
+      config_model[parametr]=value
+    }
+     console.log(config_model );
+  }
+ 
+  let back_url = createUrl(config_model).slice(1);
+// console.log(back_url );
+// console.log(back_url.slice(1) );
+
+  history.pushState(null, null, `/page2/?${back_url}`);
+});
+
 
 /////||||///////
 /////||||///////
@@ -107,8 +147,37 @@ function init() {
   scene.background = new THREE.Color("0xffffff");
   scene.fog = new THREE.Fog(0xb4b4b4, 100, 1200);
 
+  var manager = new THREE.LoadingManager();
+  manager.onStart = function (url, itemsLoaded, itemsTotal) {
+    if ($(".visula__loading_wrap").length > 0) {
+      $(".visula__loading_wrap").addClass("visula__loading_wrap-active");
+    }
+  };
+
+  manager.onLoad = function () {
+    if ($(".visula__loading_wrap").length > 0) {
+      $(".visula__loading_wrap").removeClass("visula__loading_wrap-active");
+    }
+  };
+
+  manager.onProgress = function (url, itemsLoaded, itemsTotal) {
+    console.log(
+      "Loading file: " +
+        url +
+        ".\nLoaded " +
+        itemsLoaded +
+        " of " +
+        itemsTotal +
+        " files."
+    );
+  };
+
+  manager.onError = function (url) {
+    console.log("There was an error loading " + url);
+  };
+
   // Init the object loader
-  var loader = new GLTFLoader();
+  var loader = new GLTFLoader(manager);
 
   loader.load(
     config_model.url,
@@ -126,12 +195,24 @@ function init() {
 
       scene.add(theModelColor);
     },
-    undefined,
+    onProgress,
     function (error) {
       console.error(error);
     }
   );
 
+  function onProgress(xhr) {
+    if (xhr.lengthComputable) {
+      var percentComplete = (xhr.loaded / xhr.total) * 100;
+      if ($(".visula__loading-line").length > 0) {
+        $(".visula__loading-line")[0].style.maxWidth =
+          Math.round(percentComplete, 2) + "%";
+      }
+      if ($(".visula__loading-text").length > 0) {
+        $(".visula__loading-text").text(Math.round(percentComplete, 1) + "%");
+      }
+    }
+  }
   const cubeSize = 4;
   const cubeGeo = new THREE.BoxBufferGeometry(cubeSize, cubeSize, cubeSize);
   const cubeMat = new THREE.MeshPhongMaterial({ color: "#8AC" });
@@ -140,18 +221,6 @@ function init() {
   // mesh12.receiveShadow = true;
   mesh12.position.set(cubeSize + 1, cubeSize / 2, 0);
   scene.add(mesh12);
-
-  // var geometry = new THREE.RingGeometry(64.8, 65, 120);
-  // var material = new THREE.MeshBasicMaterial({
-  //   color: 0x292929,
-  //   side: THREE.DoubleSide,
-  // });
-  // var mesh = new THREE.Mesh(geometry, material);
-
-  // mesh.up.x = 2;
-  // // mesh.rotateX( addCircleToBacground);
-  // scene.add(mesh);
-  console.log(addCircleToBacground(69.8, 70, 120));
 
   scene.add(addCircleToBacground(64.8, 65, 120));
   scene.add(addCircleToBacground(69.8, 70, 120));
@@ -240,7 +309,7 @@ function init() {
     $(".views__order").addClass("views__order-hidden");
     if ($(window).width() > 992) {
       $(".views__visual").addClass("views__visual-compress");
-     
+
       setTimeout(function () {
         onWindowResize();
       }, 300);
@@ -248,7 +317,7 @@ function init() {
     // resizeRendererToDisplaySize();
   });
 
-  $('.views__parameter_close').on('click',function(){
+  $(".views__parameter_close").on("click", function () {
     $(".views__order").removeClass("views__order-hidden");
     $(".views__parameter_wrap").removeClass("views__parameter_wrap-active");
     $(".views__visual").removeClass("views__visual-compress");
@@ -257,8 +326,8 @@ function init() {
         onWindowResize();
       }, 300);
     }
-})
-  $('.views__parameter_back').on('click',function(){
+  });
+  $(".views__parameter_back").on("click", function () {
     $(".views__order").removeClass("views__order-hidden");
     $(".views__parameter_wrap").removeClass("views__parameter_wrap-active");
     $(".views__visual").removeClass("views__visual-compress");
@@ -267,7 +336,7 @@ function init() {
         onWindowResize();
       }, 300);
     }
-})
+  });
 
   // scene.add( mesh123 );
 }
@@ -315,7 +384,7 @@ function animate() {
   if (views__visual_right) {
     theModel.children[2].rotation.z -= Math.PI / 180;
   }
-   
+
   renderer.render(scene, camera);
 }
 
@@ -330,7 +399,6 @@ $(".views__visual_right")[0].addEventListener(
   false
 );
 
-
 $(".views__visual_left")[0].addEventListener(
   "mouseup",
   () => (views__visual_left = false),
@@ -342,14 +410,11 @@ $(".views__visual_right")[0].addEventListener(
   () => (views__visual_right = false),
   false
 );
- 
-window.addEventListener('mouseup', function(event){
+
+window.addEventListener("mouseup", function (event) {
   views__visual_left = false;
   views__visual_right = false;
-})
-
-
-
+});
 
 $(".form_box__item").on("click", function () {
   if ($(this).find('input[type="checkbox"]')[0].name === "mirrors") {
@@ -387,20 +452,20 @@ $(".form_box__item").on("click", function () {
 
     theModel.children[2].children.map((item) => {
       // багажник
-      if (item.material.name.indexOf("Seat_kind_1") !== -1 || item.material.name.indexOf("Seat_kind_2") !== -1) {
+      if (
+        item.material.name.indexOf("Seat_kind_1") !== -1 ||
+        item.material.name.indexOf("Seat_kind_2") !== -1
+      ) {
         item.visible = valueChecked;
       }
     });
   }
 });
 
-
-
-
-$('.order_constructor').on('click', function() {
+$(".order_constructor").on("click", function () {
   event.preventDefault();
   $.fancybox.open({
-      src: '#order__form_constructor',
-      touch: false
+    src: "#order__form_constructor",
+    touch: false,
   });
 });
