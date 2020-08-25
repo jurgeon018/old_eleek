@@ -31,6 +31,7 @@ canvas {
       max-width: 0%;
       align-self: flex-start;
       margin: 5px 0;
+      translate: 1s;
     }
     &-text {
       font-family: "Oswald", sans-serif;
@@ -44,6 +45,7 @@ canvas {
       background: #ffffff;
       opacity: 0;
       transition: 1s;
+      transition-timing-function: ease-in;
       z-index: -10;
       &-active{
         opacity: 1;

@@ -59475,15 +59475,14 @@ function chengePrice(data) {
     if (item.name != 'undefined') {
       objectParameter[item.name] = item.value;
     }
-  }); // fetch(url_form, {
-  //   method: current_method,
-  //   body: JSON.stringify(objectParameter),
-  // })
-  // .then(data => {
-  // })
-
+  });
+  fetch("/api/get_price/?".concat(getFormatUrl(objectParameter))).then(function (response) {
+    return response.json();
+  }).then(function (response) {
+    console.log(res);
+  });
   setTimeout(function () {
-    $('.settings__parameters_navigation').find('.price').children('.value').text('121 340грн');
+    $('.settings__parameters_navigation').find('.price').children('.value').text("121 340 \u0433\u0440\u043D");
   }, 1000);
 }
 
@@ -59522,6 +59521,14 @@ var resizeTringleCategories = function resizeTringleCategories() {
     }
   });
 };
+
+function getFormatUrl(config_model) {
+  var URL = Object.keys(config_model).map(function (key) {
+    // console.log('key_old',key );
+    return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
+  }).join('&');
+  return URL;
+}
 
 /***/ }),
 

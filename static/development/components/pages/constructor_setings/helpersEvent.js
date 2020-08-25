@@ -120,16 +120,18 @@ function chengePrice(data){
  })
  
 
-// fetch(url_form, {
-//   method: current_method,
-//   body: JSON.stringify(objectParameter),
-// })
-// .then(data => {
-  
-// })
+ fetch(`/api/get_price/?${ getFormatUrl(objectParameter)}`)
+    .then((response) => {
+      return response.json()
+    })
+    .then((response) => {
+      console.log(res );
+      
+    })
+ 
 
  setTimeout(function(){
-  $('.settings__parameters_navigation').find('.price').children('.value').text('121 340грн')
+  $('.settings__parameters_navigation').find('.price').children('.value').text(`121 340 грн`)
  },1000)
 
 }
@@ -177,4 +179,16 @@ export const resizeTringleCategories = () =>{
       $(item).find('.settings__category_hover_sqar').width(width_setingts )
     }
   })
+}
+
+function getFormatUrl(config_model){
+  
+  let URL =  Object.keys(config_model)
+  .map((key) => {
+    // console.log('key_old',key );
+     
+        return `${key}=${encodeURIComponent(config_model[key])}`;
+    
+  }).join('&');
+  return URL
 }

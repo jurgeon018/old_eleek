@@ -2597,7 +2597,8 @@ input::-webkit-inner-spin-button {
     border-radius: 5px;
     max-width: 0%;
     align-self: flex-start;
-    margin: 5px 0; }
+    margin: 5px 0;
+    translate: 1s; }
   .visula__loading-text {
     font-family: "Oswald", sans-serif; }
   .visula__loading_wrap {
@@ -2609,6 +2610,7 @@ input::-webkit-inner-spin-button {
     background: #ffffff;
     opacity: 0;
     transition: 1s;
+    transition-timing-function: ease-in;
     z-index: -10; }
     .visula__loading_wrap-active {
       opacity: 1;
