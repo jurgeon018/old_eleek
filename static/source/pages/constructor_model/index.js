@@ -57879,10 +57879,6 @@ if (config_model.iframe_type === "pozitiff") {
 } else if (config_model.iframe_type === "neo") {
   config_model["url"] = "/static/source/model/L.gltf";
 } else if (config_model.iframe_type === "ekross") {
-  console.log(config_model);
-  console.log(config_model.fork_type);
-  console.log(config_model.wheel_size);
-
   if (config_model.fork_type == 'santur' && config_model.wheel_size == 'size18') {
     config_model["url"] = "/static/source/model/ekros_saturn_18.gltf";
   } else if (config_model.fork_type == 'santur' && config_model.wheel_size == 'size26') {
@@ -58247,7 +58243,6 @@ window.addEventListener("mouseup", function (event) {
 $(".form_box__item").on("click", function () {
   if ($(this).find('input[type="checkbox"]')[0].name === "mirrors") {
     var valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
-    console.log(valueChecked);
     theModel.children[2].children.map(function (item) {
       // багажник
       if (item.material.name.indexOf("Mirror_1") !== -1 || item.material.name.indexOf("Mirror_2") !== -1) {
@@ -59411,10 +59406,14 @@ var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
     paretnConteiner.children("input[type=hidden]").val(value);
     var input_name = paretnConteiner.children("input[type=hidden]")[0];
 
-    if (!!input_name && input_name.name != 'iframe_type') {
-      var string_params = $(".constructor_setings").serializeArray();
-      chengePrice(string_params);
+    if (!!input_name && input_name.name != "iframe_type") {
+      var _string_params = $(".constructor_setings").serializeArray();
+
+      chengePrice(_string_params);
     }
+
+    var string_params = $(".constructor_setings").serializeArray();
+    chengeURL(string_params);
   });
 };
 var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
@@ -59426,6 +59425,7 @@ var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
 
     var string_params = $(".constructor_setings").serializeArray();
     chengePrice(string_params);
+    chengeURL(string_params);
   });
 };
 var clearGroup = function clearGroup(className) {
@@ -59469,10 +59469,29 @@ var childrensСonnections = function childrensСonnections(children_element) {
   }
 };
 
+function chengeURL(data) {
+  var objectParameter = {};
+  data.map(function (item) {
+    if (item.name != "undefined") {
+      objectParameter[item.name] = item.value;
+    }
+  });
+  var back_url = createUrl(objectParameter); // let back_url = createUrl(config_model).slice(1);
+
+  history.pushState(null, null, "/page1/?".concat(back_url));
+}
+
+function createUrl(config_model) {
+  var back_url = Object.keys(config_model).map(function (key) {
+    return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
+  }).join("&");
+  return back_url;
+}
+
 function chengePrice(data) {
   var objectParameter = {};
   data.map(function (item) {
-    if (item.name != 'undefined') {
+    if (item.name != "undefined") {
       objectParameter[item.name] = item.value;
     }
   });
@@ -59485,7 +59504,7 @@ function chengePrice(data) {
       return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202F");
     }
 
-    $('.settings__parameters_navigation').find('.price').children('.value').text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
+    $(".settings__parameters_navigation").find(".price").children(".value").text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
   }); //  setTimeout(function(){
   //   },1000)
 }
@@ -59507,21 +59526,22 @@ function onClickCheckboxOptions() {
 
     var string_params = $(".constructor_setings").serializeArray();
     chengePrice(string_params);
+    chengeURL(string_params);
   });
 }
 var resizeTringleCategories = function resizeTringleCategories() {
-  $('.settings__category_hover_triangl').removeAttr("style");
-  $('.settings__category_hover').removeAttr("style");
-  $('.settings__category_hover_sqar').removeAttr("style");
+  $(".settings__category_hover_triangl").removeAttr("style");
+  $(".settings__category_hover").removeAttr("style");
+  $(".settings__category_hover_sqar").removeAttr("style");
 
-  _toConsumableArray($('.settings__category')).map(function (item) {
-    if (!!$(item).hasClass('settings__category-active')) {
+  _toConsumableArray($(".settings__category")).map(function (item) {
+    if (!!$(item).hasClass("settings__category-active")) {
       var width_triangle = item.offsetHeight * 0.7;
       var width_setingts = $(item)[0].offsetWidth;
-      $(item).find('.settings__category_hover_triangl').width(width_triangle);
-      $(item).find('.settings__category_hover_triangl').height(width_triangle);
-      $(item).find('.settings__category_hover').width(width_triangle + width_setingts);
-      $(item).find('.settings__category_hover_sqar').width(width_setingts);
+      $(item).find(".settings__category_hover_triangl").width(width_triangle);
+      $(item).find(".settings__category_hover_triangl").height(width_triangle);
+      $(item).find(".settings__category_hover").width(width_triangle + width_setingts);
+      $(item).find(".settings__category_hover_sqar").width(width_setingts);
     }
   });
 };
@@ -59530,7 +59550,7 @@ function getFormatUrl(config_model) {
   var URL = Object.keys(config_model).map(function (key) {
     // // console.log('key_old',key );
     return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
-  }).join('&');
+  }).join("&");
   return URL;
 }
 
