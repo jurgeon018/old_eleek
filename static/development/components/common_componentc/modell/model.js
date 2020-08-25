@@ -82,8 +82,6 @@ $(".form__radio").on("click", function () {
   }
  
   let back_url = createUrl(config_model).slice(1);
-// console.log(back_url );
-// console.log(back_url.slice(1) );
 
   history.pushState(null, null, `/page2/?${back_url}`);
 });
