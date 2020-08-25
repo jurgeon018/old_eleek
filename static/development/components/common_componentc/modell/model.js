@@ -12,24 +12,26 @@ import {
   HelperSphereShadows,
   params,
   colorBike,
+  getFormatUrl,
+  filterObject,
+  chengePriseModel,
+  creteInputHiden,
 } from "./helper";
 import { onClickCheckboxOptions } from "../../pages/constructor_setings/helpersEvent";
 
-onClickCheckboxOptions()
 let params_search = window.location.search.split("?")[1].split("&");
 let config_model = {
   not_url: ["url"],
 };
 
 params_search.map((item) => {
-  let param = item.split("="); 
-if(!!param[0]){
+  let param = item.split("=");
+  if (!!param[0]) {
+    param[1] = param[1].replace("%23", "");
+    param[1] = param[1].replace("%20", "");
 
-  param[1] = param[1].replace("%23", "");
-  param[1] = param[1].replace("%20", "");
-
-  config_model[param[0]] = param[1];
-}
+    config_model[param[0]] = param[1];
+  }
 });
 
 if (config_model.iframe_type === "pozitiff") {
@@ -37,93 +39,156 @@ if (config_model.iframe_type === "pozitiff") {
 } else if (config_model.iframe_type === "neo") {
   config_model["url"] = "/static/source/model/L.gltf";
 } else if (config_model.iframe_type === "ekross") {
-  
-  if(config_model.fork_type == 'santur' && config_model.wheel_size == 'size18'  ){
+  if (
+    config_model.fork_type == "santur" &&
+    config_model.wheel_size == "size18"
+  ) {
     config_model["url"] = "/static/source/model/ekros_saturn_18.gltf";
-  }else if(config_model.fork_type == 'santur' && config_model.wheel_size == 'size26'  ){
+  } else if (
+    config_model.fork_type == "santur" &&
+    config_model.wheel_size == "size26"
+  ) {
     config_model["url"] = "/static/source/model/ekros_saturn_26.gltf";
-  }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size18'  ){
+  } else if (
+    config_model.fork_type == "zoom" &&
+    config_model.wheel_size == "size18"
+  ) {
     config_model["url"] = "/static/source/model/ekros_zum_18.gltf";
-  }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size26'  ){
+  } else if (
+    config_model.fork_type == "zoom" &&
+    config_model.wheel_size == "size26"
+  ) {
     config_model["url"] = "/static/source/model/ekros_zum_26.gltf";
-  }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size18'  ){
+  } else if (
+    config_model.fork_type == "dnm" &&
+    config_model.wheel_size == "size18"
+  ) {
     config_model["url"] = "/static/source/model/ekros_dmn_18.gltf";
-  }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size26'  ){
+  } else if (
+    config_model.fork_type == "dnm" &&
+    config_model.wheel_size == "size26"
+  ) {
     config_model["url"] = "/static/source/model/ekros_dmn_26.gltf";
   }
 } else if (config_model.iframe_type === "lite") {
- 
-  if(config_model.fork_type == 'santur' && config_model.wheel_size == 'size20'  ){
+  if (
+    config_model.fork_type == "santur" &&
+    config_model.wheel_size == "size20"
+  ) {
     config_model["url"] = "/static/source/model/lite/lite_saturn_20.gltf";
-  }else if(config_model.fork_type == 'santur' && config_model.wheel_size == 'size26'  ){
+  } else if (
+    config_model.fork_type == "santur" &&
+    config_model.wheel_size == "size26"
+  ) {
     config_model["url"] = "/static/source/model/lite/lite_saturn_26.gltf";
-  }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size18'  ){
+  } else if (
+    config_model.fork_type == "zoom" &&
+    config_model.wheel_size == "size18"
+  ) {
     config_model["url"] = "/static/source/model/lite/lite_zum_18.gltf";
-  }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size20'  ){
+  } else if (
+    config_model.fork_type == "zoom" &&
+    config_model.wheel_size == "size20"
+  ) {
     config_model["url"] = "/static/source/model/lite/lite_zum_20.gltf";
-  }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size24'  ){
+  } else if (
+    config_model.fork_type == "zoom" &&
+    config_model.wheel_size == "size24"
+  ) {
     config_model["url"] = "/static/source/model/lite/lite_zum_24.gltf";
-  }else if(config_model.fork_type == 'zoom' && config_model.wheel_size == 'size26'  ){
+  } else if (
+    config_model.fork_type == "zoom" &&
+    config_model.wheel_size == "size26"
+  ) {
     config_model["url"] = "/static/source/model/lite/lite_zum_26.gltf";
-  }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size18'  ){
+  } else if (
+    config_model.fork_type == "dnm" &&
+    config_model.wheel_size == "size18"
+  ) {
     config_model["url"] = "/static/source/model/lite/lite_dnm_18.gltf";
-  }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size20'  ){
+  } else if (
+    config_model.fork_type == "dnm" &&
+    config_model.wheel_size == "size20"
+  ) {
     config_model["url"] = "/static/source/model/lite/lite_dnm_20.gltf";
-  }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size24'  ){
+  } else if (
+    config_model.fork_type == "dnm" &&
+    config_model.wheel_size == "size24"
+  ) {
     config_model["url"] = "/static/source/model/lite/lite_dnm_24.gltf";
-  }else if(config_model.fork_type == 'dnm' && config_model.wheel_size == 'size26'  ){
+  } else if (
+    config_model.fork_type == "dnm" &&
+    config_model.wheel_size == "size26"
+  ) {
     config_model["url"] = "/static/source/model/lite/lite_dnm_26.gltf";
-  }else{
+  } else {
     config_model["url"] = "/static/source/model/lite/lite_dnmFat_26Fat.gltf";
   }
-}  
+}
 
 $(".views__back").on("click", function () {
   let back_url = createUrl(config_model);
 
-  window.location.href = `/page1/?${back_url}`;
+  // window.location.href = `/page1/?${back_url}`;
 });
 
 function createUrl(config_model) {
-  let back_url = Object.keys(config_model)
+  console.log(config_model);
+
+  let back_url = Object.keys(filterObject(config_model))
     .map((key) => {
-      // console.log('key_old',key );
-      if (key != "not_url" && config_model["not_url"].indexOf(key) === -1) {
-        console.log("key_start", key);
-        console.log("key_index_of", key.indexOf("_color") != -1);
-        if (key.indexOf("_color") != -1) {
-          return `${key}=${encodeURIComponent(`#${config_model[key]}`)}`;
-        } else {
-          return `${key}=${encodeURIComponent(config_model[key])}`;
-        }
+      if (key.indexOf("_color") != -1) {
+        return `${key}=${encodeURIComponent(`#${config_model[key]}`)}`;
+      } else {
+        return `${key}=${encodeURIComponent(config_model[key])}`;
       }
     })
     .join("&");
   return back_url;
 }
 
-
 $(".form__radio").on("click", function () {
   if (!$(this).hasClass("form__radio-hiden")) {
     let value = $(this).data("value");
-    console.log($(this).parents('.settings__box_main-radio').children("input[type=hidden]") );
-    
-    let parametr = $(this).parents('.settings__box_main-radio').children("input[type=hidden]")[0].name;
-    console.log('parametr',parametr );
-    console.log(config_model );
+
+    let parametr = $(this)
+      .parents(".settings__box_main-radio")
+      .children("input[type=hidden]")[0].name;
+
     if (parametr.indexOf("_color") != -1) {
-      config_model[parametr]=value.replace("#", "");
-    }else{
-      config_model[parametr]=value
+      config_model[parametr] = value.replace("#", "");
+    } else {
+      config_model[parametr] = value;
     }
-     console.log(config_model );
+    console.log(config_model);
   }
- 
-  let back_url = createUrl(config_model).slice(1);
+  console.log(config_model);
+
+  let back_url = createUrl(config_model);
 
   history.pushState(null, null, `/page2/?${back_url}`);
 });
 
+$(".form_box__item").on("click", function () {
+  $(this).toggleClass("form_box__item-active");
+  let item_input = $(this).find("input");
+
+  if (item_input.prop("checked") == true) {
+    item_input.prop("checked", false);
+    delete config_model[item_input[0].name];
+  } else {
+    item_input.prop("checked", true);
+    config_model[item_input[0].name] = "true";
+  }
+
+  let tempObject = filterObject(config_model);
+
+  chengePriseModel(tempObject);
+
+  let back_url = createUrl(config_model);
+
+  history.pushState(null, null, `/page2/?${back_url}`);
+});
 
 /////||||///////
 /////||||///////
@@ -455,7 +520,7 @@ window.addEventListener("mouseup", function (event) {
 $(".form_box__item").on("click", function () {
   if ($(this).find('input[type="checkbox"]')[0].name === "mirrors") {
     let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
-  
+
     theModel.children[2].children.map((item) => {
       // багажник
       if (
@@ -503,6 +568,13 @@ $(".order_constructor").on("click", function () {
   $.fancybox.open({
     src: "#order__form_constructor",
     touch: false,
+    afterShow: function () {
+      Object.keys(filterObject(config_model)).map((key) => {
+        $(".fancybox-content").append(creteInputHiden(key, config_model[key]));
+      });
+    },
+    beforeClose: function () {
+      $(".fancybox-content").find('input[type=hidden]').remove();
+    }
   });
 });
-

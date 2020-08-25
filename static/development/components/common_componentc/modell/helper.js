@@ -325,3 +325,61 @@ export const colorBike = (model, config_model) => {
 // // });
 // // console.log(o);
 // }
+
+
+export const getFormatUrl = (config_model) =>{
+  let URL = Object.keys(config_model)
+    .map((key) => {
+      // // console.log('key_old',key );
+
+      return `${key}=${encodeURIComponent(config_model[key])}`;
+    })
+    .join("&");
+  return URL;
+}
+
+
+export const filterObject = (config_model)=>{
+  let tempObject = {};
+     Object.keys(config_model)
+      .map((key) => {
+       if (key != "not_url" && config_model["not_url"].indexOf(key) === -1) {
+          if (key.indexOf("_color") != -1) {
+            tempObject[key]= `#${config_model[key]}`;
+          } else {
+            tempObject[key]= config_model[key];
+          }
+        }
+      }) 
+      return tempObject;
+}
+
+export const chengePriseModel = (objectParameter) =>{
+
+   
+    fetch(`/api/get_price/?${getFormatUrl(objectParameter)}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        function triplets(str) {
+          // \u202f — неразрывный узкий пробел
+          return str
+            .toString()
+            .replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202f");
+        }
+        $(".views__parameter_footer")
+          .find(".price")
+          .children(".value")
+          .text(`${triplets(response.price)} грн`);
+      });
+   
+
+}
+export const creteInputHiden = (name,value) => {
+  let product_item = document.createElement("input");
+  product_item.setAttribute('type', 'hidden');
+  product_item.setAttribute('name', name);
+  product_item.setAttribute('value', value);
+  return product_item;
+}
