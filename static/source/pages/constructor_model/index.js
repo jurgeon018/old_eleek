@@ -58115,8 +58115,8 @@ function init() {
   var mesh12 = new three__WEBPACK_IMPORTED_MODULE_0__["Mesh"](cubeGeo, cubeMat);
   mesh12.castShadow = true; // mesh12.receiveShadow = true;
 
-  mesh12.position.set(cubeSize + 1, cubeSize / 2, 0);
-  scene.add(mesh12);
+  mesh12.position.set(cubeSize + 1, cubeSize / 2, 0); // scene.add(mesh12);
+
   scene.add(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(64.8, 65, 120));
   scene.add(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(69.8, 70, 120)); // // Add lights
 

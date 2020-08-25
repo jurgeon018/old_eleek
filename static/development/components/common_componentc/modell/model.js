@@ -321,7 +321,7 @@ function init() {
   mesh12.castShadow = true;
   // mesh12.receiveShadow = true;
   mesh12.position.set(cubeSize + 1, cubeSize / 2, 0);
-  scene.add(mesh12);
+  // scene.add(mesh12);
 
   scene.add(addCircleToBacground(64.8, 65, 120));
   scene.add(addCircleToBacground(69.8, 70, 120));
