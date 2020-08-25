@@ -108,13 +108,18 @@ def get_info(request):
 def get_price(request):
   result = 0
   query = request.data or request.query_params
-  values = query['values']
+  for k,v in query.items():
+    print(k,v)
+    if k not in ['iframe_type','iframe_color']:
+      result += 1
+      # result += Value.objects.get(parameter__code=k,code=v).price
+  # values = query['values']
   # print(query)
   # print(values)
   # print(type(values))
-  values = json.loads(values)
-  for value in values:
-    result += Value.objects.get(id=value).price
+  # values = json.loads(values)
+  # for value in values:
+    # result += Value.objects.get(id=value).price
   return Response(result)#.data
 
 

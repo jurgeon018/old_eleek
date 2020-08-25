@@ -114,9 +114,19 @@ from project.constructor.models import *
 
 
 def page1(request):
-    frames = FrameType.objects.filter(is_active=True)
-    frame_colors = FrameColor.objects.filter(is_active=True)
-    initial_price = frames.first().get_initial_price()
+    frames          = FrameType.objects.filter(is_active=True)
+    frame_colors    = FrameColor.objects.filter(is_active=True)
+    query           = request.GET 
+    iframe_type     = query.get('iframe_type')
+    iframe_color    = query.get('iframe_color')
+    if iframe_type:
+        frame           = FrameType.objects.get(code=iframe_type)
+    else:
+        frame = frames.first()
+    initial_price   = frame.get_initial_price()
+    for k,v in query.items():
+        if k not in ['iframe_type','iframe_color']:
+            print(k,v)
     return render(request, 'project/page1.html', locals())
 
 
