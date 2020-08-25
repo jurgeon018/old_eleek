@@ -108,11 +108,13 @@ def get_info(request):
 def get_price(request):
   result = 0
   query = request.data or request.query_params
+  frame = FrameType.objects.get(code=query['iframe_type'])
   for k,v in query.items():
     print(k,v)
     if k not in ['iframe_type','iframe_color']:
-      result += 1
-      # result += Value.objects.get(parameter__code=k,code=v).price
+      parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=k)
+      if parameter.type != 'radio_color':
+        result += Value.objects.get(parameter=parameter,code=v).price
   # values = query['values']
   # print(query)
   # print(values)
@@ -120,7 +122,9 @@ def get_price(request):
   # values = json.loads(values)
   # for value in values:
     # result += Value.objects.get(id=value).price
-  return Response(result)#.data
+  return Response({
+    "price":int(result)
+  })
 
 
 @api_view(['GET','POST'])

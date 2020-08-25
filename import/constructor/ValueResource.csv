@@ -16,7 +16,7 @@ id,is_active,parameter,yy,xx,code,image,price,color,name,name_uk,name_ru,name_en
 15,1,5,Вилка,Тип,santur,"constructor/frame_1.jpg",350,,Сантур,Сантур,Сантур,Сантур
 16,1,5,Вилка,Тип,zoom,"constructor/frame_2.jpg",350,,Зум,Зум,Зум,Зум
 17,1,5,Вилка,Тип,dnm,"constructor/frame_3.jpg",350,,DNM,DNM,DNM,DNM
-18,1,6,Амортизатори,Тип,dnm rcp,,350,,DNM RCP 2,DNM RCP 2,DNM RCP 2,DNM RCP 2
+18,1,6,Амортизатори,Тип,dnm_rcp,,350,,DNM RCP 2,DNM RCP 2,DNM RCP 2,DNM RCP 2
 19,1,7,Колеса,Тип,size18,,350,,18'',18'',18'',18''
 20,1,7,Колеса,Тип,size26,,350,,26'',26'',26'',26''
 21,1,8,Колеса,Колір,,,350,#543122,"коричневий","коричневий","коричневий","коричневий"
