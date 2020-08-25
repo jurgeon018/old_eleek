@@ -104,12 +104,21 @@ def get_price(request):
   result = 0
   query = request.data or request.query_params
   frame = FrameType.objects.get(code=query['iframe_type'])
-  for k,v in query.items():
-    print(k,v)
-    if k not in ['iframe_type','iframe_color']:
-      parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=k)
-      if parameter.type != 'radio_color':
-        result += Value.objects.get(parameter=parameter,code=v).price
+  for parameter_code,value_code in query.items():
+    print(parameter_code,value_code)
+    if parameter_code not in ['iframe_type','iframe_color']:
+      if value_code == 'true':
+        value = Value.objects.filter(
+          parameter__tab_group__tab__frame=frame,
+          code=parameter_code,
+        ).first()
+        result += value.price 
+      else:
+        parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=parameter_code)
+        if parameter.type == 'radio_color':
+          result += Value.objects.get(parameter=parameter,color=value_code).price
+        else:
+          result += Value.objects.get(parameter=parameter,code=value_code).price
   # values = query['values']
   # print(query)
   # print(values)
