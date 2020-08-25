@@ -153,11 +153,11 @@ def page2(request):
             added_parameters.append(parameter.id)
         else:
             parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=parameter_code)
-            if value_code[0].startswith("#"):
+            if parameter.type == 'radio_color' or value_code[0].startswith("#"):
                 # value = Value.objects.filter(parameter=parameter, color=value_code[0]).first()
                 value = None 
                 pass
-            elif not value_code[0].startswith("#"):
+            else:
                 value = Value.objects.filter(parameter=parameter, code=value_code[0]).first()
         if parameter and value and added_parameters.count(parameter.id) < 2:
             dict_values.append({
