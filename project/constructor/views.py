@@ -41,7 +41,7 @@ def generate_values(parameter):
       "price":value.price,
       "color":value.color,
       "code":value.code,
-      "children":generate_children(value),
+      "childrens_group":generate_children(value),
       # "parents":generate_parents(),
     })
   return Response(result).data
