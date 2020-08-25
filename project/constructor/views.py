@@ -113,7 +113,8 @@ def get_price(request):
         ).first()
         result += value.price
       else:
-        parameter = Parameter.objects.filter(tab_group__tab__frame=frame, code=parameter_code).first()
+        print(parameter_code)
+        parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=parameter_code)#.first()
         if parameter.type == 'radio_color' or value_code.startswith("#"):
           # result += Value.objects.filter(parameter=parameter,color=value_code).first().price
           pass
