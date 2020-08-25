@@ -139,7 +139,7 @@ class Tab(BaseMixin, NameMixin, CodeMixin, ImageMixin, FrameMixin):
         ordering = ['order']
         verbose_name = "Вкладка"
         verbose_name_plural = "Вкладки"
-         
+
 
 class TabGroup(BaseMixin, NameMixin):
     # radio_small = 'radio_small'
