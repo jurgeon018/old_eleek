@@ -125,14 +125,22 @@ function chengePrice(data){
       return response.json()
     })
     .then((response) => {
-      console.log(res );
       
+      // console.log( );
+      
+      
+      function triplets(str) {
+        // \u202f — неразрывный узкий пробел
+        return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1\u202f');
+    }
+      $('.settings__parameters_navigation').find('.price').children('.value').text(`${triplets(response.price)} грн`)
     })
  
+    
+    
 
  setTimeout(function(){
-  $('.settings__parameters_navigation').find('.price').children('.value').text(`121 340 грн`)
- },1000)
+  },1000)
 
 }
 

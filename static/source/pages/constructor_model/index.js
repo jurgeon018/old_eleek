@@ -59479,11 +59479,15 @@ function chengePrice(data) {
   fetch("/api/get_price/?".concat(getFormatUrl(objectParameter))).then(function (response) {
     return response.json();
   }).then(function (response) {
-    console.log(res);
+    // console.log( );
+    function triplets(str) {
+      // \u202f — неразрывный узкий пробел
+      return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202F");
+    }
+
+    $('.settings__parameters_navigation').find('.price').children('.value').text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
   });
-  setTimeout(function () {
-    $('.settings__parameters_navigation').find('.price').children('.value').text("121 340 \u0433\u0440\u043D");
-  }, 1000);
+  setTimeout(function () {}, 1000);
 }
 
 function onClickCheckboxOptions() {
