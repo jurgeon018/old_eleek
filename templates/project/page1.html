@@ -136,6 +136,8 @@
                     <div class="settings__box_loader"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
                     {% if parameter.type == 'radio_color' %}
                     <input type="hidden" value="{{parameter.get_values.first.color}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
+                    {% elif parameter.type == 'checkbox_options' %}
+                    
                     {% else %}
                     <input type="hidden" value="{{parameter.get_values.first.code}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
                     {% endif %}
