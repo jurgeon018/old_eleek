@@ -153,6 +153,12 @@ def page2(request):
                 "value":value,
                 "values":Value.objects.filter(parameter=parameter, is_active=True),
             })
+    if not added_parameters:    
+        parameter = Parameter.objects.get(tab_group__tab__frame=frame, type="checkbox_options")
+        dict_values.append({
+            "parameter":parameter,
+            "values":Value.objects.filter(parameter=parameter, is_active=True),
+        })
     return render(request, 'project/page2.html', locals())
 
 
