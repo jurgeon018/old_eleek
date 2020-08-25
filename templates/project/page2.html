@@ -126,13 +126,12 @@
                       value="{{dict_value.parameter.code}}"
                       name="{{dict_value.parameter.code}}"
                       id="{{dict_value.parameter.id}}"
-                      class="motor"
                     />
                     <div class="settings__box_main_content">
                       {% for value in dict_value.values %}
                         {% if value.parameter.type == "checkbox_options" %}
                           <div class="settings__group settings__group-start">
-                            <div class="form_box__item form_box__item-black_bord2 {% if value == dict_value.value %} form_box__item-active {% endif %}">
+                            <div class="{% if value in checkbox_values %} form_box__item-active {% endif %} form_box__item form_box__item-black_bord2">
                               <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
                                 <path
                                   fill="#242321"
@@ -142,9 +141,9 @@
                               </svg>
                               <div class="name">{{value.name}}</div>
                               <input
-                                type="{{value.type}}"
-                                name="{{value.name}}"
-                                value="{{value.code}}"
+                                type="checkbox"
+                                name="{{value.code}}"
+                                value="true"
                                 id="{{value.id}}"
                               />
                             </div>

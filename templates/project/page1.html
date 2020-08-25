@@ -137,7 +137,6 @@
                     {% if parameter.type == 'radio_color' %}
                     <input type="hidden" value="{{parameter.get_values.first.color}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
                     {% elif parameter.type == 'checkbox_options' %}
-                    
                     {% else %}
                     <input type="hidden" value="{{parameter.get_values.first.code}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
                     {% endif %}
@@ -199,12 +198,14 @@
         {% endfor %}
         </form>
 
+
         <div class="settings__parameters_navigation">	       
-          <div class="price">	         <div class="price">
-            <div class="title">Загальна ціна</div>	          
-            <div class="value">{{initial_price}}грн</div>	           
-          </div>	         </div>
-                   
+          <div class="price">	         
+            <div class="price">
+              <div class="title">Загальна ціна</div>	          
+              <div class="value">{{initial_price}}грн</div>	           
+            </div>	         
+          </div>
           <div class="btn_standart btn_standart_yellow next_tab">ДАЛІ</div>	         
           <a class="btn_standart btn_standart_black color_white  vizual_3d">ПОКАЗАТИ В 3D</a>	       
         </div>

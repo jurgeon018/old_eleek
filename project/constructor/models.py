@@ -103,11 +103,9 @@ class FrameType(GeneralMixin):
     def get_colors(self):
         return FrameColor.objects.filter(frame=self, is_active=True)
 
-    @classmethod 
     def get_initial_price(self):
         initial_price = 0
-        frame = self.objects.filter(is_active=True).first()
-        for value in Value.objects.filter(parameter__tab_group__tab__frame=frame):
+        for value in Value.objects.filter(parameter__tab_group__tab__frame=self):
             initial_price += value.price 
         return initial_price
     
