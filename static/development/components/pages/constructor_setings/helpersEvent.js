@@ -72,8 +72,10 @@ export const childrensСonnections = (children_element) => {
   for (const key in children_element) {
     if (children_element.hasOwnProperty(key)) {
       const element = children_element[key];
+console.log( key);
 
       let data_element = $(`[data-input_value="${key}"]`);
+console.log(data_element );
 
       if (data_element.hasClass("settings__box_main-card")) {
         let all_elements = [
@@ -146,7 +148,7 @@ function chengePrice(data){
 
 export function onClickCheckboxOptions() {
   $(".form_box__item").on("click", function () {
-    console.log('form_box__item' );
+    // console.log('form_box__item' );
     
     $(this).toggleClass("form_box__item-active");
     let item_input = $(this).find("input");
@@ -193,7 +195,7 @@ function getFormatUrl(config_model){
   
   let URL =  Object.keys(config_model)
   .map((key) => {
-    // console.log('key_old',key );
+    // // console.log('key_old',key );
      
         return `${key}=${encodeURIComponent(config_model[key])}`;
     

@@ -59441,7 +59441,9 @@ var childrensСonnections = function childrensСonnections(children_element) {
     if (children_element.hasOwnProperty(key)) {
       (function () {
         var element = children_element[key];
+        console.log(key);
         var data_element = $("[data-input_value=\"".concat(key, "\"]"));
+        console.log(data_element);
 
         if (data_element.hasClass("settings__box_main-card")) {
           var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
@@ -59492,7 +59494,7 @@ function chengePrice(data) {
 
 function onClickCheckboxOptions() {
   $(".form_box__item").on("click", function () {
-    console.log('form_box__item');
+    // console.log('form_box__item' );
     $(this).toggleClass("form_box__item-active");
     var item_input = $(this).find("input");
     console.log(item_input);
@@ -59528,7 +59530,7 @@ var resizeTringleCategories = function resizeTringleCategories() {
 
 function getFormatUrl(config_model) {
   var URL = Object.keys(config_model).map(function (key) {
-    // console.log('key_old',key );
+    // // console.log('key_old',key );
     return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
   }).join('&');
   return URL;

@@ -31,7 +31,8 @@ export const createSettingsBox = (parameters) => {
             <div></div>
           </div>
         </div>
-        <input type="hidden" value="" name="${item.code}"  >
+        ${item.code!='checkbox_options'?`<input type="hidden" value="" name="${item.code}"  >`:''}
+        
         <div class="settings__box_main_content">
            ${params.elemens}
         </div>
