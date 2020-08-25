@@ -136,6 +136,8 @@ function chengePrice(data){
 
 export function onClickCheckboxOptions() {
   $(".form_box__item").on("click", function () {
+    console.log('form_box__item' );
+    
     $(this).toggleClass("form_box__item-active");
     let item_input = $(this).find("input");
        console.log(item_input );

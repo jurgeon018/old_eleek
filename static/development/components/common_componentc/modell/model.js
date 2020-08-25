@@ -13,7 +13,9 @@ import {
   params,
   colorBike,
 } from "./helper";
+import { onClickCheckboxOptions } from "../../pages/constructor_setings/helpersEvent";
 
+onClickCheckboxOptions()
 let params_search = window.location.search.split("?")[1].split("&");
 let config_model = {
   not_url: ["url"],
@@ -53,7 +55,6 @@ if (config_model.iframe_type === "pozitiff") {
     config_model["url"] = "/static/source/model/ekros_dmn_26.gltf";
   }
 } else if (config_model.iframe_type === "lite") {
-   
   console.log(config_model.fork_type );
   console.log(config_model.wheel_size );
  
@@ -451,6 +452,8 @@ window.addEventListener("mouseup", function (event) {
 $(".form_box__item").on("click", function () {
   if ($(this).find('input[type="checkbox"]')[0].name === "mirrors") {
     let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
+ 
+console.log(valueChecked );
 
     theModel.children[2].children.map((item) => {
       // багажник
@@ -501,3 +504,4 @@ $(".order_constructor").on("click", function () {
     touch: false,
   });
 });
+

@@ -106,16 +106,13 @@ export const colorBike = (model, config_model) => {
         }else if (o.material.name.indexOf("Rama_2") !== -1) {
             // Панелі на рамі
             o.material.color.setHex(`0x${config_model.side_panels_colors}`);
-        console.log(o.material.metalness );
-        o.material.metalness=0.3;
+            o.material.metalness=0.3;
            
       } else {
-        console.log(o.name );
-        
+         
       }
 
- console.log(config_model.seat_type );
- 
+  
       if (
         o.material.name.indexOf("Seat_moto_1") !== -1 ||
         o.material.name.indexOf("Seat_moto_2") !== -1
@@ -142,36 +139,36 @@ export const colorBike = (model, config_model) => {
           }
         }
       }else if( o.material.name.indexOf("Bag") !== -1 ) {
-        console.log('Bag',o.name );
-        console.log(config_model.trunk );
-        console.log(config_model.trunk !== "undefined" );
+        // console.log('Bag',o.name );
+        // console.log(config_model.trunk );
+        // console.log(config_model.trunk !== "undefined" );
         
-        if (config_model.trunk !== "undefined") {
+        if (config_model.trunk !== "undefined" && config_model.trunk == 'true') {
            
-          o.visible = false;
-        }else{
           o.visible = true;
+        }else{
+          o.visible = false;
         }
         
         
       }else if( o.material.name.indexOf("Mud") !== -1 ) {
         // console.log('Mud',o.name );
-        if (config_model.mud !== "undefined") {
+        if (config_model.mud !== "undefined"  && config_model.mud == 'true') {
            
          
-          o.visible = false;
-        }else{
           o.visible = true;
+        }else{
+          o.visible = false;
         }
         
       }else if( o.material.name.indexOf("Mirror_1") !== -1 || o.material.name.indexOf("Mirror_2") !== -1 ) {
-        console.log('Mirror',o.name );
-        if (config_model.mirror !== "undefined") {
+        // console.log('Mirror',config_model.mirrors !== "undefined" );
+        if (config_model.mirrors !== "undefined" && config_model.mirrors == 'true') {
            
            
-          o.visible = false;
-        }else{
           o.visible = true;
+        }else{
+          o.visible = false;
         }
       }
       //  console.log(o.material.name );

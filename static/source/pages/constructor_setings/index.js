@@ -51957,13 +51957,8 @@ var colorBike = function colorBike(model, config_model) {
       } else if (o.material.name.indexOf("Rama_2") !== -1) {
         // Панелі на рамі
         o.material.color.setHex("0x".concat(config_model.side_panels_colors));
-        console.log(o.material.metalness);
         o.material.metalness = 0.3;
-      } else {
-        console.log(o.name);
-      }
-
-      console.log(config_model.seat_type);
+      } else {}
 
       if (o.material.name.indexOf("Seat_moto_1") !== -1 || o.material.name.indexOf("Seat_moto_2") !== -1) {
         if (!!config_model.seat_type) {
@@ -51982,29 +51977,27 @@ var colorBike = function colorBike(model, config_model) {
           }
         }
       } else if (o.material.name.indexOf("Bag") !== -1) {
-        console.log('Bag', o.name);
-        console.log(config_model.trunk);
-        console.log(config_model.trunk !== "undefined");
-
-        if (config_model.trunk !== "undefined") {
-          o.visible = false;
-        } else {
+        // console.log('Bag',o.name );
+        // console.log(config_model.trunk );
+        // console.log(config_model.trunk !== "undefined" );
+        if (config_model.trunk !== "undefined" && config_model.trunk == 'true') {
           o.visible = true;
+        } else {
+          o.visible = false;
         }
       } else if (o.material.name.indexOf("Mud") !== -1) {
         // console.log('Mud',o.name );
-        if (config_model.mud !== "undefined") {
-          o.visible = false;
-        } else {
+        if (config_model.mud !== "undefined" && config_model.mud == 'true') {
           o.visible = true;
+        } else {
+          o.visible = false;
         }
       } else if (o.material.name.indexOf("Mirror_1") !== -1 || o.material.name.indexOf("Mirror_2") !== -1) {
-        console.log('Mirror', o.name);
-
-        if (config_model.mirror !== "undefined") {
-          o.visible = false;
-        } else {
+        // console.log('Mirror',config_model.mirrors !== "undefined" );
+        if (config_model.mirrors !== "undefined" && config_model.mirrors == 'true') {
           o.visible = true;
+        } else {
+          o.visible = false;
         }
       } //  console.log(o.material.name );
 
@@ -54122,6 +54115,7 @@ function chengePrice(data) {
 
 function onClickCheckboxOptions() {
   $(".form_box__item").on("click", function () {
+    console.log('form_box__item');
     $(this).toggleClass("form_box__item-active");
     var item_input = $(this).find("input");
     console.log(item_input);
