@@ -125,25 +125,33 @@ def page2(request):
     iframe_type     = query.pop('iframe_type')[0]
     iframe_color    = query.pop('iframe_color')[0]
     frame           = FrameType.objects.get(code=iframe_type)
-
-    print(query)
+    initial_price   = frame.get_initial_price()
     dict_values = []
+    checkbox_values = []
+    added_parameters = []
     for parameter_code, value_code in query.items():
-        print(parameter_code)
-        print(value_code)
-        # print(type(parameter_code))
-        # print(type(value_code))
-        
-        parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=parameter_code)
-        if value_code[0].startswith("#"):
-            value = Value.objects.filter(parameter=parameter, color=value_code[0]).first()
+        if value_code[0] == 'true':
+            value = Value.objects.filter(
+                parameter__tab_group__tab__frame=frame,
+                code=parameter_code,
+            ).first()
+            parameter = value.parameter
+            checkbox_values.append(value)
+            added_parameters.append(parameter.id)
         else:
-            value = Value.objects.filter(parameter=parameter, code=value_code[0]).first()
-        dict_values.append({ 
-            "parameter":parameter,
-            "value":value,
-            "values":Value.objects.filter(parameter=parameter),
-        })
+            parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=parameter_code)
+            if value_code[0].startswith("#"):
+                # value = Value.objects.filter(parameter=parameter, color=value_code[0]).first()
+                value = None 
+                pass
+            elif not value_code[0].startswith("#"):
+                value = Value.objects.filter(parameter=parameter, code=value_code[0]).first()
+        if parameter and value and added_parameters.count(parameter.id) < 2:
+            dict_values.append({
+                "parameter":parameter,
+                "value":value,
+                "values":Value.objects.filter(parameter=parameter),
+            })
     return render(request, 'project/page2.html', locals())
 
 
