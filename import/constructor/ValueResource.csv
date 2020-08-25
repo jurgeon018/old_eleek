@@ -44,7 +44,7 @@ id,is_active,parameter,yy,xx,code,image,price,color,name,name_uk,name_ru,name_en
 43,1,14,Вилка,Тип,santur,"constructor/frame_1.jpg",350,,Сантур,Сантур,Сантур,Сантур
 44,1,14,Вилка,Тип,zoom,"constructor/frame_2.jpg",350,,Зум,Зум,Зум,Зум
 45,1,14,Вилка,Тип,dnm,"constructor/frame_3.jpg",350,,DNM,DNM,DNM,DNM
-46,1,14,Вилка,Тип,dnmfat,,350,,DNM FAT,DNM FAT,DNM FAT,DNM FAT
+46,1,14,Вилка,Тип,dnmfat,"constructor/frame_3.jpg",350,,DNM FAT,DNM FAT,DNM FAT,DNM FAT
 47,1,15,Колеса,Тип,size18,,350,,18,18,18,18
 48,1,15,Колеса,Тип,size20,,350,,20,20,20,20
 49,1,15,Колеса,Тип,size24,,350,,24,24,24,24

@@ -53,7 +53,7 @@
     </div>
     <div class="settings__parameters_wrap">
       <form class="constructor_setings">
-        {% for tab in frames.first.get_tabs %}
+        {% for tab in frame.get_tabs %}
         <div data-tab_main="{{tab.id}}" class="settings__parameters {%if forloop.counter == 1 %}settings__parameters-active{%endif%}">
           {% if forloop.counter == 1%}
           <div class="settings__group settings__group-start">
@@ -79,7 +79,7 @@
                     <div class="settings__card_img">
                       <img src="{{frame.image_url}}" alt="">
                     </div>
-                    <div class="form__radio {%if forloop.counter == 1%}form__radio-active{%endif%}"
+                    <div class="form__radio {%if frame == current_frame %}form__radio-active{%endif%}"
                       data-value="{{frame.code}}">
                       <div class="form__radio_check"></div>
                       <div class="form__radio_main">
@@ -137,7 +137,7 @@
                     {% if parameter.type == 'radio_color' %}
                     <input type="hidden" value="{{parameter.get_values.first.color}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
                     {% elif parameter.type == 'checkbox_options' %}
-                    
+
                     {% else %}
                     <input type="hidden" value="{{parameter.get_values.first.code}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
                     {% endif %}
@@ -149,7 +149,7 @@
                               <img src="./../../static/source/img/interface/check.svg">
                             </div>
                           </div>
-                        {% elif parameter.type == 'checkbox_options'  %}
+                        {% elif parameter.type == 'checkbox_options' %}
                           <div class="settings__group settings__group-start">
                             <div class="form_box__item form_box__item-black_bord2">
                               <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
@@ -164,7 +164,7 @@
                             <div class="settings__card_img">
                               <img src="{{value.image_url}}" alt="">
                             </div>
-                            <div class="form__radio {% if forloop.counter == 1%}form__radio-active{%endif%}" data-childrens="undefined" data-value="{{value.code}} ">
+                            <div class="form__radio {% if value.code in codes or forloop.counter == 1%}form__radio-active{%endif%}" data-childrens="{{value.generate_children_json}}" data-value="{{value.code}} ">
                               <div class="form__radio_check"></div>
                               <div class="form__radio_main">
                                 <div class="form__radio_title">{{value.name}} </div>
@@ -173,7 +173,7 @@
                             </div>
                           </div>
                         {% elif parameter.type == 'radio_small'  %}
-                          <div class="form__radio {%if forloop.counter == 1 %}form__radio-active{%endif%}" data-value="{{value.code}}">
+                          <div class="form__radio {%if value.code in codes or forloop.counter == 1 %}form__radio-active{%endif%}" data-childrens="{{value.generate_children_json}}" data-value="{{value.code}}">
                             <div class="form__radio_check"></div>
                             <div class="form__radio_main">
                               <div class="form__radio_title">{{value.name}}</div>

@@ -120,10 +120,12 @@ def page1(request):
     iframe_type     = query.get('iframe_type')
     iframe_color    = query.get('iframe_color')
     if iframe_type:
-        frame           = FrameType.objects.get(code=iframe_type)
+        frame = FrameType.objects.get(code=iframe_type)
     else:
         frame = frames.first()
+    current_frame = frame
     initial_price   = frame.get_initial_price()
+    codes = []
     for k,v in query.items():
         if k not in ['iframe_type','iframe_color']:
             print(k,v)
