@@ -59443,7 +59443,7 @@ var childrensСonnections = function childrensСonnections(children_element) {
         var element = children_element[key];
         var data_element = $("[data-input_value=\"".concat(key, "\"]"));
 
-        if (data_element.hasClass("settings__box_main-card")) {
+        if (data_element.hasClass("settings__box_main-radio")) {
           var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
 
           var flag = true;
@@ -59486,13 +59486,13 @@ function chengePrice(data) {
     }
 
     $('.settings__parameters_navigation').find('.price').children('.value').text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
-  });
-  setTimeout(function () {}, 1000);
+  }); //  setTimeout(function(){
+  //   },1000)
 }
 
 function onClickCheckboxOptions() {
   $(".form_box__item").on("click", function () {
-    console.log('form_box__item');
+    // console.log('form_box__item' );
     $(this).toggleClass("form_box__item-active");
     var item_input = $(this).find("input");
     console.log(item_input);
@@ -59528,7 +59528,7 @@ var resizeTringleCategories = function resizeTringleCategories() {
 
 function getFormatUrl(config_model) {
   var URL = Object.keys(config_model).map(function (key) {
-    // console.log('key_old',key );
+    // // console.log('key_old',key );
     return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
   }).join('&');
   return URL;

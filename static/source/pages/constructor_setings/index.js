@@ -53930,7 +53930,7 @@ var createSettingsBox = function createSettingsBox(parameters) {
   parameters.map(function (item) {
     var params = checkCardType(item);
     console.log('item.code', item.code);
-    SetingsBox += "<div class=\"settings__box\">\n      <div class=\"settings__box_title\">".concat(!!item.name ? item.name : "", "</div>\n      <div class=\"settings__box_main   ").concat(params.tupeBox, "\" data-input_value=\"").concat(item.code, "\">\n        <div class=\"settings__box_loader\">\n          <div class=\"lds-ellipsis\">\n            <div></div>\n            <div></div>\n            <div></div>\n            <div></div>\n          </div>\n        </div>\n        <input type=\"hidden\" value=\"\" name=\"").concat(item.code, "\"  >\n        <div class=\"settings__box_main_content\">\n           ").concat(params.elemens, "\n        </div>\n      </div>\n    </div>");
+    SetingsBox += "<div class=\"settings__box\">\n      <div class=\"settings__box_title\">".concat(!!item.name ? item.name : "", "</div>\n      <div class=\"settings__box_main   ").concat(params.tupeBox, "\" data-input_value=\"").concat(item.code, "\">\n        <div class=\"settings__box_loader\">\n          <div class=\"lds-ellipsis\">\n            <div></div>\n            <div></div>\n            <div></div>\n            <div></div>\n          </div>\n        </div>\n        ").concat(item.code != 'checkbox_options' ? "<input type=\"hidden\" value=\"\" name=\"".concat(item.code, "\"  >") : '', "\n        \n        <div class=\"settings__box_main_content\">\n           ").concat(params.elemens, "\n        </div>\n      </div>\n    </div>");
   });
   return SetingsBox;
 };
@@ -54069,7 +54069,7 @@ var childrensСonnections = function childrensСonnections(children_element) {
         var element = children_element[key];
         var data_element = $("[data-input_value=\"".concat(key, "\"]"));
 
-        if (data_element.hasClass("settings__box_main-card")) {
+        if (data_element.hasClass("settings__box_main-radio")) {
           var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
 
           var flag = true;
@@ -54112,13 +54112,13 @@ function chengePrice(data) {
     }
 
     $('.settings__parameters_navigation').find('.price').children('.value').text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
-  });
-  setTimeout(function () {}, 1000);
+  }); //  setTimeout(function(){
+  //   },1000)
 }
 
 function onClickCheckboxOptions() {
   $(".form_box__item").on("click", function () {
-    console.log('form_box__item');
+    // console.log('form_box__item' );
     $(this).toggleClass("form_box__item-active");
     var item_input = $(this).find("input");
     console.log(item_input);
@@ -54154,7 +54154,7 @@ var resizeTringleCategories = function resizeTringleCategories() {
 
 function getFormatUrl(config_model) {
   var URL = Object.keys(config_model).map(function (key) {
-    // console.log('key_old',key );
+    // // console.log('key_old',key );
     return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
   }).join('&');
   return URL;
@@ -54335,8 +54335,29 @@ function onSelectFirstItem() {
 
         $(_element).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue);
       }
-    } else if ($(item).hasClass("settings__box_main-card")) {
-      if (!flag) {}
+    } else if ($(item).hasClass("settings__box_main-radio")) {
+      if (!flag) {
+        var _flagActiveElement = true;
+
+        _toConsumableArray($(item).find(".form__radio")).map(function (item) {
+          if ($(item).hasClass("form__radio-active")) {
+            _flagActiveElement = false;
+          }
+        });
+
+        if (!!_flagActiveElement) {
+          $($(item).find(".form__radio")[0]).addClass("form__radio-active");
+
+          var _element2 = $($(item).find(".form__radio")[0]);
+
+          var _children_element = _element2.data("childrens");
+
+          var _elementValue2 = _element2.data("value");
+
+          $(_element2).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue2);
+          Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["childrensСonnections"])(_children_element);
+        }
+      }
     }
   });
 }

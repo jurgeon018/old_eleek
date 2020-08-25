@@ -212,8 +212,29 @@ function onSelectFirstItem() {
           .children("input[type=hidden]")
           .val(elementValue);
       }
-    } else if ($(item).hasClass("settings__box_main-card")) {
+    } else if ($(item).hasClass("settings__box_main-radio")) {
       if (!flag) {
+        let flagActiveElement = true;
+        [...$(item).find(".form__radio")].map((item) => {
+          if ($(item).hasClass("form__radio-active")) {
+            flagActiveElement = false;
+          }
+        });
+
+        if (!!flagActiveElement) {
+          $($(item).find(".form__radio")[0]).addClass("form__radio-active");
+
+          let element = $($(item).find(".form__radio")[0]);
+          let children_element = element.data("childrens");
+          let elementValue = element.data("value");
+
+          $(element)
+            .parents(".settings__box_main")
+            .children("input[type=hidden]")
+            .val(elementValue);
+
+          childrensСonnections(children_element);
+        }
       }
     }
   });

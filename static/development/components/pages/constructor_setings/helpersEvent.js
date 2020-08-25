@@ -72,10 +72,10 @@ export const childrensСonnections = (children_element) => {
   for (const key in children_element) {
     if (children_element.hasOwnProperty(key)) {
       const element = children_element[key];
-
+ 
       let data_element = $(`[data-input_value="${key}"]`);
-
-      if (data_element.hasClass("settings__box_main-card")) {
+ 
+      if (data_element.hasClass("settings__box_main-radio")) {
         let all_elements = [
           ...data_element
             .find(".form__radio")
@@ -103,6 +103,7 @@ export const childrensСonnections = (children_element) => {
          
         });
       } else {
+
       }
     }
   }
@@ -139,14 +140,14 @@ function chengePrice(data){
     
     
 
- setTimeout(function(){
-  },1000)
+//  setTimeout(function(){
+//   },1000)
 
 }
 
 export function onClickCheckboxOptions() {
   $(".form_box__item").on("click", function () {
-    console.log('form_box__item' );
+    // console.log('form_box__item' );
     
     $(this).toggleClass("form_box__item-active");
     let item_input = $(this).find("input");
@@ -193,7 +194,7 @@ function getFormatUrl(config_model){
   
   let URL =  Object.keys(config_model)
   .map((key) => {
-    // console.log('key_old',key );
+    // // console.log('key_old',key );
      
         return `${key}=${encodeURIComponent(config_model[key])}`;
     
