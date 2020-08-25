@@ -19,8 +19,7 @@ export const onClickSettingsCardImg = (parent_box) => {
       let children_element = cardFormRadio.data("childrens");
 
       childrensСonnections(children_element);
-    }else{
-      
+    } else {
     }
 
     neighboringElements.removeClass("form__radio-active");
@@ -30,18 +29,16 @@ export const onClickSettingsCardImg = (parent_box) => {
     paretnConteiner.children("input[type=hidden]").val(value);
 
     let input_name = paretnConteiner.children("input[type=hidden]")[0];
-  
- 
-     if(!!input_name  && input_name.name!='iframe_type'){
+
+    if (!!input_name && input_name.name != "iframe_type") {
       let string_params = $(".constructor_setings").serializeArray();
-      chengePrice(string_params)
-     }
-     
-     
+      chengePrice(string_params);
 
+    }
+    let string_params = $(".constructor_setings").serializeArray();
+      
+    chengeURL(string_params)
   });
-
-  
 };
 
 export const onChengeRadioV1 = (parent_box) => {
@@ -51,12 +48,11 @@ export const onChengeRadioV1 = (parent_box) => {
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
     }
     let string_params = $(".constructor_setings").serializeArray();
-    
-    chengePrice(string_params)
-  });
 
-
+    chengePrice(string_params);
   
+    chengeURL(string_params)
+  });
 };
 
 export const clearGroup = (className) => {
@@ -72,9 +68,9 @@ export const childrensСonnections = (children_element) => {
   for (const key in children_element) {
     if (children_element.hasOwnProperty(key)) {
       const element = children_element[key];
- 
+
       let data_element = $(`[data-input_value="${key}"]`);
- 
+
       if (data_element.hasClass("settings__box_main-radio")) {
         let all_elements = [
           ...data_element
@@ -100,61 +96,80 @@ export const childrensСonnections = (children_element) => {
             $(item).addClass("form__radio-hiden");
             $(item).removeClass("form__radio-active");
           }
-         
         });
       } else {
-
       }
     }
   }
 };
 
+function chengeURL(data) {
+  let objectParameter = {};
 
-function chengePrice(data){
-
-  let objectParameter = {}
-
- data.map(item=>{
-   if(item.name!='undefined'){
-     objectParameter[item.name]=item.value;
-   }
- })
+  data.map((item) => {
+    if (item.name != "undefined") {
+      objectParameter[item.name] = item.value;
+    }
+  });
+  let back_url = createUrl(objectParameter);
  
+  // let back_url = createUrl(config_model).slice(1);
 
- fetch(`/api/get_price/?${ getFormatUrl(objectParameter)}`)
+  history.pushState(null, null, `/page1/?${back_url}`);
+ 
+}
+
+function createUrl(config_model) {
+  let back_url = Object.keys(config_model)
+    .map((key) => {
+         return `${key}=${encodeURIComponent(config_model[key])}`;
+       
+    })
+    .join("&");
+  return back_url;
+}
+
+function chengePrice(data) {
+  let objectParameter = {};
+
+  data.map((item) => {
+    if (item.name != "undefined") {
+      objectParameter[item.name] = item.value;
+    }
+  });
+
+  fetch(`/api/get_price/?${getFormatUrl(objectParameter)}`)
     .then((response) => {
-      return response.json()
+      return response.json();
     })
     .then((response) => {
-      
       // console.log( );
-      
-      
+
       function triplets(str) {
         // \u202f — неразрывный узкий пробел
-        return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1\u202f');
-    }
-      $('.settings__parameters_navigation').find('.price').children('.value').text(`${triplets(response.price)} грн`)
-    })
- 
-    
-    
+        return str
+          .toString()
+          .replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202f");
+      }
+      $(".settings__parameters_navigation")
+        .find(".price")
+        .children(".value")
+        .text(`${triplets(response.price)} грн`);
+    });
 
-//  setTimeout(function(){
-//   },1000)
-
+  //  setTimeout(function(){
+  //   },1000)
 }
 
 export function onClickCheckboxOptions() {
   $(".form_box__item").on("click", function () {
     // console.log('form_box__item' );
-    
+
     $(this).toggleClass("form_box__item-active");
     let item_input = $(this).find("input");
-       console.log(item_input );
-       console.log(item_input.prop("checked") );
-       console.log(item_input[0].checked );
- 
+    console.log(item_input);
+    console.log(item_input.prop("checked"));
+    console.log(item_input[0].checked);
 
     if (item_input.prop("checked") == true) {
       item_input.prop("checked", false);
@@ -162,42 +177,42 @@ export function onClickCheckboxOptions() {
       item_input.prop("checked", true);
     }
 
- 
-    
     let string_params = $(".constructor_setings").serializeArray();
-    
-    chengePrice(string_params)
+
+    chengePrice(string_params);
+      
+    chengeURL(string_params)
   });
 }
 
-export const resizeTringleCategories = () =>{
-  $('.settings__category_hover_triangl').removeAttr("style");
-  $('.settings__category_hover').removeAttr("style");
-  $('.settings__category_hover_sqar').removeAttr("style");
+export const resizeTringleCategories = () => {
+  $(".settings__category_hover_triangl").removeAttr("style");
+  $(".settings__category_hover").removeAttr("style");
+  $(".settings__category_hover_sqar").removeAttr("style");
 
-  [...$('.settings__category')].map(item=>{
-  
-    if(!!$(item).hasClass('settings__category-active')){
+  [...$(".settings__category")].map((item) => {
+    if (!!$(item).hasClass("settings__category-active")) {
       let width_triangle = item.offsetHeight * 0.7;
- 
-      let width_setingts = $(item)[0].offsetWidth
-      
-      $(item).find('.settings__category_hover_triangl').width(width_triangle);
-      $(item).find('.settings__category_hover_triangl').height(width_triangle);
-      $(item).find('.settings__category_hover').width(width_triangle + width_setingts )
-      $(item).find('.settings__category_hover_sqar').width(width_setingts )
-    }
-  })
-}
 
-function getFormatUrl(config_model){
-  
-  let URL =  Object.keys(config_model)
-  .map((key) => {
-    // // console.log('key_old',key );
-     
-        return `${key}=${encodeURIComponent(config_model[key])}`;
-    
-  }).join('&');
-  return URL
+      let width_setingts = $(item)[0].offsetWidth;
+
+      $(item).find(".settings__category_hover_triangl").width(width_triangle);
+      $(item).find(".settings__category_hover_triangl").height(width_triangle);
+      $(item)
+        .find(".settings__category_hover")
+        .width(width_triangle + width_setingts);
+      $(item).find(".settings__category_hover_sqar").width(width_setingts);
+    }
+  });
+};
+
+function getFormatUrl(config_model) {
+  let URL = Object.keys(config_model)
+    .map((key) => {
+      // // console.log('key_old',key );
+
+      return `${key}=${encodeURIComponent(config_model[key])}`;
+    })
+    .join("&");
+  return URL;
 }

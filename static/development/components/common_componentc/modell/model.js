@@ -37,10 +37,7 @@ if (config_model.iframe_type === "pozitiff") {
 } else if (config_model.iframe_type === "neo") {
   config_model["url"] = "/static/source/model/L.gltf";
 } else if (config_model.iframe_type === "ekross") {
-  console.log(config_model );
-  console.log(config_model.fork_type );
-  console.log(config_model.wheel_size );
- 
+  
   if(config_model.fork_type == 'santur' && config_model.wheel_size == 'size18'  ){
     config_model["url"] = "/static/source/model/ekros_saturn_18.gltf";
   }else if(config_model.fork_type == 'santur' && config_model.wheel_size == 'size26'  ){
@@ -458,11 +455,7 @@ window.addEventListener("mouseup", function (event) {
 $(".form_box__item").on("click", function () {
   if ($(this).find('input[type="checkbox"]')[0].name === "mirrors") {
     let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
- 
-console.log(valueChecked );
-
-
-
+  
     theModel.children[2].children.map((item) => {
       // багажник
       if (
