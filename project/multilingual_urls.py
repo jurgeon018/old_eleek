@@ -126,9 +126,12 @@ def page1(request):
     current_frame = frame
     initial_price   = frame.get_initial_price()
     codes = []
-    for k,v in query.items():
-        if k not in ['iframe_type','iframe_color']:
-            print(k,v)
+    for parameter_code, value_code in query.items():
+        if parameter_code not in ['iframe_type','iframe_color']:
+            if value_code == 'true':
+                codes.append(parameter_code)
+            else:
+                codes.append(value_code)
     return render(request, 'project/page1.html', locals())
 
 
