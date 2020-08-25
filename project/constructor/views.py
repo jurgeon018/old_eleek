@@ -12,14 +12,19 @@ from .models import *
 
 
 
-def generate_children():
-  children = []
-  return children
+def generate_children(value):
+  result = {}
+  for children in value.get_children():
+    arr = result.get(children.parameter.code, [])
+    if not arr:
+      result[children.parameter.code] = []
+    result[children.parameter.code].append(children.code)
+  return result
 
 
-def generate_parents():
-  parents = []
-  return parents
+# def generate_parents():
+#   parents = []
+#   return parents
 
 
 def generate_values(parameter):
@@ -36,8 +41,8 @@ def generate_values(parameter):
       "price":value.price,
       "color":value.color,
       "code":value.code,
-      "children":generate_children(),
-      "parents":generate_parents(),
+      "children":generate_children(value),
+      # "parents":generate_parents(),
     })
   return Response(result).data
 

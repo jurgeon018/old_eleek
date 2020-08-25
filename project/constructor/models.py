@@ -20,8 +20,8 @@ class TimestampMixin(models.Model):
 
 
 class CodeMixin(models.Model):
-    code = models.CharField(verbose_name="Код", max_length=255, blank=True, null=True)
-
+    code = models.SlugField(verbose_name="Код", max_length=255, blank=True, null=True)
+    
     class Meta: 
         abstract = True 
 
