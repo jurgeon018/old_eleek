@@ -2579,6 +2579,42 @@ input::-webkit-inner-spin-button {
   #order__form_constructor .button.fancybox-button.fancybox-close-small {
     color: #fff; }
 
+.visula__loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .visula__loading-line {
+    width: 95%;
+    height: 2px;
+    background: #000;
+    border-radius: 5px;
+    max-width: 0%;
+    align-self: flex-start;
+    margin: 5px 0; }
+  .visula__loading-text {
+    font-family: "Oswald", sans-serif; }
+  .visula__loading_wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    opacity: 0;
+    transition: 1s;
+    z-index: -10; }
+    .visula__loading_wrap-active {
+      opacity: 1;
+      transition: .1s;
+      z-index: 2; }
+
 .views {
   display: flex;
   align-items: center;

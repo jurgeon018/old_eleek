@@ -57865,12 +57865,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var params_search = window.location.search.split("?")[1].split("&");
-var config_model = {};
+var config_model = {
+  not_url: ["url"]
+};
 params_search.map(function (item) {
   var param = item.split("=");
-  param[1] = param[1].replace("%23", "");
-  param[1] = param[1].replace("%20", "");
-  config_model[param[0]] = param[1];
+
+  if (!!param[0]) {
+    param[1] = param[1].replace("%23", "");
+    param[1] = param[1].replace("%20", "");
+    config_model[param[0]] = param[1];
+  }
 });
 
 if (config_model.iframe_type === "Pozitiff") {
@@ -57884,12 +57889,48 @@ if (config_model.iframe_type === "Pozitiff") {
 }
 
 $(".views__back").on("click", function () {
-  var back_url = Object.keys(config_model).map(function (key) {
-    return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
-  }).join("&"); // console.log(window.location );
-  // console.log(window.location.search );
-
+  var back_url = createUrl(config_model);
   window.location.href = "/page1/?".concat(back_url);
+});
+
+function createUrl(config_model) {
+  var back_url = Object.keys(config_model).map(function (key) {
+    // console.log('key_old',key );
+    if (key != "not_url" && config_model["not_url"].indexOf(key) === -1) {
+      console.log("key_start", key);
+      console.log("key_index_of", key.indexOf("_color") != -1);
+
+      if (key.indexOf("_color") != -1) {
+        return "".concat(key, "=").concat(encodeURIComponent("#".concat(config_model[key])));
+      } else {
+        return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
+      }
+    }
+  }).join("&");
+  return back_url;
+}
+
+$(".form__radio").on("click", function () {
+  if (!$(this).hasClass("form__radio-hiden")) {
+    var value = $(this).data("value");
+    console.log($(this).parents('.settings__box_main-radio').children("input[type=hidden]"));
+    var parametr = $(this).parents('.settings__box_main-radio').children("input[type=hidden]")[0].name;
+    console.log('parametr', parametr);
+    console.log(config_model);
+
+    if (parametr.indexOf("_color") != -1) {
+      config_model[parametr] = value.replace("#", "");
+    } else {
+      config_model[parametr] = value;
+    }
+
+    console.log(config_model);
+  }
+
+  var back_url = createUrl(config_model).slice(1); // console.log(back_url );
+  // console.log(back_url.slice(1) );
+
+  history.pushState(null, null, "/page2/?".concat(back_url));
 }); /////||||///////
 /////||||///////
 /////||||///////
@@ -57933,9 +57974,31 @@ function init() {
   camera.position.y = 80;
   scene = new three__WEBPACK_IMPORTED_MODULE_0__["Scene"]();
   scene.background = new three__WEBPACK_IMPORTED_MODULE_0__["Color"]("0xffffff");
-  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__["Fog"](0xb4b4b4, 100, 1200); // Init the object loader
+  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__["Fog"](0xb4b4b4, 100, 1200);
+  var manager = new three__WEBPACK_IMPORTED_MODULE_0__["LoadingManager"]();
 
-  var loader = new three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_2__["GLTFLoader"]();
+  manager.onStart = function (url, itemsLoaded, itemsTotal) {
+    if ($(".visula__loading_wrap").length > 0) {
+      $(".visula__loading_wrap").addClass("visula__loading_wrap-active");
+    }
+  };
+
+  manager.onLoad = function () {
+    if ($(".visula__loading_wrap").length > 0) {
+      $(".visula__loading_wrap").removeClass("visula__loading_wrap-active");
+    }
+  };
+
+  manager.onProgress = function (url, itemsLoaded, itemsTotal) {
+    console.log("Loading file: " + url + ".\nLoaded " + itemsLoaded + " of " + itemsTotal + " files.");
+  };
+
+  manager.onError = function (url) {
+    console.log("There was an error loading " + url);
+  }; // Init the object loader
+
+
+  var loader = new three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_2__["GLTFLoader"](manager);
   loader.load(config_model.url, function (gltf) {
     console.log(gltf);
     theModel = gltf.scene;
@@ -57946,9 +58009,24 @@ function init() {
     theModel.children[0].visible = false;
     var theModelColor = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["colorBike"])(theModel, config_model);
     scene.add(theModelColor);
-  }, undefined, function (error) {
+  }, onProgress, function (error) {
     console.error(error);
   });
+
+  function onProgress(xhr) {
+    if (xhr.lengthComputable) {
+      var percentComplete = xhr.loaded / xhr.total * 100;
+
+      if ($(".visula__loading-line").length > 0) {
+        $(".visula__loading-line")[0].style.maxWidth = Math.round(percentComplete, 2) + "%";
+      }
+
+      if ($(".visula__loading-text").length > 0) {
+        $(".visula__loading-text").text(Math.round(percentComplete, 1) + "%");
+      }
+    }
+  }
+
   var cubeSize = 4;
   var cubeGeo = new three__WEBPACK_IMPORTED_MODULE_0__["BoxBufferGeometry"](cubeSize, cubeSize, cubeSize);
   var cubeMat = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
@@ -57958,17 +58036,7 @@ function init() {
   mesh12.castShadow = true; // mesh12.receiveShadow = true;
 
   mesh12.position.set(cubeSize + 1, cubeSize / 2, 0);
-  scene.add(mesh12); // var geometry = new THREE.RingGeometry(64.8, 65, 120);
-  // var material = new THREE.MeshBasicMaterial({
-  //   color: 0x292929,
-  //   side: THREE.DoubleSide,
-  // });
-  // var mesh = new THREE.Mesh(geometry, material);
-  // mesh.up.x = 2;
-  // // mesh.rotateX( addCircleToBacground);
-  // scene.add(mesh);
-
-  console.log(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(69.8, 70, 120));
+  scene.add(mesh12);
   scene.add(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(64.8, 65, 120));
   scene.add(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(69.8, 70, 120)); // // Add lights
 
@@ -58058,7 +58126,7 @@ function init() {
     } // resizeRendererToDisplaySize();
 
   });
-  $('.views__parameter_close').on('click', function () {
+  $(".views__parameter_close").on("click", function () {
     $(".views__order").removeClass("views__order-hidden");
     $(".views__parameter_wrap").removeClass("views__parameter_wrap-active");
     $(".views__visual").removeClass("views__visual-compress");
@@ -58069,7 +58137,7 @@ function init() {
       }, 300);
     }
   });
-  $('.views__parameter_back').on('click', function () {
+  $(".views__parameter_back").on("click", function () {
     $(".views__order").removeClass("views__order-hidden");
     $(".views__parameter_wrap").removeClass("views__parameter_wrap-active");
     $(".views__visual").removeClass("views__visual-compress");
@@ -58140,7 +58208,7 @@ $(".views__visual_left")[0].addEventListener("mouseup", function () {
 $(".views__visual_right")[0].addEventListener("mouseup", function () {
   return views__visual_right = false;
 }, false);
-window.addEventListener('mouseup', function (event) {
+window.addEventListener("mouseup", function (event) {
   views__visual_left = false;
   views__visual_right = false;
 });
@@ -58179,10 +58247,10 @@ $(".form_box__item").on("click", function () {
     });
   }
 });
-$('.order_constructor').on('click', function () {
+$(".order_constructor").on("click", function () {
   event.preventDefault();
   $.fancybox.open({
-    src: '#order__form_constructor',
+    src: "#order__form_constructor",
     touch: false
   });
 });

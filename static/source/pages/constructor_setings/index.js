@@ -53936,6 +53936,7 @@ var createSettingsBox = function createSettingsBox(parameters) {
   var SetingsBox = "";
   parameters.map(function (item) {
     var params = checkCardType(item);
+    console.log('item.code', item.code);
     SetingsBox += "<div class=\"settings__box\">\n      <div class=\"settings__box_title\">".concat(!!item.name ? item.name : "", "</div>\n      <div class=\"settings__box_main   ").concat(params.tupeBox, "\" data-input_value=\"").concat(item.code, "\">\n        <div class=\"settings__box_loader\">\n          <div class=\"lds-ellipsis\">\n            <div></div>\n            <div></div>\n            <div></div>\n            <div></div>\n          </div>\n        </div>\n        <input type=\"hidden\" value=\"\" name=\"").concat(item.code, "\"  >\n        <div class=\"settings__box_main_content\">\n           ").concat(params.elemens, "\n        </div>\n      </div>\n    </div>");
   });
   return SetingsBox;
