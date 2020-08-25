@@ -36,9 +36,7 @@ function onChengeIframe() {
 
       
       info_bike = response;
-      // info_bike = default_value.iframe_type[type_iframe];
-
-      
+       
       
       let info_tab_1 = info_bike.properties.tab_1.groups;
       let info_tab_2 = info_bike.properties.tab_2.groups;
@@ -49,7 +47,8 @@ function onChengeIframe() {
       clearGroup('[data-tab_main="1"]');
       clearGroup('[data-tab_main="2"]');
       clearGroup('[data-tab_main="3"]');
-
+ 
+ 
       $('[data-tab_main="1"]')[0].innerHTML += createGrooup(
         info_tab_1,
         info_bike.properties.tab_1.name_section
@@ -254,6 +253,7 @@ function SettingsInput() {
 
 function createGrooup(groups, name_section) {
   let settingsParameters = "";
+console.log(groups );
 
   groups.map((group) => {
     settingsParameters += creatingSettings(group);

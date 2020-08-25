@@ -54234,8 +54234,7 @@ function onChengeIframe() {
     fetch("/api/get_info/?frame_code=".concat(type_iframe)).then(function (response) {
       return response.json();
     }).then(function (response) {
-      info_bike = response; // info_bike = default_value.iframe_type[type_iframe];
-
+      info_bike = response;
       var info_tab_1 = info_bike.properties.tab_1.groups;
       var info_tab_2 = info_bike.properties.tab_2.groups;
       var info_tab_3 = info_bike.properties.tab_3.groups;
@@ -54401,6 +54400,7 @@ function SettingsInput() {
 
 function createGrooup(groups, name_section) {
   var settingsParameters = "";
+  console.log(groups);
   groups.map(function (group) {
     settingsParameters += Object(_helperCreate__WEBPACK_IMPORTED_MODULE_5__["creatingSettings"])(group);
   });
