@@ -141,6 +141,7 @@
                               </svg>
                               <div class="name">{{value.name}}</div>
                               <input
+                                {% if value in checkbox_values %}checked{%endif%}
                                 type="checkbox"
                                 name="{{value.code}}"
                                 value="true"

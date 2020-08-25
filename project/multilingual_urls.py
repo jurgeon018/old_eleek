@@ -126,6 +126,7 @@ def page2(request):
     iframe_color    = query.pop('iframe_color')[0]
     frame           = FrameType.objects.get(code=iframe_type)
     initial_price   = frame.get_initial_price()
+
     dict_values = []
     checkbox_values = []
     added_parameters = []
@@ -150,8 +151,14 @@ def page2(request):
             dict_values.append({
                 "parameter":parameter,
                 "value":value,
-                "values":Value.objects.filter(parameter=parameter),
+                "values":Value.objects.filter(parameter=parameter, is_active=True),
             })
+    if not added_parameters:    
+        parameter = Parameter.objects.get(tab_group__tab__frame=frame, type="checkbox_options")
+        dict_values.append({
+            "parameter":parameter,
+            "values":Value.objects.filter(parameter=parameter, is_active=True),
+        })
     return render(request, 'project/page2.html', locals())
 
 
