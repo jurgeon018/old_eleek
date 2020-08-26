@@ -104,7 +104,7 @@ class FrameType(GeneralMixin):
     
     def get_colors(self):
         return FrameColor.objects.filter(frame=self, is_active=True)
-
+    
     def get_initial_price(self):
         initial_price = 0
         initial_price += self.price 

@@ -35,15 +35,9 @@ params_search.map((item) => {
 });
 
 if (config_model.iframe_type === "pozitiff") {
-<<<<<<< HEAD
-  config_model["url"] = "/static/source/model/L.gltf";
-} else if (config_model.iframe_type === "neo") {
-  config_model["url"] = "/static/source/model/L.gltf";
-=======
   config_model["url"] = "/static/source/model/Pozitif.gltf";
 } else if (config_model.iframe_type === "neo") {
   config_model["url"] = "/static/source/model/Neo_v1.gltf";
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 } else if (config_model.iframe_type === "ekross") {
   if (
     config_model.fork_type == "santur" &&
@@ -135,20 +129,11 @@ if (config_model.iframe_type === "pozitiff") {
 $(".views__back").on("click", function () {
   let back_url = createUrl(config_model);
 
-<<<<<<< HEAD
-  // window.location.href = `/page1/?${back_url}`;
-});
-
-function createUrl(config_model) {
-  console.log(config_model);
-
-=======
   window.location.href = `/page1/?${back_url}`;
 });
 
 function createUrl(config_model) {
   
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   let back_url = Object.keys(filterObject(config_model))
     .map((key) => {
       if (key.indexOf("_color") != -1) {
@@ -160,29 +145,6 @@ function createUrl(config_model) {
     .join("&");
   return back_url;
 }
-<<<<<<< HEAD
-
-$(".form__radio").on("click", function () {
-  if (!$(this).hasClass("form__radio-hiden")) {
-    let value = $(this).data("value");
-
-    let parametr = $(this)
-      .parents(".settings__box_main-radio")
-      .children("input[type=hidden]")[0].name;
-
-    if (parametr.indexOf("_color") != -1) {
-      config_model[parametr] = value.replace("#", "");
-    } else {
-      config_model[parametr] = value;
-    }
-    console.log(config_model);
-  }
-  console.log(config_model);
-
-  let back_url = createUrl(config_model);
-
-  history.pushState(null, null, `/page2/?${back_url}`);
-=======
 
 $(".form__radio").on("click", function () {
   if (!$(this).hasClass("form__radio-hiden")) {
@@ -212,7 +174,6 @@ $(".form__radio").on("click", function () {
   }
  
   
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 });
 
 $(".form_box__item").on("click", function () {
@@ -307,21 +268,6 @@ function init() {
   };
 
   manager.onProgress = function (url, itemsLoaded, itemsTotal) {
-<<<<<<< HEAD
-    console.log(
-      "Loading file: " +
-        url +
-        ".\nLoaded " +
-        itemsLoaded +
-        " of " +
-        itemsTotal +
-        " files."
-    );
-  };
-
-  manager.onError = function (url) {
-    console.log("There was an error loading " + url);
-=======
     // console.log(
     //   "Loading file: " +
     //     url +
@@ -335,7 +281,6 @@ function init() {
 
   manager.onError = function (url) {
     // console.log("There was an error loading " + url);
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   };
 
   // Init the object loader
@@ -379,13 +324,8 @@ function init() {
   const mesh12 = new THREE.Mesh(cubeGeo, cubeMat);
   mesh12.castShadow = true;
   // mesh12.receiveShadow = true;
-<<<<<<< HEAD
-  mesh12.position.set(cubeSize + 1, cubeSize / 2, 0);
-  scene.add(mesh12);
-=======
   mesh12.position.set(0, 25, 0);
   // scene.add(mesh12);
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 
   scene.add(addCircleToBacground(64.8, 65, 120));
   scene.add(addCircleToBacground(69.8, 70, 120));
@@ -576,9 +516,6 @@ $(".views__visual_right")[0].addEventListener(
   false
 );
 
-<<<<<<< HEAD
-window.addEventListener("mouseup", function (event) {
-=======
 // touch event
 
 $(".views__visual_left")[0].addEventListener(
@@ -605,7 +542,6 @@ $(".views__visual_right")[0].addEventListener(
 );
 
 window.addEventListener("touchend", function (event) {
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   views__visual_left = false;
   views__visual_right = false;
 });
@@ -653,11 +589,6 @@ $(".form_box__item").on("click", function () {
         item.visible = valueChecked;
       }
     });
-<<<<<<< HEAD
-  }
-});
-
-=======
   } else if ($(this).find('input[type="checkbox"]')[0].name === "battery") {
     let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
 
@@ -678,7 +609,6 @@ $('.form__radio').on('click',function(){
 })
 
 
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 $(".order_constructor").on("click", function () {
   event.preventDefault();
   $.fancybox.open({

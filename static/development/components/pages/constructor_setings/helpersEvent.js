@@ -85,15 +85,11 @@ export const onChengeRadioV1 = (parent_box) => {
 
     }
     let string_params = $(".constructor_setings").serializeArray();
-<<<<<<< HEAD
-
-=======
 
 
 
 
 
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
     chengePrice(string_params);
   
     chengeURL(string_params)
@@ -114,39 +110,6 @@ export const childrensСonnections = (children_element) => {
  
   for (const key in children_element) {
     if (children_element.hasOwnProperty(key)) {
-<<<<<<< HEAD
-      const element = children_element[key];
-
-      let data_element = $(`[data-input_value="${key}"]`);
-
-      if (data_element.hasClass("settings__box_main-radio")) {
-        let all_elements = [
-          ...data_element
-            .find(".form__radio")
-            .removeClass("form__radio-active"),
-        ];
-        let flag = true;
-        all_elements.map((item) => {
-          let inputValue = $(item).data("value");
-
-          if (element.indexOf(inputValue) != -1) {
-            $(item).removeClass("form__radio-hiden");
-
-            if (!!flag) {
-              flag = false;
-              $(item).addClass("form__radio-active");
-              $(item)
-                .parents(".settings__box_main")
-                .children("input[type=hidden]")
-                .val(inputValue);
-            }
-          } else {
-            $(item).addClass("form__radio-hiden");
-            $(item).removeClass("form__radio-active");
-          }
-        });
-      } else {
-=======
       if(key!="checkbox_options"){
         const element = children_element[key];
 
@@ -186,82 +149,13 @@ export const childrensСonnections = (children_element) => {
       }else{
         
        
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
       }
      
     }
   }
 };
 
-function chengeURL(data) {
-  let objectParameter = {};
 
-<<<<<<< HEAD
-  data.map((item) => {
-    if (item.name != "undefined") {
-      objectParameter[item.name] = item.value;
-    }
-  });
-  let back_url = createUrl(objectParameter);
- 
-  // let back_url = createUrl(config_model).slice(1);
-
-  history.pushState(null, null, `/page1/?${back_url}`);
- 
-}
-
-function createUrl(config_model) {
-  let back_url = Object.keys(config_model)
-    .map((key) => {
-         return `${key}=${encodeURIComponent(config_model[key])}`;
-       
-    })
-    .join("&");
-  return back_url;
-}
-
-function chengePrice(data) {
-  let objectParameter = {};
-
-  data.map((item) => {
-    if (item.name != "undefined") {
-      objectParameter[item.name] = item.value;
-    }
-  });
-
-  fetch(`/api/get_price/?${getFormatUrl(objectParameter)}`)
-    .then((response) => {
-      return response.json();
-    })
-    .then((response) => {
-      // console.log( );
-
-      function triplets(str) {
-        // \u202f — неразрывный узкий пробел
-        return str
-          .toString()
-          .replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202f");
-      }
-      $(".settings__parameters_navigation")
-        .find(".price")
-        .children(".value")
-        .text(`${triplets(response.price)} грн`);
-    });
-
-  //  setTimeout(function(){
-  //   },1000)
-}
-
-export function onClickCheckboxOptions() {
-  $(".form_box__item").on("click", function () {
-    // console.log('form_box__item' );
-
-    $(this).toggleClass("form_box__item-active");
-    let item_input = $(this).find("input");
-    console.log(item_input);
-    console.log(item_input.prop("checked"));
-    console.log(item_input[0].checked);
-=======
 function createUrl(config_model) {
   let back_url = Object.keys(config_model)
     .map((key) => {
@@ -363,7 +257,6 @@ export const onSelectFirstItem = () => {
  
   settingsBox.map((item) => {
     let flag = false;
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 
     if ($(item).hasClass("settings__box_main-card")) {
       if (!flag) {
@@ -427,47 +320,6 @@ export const onSelectFirstItem = () => {
       }
     }
 
-<<<<<<< HEAD
-    let string_params = $(".constructor_setings").serializeArray();
-
-    chengePrice(string_params);
-      
-    chengeURL(string_params)
-  });
-}
-
-export const resizeTringleCategories = () => {
-  $(".settings__category_hover_triangl").removeAttr("style");
-  $(".settings__category_hover").removeAttr("style");
-  $(".settings__category_hover_sqar").removeAttr("style");
-
-  [...$(".settings__category")].map((item) => {
-    if (!!$(item).hasClass("settings__category-active")) {
-      let width_triangle = item.offsetHeight * 0.7;
-
-      let width_setingts = $(item)[0].offsetWidth;
-
-      $(item).find(".settings__category_hover_triangl").width(width_triangle);
-      $(item).find(".settings__category_hover_triangl").height(width_triangle);
-      $(item)
-        .find(".settings__category_hover")
-        .width(width_triangle + width_setingts);
-      $(item).find(".settings__category_hover_sqar").width(width_setingts);
-    }
-  });
-};
-
-function getFormatUrl(config_model) {
-  let URL = Object.keys(config_model)
-    .map((key) => {
-      // // console.log('key_old',key );
-
-      return `${key}=${encodeURIComponent(config_model[key])}`;
-    })
-    .join("&");
-  return URL;
-}
-=======
   });
 
   let string_params = $(".constructor_setings").serializeArray();
@@ -497,4 +349,3 @@ export const  onChengeSetingsHeight = () => {
     $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
   }
 }
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78

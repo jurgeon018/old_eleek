@@ -12,14 +12,11 @@ import {
   childrensСonnections,
   onClickCheckboxOptions,
   resizeTringleCategories,
-<<<<<<< HEAD
-=======
   onSelectFirstItem,
   onBackMobile,
   chengeURL,
   chengePrice,
   onChengeSetingsHeight,
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 } from "./helpersEvent";
 import { creatingSettings } from "./helperCreate";
 import { params } from "../../common_componentc/modell/helper";
@@ -86,70 +83,10 @@ function onChengeIframe() {
 
       onChengeSetingsHeight();
 
-<<<<<<< HEAD
-    })
-    // .then((data) => {
-    //   console.log(data);
-    // });
-
-    // setTimeout(function () {
-    //   info_bike = default_value.iframe_type[type_iframe];
-
-    //   console.log(type_iframe);
-
-    //   let info_tab_1 = info_bike.properties.tab_1.group;
-    //   let info_tab_2 = info_bike.properties.tab_2.group;
-    //   let info_tab_3 = info_bike.properties.tab_3.group;
-
-    //   console.log(info_tab_1 );
-    //   console.log(info_tab_2 );
-    //   console.log(info_tab_3 );
-    
-
-    //   clearGroup('[data-tab_main="1"]');
-    //   clearGroup('[data-tab_main="2"]');
-    //   clearGroup('[data-tab_main="3"]');
-
-    //   $('[data-tab_main="1"]')[0].innerHTML += createGrooup(
-    //     info_tab_1,
-    //     info_bike.properties.tab_1.name_section
-    //   );
-    //   $('[data-tab_main="2"]')[0].innerHTML += createGrooup(
-    //     info_tab_2,
-    //     info_bike.properties.tab_2.name_section
-    //   );
-    //   $('[data-tab_main="3"]')[0].innerHTML += createGrooup(
-    //     info_tab_3,
-    //     info_bike.properties.tab_3.name_section
-    //   );
-
-      
-    //   form_color(".form__color");
-    //   onClickSettingsCardImg(".settings__box_main1", false);
-    //   onClickSettingsCardImg(".settings__box_main");
-    //   onChengeRadioV1(".settings__box_main");
-    //   onClickSettingsColor();
-    //   SettingsInput();
-    //   onClickCheckboxOptions();
-    //   onClickRadio_v1();
-
-    //   onChengeIframe();
-    //   onSelectFirstItem();
-
-    //   onLoadInfoRemote();
-    //   onBackMobile();
-
-    //   onChengeSetingsHeight();
-
-     
-
-    // }, 1000);
-=======
     
 
     })
     
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   });
 }
 
@@ -158,18 +95,10 @@ onChengeIframe();
 
 $(".vizual_3d").on("click", function () {
   let string_params = $(".constructor_setings").serializeArray();
-<<<<<<< HEAD
-
-=======
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   window.location.href = `/page2/?${params(string_params)}`;
 });
 
 $(".next_tab").on("click", function () {
-<<<<<<< HEAD
-   
-=======
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   let activeTab = $(".settings__parameters-active").data("tab_main");
   activeTab++;
   if (activeTab > 3) {
@@ -179,91 +108,15 @@ $(".next_tab").on("click", function () {
   $(`.settings__category`).removeClass("settings__category-active");
   $(`[data-tab_main="${activeTab}"]`).addClass("settings__parameters-active");
   $(`[data-tab_header="${activeTab}"]`).addClass("settings__category-active");
-<<<<<<< HEAD
-
-=======
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   resizeTringleCategories()
   setTimeout(function () {
     onChengeSetingsHeight();
   }, 400);
 });
 
-<<<<<<< HEAD
-function onSelectFirstItem() {
-  let settingsBox = [...$(".settings__box_main")];
-
-  settingsBox.map((item) => {
-    let flag = false;
-
-    if ($(item).hasClass("settings__box_main-card")) {
-      if (!flag) {
-        let flagActiveElement = true;
-        [...$(item).find(".form__radio")].map((item) => {
-          if ($(item).hasClass("form__radio-active")) {
-            flagActiveElement = false;
-          }
-        });
-
-        if (!!flagActiveElement) {
-          $($(item).find(".form__radio")[0]).addClass("form__radio-active");
-
-          let element = $($(item).find(".form__radio")[0]);
-          let children_element = element.data("childrens");
-          let elementValue = element.data("value");
-
-          $(element)
-            .parents(".settings__box_main")
-            .children("input[type=hidden]")
-            .val(elementValue);
-
-          childrensСonnections(children_element);
-        }
-      }
-    } else if ($(item).hasClass("settings__box_main-color")) {
-      if (!flag) {
-        let element = $($(item).find(".form__color")[0]);
-        let elementValue = element.data("color");
-
-        element.addClass("form__color-active");
-
-        $(element)
-          .parents(".settings__box_main")
-          .children("input[type=hidden]")
-          .val(elementValue);
-      }
-    } else if ($(item).hasClass("settings__box_main-radio")) {
-      if (!flag) {
-        let flagActiveElement = true;
-        [...$(item).find(".form__radio")].map((item) => {
-          if ($(item).hasClass("form__radio-active")) {
-            flagActiveElement = false;
-          }
-        });
-
-        if (!!flagActiveElement) {
-          $($(item).find(".form__radio")[0]).addClass("form__radio-active");
-
-          let element = $($(item).find(".form__radio")[0]);
-          let children_element = element.data("childrens");
-          let elementValue = element.data("value");
-
-          $(element)
-            .parents(".settings__box_main")
-            .children("input[type=hidden]")
-            .val(elementValue);
-
-          childrensСonnections(children_element);
-        }
-      }
-    }
-  });
-}
-=======
 
 
 
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 
 function SettingsInput() {
   let seting_box = [...$(".settings__box_main")];
@@ -279,12 +132,7 @@ function SettingsInput() {
 
 function createGrooup(groups, name_section) {
   let settingsParameters = "";
-<<<<<<< HEAD
-console.log(groups );
-
-=======
  
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   groups.map((group) => {
     settingsParameters += creatingSettings(group);
   });
@@ -372,21 +220,7 @@ setTimeout(function () {
   onChengeSetingsHeight();
 }, 300);
 
-<<<<<<< HEAD
-function onChengeSetingsHeight() {
-   
-  if ($(window).width() <= 800) {
-    let settings_heights = $(".settings__parameters_wrap")
-      .find(".settings__parameters-active")
-      .outerHeight();
-    
-      
-    $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
-  }
-}
-=======
 
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 
 $(window).resize(function () {
   var width = $(window).width();
@@ -409,7 +243,6 @@ function startConstructor() {
   onLoadInfoRemote();
   onBackMobile();
   resizeTringleCategories()
-<<<<<<< HEAD
 }
 
 
@@ -417,13 +250,4 @@ function reportWindowSize() {
   resizeTringleCategories()
 }
 
-=======
-}
-
-
-function reportWindowSize() {
-  resizeTringleCategories()
-}
-
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 window.onresize = reportWindowSize;

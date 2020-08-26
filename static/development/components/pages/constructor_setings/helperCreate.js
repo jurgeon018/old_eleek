@@ -16,12 +16,7 @@ export const createSettingsBox = (parameters) => {
   parameters.map((item) => {
     let params = checkCardType(item);
 
-<<<<<<< HEAD
-    console.log('item.code',item.code );
-    
-=======
      
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
     SetingsBox += `<div class="settings__box">
       <div class="settings__box_title">${!!item.name ? item.name : ""}</div>
       <div class="settings__box_main   ${params.tupeBox}" data-input_value="${
@@ -47,14 +42,7 @@ export const createSettingsBox = (parameters) => {
 }
 
 export const createCheckboxOptions = (properte) => {
-<<<<<<< HEAD
-// console.log(properte );
-
-   
-
-=======
  
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   return ` <div class="settings__group settings__group-start">
     <div class="form_box__item form_box__item-black_bord2">
       <svg class="plus"  width="9" height="9" viewBox="0 0 9 9" >
@@ -76,11 +64,7 @@ export const createColor = (properte) => {
 
 export const createRadioSmal = (properte) => {
 
-<<<<<<< HEAD
-  return ` <div class="form__radio"  data-value="${properte.code}">
-=======
   return ` <div class="form__radio" ${!!properte.childrens_group?`data-childrens=${JSON.stringify(properte.childrens_group)}`:''}  data-value="${properte.code}">
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
     <div class="form__radio_check"></div>
     <div class="form__radio_main">
       <div class="form__radio_title">${properte.name}</div>
@@ -90,12 +74,7 @@ export const createRadioSmal = (properte) => {
 }
 
 export const createRadioImg = (properte) => {
-<<<<<<< HEAD
-//  console.log(properte );
- 
-=======
 
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   return `<div class="settings__card">
     <div class="settings__card_img">
       <img
