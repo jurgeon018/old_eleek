@@ -95,11 +95,7 @@
 
           <form class="constructor_model" action="">
 
-<<<<<<< HEAD
             {% for dict_value in dict_values %}
-=======
-          {% for dict_value in dict_values %}
->>>>>>> 0cbce182c02f6b3274014fbe1afc7d062c630ad7
               <div class="settings__group">
                 <div class="settings__group_title"></div>
                 <div class="settings__box">
@@ -125,9 +121,9 @@
                     </div>
                     <input
                       type="hidden"
-                      value="{{dict_value.parameter.code}}"
+                      value="{{dict_value.value.code}}"
                       name="{{dict_value.parameter.code}}"
-                      id="{{dict_value.parameter.id}}"
+                      id="{{dict_value.parameter.code}}"
                     />
                     <div class="settings__box_main_content">
                       {% for value in dict_value.values %}

@@ -51946,6 +51946,9 @@ var colorBike = function colorBike(model, config_model) {
       if (o.material.name.indexOf("Rama_1") !== -1) {
         o.material.color.setHex("0x".concat(config_model.iframe_color));
         o.material.metalness = 0.7;
+      } else if (o.material.name.indexOf("Bat") !== -1) {
+        // Колір заліза сидіння
+        o.material.color.setHex("0x".concat(config_model.iframe_color));
       } else if (o.material.name.indexOf("Seat_velo_2") !== -1 || o.material.name.indexOf("Seat_velo_3") !== -1 || o.material.name.indexOf("Seat_moto_2") !== -1) {
         // Колір заліза сидіння
         o.material.color.setHex("0x".concat(config_model.iframe_color));
@@ -51992,6 +51995,15 @@ var colorBike = function colorBike(model, config_model) {
       } else if (o.material.name.indexOf("Mud") !== -1) {
         // console.log('Mud',o.name );
         if (config_model.mud !== "undefined" && config_model.mud == 'true') {
+          o.visible = true;
+        } else {
+          o.visible = false;
+        }
+      } else if (o.material.name.indexOf("Bat") !== -1) {
+        // console.log('Mud',o.name );
+        console.log('Bat');
+
+        if (config_model.mud !== "undefined" && config_model.battery == 'true') {
           o.visible = true;
         } else {
           o.visible = false;
@@ -53974,24 +53986,20 @@ var createSettingsBox = function createSettingsBox(parameters) {
   var SetingsBox = "";
   parameters.map(function (item) {
     var params = checkCardType(item);
-    console.log('item.code', item.code);
     SetingsBox += "<div class=\"settings__box\">\n      <div class=\"settings__box_title\">".concat(!!item.name ? item.name : "", "</div>\n      <div class=\"settings__box_main   ").concat(params.tupeBox, "\" data-input_value=\"").concat(item.code, "\">\n        <div class=\"settings__box_loader\">\n          <div class=\"lds-ellipsis\">\n            <div></div>\n            <div></div>\n            <div></div>\n            <div></div>\n          </div>\n        </div>\n        ").concat(item.code != 'checkbox_options' ? "<input type=\"hidden\" value=\"\" name=\"".concat(item.code, "\"  >") : '', "\n        \n        <div class=\"settings__box_main_content\">\n           ").concat(params.elemens, "\n        </div>\n      </div>\n    </div>");
   });
   return SetingsBox;
 };
 var createCheckboxOptions = function createCheckboxOptions(properte) {
-  // console.log(properte );
   return " <div class=\"settings__group settings__group-start\">\n    <div class=\"form_box__item form_box__item-black_bord2\">\n      <svg class=\"plus\"  width=\"9\" height=\"9\" viewBox=\"0 0 9 9\" >\n        <path fill=\"#242321\" fill-rule=\"evenodd\"  d=\"M5 0v4h4v1H5v4H4V5H0V4h4V0h1z\" ></path>\n      </svg>\n  \n      <div class=\"name\"> ".concat(properte.name, " </div>\n      <input type=\"checkbox\" name=\"").concat(properte.code, "\" value=\"true\" id=\"\" />\n    </div></div>");
 };
 var createColor = function createColor(properte) {
   return " <div class=\"form__color\" data-color=\"".concat(properte.color, "\">\n   <div class=\"form__color_check\">\n     <img src=\"./../../static/source/img/interface/check.svg\" />\n   </div>\n  </div>");
 };
 var createRadioSmal = function createRadioSmal(properte) {
-  // console.log(properte );
-  return " <div class=\"form__radio\"  data-value=\"".concat(properte.code, "\">\n    <div class=\"form__radio_check\"></div>\n    <div class=\"form__radio_main\">\n      <div class=\"form__radio_title\">").concat(properte.name, "</div>\n      <div class=\"form__radio_price\">").concat(properte.price, "</div>\n    </div> \n  </div>");
+  return " <div class=\"form__radio\" ".concat(!!properte.childrens_group ? "data-childrens=".concat(JSON.stringify(properte.childrens_group)) : '', "  data-value=\"").concat(properte.code, "\">\n    <div class=\"form__radio_check\"></div>\n    <div class=\"form__radio_main\">\n      <div class=\"form__radio_title\">").concat(properte.name, "</div>\n      <div class=\"form__radio_price\">").concat(properte.price, "</div>\n    </div> \n  </div>");
 };
 var createRadioImg = function createRadioImg(properte) {
-  //  console.log(properte );
   return "<div class=\"settings__card\">\n    <div class=\"settings__card_img\">\n      <img\n        src=\"".concat(properte.img_value, "\"\n        alt=\"\"\n      />\n    </div>\n    <div class=\"form__radio\" data-childrens=").concat(JSON.stringify(properte.childrens_group), " data-value=\"").concat(properte.code, "\">\n      <div class=\"form__radio_check\"></div>\n      <div class=\"form__radio_main\">\n        <div class=\"form__radio_title\">").concat(properte.name, "</div>\n        <div class=\"form__radio_price\">").concat(properte.price, "</div>\n      </div>\n    </div>\n  </div>");
 };
 var checkCardType = function checkCardType(item) {
@@ -54031,19 +54039,24 @@ var checkCardType = function checkCardType(item) {
 /*!***************************************************************!*\
   !*** ../components/pages/constructor_setings/helpersEvent.js ***!
   \***************************************************************/
-/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, onClickCheckboxOptions, resizeTringleCategories */
+/*! exports provided: onLoadInfoActive, onLoadInfoRemote, chengeURL, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, chengePrice, onClickCheckboxOptions, resizeTringleCategories, onSelectFirstItem, onBackMobile, onChengeSetingsHeight */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLoadInfoActive", function() { return onLoadInfoActive; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLoadInfoRemote", function() { return onLoadInfoRemote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chengeURL", function() { return chengeURL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickSettingsCardImg", function() { return onClickSettingsCardImg; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onChengeRadioV1", function() { return onChengeRadioV1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearGroup", function() { return clearGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "childrensСonnections", function() { return childrensСonnections; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chengePrice", function() { return chengePrice; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickCheckboxOptions", function() { return onClickCheckboxOptions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resizeTringleCategories", function() { return resizeTringleCategories; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onSelectFirstItem", function() { return onSelectFirstItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onBackMobile", function() { return onBackMobile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onChengeSetingsHeight", function() { return onChengeSetingsHeight; });
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -54063,6 +54076,17 @@ var onLoadInfoActive = function onLoadInfoActive() {
 var onLoadInfoRemote = function onLoadInfoRemote() {
   $(".settings__box_main").removeClass("settings__box_main-hidden");
   $(".settings__box_main").removeClass("settings__box_main-loader");
+};
+var chengeURL = function chengeURL(data) {
+  var objectParameter = {};
+  data.map(function (item) {
+    if (item.name != "undefined") {
+      objectParameter[item.name] = item.value;
+    }
+  });
+  var back_url = createUrl(objectParameter); // let back_url = createUrl(config_model).slice(1);
+
+  history.pushState(null, null, "/page1/?".concat(back_url));
 };
 var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
   // Переключення карточок з фото
@@ -54097,6 +54121,19 @@ var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
     if (!$(this).hasClass("form__radio-hiden")) {
       var value = $(this).data("value");
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
+      var setingsName = $(this).parents(parent_box).children("input[type=hidden]")[0].name;
+
+      if (setingsName === 'seat_type') {
+        $("input[name='trunk']").parents('.form_box__item').addClass('form_box__item-hidden');
+        var data_children = $(this).data('childrens');
+        Object.keys(data_children).map(function (key) {
+          if (!!data_children[key]) {
+            data_children[key].map(function (item) {
+              $("input[name='".concat(item, "']")).parents('.form_box__item').removeClass('form_box__item-hidden');
+            });
+          }
+        });
+      }
     }
 
     var string_params = $(".constructor_setings").serializeArray();
@@ -54115,47 +54152,37 @@ var clearGroup = function clearGroup(className) {
 var childrensСonnections = function childrensСonnections(children_element) {
   for (var key in children_element) {
     if (children_element.hasOwnProperty(key)) {
-      (function () {
-        var element = children_element[key];
-        var data_element = $("[data-input_value=\"".concat(key, "\"]"));
+      if (key != "checkbox_options") {
+        (function () {
+          var element = children_element[key];
+          var data_element = $("[data-input_value=\"".concat(key, "\"]"));
 
-        if (data_element.hasClass("settings__box_main-radio")) {
-          var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
+          if (data_element.hasClass("settings__box_main-radio")) {
+            var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
 
-          var flag = true;
-          all_elements.map(function (item) {
-            var inputValue = $(item).data("value");
+            var flag = true;
+            all_elements.map(function (item) {
+              var inputValue = $(item).data("value");
 
-            if (element.indexOf(inputValue) != -1) {
-              $(item).removeClass("form__radio-hiden");
+              if (element.indexOf(inputValue) != -1) {
+                $(item).removeClass("form__radio-hiden");
 
-              if (!!flag) {
-                flag = false;
-                $(item).addClass("form__radio-active");
-                $(item).parents(".settings__box_main").children("input[type=hidden]").val(inputValue);
+                if (!!flag) {
+                  flag = false;
+                  $(item).addClass("form__radio-active");
+                  $(item).parents(".settings__box_main").children("input[type=hidden]").val(inputValue);
+                }
+              } else {
+                $(item).addClass("form__radio-hiden");
+                $(item).removeClass("form__radio-active");
               }
-            } else {
-              $(item).addClass("form__radio-hiden");
-              $(item).removeClass("form__radio-active");
-            }
-          });
-        } else {}
-      })();
+            });
+          } else {}
+        })();
+      } else {}
     }
   }
 };
-
-function chengeURL(data) {
-  var objectParameter = {};
-  data.map(function (item) {
-    if (item.name != "undefined") {
-      objectParameter[item.name] = item.value;
-    }
-  });
-  var back_url = createUrl(objectParameter); // let back_url = createUrl(config_model).slice(1);
-
-  history.pushState(null, null, "/page1/?".concat(back_url));
-}
 
 function createUrl(config_model) {
   var back_url = Object.keys(config_model).map(function (key) {
@@ -54174,35 +54201,30 @@ function chengePrice(data) {
   fetch("/api/get_price/?".concat(getFormatUrl(objectParameter))).then(function (response) {
     return response.json();
   }).then(function (response) {
-    // console.log( );
     function triplets(str) {
       // \u202f — неразрывный узкий пробел
       return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202F");
     }
 
     $(".settings__parameters_navigation").find(".price").children(".value").text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
-  }); //  setTimeout(function(){
-  //   },1000)
+  });
 }
-
 function onClickCheckboxOptions() {
   $(".form_box__item").on("click", function () {
-    // console.log('form_box__item' );
-    $(this).toggleClass("form_box__item-active");
-    var item_input = $(this).find("input");
-    console.log(item_input);
-    console.log(item_input.prop("checked"));
-    console.log(item_input[0].checked);
+    if (!$(this).hasClass("form_box__item-hidden")) {
+      $(this).toggleClass("form_box__item-active");
+      var item_input = $(this).find("input");
 
-    if (item_input.prop("checked") == true) {
-      item_input.prop("checked", false);
-    } else {
-      item_input.prop("checked", true);
+      if (item_input.prop("checked") == true) {
+        item_input.prop("checked", false);
+      } else {
+        item_input.prop("checked", true);
+      }
+
+      var string_params = $(".constructor_setings").serializeArray();
+      chengePrice(string_params);
+      chengeURL(string_params);
     }
-
-    var string_params = $(".constructor_setings").serializeArray();
-    chengePrice(string_params);
-    chengeURL(string_params);
   });
 }
 var resizeTringleCategories = function resizeTringleCategories() {
@@ -54224,11 +54246,88 @@ var resizeTringleCategories = function resizeTringleCategories() {
 
 function getFormatUrl(config_model) {
   var URL = Object.keys(config_model).map(function (key) {
-    // // console.log('key_old',key );
     return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
   }).join("&");
   return URL;
 }
+
+var onSelectFirstItem = function onSelectFirstItem() {
+  var settingsBox = _toConsumableArray($(".settings__box_main"));
+
+  settingsBox.map(function (item) {
+    var flag = false;
+
+    if ($(item).hasClass("settings__box_main-card")) {
+      if (!flag) {
+        var flagActiveElement = true;
+
+        _toConsumableArray($(item).find(".form__radio")).map(function (item) {
+          if ($(item).hasClass("form__radio-active")) {
+            flagActiveElement = false;
+          }
+        });
+
+        if (!!flagActiveElement) {
+          $($(item).find(".form__radio")[0]).addClass("form__radio-active");
+          var element = $($(item).find(".form__radio")[0]);
+          var children_element = element.data("childrens");
+          var elementValue = element.data("value");
+          $(element).parents(".settings__box_main").children("input[type=hidden]").val(elementValue);
+          childrensСonnections(children_element);
+        }
+      }
+    } else if ($(item).hasClass("settings__box_main-color")) {
+      if (!flag) {
+        var _element = $($(item).find(".form__color")[0]);
+
+        var _elementValue = _element.data("color");
+
+        _element.addClass("form__color-active");
+
+        $(_element).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue);
+      }
+    } else if ($(item).hasClass("settings__box_main-radio")) {
+      if (!flag) {
+        var _flagActiveElement = true;
+
+        _toConsumableArray($(item).find(".form__radio")).map(function (item) {
+          if ($(item).hasClass("form__radio-active")) {
+            _flagActiveElement = false;
+          }
+        });
+
+        if (!!_flagActiveElement) {
+          $($(item).find(".form__radio")[0]).addClass("form__radio-active");
+
+          var _element2 = $($(item).find(".form__radio")[0]);
+
+          var _children_element = _element2.data("childrens");
+
+          var _elementValue2 = _element2.data("value");
+
+          $(_element2).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue2);
+          childrensСonnections(_children_element);
+        }
+      }
+    }
+  });
+  var string_params = $(".constructor_setings").serializeArray();
+  chengePrice(string_params);
+};
+var onBackMobile = function onBackMobile() {
+  if ($(window).width() <= 800) {
+    $(".settings__group_back").on("click", function () {
+      $(".settings")[0].style.minHeight = 25 + "px";
+      $(".settings__categories_wrap").addClass("settings__categories_wrap-active");
+    });
+  }
+};
+var onChengeSetingsHeight = function onChengeSetingsHeight() {
+  if ($(window).width() <= 800) {
+    var settings_heights = $(".settings__parameters_wrap").find(".settings__parameters-active").outerHeight();
+    $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
+  }
+};
 
 /***/ }),
 
@@ -54269,7 +54368,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
-var bike_values = _module_constructor_default_value__WEBPACK_IMPORTED_MODULE_1__["default_value"].iframe_value;
 
 function onChengeIframe() {
   $(".settings__card-iframe").on("click", function () {
@@ -54286,7 +54384,7 @@ function onChengeIframe() {
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="1"]');
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="2"]');
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="3"]');
-      $('[data-tab_main="1"]')[0].innerHTML += createGrooup(info_tab_1, info_bike.properties.tab_1.name_section);
+      $('[data-tab_main="1"]')[0].innerHTML += createGrooup(info_tab_1, '');
       $('[data-tab_main="2"]')[0].innerHTML += createGrooup(info_tab_2, info_bike.properties.tab_2.name_section);
       $('[data-tab_main="3"]')[0].innerHTML += createGrooup(info_tab_3, info_bike.properties.tab_3.name_section);
       Object(_interface_form_elements_color__WEBPACK_IMPORTED_MODULE_2__["form_color"])(".form__color");
@@ -54298,51 +54396,11 @@ function onChengeIframe() {
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickCheckboxOptions"])('.constructor_setings');
       Object(_interface_form_elements_radio_v1__WEBPACK_IMPORTED_MODULE_3__["onClickRadio_v1"])();
       onChengeIframe();
-      onSelectFirstItem();
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onSelectFirstItem"])();
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onLoadInfoRemote"])();
-      onBackMobile();
-      onChengeSetingsHeight();
-    }); // .then((data) => {
-    //   console.log(data);
-    // });
-    // setTimeout(function () {
-    //   info_bike = default_value.iframe_type[type_iframe];
-    //   console.log(type_iframe);
-    //   let info_tab_1 = info_bike.properties.tab_1.group;
-    //   let info_tab_2 = info_bike.properties.tab_2.group;
-    //   let info_tab_3 = info_bike.properties.tab_3.group;
-    //   console.log(info_tab_1 );
-    //   console.log(info_tab_2 );
-    //   console.log(info_tab_3 );
-    //   clearGroup('[data-tab_main="1"]');
-    //   clearGroup('[data-tab_main="2"]');
-    //   clearGroup('[data-tab_main="3"]');
-    //   $('[data-tab_main="1"]')[0].innerHTML += createGrooup(
-    //     info_tab_1,
-    //     info_bike.properties.tab_1.name_section
-    //   );
-    //   $('[data-tab_main="2"]')[0].innerHTML += createGrooup(
-    //     info_tab_2,
-    //     info_bike.properties.tab_2.name_section
-    //   );
-    //   $('[data-tab_main="3"]')[0].innerHTML += createGrooup(
-    //     info_tab_3,
-    //     info_bike.properties.tab_3.name_section
-    //   );
-    //   form_color(".form__color");
-    //   onClickSettingsCardImg(".settings__box_main1", false);
-    //   onClickSettingsCardImg(".settings__box_main");
-    //   onChengeRadioV1(".settings__box_main");
-    //   onClickSettingsColor();
-    //   SettingsInput();
-    //   onClickCheckboxOptions();
-    //   onClickRadio_v1();
-    //   onChengeIframe();
-    //   onSelectFirstItem();
-    //   onLoadInfoRemote();
-    //   onBackMobile();
-    //   onChengeSetingsHeight();
-    // }, 1000);
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onBackMobile"])();
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeSetingsHeight"])();
+    });
   });
 }
 
@@ -54365,71 +54423,9 @@ $(".next_tab").on("click", function () {
   $("[data-tab_header=\"".concat(activeTab, "\"]")).addClass("settings__category-active");
   Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["resizeTringleCategories"])();
   setTimeout(function () {
-    onChengeSetingsHeight();
+    Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeSetingsHeight"])();
   }, 400);
 });
-
-function onSelectFirstItem() {
-  var settingsBox = _toConsumableArray($(".settings__box_main"));
-
-  settingsBox.map(function (item) {
-    var flag = false;
-
-    if ($(item).hasClass("settings__box_main-card")) {
-      if (!flag) {
-        var flagActiveElement = true;
-
-        _toConsumableArray($(item).find(".form__radio")).map(function (item) {
-          if ($(item).hasClass("form__radio-active")) {
-            flagActiveElement = false;
-          }
-        });
-
-        if (!!flagActiveElement) {
-          $($(item).find(".form__radio")[0]).addClass("form__radio-active");
-          var element = $($(item).find(".form__radio")[0]);
-          var children_element = element.data("childrens");
-          var elementValue = element.data("value");
-          $(element).parents(".settings__box_main").children("input[type=hidden]").val(elementValue);
-          Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["childrensСonnections"])(children_element);
-        }
-      }
-    } else if ($(item).hasClass("settings__box_main-color")) {
-      if (!flag) {
-        var _element = $($(item).find(".form__color")[0]);
-
-        var _elementValue = _element.data("color");
-
-        _element.addClass("form__color-active");
-
-        $(_element).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue);
-      }
-    } else if ($(item).hasClass("settings__box_main-radio")) {
-      if (!flag) {
-        var _flagActiveElement = true;
-
-        _toConsumableArray($(item).find(".form__radio")).map(function (item) {
-          if ($(item).hasClass("form__radio-active")) {
-            _flagActiveElement = false;
-          }
-        });
-
-        if (!!_flagActiveElement) {
-          $($(item).find(".form__radio")[0]).addClass("form__radio-active");
-
-          var _element2 = $($(item).find(".form__radio")[0]);
-
-          var _children_element = _element2.data("childrens");
-
-          var _elementValue2 = _element2.data("value");
-
-          $(_element2).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue2);
-          Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["childrensСonnections"])(_children_element);
-        }
-      }
-    }
-  });
-}
 
 function SettingsInput() {
   var seting_box = _toConsumableArray($(".settings__box_main"));
@@ -54445,7 +54441,6 @@ function SettingsInput() {
 
 function createGrooup(groups, name_section) {
   var settingsParameters = "";
-  console.log(groups);
   groups.map(function (group) {
     settingsParameters += Object(_helperCreate__WEBPACK_IMPORTED_MODULE_5__["creatingSettings"])(group);
   });
@@ -54465,6 +54460,8 @@ function onClickSettingsColor() {
       $(item).parents(".settings__box_main_content").find(".form__color").removeClass("form__color-active");
       $(event.target).addClass("form__color-active");
       $(event.target).parents(".settings__box_main").children("input[type=hidden]").val(color);
+      var string_params = $(".constructor_setings").serializeArray();
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["chengeURL"])(string_params);
     });
   });
 }
@@ -54479,31 +54476,13 @@ $(".settings__category").on("click", function () {
   Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["resizeTringleCategories"])();
   $(".settings__categories_wrap").removeClass("settings__categories_wrap-active");
   setTimeout(function () {
-    onChengeSetingsHeight();
+    Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeSetingsHeight"])();
   }, 400);
 });
-
-function onBackMobile() {
-  if ($(window).width() <= 800) {
-    $(".settings__group_back").on("click", function () {
-      $(".settings")[0].style.minHeight = 25 + "px";
-      $(".settings__categories_wrap").addClass("settings__categories_wrap-active");
-    });
-  }
-}
-
-onBackMobile();
+Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onBackMobile"])();
 setTimeout(function () {
-  onChengeSetingsHeight();
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeSetingsHeight"])();
 }, 300);
-
-function onChengeSetingsHeight() {
-  if ($(window).width() <= 800) {
-    var settings_heights = $(".settings__parameters_wrap").find(".settings__parameters-active").outerHeight();
-    $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
-  }
-}
-
 $(window).resize(function () {
   var width = $(window).width();
 });
@@ -54519,9 +54498,8 @@ function startConstructor() {
   Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickCheckboxOptions"])('.constructor_setings');
   Object(_interface_form_elements_radio_v1__WEBPACK_IMPORTED_MODULE_3__["onClickRadio_v1"])();
   onChengeIframe();
-  onSelectFirstItem();
   Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onLoadInfoRemote"])();
-  onBackMobile();
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onBackMobile"])();
   Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["resizeTringleCategories"])();
 }
 

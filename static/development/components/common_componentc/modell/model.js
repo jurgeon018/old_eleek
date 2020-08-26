@@ -35,9 +35,9 @@ params_search.map((item) => {
 });
 
 if (config_model.iframe_type === "pozitiff") {
-  config_model["url"] = "/static/source/model/L.gltf";
+  config_model["url"] = "/static/source/model/Pozitif.gltf";
 } else if (config_model.iframe_type === "neo") {
-  config_model["url"] = "/static/source/model/L.gltf";
+  config_model["url"] = "/static/source/model/Neo_v1.gltf";
 } else if (config_model.iframe_type === "ekross") {
   if (
     config_model.fork_type == "santur" &&
@@ -129,12 +129,11 @@ if (config_model.iframe_type === "pozitiff") {
 $(".views__back").on("click", function () {
   let back_url = createUrl(config_model);
 
-  // window.location.href = `/page1/?${back_url}`;
+  window.location.href = `/page1/?${back_url}`;
 });
 
 function createUrl(config_model) {
-  console.log(config_model);
-
+  
   let back_url = Object.keys(filterObject(config_model))
     .map((key) => {
       if (key.indexOf("_color") != -1) {
@@ -153,20 +152,28 @@ $(".form__radio").on("click", function () {
 
     let parametr = $(this)
       .parents(".settings__box_main-radio")
-      .children("input[type=hidden]")[0].name;
+      .children("input[type=hidden]")[0];
 
-    if (parametr.indexOf("_color") != -1) {
-      config_model[parametr] = value.replace("#", "");
+    let parametr_name = parametr.name;
+
+    if (parametr_name.indexOf("_color") != -1) {
+      config_model[parametr_name] = value.replace("#", "");
     } else {
-      config_model[parametr] = value;
+      config_model[parametr_name] = value;
     }
-    console.log(config_model);
+    parametr.value=value;
+   
+
+  let tempObject = filterObject(config_model);
+
+  chengePriseModel(tempObject);
+
+    let back_url = createUrl(config_model);
+
+    history.pushState(null, null, `/page2/?${back_url}`);
   }
-  console.log(config_model);
-
-  let back_url = createUrl(config_model);
-
-  history.pushState(null, null, `/page2/?${back_url}`);
+ 
+  
 });
 
 $(".form_box__item").on("click", function () {
@@ -233,8 +240,7 @@ function init() {
   container = document.createElement("div");
 
   document.getElementsByClassName("views__visula_3d")[0].appendChild(container);
-  console.log(views__visula_3d.offsetWidth);
-
+ 
   camera = new THREE.PerspectiveCamera(
     60,
     views__visula_3d.offsetWidth / window.innerHeight,
@@ -262,19 +268,19 @@ function init() {
   };
 
   manager.onProgress = function (url, itemsLoaded, itemsTotal) {
-    console.log(
-      "Loading file: " +
-        url +
-        ".\nLoaded " +
-        itemsLoaded +
-        " of " +
-        itemsTotal +
-        " files."
-    );
+    // console.log(
+    //   "Loading file: " +
+    //     url +
+    //     ".\nLoaded " +
+    //     itemsLoaded +
+    //     " of " +
+    //     itemsTotal +
+    //     " files."
+    // );
   };
 
   manager.onError = function (url) {
-    console.log("There was an error loading " + url);
+    // console.log("There was an error loading " + url);
   };
 
   // Init the object loader
@@ -282,11 +288,9 @@ function init() {
 
   loader.load(
     config_model.url,
-    function (gltf) {
-      console.log(gltf);
+    function (gltf) { 
 
-      theModel = gltf.scene;
-      console.log(theModel);
+      theModel = gltf.scene; 
       let flag = 0;
       // Set the models initial scale
       theModel.scale.set(0.05, 0.05, 0.05);
@@ -320,7 +324,7 @@ function init() {
   const mesh12 = new THREE.Mesh(cubeGeo, cubeMat);
   mesh12.castShadow = true;
   // mesh12.receiveShadow = true;
-  mesh12.position.set(cubeSize + 1, cubeSize / 2, 0);
+  mesh12.position.set(0, 25, 0);
   // scene.add(mesh12);
 
   scene.add(addCircleToBacground(64.8, 65, 120));
@@ -350,7 +354,6 @@ function init() {
   light.shadow.camera.near = 0.5; // default
   light.shadow.camera.far = 700; // default
 
-  // console.log(light );
 
   // Floor
   var floorGeometry = new THREE.PlaneGeometry(9000, 9000, 1, 1);
@@ -375,15 +378,18 @@ function init() {
   container.appendChild(renderer.domElement);
 
   var controls = new OrbitControls(camera, renderer.domElement);
-  controls.maxPolarAngle = Math.PI / 2;
-  controls.minPolarAngle = Math.PI / 3;
+  controls.target.set(0, 25, 0);
+
+  controls.maxPolarAngle = Math.PI / 1.8;
+  controls.minDistance = 50;
+  controls.minPolarAngle = Math.PI / 6;
   controls.enableDamping = true;
   controls.enablePan = false;
   controls.dampingFactor = 0.1;
   controls.autoRotate = false; // Toggle this if you'd like the chair to automatically rotate
   controls.autoRotateSpeed = 0.2;
 
-  console.log(scene);
+ 
 
   // // Щар що відкидає тінь
   // HelperSphereShadows(scene);
@@ -442,8 +448,7 @@ function init() {
   // scene.add( mesh123 );
 }
 
-function onWindowResize() {
-  console.log(views__visula_3d.offsetWidth);
+function onWindowResize() { 
 
   windowHalfX = views__visula_3d.offsetWidth / 2;
   windowHalfY = window.innerHeight / 2;
@@ -471,8 +476,7 @@ function resizeRendererToDisplaySize(renderer) {
 function animate() {
   requestAnimationFrame(animate);
   if (resizeRendererToDisplaySize(renderer)) {
-    const canvas = renderer.domElement;
-    // console.log(canvas );
+    const canvas = renderer.domElement; 
 
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
@@ -512,7 +516,32 @@ $(".views__visual_right")[0].addEventListener(
   false
 );
 
-window.addEventListener("mouseup", function (event) {
+// touch event
+
+$(".views__visual_left")[0].addEventListener(
+  "touchstart",
+  () => (views__visual_left = true),
+  false
+);
+$(".views__visual_right")[0].addEventListener(
+  "touchstart",
+  () => (views__visual_right = true),
+  false
+);
+
+$(".views__visual_left")[0].addEventListener(
+  "touchend",
+  () => (views__visual_left = false),
+  false
+);
+
+$(".views__visual_right")[0].addEventListener(
+  "touchend",
+  () => (views__visual_right = false),
+  false
+);
+
+window.addEventListener("touchend", function (event) {
   views__visual_left = false;
   views__visual_right = false;
 });
@@ -560,8 +589,25 @@ $(".form_box__item").on("click", function () {
         item.visible = valueChecked;
       }
     });
+  } else if ($(this).find('input[type="checkbox"]')[0].name === "battery") {
+    let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
+
+    theModel.children[2].children.map((item) => {
+      // багажник
+      if (
+        item.material.name.indexOf("Bat") !== -1 
+      ) {
+        item.visible = valueChecked;
+      }
+    });
   }
 });
+
+$('.form__radio').on('click',function(){
+  // if ($(this).find('input[type="checkbox"]')[0].name === "mirrors") {
+ 
+})
+
 
 $(".order_constructor").on("click", function () {
   event.preventDefault();

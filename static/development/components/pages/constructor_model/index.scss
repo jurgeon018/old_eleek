@@ -98,12 +98,13 @@ canvas {
       position: absolute;
       z-index: 10;
       left: 50%;
-      bottom: 16%;
+      bottom: 20%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 40%;
+      width: 20%;
       transform: translate(-50%);
+      min-width: 200px;
     }
 
     &_model {
@@ -442,5 +443,17 @@ canvas {
     justify-content: space-between;
     padding: 0 17px;
     width: 100%;
+  }
+}
+
+
+
+.order__form_constructor{
+  & .fancybox-close-small{
+    & svg{
+      & path{
+        fill:#fff;
+      }
+    }
   }
 }

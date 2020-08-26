@@ -1067,6 +1067,11 @@ label.error {
   align-items: center;
   transition: .3s;
   cursor: pointer; }
+  .form_box__item-hidden {
+    opacity: .6; }
+    .form_box__item-hidden .form_box__item-black_bord2 {
+      transition: .3s;
+      background-color: #fff !important; }
   .form_box__item svg {
     transition: .3s;
     transform: rotate(0); }
@@ -1121,6 +1126,11 @@ label.error {
   .form_box__item-black_bord2 {
     background-color: #fff;
     border: 1px solid #242321; }
+    .form_box__item-black_bord2.form_box__item-hidden:hover {
+      background-color: #fff; }
+    .form_box__item-black_bord2.form_box__item-hidden:hover {
+      background-color: #fff;
+      cursor: default; }
     .form_box__item-black_bord2:hover {
       background-color: #d3d3d1; }
     .form_box__item-black_bord2.form_box__item-active {
@@ -2643,12 +2653,13 @@ input::-webkit-inner-spin-button {
       position: absolute;
       z-index: 10;
       left: 50%;
-      bottom: 16%;
+      bottom: 20%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 40%;
-      transform: translate(-50%); }
+      width: 20%;
+      transform: translate(-50%);
+      min-width: 200px; }
     .views__visual_model {
       width: 100%; }
       .views__visual_model-img {
@@ -2904,6 +2915,9 @@ input::-webkit-inner-spin-button {
     justify-content: space-between;
     padding: 0 17px;
     width: 100%; } }
+
+.order__form_constructor .fancybox-close-small svg path {
+  fill: #fff; }
 
 
 /*# sourceMappingURL=index.css.map*/

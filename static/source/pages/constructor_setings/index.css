@@ -1067,6 +1067,11 @@ label.error {
   align-items: center;
   transition: .3s;
   cursor: pointer; }
+  .form_box__item-hidden {
+    opacity: .6; }
+    .form_box__item-hidden .form_box__item-black_bord2 {
+      transition: .3s;
+      background-color: #fff !important; }
   .form_box__item svg {
     transition: .3s;
     transform: rotate(0); }
@@ -1121,6 +1126,11 @@ label.error {
   .form_box__item-black_bord2 {
     background-color: #fff;
     border: 1px solid #242321; }
+    .form_box__item-black_bord2.form_box__item-hidden:hover {
+      background-color: #fff; }
+    .form_box__item-black_bord2.form_box__item-hidden:hover {
+      background-color: #fff;
+      cursor: default; }
     .form_box__item-black_bord2:hover {
       background-color: #d3d3d1; }
     .form_box__item-black_bord2.form_box__item-active {
