@@ -105,6 +105,7 @@ def get_price(request):
   query = request.data or request.query_params
   frame = FrameType.objects.get(code=query['iframe_type'])
   result += frame.price
+  print(query)
   for parameter_code,value_code in query.items():
     if parameter_code not in ['iframe_type','iframe_color']:
       if value_code == 'true':
@@ -112,6 +113,7 @@ def get_price(request):
           parameter__tab_group__tab__frame=frame,
           code=parameter_code,
         ).first()
+        print(value.price, value)
         result += value.price
       else:
         parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=parameter_code)#.first()
@@ -119,7 +121,9 @@ def get_price(request):
           # result += Value.objects.filter(parameter=parameter,color=value_code).first().price
           pass
         else:
-          result += Value.objects.filter(parameter=parameter,code=value_code).first().price
+          value = Value.objects.get(parameter=parameter,code=value_code)
+          print(value.price, value)
+          result += value.price
   return Response({
     "price":int(result)
   })

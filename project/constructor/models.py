@@ -106,21 +106,29 @@ class FrameType(GeneralMixin):
     def get_initial_price(self):
         initial_price = 0
         initial_price += self.price 
-        for value in Value.objects.filter(parameter__tab_group__tab__frame=self):
+        # for value in Value.objects.filter(parameter__tab_group__tab__frame=self, is_active=True):
+        parameters = Parameter.objects.filter(
+            is_active=True, tab_group__tab__frame=self,
+        ).exclude(
+            type__in=['checkbox_options','radio_color'],
+        )
+        for parameter in parameters:
+            value = parameter.get_values().first()
             initial_price += value.price 
+            print(value.price, value)
         return initial_price
     
     class Meta: 
         ordering = ['order']
         verbose_name = "Тип рами"
-        verbose_name_plural = "Типи рами";
+        verbose_name_plural = "Типи рами"
 
 
 class FrameColor(GeneralMixin, FrameMixin):
     class Meta: 
         ordering = ['order']
         verbose_name = "Колір рами" 
-        verbose_name_plural = "Кольори рами";
+        verbose_name_plural = "Кольори рами"
     
 
 class Tab(BaseMixin, NameMixin, CodeMixin, ImageMixin, FrameMixin):
@@ -193,6 +201,9 @@ class Parameter(BaseMixin, NameMixin, CodeMixin):
         ordering = ['order']
         verbose_name = "Параметер групи"
         verbose_name_plural = "Параметри групи"
+        unique_together = [
+            'code','tab_group',
+        ]
          
 
 
@@ -232,6 +243,9 @@ class Value(GeneralMixin):
 
     class Meta: 
         ordering = ['order']
+        unique_together = [
+            'code','parameter',
+        ]
         verbose_name = "Значення параметра"
         verbose_name_plural = "Значення параметра"
 

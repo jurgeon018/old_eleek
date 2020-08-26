@@ -132,9 +132,9 @@ class FrameColorInline(
 
 @admin.register(FrameType)
 class FrameTypeAdmin(
+    ImportExportModelAdmin,
     NestedModelAdmin,
     SortableAdminMixin,
-    ImportExportModelAdmin,
     TabbedTranslationAdmin,
     ):
     resource_class = FrameTypeResource
@@ -193,8 +193,8 @@ class TabGroupAdmin(
 
 @admin.register(Parameter)
 class ParameterAdmin(
-    SortableAdminMixin,
     ImportExportModelAdmin, 
+    SortableAdminMixin,
     TabbedTranslationAdmin,
     NestedModelAdmin,
     ):

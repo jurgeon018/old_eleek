@@ -150,7 +150,7 @@
                         {% else %}
                           <div
                             class="form__radio {% if value == dict_value.value %}form__radio-active{% endif %}"
-                            data-childrens='{"controller":["val2","val3"]}'
+                            data-childrens='{{value.generate_children_json}}'
                             data-value="{{value.code}}"
                           >
                             <div class="form__radio_check"></div>
