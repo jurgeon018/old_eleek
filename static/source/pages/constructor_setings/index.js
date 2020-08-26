@@ -53899,7 +53899,7 @@ var checkCardType = function checkCardType(item) {
 /*!***************************************************************!*\
   !*** ../components/pages/constructor_setings/helpersEvent.js ***!
   \***************************************************************/
-/*! exports provided: onLoadInfoActive, onLoadInfoRemote, chengeURL, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, chengePrice, onClickCheckboxOptions, resizeTringleCategories, onSelectFirstItem, onBackMobile, onChengeSetingsHeight */
+/*! exports provided: onLoadInfoActive, onLoadInfoRemote, chengeURL, onClickSettingsCardImg, onChengeRadioV1, clearGroup, chengePrice, onClickCheckboxOptions, childrensСonnections, resizeTringleCategories, onSelectFirstItem, onBackMobile, onChengeSetingsHeight */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53910,9 +53910,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickSettingsCardImg", function() { return onClickSettingsCardImg; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onChengeRadioV1", function() { return onChengeRadioV1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearGroup", function() { return clearGroup; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "childrensСonnections", function() { return childrensСonnections; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chengePrice", function() { return chengePrice; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickCheckboxOptions", function() { return onClickCheckboxOptions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "childrensСonnections", function() { return childrensСonnections; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resizeTringleCategories", function() { return resizeTringleCategories; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onSelectFirstItem", function() { return onSelectFirstItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onBackMobile", function() { return onBackMobile; });
@@ -53983,13 +53983,13 @@ var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
       var setingsName = $(this).parents(parent_box).children("input[type=hidden]")[0].name;
 
-      if (setingsName === 'seat_type') {
-        $("input[name='trunk']").parents('.form_box__item').addClass('form_box__item-hidden');
-        var data_children = $(this).data('childrens');
+      if (setingsName === "seat_type") {
+        $("input[name='trunk']").parents(".form_box__item").addClass("form_box__item-hidden");
+        var data_children = $(this).data("childrens");
         Object.keys(data_children).map(function (key) {
           if (!!data_children[key]) {
             data_children[key].map(function (item) {
-              $("input[name='".concat(item, "']")).parents('.form_box__item').removeClass('form_box__item-hidden');
+              $("input[name='".concat(item, "']")).parents(".form_box__item").removeClass("form_box__item-hidden");
             });
           }
         });
@@ -54008,53 +54008,6 @@ var clearGroup = function clearGroup(className) {
       item.remove();
     }
   });
-};
-var childrensСonnections = function childrensСonnections(children_element) {
-  console.log(children_element);
-
-  for (var key in children_element) {
-    if (children_element.hasOwnProperty(key)) {
-      console.log(key);
-
-      if (key != "checkbox_options") {
-        (function () {
-          var element = children_element[key];
-          var data_element = $("[data-input_value=\"".concat(key, "\"]"));
-
-          if (data_element.hasClass("settings__box_main-radio")) {
-            var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
-
-            var flag = true;
-            all_elements.map(function (item) {
-              var inputValue = $(item).data("value");
-
-              if (element.indexOf(inputValue) != -1) {
-                $(item).removeClass("form__radio-hiden");
-
-                if (!!flag) {
-                  flag = false;
-                  $(item).addClass("form__radio-active");
-                  $(item).parents(".settings__box_main").children("input[type=hidden]").val(inputValue);
-
-                  if (!!$(item).data("childrens")) {
-                    var _children_element = $(item).data("childrens");
-
-                    childrensСonnections(_children_element);
-                  }
-                }
-              } else {
-                $(item).addClass("form__radio-hiden");
-                $(item).removeClass("form__radio-active");
-              }
-            });
-          } else {}
-        })();
-      } else {
-        console.log(key);
-        $("input[name='protection']").parents('.form_box__item').addClass('form_box__item-hidden');
-      }
-    }
-  }
 };
 
 function createUrl(config_model) {
@@ -54100,6 +54053,57 @@ function onClickCheckboxOptions() {
     }
   });
 }
+var childrensСonnections = function childrensСonnections(children_element) {
+  $("input[name='protection']").parents(".form_box__item").addClass("form_box__item-hidden");
+  console.log(children_element);
+
+  for (var key in children_element) {
+    if (children_element.hasOwnProperty(key)) {
+      console.log(key);
+
+      if (key != "checkbox_options") {
+        (function () {
+          var element = children_element[key];
+          var data_element = $("[data-input_value=\"".concat(key, "\"]"));
+
+          if (data_element.hasClass("settings__box_main-radio")) {
+            var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
+
+            var flag = true;
+            all_elements.map(function (item) {
+              var inputValue = $(item).data("value");
+
+              if (element.indexOf(inputValue) != -1) {
+                $(item).removeClass("form__radio-hiden");
+
+                if (!!flag) {
+                  flag = false;
+                  $(item).addClass("form__radio-active");
+                  $(item).parents(".settings__box_main").children("input[type=hidden]").val(inputValue);
+
+                  if (!!$(item).data("childrens")) {
+                    var _children_element = $(item).data("childrens");
+
+                    childrensСonnections(_children_element);
+                  }
+                }
+              } else {
+                $(item).addClass("form__radio-hiden");
+                $(item).removeClass("form__radio-active");
+              }
+            });
+          } else {}
+        })();
+      } else {
+        var element = children_element[key];
+
+        if (element.indexOf("protection") != -1) {
+          $("input[name='protection']").parents(".form_box__item").removeClass("form_box__item-hidden");
+        }
+      }
+    }
+  }
+};
 var resizeTringleCategories = function resizeTringleCategories() {
   $(".settings__category_hover_triangl").removeAttr("style");
   $(".settings__category_hover").removeAttr("style");

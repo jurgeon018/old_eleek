@@ -17,7 +17,10 @@ import {
   chengePriseModel,
   creteInputHiden,
 } from "./helper";
-import { onClickCheckboxOptions, childrensСonnections } from "../../pages/constructor_setings/helpersEvent";
+import {
+  onClickCheckboxOptions,
+  childrensСonnections,
+} from "../../pages/constructor_setings/helpersEvent";
 
 let params_search = window.location.search.split("?")[1].split("&");
 let config_model = {
@@ -133,7 +136,6 @@ $(".views__back").on("click", function () {
 });
 
 function createUrl(config_model) {
-  
   let back_url = Object.keys(filterObject(config_model))
     .map((key) => {
       if (key.indexOf("_color") != -1) {
@@ -147,6 +149,8 @@ function createUrl(config_model) {
 }
 
 $(".form__radio").on("click", function () {
+  console.log(!$(this).hasClass("form__radio-hiden") );
+  
   if (!$(this).hasClass("form__radio-hiden")) {
     let value = $(this).data("value");
 
@@ -155,53 +159,51 @@ $(".form__radio").on("click", function () {
       .children("input[type=hidden]")[0];
 
     let parametr_name = parametr.name;
-    
 
     if (parametr_name.indexOf("_color") != -1) {
       config_model[parametr_name] = value.replace("#", "");
     } else {
       config_model[parametr_name] = value;
     }
-    parametr.value=value;
-   
+    parametr.value = value;
+
     if (!!$(this).data("childrens")) {
       let children_element = $(this).data("childrens");
 
       childrensСonnections(children_element);
-    }  
+    }
 
+    let tempObject = filterObject(config_model);
 
-  let tempObject = filterObject(config_model);
-
-  chengePriseModel(tempObject);
+    chengePriseModel(tempObject);
 
     let back_url = createUrl(config_model);
 
     history.pushState(null, null, `/page2/?${back_url}`);
   }
- 
-  
 });
 
 $(".form_box__item").on("click", function () {
-  $(this).toggleClass("form_box__item-active");
-  let item_input = $(this).find("input");
+  if (!$(this).hasClass("form_box__item-hidden")) {
+    $(this).toggleClass("form_box__item-active");
+    let item_input = $(this).find("input");
 
-  if (item_input.prop("checked") == true) {
-    item_input.prop("checked", false);
-    delete config_model[item_input[0].name];
-  } else {
-    item_input.prop("checked", true);
-    config_model[item_input[0].name] = "true";
+    if (item_input.prop("checked") == true) {
+      item_input.prop("checked", false);
+      delete config_model[item_input[0].name];
+    } else {
+      item_input.prop("checked", true);
+      config_model[item_input[0].name] = "true";
+    }
+
+    let tempObject = filterObject(config_model);
+
+    chengePriseModel(tempObject);
+
+    let back_url = createUrl(config_model);
+
+    history.pushState(null, null, `/page2/?${back_url}`);
   }
-
-  let tempObject = filterObject(config_model);
-
-  chengePriseModel(tempObject);
-
-  let back_url = createUrl(config_model);
-
-  history.pushState(null, null, `/page2/?${back_url}`);
 });
 
 /////||||///////
@@ -247,7 +249,7 @@ function init() {
   container = document.createElement("div");
 
   document.getElementsByClassName("views__visula_3d")[0].appendChild(container);
- 
+
   camera = new THREE.PerspectiveCamera(
     60,
     views__visula_3d.offsetWidth / window.innerHeight,
@@ -295,9 +297,8 @@ function init() {
 
   loader.load(
     config_model.url,
-    function (gltf) { 
-
-      theModel = gltf.scene; 
+    function (gltf) {
+      theModel = gltf.scene;
       let flag = 0;
       // Set the models initial scale
       theModel.scale.set(0.05, 0.05, 0.05);
@@ -361,7 +362,6 @@ function init() {
   light.shadow.camera.near = 0.5; // default
   light.shadow.camera.far = 700; // default
 
-
   // Floor
   var floorGeometry = new THREE.PlaneGeometry(9000, 9000, 1, 1);
   var floorMaterial = new THREE.MeshPhongMaterial({
@@ -395,8 +395,6 @@ function init() {
   controls.dampingFactor = 0.1;
   controls.autoRotate = false; // Toggle this if you'd like the chair to automatically rotate
   controls.autoRotateSpeed = 0.2;
-
- 
 
   // // Щар що відкидає тінь
   // HelperSphereShadows(scene);
@@ -455,8 +453,7 @@ function init() {
   // scene.add( mesh123 );
 }
 
-function onWindowResize() { 
-
+function onWindowResize() {
   windowHalfX = views__visula_3d.offsetWidth / 2;
   windowHalfY = window.innerHeight / 2;
   camera.aspect = views__visula_3d.offsetWidth / window.innerHeight;
@@ -483,7 +480,7 @@ function resizeRendererToDisplaySize(renderer) {
 function animate() {
   requestAnimationFrame(animate);
   if (resizeRendererToDisplaySize(renderer)) {
-    const canvas = renderer.domElement; 
+    const canvas = renderer.domElement;
 
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
@@ -601,20 +598,12 @@ $(".form_box__item").on("click", function () {
 
     theModel.children[2].children.map((item) => {
       // багажник
-      if (
-        item.material.name.indexOf("Bat") !== -1 
-      ) {
+      if (item.material.name.indexOf("Bat") !== -1) {
         item.visible = valueChecked;
       }
     });
   }
 });
-
-$('.form__radio').on('click',function(){
-  // if ($(this).find('input[type="checkbox"]')[0].name === "mirrors") {
- 
-})
-
 
 $(".order_constructor").on("click", function () {
   event.preventDefault();
@@ -623,13 +612,16 @@ $(".order_constructor").on("click", function () {
     touch: false,
     afterShow: function () {
       let params_order = filterObject(config_model);
-      Object.keys(params_order).map((item,key) => {
- 
-        $(".fancybox-content").append(creteInputHiden(key, params_order[item]));
+      Object.keys(params_order).map((item, key) => {
+
+     
+
+
+        $(".fancybox-content").append(creteInputHiden(item, params_order[item]));
       });
     },
     beforeClose: function () {
-      $(".fancybox-content").find('input[type=hidden]').remove();
-    }
+      $(".fancybox-content").find("input[type=hidden]").remove();
+    },
   });
 });
