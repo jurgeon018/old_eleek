@@ -77,6 +77,11 @@ export const colorBike = (model, config_model) => {
         o.material.metalness=0.7;
         
       } else if (
+        o.material.name.indexOf("Bat") !== -1  
+      ) {
+        // Колір заліза сидіння
+        o.material.color.setHex(`0x${config_model.iframe_color}`); 
+      } else if (
         o.material.name.indexOf("Seat_velo_2") !== -1 ||
         o.material.name.indexOf("Seat_velo_3") !== -1 ||
         o.material.name.indexOf("Seat_moto_2") !== -1
@@ -154,6 +159,20 @@ export const colorBike = (model, config_model) => {
       }else if( o.material.name.indexOf("Mud") !== -1 ) {
         // console.log('Mud',o.name );
         if (config_model.mud !== "undefined"  && config_model.mud == 'true') {
+           
+         
+          o.visible = true;
+        }else{
+          o.visible = false;
+        }
+        
+        
+        
+      }else if( o.material.name.indexOf("Bat") !== -1 ) {
+        // console.log('Mud',o.name );
+        console.log('Bat' );
+        
+        if (config_model.mud !== "undefined"  && config_model.battery == 'true') {
            
          
           o.visible = true;

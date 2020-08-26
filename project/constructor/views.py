@@ -104,6 +104,7 @@ def get_price(request):
   result = 0
   query = request.data or request.query_params
   frame = FrameType.objects.get(code=query['iframe_type'])
+  result += frame.price
   for parameter_code,value_code in query.items():
     if parameter_code not in ['iframe_type','iframe_color']:
       if value_code == 'true':
@@ -113,7 +114,6 @@ def get_price(request):
         ).first()
         result += value.price
       else:
-        print(parameter_code)
         parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=parameter_code)#.first()
         if parameter.type == 'radio_color' or value_code.startswith("#"):
           # result += Value.objects.filter(parameter=parameter,color=value_code).first().price
@@ -128,37 +128,38 @@ def get_price(request):
 @api_view(['GET','POST'])
 def make_eleek_order(request):
   query   = request.data or request.query_params 
-  values  = query['values']
+  # values  = query['values']
   name    = query.get('name','-----')
   email   = query.get('email','-----')
   phone   = query.get('phone','-----')
   message = query.get('message','-----')
-  model = ConstructorForm.objects.create(
-    name=name,
-    email=email,
-    phone=phone,
-    message=message,
-  )
-  values  = json.loads(values)
-  price   = 0
-  frame   = values.first.parameter.tab_group.tab.frame 
-  for value_id in values:
-    value = Value.objects.get(id=value_id)
-    price += value.price 
-    model.values.add(value)
-  send_mail(
-    subject=f"Заявка з конструктора №{model.id}",
-    message=f""" 
-      Імя:{name};
-      Емейл:{email};
-      Телефон:{phone};
-      Повідомлення:{message};
-      Рама: {frame.name};
-    """,
-    from_email=settings.DEFAULT_FROM_EMAIL,
-    recipient_list=settings.DEFAULT_RECIPIENT_LIST,
-    fail_silently=False,
-  )
+  # model = ConstructorForm.objects.create(
+  #   name=name,
+  #   email=email,
+  #   phone=phone,
+  #   message=message,
+  # )
+  # values  = json.loads(values)
+  # price   = 0
+  # frame   = values.first().parameter.tab_group.tab.frame 
+  # price += frame.price
+  # for value_id in values:
+  #   value = Value.objects.get(id=value_id)
+  #   price += value.price 
+  #   model.values.add(value)
+  # send_mail(
+  #   subject=f"Заявка з конструктора №{model.id}",
+  #   message=f""" 
+  #     Імя:{name};
+  #     Емейл:{email};
+  #     Телефон:{phone};
+  #     Повідомлення:{message};
+  #     Рама: {frame.name};
+  #   """,
+  #   from_email=settings.DEFAULT_FROM_EMAIL,
+  #   recipient_list=settings.DEFAULT_RECIPIENT_LIST,
+  #   fail_silently=False,
+  # )
   return Response({
     "status":"OK"
   })

@@ -797,6 +797,7 @@ function Onload() {
   valide_form('.form_cons', '.inp-vak-wrap', true);
   valide_form('#form_qustion', '.inp-vak-wrap', true);
   valide_form('#form_cons', '.inp-vak-wrap', true);
+  valide_form('#order__form_constructor', '.inp-vak-wrap', true);
 }
 
 function location_leng() {

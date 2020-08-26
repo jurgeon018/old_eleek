@@ -51863,7 +51863,7 @@ function basket_plus() {
 /*!********************************************************!*\
   !*** ../components/common_componentc/modell/helper.js ***!
   \********************************************************/
-/*! exports provided: HelperCordinates, HelperShadowCamera, HelperSphereShadows, HelperPlaneShadows, addCircleToBacground, params, colorBike */
+/*! exports provided: HelperCordinates, HelperShadowCamera, HelperSphereShadows, HelperPlaneShadows, addCircleToBacground, params, colorBike, getFormatUrl, filterObject, chengePriseModel, creteInputHiden */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51875,6 +51875,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCircleToBacground", function() { return addCircleToBacground; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "params", function() { return params; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colorBike", function() { return colorBike; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFormatUrl", function() { return getFormatUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filterObject", function() { return filterObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chengePriseModel", function() { return chengePriseModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "creteInputHiden", function() { return creteInputHiden; });
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "../../node_modules/three/build/three.module.js");
 
 var HelperCordinates = function HelperCordinates(scene, width_helper_line) {
@@ -51942,6 +51946,9 @@ var colorBike = function colorBike(model, config_model) {
       if (o.material.name.indexOf("Rama_1") !== -1) {
         o.material.color.setHex("0x".concat(config_model.iframe_color));
         o.material.metalness = 0.7;
+      } else if (o.material.name.indexOf("Bat") !== -1) {
+        // Колір заліза сидіння
+        o.material.color.setHex("0x".concat(config_model.iframe_color));
       } else if (o.material.name.indexOf("Seat_velo_2") !== -1 || o.material.name.indexOf("Seat_velo_3") !== -1 || o.material.name.indexOf("Seat_moto_2") !== -1) {
         // Колір заліза сидіння
         o.material.color.setHex("0x".concat(config_model.iframe_color));
@@ -51957,13 +51964,8 @@ var colorBike = function colorBike(model, config_model) {
       } else if (o.material.name.indexOf("Rama_2") !== -1) {
         // Панелі на рамі
         o.material.color.setHex("0x".concat(config_model.side_panels_colors));
-        console.log(o.material.metalness);
         o.material.metalness = 0.3;
-      } else {
-        console.log(o.name);
-      }
-
-      console.log(config_model.seat_type);
+      } else {}
 
       if (o.material.name.indexOf("Seat_moto_1") !== -1 || o.material.name.indexOf("Seat_moto_2") !== -1) {
         if (!!config_model.seat_type) {
@@ -51982,29 +51984,36 @@ var colorBike = function colorBike(model, config_model) {
           }
         }
       } else if (o.material.name.indexOf("Bag") !== -1) {
-        console.log('Bag', o.name);
-        console.log(config_model.trunk);
-        console.log(config_model.trunk !== "undefined");
-
-        if (config_model.trunk !== "undefined") {
-          o.visible = false;
-        } else {
+        // console.log('Bag',o.name );
+        // console.log(config_model.trunk );
+        // console.log(config_model.trunk !== "undefined" );
+        if (config_model.trunk !== "undefined" && config_model.trunk == 'true') {
           o.visible = true;
+        } else {
+          o.visible = false;
         }
       } else if (o.material.name.indexOf("Mud") !== -1) {
         // console.log('Mud',o.name );
-        if (config_model.mud !== "undefined") {
-          o.visible = false;
-        } else {
+        if (config_model.mud !== "undefined" && config_model.mud == 'true') {
           o.visible = true;
+        } else {
+          o.visible = false;
+        }
+      } else if (o.material.name.indexOf("Bat") !== -1) {
+        // console.log('Mud',o.name );
+        console.log('Bat');
+
+        if (config_model.mud !== "undefined" && config_model.battery == 'true') {
+          o.visible = true;
+        } else {
+          o.visible = false;
         }
       } else if (o.material.name.indexOf("Mirror_1") !== -1 || o.material.name.indexOf("Mirror_2") !== -1) {
-        console.log('Mirror', o.name);
-
-        if (config_model.mirror !== "undefined") {
-          o.visible = false;
-        } else {
+        // console.log('Mirror',config_model.mirrors !== "undefined" );
+        if (config_model.mirrors !== "undefined" && config_model.mirrors == 'true') {
           o.visible = true;
+        } else {
+          o.visible = false;
         }
       } //  console.log(o.material.name );
 
@@ -52150,6 +52159,46 @@ var colorBike = function colorBike(model, config_model) {
 // // });
 // // console.log(o);
 // }
+
+var getFormatUrl = function getFormatUrl(config_model) {
+  var URL = Object.keys(config_model).map(function (key) {
+    // // console.log('key_old',key );
+    return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
+  }).join("&");
+  return URL;
+};
+var filterObject = function filterObject(config_model) {
+  var tempObject = {};
+  Object.keys(config_model).map(function (key) {
+    if (key != "not_url" && config_model["not_url"].indexOf(key) === -1) {
+      if (key.indexOf("_color") != -1) {
+        tempObject[key] = "#".concat(config_model[key]);
+      } else {
+        tempObject[key] = config_model[key];
+      }
+    }
+  });
+  return tempObject;
+};
+var chengePriseModel = function chengePriseModel(objectParameter) {
+  fetch("/api/get_price/?".concat(getFormatUrl(objectParameter))).then(function (response) {
+    return response.json();
+  }).then(function (response) {
+    function triplets(str) {
+      // \u202f — неразрывный узкий пробел
+      return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202F");
+    }
+
+    $(".views__parameter_footer").find(".price").children(".value").text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
+  });
+};
+var creteInputHiden = function creteInputHiden(name, value) {
+  var product_item = document.createElement("input");
+  product_item.setAttribute('type', 'hidden');
+  product_item.setAttribute('name', name);
+  product_item.setAttribute('value', value);
+  return product_item;
+};
 
 /***/ }),
 
@@ -52412,38 +52461,36 @@ if (field_inputs.length > 0) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/interface/form/elements/list/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+ // $(".form_box__item").on("click", function () {
+//   $(this).toggleClass("form_box__item-active");
+//   let item_input = $(this).find("input");
+//   if (item_input.prop("checked") == true) {
+//     item_input.prop("checked", false);
+//   } else {
+//     item_input.prop("checked", true);
+//   }
+//   let form_box__header = $(this).parents(".form_box").find(".form_box__header");
+//   let box_item = $(this).parents(".form_box__main").find(".form_box__item");
+//   if (box_item.length > 0) {
+//     let count_item_active = 0;
+//     for (const key in box_item) {
+//       if (box_item.hasOwnProperty(key)) {
+//         if (
+//           $(box_item[key]).hasClass("form_box__item") &&
+//           $(box_item[key]).hasClass("form_box__item-active")
+//         ) {
+//           count_item_active++;
+//         }
+//       }
+//     }
+//     if (count_item_active == box_item.length) {
+//       form_box__header.addClass("form_box__header-active");
+//     } else {
+//       form_box__header.removeClass("form_box__header-active");
+//     }
+//   }
+// });
 
-$(".form_box__item").on("click", function () {
-  $(this).toggleClass("form_box__item-active");
-  var item_input = $(this).find("input");
-
-  if (item_input.prop("checked") == true) {
-    item_input.prop("checked", false);
-  } else {
-    item_input.prop("checked", true);
-  }
-
-  var form_box__header = $(this).parents(".form_box").find(".form_box__header");
-  var box_item = $(this).parents(".form_box__main").find(".form_box__item");
-
-  if (box_item.length > 0) {
-    var count_item_active = 0;
-
-    for (var key in box_item) {
-      if (box_item.hasOwnProperty(key)) {
-        if ($(box_item[key]).hasClass("form_box__item") && $(box_item[key]).hasClass("form_box__item-active")) {
-          count_item_active++;
-        }
-      }
-    }
-
-    if (count_item_active == box_item.length) {
-      form_box__header.addClass("form_box__header-active");
-    } else {
-      form_box__header.removeClass("form_box__header-active");
-    }
-  }
-});
 $(".form_box__header").on("click", function () {
   var this_box = $(this);
   $(this).toggleClass("form_box__header-active");
@@ -52869,11 +52916,11 @@ var default_value = {
     }]
   },
   iframe_type: {
-    Ekross: {
+    ekross: {
       properties: {
         tab_1: {
           iframe_color: color_object,
-          group: [{
+          groups: [{
             name: "Бокові панелі",
             parameters: [{
               name: "Товщина",
@@ -52923,7 +52970,7 @@ var default_value = {
         },
         tab_2: {
           name_section: "Підвіска",
-          group: [{
+          groups: [{
             name: "Вилки",
             parameters: [{
               name: "Тип вилки",
@@ -53020,7 +53067,7 @@ var default_value = {
         },
         tab_3: {
           name_section: "Додаткові комплектуючі",
-          group: [{
+          groups: [{
             name: "",
             parameters: [{
               name: "Мотор",
@@ -53117,15 +53164,15 @@ var default_value = {
         }
       }
     },
-    Lite: {
+    lite: {
       properties: {
         tab_1: {
           iframe_color: color_object,
-          group: []
+          groups: []
         },
         tab_2: {
           name_section: "Підвіска",
-          group: [{
+          groups: [{
             name: "Вилки",
             parameters: [{
               name: "Тип вилки",
@@ -53136,7 +53183,7 @@ var default_value = {
                 name: "Сатурн",
                 price: "350 грн",
                 value_id: "SATURN",
-                childrens_group: {
+                childrens_groups: {
                   wheel_size: ['size_20', 'size_26']
                 }
               }, {
@@ -53144,7 +53191,7 @@ var default_value = {
                 name: "Зум",
                 price: "350 грн",
                 value_id: "ZYM",
-                childrens_group: {
+                childrens_groups: {
                   wheel_size: ['size_18', 'size_20', 'size_24', 'size_26']
                 }
               }, {
@@ -53152,7 +53199,7 @@ var default_value = {
                 name: "DNM",
                 price: "350 грн",
                 value_id: "DNM",
-                childrens_group: {
+                childrens_groups: {
                   wheel_size: ['size_18', 'size_20', 'size_24', 'size_26']
                 }
               }, {
@@ -53160,7 +53207,7 @@ var default_value = {
                 name: "DNM FAT",
                 price: "350 грн",
                 value_id: "DNM_FAT_1",
-                childrens_group: {
+                childrens_groups: {
                   wheel_size: ['size_26_FAT']
                 }
               }]
@@ -53223,7 +53270,7 @@ var default_value = {
         },
         tab_3: {
           name_section: "Додаткові комплектуючі",
-          group: [{
+          groups: [{
             name: "",
             parameters: [{
               name: "Мотор",
@@ -53320,15 +53367,15 @@ var default_value = {
         }
       }
     },
-    Pozitiff: {
+    pozitiff: {
       properties: {
         tab_1: {
           iframe_color: color_object,
-          group: []
+          groups: []
         },
         tab_2: {
           name_section: "Підвіска",
-          group: [{
+          groups: [{
             name: "Вилки",
             parameters: [{
               name: "Тип вилки",
@@ -53383,7 +53430,7 @@ var default_value = {
         },
         tab_3: {
           name_section: "Додаткові комплектуючі",
-          group: [{
+          groups: [{
             name: "",
             parameters: [{
               name: "Мотор",
@@ -53480,15 +53527,15 @@ var default_value = {
         }
       }
     },
-    Neo: {
+    neo: {
       properties: {
         tab_1: {
           iframe_color: color_object,
-          group: []
+          groups: []
         },
         tab_2: {
           name_section: "Підвіска",
-          group: [{
+          groups: [{
             name: "Колеса",
             parameters: [{
               name: "Тип колеса",
@@ -53513,7 +53560,7 @@ var default_value = {
         },
         tab_3: {
           name_section: "Додаткові комплектуючі",
-          group: [{
+          groups: [{
             name: "Опції",
             type: "checkbox_options",
             parameters: [{
@@ -53620,6 +53667,7 @@ function Onload() {
   valide_form('.form_cons', '.inp-vak-wrap', true);
   valide_form('#form_qustion', '.inp-vak-wrap', true);
   valide_form('#form_cons', '.inp-vak-wrap', true);
+  valide_form('#order__form_constructor', '.inp-vak-wrap', true);
 }
 
 function location_leng() {
@@ -53938,23 +53986,21 @@ var createSettingsBox = function createSettingsBox(parameters) {
   var SetingsBox = "";
   parameters.map(function (item) {
     var params = checkCardType(item);
-    SetingsBox += "<div class=\"settings__box\">\n      <div class=\"settings__box_title\">".concat(!!item.name ? item.name : "", "</div>\n      <div class=\"settings__box_main   ").concat(params.tupeBox, "\" data-input_value=\"").concat(item.code, "\">\n        <div class=\"settings__box_loader\">\n          <div class=\"lds-ellipsis\">\n            <div></div>\n            <div></div>\n            <div></div>\n            <div></div>\n          </div>\n        </div>\n        <input type=\"hidden\" value=\"\" name=\"").concat(item.code, "\"  >\n        <div class=\"settings__box_main_content\">\n           ").concat(params.elemens, "\n        </div>\n      </div>\n    </div>");
+    SetingsBox += "<div class=\"settings__box\">\n      <div class=\"settings__box_title\">".concat(!!item.name ? item.name : "", "</div>\n      <div class=\"settings__box_main   ").concat(params.tupeBox, "\" data-input_value=\"").concat(item.code, "\">\n        <div class=\"settings__box_loader\">\n          <div class=\"lds-ellipsis\">\n            <div></div>\n            <div></div>\n            <div></div>\n            <div></div>\n          </div>\n        </div>\n        ").concat(item.code != 'checkbox_options' ? "<input type=\"hidden\" value=\"\" name=\"".concat(item.code, "\"  >") : '', "\n        \n        <div class=\"settings__box_main_content\">\n           ").concat(params.elemens, "\n        </div>\n      </div>\n    </div>");
   });
   return SetingsBox;
 };
 var createCheckboxOptions = function createCheckboxOptions(properte) {
-  console.log(properte);
-  return " <div class=\"settings__group settings__group-start\">\n    <div class=\"form_box__item form_box__item-black_bord2\">\n      <svg class=\"plus\"  width=\"9\" height=\"9\" viewBox=\"0 0 9 9\" >\n        <path fill=\"#242321\" fill-rule=\"evenodd\"  d=\"M5 0v4h4v1H5v4H4V5H0V4h4V0h1z\" ></path>\n      </svg>\n  \n      <div class=\"name\"> ".concat(properte.name, " </div>\n      <input type=\"checkbox\" name=\"").concat(properte.value_code, "\" value=\"true\" id=\"\" />\n    </div></div>");
+  return " <div class=\"settings__group settings__group-start\">\n    <div class=\"form_box__item form_box__item-black_bord2\">\n      <svg class=\"plus\"  width=\"9\" height=\"9\" viewBox=\"0 0 9 9\" >\n        <path fill=\"#242321\" fill-rule=\"evenodd\"  d=\"M5 0v4h4v1H5v4H4V5H0V4h4V0h1z\" ></path>\n      </svg>\n  \n      <div class=\"name\"> ".concat(properte.name, " </div>\n      <input type=\"checkbox\" name=\"").concat(properte.code, "\" value=\"true\" id=\"\" />\n    </div></div>");
 };
 var createColor = function createColor(properte) {
-  return " <div class=\"form__color\" data-color=\"".concat(properte.value, "\">\n   <div class=\"form__color_check\">\n     <img src=\"./../../static/source/img/interface/check.svg\" />\n   </div>\n  </div>");
+  return " <div class=\"form__color\" data-color=\"".concat(properte.color, "\">\n   <div class=\"form__color_check\">\n     <img src=\"./../../static/source/img/interface/check.svg\" />\n   </div>\n  </div>");
 };
 var createRadioSmal = function createRadioSmal(properte) {
-  // console.log(properte );
-  return " <div class=\"form__radio\"  data-value=\"".concat(properte.value_id, "\">\n    <div class=\"form__radio_check\"></div>\n    <div class=\"form__radio_main\">\n      <div class=\"form__radio_title\">").concat(properte.name, "</div>\n      <div class=\"form__radio_price\">").concat(properte.price, "</div>\n    </div> \n  </div>");
+  return " <div class=\"form__radio\" ".concat(!!properte.childrens_group ? "data-childrens=".concat(JSON.stringify(properte.childrens_group)) : '', "  data-value=\"").concat(properte.code, "\">\n    <div class=\"form__radio_check\"></div>\n    <div class=\"form__radio_main\">\n      <div class=\"form__radio_title\">").concat(properte.name, "</div>\n      <div class=\"form__radio_price\">").concat(properte.price, "</div>\n    </div> \n  </div>");
 };
 var createRadioImg = function createRadioImg(properte) {
-  return "<div class=\"settings__card\">\n    <div class=\"settings__card_img\">\n      <img\n        src=\"".concat(properte.img_value, "\"\n        alt=\"\"\n      />\n    </div>\n    <div class=\"form__radio\" data-childrens=").concat(JSON.stringify(properte.childrens_group), " data-value=\"").concat(properte.value_id, "\">\n      <div class=\"form__radio_check\"></div>\n      <div class=\"form__radio_main\">\n        <div class=\"form__radio_title\">").concat(properte.name, "</div>\n        <div class=\"form__radio_price\">").concat(properte.price, "</div>\n      </div>\n    </div>\n  </div>");
+  return "<div class=\"settings__card\">\n    <div class=\"settings__card_img\">\n      <img\n        src=\"".concat(properte.img_value, "\"\n        alt=\"\"\n      />\n    </div>\n    <div class=\"form__radio\" data-childrens=").concat(JSON.stringify(properte.childrens_group), " data-value=\"").concat(properte.code, "\">\n      <div class=\"form__radio_check\"></div>\n      <div class=\"form__radio_main\">\n        <div class=\"form__radio_title\">").concat(properte.name, "</div>\n        <div class=\"form__radio_price\">").concat(properte.price, "</div>\n      </div>\n    </div>\n  </div>");
 };
 var checkCardType = function checkCardType(item) {
   var obj = {
@@ -53993,18 +54039,24 @@ var checkCardType = function checkCardType(item) {
 /*!***************************************************************!*\
   !*** ../components/pages/constructor_setings/helpersEvent.js ***!
   \***************************************************************/
-/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, onClickCheckboxOptions */
+/*! exports provided: onLoadInfoActive, onLoadInfoRemote, chengeURL, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, chengePrice, onClickCheckboxOptions, resizeTringleCategories, onSelectFirstItem, onBackMobile, onChengeSetingsHeight */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLoadInfoActive", function() { return onLoadInfoActive; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLoadInfoRemote", function() { return onLoadInfoRemote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chengeURL", function() { return chengeURL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickSettingsCardImg", function() { return onClickSettingsCardImg; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onChengeRadioV1", function() { return onChengeRadioV1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearGroup", function() { return clearGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "childrensСonnections", function() { return childrensСonnections; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chengePrice", function() { return chengePrice; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickCheckboxOptions", function() { return onClickCheckboxOptions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resizeTringleCategories", function() { return resizeTringleCategories; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onSelectFirstItem", function() { return onSelectFirstItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onBackMobile", function() { return onBackMobile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onChengeSetingsHeight", function() { return onChengeSetingsHeight; });
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -54025,6 +54077,17 @@ var onLoadInfoRemote = function onLoadInfoRemote() {
   $(".settings__box_main").removeClass("settings__box_main-hidden");
   $(".settings__box_main").removeClass("settings__box_main-loader");
 };
+var chengeURL = function chengeURL(data) {
+  var objectParameter = {};
+  data.map(function (item) {
+    if (item.name != "undefined") {
+      objectParameter[item.name] = item.value;
+    }
+  });
+  var back_url = createUrl(objectParameter); // let back_url = createUrl(config_model).slice(1);
+
+  history.pushState(null, null, "/page1/?".concat(back_url));
+};
 var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
   // Переключення карточок з фото
   $(".settings__card_img").on("click", function () {
@@ -54043,10 +54106,14 @@ var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
     paretnConteiner.children("input[type=hidden]").val(value);
     var input_name = paretnConteiner.children("input[type=hidden]")[0];
 
-    if (!!input_name && input_name.name != 'iframe_type') {
-      var string_params = $(".constructor_setings").serializeArray();
-      chengePrice(string_params);
+    if (!!input_name && input_name.name != "iframe_type") {
+      var _string_params = $(".constructor_setings").serializeArray();
+
+      chengePrice(_string_params);
     }
+
+    var string_params = $(".constructor_setings").serializeArray();
+    chengeURL(string_params);
   });
 };
 var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
@@ -54054,10 +54121,24 @@ var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
     if (!$(this).hasClass("form__radio-hiden")) {
       var value = $(this).data("value");
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
+      var setingsName = $(this).parents(parent_box).children("input[type=hidden]")[0].name;
+
+      if (setingsName === 'seat_type') {
+        $("input[name='trunk']").parents('.form_box__item').addClass('form_box__item-hidden');
+        var data_children = $(this).data('childrens');
+        Object.keys(data_children).map(function (key) {
+          if (!!data_children[key]) {
+            data_children[key].map(function (item) {
+              $("input[name='".concat(item, "']")).parents('.form_box__item').removeClass('form_box__item-hidden');
+            });
+          }
+        });
+      }
     }
 
     var string_params = $(".constructor_setings").serializeArray();
     chengePrice(string_params);
+    chengeURL(string_params);
   });
 };
 var clearGroup = function clearGroup(className) {
@@ -54071,69 +54152,182 @@ var clearGroup = function clearGroup(className) {
 var childrensСonnections = function childrensСonnections(children_element) {
   for (var key in children_element) {
     if (children_element.hasOwnProperty(key)) {
-      (function () {
-        var element = children_element[key];
-        var data_element = $("[data-input_value=\"".concat(key, "\"]"));
+      if (key != "checkbox_options") {
+        (function () {
+          var element = children_element[key];
+          var data_element = $("[data-input_value=\"".concat(key, "\"]"));
 
-        if (data_element.hasClass("settings__box_main-card")) {
-          var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
+          if (data_element.hasClass("settings__box_main-radio")) {
+            var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
 
-          var flag = true;
-          all_elements.map(function (item) {
-            var inputValue = $(item).data("value");
+            var flag = true;
+            all_elements.map(function (item) {
+              var inputValue = $(item).data("value");
 
-            if (element.indexOf(inputValue) != -1) {
-              $(item).removeClass("form__radio-hiden");
+              if (element.indexOf(inputValue) != -1) {
+                $(item).removeClass("form__radio-hiden");
 
-              if (!!flag) {
-                flag = false;
-                $(item).addClass("form__radio-active");
-                $(item).parents(".settings__box_main").children("input[type=hidden]").val(inputValue);
+                if (!!flag) {
+                  flag = false;
+                  $(item).addClass("form__radio-active");
+                  $(item).parents(".settings__box_main").children("input[type=hidden]").val(inputValue);
+                }
+              } else {
+                $(item).addClass("form__radio-hiden");
+                $(item).removeClass("form__radio-active");
               }
-            } else {
-              $(item).addClass("form__radio-hiden");
-              $(item).removeClass("form__radio-active");
-            }
-          });
-        } else {}
-      })();
+            });
+          } else {}
+        })();
+      } else {}
     }
   }
 };
 
+function createUrl(config_model) {
+  var back_url = Object.keys(config_model).map(function (key) {
+    return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
+  }).join("&");
+  return back_url;
+}
+
 function chengePrice(data) {
   var objectParameter = {};
   data.map(function (item) {
-    if (item.name != 'undefined') {
+    if (item.name != "undefined") {
       objectParameter[item.name] = item.value;
     }
-  }); // fetch(url_form, {
-  //   method: current_method,
-  //   body: JSON.stringify(objectParameter),
-  // })
-  // .then(data => {
-  // })
-
-  setTimeout(function () {
-    $('.settings__parameters_navigation').find('.price').children('.value').text('121 340грн');
-  }, 1000);
-}
-
-function onClickCheckboxOptions() {
-  $(".form_box__item").on("click", function () {
-    $(this).toggleClass("form_box__item-active");
-    var item_input = $(this).find("input");
-
-    if (item_input.prop("checked") == true) {
-      item_input.prop("checked", false);
-    } else {
-      item_input.prop("checked", true);
+  });
+  fetch("/api/get_price/?".concat(getFormatUrl(objectParameter))).then(function (response) {
+    return response.json();
+  }).then(function (response) {
+    function triplets(str) {
+      // \u202f — неразрывный узкий пробел
+      return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202F");
     }
 
-    var string_params = $(".constructor_setings").serializeArray();
-    chengePrice(string_params);
+    $(".settings__parameters_navigation").find(".price").children(".value").text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
   });
 }
+function onClickCheckboxOptions() {
+  $(".form_box__item").on("click", function () {
+    if (!$(this).hasClass("form_box__item-hidden")) {
+      $(this).toggleClass("form_box__item-active");
+      var item_input = $(this).find("input");
+
+      if (item_input.prop("checked") == true) {
+        item_input.prop("checked", false);
+      } else {
+        item_input.prop("checked", true);
+      }
+
+      var string_params = $(".constructor_setings").serializeArray();
+      chengePrice(string_params);
+      chengeURL(string_params);
+    }
+  });
+}
+var resizeTringleCategories = function resizeTringleCategories() {
+  $(".settings__category_hover_triangl").removeAttr("style");
+  $(".settings__category_hover").removeAttr("style");
+  $(".settings__category_hover_sqar").removeAttr("style");
+
+  _toConsumableArray($(".settings__category")).map(function (item) {
+    if (!!$(item).hasClass("settings__category-active")) {
+      var width_triangle = item.offsetHeight * 0.7;
+      var width_setingts = $(item)[0].offsetWidth;
+      $(item).find(".settings__category_hover_triangl").width(width_triangle);
+      $(item).find(".settings__category_hover_triangl").height(width_triangle);
+      $(item).find(".settings__category_hover").width(width_triangle + width_setingts);
+      $(item).find(".settings__category_hover_sqar").width(width_setingts);
+    }
+  });
+};
+
+function getFormatUrl(config_model) {
+  var URL = Object.keys(config_model).map(function (key) {
+    return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
+  }).join("&");
+  return URL;
+}
+
+var onSelectFirstItem = function onSelectFirstItem() {
+  var settingsBox = _toConsumableArray($(".settings__box_main"));
+
+  settingsBox.map(function (item) {
+    var flag = false;
+
+    if ($(item).hasClass("settings__box_main-card")) {
+      if (!flag) {
+        var flagActiveElement = true;
+
+        _toConsumableArray($(item).find(".form__radio")).map(function (item) {
+          if ($(item).hasClass("form__radio-active")) {
+            flagActiveElement = false;
+          }
+        });
+
+        if (!!flagActiveElement) {
+          $($(item).find(".form__radio")[0]).addClass("form__radio-active");
+          var element = $($(item).find(".form__radio")[0]);
+          var children_element = element.data("childrens");
+          var elementValue = element.data("value");
+          $(element).parents(".settings__box_main").children("input[type=hidden]").val(elementValue);
+          childrensСonnections(children_element);
+        }
+      }
+    } else if ($(item).hasClass("settings__box_main-color")) {
+      if (!flag) {
+        var _element = $($(item).find(".form__color")[0]);
+
+        var _elementValue = _element.data("color");
+
+        _element.addClass("form__color-active");
+
+        $(_element).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue);
+      }
+    } else if ($(item).hasClass("settings__box_main-radio")) {
+      if (!flag) {
+        var _flagActiveElement = true;
+
+        _toConsumableArray($(item).find(".form__radio")).map(function (item) {
+          if ($(item).hasClass("form__radio-active")) {
+            _flagActiveElement = false;
+          }
+        });
+
+        if (!!_flagActiveElement) {
+          $($(item).find(".form__radio")[0]).addClass("form__radio-active");
+
+          var _element2 = $($(item).find(".form__radio")[0]);
+
+          var _children_element = _element2.data("childrens");
+
+          var _elementValue2 = _element2.data("value");
+
+          $(_element2).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue2);
+          childrensСonnections(_children_element);
+        }
+      }
+    }
+  });
+  var string_params = $(".constructor_setings").serializeArray();
+  chengePrice(string_params);
+};
+var onBackMobile = function onBackMobile() {
+  if ($(window).width() <= 800) {
+    $(".settings__group_back").on("click", function () {
+      $(".settings")[0].style.minHeight = 25 + "px";
+      $(".settings__categories_wrap").addClass("settings__categories_wrap-active");
+    });
+  }
+};
+var onChengeSetingsHeight = function onChengeSetingsHeight() {
+  if ($(window).width() <= 800) {
+    var settings_heights = $(".settings__parameters_wrap").find(".settings__parameters-active").outerHeight();
+    $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
+  }
+};
 
 /***/ }),
 
@@ -54174,23 +54368,23 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
-var bike_values = _module_constructor_default_value__WEBPACK_IMPORTED_MODULE_1__["default_value"].iframe_value;
 
 function onChengeIframe() {
   $(".settings__card-iframe").on("click", function () {
     var type_iframe = $(this).children(".form__radio").data("value");
     var info_bike;
     Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onLoadInfoActive"])();
-    setTimeout(function () {
-      info_bike = _module_constructor_default_value__WEBPACK_IMPORTED_MODULE_1__["default_value"].iframe_type[type_iframe]; // console.log(default_value);
-
-      var info_tab_1 = info_bike.properties.tab_1.group;
-      var info_tab_2 = info_bike.properties.tab_2.group;
-      var info_tab_3 = info_bike.properties.tab_3.group;
+    fetch("/api/get_info/?frame_code=".concat(type_iframe)).then(function (response) {
+      return response.json();
+    }).then(function (response) {
+      info_bike = response;
+      var info_tab_1 = info_bike.properties.tab_1.groups;
+      var info_tab_2 = info_bike.properties.tab_2.groups;
+      var info_tab_3 = info_bike.properties.tab_3.groups;
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="1"]');
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="2"]');
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["clearGroup"])('[data-tab_main="3"]');
-      $('[data-tab_main="1"]')[0].innerHTML += createGrooup(info_tab_1, info_bike.properties.tab_1.name_section);
+      $('[data-tab_main="1"]')[0].innerHTML += createGrooup(info_tab_1, '');
       $('[data-tab_main="2"]')[0].innerHTML += createGrooup(info_tab_2, info_bike.properties.tab_2.name_section);
       $('[data-tab_main="3"]')[0].innerHTML += createGrooup(info_tab_3, info_bike.properties.tab_3.name_section);
       Object(_interface_form_elements_color__WEBPACK_IMPORTED_MODULE_2__["form_color"])(".form__color");
@@ -54199,25 +54393,23 @@ function onChengeIframe() {
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeRadioV1"])(".settings__box_main");
       onClickSettingsColor();
       SettingsInput();
-      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickCheckboxOptions"])();
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickCheckboxOptions"])('.constructor_setings');
       Object(_interface_form_elements_radio_v1__WEBPACK_IMPORTED_MODULE_3__["onClickRadio_v1"])();
       onChengeIframe();
-      onSelectFirstItem();
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onSelectFirstItem"])();
       Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onLoadInfoRemote"])();
-      onBackMobile();
-      onChengeSetingsHeight();
-    }, 1000);
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onBackMobile"])();
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeSetingsHeight"])();
+    });
   });
 }
 
 onChengeIframe();
 $(".vizual_3d").on("click", function () {
   var string_params = $(".constructor_setings").serializeArray();
-  console.log(string_params);
   window.location.href = "/page2/?".concat(Object(_common_componentc_modell_helper__WEBPACK_IMPORTED_MODULE_6__["params"])(string_params));
 });
 $(".next_tab").on("click", function () {
-  console.log("next_tab");
   var activeTab = $(".settings__parameters-active").data("tab_main");
   activeTab++;
 
@@ -54229,51 +54421,11 @@ $(".next_tab").on("click", function () {
   $(".settings__category").removeClass("settings__category-active");
   $("[data-tab_main=\"".concat(activeTab, "\"]")).addClass("settings__parameters-active");
   $("[data-tab_header=\"".concat(activeTab, "\"]")).addClass("settings__category-active");
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["resizeTringleCategories"])();
   setTimeout(function () {
-    onChengeSetingsHeight();
+    Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeSetingsHeight"])();
   }, 400);
 });
-
-function onSelectFirstItem() {
-  var settingsBox = _toConsumableArray($(".settings__box_main"));
-
-  settingsBox.map(function (item) {
-    var flag = false;
-
-    if ($(item).hasClass("settings__box_main-card")) {
-      if (!flag) {
-        var flagActiveElement = true;
-
-        _toConsumableArray($(item).find(".form__radio")).map(function (item) {
-          if ($(item).hasClass("form__radio-active")) {
-            flagActiveElement = false;
-          }
-        });
-
-        if (!!flagActiveElement) {
-          $($(item).find(".form__radio")[0]).addClass("form__radio-active");
-          var element = $($(item).find(".form__radio")[0]);
-          var children_element = element.data("childrens");
-          var elementValue = element.data("value");
-          $(element).parents(".settings__box_main").children("input[type=hidden]").val(elementValue);
-          Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["childrensСonnections"])(children_element);
-        }
-      }
-    } else if ($(item).hasClass("settings__box_main-color")) {
-      if (!flag) {
-        var _element = $($(item).find(".form__color")[0]);
-
-        var _elementValue = _element.data("color");
-
-        _element.addClass("form__color-active");
-
-        $(_element).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue);
-      }
-    } else if ($(item).hasClass("settings__box_main-card")) {
-      if (!flag) {}
-    }
-  });
-}
 
 function SettingsInput() {
   var seting_box = _toConsumableArray($(".settings__box_main"));
@@ -54308,6 +54460,8 @@ function onClickSettingsColor() {
       $(item).parents(".settings__box_main_content").find(".form__color").removeClass("form__color-active");
       $(event.target).addClass("form__color-active");
       $(event.target).parents(".settings__box_main").children("input[type=hidden]").val(color);
+      var string_params = $(".constructor_setings").serializeArray();
+      Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["chengeURL"])(string_params);
     });
   });
 }
@@ -54319,36 +54473,16 @@ $(".settings__category").on("click", function () {
   $("[data-tab_main=\"".concat(tab_item, "\"]")).addClass("settings__parameters-active");
   $(".settings__category").removeClass("settings__category-active");
   $(this).addClass("settings__category-active");
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["resizeTringleCategories"])();
   $(".settings__categories_wrap").removeClass("settings__categories_wrap-active");
   setTimeout(function () {
-    onChengeSetingsHeight();
+    Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeSetingsHeight"])();
   }, 400);
 });
-
-function onBackMobile() {
-  if ($(window).width() <= 800) {
-    $(".settings__group_back").on("click", function () {
-      $(".settings")[0].style.minHeight = 25 + "px";
-      $(".settings__categories_wrap").addClass("settings__categories_wrap-active");
-    });
-  }
-}
-
-onBackMobile();
+Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onBackMobile"])();
 setTimeout(function () {
-  onChengeSetingsHeight();
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeSetingsHeight"])();
 }, 300);
-
-function onChengeSetingsHeight() {
-  console.log($(window).width());
-
-  if ($(window).width() <= 800) {
-    var settings_heights = $(".settings__parameters_wrap").find(".settings__parameters-active").outerHeight();
-    console.log(settings_heights);
-    $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
-  }
-}
-
 $(window).resize(function () {
   var width = $(window).width();
 });
@@ -54361,13 +54495,19 @@ function startConstructor() {
   Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onChengeRadioV1"])(".settings__box_main");
   onClickSettingsColor();
   SettingsInput();
-  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickCheckboxOptions"])();
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onClickCheckboxOptions"])('.constructor_setings');
   Object(_interface_form_elements_radio_v1__WEBPACK_IMPORTED_MODULE_3__["onClickRadio_v1"])();
   onChengeIframe();
-  onSelectFirstItem();
   Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onLoadInfoRemote"])();
-  onBackMobile();
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["onBackMobile"])();
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["resizeTringleCategories"])();
 }
+
+function reportWindowSize() {
+  Object(_helpersEvent__WEBPACK_IMPORTED_MODULE_4__["resizeTringleCategories"])();
+}
+
+window.onresize = reportWindowSize;
 
 /***/ }),
 

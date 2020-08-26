@@ -2034,6 +2034,9 @@ input::-webkit-inner-spin-button {
   .footer_starway__block {
     margin-top: 10px; } }
 
+.footer_form_constructor {
+  display: none; }
+
 .black_body {
   background: #2b2a27; }
 

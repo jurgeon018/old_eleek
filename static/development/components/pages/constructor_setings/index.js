@@ -12,11 +12,17 @@ import {
   childrensСonnections,
   onClickCheckboxOptions,
   resizeTringleCategories,
+<<<<<<< HEAD
+=======
+  onSelectFirstItem,
+  onBackMobile,
+  chengeURL,
+  chengePrice,
+  onChengeSetingsHeight,
+>>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 } from "./helpersEvent";
 import { creatingSettings } from "./helperCreate";
 import { params } from "../../common_componentc/modell/helper";
-
-let bike_values = default_value.iframe_value;
 
 function onChengeIframe() {
   $(".settings__card-iframe").on("click", function () {
@@ -51,7 +57,7 @@ function onChengeIframe() {
  
       $('[data-tab_main="1"]')[0].innerHTML += createGrooup(
         info_tab_1,
-        info_bike.properties.tab_1.name_section
+        ''
       );
       $('[data-tab_main="2"]')[0].innerHTML += createGrooup(
         info_tab_2,
@@ -80,6 +86,7 @@ function onChengeIframe() {
 
       onChengeSetingsHeight();
 
+<<<<<<< HEAD
     })
     // .then((data) => {
     //   console.log(data);
@@ -137,38 +144,52 @@ function onChengeIframe() {
      
 
     // }, 1000);
+=======
+    
+
+    })
+    
+>>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   });
 }
+
 
 onChengeIframe();
 
 $(".vizual_3d").on("click", function () {
   let string_params = $(".constructor_setings").serializeArray();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   window.location.href = `/page2/?${params(string_params)}`;
 });
 
 $(".next_tab").on("click", function () {
+<<<<<<< HEAD
    
+=======
+>>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   let activeTab = $(".settings__parameters-active").data("tab_main");
   activeTab++;
-
   if (activeTab > 3) {
     activeTab = 1;
   }
-
   $(`.settings__parameters`).removeClass("settings__parameters-active");
   $(`.settings__category`).removeClass("settings__category-active");
-
   $(`[data-tab_main="${activeTab}"]`).addClass("settings__parameters-active");
   $(`[data-tab_header="${activeTab}"]`).addClass("settings__category-active");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   resizeTringleCategories()
   setTimeout(function () {
     onChengeSetingsHeight();
   }, 400);
 });
 
+<<<<<<< HEAD
 function onSelectFirstItem() {
   let settingsBox = [...$(".settings__box_main")];
 
@@ -238,6 +259,11 @@ function onSelectFirstItem() {
     }
   });
 }
+=======
+
+
+
+>>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 
 function SettingsInput() {
   let seting_box = [...$(".settings__box_main")];
@@ -253,8 +279,12 @@ function SettingsInput() {
 
 function createGrooup(groups, name_section) {
   let settingsParameters = "";
+<<<<<<< HEAD
 console.log(groups );
 
+=======
+ 
+>>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
   groups.map((group) => {
     settingsParameters += creatingSettings(group);
   });
@@ -305,7 +335,14 @@ function onClickSettingsColor() {
         .parents(".settings__box_main")
         .children("input[type=hidden]")
         .val(color);
+
+
+    let string_params = $(".constructor_setings").serializeArray();
+ 
+    chengeURL(string_params)
     });
+
+
   });
 }
 onClickSettingsColor();
@@ -328,23 +365,14 @@ $(".settings__category").on("click", function () {
   }, 400);
 });
 
-function onBackMobile() {
-  if ($(window).width() <= 800) {
-    $(".settings__group_back").on("click", function () {
-      $(".settings")[0].style.minHeight = 25 + "px";
 
-      $(".settings__categories_wrap").addClass(
-        "settings__categories_wrap-active"
-      );
-    });
-  }
-}
 onBackMobile();
 
 setTimeout(function () {
   onChengeSetingsHeight();
 }, 300);
 
+<<<<<<< HEAD
 function onChengeSetingsHeight() {
    
   if ($(window).width() <= 800) {
@@ -356,6 +384,9 @@ function onChengeSetingsHeight() {
     $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
   }
 }
+=======
+
+>>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 
 $(window).resize(function () {
   var width = $(window).width();
@@ -374,11 +405,11 @@ function startConstructor() {
   onClickRadio_v1();
 
   onChengeIframe();
-  onSelectFirstItem();
-
+  
   onLoadInfoRemote();
   onBackMobile();
   resizeTringleCategories()
+<<<<<<< HEAD
 }
 
 
@@ -386,4 +417,13 @@ function reportWindowSize() {
   resizeTringleCategories()
 }
 
+=======
+}
+
+
+function reportWindowSize() {
+  resizeTringleCategories()
+}
+
+>>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 window.onresize = reportWindowSize;

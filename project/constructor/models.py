@@ -105,6 +105,7 @@ class FrameType(GeneralMixin):
 
     def get_initial_price(self):
         initial_price = 0
+        initial_price += self.price 
         for value in Value.objects.filter(parameter__tab_group__tab__frame=self):
             initial_price += value.price 
         return initial_price

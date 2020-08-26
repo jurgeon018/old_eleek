@@ -894,13 +894,6 @@ label.error {
   line-height: 1.5;
   color: #ff4b4b; }
 
-label.error {
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.5;
-  color: #ff4b4b;
-  position: absolute; }
-
 .form_file_downloads {
   height: 40px;
   display: flex;
@@ -1074,6 +1067,11 @@ label.error {
   align-items: center;
   transition: .3s;
   cursor: pointer; }
+  .form_box__item-hidden {
+    opacity: .6; }
+    .form_box__item-hidden .form_box__item-black_bord2 {
+      transition: .3s;
+      background-color: #fff !important; }
   .form_box__item svg {
     transition: .3s;
     transform: rotate(0); }
@@ -1128,6 +1126,11 @@ label.error {
   .form_box__item-black_bord2 {
     background-color: #fff;
     border: 1px solid #242321; }
+    .form_box__item-black_bord2.form_box__item-hidden:hover {
+      background-color: #fff; }
+    .form_box__item-black_bord2.form_box__item-hidden:hover {
+      background-color: #fff;
+      cursor: default; }
     .form_box__item-black_bord2:hover {
       background-color: #d3d3d1; }
     .form_box__item-black_bord2.form_box__item-active {
@@ -2568,6 +2571,9 @@ input::-webkit-inner-spin-button {
   .footer_starway__block {
     margin-top: 10px; } }
 
+.footer_form_constructor {
+  display: none; }
+
 .settings {
   display: flex;
   position: relative; }
@@ -2605,10 +2611,16 @@ input::-webkit-inner-spin-button {
     position: relative; }
     .settings__category_img {
       width: 135px;
+      min-width: 135px;
+      height: 75px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-right: 20px; }
+      .settings__category_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; }
     .settings__category_main {
       display: flex;
       z-index: 4; }
@@ -2752,7 +2764,6 @@ input::-webkit-inner-spin-button {
   .settings__category-active .settings__category_hover {
     position: absolute;
     background: #fff;
-    width: calc(100% + 60px);
     height: calc(100% + 0px);
     left: 0;
     top: 0;
@@ -2765,20 +2776,22 @@ input::-webkit-inner-spin-button {
       position: absolute;
       top: 0;
       left: 0;
-      width: calc(100% - 60px);
-      height: 100%; }
+      height: 100%;
+      z-index: 2; }
     .settings__category-active .settings__category_hover_triangl {
       display: block;
       background: #fff;
-      width: 78px;
-      height: 78px;
+      width: 66px;
+      height: 66px;
       position: absolute;
       content: "";
       right: 0px;
       transform-origin: center;
-      transform: rotate(45deg) translate(-5%, 34%);
+      transform: translate(-48%, -50%) rotate(45deg);
       border-top: 1px solid #2b2a27;
-      border-right: 1px solid #2b2a27; }
+      border-right: 1px solid #2b2a27;
+      top: 50%;
+      z-index: 1; }
 
 .lds-ellipsis {
   display: inline-block;

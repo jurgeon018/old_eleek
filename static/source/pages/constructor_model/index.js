@@ -57554,7 +57554,7 @@ function basket_plus() {
 /*!********************************************************!*\
   !*** ../components/common_componentc/modell/helper.js ***!
   \********************************************************/
-/*! exports provided: HelperCordinates, HelperShadowCamera, HelperSphereShadows, HelperPlaneShadows, addCircleToBacground, params, colorBike */
+/*! exports provided: HelperCordinates, HelperShadowCamera, HelperSphereShadows, HelperPlaneShadows, addCircleToBacground, params, colorBike, getFormatUrl, filterObject, chengePriseModel, creteInputHiden */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57566,6 +57566,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addCircleToBacground", function() { return addCircleToBacground; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "params", function() { return params; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colorBike", function() { return colorBike; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFormatUrl", function() { return getFormatUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filterObject", function() { return filterObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chengePriseModel", function() { return chengePriseModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "creteInputHiden", function() { return creteInputHiden; });
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "../../node_modules/three/build/three.module.js");
 
 var HelperCordinates = function HelperCordinates(scene, width_helper_line) {
@@ -57633,6 +57637,9 @@ var colorBike = function colorBike(model, config_model) {
       if (o.material.name.indexOf("Rama_1") !== -1) {
         o.material.color.setHex("0x".concat(config_model.iframe_color));
         o.material.metalness = 0.7;
+      } else if (o.material.name.indexOf("Bat") !== -1) {
+        // Колір заліза сидіння
+        o.material.color.setHex("0x".concat(config_model.iframe_color));
       } else if (o.material.name.indexOf("Seat_velo_2") !== -1 || o.material.name.indexOf("Seat_velo_3") !== -1 || o.material.name.indexOf("Seat_moto_2") !== -1) {
         // Колір заліза сидіння
         o.material.color.setHex("0x".concat(config_model.iframe_color));
@@ -57648,13 +57655,8 @@ var colorBike = function colorBike(model, config_model) {
       } else if (o.material.name.indexOf("Rama_2") !== -1) {
         // Панелі на рамі
         o.material.color.setHex("0x".concat(config_model.side_panels_colors));
-        console.log(o.material.metalness);
         o.material.metalness = 0.3;
-      } else {
-        console.log(o.name);
-      }
-
-      console.log(config_model.seat_type);
+      } else {}
 
       if (o.material.name.indexOf("Seat_moto_1") !== -1 || o.material.name.indexOf("Seat_moto_2") !== -1) {
         if (!!config_model.seat_type) {
@@ -57673,29 +57675,36 @@ var colorBike = function colorBike(model, config_model) {
           }
         }
       } else if (o.material.name.indexOf("Bag") !== -1) {
-        console.log('Bag', o.name);
-        console.log(config_model.trunk);
-        console.log(config_model.trunk !== "undefined");
-
-        if (config_model.trunk !== "undefined") {
-          o.visible = false;
-        } else {
+        // console.log('Bag',o.name );
+        // console.log(config_model.trunk );
+        // console.log(config_model.trunk !== "undefined" );
+        if (config_model.trunk !== "undefined" && config_model.trunk == 'true') {
           o.visible = true;
+        } else {
+          o.visible = false;
         }
       } else if (o.material.name.indexOf("Mud") !== -1) {
         // console.log('Mud',o.name );
-        if (config_model.mud !== "undefined") {
-          o.visible = false;
-        } else {
+        if (config_model.mud !== "undefined" && config_model.mud == 'true') {
           o.visible = true;
+        } else {
+          o.visible = false;
+        }
+      } else if (o.material.name.indexOf("Bat") !== -1) {
+        // console.log('Mud',o.name );
+        console.log('Bat');
+
+        if (config_model.mud !== "undefined" && config_model.battery == 'true') {
+          o.visible = true;
+        } else {
+          o.visible = false;
         }
       } else if (o.material.name.indexOf("Mirror_1") !== -1 || o.material.name.indexOf("Mirror_2") !== -1) {
-        console.log('Mirror', o.name);
-
-        if (config_model.mirror !== "undefined") {
-          o.visible = false;
-        } else {
+        // console.log('Mirror',config_model.mirrors !== "undefined" );
+        if (config_model.mirrors !== "undefined" && config_model.mirrors == 'true') {
           o.visible = true;
+        } else {
+          o.visible = false;
         }
       } //  console.log(o.material.name );
 
@@ -57842,6 +57851,46 @@ var colorBike = function colorBike(model, config_model) {
 // // console.log(o);
 // }
 
+var getFormatUrl = function getFormatUrl(config_model) {
+  var URL = Object.keys(config_model).map(function (key) {
+    // // console.log('key_old',key );
+    return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
+  }).join("&");
+  return URL;
+};
+var filterObject = function filterObject(config_model) {
+  var tempObject = {};
+  Object.keys(config_model).map(function (key) {
+    if (key != "not_url" && config_model["not_url"].indexOf(key) === -1) {
+      if (key.indexOf("_color") != -1) {
+        tempObject[key] = "#".concat(config_model[key]);
+      } else {
+        tempObject[key] = config_model[key];
+      }
+    }
+  });
+  return tempObject;
+};
+var chengePriseModel = function chengePriseModel(objectParameter) {
+  fetch("/api/get_price/?".concat(getFormatUrl(objectParameter))).then(function (response) {
+    return response.json();
+  }).then(function (response) {
+    function triplets(str) {
+      // \u202f — неразрывный узкий пробел
+      return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202F");
+    }
+
+    $(".views__parameter_footer").find(".price").children(".value").text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
+  });
+};
+var creteInputHiden = function creteInputHiden(name, value) {
+  var product_item = document.createElement("input");
+  product_item.setAttribute('type', 'hidden');
+  product_item.setAttribute('name', name);
+  product_item.setAttribute('value', value);
+  return product_item;
+};
+
 /***/ }),
 
 /***/ "../components/common_componentc/modell/model.js":
@@ -57858,38 +57907,123 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! three/examples/jsm/loaders/GLTFLoader.js */ "../../node_modules/three/examples/jsm/loaders/GLTFLoader.js");
 /* harmony import */ var three_examples_jsm_controls_OrbitControls_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! three/examples/jsm/controls/OrbitControls.js */ "../../node_modules/three/examples/jsm/controls/OrbitControls.js");
 /* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./helper */ "../components/common_componentc/modell/helper.js");
+/* harmony import */ var _pages_constructor_setings_helpersEvent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../pages/constructor_setings/helpersEvent */ "../components/pages/constructor_setings/helpersEvent.js");
 
 
  // import * as TWEEN from '@tweenjs/tween.js'
 
 
 
+
 var params_search = window.location.search.split("?")[1].split("&");
-var config_model = {};
+var config_model = {
+  not_url: ["url"]
+};
 params_search.map(function (item) {
   var param = item.split("=");
-  param[1] = param[1].replace("%23", "");
-  param[1] = param[1].replace("%20", "");
-  config_model[param[0]] = param[1];
+
+  if (!!param[0]) {
+    param[1] = param[1].replace("%23", "");
+    param[1] = param[1].replace("%20", "");
+    config_model[param[0]] = param[1];
+  }
 });
 
-if (config_model.iframe_type === "Pozitiff") {
-  config_model["url"] = "/static/source/model/Pozitif_v1.gltf";
-} else if (config_model.iframe_type === "Neo") {
+if (config_model.iframe_type === "pozitiff") {
+  config_model["url"] = "/static/source/model/Pozitif.gltf";
+} else if (config_model.iframe_type === "neo") {
   config_model["url"] = "/static/source/model/Neo_v1.gltf";
-} else if (config_model.iframe_type === "Ekross") {
-  config_model["url"] = "/static/source/model/Ekros_v1.gltf";
-} else {
-  config_model["url"] = "/static/source/model/E1kros_v1.gltf";
+} else if (config_model.iframe_type === "ekross") {
+  if (config_model.fork_type == "santur" && config_model.wheel_size == "size18") {
+    config_model["url"] = "/static/source/model/ekros_saturn_18.gltf";
+  } else if (config_model.fork_type == "santur" && config_model.wheel_size == "size26") {
+    config_model["url"] = "/static/source/model/ekros_saturn_26.gltf";
+  } else if (config_model.fork_type == "zoom" && config_model.wheel_size == "size18") {
+    config_model["url"] = "/static/source/model/ekros_zum_18.gltf";
+  } else if (config_model.fork_type == "zoom" && config_model.wheel_size == "size26") {
+    config_model["url"] = "/static/source/model/ekros_zum_26.gltf";
+  } else if (config_model.fork_type == "dnm" && config_model.wheel_size == "size18") {
+    config_model["url"] = "/static/source/model/ekros_dmn_18.gltf";
+  } else if (config_model.fork_type == "dnm" && config_model.wheel_size == "size26") {
+    config_model["url"] = "/static/source/model/ekros_dmn_26.gltf";
+  }
+} else if (config_model.iframe_type === "lite") {
+  if (config_model.fork_type == "santur" && config_model.wheel_size == "size20") {
+    config_model["url"] = "/static/source/model/lite/lite_saturn_20.gltf";
+  } else if (config_model.fork_type == "santur" && config_model.wheel_size == "size26") {
+    config_model["url"] = "/static/source/model/lite/lite_saturn_26.gltf";
+  } else if (config_model.fork_type == "zoom" && config_model.wheel_size == "size18") {
+    config_model["url"] = "/static/source/model/lite/lite_zum_18.gltf";
+  } else if (config_model.fork_type == "zoom" && config_model.wheel_size == "size20") {
+    config_model["url"] = "/static/source/model/lite/lite_zum_20.gltf";
+  } else if (config_model.fork_type == "zoom" && config_model.wheel_size == "size24") {
+    config_model["url"] = "/static/source/model/lite/lite_zum_24.gltf";
+  } else if (config_model.fork_type == "zoom" && config_model.wheel_size == "size26") {
+    config_model["url"] = "/static/source/model/lite/lite_zum_26.gltf";
+  } else if (config_model.fork_type == "dnm" && config_model.wheel_size == "size18") {
+    config_model["url"] = "/static/source/model/lite/lite_dnm_18.gltf";
+  } else if (config_model.fork_type == "dnm" && config_model.wheel_size == "size20") {
+    config_model["url"] = "/static/source/model/lite/lite_dnm_20.gltf";
+  } else if (config_model.fork_type == "dnm" && config_model.wheel_size == "size24") {
+    config_model["url"] = "/static/source/model/lite/lite_dnm_24.gltf";
+  } else if (config_model.fork_type == "dnm" && config_model.wheel_size == "size26") {
+    config_model["url"] = "/static/source/model/lite/lite_dnm_26.gltf";
+  } else {
+    config_model["url"] = "/static/source/model/lite/lite_dnmFat_26Fat.gltf";
+  }
 }
 
 $(".views__back").on("click", function () {
-  var back_url = Object.keys(config_model).map(function (key) {
-    return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
-  }).join("&"); // console.log(window.location );
-  // console.log(window.location.search );
-
+  var back_url = createUrl(config_model);
   window.location.href = "/page1/?".concat(back_url);
+});
+
+function createUrl(config_model) {
+  var back_url = Object.keys(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model)).map(function (key) {
+    if (key.indexOf("_color") != -1) {
+      return "".concat(key, "=").concat(encodeURIComponent("#".concat(config_model[key])));
+    } else {
+      return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
+    }
+  }).join("&");
+  return back_url;
+}
+
+$(".form__radio").on("click", function () {
+  if (!$(this).hasClass("form__radio-hiden")) {
+    var value = $(this).data("value");
+    var parametr = $(this).parents(".settings__box_main-radio").children("input[type=hidden]")[0];
+    var parametr_name = parametr.name;
+
+    if (parametr_name.indexOf("_color") != -1) {
+      config_model[parametr_name] = value.replace("#", "");
+    } else {
+      config_model[parametr_name] = value;
+    }
+
+    parametr.value = value;
+    var tempObject = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model);
+    Object(_helper__WEBPACK_IMPORTED_MODULE_4__["chengePriseModel"])(tempObject);
+    var back_url = createUrl(config_model);
+    history.pushState(null, null, "/page2/?".concat(back_url));
+  }
+});
+$(".form_box__item").on("click", function () {
+  $(this).toggleClass("form_box__item-active");
+  var item_input = $(this).find("input");
+
+  if (item_input.prop("checked") == true) {
+    item_input.prop("checked", false);
+    delete config_model[item_input[0].name];
+  } else {
+    item_input.prop("checked", true);
+    config_model[item_input[0].name] = "true";
+  }
+
+  var tempObject = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model);
+  Object(_helper__WEBPACK_IMPORTED_MODULE_4__["chengePriseModel"])(tempObject);
+  var back_url = createUrl(config_model);
+  history.pushState(null, null, "/page2/?".concat(back_url));
 }); /////||||///////
 /////||||///////
 /////||||///////
@@ -57927,28 +58061,68 @@ animate();
 function init() {
   container = document.createElement("div");
   document.getElementsByClassName("views__visula_3d")[0].appendChild(container);
-  console.log(views__visula_3d.offsetWidth);
   camera = new three__WEBPACK_IMPORTED_MODULE_0__["PerspectiveCamera"](60, views__visula_3d.offsetWidth / window.innerHeight, 1, 2000);
   camera.position.z = 170;
   camera.position.y = 80;
   scene = new three__WEBPACK_IMPORTED_MODULE_0__["Scene"]();
   scene.background = new three__WEBPACK_IMPORTED_MODULE_0__["Color"]("0xffffff");
-  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__["Fog"](0xb4b4b4, 100, 1200); // Init the object loader
+  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__["Fog"](0xb4b4b4, 100, 1200);
+  var manager = new three__WEBPACK_IMPORTED_MODULE_0__["LoadingManager"]();
 
-  var loader = new three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_2__["GLTFLoader"]();
+  manager.onStart = function (url, itemsLoaded, itemsTotal) {
+    if ($(".visula__loading_wrap").length > 0) {
+      $(".visula__loading_wrap").addClass("visula__loading_wrap-active");
+    }
+  };
+
+  manager.onLoad = function () {
+    if ($(".visula__loading_wrap").length > 0) {
+      $(".visula__loading_wrap").removeClass("visula__loading_wrap-active");
+    }
+  };
+
+  manager.onProgress = function (url, itemsLoaded, itemsTotal) {// console.log(
+    //   "Loading file: " +
+    //     url +
+    //     ".\nLoaded " +
+    //     itemsLoaded +
+    //     " of " +
+    //     itemsTotal +
+    //     " files."
+    // );
+  };
+
+  manager.onError = function (url) {// console.log("There was an error loading " + url);
+  }; // Init the object loader
+
+
+  var loader = new three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_2__["GLTFLoader"](manager);
   loader.load(config_model.url, function (gltf) {
-    console.log(gltf);
     theModel = gltf.scene;
-    console.log(theModel);
     var flag = 0; // Set the models initial scale
 
     theModel.scale.set(0.05, 0.05, 0.05);
     theModel.children[0].visible = false;
     var theModelColor = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["colorBike"])(theModel, config_model);
     scene.add(theModelColor);
-  }, undefined, function (error) {
+  }, onProgress, function (error) {
     console.error(error);
   });
+
+  function onProgress(xhr) {
+    if (xhr.lengthComputable) {
+      var percentComplete = xhr.loaded / xhr.total * 100;
+
+      if ($(".visula__loading-line").length > 0) {
+        $(".visula__loading-line")[0].style.maxWidth = Math.round(percentComplete, 2) + "%";
+      }
+
+      if ($(".visula__loading-text").length > 0) {
+        $(".visula__loading-text").text(Math.round(percentComplete, 1) + "%");
+      }
+    }
+  }
+
   var cubeSize = 4;
   var cubeGeo = new three__WEBPACK_IMPORTED_MODULE_0__["BoxBufferGeometry"](cubeSize, cubeSize, cubeSize);
   var cubeMat = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
@@ -57957,18 +58131,8 @@ function init() {
   var mesh12 = new three__WEBPACK_IMPORTED_MODULE_0__["Mesh"](cubeGeo, cubeMat);
   mesh12.castShadow = true; // mesh12.receiveShadow = true;
 
-  mesh12.position.set(cubeSize + 1, cubeSize / 2, 0);
-  scene.add(mesh12); // var geometry = new THREE.RingGeometry(64.8, 65, 120);
-  // var material = new THREE.MeshBasicMaterial({
-  //   color: 0x292929,
-  //   side: THREE.DoubleSide,
-  // });
-  // var mesh = new THREE.Mesh(geometry, material);
-  // mesh.up.x = 2;
-  // // mesh.rotateX( addCircleToBacground);
-  // scene.add(mesh);
+  mesh12.position.set(0, 25, 0); // scene.add(mesh12);
 
-  console.log(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(69.8, 70, 120));
   scene.add(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(64.8, 65, 120));
   scene.add(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(69.8, 70, 120)); // // Add lights
 
@@ -57998,7 +58162,6 @@ function init() {
   light.shadow.camera.near = 0.5; // default
 
   light.shadow.camera.far = 700; // default
-  // console.log(light );
   // Floor
 
   var floorGeometry = new three__WEBPACK_IMPORTED_MODULE_0__["PlaneGeometry"](9000, 9000, 1, 1);
@@ -58023,15 +58186,16 @@ function init() {
   renderer.setSize(views__visula_3d.offsetWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
   var controls = new three_examples_jsm_controls_OrbitControls_js__WEBPACK_IMPORTED_MODULE_3__["OrbitControls"](camera, renderer.domElement);
-  controls.maxPolarAngle = Math.PI / 2;
-  controls.minPolarAngle = Math.PI / 3;
+  controls.target.set(0, 25, 0);
+  controls.maxPolarAngle = Math.PI / 1.8;
+  controls.minDistance = 50;
+  controls.minPolarAngle = Math.PI / 6;
   controls.enableDamping = true;
   controls.enablePan = false;
   controls.dampingFactor = 0.1;
   controls.autoRotate = false; // Toggle this if you'd like the chair to automatically rotate
 
-  controls.autoRotateSpeed = 0.2;
-  console.log(scene); // // Щар що відкидає тінь
+  controls.autoRotateSpeed = 0.2; // // Щар що відкидає тінь
   // HelperSphereShadows(scene);
   // //   Площина яка невідеидає тінь
   // HelperPlaneShadows(scene,light);
@@ -58047,7 +58211,7 @@ function init() {
 
   $(".views__order_go").on("click", function () {
     event.preventDefault();
-    $(".views__parameter").addClass("views__parameter-active");
+    $(".views__parameter_wrap").addClass("views__parameter_wrap-active");
     $(".views__order").addClass("views__order-hidden");
 
     if ($(window).width() > 992) {
@@ -58058,9 +58222,20 @@ function init() {
     } // resizeRendererToDisplaySize();
 
   });
-  $('.views__parameter_close').on('click', function () {
+  $(".views__parameter_close").on("click", function () {
     $(".views__order").removeClass("views__order-hidden");
-    $(".views__parameter").removeClass("views__parameter-active");
+    $(".views__parameter_wrap").removeClass("views__parameter_wrap-active");
+    $(".views__visual").removeClass("views__visual-compress");
+
+    if ($(window).width() > 992) {
+      setTimeout(function () {
+        onWindowResize();
+      }, 300);
+    }
+  });
+  $(".views__parameter_back").on("click", function () {
+    $(".views__order").removeClass("views__order-hidden");
+    $(".views__parameter_wrap").removeClass("views__parameter_wrap-active");
     $(".views__visual").removeClass("views__visual-compress");
 
     if ($(window).width() > 992) {
@@ -58072,7 +58247,6 @@ function init() {
 }
 
 function onWindowResize() {
-  console.log(views__visula_3d.offsetWidth);
   windowHalfX = views__visula_3d.offsetWidth / 2;
   windowHalfY = window.innerHeight / 2;
   camera.aspect = views__visula_3d.offsetWidth / window.innerHeight;
@@ -58100,8 +58274,7 @@ function animate() {
   requestAnimationFrame(animate);
 
   if (resizeRendererToDisplaySize(renderer)) {
-    var canvas = renderer.domElement; // console.log(canvas );
-
+    var canvas = renderer.domElement;
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
   }
@@ -58128,8 +58301,21 @@ $(".views__visual_left")[0].addEventListener("mouseup", function () {
 }, false);
 $(".views__visual_right")[0].addEventListener("mouseup", function () {
   return views__visual_right = false;
+}, false); // touch event
+
+$(".views__visual_left")[0].addEventListener("touchstart", function () {
+  return views__visual_left = true;
 }, false);
-window.addEventListener('mouseup', function (event) {
+$(".views__visual_right")[0].addEventListener("touchstart", function () {
+  return views__visual_right = true;
+}, false);
+$(".views__visual_left")[0].addEventListener("touchend", function () {
+  return views__visual_left = false;
+}, false);
+$(".views__visual_right")[0].addEventListener("touchend", function () {
+  return views__visual_right = false;
+}, false);
+window.addEventListener("touchend", function (event) {
   views__visual_left = false;
   views__visual_right = false;
 });
@@ -58158,7 +58344,40 @@ $(".form_box__item").on("click", function () {
         item.visible = _valueChecked2;
       }
     });
+  } else if ($(this).find('input[type="checkbox"]')[0].name === "seatKind") {
+    var _valueChecked3 = $(this).find('input[type="checkbox"]')[0].checked;
+    theModel.children[2].children.map(function (item) {
+      // багажник
+      if (item.material.name.indexOf("Seat_kind_1") !== -1 || item.material.name.indexOf("Seat_kind_2") !== -1) {
+        item.visible = _valueChecked3;
+      }
+    });
+  } else if ($(this).find('input[type="checkbox"]')[0].name === "battery") {
+    var _valueChecked4 = $(this).find('input[type="checkbox"]')[0].checked;
+    theModel.children[2].children.map(function (item) {
+      // багажник
+      if (item.material.name.indexOf("Bat") !== -1) {
+        item.visible = _valueChecked4;
+      }
+    });
   }
+});
+$('.form__radio').on('click', function () {// if ($(this).find('input[type="checkbox"]')[0].name === "mirrors") {
+});
+$(".order_constructor").on("click", function () {
+  event.preventDefault();
+  $.fancybox.open({
+    src: "#order__form_constructor",
+    touch: false,
+    afterShow: function afterShow() {
+      Object.keys(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model)).map(function (key) {
+        $(".fancybox-content").append(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["creteInputHiden"])(key, config_model[key]));
+      });
+    },
+    beforeClose: function beforeClose() {
+      $(".fancybox-content").find('input[type=hidden]').remove();
+    }
+  });
 });
 
 /***/ }),
@@ -58422,38 +58641,36 @@ if (field_inputs.length > 0) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/interface/form/elements/list/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+ // $(".form_box__item").on("click", function () {
+//   $(this).toggleClass("form_box__item-active");
+//   let item_input = $(this).find("input");
+//   if (item_input.prop("checked") == true) {
+//     item_input.prop("checked", false);
+//   } else {
+//     item_input.prop("checked", true);
+//   }
+//   let form_box__header = $(this).parents(".form_box").find(".form_box__header");
+//   let box_item = $(this).parents(".form_box__main").find(".form_box__item");
+//   if (box_item.length > 0) {
+//     let count_item_active = 0;
+//     for (const key in box_item) {
+//       if (box_item.hasOwnProperty(key)) {
+//         if (
+//           $(box_item[key]).hasClass("form_box__item") &&
+//           $(box_item[key]).hasClass("form_box__item-active")
+//         ) {
+//           count_item_active++;
+//         }
+//       }
+//     }
+//     if (count_item_active == box_item.length) {
+//       form_box__header.addClass("form_box__header-active");
+//     } else {
+//       form_box__header.removeClass("form_box__header-active");
+//     }
+//   }
+// });
 
-$(".form_box__item").on("click", function () {
-  $(this).toggleClass("form_box__item-active");
-  var item_input = $(this).find("input");
-
-  if (item_input.prop("checked") == true) {
-    item_input.prop("checked", false);
-  } else {
-    item_input.prop("checked", true);
-  }
-
-  var form_box__header = $(this).parents(".form_box").find(".form_box__header");
-  var box_item = $(this).parents(".form_box__main").find(".form_box__item");
-
-  if (box_item.length > 0) {
-    var count_item_active = 0;
-
-    for (var key in box_item) {
-      if (box_item.hasOwnProperty(key)) {
-        if ($(box_item[key]).hasClass("form_box__item") && $(box_item[key]).hasClass("form_box__item-active")) {
-          count_item_active++;
-        }
-      }
-    }
-
-    if (count_item_active == box_item.length) {
-      form_box__header.addClass("form_box__header-active");
-    } else {
-      form_box__header.removeClass("form_box__header-active");
-    }
-  }
-});
 $(".form_box__header").on("click", function () {
   var this_box = $(this);
   $(this).toggleClass("form_box__header-active");
@@ -58906,6 +59123,7 @@ function Onload() {
   valide_form('.form_cons', '.inp-vak-wrap', true);
   valide_form('#form_qustion', '.inp-vak-wrap', true);
   valide_form('#form_cons', '.inp-vak-wrap', true);
+  valide_form('#order__form_constructor', '.inp-vak-wrap', true);
 }
 
 function location_leng() {
@@ -59235,18 +59453,24 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************************************!*\
   !*** ../components/pages/constructor_setings/helpersEvent.js ***!
   \***************************************************************/
-/*! exports provided: onLoadInfoActive, onLoadInfoRemote, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, onClickCheckboxOptions */
+/*! exports provided: onLoadInfoActive, onLoadInfoRemote, chengeURL, onClickSettingsCardImg, onChengeRadioV1, clearGroup, childrensСonnections, chengePrice, onClickCheckboxOptions, resizeTringleCategories, onSelectFirstItem, onBackMobile, onChengeSetingsHeight */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLoadInfoActive", function() { return onLoadInfoActive; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLoadInfoRemote", function() { return onLoadInfoRemote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chengeURL", function() { return chengeURL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickSettingsCardImg", function() { return onClickSettingsCardImg; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onChengeRadioV1", function() { return onChengeRadioV1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearGroup", function() { return clearGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "childrensСonnections", function() { return childrensСonnections; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chengePrice", function() { return chengePrice; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onClickCheckboxOptions", function() { return onClickCheckboxOptions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resizeTringleCategories", function() { return resizeTringleCategories; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onSelectFirstItem", function() { return onSelectFirstItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onBackMobile", function() { return onBackMobile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onChengeSetingsHeight", function() { return onChengeSetingsHeight; });
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -59267,6 +59491,17 @@ var onLoadInfoRemote = function onLoadInfoRemote() {
   $(".settings__box_main").removeClass("settings__box_main-hidden");
   $(".settings__box_main").removeClass("settings__box_main-loader");
 };
+var chengeURL = function chengeURL(data) {
+  var objectParameter = {};
+  data.map(function (item) {
+    if (item.name != "undefined") {
+      objectParameter[item.name] = item.value;
+    }
+  });
+  var back_url = createUrl(objectParameter); // let back_url = createUrl(config_model).slice(1);
+
+  history.pushState(null, null, "/page1/?".concat(back_url));
+};
 var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
   // Переключення карточок з фото
   $(".settings__card_img").on("click", function () {
@@ -59285,10 +59520,14 @@ var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
     paretnConteiner.children("input[type=hidden]").val(value);
     var input_name = paretnConteiner.children("input[type=hidden]")[0];
 
-    if (!!input_name && input_name.name != 'iframe_type') {
-      var string_params = $(".constructor_setings").serializeArray();
-      chengePrice(string_params);
+    if (!!input_name && input_name.name != "iframe_type") {
+      var _string_params = $(".constructor_setings").serializeArray();
+
+      chengePrice(_string_params);
     }
+
+    var string_params = $(".constructor_setings").serializeArray();
+    chengeURL(string_params);
   });
 };
 var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
@@ -59296,10 +59535,24 @@ var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
     if (!$(this).hasClass("form__radio-hiden")) {
       var value = $(this).data("value");
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
+      var setingsName = $(this).parents(parent_box).children("input[type=hidden]")[0].name;
+
+      if (setingsName === 'seat_type') {
+        $("input[name='trunk']").parents('.form_box__item').addClass('form_box__item-hidden');
+        var data_children = $(this).data('childrens');
+        Object.keys(data_children).map(function (key) {
+          if (!!data_children[key]) {
+            data_children[key].map(function (item) {
+              $("input[name='".concat(item, "']")).parents('.form_box__item').removeClass('form_box__item-hidden');
+            });
+          }
+        });
+      }
     }
 
     var string_params = $(".constructor_setings").serializeArray();
     chengePrice(string_params);
+    chengeURL(string_params);
   });
 };
 var clearGroup = function clearGroup(className) {
@@ -59313,69 +59566,182 @@ var clearGroup = function clearGroup(className) {
 var childrensСonnections = function childrensСonnections(children_element) {
   for (var key in children_element) {
     if (children_element.hasOwnProperty(key)) {
-      (function () {
-        var element = children_element[key];
-        var data_element = $("[data-input_value=\"".concat(key, "\"]"));
+      if (key != "checkbox_options") {
+        (function () {
+          var element = children_element[key];
+          var data_element = $("[data-input_value=\"".concat(key, "\"]"));
 
-        if (data_element.hasClass("settings__box_main-card")) {
-          var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
+          if (data_element.hasClass("settings__box_main-radio")) {
+            var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
 
-          var flag = true;
-          all_elements.map(function (item) {
-            var inputValue = $(item).data("value");
+            var flag = true;
+            all_elements.map(function (item) {
+              var inputValue = $(item).data("value");
 
-            if (element.indexOf(inputValue) != -1) {
-              $(item).removeClass("form__radio-hiden");
+              if (element.indexOf(inputValue) != -1) {
+                $(item).removeClass("form__radio-hiden");
 
-              if (!!flag) {
-                flag = false;
-                $(item).addClass("form__radio-active");
-                $(item).parents(".settings__box_main").children("input[type=hidden]").val(inputValue);
+                if (!!flag) {
+                  flag = false;
+                  $(item).addClass("form__radio-active");
+                  $(item).parents(".settings__box_main").children("input[type=hidden]").val(inputValue);
+                }
+              } else {
+                $(item).addClass("form__radio-hiden");
+                $(item).removeClass("form__radio-active");
               }
-            } else {
-              $(item).addClass("form__radio-hiden");
-              $(item).removeClass("form__radio-active");
-            }
-          });
-        } else {}
-      })();
+            });
+          } else {}
+        })();
+      } else {}
     }
   }
 };
 
+function createUrl(config_model) {
+  var back_url = Object.keys(config_model).map(function (key) {
+    return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
+  }).join("&");
+  return back_url;
+}
+
 function chengePrice(data) {
   var objectParameter = {};
   data.map(function (item) {
-    if (item.name != 'undefined') {
+    if (item.name != "undefined") {
       objectParameter[item.name] = item.value;
     }
-  }); // fetch(url_form, {
-  //   method: current_method,
-  //   body: JSON.stringify(objectParameter),
-  // })
-  // .then(data => {
-  // })
-
-  setTimeout(function () {
-    $('.settings__parameters_navigation').find('.price').children('.value').text('121 340грн');
-  }, 1000);
-}
-
-function onClickCheckboxOptions() {
-  $(".form_box__item").on("click", function () {
-    $(this).toggleClass("form_box__item-active");
-    var item_input = $(this).find("input");
-
-    if (item_input.prop("checked") == true) {
-      item_input.prop("checked", false);
-    } else {
-      item_input.prop("checked", true);
+  });
+  fetch("/api/get_price/?".concat(getFormatUrl(objectParameter))).then(function (response) {
+    return response.json();
+  }).then(function (response) {
+    function triplets(str) {
+      // \u202f — неразрывный узкий пробел
+      return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202F");
     }
 
-    var string_params = $(".constructor_setings").serializeArray();
-    chengePrice(string_params);
+    $(".settings__parameters_navigation").find(".price").children(".value").text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
   });
 }
+function onClickCheckboxOptions() {
+  $(".form_box__item").on("click", function () {
+    if (!$(this).hasClass("form_box__item-hidden")) {
+      $(this).toggleClass("form_box__item-active");
+      var item_input = $(this).find("input");
+
+      if (item_input.prop("checked") == true) {
+        item_input.prop("checked", false);
+      } else {
+        item_input.prop("checked", true);
+      }
+
+      var string_params = $(".constructor_setings").serializeArray();
+      chengePrice(string_params);
+      chengeURL(string_params);
+    }
+  });
+}
+var resizeTringleCategories = function resizeTringleCategories() {
+  $(".settings__category_hover_triangl").removeAttr("style");
+  $(".settings__category_hover").removeAttr("style");
+  $(".settings__category_hover_sqar").removeAttr("style");
+
+  _toConsumableArray($(".settings__category")).map(function (item) {
+    if (!!$(item).hasClass("settings__category-active")) {
+      var width_triangle = item.offsetHeight * 0.7;
+      var width_setingts = $(item)[0].offsetWidth;
+      $(item).find(".settings__category_hover_triangl").width(width_triangle);
+      $(item).find(".settings__category_hover_triangl").height(width_triangle);
+      $(item).find(".settings__category_hover").width(width_triangle + width_setingts);
+      $(item).find(".settings__category_hover_sqar").width(width_setingts);
+    }
+  });
+};
+
+function getFormatUrl(config_model) {
+  var URL = Object.keys(config_model).map(function (key) {
+    return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
+  }).join("&");
+  return URL;
+}
+
+var onSelectFirstItem = function onSelectFirstItem() {
+  var settingsBox = _toConsumableArray($(".settings__box_main"));
+
+  settingsBox.map(function (item) {
+    var flag = false;
+
+    if ($(item).hasClass("settings__box_main-card")) {
+      if (!flag) {
+        var flagActiveElement = true;
+
+        _toConsumableArray($(item).find(".form__radio")).map(function (item) {
+          if ($(item).hasClass("form__radio-active")) {
+            flagActiveElement = false;
+          }
+        });
+
+        if (!!flagActiveElement) {
+          $($(item).find(".form__radio")[0]).addClass("form__radio-active");
+          var element = $($(item).find(".form__radio")[0]);
+          var children_element = element.data("childrens");
+          var elementValue = element.data("value");
+          $(element).parents(".settings__box_main").children("input[type=hidden]").val(elementValue);
+          childrensСonnections(children_element);
+        }
+      }
+    } else if ($(item).hasClass("settings__box_main-color")) {
+      if (!flag) {
+        var _element = $($(item).find(".form__color")[0]);
+
+        var _elementValue = _element.data("color");
+
+        _element.addClass("form__color-active");
+
+        $(_element).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue);
+      }
+    } else if ($(item).hasClass("settings__box_main-radio")) {
+      if (!flag) {
+        var _flagActiveElement = true;
+
+        _toConsumableArray($(item).find(".form__radio")).map(function (item) {
+          if ($(item).hasClass("form__radio-active")) {
+            _flagActiveElement = false;
+          }
+        });
+
+        if (!!_flagActiveElement) {
+          $($(item).find(".form__radio")[0]).addClass("form__radio-active");
+
+          var _element2 = $($(item).find(".form__radio")[0]);
+
+          var _children_element = _element2.data("childrens");
+
+          var _elementValue2 = _element2.data("value");
+
+          $(_element2).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue2);
+          childrensСonnections(_children_element);
+        }
+      }
+    }
+  });
+  var string_params = $(".constructor_setings").serializeArray();
+  chengePrice(string_params);
+};
+var onBackMobile = function onBackMobile() {
+  if ($(window).width() <= 800) {
+    $(".settings__group_back").on("click", function () {
+      $(".settings")[0].style.minHeight = 25 + "px";
+      $(".settings__categories_wrap").addClass("settings__categories_wrap-active");
+    });
+  }
+};
+var onChengeSetingsHeight = function onChengeSetingsHeight() {
+  if ($(window).width() <= 800) {
+    var settings_heights = $(".settings__parameters_wrap").find(".settings__parameters-active").outerHeight();
+    $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
+  }
+};
 
 /***/ }),
 
