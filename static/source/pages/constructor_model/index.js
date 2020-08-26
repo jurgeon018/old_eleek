@@ -57643,19 +57643,16 @@ var colorBike = function colorBike(model, config_model) {
         // Колір заліза сидіння
         o.material.color.setHex("0x".concat(config_model.iframe_color));
       } else if (o.material.name.indexOf("Seat_velo_2") !== -1 || o.material.name.indexOf("Seat_velo_3") !== -1 || o.material.name.indexOf("Seat_moto_2") !== -1) {
-        console.log(config_model.iframe_color); // Колір заліза сидіння
-
+        // Колір заліза сидіння
         o.material.color.setHex("0x".concat(config_model.iframe_color));
         o.material.metalness = 0.7;
         o.material.roughness = 0.5;
-        console.log('Seat_moto_2', o.material);
       } else if (o.material.name.indexOf("KolecoZ_2") !== -1 || o.material.name.indexOf("Koleco_2") !== -1 || o.material.name.indexOf("KolecoZ_3") !== -1 || o.material.name.indexOf("Koleco_3") !== -1) {
         // Колір коліс
         o.material.color.setHex("0x".concat(config_model.wheel_size_color));
         o.material.metalness = 0.8;
       } else if (o.material.name.indexOf("Seat_velo_1") !== -1 || o.material.name.indexOf("Seat_moto_1") !== -1) {
         // Колір Сидіння
-        console.log(config_model.seat_type_color);
         o.material.color.setHex("0x".concat(config_model.seat_color));
         o.material.metalness = 0.1;
       } else if (o.material.name.indexOf("Rama_2") !== -1) {
@@ -57681,9 +57678,6 @@ var colorBike = function colorBike(model, config_model) {
           }
         }
       } else if (o.material.name.indexOf("Bag") !== -1) {
-        // console.log('Bag',o.name );
-        // console.log(config_model.trunk );
-        // console.log(config_model.trunk !== "undefined" );
         if (config_model.trunk !== "undefined" && config_model.trunk == 'true') {
           o.visible = true;
         } else {
@@ -57698,8 +57692,6 @@ var colorBike = function colorBike(model, config_model) {
         }
       } else if (o.material.name.indexOf("Bat") !== -1) {
         // console.log('Mud',o.name );
-        console.log('Bat');
-
         if (config_model.mud !== "undefined" && config_model.battery == 'true') {
           o.visible = true;
         } else {
