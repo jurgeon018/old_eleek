@@ -259,7 +259,7 @@ var slickFinder1 = $('.bike_trailer__block').length;
         swipe: false
     });
 
-    $('.slick-first').click(function () {
+      $('.slick-first').click(function () {
         $(".bike_trailer__block").slick('slickPrev');
       });
       $('.slick-second').click(function () {

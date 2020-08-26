@@ -109,17 +109,88 @@ def register(request):
     page = Page.objects.get(code='register')
     return render(request, 'project/auth/register.html', locals())
 
+
+from project.constructor.models import * 
+
+
 def page1(request):
+    frames          = FrameType.objects.filter(is_active=True)
+    frame_colors    = FrameColor.objects.filter(is_active=True)
+    query           = request.GET 
+    iframe_type     = query.get('iframe_type')
+    iframe_color    = query.get('iframe_color')
+    if iframe_type:
+        frame = FrameType.objects.get(code=iframe_type)
+    else:
+        frame = frames.first()
+    current_frame = frame
+    initial_price   = frame.get_initial_price()
+    codes = []
+    for parameter_code, value_code in query.items():
+        if parameter_code not in ['iframe_type','iframe_color']:
+            if value_code == 'true':
+                codes.append(parameter_code)
+            else:
+                codes.append(value_code)
     return render(request, 'project/page1.html', locals())
 
+
 def page2(request):
+    query           = dict(request.GET)
+    iframe_type     = query.pop('iframe_type')[0]
+    iframe_color    = query.pop('iframe_color')[0]
+    frame           = FrameType.objects.get(code=iframe_type)
+    initial_price   = frame.get_initial_price()
+
+    dict_values = []
+    checkbox_values = []
+    added_parameters = []
+    for parameter_code, value_code in query.items():
+        if value_code[0] == 'true':
+            value = Value.objects.filter(
+                parameter__tab_group__tab__frame=frame,
+                code=parameter_code,
+            ).first()
+            parameter = value.parameter
+            checkbox_values.append(value)
+            added_parameters.append(parameter.id)
+        else:
+            parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=parameter_code)
+            if parameter.type == 'radio_color' or value_code[0].startswith("#"):
+                # value = Value.objects.filter(parameter=parameter, color=value_code[0]).first()
+                value = None 
+                pass
+            else:
+                value = Value.objects.filter(parameter=parameter, code=value_code[0]).first()
+        if parameter and value and added_parameters.count(parameter.id) < 2:
+            dict_values.append({
+                "parameter":parameter,
+                "value":value,
+                "values":Value.objects.filter(parameter=parameter, is_active=True),
+            })
+    if not added_parameters:    
+        parameter = Parameter.objects.get(tab_group__tab__frame=frame, type="checkbox_options")
+        dict_values.append({
+            "parameter":parameter,
+            "values":Value.objects.filter(parameter=parameter, is_active=True),
+        })
     return render(request, 'project/page2.html', locals())
+
 
 def page3(request):
     return render(request, 'project/page3.html', locals())
 
+
 def page4(request):
     return render(request, 'project/page4.html', locals())
+
+# from box.apps.payment.liqpay import 
+from box.apps.sw_shop.sw_order.utils import get_order_liqpay_context
+
+
+def payment(request):
+    context = get_order_liqpay_context(request)
+    return render(request, 'project/payment.html', context)
 
 
 from django.urls import path, include 
@@ -140,6 +211,7 @@ urlpatterns = [
     path('profile/',     profile,     name='profile'),
     path('shop/',        shop,        name='shop'),
     path('delivery/',        delivery,        name='delivery'),
+    path('payment/',        payment,        name='payment'),
     
     path('login/',       login,       name='login'),
     path('register/',    register,    name='register'),

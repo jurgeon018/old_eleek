@@ -37,13 +37,13 @@ export const default_value = {
 
  
   iframe_type: {
-    Ekross:{
+    ekross:{
       
       properties: {
         tab_1: {
           iframe_color: color_object,
            
-          group: [
+          groups: [
             {
               name: "Бокові панелі",
               parameters: [
@@ -109,7 +109,7 @@ export const default_value = {
         },
         tab_2: {
           name_section:"Підвіска",
-          group: [
+          groups: [
             {
               name: "Вилки",
               parameters: [
@@ -243,7 +243,7 @@ export const default_value = {
 
         tab_3: {
           name_section:"Додаткові комплектуючі",
-          group: [
+          groups: [
             {
               name: "",
               parameters: [
@@ -373,20 +373,20 @@ export const default_value = {
         },
       },
     },
-    Lite:{
+    lite:{
       
       properties: {
         tab_1: {
           
           iframe_color: color_object,
-          group: [
+          groups: [
             
             
           ],
         },
         tab_2: {
           name_section:"Підвіска",
-          group: [
+          groups: [
             {
               name: "Вилки",
               parameters: [
@@ -401,7 +401,7 @@ export const default_value = {
                       name: "Сатурн",
                       price: "350 грн",
                       value_id: "SATURN",
-                      childrens_group:{wheel_size:['size_20','size_26']},
+                      childrens_groups:{wheel_size:['size_20','size_26']},
                     },
                     {
                       img_value:
@@ -409,7 +409,7 @@ export const default_value = {
                       name: "Зум",
                       price: "350 грн",
                       value_id: "ZYM",
-                      childrens_group:{wheel_size:['size_18','size_20','size_24','size_26']},
+                      childrens_groups:{wheel_size:['size_18','size_20','size_24','size_26']},
                     },
                     {
                       img_value:
@@ -417,7 +417,7 @@ export const default_value = {
                       name: "DNM",
                       price: "350 грн",
                       value_id: "DNM",
-                      childrens_group:{wheel_size:['size_18','size_20','size_24','size_26']},
+                      childrens_groups:{wheel_size:['size_18','size_20','size_24','size_26']},
                     },
                     {
                       img_value:
@@ -425,7 +425,7 @@ export const default_value = {
                       name: "DNM FAT",
                       price: "350 грн",
                       value_id: "DNM_FAT_1",
-                      childrens_group:{wheel_size:['size_26_FAT']},
+                      childrens_groups:{wheel_size:['size_26_FAT']},
                     },
                   ],
                 },
@@ -512,7 +512,7 @@ export const default_value = {
 
         tab_3: {
           name_section:"Додаткові комплектуючі",
-          group: [
+          groups: [
             {
               name: "",
               parameters: [
@@ -643,20 +643,20 @@ export const default_value = {
         },
       },
     },
-    Pozitiff:{
+    pozitiff:{
       
       properties: {
         tab_1: {
           
           iframe_color: color_object,
-          group: [
+          groups: [
             
             
           ],
         },
         tab_2: {
           name_section:"Підвіска",
-          group: [
+          groups: [
             {
               name: "Вилки",
               parameters: [
@@ -737,7 +737,7 @@ export const default_value = {
 
         tab_3: {
           name_section:"Додаткові комплектуючі",
-          group: [
+          groups: [
             {
               name: "",
               parameters: [
@@ -867,20 +867,20 @@ export const default_value = {
         },
       },
     },
-    Neo: {
+    neo: {
        
       properties: {
         tab_1: {
          
           iframe_color: color_object,
-          group: [
+          groups: [
             
             
           ],
         },
         tab_2: {
           name_section:"Підвіска",
-          group: [
+          groups: [
             
             {
               name: "Колеса",
@@ -920,7 +920,7 @@ export const default_value = {
 
         tab_3: {
           name_section:"Додаткові комплектуючі",
-          group: [
+          groups: [
             
           
             

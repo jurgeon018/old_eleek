@@ -106,16 +106,13 @@ export const colorBike = (model, config_model) => {
         }else if (o.material.name.indexOf("Rama_2") !== -1) {
             // Панелі на рамі
             o.material.color.setHex(`0x${config_model.side_panels_colors}`);
-        console.log(o.material.metalness );
-        o.material.metalness=0.3;
+            o.material.metalness=0.3;
            
       } else {
-        console.log(o.name );
-        
+         
       }
 
- console.log(config_model.seat_type );
- 
+  
       if (
         o.material.name.indexOf("Seat_moto_1") !== -1 ||
         o.material.name.indexOf("Seat_moto_2") !== -1
@@ -142,36 +139,36 @@ export const colorBike = (model, config_model) => {
           }
         }
       }else if( o.material.name.indexOf("Bag") !== -1 ) {
-        console.log('Bag',o.name );
-        console.log(config_model.trunk );
-        console.log(config_model.trunk !== "undefined" );
+        // console.log('Bag',o.name );
+        // console.log(config_model.trunk );
+        // console.log(config_model.trunk !== "undefined" );
         
-        if (config_model.trunk !== "undefined") {
+        if (config_model.trunk !== "undefined" && config_model.trunk == 'true') {
            
-          o.visible = false;
-        }else{
           o.visible = true;
+        }else{
+          o.visible = false;
         }
         
         
       }else if( o.material.name.indexOf("Mud") !== -1 ) {
         // console.log('Mud',o.name );
-        if (config_model.mud !== "undefined") {
+        if (config_model.mud !== "undefined"  && config_model.mud == 'true') {
            
          
-          o.visible = false;
-        }else{
           o.visible = true;
+        }else{
+          o.visible = false;
         }
         
       }else if( o.material.name.indexOf("Mirror_1") !== -1 || o.material.name.indexOf("Mirror_2") !== -1 ) {
-        console.log('Mirror',o.name );
-        if (config_model.mirror !== "undefined") {
+        // console.log('Mirror',config_model.mirrors !== "undefined" );
+        if (config_model.mirrors !== "undefined" && config_model.mirrors == 'true') {
            
            
-          o.visible = false;
-        }else{
           o.visible = true;
+        }else{
+          o.visible = false;
         }
       }
       //  console.log(o.material.name );
@@ -328,3 +325,61 @@ export const colorBike = (model, config_model) => {
 // // });
 // // console.log(o);
 // }
+
+
+export const getFormatUrl = (config_model) =>{
+  let URL = Object.keys(config_model)
+    .map((key) => {
+      // // console.log('key_old',key );
+
+      return `${key}=${encodeURIComponent(config_model[key])}`;
+    })
+    .join("&");
+  return URL;
+}
+
+
+export const filterObject = (config_model)=>{
+  let tempObject = {};
+     Object.keys(config_model)
+      .map((key) => {
+       if (key != "not_url" && config_model["not_url"].indexOf(key) === -1) {
+          if (key.indexOf("_color") != -1) {
+            tempObject[key]= `#${config_model[key]}`;
+          } else {
+            tempObject[key]= config_model[key];
+          }
+        }
+      }) 
+      return tempObject;
+}
+
+export const chengePriseModel = (objectParameter) =>{
+
+   
+    fetch(`/api/get_price/?${getFormatUrl(objectParameter)}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        function triplets(str) {
+          // \u202f — неразрывный узкий пробел
+          return str
+            .toString()
+            .replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202f");
+        }
+        $(".views__parameter_footer")
+          .find(".price")
+          .children(".value")
+          .text(`${triplets(response.price)} грн`);
+      });
+   
+
+}
+export const creteInputHiden = (name,value) => {
+  let product_item = document.createElement("input");
+  product_item.setAttribute('type', 'hidden');
+  product_item.setAttribute('name', name);
+  product_item.setAttribute('value', value);
+  return product_item;
+}
