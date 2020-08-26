@@ -57850,7 +57850,8 @@ function createUrl(config_model) {
 }
 
 $(".form__radio").on("click", function () {
-  console.log(!$(this).hasClass("form__radio-hiden"));
+  console.log('form__radio-model');
+  console.log('form__radio-model', !$(this).hasClass("form__radio-hiden"));
 
   if (!$(this).hasClass("form__radio-hiden")) {
     var value = $(this).data("value");
@@ -58743,16 +58744,18 @@ __webpack_require__.r(__webpack_exports__);
 
 function onClickRadio_v1() {
   $(".form__radio").on("click", function () {
+    console.log('form__radio-all');
+    console.log('form__radio-all', !$(this).hasClass("form__radio-hiden"));
+
     if (!$(this).hasClass('form__radio-hiden')) {
       $(this).parents('.settings__box_main_content').find('.form__radio').removeClass("form__radio-active");
       $(this).addClass("form__radio-active");
-    }
+      var cardFormRadio = $(this);
 
-    var cardFormRadio = $(this);
-
-    if (!!cardFormRadio.data("childrens")) {
-      var children_element = cardFormRadio.data("childrens");
-      Object(_pages_constructor_setings_helpersEvent__WEBPACK_IMPORTED_MODULE_1__["childrensСonnections"])(children_element);
+      if (!!cardFormRadio.data("childrens")) {
+        var children_element = cardFormRadio.data("childrens");
+        Object(_pages_constructor_setings_helpersEvent__WEBPACK_IMPORTED_MODULE_1__["childrensСonnections"])(children_element);
+      }
     }
   });
 }
@@ -59401,7 +59404,11 @@ var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
 };
 var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
   $(".form__radio").on("click", function () {
+    console.log('form__radio-setings');
+    console.log('form__radio-setings', !$(this).hasClass("form__radio-hiden"));
+
     if (!$(this).hasClass("form__radio-hiden")) {
+      console.log('form__radio-setings-test');
       var value = $(this).data("value");
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
       var setingsName = $(this).parents(parent_box).children("input[type=hidden]")[0].name;
@@ -59478,7 +59485,6 @@ function onClickCheckboxOptions() {
 }
 var childrensСonnections = function childrensСonnections(children_element) {
   $("input[name='protection']").parents(".form_box__item").addClass("form_box__item-hidden");
-  console.log(children_element);
 
   for (var key in children_element) {
     if (children_element.hasOwnProperty(key)) {

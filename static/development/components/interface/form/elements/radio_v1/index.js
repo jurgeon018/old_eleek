@@ -5,17 +5,22 @@ import { childrensСonnections } from "../../../../pages/constructor_setings/hel
 
 export function onClickRadio_v1(){
   $(".form__radio").on("click", function () {
+    console.log( 'form__radio-all');
+    console.log( 'form__radio-all',!$(this).hasClass("form__radio-hiden"));
+    
     if(!$(this).hasClass('form__radio-hiden')){
       $(this).parents('.settings__box_main_content').find('.form__radio').removeClass("form__radio-active");
       $(this).addClass("form__radio-active");
-    }
-    let cardFormRadio = $(this);
+ 
+      let cardFormRadio = $(this);
     
-    if (!!cardFormRadio.data("childrens")) {
-      let children_element = cardFormRadio.data("childrens");
-
-      childrensСonnections(children_element);
+      if (!!cardFormRadio.data("childrens")) {
+        let children_element = cardFormRadio.data("childrens");
+  
+        childrensСonnections(children_element);
+      }
     }
+   
    
   });
   

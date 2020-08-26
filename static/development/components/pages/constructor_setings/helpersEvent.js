@@ -57,7 +57,14 @@ export const onClickSettingsCardImg = (parent_box) => {
 
 export const onChengeRadioV1 = (parent_box) => {
   $(".form__radio").on("click", function () {
+
+    console.log('form__radio-setings' );
+    console.log('form__radio-setings',!$(this).hasClass("form__radio-hiden"));
+    
+
     if (!$(this).hasClass("form__radio-hiden")) {
+      console.log('form__radio-setings-test');
+   
       let value = $(this).data("value");
 
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
@@ -163,8 +170,7 @@ export const childrensСonnections = (children_element) => {
   $(`input[name='protection']`)
     .parents(".form_box__item")
     .addClass("form_box__item-hidden");
-
-  console.log(children_element);
+ 
 
   for (const key in children_element) {
     if (children_element.hasOwnProperty(key)) {
