@@ -52554,9 +52554,6 @@ __webpack_require__.r(__webpack_exports__);
 
 function onClickRadio_v1() {
   $(".form__radio").on("click", function () {
-    console.log('form__radio-all');
-    console.log('form__radio-all', !$(this).hasClass("form__radio-hiden"));
-
     if (!$(this).hasClass('form__radio-hiden')) {
       $(this).parents('.settings__box_main_content').find('.form__radio').removeClass("form__radio-active");
       $(this).addClass("form__radio-active");
@@ -53980,26 +53977,24 @@ var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
 };
 var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
   $(".form__radio").on("click", function () {
-    console.log('form__radio-setings');
-    console.log('form__radio-setings', !$(this).hasClass("form__radio-hiden"));
-
     if (!$(this).hasClass("form__radio-hiden")) {
-      console.log('form__radio-setings-test');
       var value = $(this).data("value");
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
-      var setingsName = $(this).parents(parent_box).children("input[type=hidden]")[0].name;
-
-      if (setingsName === "seat_type") {
-        $("input[name='trunk']").parents(".form_box__item").addClass("form_box__item-hidden");
-        var data_children = $(this).data("childrens");
-        Object.keys(data_children).map(function (key) {
-          if (!!data_children[key]) {
-            data_children[key].map(function (item) {
-              $("input[name='".concat(item, "']")).parents(".form_box__item").removeClass("form_box__item-hidden");
-            });
-          }
-        });
-      }
+      var setingsName = $(this).parents(parent_box).children("input[type=hidden]")[0].name; // if (setingsName === "seat_type") {
+      //   $(`input[name='trunk']`)
+      //     .parents(".form_box__item")
+      //     .addClass("form_box__item-hidden");
+      //   let data_children = $(this).data("childrens");
+      //   Object.keys(data_children).map((key) => {
+      //     if (!!data_children[key]) {
+      //       data_children[key].map((item) => {
+      //         $(`input[name='${item}']`)
+      //           .parents(".form_box__item")
+      //           .removeClass("form_box__item-hidden");
+      //       });
+      //     }
+      //   });
+      // }
     }
 
     var string_params = $(".constructor_setings").serializeArray();
@@ -54061,11 +54056,10 @@ function onClickCheckboxOptions() {
 }
 var childrensСonnections = function childrensСonnections(children_element) {
   $("input[name='protection']").parents(".form_box__item").addClass("form_box__item-hidden");
+  $("input[name='trunk']").parents(".form_box__item").addClass("form_box__item-hidden");
 
   for (var key in children_element) {
     if (children_element.hasOwnProperty(key)) {
-      console.log(key);
-
       if (key != "checkbox_options") {
         (function () {
           var element = children_element[key];
@@ -54104,6 +54098,10 @@ var childrensСonnections = function childrensСonnections(children_element) {
 
         if (element.indexOf("protection") != -1) {
           $("input[name='protection']").parents(".form_box__item").removeClass("form_box__item-hidden");
+        }
+
+        if (element.indexOf("trunk") != -1) {
+          $("input[name='trunk']").parents(".form_box__item").removeClass("form_box__item-hidden");
         }
       }
     }

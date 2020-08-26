@@ -149,10 +149,7 @@ function createUrl(config_model) {
 }
 
 $(".form__radio").on("click", function () {
-  console.log( 'form__radio-model');
-  
-  console.log('form__radio-model',!$(this).hasClass("form__radio-hiden") );
-  
+ 
   if (!$(this).hasClass("form__radio-hiden")) {
     let value = $(this).data("value");
 

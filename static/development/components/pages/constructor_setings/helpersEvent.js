@@ -58,13 +58,9 @@ export const onClickSettingsCardImg = (parent_box) => {
 export const onChengeRadioV1 = (parent_box) => {
   $(".form__radio").on("click", function () {
 
-    console.log('form__radio-setings' );
-    console.log('form__radio-setings',!$(this).hasClass("form__radio-hiden"));
-    
-
-    if (!$(this).hasClass("form__radio-hiden")) {
-      console.log('form__radio-setings-test');
    
+    if (!$(this).hasClass("form__radio-hiden")) {
+     
       let value = $(this).data("value");
 
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
@@ -73,21 +69,21 @@ export const onChengeRadioV1 = (parent_box) => {
         .parents(parent_box)
         .children("input[type=hidden]")[0].name;
 
-      if (setingsName === "seat_type") {
-        $(`input[name='trunk']`)
-          .parents(".form_box__item")
-          .addClass("form_box__item-hidden");
-        let data_children = $(this).data("childrens");
-        Object.keys(data_children).map((key) => {
-          if (!!data_children[key]) {
-            data_children[key].map((item) => {
-              $(`input[name='${item}']`)
-                .parents(".form_box__item")
-                .removeClass("form_box__item-hidden");
-            });
-          }
-        });
-      }
+      // if (setingsName === "seat_type") {
+      //   $(`input[name='trunk']`)
+      //     .parents(".form_box__item")
+      //     .addClass("form_box__item-hidden");
+      //   let data_children = $(this).data("childrens");
+      //   Object.keys(data_children).map((key) => {
+      //     if (!!data_children[key]) {
+      //       data_children[key].map((item) => {
+      //         $(`input[name='${item}']`)
+      //           .parents(".form_box__item")
+      //           .removeClass("form_box__item-hidden");
+      //       });
+      //     }
+      //   });
+      // }
     }
     let string_params = $(".constructor_setings").serializeArray();
 
@@ -170,12 +166,14 @@ export const childrensСonnections = (children_element) => {
   $(`input[name='protection']`)
     .parents(".form_box__item")
     .addClass("form_box__item-hidden");
- 
+
+  $(`input[name='trunk']`)
+    .parents(".form_box__item")
+    .addClass("form_box__item-hidden");
 
   for (const key in children_element) {
     if (children_element.hasOwnProperty(key)) {
-      console.log(key);
-
+       
       if (key != "checkbox_options") {
         const element = children_element[key];
 
@@ -221,6 +219,12 @@ export const childrensСonnections = (children_element) => {
         if (element.indexOf("protection") != -1) {
           $(`input[name='protection']`)
             .parents(".form_box__item")
+            .removeClass("form_box__item-hidden");
+        }
+        if (element.indexOf("trunk") != -1) {
+          $(`input[name='trunk']`)
+          .parents(".form_box__item")
+           
             .removeClass("form_box__item-hidden");
         }
  
