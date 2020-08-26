@@ -104,6 +104,7 @@ def get_price(request):
   result = 0
   query = request.data or request.query_params
   frame = FrameType.objects.get(code=query['iframe_type'])
+  result += frame.price
   for parameter_code,value_code in query.items():
     if parameter_code not in ['iframe_type','iframe_color']:
       if value_code == 'true':
@@ -113,7 +114,6 @@ def get_price(request):
         ).first()
         result += value.price
       else:
-        print(parameter_code)
         parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=parameter_code)#.first()
         if parameter.type == 'radio_color' or value_code.startswith("#"):
           # result += Value.objects.filter(parameter=parameter,color=value_code).first().price
@@ -141,7 +141,8 @@ def make_eleek_order(request):
   # )
   # values  = json.loads(values)
   # price   = 0
-  # frame   = values.first.parameter.tab_group.tab.frame 
+  # frame   = values.first().parameter.tab_group.tab.frame 
+  # price += frame.price
   # for value_id in values:
   #   value = Value.objects.get(id=value_id)
   #   price += value.price 
