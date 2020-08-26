@@ -1,4 +1,5 @@
 import * as THREE from "three";
+// import { childrensСonnections } from "../../pages/constructor_setings/helpersEvent";
 
 export const HelperCordinates = (scene, width_helper_line) => {
   var axesHelper = new THREE.AxesHelper(width_helper_line);
@@ -204,151 +205,7 @@ export const colorBike = (model, config_model) => {
   return bike;
 };
 
- 
-
-
-// if ( o.material.name.indexOf("Rama_1") !== -1
-// // o.name.indexOf("Motor_2") !== -1 ||
-// // o.name.indexOf("Motor_2") !== -1 ||
-// // o.name.indexOf("KolecoZ_4") !== -1 ||
-// // o.name.indexOf("Bag") !== -1 ||
-// // o.name.indexOf("Rul_1") !== -1 ||
-// // o.name.indexOf("Mirror_1") !== -1 ||
-// // o.name.indexOf("Break_3") !== -1 ||
-// // o.name.indexOf("Mud") !== -1
-// ) {
-// //   console.log(o );
-
-// //   // Рама і мотор
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.iframe_color}`),
-// //   //   shininess: 190,
-// //   // });
-// // // } else if (o.name.indexOf("Rama_2") !== -1) {
-// //   // Панелі на рамі
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.side_panels_colors}`),
-// //   //   shininess: 90,
-// //   // });
-// // // } else if (
-// //   // o.name.indexOf("Seat_velo_2") !== -1 ||
-// //   // o.name.indexOf("Seat_velo_3") !== -1 ||
-// //   // o.name.indexOf("Seat_moto_2") !== -1
-// // // ) {
-// //   // Колір заліха сидіння
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.iframe_color}`),
-// //   //   shininess: 90,
-// //   // });
-// // // } else if (o.name.indexOf("Seat_velo_1") !== -1) {
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.seat_type_color}`),
-// //   //   shininess: 90,
-// //   // });
-// //   // Вело сеління
-// // // } else if (o.name.indexOf("Seat_moto_1") !== -1) {
-// //   // Мото сеління
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.seat_type_color}`),
-// //   //   shininess: 90,
-// //   // });
-// // // } else if (o.name.indexOf("Amort") !== -1) {
-// //   // Амортизатор
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.fork_type_color}`),
-// //   //   shininess: 90,
-// //   // });
-// // // } else if (
-// //   // o.name.indexOf("KolecoZ_2") !== -1 ||
-// //   // o.name.indexOf("Koleco_2") !== -1 ||
-// //   // o.name.indexOf("KolecoZ_3") !== -1 ||
-// //   // o.name.indexOf("Koleco_3") !== -1
-// // // ) {
-// //   // Амортизатор
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.wheel_size_color}`),
-// //   //   shininess: 90,
-// //   // });
-// // // } else if (
-// //   // o.name.indexOf("Vulka_1") !== -1 ||
-// //   // o.name.indexOf("Vulka_3") !== -1
-// // // ) {
-// //   // Амортизатор
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.fork_type_color}`),
-// //   //   shininess: 90,
-// //   // });
-// // // } else if (
-// // //   o.name.indexOf("Rul_3") !== -1 ||
-// // //   o.name.indexOf("Pedali_2") !== -1
-
-// // // ) {
-// // //   // Педаль
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0x2626263`),
-// // //   //   shininess: 90,
-// // //   // });
-// // // } else if (o.name.indexOf("Rama_4") !== -1) {
-// // //   //  Заглушки
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0x252525`),
-// // //   //   shininess: 90,
-// // //   // });
-// // // } else if (
-// // //   o.name.indexOf("Rama_4") !== -1 ||
-// // //   o.name.indexOf("Vulka_2") !== -1
-// // // ) {
-// // //   //  Заглушки,Перемикачі болти
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0x191919`),
-// // //   //   shininess: 90,
-// // //   // });
-// // // } else if (
-// // //   o.name.indexOf("Koleco_1") !== -1 ||
-// // //   o.name.indexOf("KolecoZ_1") !== -1 ||
-// // //   o.name.indexOf("Pedali_1") !== -1
-// // // ) {
-// // //   //  Елементи колеса покришка,педалі гума
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0x262626`),
-// // //   //   shininess: 90,
-// // //   // });
-// // // } else if (
-// // //   // o.name.indexOf("Pedali_3") !== -1 ||
-// // //   o.name.indexOf("Rul_4") !== -1 ||
-// // //   o.name.indexOf("Rama_3") !== -1
-// // // ) {
-// // //   //  Елементи колеса покришка, шпиці, все решта
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0x9f9f9f`),
-// // //   //   shininess: 90,
-// // //   // });
-// // // } else if (
-// // //   // o.name.indexOf("Pedali_3") !== -1 ||
-// // //   o.name.indexOf("Mirror_2") !== -1
-// // // ) {
-// // //   //  Елементи колеса покришка, шпиці, все решта
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0xffffff`),
-// // //   //   shininess: 30,
-// // //   // });
-// // // } else if (
-// // //   o.name.indexOf("Cep") !== -1
-// // // ) {
-// // //   //  Елементи колеса покришка, шпиці, все решта
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0x191919`),
-// // //   //   shininess: 30,
-// // //   // });
-// } else {
-// // o.material = new THREE.MeshPhongMaterial({
-// //   color: parseInt("0x438AAC"),
-// //   shininess: 30,
-// //   specular: 0x222222,
-// // });
-// // console.log(o);
-// }
-
+  
 
 export const getFormatUrl = (config_model) =>{
   let URL = Object.keys(config_model)
@@ -406,3 +263,5 @@ export const creteInputHiden = (name,value) => {
   product_item.setAttribute('value', value);
   return product_item;
 }
+
+ 

@@ -57571,6 +57571,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chengePriseModel", function() { return chengePriseModel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "creteInputHiden", function() { return creteInputHiden; });
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "../../node_modules/three/build/three.module.js");
+ // import { childrensСonnections } from "../../pages/constructor_setings/helpersEvent";
 
 var HelperCordinates = function HelperCordinates(scene, width_helper_line) {
   var axesHelper = new three__WEBPACK_IMPORTED_MODULE_0__["AxesHelper"](width_helper_line);
@@ -57709,146 +57710,7 @@ var colorBike = function colorBike(model, config_model) {
     }
   });
   return bike;
-}; // if ( o.material.name.indexOf("Rama_1") !== -1
-// // o.name.indexOf("Motor_2") !== -1 ||
-// // o.name.indexOf("Motor_2") !== -1 ||
-// // o.name.indexOf("KolecoZ_4") !== -1 ||
-// // o.name.indexOf("Bag") !== -1 ||
-// // o.name.indexOf("Rul_1") !== -1 ||
-// // o.name.indexOf("Mirror_1") !== -1 ||
-// // o.name.indexOf("Break_3") !== -1 ||
-// // o.name.indexOf("Mud") !== -1
-// ) {
-// //   console.log(o );
-// //   // Рама і мотор
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.iframe_color}`),
-// //   //   shininess: 190,
-// //   // });
-// // // } else if (o.name.indexOf("Rama_2") !== -1) {
-// //   // Панелі на рамі
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.side_panels_colors}`),
-// //   //   shininess: 90,
-// //   // });
-// // // } else if (
-// //   // o.name.indexOf("Seat_velo_2") !== -1 ||
-// //   // o.name.indexOf("Seat_velo_3") !== -1 ||
-// //   // o.name.indexOf("Seat_moto_2") !== -1
-// // // ) {
-// //   // Колір заліха сидіння
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.iframe_color}`),
-// //   //   shininess: 90,
-// //   // });
-// // // } else if (o.name.indexOf("Seat_velo_1") !== -1) {
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.seat_type_color}`),
-// //   //   shininess: 90,
-// //   // });
-// //   // Вело сеління
-// // // } else if (o.name.indexOf("Seat_moto_1") !== -1) {
-// //   // Мото сеління
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.seat_type_color}`),
-// //   //   shininess: 90,
-// //   // });
-// // // } else if (o.name.indexOf("Amort") !== -1) {
-// //   // Амортизатор
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.fork_type_color}`),
-// //   //   shininess: 90,
-// //   // });
-// // // } else if (
-// //   // o.name.indexOf("KolecoZ_2") !== -1 ||
-// //   // o.name.indexOf("Koleco_2") !== -1 ||
-// //   // o.name.indexOf("KolecoZ_3") !== -1 ||
-// //   // o.name.indexOf("Koleco_3") !== -1
-// // // ) {
-// //   // Амортизатор
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.wheel_size_color}`),
-// //   //   shininess: 90,
-// //   // });
-// // // } else if (
-// //   // o.name.indexOf("Vulka_1") !== -1 ||
-// //   // o.name.indexOf("Vulka_3") !== -1
-// // // ) {
-// //   // Амортизатор
-// //   // o.material = new THREE.MeshPhongMaterial({
-// //   //   color: parseInt(`0x${config_model.fork_type_color}`),
-// //   //   shininess: 90,
-// //   // });
-// // // } else if (
-// // //   o.name.indexOf("Rul_3") !== -1 ||
-// // //   o.name.indexOf("Pedali_2") !== -1
-// // // ) {
-// // //   // Педаль
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0x2626263`),
-// // //   //   shininess: 90,
-// // //   // });
-// // // } else if (o.name.indexOf("Rama_4") !== -1) {
-// // //   //  Заглушки
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0x252525`),
-// // //   //   shininess: 90,
-// // //   // });
-// // // } else if (
-// // //   o.name.indexOf("Rama_4") !== -1 ||
-// // //   o.name.indexOf("Vulka_2") !== -1
-// // // ) {
-// // //   //  Заглушки,Перемикачі болти
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0x191919`),
-// // //   //   shininess: 90,
-// // //   // });
-// // // } else if (
-// // //   o.name.indexOf("Koleco_1") !== -1 ||
-// // //   o.name.indexOf("KolecoZ_1") !== -1 ||
-// // //   o.name.indexOf("Pedali_1") !== -1
-// // // ) {
-// // //   //  Елементи колеса покришка,педалі гума
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0x262626`),
-// // //   //   shininess: 90,
-// // //   // });
-// // // } else if (
-// // //   // o.name.indexOf("Pedali_3") !== -1 ||
-// // //   o.name.indexOf("Rul_4") !== -1 ||
-// // //   o.name.indexOf("Rama_3") !== -1
-// // // ) {
-// // //   //  Елементи колеса покришка, шпиці, все решта
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0x9f9f9f`),
-// // //   //   shininess: 90,
-// // //   // });
-// // // } else if (
-// // //   // o.name.indexOf("Pedali_3") !== -1 ||
-// // //   o.name.indexOf("Mirror_2") !== -1
-// // // ) {
-// // //   //  Елементи колеса покришка, шпиці, все решта
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0xffffff`),
-// // //   //   shininess: 30,
-// // //   // });
-// // // } else if (
-// // //   o.name.indexOf("Cep") !== -1
-// // // ) {
-// // //   //  Елементи колеса покришка, шпиці, все решта
-// // //   // o.material = new THREE.MeshPhongMaterial({
-// // //   //   color: parseInt(`0x191919`),
-// // //   //   shininess: 30,
-// // //   // });
-// } else {
-// // o.material = new THREE.MeshPhongMaterial({
-// //   color: parseInt("0x438AAC"),
-// //   shininess: 30,
-// //   specular: 0x222222,
-// // });
-// // console.log(o);
-// }
-
+};
 var getFormatUrl = function getFormatUrl(config_model) {
   var URL = Object.keys(config_model).map(function (key) {
     // // console.log('key_old',key );
@@ -58000,6 +57862,12 @@ $(".form__radio").on("click", function () {
     }
 
     parametr.value = value;
+
+    if (!!$(this).data("childrens")) {
+      var children_element = $(this).data("childrens");
+      Object(_pages_constructor_setings_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["childrensСonnections"])(children_element);
+    }
+
     var tempObject = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model);
     Object(_helper__WEBPACK_IMPORTED_MODULE_4__["chengePriseModel"])(tempObject);
     var back_url = createUrl(config_model);
@@ -58368,8 +58236,9 @@ $(".order_constructor").on("click", function () {
     src: "#order__form_constructor",
     touch: false,
     afterShow: function afterShow() {
-      Object.keys(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model)).map(function (key) {
-        $(".fancybox-content").append(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["creteInputHiden"])(key, config_model[key]));
+      var params_order = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model);
+      Object.keys(params_order).map(function (item, key) {
+        $(".fancybox-content").append(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["creteInputHiden"])(key, params_order[item]));
       });
     },
     beforeClose: function beforeClose() {
@@ -59562,8 +59431,12 @@ var clearGroup = function clearGroup(className) {
   });
 };
 var childrensСonnections = function childrensСonnections(children_element) {
+  console.log(children_element);
+
   for (var key in children_element) {
     if (children_element.hasOwnProperty(key)) {
+      console.log(key);
+
       if (key != "checkbox_options") {
         (function () {
           var element = children_element[key];
@@ -59583,6 +59456,12 @@ var childrensСonnections = function childrensСonnections(children_element) {
                   flag = false;
                   $(item).addClass("form__radio-active");
                   $(item).parents(".settings__box_main").children("input[type=hidden]").val(inputValue);
+
+                  if (!!$(item).data("childrens")) {
+                    var _children_element = $(item).data("childrens");
+
+                    childrensСonnections(_children_element);
+                  }
                 }
               } else {
                 $(item).addClass("form__radio-hiden");
@@ -59591,7 +59470,10 @@ var childrensСonnections = function childrensСonnections(children_element) {
             });
           } else {}
         })();
-      } else {}
+      } else {
+        console.log(key);
+        $("input[name='protection']").parents('.form_box__item').addClass('form_box__item-hidden');
+      }
     }
   }
 };
@@ -59713,12 +59595,12 @@ var onSelectFirstItem = function onSelectFirstItem() {
 
           var _element2 = $($(item).find(".form__radio")[0]);
 
-          var _children_element = _element2.data("childrens");
+          var _children_element2 = _element2.data("childrens");
 
           var _elementValue2 = _element2.data("value");
 
           $(_element2).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue2);
-          childrensСonnections(_children_element);
+          childrensСonnections(_children_element2);
         }
       }
     }

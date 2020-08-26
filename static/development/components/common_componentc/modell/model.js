@@ -17,7 +17,7 @@ import {
   chengePriseModel,
   creteInputHiden,
 } from "./helper";
-import { onClickCheckboxOptions } from "../../pages/constructor_setings/helpersEvent";
+import { onClickCheckboxOptions, childrensСonnections } from "../../pages/constructor_setings/helpersEvent";
 
 let params_search = window.location.search.split("?")[1].split("&");
 let config_model = {
@@ -155,6 +155,7 @@ $(".form__radio").on("click", function () {
       .children("input[type=hidden]")[0];
 
     let parametr_name = parametr.name;
+    
 
     if (parametr_name.indexOf("_color") != -1) {
       config_model[parametr_name] = value.replace("#", "");
@@ -163,6 +164,12 @@ $(".form__radio").on("click", function () {
     }
     parametr.value=value;
    
+    if (!!$(this).data("childrens")) {
+      let children_element = $(this).data("childrens");
+
+      childrensСonnections(children_element);
+    }  
+
 
   let tempObject = filterObject(config_model);
 
@@ -615,8 +622,10 @@ $(".order_constructor").on("click", function () {
     src: "#order__form_constructor",
     touch: false,
     afterShow: function () {
-      Object.keys(filterObject(config_model)).map((key) => {
-        $(".fancybox-content").append(creteInputHiden(key, config_model[key]));
+      let params_order = filterObject(config_model);
+      Object.keys(params_order).map((item,key) => {
+ 
+        $(".fancybox-content").append(creteInputHiden(key, params_order[item]));
       });
     },
     beforeClose: function () {

@@ -107,14 +107,18 @@ export const clearGroup = (className) => {
 
 export const childrensСonnections = (children_element) => {
 
+  console.log(children_element );
+  
  
   for (const key in children_element) {
     if (children_element.hasOwnProperty(key)) {
+      console.log(key );
+      
       if(key!="checkbox_options"){
         const element = children_element[key];
-
+ 
         let data_element = $(`[data-input_value="${key}"]`);
-  
+   
         if (data_element.hasClass("settings__box_main-radio")) {
           let all_elements = [
             ...data_element
@@ -135,6 +139,15 @@ export const childrensСonnections = (children_element) => {
                   .parents(".settings__box_main")
                   .children("input[type=hidden]")
                   .val(inputValue);
+
+                  if (!!$(item).data("childrens")) {
+                    let children_element = $(item).data("childrens");
+              
+                    childrensСonnections(children_element);
+                  }  
+              
+                  
+
               }
             } else {
               $(item).addClass("form__radio-hiden");
@@ -147,7 +160,10 @@ export const childrensСonnections = (children_element) => {
   
         }
       }else{
+        console.log(key );
         
+        $(`input[name='protection']`).parents('.form_box__item').addClass('form_box__item-hidden')
+       
        
       }
      
