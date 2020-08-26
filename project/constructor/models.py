@@ -88,8 +88,10 @@ class GeneralMixin(BaseMixin,ColorMixin,PriceMixin,NameMixin,ImageMixin,CodeMixi
         return f"Код:{self.code},Назва:{self.name},Зображення:{self.image},Ціна:{self.price},Колір:{self.color}"
 
 # # # # # # # # # # # # 
-
-
+from textwrap import wrap
+def splitAt(w,n):
+    for i in range(0,len(w),n):
+        yield w[i:i+n]
 class FrameType(GeneralMixin):
     POZITIFF_CODE = 'pozitiff'
     NEO_CODE      = 'neo'
@@ -116,6 +118,11 @@ class FrameType(GeneralMixin):
             value = parameter.get_values().first()
             initial_price += value.price 
             print(value.price, value)
+        initial_price = str(initial_price).split('.')[0]
+        initial_price = initial_price[::-1]
+        initial_price = [(initial_price[i:i+3]) for i in range(0, len(initial_price), 3)] 
+        initial_price = ' '.join(initial_price)
+        initial_price = initial_price[::-1]
         return initial_price
     
     class Meta: 
