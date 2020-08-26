@@ -168,7 +168,7 @@ def page2(request):
                 pass
             else:
                 value = Value.objects.filter(parameter=parameter, code=value_code[0]).first()
-        if parameter.code == "seat_type":
+        if parameter.tab_group.tab.id not in [3,6,9,12,]:
             pass
         elif parameter and value and added_parameters.count(parameter.id) < 2:
         # if parameter and value and not value.get_children() and added_parameters.count(parameter.id) < 2:

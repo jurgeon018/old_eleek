@@ -88,10 +88,12 @@ class GeneralMixin(BaseMixin,ColorMixin,PriceMixin,NameMixin,ImageMixin,CodeMixi
         return f"Код:{self.code},Назва:{self.name},Зображення:{self.image},Ціна:{self.price},Колір:{self.color}"
 
 # # # # # # # # # # # # 
-from textwrap import wrap
-def splitAt(w,n):
-    for i in range(0,len(w),n):
-        yield w[i:i+n]
+# from textwrap import wrap
+# def splitAt(w,n):
+#     for i in range(0,len(w),n):
+#         yield w[i:i+n]
+
+
 class FrameType(GeneralMixin):
     POZITIFF_CODE = 'pozitiff'
     NEO_CODE      = 'neo'
@@ -104,7 +106,7 @@ class FrameType(GeneralMixin):
     
     def get_colors(self):
         return FrameColor.objects.filter(frame=self, is_active=True)
-    
+
     def get_initial_price(self):
         initial_price = 0
         initial_price += self.price 
