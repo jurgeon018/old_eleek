@@ -176,7 +176,7 @@
                               <img src="{{value.image_url}}" alt="">
                             </div>
                             {% get_radio_class request value=value counter=forloop.counter codes=codes colors=colors as radio_class %}
-                            <div class="form__radio {{radio_class}}" data-childrens="{{value.generate_children_json}}" data-value="{{value.code}} ">
+                            <div class="form__radio {{radio_class}}" data-childrens="{{value.generate_children_json}}" data-value="{{value.code}}">
                               <div class="form__radio_check"></div>
                               <div class="form__radio_main">
                                 <div class="form__radio_title">{{value.name}} </div>
