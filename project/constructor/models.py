@@ -36,6 +36,7 @@ class NameMixin(models.Model):
     def modeltranslation_fields(self):
         return ['name',]
 
+
 class ImageMixin(models.Model):
     image = models.ImageField(verbose_name="Зображення",  blank=True, null=True)
 
@@ -48,6 +49,7 @@ class ImageMixin(models.Model):
 
     class Meta: 
         abstract = True 
+
 
 class PriceMixin(models.Model):
     price = models.FloatField(verbose_name="Ціна", blank=True, null=True, default=0)
@@ -79,6 +81,7 @@ class BaseMixin(ActiveMixin, TimestampMixin):
     def get_admin_url(self):
         return get_admin_url(self)
 
+
 class GeneralMixin(BaseMixin,ColorMixin,PriceMixin,NameMixin,ImageMixin,CodeMixin):
 
     class Meta: 
@@ -88,10 +91,6 @@ class GeneralMixin(BaseMixin,ColorMixin,PriceMixin,NameMixin,ImageMixin,CodeMixi
         return f"Код:{self.code},Назва:{self.name},Зображення:{self.image},Ціна:{self.price},Колір:{self.color}"
 
 # # # # # # # # # # # # 
-# from textwrap import wrap
-# def splitAt(w,n):
-#     for i in range(0,len(w),n):
-#         yield w[i:i+n]
 
 
 class FrameType(GeneralMixin):
@@ -185,7 +184,6 @@ class TabGroup(BaseMixin, NameMixin):
         verbose_name_plural = "Групи"
          
 
-
 class Parameter(BaseMixin, NameMixin, CodeMixin):
     radio_small = 'radio_small'
     radio_color = 'radio_color'
@@ -213,7 +211,6 @@ class Parameter(BaseMixin, NameMixin, CodeMixin):
         unique_together = [
             'code','tab_group',
         ]
-         
 
 
 class Value(GeneralMixin):
@@ -278,7 +275,7 @@ class Relationship(models.Model):
 class ConstructorForm(models.Model):
     name    = models.CharField(verbose_name="Імя", blank=True, null=True, max_length=255)
     email   = models.CharField(verbose_name="Емейл", blank=True, null=True, max_length=255)
-    phone   = models.CharField(verbose_name="Телефон", blank=True, null=True, max_length=255)
+    tel     = models.CharField(verbose_name="Телефон", blank=True, null=True, max_length=255)
     message = models.TextField(verbose_name="Повідомлення", blank=True, null=True)
     values  = models.ManyToManyField(verbose_name="Вибрані елементи", to="constructor.Value", blank=True)
 

@@ -89,7 +89,9 @@ EMAIL_HOST_USER        = "dev@starwayua.com"
 EMAIL_HOST_PASSWORD    = 'dev69018'#config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL     = EMAIL_HOST_USER
 
-
+DEFAULT_RECIPIENT_LIST = [
+    "jurgeon018@gmail.com",
+]
 
 
 

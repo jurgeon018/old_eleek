@@ -113,19 +113,9 @@ def register(request):
 from project.constructor.models import * 
 
 
-def page1(request):
-    frames          = FrameType.objects.filter(is_active=True)
-    frame_colors    = FrameColor.objects.filter(is_active=True)
-    query           = request.GET 
-    iframe_type     = query.get('iframe_type')
-    iframe_color    = query.get('iframe_color')
-    if iframe_type:
-        frame = FrameType.objects.get(code=iframe_type)
-    else:
-        frame = frames.first()
-    current_frame = frame
-    initial_price   = frame.get_initial_price()
-    codes = []
+def parse_request(request):
+    query  = request.GET
+    codes  = []
     colors = {}
     for parameter_code, value_code in query.items():
         if parameter_code not in ['iframe_type','iframe_color']:
@@ -137,7 +127,27 @@ def page1(request):
                 colors.update({
                     f"{parameter_code}":value_code,
                 })
-    print(codes)
+    return {
+        "colors":colors,
+        "codes":codes,
+    } 
+
+
+def page1(request):
+    frames          = FrameType.objects.filter(is_active=True)
+    frame_colors    = FrameColor.objects.filter(is_active=True)
+    query           = request.GET 
+    iframe_type     = query.get('iframe_type')
+    iframe_color    = query.get('iframe_color')
+    if iframe_type:
+        frame = FrameType.objects.get(code=iframe_type)
+    else:
+        frame = frames.first()
+    current_frame = frame
+    initial_price = frame.get_initial_price()
+    result = parse_request(request)
+    colors = result['colors']
+    codes  = result['codes']
     return render(request, 'project/page1.html', locals())
 
 
@@ -151,6 +161,7 @@ def page2(request):
     dict_values = []
     checkbox_values = []
     added_parameters = []
+    # added_values = []
     for parameter_code, value_code in query.items():
         if value_code[0] == 'true':
             value = Value.objects.filter(
@@ -174,6 +185,7 @@ def page2(request):
         # if parameter and value and not value.get_children() and added_parameters.count(parameter.id) < 2:
             # print("value",value)
             # print("value.get_children",value.get_children())
+            # added_values.append(value.id)
             dict_values.append({
                 "parameter":parameter,
                 "value":value,
