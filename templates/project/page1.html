@@ -135,21 +135,31 @@
                 {% for parameter in tab_group.get_parameters %}
                 <div class="settings__box">
                   <div class="settings__box_title">{{parameter.name}}</div>
+
                     {% if parameter.type == 'radio_color' %}
                     <div class="settings__box_main settings__box_main-color" data-input_value="{{parameter.code}}">
                     {% elif parameter.type == 'checkbox_options' %}
                     <div class="settings__box_main settings__box_main-checkbox" data-input_value="{{parameter.code}}">
-                    {% else %}
+                    {% elif parameter.type == "radio_img" %}
                     <div class="settings__box_main settings__box_main-card" data-input_value="{{parameter.code}}">
+                    {% elif parameter.type == "radio_small" %}
+                    <div class="settings__box_main settings__box_main-radio" data-input_value="{{parameter.code}}">
+                    {% else %}
+                    !!!! 
                     {% endif %}
+                    
                     <div class="settings__box_loader"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+
                     {% if parameter.type == 'radio_color' %}
                     <input type="hidden" value="{{parameter.get_values.first.color}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
                     {% elif parameter.type == 'checkbox_options' %}
-
                     {% else %}
-                    <input type="hidden" value="{{parameter.get_values.first.code}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
+                    <!-- <br>code sdf:{{parameter.get_values.first.code}}
+                    <br>parameter sdf:{{parameter}}
+                    <br>parameter.get_values sdf:{{parameter.get_values}} -->
+                    <input type="hidden" sdf value="{{parameter.get_values.first.code}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
                     {% endif %}
+                    
                     <div class="settings__box_main_content">
                       {% for value in parameter.get_values %}
                         {% if parameter.type == 'radio_color' %}

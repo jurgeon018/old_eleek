@@ -121,6 +121,8 @@ def get_price(request):
           # result += Value.objects.filter(parameter=parameter,color=value_code).first().price
           pass
         else:
+          print("parameter", parameter_code)
+          print("value_code", value_code)
           value = Value.objects.get(parameter=parameter,code=value_code)
           print(value.price, value)
           result += value.price

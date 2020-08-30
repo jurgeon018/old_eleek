@@ -9,6 +9,13 @@ def get_item(dictionary, key):
     return dictionary.get(key)
 
 
+def common_member(a, b): 
+    if (set(a)  & set(b)): 
+        return True 
+    else: 
+        return False
+
+
 @register.simple_tag()
 def get_radio_class(request, **kwargs):
     query       = request.GET
@@ -18,10 +25,12 @@ def get_radio_class(request, **kwargs):
     colors      = kwargs['colors']
     radio_class = ""
     if codes:
-      if value.code in codes:
-        radio_class = "form__radio-active"
-      if value.get_parents().exists() and value.get_parents().first().code not in codes:
+      # Знайти не знаходження першого батька в кодах, 
+      # а пересічення всіх батьків з усіма кодами 
+      if value.get_parents().exists() and not common_member(value.get_parents().values_list('code', flat=True), codes):
         radio_class = "form__radio-hiden"
+      elif value.code in codes:
+        radio_class = "form__radio-active"
     elif counter == 1:
         radio_class = "form__radio-active"
     return radio_class 
@@ -53,8 +62,8 @@ def get_checkbox_class(request, **kwargs):
     checkbox_class = ""
     if codes:
       if value.get_parents().exists() and value.get_parents().first().code not in codes:
-          checkbox_class = "form_box__item-hidden"
-      if value.code in codes:
+        checkbox_class = "form_box__item-hidden"
+      elif value.code in codes:
         checkbox_class = "form_box__item-active"
     elif not codes:
       pass 
