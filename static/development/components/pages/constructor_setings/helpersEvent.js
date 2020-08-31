@@ -176,9 +176,11 @@ export const childrensСonnections = (children_element) => {
        
       if (key != "checkbox_options") {
         const element = children_element[key];
+ 
+        console.log(key); 
 
         let data_element = $(`[data-input_value="${key}"]`);
-
+console.log(data_element);
         if (data_element.hasClass("settings__box_main-radio")) {
           let all_elements = [
             ...data_element
