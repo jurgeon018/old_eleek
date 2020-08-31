@@ -152,7 +152,7 @@ $(".form__radio").on("click", function () {
  
   if (!$(this).hasClass("form__radio-hiden")) {
     let value = $(this).data("value");
-console.log(value);
+ 
     let parametr = $(this)
       .parents(".settings__box_main-radio")
       .children("input[type=hidden]")[0];
