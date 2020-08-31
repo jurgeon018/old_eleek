@@ -29,12 +29,14 @@ export const onClickSettingsCardImg = (parent_box) => {
     let neighboringElements = $(this).parents(parent_box).find(".form__radio");
     let cardFormRadio = $(this).parent().children(".form__radio");
     let value = cardFormRadio.data("value");
+console.log(cardFormRadio );
 
     if (!!cardFormRadio.data("childrens")) {
       let children_element = cardFormRadio.data("childrens");
 
       childrensСonnections(children_element);
     } else {
+
     }
 
     neighboringElements.removeClass("form__radio-active");
@@ -121,22 +123,28 @@ export function chengePrice(data) {
     }
   });
 
-  fetch(`/api/get_price/?${getFormatUrl(objectParameter)}`)
-    .then((response) => {
-      return response.json();
-    })
-    .then((response) => {
-      function triplets(str) {
-        // \u202f — неразрывный узкий пробел
-        return str
-          .toString()
-          .replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202f");
-      }
-      $(".settings__parameters_navigation")
-        .find(".price")
-        .children(".value")
-        .text(`${triplets(response.price)} грн`);
-    });
+  // fetch(`/api/get_price/?${getFormatUrl(objectParameter)}`)
+  //   .then((response) => {
+  //     if (response.status >= 400 && response.status < 600) {
+  //       throw new Error("Bad response from server fond price");
+  //     }
+  //     return response.json();
+  //   })
+  //   .then((response) => {
+  //     function triplets(str) {
+  //       // \u202f — неразрывный узкий пробел
+  //       return str
+  //         .toString()
+  //         .replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202f");
+  //     }
+  //     $(".settings__parameters_navigation")
+  //       .find(".price")
+  //       .children(".value")
+  //       .text(`${triplets(response.price)} грн`);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error)
+  //   });
 }
 
 export function onClickCheckboxOptions() {
@@ -176,8 +184,10 @@ export const childrensСonnections = (children_element) => {
        
       if (key != "checkbox_options") {
         const element = children_element[key];
+console.log(element );
 
         let data_element = $(`[data-input_value="${key}"]`);
+console.log(data_element );
 
         if (data_element.hasClass("settings__box_main-radio")) {
           let all_elements = [
@@ -185,6 +195,11 @@ export const childrensСonnections = (children_element) => {
               .find(".form__radio")
               .removeClass("form__radio-active"),
           ];
+
+          console.log(all_elements );
+          
+
+
           let flag = true;
           all_elements.map((item) => {
             let inputValue = $(item).data("value");

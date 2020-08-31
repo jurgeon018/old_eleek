@@ -15,13 +15,6 @@ python3 manage.py sw_import -d import/
 
 python3 manage.py runserver 127.0.0.1:8000
 
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 27d75f42fcbe71518f73f0cae0748b3b1fc03d78
 python3 manage.py makemigrations 
 python3 manage.py migrate
 python3 manage.py sw_import -d import/constructor

@@ -68,6 +68,9 @@ canvas {
     width: 100%;
     position: relative;
     transition: 0.3s;
+    &_right,&_left{
+      cursor: pointer;
+    }
     &-compress {
       width: 50%;
       transition: 0.3s;
@@ -269,6 +272,8 @@ canvas {
     align-items: center;
     position: absolute;
     left: 30px;
+    cursor: pointer;
+
     bottom: 30px;
     font-size: 18px;
     color: #1e1b15;
@@ -376,6 +381,7 @@ canvas {
     // background: #fff;
     padding: 10px;
     left: 0;
+    cursor:pointer;
     // border: 1px solid #2b2a27;
     border-left: none;
   }

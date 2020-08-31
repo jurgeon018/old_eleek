@@ -103,12 +103,12 @@
                   {% if dict_value.parameter.type == "checkbox_options" %}
                   <div
                     class="settings__box_main settings__box_main-checkbox"
-                    data-input_value="motor"
+                    data-input_value="{{dict_value.parameter.code}}"
                   >
                   {% else %}
                   <div
                     class="settings__box_main settings__box_main-radio"
-                    data-input_value="motor"
+                    data-input_value="{{dict_value.parameter.code}}"
                   >
                   {% endif %}
                     <div class="settings__box_loader">
