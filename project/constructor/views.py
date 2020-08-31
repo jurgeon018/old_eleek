@@ -121,6 +121,8 @@ def get_price(request):
           # result += Value.objects.filter(parameter=parameter,color=value_code).first().price
           pass
         else:
+          print("parameter", parameter_code)
+          print("value_code", value_code)
           value = Value.objects.get(parameter=parameter,code=value_code)
           print(value.price, value)
           result += value.price
@@ -132,39 +134,60 @@ def get_price(request):
 @api_view(['GET','POST'])
 def make_eleek_order(request):
   query   = request.data or request.query_params 
+  print(query)
   # values  = query['values']
   name    = query.get('name','-----')
   email   = query.get('email','-----')
-  phone   = query.get('phone','-----')
+  tel     = query.get('tel','-----')
   message = query.get('message','-----')
-  # model = ConstructorForm.objects.create(
-  #   name=name,
-  #   email=email,
-  #   phone=phone,
-  #   message=message,
-  # )
-  # values  = json.loads(values)
-  # price   = 0
-  # frame   = values.first().parameter.tab_group.tab.frame 
-  # price += frame.price
-  # for value_id in values:
-  #   value = Value.objects.get(id=value_id)
-  #   price += value.price 
-  #   model.values.add(value)
-  # send_mail(
-  #   subject=f"Заявка з конструктора №{model.id}",
-  #   message=f""" 
-  #     Імя:{name};
-  #     Емейл:{email};
-  #     Телефон:{phone};
-  #     Повідомлення:{message};
-  #     Рама: {frame.name};
-  #   """,
-  #   from_email=settings.DEFAULT_FROM_EMAIL,
-  #   recipient_list=settings.DEFAULT_RECIPIENT_LIST,
-  #   fail_silently=False,
-  # )
+  model = ConstructorForm.objects.create(
+    name=name,
+    email=email,
+    tel=tel,
+    message=message,
+  )
+  '''
+sdf@sdf.sdf11111111111111
+  '''
+  price = 0
+  values = ""
+  frame = FrameType.objects.get(code=query['iframe_type'])
+  frame_color = FrameColor.objects.get(frame=frame,color=query['iframe_color'])
+  for parameter_code, value_code in query.items():
+    if parameter_code not in ["iframe_type", "iframe_color", 'name', 'email', 'tel', 'message']:
+      if value_code == "true":
+        value = Value.objects.get(parameter__tab_group__tab__frame=frame, code=parameter_code)
+        price += value.price
+        parameter = value.parameter
+      else:
+        parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=parameter_code)
+        if value_code.startswith("#"):
+          value = Value.objects.get(color=value_code,parameter=parameter, is_active=True)
+          price += value.price
+        else:
+          value = Value.objects.get(code=value_code,parameter=parameter, is_active=True)
+          price += value.price
+      values += f"""
+      {parameter.name}:{value.name}
+      """
+  price += frame.price
+  send_mail(
+    subject=f"Заявка з конструктора №{model.id}",
+    message=f""" 
+      Імя:{name};
+      Емейл:{email};
+      Телефон:{tel};
+      Повідомлення:{message};
+      Рама:{frame.name};
+      Ціна:{price};
+      Значення:{values}
+    """,
+    from_email=settings.DEFAULT_FROM_EMAIL,
+    recipient_list=settings.DEFAULT_RECIPIENT_LIST,
+    fail_silently=False,
+  )
   return Response({
-    "status":"OK"
+    "status":"OK",
+    "price":price,
   })
 

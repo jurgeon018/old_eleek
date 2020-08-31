@@ -106,9 +106,9 @@
                   </div>
                 </div>
                 {% if iframe_color %}
-                <input type="hidden" value="{{frame.get_colors.first.color}}" name="iframe_color" id="iframe_color" class="iframe_color">
-                {% else %}
                 <input type="hidden" value="{{iframe_color}}" name="iframe_color" id="iframe_color" class="iframe_color">
+                {% else %}
+                <input type="hidden" value="{{frame.get_colors.first.color}}" name="iframe_color" id="iframe_color" class="iframe_color">
                 {% endif %}
                 <div class="settings__box_main_content">
                   {% for frame_color in frame.get_colors %}
@@ -135,36 +135,44 @@
                 {% for parameter in tab_group.get_parameters %}
                 <div class="settings__box">
                   <div class="settings__box_title">{{parameter.name}}</div>
+
                     {% if parameter.type == 'radio_color' %}
                     <div class="settings__box_main settings__box_main-color" data-input_value="{{parameter.code}}">
                     {% elif parameter.type == 'checkbox_options' %}
                     <div class="settings__box_main settings__box_main-checkbox" data-input_value="{{parameter.code}}">
-                    {% else %}
+                    {% elif parameter.type == "radio_img" %}
                     <div class="settings__box_main settings__box_main-card" data-input_value="{{parameter.code}}">
+                    {% elif parameter.type == "radio_small" %}
+                    <div class="settings__box_main settings__box_main-radio" data-input_value="{{parameter.code}}">
+                    {% else %}
+                    !!!! 
                     {% endif %}
+                    
                     <div class="settings__box_loader"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+
                     {% if parameter.type == 'radio_color' %}
                     <input type="hidden" value="{{parameter.get_values.first.color}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
                     {% elif parameter.type == 'checkbox_options' %}
-
                     {% else %}
-                    <input type="hidden" value="{{parameter.get_values.first.code}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
+                    <!-- <br>code sdf:{{parameter.get_values.first.code}}
+                    <br>parameter sdf:{{parameter}}
+                    <br>parameter.get_values sdf:{{parameter.get_values}} -->
+                    <input type="hidden" sdf value="{{parameter.get_values.first.code}}" name="{{parameter.code}}" id="{{parameter.code}}" class="{{parameter.code}}">
                     {% endif %}
+                    
                     <div class="settings__box_main_content">
                       {% for value in parameter.get_values %}
                         {% if parameter.type == 'radio_color' %}
-                           {% if colors %}
-                            <div class="form__color {% if value.color == colors|get_item:value.parameter.code %}form__color-active{% endif %}" data-color="{{value.color}}" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%;">
-                           {% else %}
-                            <div class="form__color {% if forloop.counter == 1 %}form__color-active{% endif %}" data-color="{{value.color}}" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%;">
-                           {% endif %}
+                          {% get_color_class request value=value counter=forloop.counter codes=codes colors=colors as color_class %}
+                          <div class="form__color {{color_class}}" data-color="{{value.color}}" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%;">
                             <div class="form__color_check">
                               <img src="./../../static/source/img/interface/check.svg">
                             </div>
                           </div>
                         {% elif parameter.type == 'checkbox_options' %}
                           <div class="settings__group settings__group-start">
-                            <div class="{% if value.code in codes %} form_box__item-active {% endif %}form_box__item form_box__item-black_bord2">
+                            {% get_checkbox_class request value=value counter=forloop.counter codes=codes colors=colors as checkbox_class %}
+                            <div class="form_box__item {{checkbox_class}} form_box__item-black_bord2">
                               <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
                                 <path fill="#242321" fill-rule="evenodd" d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"></path>
                               </svg>
@@ -177,11 +185,8 @@
                             <div class="settings__card_img">
                               <img src="{{value.image_url}}" alt="">
                             </div>
-                            {% if codes %}
-                            <div class="form__radio {% if value.code in codes%}form__radio-active{%endif%}" data-childrens="{{value.generate_children_json}}" data-value="{{value.code}} ">
-                            {% else%}
-                            <div class="form__radio {% if forloop.counter == 1 %}form__radio-active{%endif%}" data-childrens="{{value.generate_children_json}}" data-value="{{value.code}} ">
-                            {% endif%}
+                            {% get_radio_class request value=value counter=forloop.counter codes=codes colors=colors as radio_class %}
+                            <div class="form__radio {{radio_class}}" data-childrens="{{value.generate_children_json}}" data-value="{{value.code}}">
                               <div class="form__radio_check"></div>
                               <div class="form__radio_main">
                                 <div class="form__radio_title">{{value.name}} </div>
@@ -190,11 +195,8 @@
                             </div>
                           </div>
                         {% elif parameter.type == 'radio_small'  %}
-                            {% if codes %}
-                            <div class="form__radio {%if value.code in codes %}form__radio-active{%endif%}" data-childrens="{{value.generate_children_json}}" data-value="{{value.code}}">
-                            {% else %}
-                            <div class="form__radio {%if forloop.counter == 1 %}form__radio-active{%endif%}" data-childrens="{{value.generate_children_json}}" data-value="{{value.code}}">
-                            {% endif %}
+                            {% get_radio_class request value=value counter=forloop.counter codes=codes colors=colors as radio_class %}
+                            <div class="form__radio {{radio_class}}" data-childrens="{{value.generate_children_json}}" data-value="{{value.code}}">
                             <div class="form__radio_check"></div>
                             <div class="form__radio_main">
                               <div class="form__radio_title">{{value.name}}</div>

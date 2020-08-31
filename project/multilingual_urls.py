@@ -113,6 +113,29 @@ def register(request):
 from project.constructor.models import * 
 
 
+def parse_request(request):
+    query  = request.GET
+    codes  = []
+    colors = {}
+    for parameter_code, value_code in query.items():
+        if parameter_code not in ['iframe_type','iframe_color']:
+            # Значення всіх чекбоксів
+            if value_code == 'true':
+                codes.append(parameter_code)
+            # Значення всіх некольорів
+            elif not value_code.startswith("#"):
+                codes.append(value_code)
+            # Значення всіх опцій
+            else:
+                colors.update({
+                    f"{parameter_code}":value_code,
+                })
+    return {
+        "colors":colors,
+        "codes":codes,
+    } 
+
+
 def page1(request):
     frames          = FrameType.objects.filter(is_active=True)
     frame_colors    = FrameColor.objects.filter(is_active=True)
@@ -124,22 +147,17 @@ def page1(request):
     else:
         frame = frames.first()
     current_frame = frame
-    initial_price   = frame.get_initial_price()
-    codes = []
-    colors = {}
-    for parameter_code, value_code in query.items():
-        if parameter_code not in ['iframe_type','iframe_color']:
-            if value_code == 'true':
-                codes.append(parameter_code)
-            elif not value_code.startswith("#"):
-                codes.append(value_code)
-            else:
-                colors.update({
-                    f"{parameter_code}":value_code,
-                })
-    print(codes)
+    initial_price = frame.get_initial_price()
+    result = parse_request(request)
+    colors = result['colors']
+    codes  = result['codes']
     return render(request, 'project/page1.html', locals())
 
+def common_member(a, b): 
+    if (set(a)  & set(b)): 
+        return True 
+    else: 
+        return False
 
 def page2(request):
     query           = dict(request.GET)
@@ -151,35 +169,58 @@ def page2(request):
     dict_values = []
     checkbox_values = []
     added_parameters = []
+    parents = []
     for parameter_code, value_code in query.items():
+        # Парсить значення з урла
         if value_code[0] == 'true':
+            # Значення всіх опцій
             value = Value.objects.filter(
                 parameter__tab_group__tab__frame=frame,
                 code=parameter_code,
             ).first()
             parameter = value.parameter
             checkbox_values.append(value)
+            parents.append(value.code)
             added_parameters.append(parameter.id)
         else:
             parameter = Parameter.objects.get(tab_group__tab__frame=frame, code=parameter_code)
             if parameter.type == 'radio_color' or value_code[0].startswith("#"):
-                # value = Value.objects.filter(parameter=parameter, color=value_code[0]).first()
-                value = None
-                pass
+                # Інгорує всі кольори
+                value = None# value = Value.objects.filter(parameter=parameter, color=value_code[0]).first()
             else:
+                # Значення всіх некольорів і неопцій
                 value = Value.objects.filter(parameter=parameter, code=value_code[0]).first()
-        if parameter.tab_group.tab.id not in [3,6,9,12,]:
-            pass
-        elif parameter and value and added_parameters.count(parameter.id) < 2:
-        # if parameter and value and not value.get_children() and added_parameters.count(parameter.id) < 2:
-            # print("value",value)
-            # print("value.get_children",value.get_children())
+                parents.append(value.code)
+
+        # Ігнорує значення з усіх табів крім третіх
+        if parameter and value and parameter.tab_group.tab.id in [3,6,9,12] and added_parameters.count(parameter.id) < 2:
+            # ??? 
+            values = []
+            for v in Value.objects.filter(parameter=parameter, is_active=True):
+                value_class = ""
+                if v in checkbox_values:
+                    value_class = "form_box__item-active"
+                elif v == value:
+                    value_class = "form__radio-active"
+                if v.get_parents().exists() and not common_member(v.get_parents().values_list('code', flat=True), parents):
+                # if value.get_parents().exists() and not common_member(value.get_parents().values_list('code', flat=True), parents):
+                    value_class = "form__radio-hiden"
+                values.append({
+                    "value_class":value_class,
+                    "id":v.id,
+                    "code":v.code,
+                    "name":v.name,
+                    "price":v.price,
+                    "generate_children_json":v.generate_children_json(),
+                    "parameter":v.parameter,
+                })
             dict_values.append({
                 "parameter":parameter,
                 "value":value,
-                "values":Value.objects.filter(parameter=parameter, is_active=True),
+                "values":values,
             })
-    if not added_parameters:    
+    # Якщо ???, то штучно вставляється параметр з опціями(перший і єдиний)
+    if not added_parameters:
         parameter = Parameter.objects.get(tab_group__tab__frame=frame, type="checkbox_options")
         dict_values.append({
             "parameter":parameter,
