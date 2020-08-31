@@ -388,6 +388,7 @@ function init() {
 
   controls.maxPolarAngle = Math.PI / 1.8;
   controls.minDistance = 50;
+  controls.maxDistance = 400;
   controls.minPolarAngle = Math.PI / 6;
   controls.enableDamping = true;
   controls.enablePan = false;

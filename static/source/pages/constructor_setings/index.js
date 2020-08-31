@@ -53954,6 +53954,7 @@ var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
     var neighboringElements = $(this).parents(parent_box).find(".form__radio");
     var cardFormRadio = $(this).parent().children(".form__radio");
     var value = cardFormRadio.data("value");
+    console.log(cardFormRadio);
 
     if (!!cardFormRadio.data("childrens")) {
       var children_element = cardFormRadio.data("childrens");
@@ -54024,17 +54025,28 @@ function chengePrice(data) {
     if (item.name != "undefined") {
       objectParameter[item.name] = item.value;
     }
-  });
-  fetch("/api/get_price/?".concat(getFormatUrl(objectParameter))).then(function (response) {
-    return response.json();
-  }).then(function (response) {
-    function triplets(str) {
-      // \u202f — неразрывный узкий пробел
-      return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202F");
-    }
-
-    $(".settings__parameters_navigation").find(".price").children(".value").text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
-  });
+  }); // fetch(`/api/get_price/?${getFormatUrl(objectParameter)}`)
+  //   .then((response) => {
+  //     if (response.status >= 400 && response.status < 600) {
+  //       throw new Error("Bad response from server fond price");
+  //     }
+  //     return response.json();
+  //   })
+  //   .then((response) => {
+  //     function triplets(str) {
+  //       // \u202f — неразрывный узкий пробел
+  //       return str
+  //         .toString()
+  //         .replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202f");
+  //     }
+  //     $(".settings__parameters_navigation")
+  //       .find(".price")
+  //       .children(".value")
+  //       .text(`${triplets(response.price)} грн`);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error)
+  //   });
 }
 function onClickCheckboxOptions() {
   $(".form_box__item").on("click", function () {
@@ -54063,13 +54075,18 @@ var childrensСonnections = function childrensСonnections(children_element) {
       if (key != "checkbox_options") {
         (function () {
           var element = children_element[key];
+<<<<<<< HEAD
           console.log(key);
+=======
+          console.log(element);
+>>>>>>> 92a00da3e4d911ac70ad621d300df34e438b2f18
           var data_element = $("[data-input_value=\"".concat(key, "\"]"));
           console.log(data_element);
 
           if (data_element.hasClass("settings__box_main-radio")) {
             var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
 
+            console.log(all_elements);
             var flag = true;
             all_elements.map(function (item) {
               var inputValue = $(item).data("value");
