@@ -57865,6 +57865,7 @@ $(".form__radio").on("click", function () {
 
     if (!!$(this).data("childrens")) {
       var children_element = $(this).data("childrens");
+      console.log(children_element);
       Object(_pages_constructor_setings_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["childrensСonnections"])(children_element);
     }
 
@@ -58057,6 +58058,7 @@ function init() {
   controls.target.set(0, 25, 0);
   controls.maxPolarAngle = Math.PI / 1.8;
   controls.minDistance = 50;
+  controls.maxDistance = 400;
   controls.minPolarAngle = Math.PI / 6;
   controls.enableDamping = true;
   controls.enablePan = false;
@@ -59375,6 +59377,7 @@ var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
     var neighboringElements = $(this).parents(parent_box).find(".form__radio");
     var cardFormRadio = $(this).parent().children(".form__radio");
     var value = cardFormRadio.data("value");
+    console.log(cardFormRadio);
 
     if (!!cardFormRadio.data("childrens")) {
       var children_element = cardFormRadio.data("childrens");
@@ -59445,17 +59448,28 @@ function chengePrice(data) {
     if (item.name != "undefined") {
       objectParameter[item.name] = item.value;
     }
-  });
-  fetch("/api/get_price/?".concat(getFormatUrl(objectParameter))).then(function (response) {
-    return response.json();
-  }).then(function (response) {
-    function triplets(str) {
-      // \u202f — неразрывный узкий пробел
-      return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202F");
-    }
-
-    $(".settings__parameters_navigation").find(".price").children(".value").text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
-  });
+  }); // fetch(`/api/get_price/?${getFormatUrl(objectParameter)}`)
+  //   .then((response) => {
+  //     if (response.status >= 400 && response.status < 600) {
+  //       throw new Error("Bad response from server fond price");
+  //     }
+  //     return response.json();
+  //   })
+  //   .then((response) => {
+  //     function triplets(str) {
+  //       // \u202f — неразрывный узкий пробел
+  //       return str
+  //         .toString()
+  //         .replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202f");
+  //     }
+  //     $(".settings__parameters_navigation")
+  //       .find(".price")
+  //       .children(".value")
+  //       .text(`${triplets(response.price)} грн`);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error)
+  //   });
 }
 function onClickCheckboxOptions() {
   $(".form_box__item").on("click", function () {
@@ -59489,6 +59503,7 @@ var childrensСonnections = function childrensСonnections(children_element) {
           if (data_element.hasClass("settings__box_main-radio")) {
             var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
 
+            console.log(all_elements);
             var flag = true;
             all_elements.map(function (item) {
               var inputValue = $(item).data("value");

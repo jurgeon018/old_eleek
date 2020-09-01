@@ -194,7 +194,7 @@ def page2(request):
 
         # Ігнорує значення з усіх табів крім третіх
         if parameter and value and parameter.tab_group.tab.id in [3,6,9,12] and added_parameters.count(parameter.id) < 2:
-            # ??? 
+            # ???
             values = []
             for v in Value.objects.filter(parameter=parameter, is_active=True):
                 value_class = ""

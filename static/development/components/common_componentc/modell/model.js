@@ -152,7 +152,7 @@ $(".form__radio").on("click", function () {
  
   if (!$(this).hasClass("form__radio-hiden")) {
     let value = $(this).data("value");
-
+ 
     let parametr = $(this)
       .parents(".settings__box_main-radio")
       .children("input[type=hidden]")[0];
@@ -168,7 +168,7 @@ $(".form__radio").on("click", function () {
 
     if (!!$(this).data("childrens")) {
       let children_element = $(this).data("childrens");
-
+      console.log(children_element);
       childrensСonnections(children_element);
     }
 
@@ -388,6 +388,7 @@ function init() {
 
   controls.maxPolarAngle = Math.PI / 1.8;
   controls.minDistance = 50;
+  controls.maxDistance = 400;
   controls.minPolarAngle = Math.PI / 6;
   controls.enableDamping = true;
   controls.enablePan = false;

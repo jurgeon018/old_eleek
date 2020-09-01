@@ -72,7 +72,7 @@ export const createRadioSmal = (properte) => {
     </div> 
   </div>`;
 }
-
+ 
 export const createRadioImg = (properte) => {
 
   return `<div class="settings__card">
