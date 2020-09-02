@@ -1,16 +1,6 @@
+settings.ini
+
 db.sqlite3
-.vscode
-.env
-.venv
-venv/
-ENV/
-env/
-# media/
-settings.ini 
-/media/shop/item
-**/media/shop/item/**
-
-
 
 migrations
 migrations/
@@ -19,6 +9,7 @@ migrations/
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
+
 __pycache__
 __pycache__/
 **/__pycache__/**
@@ -26,13 +17,15 @@ __pycache__/
 *.pyc
 .pyc 
 
+.env
+.venv
+venv/
+ENV/
+env/
+
+/media/shop/item
+**/media/shop/item/**
+
 static_root/
-
 node_modules
-
-# package-lock.json
-# package.json
-# webpack.config.js
-
-
-
+.vscode
