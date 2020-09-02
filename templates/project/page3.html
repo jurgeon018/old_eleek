@@ -1,0 +1,44 @@
+{% extends 'project/base.html' %}
+{% load i18n sw_content %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/error/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/pages/error/index.css?v=3">
+{% endblock styles %}
+{% block body_class %}
+black_body
+{% endblock body_class %}
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
+{% block content %}
+<section class="error_section padding_sect">
+  <div class="container">
+    <div class="error__wrap">
+        <img class="error_image" alt="" src="/static/source/img/error/error.png" srcset="/static/source/img/error/error.png 1x, /static/source/img/error/error@2x.png  2x">
+        <h4 class="error_title main__title main__title_3 color_black">
+            Такої сторінки не знайдено
+        </h4>
+        <h3 class="error_text standart_title standart_title_3 color_black">
+            Поверніться на головну або перегляньте асортимент наших товарів
+        </h3>
+        <div class="error_btn btn_standart btn_standart_yellow out">
+            Магазин
+        </div>
+    </div>
+  </div>
+  <!-- /.container -->
+</section>
+{% endblock content %}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/pages/error/index.js"></script> 
+{% endblock scripts %}
+
+
+

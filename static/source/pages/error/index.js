@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./search.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./error.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1093,25 +1093,25 @@ function valide_form(id_form, error_inp_wrap, check_request) {
 
 /***/ }),
 
-/***/ "../components/pages/search/index.js":
-/*!*******************************************!*\
-  !*** ../components/pages/search/index.js ***!
-  \*******************************************/
+/***/ "../components/pages/error/index.js":
+/*!******************************************!*\
+  !*** ../components/pages/error/index.js ***!
+  \******************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/pages/search/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/pages/error/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
 
 /***/ }),
 
-/***/ "../components/pages/search/index.scss":
-/*!*********************************************!*\
-  !*** ../components/pages/search/index.scss ***!
-  \*********************************************/
+/***/ "../components/pages/error/index.scss":
+/*!********************************************!*\
+  !*** ../components/pages/error/index.scss ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1121,10 +1121,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./search.js":
-/*!*******************!*\
-  !*** ./search.js ***!
-  \*******************/
+/***/ "./error.js":
+/*!******************!*\
+  !*** ./error.js ***!
+  \******************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1134,10 +1134,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_interface_grid_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/interface/grid/index */ "../components/interface/grid/index.js");
 /* harmony import */ var _components_interface_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/interface/button */ "../components/interface/button/index.js");
 /* harmony import */ var _components_module_form_errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/module/form_errors */ "../components/module/form_errors/index.js");
-/* harmony import */ var _components_common_componentc_admin_panel_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../components/common_componentc/admin_panel/index */ "../components/common_componentc/admin_panel/index.js");
+/* harmony import */ var _components_common_componentc_admin_panel_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/common_componentc/admin_panel/index */ "../components/common_componentc/admin_panel/index.js");
 /* harmony import */ var _components_common_componentc_header_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/common_componentc/header/index */ "../components/common_componentc/header/index.js");
 /* harmony import */ var _components_common_componentc_footer_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/common_componentc/footer/index */ "../components/common_componentc/footer/index.js");
-/* harmony import */ var _components_pages_search_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/pages/search/index */ "../components/pages/search/index.js");
+/* harmony import */ var _components_pages_error_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/pages/error/index */ "../components/pages/error/index.js");
 // script interface
 
 

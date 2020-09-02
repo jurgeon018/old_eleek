@@ -54,6 +54,7 @@ module.exports = {
         another_pages:  './another_pages.js' ,
         constructor_setings:  './constructor_setings.js' ,
         constructor_model:  './constructor_model.js' ,
+        error:  './error.js' ,
     },
     output:{
         filename:'[name]/index.js',
