@@ -1,5 +1,15 @@
 import './index.scss';
 
+
+
+
+
+
+
+
+
+
+
 window.addEventListener('DOMContentLoaded', () => {
 	const arrow_1 = document.getElementById('arrow_1'); 
   const button_1 = document.getElementById('button_1');

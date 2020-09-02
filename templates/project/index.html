@@ -11,7 +11,55 @@
 section__wrapper
 {% endblock main_class %}
 {% block content %}
-<section class="first_section">
+
+<script>
+
+  
+  function findWord(word, str) {
+    return RegExp('\\b'+ word +'\\b').test(str)
+  };
+  
+      let check_animation = findWord('animation', document.cookie);
+    
+      var ready = (callback) => {
+        if (document.readyState != "loading") callback();
+        else document.addEventListener("DOMContentLoaded", callback);
+      }
+      ready(() => { 
+        if (check_animation == false) {
+          document.body.scrollTop = document.documentElement.scrollTop = 0;
+          document.querySelectorAll(".site_loader__block")[0].classList.add("site_loader__block_active");
+        loader(4000);
+        } else {
+          console.log(11);
+          document.querySelectorAll(".first_section")[0].classList.add("first_section_active");
+        }
+      });
+  document.cookie = "animation; max-age=7200";
+  function loader(duration) {
+    document.querySelectorAll("html, body")[0].style.overflow = "hidden";
+    let current_speed = duration / 100;
+    let counter = 0;
+      let timerId = setInterval(() => {
+        document.querySelectorAll(".load_num")[0].textContent = counter;
+        document.querySelectorAll(".load_active")[0].style.width = counter + "%";
+        counter++;
+        if (counter > 100) {
+          clearTimeout(timerId);
+          setTimeout(() => {
+          document.querySelectorAll("html, body")[0].style.overflow = "visible";
+            document.querySelectorAll(".first_section")[0].classList.add("first_section_active");
+            document.querySelectorAll(".site_loader__block")[0].classList.remove("site_loader__block_active");
+          }, 400);
+        }
+     }, current_speed);
+     setTimeout(() => {
+      document.querySelectorAll(".logos_anim")[0].classList.add("logos_anim_active");
+     }, 2300);
+  }
+  </script>
+
+<section style="opacity: 0;" class="first_section">
   <div class="bike_trailer__block">
     {% for slider in test_drive_sliders %}
     <div class="bike_trailer__wrapper db_content" data-admin_url="{{slider.get_admin_url}}">
@@ -500,6 +548,7 @@ section__wrapper
 {% endblock content %}
 {% block scripts %}
 <script src="/static/source/lib/jquery/index.js"></script> 
+
 <script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
 <script src="/static/source/lib/maskinput/maskinput.js"></script> 
 <script src="/static/source/lib/slick/slick.min.js"></script> 

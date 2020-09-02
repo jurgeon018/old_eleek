@@ -249,7 +249,7 @@ var slickFinder1 = $('.bike_trailer__block').length;
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: true,
+        autoplay: false,
         arrows: true,
         prevArrow: '<div class="slick-first"><</div>',
         nextArrow: '<div class="slick-second">></div>',
@@ -482,7 +482,6 @@ var index_wow_1 = new WOW(
   index_wow_2.init();
 
   let check_num = setInterval(() => {
-    console.log(1);
     if ($('.preferens__wrap').hasClass('preferens_anim')) {
       console.log('!!!');
       
