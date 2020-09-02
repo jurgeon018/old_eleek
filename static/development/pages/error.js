@@ -14,4 +14,3 @@ import '../components/common_componentc/header/index'
 import '../components/common_componentc/footer/index'
 import '../components/pages/error/index'
 
-
