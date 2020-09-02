@@ -1,7 +1,0 @@
-# pack-refs with: peeled fully-peeled sorted 
-110da23c75f94f70a2209fc3c8741ce8ce72ad99 refs/remotes/origin/capitan
-240c3d15dbcfd5aae81d7bfc147fd2d2874c554b refs/remotes/origin/dev
-fd86e0c0fb4f86c7cf88132abd588db4dde607f5 refs/remotes/origin/dopomoga
-2c44209a60cb1ce34337100e5ede72704e27f4aa refs/remotes/origin/features_bugfix
-0dade05e174c87f67cd00c00a6eb42ea6a8313f8 refs/remotes/origin/jcb
-88d6a7a2c37fe4e23a74be9d0eca13b3b22d24fa refs/remotes/origin/master
