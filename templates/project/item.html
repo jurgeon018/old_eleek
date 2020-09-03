@@ -269,8 +269,11 @@ item_section__wrapper
         </div>
       </div>
       
+
+
+
       <!-- Опції  -->
-      {% for options in item.get_item_options %}
+      <!-- {% for options in item.get_item_options %}
       <div class="option__wrap">
         <div class="item_char_title main__title main__title_4">
           {{options.attribute.name|title}}
@@ -286,12 +289,16 @@ item_section__wrapper
           {% endfor %}
         </div>
       </div>
-      {% endfor %}
+      {% endfor %} -->
       
       <!-- Атрибути без категорій -->
       {% for attribute in item.get_attributes_without_categories %}
         {% if not attribute.is_option %}
-          <div data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}' data-item_attribute_value_id="{{attribute.get_values.first.id}}" class="color_change__wrap current_attribute_change__wrap">
+          <div 
+            data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}' 
+            data-item_attribute_value_id="{{attribute.get_values.first.id}}" 
+            class="color_change__wrap current_attribute_change__wrap"
+          >
             <div class="color_change__block">
               <div class="color_change_prof">
                 <div class="color_change_title main_sub_title main_sub_title_3 color_black">
@@ -326,10 +333,26 @@ item_section__wrapper
               </div>
             </div>
           </div>
-        {% else %}
-        <!-- TODO: розділити опції від неопцій в атрибутах без категорій https://starway.atlassian.net/browse/ELEEK-79 -->
+        {% elif attribute.is_option %}
+        <div class="option__wrap">
+          <div class="item_char_title main__title main__title_4">
+            {{attribute.attribute.name|title}}
+          </div>
+          <div class="option_content__block">
+            {% for option in attribute.get_values %}
+            <div class="option_content_prof price_multiple_option price_option" data-value="{{option.value.value}}" data-price-option='{{option.price|stringformat:".2f"}}'>
+              <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+              <div class="option_text standart_title standart_title_6">
+                {{option.value.value}} ({{option.price}} {{option.currency.code}})
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
         {% endif %}
       {% endfor %}
+
+
       <!-- Категорії атрибутів -->
       {% for attribute_category in item.get_attribute_categories %}
         <div class="item_char_title main__title main__title_4">
@@ -339,11 +362,11 @@ item_section__wrapper
         {% get_category_attributes attribute_category item as attributes %}
         {% for attribute in attributes %}
           {% if attribute_category.name == 'кольори' %}
-          <!-- Ось тут ми зупинилсь! -->
             <div class="color_change__wrap only_color_change__wrap"
               data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}'
               data-item_attribute_value_id='{{attribute.get_values.first.value.id}}'>
-              <div class="color_change__block">
+              <div class="color_change__block"
+            >
                 <div class="color_change_prof">
                   <div class="color_change_title main_sub_title main_sub_title_3 color_black">
                     {{attribute.attribute.name}}
@@ -392,12 +415,53 @@ item_section__wrapper
               </div>
             </div>
           {% else %}
-          <!-- TODO: вивести динамічні атрибути некольори в категорії https://starway.atlassian.net/browse/ELEEK-80-->
+            <div 
+              data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}' 
+              data-item_attribute_value_id="{{attribute.get_values.first.id}}" 
+              class="color_change__wrap current_attribute_change__wrap"
+            >
+              <div class="color_change__block">
+                <div class="color_change_prof">
+                  <div class="color_change_title main_sub_title main_sub_title_3 color_black">
+                    {{attribute.attribute.name}} : 
+                  </div>
+                  <div class="color_change_name sub_title sub_title_2 color_black">
+                    {{attribute.get_values.first.value.value}}
+                  </div>
+                </div>
+                <div class="color_change_btn">
+                  <img src="/static/source/img/item/close.svg" alt="">
+                </div>
+              </div>
+              <div class="color_change_content">
+                <div class="color_change_content_wrap">
+                  {% for value in attribute.get_values %}
+                  <div class="option_content_prof price_simple_option change_attribute {% if forloop.counter == 1 %}option_content_prof_active{% endif %}" data-price-option='{{value.price|stringformat:".2f"}}'>
+                    <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+                    <div class="option_text standart_title standart_title_6">
+                      {{value.value.value}} ({{value.price}} {{value.currency.code}})
+                      <input
+                        class="hidden_color_attr"
+                        type="hidden"
+                        name="{{forloop.parentloop.counter}}" 
+                        value="{{value.value.value}}" 
+                        data-item_attribute_id="{{value.item_attribute.id}}"
+                        data-item_attribute_value_id="{{value.id}}"
+                      >
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
           {% endif %}
         {% endfor %}
       {% endfor %}
 
 
+
+
+      
     </div>
   </div>
 </section>
