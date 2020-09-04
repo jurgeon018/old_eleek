@@ -272,6 +272,9 @@ item_section__wrapper
 
 
 
+
+
+
       <!-- Опції  -->
       <!-- {% for options in item.get_item_options %}
       <div class="option__wrap">
@@ -280,7 +283,11 @@ item_section__wrapper
         </div>
         <div class="option_content__block">
           {% for option in options.get_values %}
-          <div class="option_content_prof price_multiple_option price_option" data-value="{{option.value.value}}" data-price-option='{{option.price|stringformat:".2f"}}'>
+          <div 
+            class="option_content_prof price_multiple_option price_option" 
+            data-value="{{option.value.value}}" 
+            data-price-option='{{option.price|stringformat:".2f"}}'
+          >
             <img class="option_img" src="/static/source/img/item/close.svg" alt="">
             <div class="option_text standart_title standart_title_6">
               {{option.value.value}} ({{option.price}} {{option.currency.code}})
@@ -293,6 +300,7 @@ item_section__wrapper
       
       <!-- Атрибути без категорій -->
       {% for attribute in item.get_attributes_without_categories %}
+        <!-- Атрибути без категорій(одиночні)  -->
         {% if not attribute.is_option %}
           <div 
             data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}' 
@@ -302,7 +310,7 @@ item_section__wrapper
             <div class="color_change__block">
               <div class="color_change_prof">
                 <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-                  {{attribute.attribute.name}} : 
+                  {{attribute.attribute.name}}: 
                 </div>
                 <div class="color_change_name sub_title sub_title_2 color_black">
                   {{attribute.get_values.first.value.value}}
@@ -315,7 +323,8 @@ item_section__wrapper
             <div class="color_change_content">
               <div class="color_change_content_wrap">
                 {% for value in attribute.get_values %}
-                <div class="option_content_prof price_simple_option change_attribute {% if forloop.counter == 1 %}option_content_prof_active{% endif %}" data-price-option='{{value.price|stringformat:".2f"}}'>
+                <div class="option_content_prof price_simple_option change_attribute {% if forloop.counter == 1 %}option_content_prof_active{% endif %}" 
+                  data-price-option='{{value.price|stringformat:".2f"}}'>
                   <img class="option_img" src="/static/source/img/item/close.svg" alt="">
                   <div class="option_text standart_title standart_title_6">
                     {{value.value.value}} ({{value.price}} {{value.currency.code}})
@@ -333,14 +342,24 @@ item_section__wrapper
               </div>
             </div>
           </div>
+        <!-- Атрибути без категорій(опції-чекбокси) -->
         {% elif attribute.is_option %}
         <div class="option__wrap">
-          <div class="item_char_title main__title main__title_4">
+          <div 
+          class="item_char_title main__title main__title_4"
+          data-item_attribute_id='{{attribute.id}}'
+          >
             {{attribute.attribute.name|title}}
           </div>
           <div class="option_content__block">
             {% for option in attribute.get_values %}
-            <div class="option_content_prof price_multiple_option price_option" data-value="{{option.value.value}}" data-price-option='{{option.price|stringformat:".2f"}}'>
+            <div 
+              class="option_content_prof price_multiple_option price_option" 
+              data-value="{{option.value.value}}" 
+              data-price-option='{{option.price|stringformat:".2f"}}'
+              data-item_attribute_id='{{option.attribute.id}}'
+              data-item_attribute_value_id='{{option.id}}'
+            >
               <img class="option_img" src="/static/source/img/item/close.svg" alt="">
               <div class="option_text standart_title standart_title_6">
                 {{option.value.value}} ({{option.price}} {{option.currency.code}})
@@ -361,24 +380,30 @@ item_section__wrapper
         <!-- Атрибути в категорії  -->
         {% get_category_attributes attribute_category item as attributes %}
         {% for attribute in attributes %}
+          <!-- Атрибути в категорії одиночні(кольори) -->
           {% if attribute_category.name == 'кольори' %}
             <div class="color_change__wrap only_color_change__wrap"
               data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}'
-              data-item_attribute_value_id='{{attribute.get_values.first.value.id}}'>
-              <div class="color_change__block"
+              data-item_attribute_value_id='{{attribute.get_values.first.value.id}}'
             >
+              <div class="color_change__block">
                 <div class="color_change_prof">
                   <div class="color_change_title main_sub_title main_sub_title_3 color_black">
                     {{attribute.attribute.name}}
                   </div>
-                  <div data-color="#{{attribute.get_values.first.value.code}}" style="background:#{{attribute.get_values.first.value.code}};" class="main_color_change_oval color_change_oval">
+                  <div 
+                    data-color="#{{attribute.get_values.first.value.code}}" 
+                    style="background:#{{attribute.get_values.first.value.code}};" 
+                    class="main_color_change_oval color_change_oval"
+                  >
                     <!-- .... -->
                     <!-- Код кольору вибраного значення -->
                   </div>
                   <div
-                  class="color_change_name sub_title sub_title_2 color_black" 
-                  data-item_attribute_value_id="{{value.id}}" 
-                  data-item_attribute_id="{{value.item_attribute.id}}">
+                    class="color_change_name sub_title sub_title_2 color_black" 
+                    data-item_attribute_value_id="{{value.id}}" 
+                    data-item_attribute_id="{{value.item_attribute.id}}"
+                  >
                     <!-- .... -->
                     <!-- Назва вибраного значення -->
                     {{attribute.get_values.first.value.value}}
@@ -391,7 +416,6 @@ item_section__wrapper
               <div class="color_change_content">
                 <div class="color_change_content_wrap">
                   {% for value in attribute.get_values %}
-                  
                   <div
                     class="color_change_oval color_change_select"
                     style="background:#{{value.value.code}};" 
@@ -402,19 +426,20 @@ item_section__wrapper
                       <img src="/static/source/img/item/okey.svg" alt="open">
                     </div>
                     <input
-                    class="hidden_color_attr"
-                    type="hidden"
-                    name="{{forloop.parentloop.counter}}" 
-                    value="{{value.value.value}}" 
-                    data-item_attribute_id="{{value.item_attribute.id}}"
-                    data-item_attribute_value_id="{{value.id}}"
-                  >
+                      class="hidden_color_attr"
+                      type="hidden"
+                      name="{{forloop.parentloop.counter}}" 
+                      value="{{value.value.value}}" 
+                      data-item_attribute_id="{{value.item_attribute.id}}"
+                      data-item_attribute_value_id="{{value.id}}"
+                    >
                   </div>
                   {% endfor %}
                 </div>
               </div>
             </div>
-          {% else %}
+          <!-- Атрибути в категорії одиночні(некольори) -->
+          {% elif attribute_category.name != 'кольори' %}
             <div 
               data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}' 
               data-item_attribute_value_id="{{attribute.get_values.first.id}}" 
@@ -423,7 +448,7 @@ item_section__wrapper
               <div class="color_change__block">
                 <div class="color_change_prof">
                   <div class="color_change_title main_sub_title main_sub_title_3 color_black">
-                    {{attribute.attribute.name}} : 
+                    {{attribute.attribute.name}}: 
                   </div>
                   <div class="color_change_name sub_title sub_title_2 color_black">
                     {{attribute.get_values.first.value.value}}
@@ -457,6 +482,12 @@ item_section__wrapper
           {% endif %}
         {% endfor %}
       {% endfor %}
+
+
+
+
+
+
 
 
 
