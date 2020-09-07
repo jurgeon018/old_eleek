@@ -1423,6 +1423,24 @@ function show_addit_option() {
 }
 
 $('.item_btn_price').on('click', function () {
+  var fetch_json = formited_json_atrr();
+  var item_id = $('.item_name').attr('data-id-name');
+  var body = {
+    "item_id": Number(item_id),
+    "attributes": JSON.stringify(fetch_json) // "options": JSON.stringify(option_mass)
+
+  };
+  fetch('/api/cart_items/', {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
+  });
+});
+
+function formited_json_atrr() {
   var all_attr = $('.current_attribute_change__wrap');
   var attr_mass = [];
   $.each(all_attr, function (index, value) {
@@ -1434,40 +1452,50 @@ $('.item_btn_price').on('click', function () {
     });
   });
   var all_color = $('.only_color_change__wrap');
-  var color_mass = [];
   $.each(all_color, function (index, value) {
     var attr_id = $(value).attr('data-item_attribute_id');
     var attr_value = $(value).attr('data-item_attribute_value_id');
-    color_mass.push({
+    attr_mass.push({
       item_attribute_id: attr_id,
       item_attribute_value_id: attr_value
     });
   });
   var all_option = $('.option_content__block').find('.option_content_prof_active');
-  var option_mass = [];
+  var mini_mass = [];
   $.each(all_option, function (index, value) {
-    var attr_value = $(value).attr('data-value');
-    option_mass.push({
-      option_value_id: attr_value
-    });
+    var attr_value = $(value).attr('data-item_attribute_value_id');
+    mini_mass.push(attr_value);
+  }); // атрибути
+
+  attr_mass.push({
+    item_attribute_id: $('.option__wrap').find('.item_char_title').attr('data-item_attribute_id'),
+    item_attribute_value_ids: mini_mass
   });
-  console.log('option_mass: ', option_mass);
-  var newMass = attr_mass.concat(color_mass);
-  console.log('newMass: ', newMass);
   console.log('attr_mass: ', attr_mass);
+  return attr_mass;
+}
+
+$('.sale_one_click').on('click', function () {
+  $('.hidden_product_attr').val(JSON.stringify(formited_json_atrr()));
+});
+$('.three_de__block').on('click', function () {
+  var fetch_json = formited_json_atrr();
   var item_id = $('.item_name').attr('data-id-name');
   var body = {
     "item_id": Number(item_id),
-    "attributes": JSON.stringify(newMass),
-    "options": JSON.stringify(option_mass)
+    "attributes": JSON.stringify(fetch_json)
   };
-  fetch('/api/cart_items/', {
+  fetch('/constructor_middleware/', {
     method: 'POST',
     body: JSON.stringify(body),
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/json"
     }
+  }).then(function (data) {
+    return data.json();
+  }).then(function (body) {
+    console.log('body: ', body); // location.href=data.url;
   });
 });
 var slickFinder2 = $('.best-sales-block').length;
