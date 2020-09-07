@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render 
+from django.http import HttpResponse 
 from django.db.models import Max, Min 
 
 from .models import * 
@@ -138,6 +139,10 @@ def parse_request(request):
 
 
 def constructor_middleware(request):
+    print(request.POST)
+    print(request.GET)
+    print(request.data)
+    
     query = request.GET or request.POST
     print("query:", query)
     uri = '?'
@@ -265,7 +270,6 @@ urlpatterns = [
     path('item_category/<slug>/',       item_category,       name='item_category'),
     path('item/<slug>/', item,        name='item'),
     path('faq/',         faq,         name='faq'),
-    path('constructor/', constructor, name='constructor'),
     path('test_drive/',  test_drive,  name='test_drive'),
     path('order/',       order,       name='order'),
     path('search/',      search,      name='search'),
@@ -278,6 +282,7 @@ urlpatterns = [
     path('register/',   register,    name='register'),
     path('thank_you/',  thank_you,   name='thank_you'),
     path('page1/',      constructor, name='constructor'),
+    path('constructor_middleware/', constructor_middleware, name='constructor_middleware'),
     path('page2/',      bike,        name='bike'),
     path('page_404/',   page_404,    name='page_404'),
 

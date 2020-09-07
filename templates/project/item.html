@@ -23,6 +23,7 @@ item_section__wrapper
           {% endfor %}
         </div>
         <div class="bottom_slider__wrap">
+          <a href="{% url 'constructor_middleware' %}">
           <div class="three_de__block">
             <svg class="hvr-bob" xmlns="http://www.w3.org/2000/svg" width="49" height="56" viewBox="0 0 49 56">
               <g class="three_svg" fill="none" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -30,12 +31,11 @@ item_section__wrapper
                   <path d="M.725 12.531L22.667 24.286 44.608 12.531M22.667 52.846L22.667 24.286" transform="translate(1.167 1.857)"/>
               </g>
             </svg>
-            <a href="{% url 'constructor' %}">
             <div class="three_title standart_title standart_title_5 color_black">
-                {% trans 'Показати в 3Д' %}
-              </div>
-            </a>
+              {% trans 'Показати в 3Д' %}
+            </div>
           </div>
+          </a>
           <div class="mini_slider">
             {% for image in item.images.all %}
             <div class="img-wrap">
