@@ -207,7 +207,11 @@ class ParameterAdmin(
         ValueInline,
     ]
     search_fields = ['name']
-    # autocomplete_fields = ['tab_group']
+    autocomplete_fields = [
+        'tab_group',
+        'attr',
+        'feature',
+    ]
 
 
 @admin.register(Value)
@@ -224,7 +228,11 @@ class ValueAdmin(
     search_fields = [
         'name','code','color'
     ]
-    autocomplete_fields = ['parameter']
+    autocomplete_fields = [
+        'parameter',
+        'attr_value',
+        'value',
+    ]
     readonly_fields = ['code']
     formfield_overrides = {
         models.ImageField:{"widget":AdminImageWidget},

@@ -137,19 +137,50 @@ def parse_request(request):
         "codes":codes,
     } 
 
-from django.http import JsonResponse
-def constructor_middleware(request):
-    print(request.POST)
-    print(request.GET)
-    print(request.body)
 
-    query = request.GET or request.POST
+from django.http import JsonResponse
+from django.shortcuts import redirect
+
+
+def constructor_middleware(request):
+    query = json.loads(request.body.decode('utf-8'))
     print("query:", query)
-    uri = '?'
-    for k,v in query.items():
-        uri += f'{k}={v}'
-    url = f"/page1/{uri}"
-    return JsonResponse({'url':url})
+    item = Item.objects.get(id=query['item_id'])
+    item_feature = ItemFeature.objects.filter(item=item,name__code="frame")
+    if item_feature.exists():
+        iframe_type = item_feature.first().value.code
+    formed_attrs = {
+        # "iframe_type":iframe_type,
+        # "iframe_color":"#cccccc",
+    }
+    for item_feature in ItemFeature.objects.filter(item__id=item.id):
+        feature = item_feature.name.code or f"feature_{item_feature.name.id}"
+        value   = item_feature.value.code or f"value_{item_feature.value.id}"
+        formed_attrs.update({
+            feature:value,
+        })
+    for attribute in json.loads(query['attributes']):
+        item_attribute = ItemAttribute.objects.get(id=attribute['item_attribute_id'])
+        if 'item_attribute_value_id' in attribute:
+            item_attribute_value = ItemAttributeValue.objects.get(id=attribute['item_attribute_value_id'])
+            parameter_code = item_attribute.attribute.code or f'attribute_{item_attribute.attribute.id}'
+            value_code = item_attribute_value.value.code or f'value_{item_attribute_value.value.id}'
+            formed_attrs.update({
+                parameter_code:value_code,
+            })
+        elif 'item_attribute_value_ids' in attribute:
+            for item_attribute_value in ItemAttributeValue.objects.filter(id__in=attribute['item_attribute_value_ids']):
+                value_code = item_attribute_value.value.code or f'value_{item_attribute_value.value.id}'
+                formed_attrs.update({
+                    value_code:"true",
+                })
+    uri = ''
+    for k, v in formed_attrs.items():
+        uri += f'{k}={v}&'
+    return JsonResponse({
+        'url':reverse("constructor"),
+        # 'url':reverse("bike") + uri,
+    })
 
 
 def constructor(request):
@@ -167,13 +198,15 @@ def constructor(request):
     result = parse_request(request)
     colors = result['colors']
     codes  = result['codes']
-    return render(request, 'project/constructor.html', locals())
+    return render(request, 'project/constructor/constructor.html', locals())
+
 
 def common_member(a, b): 
     if (set(a)  & set(b)): 
         return True 
     else: 
         return False
+
 
 def bike(request):
     query           = dict(request.GET)

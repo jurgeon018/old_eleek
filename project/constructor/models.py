@@ -199,6 +199,9 @@ class Parameter(BaseMixin, NameMixin, CodeMixin):
     attr = models.ForeignKey(
         verbose_name="Атрибут товару", to="sw_catalog.Attribute", on_delete=models.SET_NULL, blank=True, null=True, related_name="constructor_parameters", 
     )
+    feature = models.ForeignKey(
+        to="sw_catalog.Feature", verbose_name="Характеристика товару", blank=True, null=True, on_delete=models.SET_NULL, related_name="constructor_features",
+    )
     tab_group = models.ForeignKey(verbose_name="Група", to="constructor.TabGroup", on_delete=models.SET_NULL, blank=True, null=True)
 
     def get_values(self): 
@@ -219,6 +222,9 @@ class Parameter(BaseMixin, NameMixin, CodeMixin):
 class Value(GeneralMixin):
     attr_value = models.ForeignKey(
         to="sw_catalog.AttributeValue", verbose_name="Значення атрибуту товару", blank=True, null=True, on_delete=models.SET_NULL, related_name="constructor_values", 
+    )
+    value = models.ForeignKey(
+        to="sw_catalog.FeatureValue", verbose_name="Значення характеристики товару", blank=True, null=True, on_delete=models.SET_NULL, related_name="constructor_feature_values",
     )
     parameter = models.ForeignKey(
         verbose_name="Параметр", to="constructor.Parameter", 
