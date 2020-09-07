@@ -145,7 +145,7 @@ class FrameTypeAdmin(
         FrameColorInline,
     ]
     readonly_fields = ['code']
-    autocomplete_fields = ['item']
+    autocomplete_fields = ['items']
     formfield_overrides = {
         models.ImageField:{"widget":AdminImageWidget},
         models.TextField: {'widget': Textarea(attrs={'rows': 1,'cols': 40})},
@@ -207,7 +207,11 @@ class ParameterAdmin(
         ValueInline,
     ]
     search_fields = ['name']
-    # autocomplete_fields = ['tab_group']
+    autocomplete_fields = [
+        'tab_group',
+        'attr',
+        'feature',
+    ]
 
 
 @admin.register(Value)
@@ -224,7 +228,11 @@ class ValueAdmin(
     search_fields = [
         'name','code','color'
     ]
-    autocomplete_fields = ['parameter']
+    autocomplete_fields = [
+        'parameter',
+        'attr_value',
+        'value',
+    ]
     readonly_fields = ['code']
     formfield_overrides = {
         models.ImageField:{"widget":AdminImageWidget},

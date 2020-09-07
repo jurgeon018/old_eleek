@@ -65,10 +65,10 @@ DATABASES = {
 
 
 
-LIQPAY_PUBLIC_KEY = 'sdf'
-LIQPAY_PRIVATE_KEY = 'sdf'
-LIQPAY_SANDBOX_PUBLIC_KEY = 'sdf'
-LIQPAY_SANDBOX_PRIVATE_KEY = 'sdf'
+LIQPAY_PUBLIC_KEY = 'i46942964050'
+LIQPAY_PRIVATE_KEY = 'e0EMc79BGqm2oieTc4ujvq2iv7NPjNu7MmSlEAoM'
+LIQPAY_SANDBOX_PUBLIC_KEY = 'sandbox_i36382218041'
+LIQPAY_SANDBOX_PRIVATE_KEY = 'sandbox_XcBJpBTSMHJqN9Ms1mYtYEd7Ha7oW9LlDz8YZQcr'
 
 LIQPAY_SANDBOX_MODE = True 
 
@@ -80,7 +80,7 @@ LOGIN_URL = 'login'
 
 
 
-EMAIL_BACKEND = 'box.core.sw_global_config.backends.ConfiguredEmailBackend'
+EMAIL_BACKEND          = 'box.core.sw_global_config.backends.ConfiguredEmailBackend'
 EMAIL_USE_TLS          = True
 EMAIL_USE_SSL          = False
 EMAIL_PORT             = 587
@@ -91,6 +91,7 @@ DEFAULT_FROM_EMAIL     = EMAIL_HOST_USER
 
 DEFAULT_RECIPIENT_LIST = [
     "jurgeon018@gmail.com",
+    "dev@starwayua.com",
 ]
 
 

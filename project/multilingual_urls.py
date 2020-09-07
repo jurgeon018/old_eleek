@@ -1,12 +1,15 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render 
+from django.http import HttpResponse 
+from django.db.models import Max, Min 
 
 from .models import * 
 from box.apps.sw_shop.sw_catalog.models import *
 from box.core.sw_content.models import Page 
 from box.apps.sw_shop.sw_cart.decorators import cart_exists
-
+from box.apps.sw_shop.sw_order.models import Order
+from box.apps.sw_shop.sw_order.utils import get_order_liqpay_context
 
 def index(request):
     page = Page.objects.get(code='index')
@@ -25,7 +28,6 @@ def about(request):
 def thank_you(request):
     return render(request, 'project/thank_you.html', locals())
 
-from django.db.models import Max, Min 
 
 def item_category(request, slug):
     category          = get_object_or_404(ItemCategory, slug=slug)
@@ -48,7 +50,6 @@ def item(request, slug):
     odd_features = ItemFeature.objects.filter(item=item)[:10:2]
     even_features = ItemFeature.objects.filter(item=item)[1:10:2]
     page = item
-    # colour_
     return render(request, 'project/item.html', locals())
 
 
@@ -92,6 +93,7 @@ def search(request):
 @login_required
 def profile(request):
     page = Page.objects.get(code='profile')
+    orders = Order.objects.filter(user=request.user)
     return render(request, 'project/profile.html', locals())
 
 
@@ -136,7 +138,52 @@ def parse_request(request):
     } 
 
 
-def page1(request):
+from django.http import JsonResponse
+from django.shortcuts import redirect
+
+
+def constructor_middleware(request):
+    query = json.loads(request.body.decode('utf-8'))
+    print("query:", query)
+    item = Item.objects.get(id=query['item_id'])
+    item_feature = ItemFeature.objects.filter(item=item,name__code="frame")
+    if item_feature.exists():
+        iframe_type = item_feature.first().value.code
+    formed_attrs = {
+        # "iframe_type":iframe_type,
+        # "iframe_color":"#cccccc",
+    }
+    for item_feature in ItemFeature.objects.filter(item__id=item.id):
+        feature = item_feature.name.code or f"feature_{item_feature.name.id}"
+        value   = item_feature.value.code or f"value_{item_feature.value.id}"
+        formed_attrs.update({
+            feature:value,
+        })
+    for attribute in json.loads(query['attributes']):
+        item_attribute = ItemAttribute.objects.get(id=attribute['item_attribute_id'])
+        if 'item_attribute_value_id' in attribute:
+            item_attribute_value = ItemAttributeValue.objects.get(id=attribute['item_attribute_value_id'])
+            parameter_code = item_attribute.attribute.code or f'attribute_{item_attribute.attribute.id}'
+            value_code = item_attribute_value.value.code or f'value_{item_attribute_value.value.id}'
+            formed_attrs.update({
+                parameter_code:value_code,
+            })
+        elif 'item_attribute_value_ids' in attribute:
+            for item_attribute_value in ItemAttributeValue.objects.filter(id__in=attribute['item_attribute_value_ids']):
+                value_code = item_attribute_value.value.code or f'value_{item_attribute_value.value.id}'
+                formed_attrs.update({
+                    value_code:"true",
+                })
+    uri = ''
+    for k, v in formed_attrs.items():
+        uri += f'{k}={v}&'
+    return JsonResponse({
+        'url':reverse("constructor"),
+        # 'url':reverse("bike") + uri,
+    })
+
+
+def constructor(request):
     frames          = FrameType.objects.filter(is_active=True)
     frame_colors    = FrameColor.objects.filter(is_active=True)
     query           = request.GET 
@@ -151,7 +198,8 @@ def page1(request):
     result = parse_request(request)
     colors = result['colors']
     codes  = result['codes']
-    return render(request, 'project/page1.html', locals())
+    return render(request, 'project/constructor/constructor.html', locals())
+
 
 def common_member(a, b): 
     if (set(a)  & set(b)): 
@@ -159,7 +207,8 @@ def common_member(a, b):
     else: 
         return False
 
-def page2(request):
+
+def bike(request):
     query           = dict(request.GET)
     iframe_type     = query.pop('iframe_type')[0]
     iframe_color    = query.pop('iframe_color')[0]
@@ -226,26 +275,24 @@ def page2(request):
             "parameter":parameter,
             "values":Value.objects.filter(parameter=parameter, is_active=True),
         })
-    return render(request, 'project/page2.html', locals())
+    return render(request, 'project/constructor/bike.html', locals())
 
-
-def page3(request):
-    return render(request, 'project/page3.html', locals())
-
-
-def page4(request):
-    return render(request, 'project/page4.html', locals())
-
-# from box.apps.payment.liqpay import 
-from box.apps.sw_shop.sw_order.utils import get_order_liqpay_context
 
 
 def payment(request):
     context = get_order_liqpay_context(request)
+    print(context)
     return render(request, 'project/payment.html', context)
 
 
 from django.urls import path, include 
+
+def cart_items(request):
+    return render(request, 'cart_items.html', locals())
+
+
+def page_404(request):
+    return render(request, 'page_404.html', locals())
 
 
 urlpatterns = [
@@ -253,25 +300,26 @@ urlpatterns = [
     path('',             index,       name='index'),
     path('about/',       about,       name='about'),
     path('item_category/<slug>/',       item_category,       name='item_category'),
-    
     path('item/<slug>/', item,        name='item'),
     path('faq/',         faq,         name='faq'),
-    path('constructor/', constructor, name='constructor'),
     path('test_drive/',  test_drive,  name='test_drive'),
     path('order/',       order,       name='order'),
     path('search/',      search,      name='search'),
     path('profile/',     profile,     name='profile'),
     path('shop/',        shop,        name='shop'),
-    path('delivery/',        delivery,        name='delivery'),
-    path('payment/',        payment,        name='payment'),
+    path('delivery/',    delivery,    name='delivery'),
+    path('payment/',     payment,     name='payment'),
     
-    path('login/',       login,       name='login'),
-    path('register/',    register,    name='register'),
-    path('thank_you/',    thank_you,    name='thank_you'),
-    path('page1/',    page1,    name='page1'),
-    path('page2/',    page2,    name='page2'),
-    path('page3/',    page3,    name='page3'),
-    path('page4/',    page4,    name='page4'),
+    path('login/',      login,       name='login'),
+    path('register/',   register,    name='register'),
+    path('thank_you/',  thank_you,   name='thank_you'),
+    path('page1/',      constructor, name='constructor'),
+    path('constructor_middleware/', constructor_middleware, name='constructor_middleware'),
+    path('page2/',      bike,        name='bike'),
+    path('page_404/',   page_404,    name='page_404'),
+
+
+    path('cart_items/', cart_items,  name='cart_items'),
 ]
 
 

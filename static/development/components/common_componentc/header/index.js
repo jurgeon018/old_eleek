@@ -276,7 +276,21 @@ function create_basket_card(content, data) {
 
         let basket_title = document.createElement('div');
         basket_title.classList.add('basket_title', 'main__title', 'main__title_5');
-        basket_title.textContent = data.item.alt;
+        basket_title.textContent = data.item.title;
+        
+        // початок доробок
+        // let x = document.createElement('div');
+        // x.classList.add('basket_title', 'main__title', 'main__title_5');
+        // x.textContent = data.item.title;
+
+        // let y = document.createElement('div');
+        // y.classList.add('basket_title', 'main__title', 'main__title_5');
+        // y.textContent = data.item.title;
+
+        // let z = document.createElement('div');
+        // z.classList.add('basket_title', 'main__title', 'main__title_5');
+        // z.textContent = data.item.title;
+        // кінець доробок
 
         let basket_del = document.createElement('img');
         basket_del.classList.add('basket_del', 'remove_prod_card');
@@ -331,6 +345,11 @@ function create_basket_card(content, data) {
         basket_title__block.appendChild(basket_title);
         basket_title__block.appendChild(basket_del);
         basket_right_content.appendChild(basket_bottom__wrap);
+        // початок доробок
+        // basket_right_content.appendChild(x);
+        // basket_right_content.appendChild(y);
+        // basket_right_content.appendChild(z);
+        // кінець доробок
         basket_bottom__wrap.appendChild(basket_counter__block);
         basket_counter__block.appendChild(basket_text);
         basket_counter__block.appendChild(basket_counter);
@@ -345,9 +364,6 @@ function create_basket_card(content, data) {
         $(basket_next).on('click', basket_plus);
         $(basket_prep).on('click', basket_minus);
         $(basket_input).on('blur', basket_blur);
-
-
-        
 
         return basket_content_profile;
 }
