@@ -15,19 +15,21 @@ item_section__wrapper
 <section class="error_section padding_sect">
   <div class="container">
     <div class="error__wrap">
-        <img class="error_image" alt="" src="/static/source/img/error/error.png" srcset="/static/source/img/error/error.png 1x, /static/source/img/error/error@2x.png  2x">
+        <img class="error_image" alt="" 
+          src="/static/source/img/error/error.png" 
+          srcset="/static/source/img/error/error.png 1x, /static/source/img/error/error@2x.png  2x"
+        >
         <h4 class="error_title main__title main__title_3 color_black">
             Такої сторінки не знайдено
         </h4>
         <h3 class="error_text standart_title standart_title_3 color_black">
             Поверніться на головну або перегляньте асортимент наших товарів
         </h3>
-        <a href="/shop/" class="error_btn btn_standart btn_standart_yellow out">
+        <a href="{% url 'shop' %}" class="error_btn btn_standart btn_standart_yellow out">
             Магазин
         </a>
     </div>
   </div>
-  <!-- /.container -->
 </section>
 {% endblock content %}
 {% block scripts %}

@@ -12,7 +12,6 @@
 {% endblock styles %}
 {% block content %}
 <main class="item_section__wrapper">
-  
   <section class="item_tab profile_tab padding_sect">
     {% render 'cabinet' as cabinet %}
     <div class="profile_name main__title main__title_2 color_black db_content" data-admin_url="{{cabinet.get_admin_url}}">
@@ -72,27 +71,35 @@
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_5">
                 {% trans "Ціна" %}              
               </div>
+              <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_5">
+                {% trans "№ заказу" %}              
+              </div>
             </div>
-            {% for cart_item in '123456789'|make_list %}
-            <a href="{% url 'item' 1 %}">
+            {% for order in orders %}
+            {% for cart_item in order.cart_items.all %}
+            <a href="{{cart_item.item.get_absolute_url}}">
             <div class="profile_item">
               <div class="profile_characteristick attr_size_1">
-                <img src="/static/source/img/item/img-0041.jpg" alt="">
+                <img src="{{cart_item.item.image_url}}" alt="{{cart_item.item.alt}}">
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_2">
-                Товар {{cart_item}}
+                {{cart_item.item.title}}
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_3">
-                {{cart_item}} шт.
+                {{cart_item.quantity}} шт.
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_4">
-                16.0{{cart_item}}.2020
+                {{order.created|date:"d.m.Y"}}
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
-                {{cart_item}}223 грн.
+                {{cart_item.item.price}} {{cart_item.item.currency.code}}
+              </div>
+              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
+                {{order.id}}
               </div>
             </div>
             </a>
+            {% endfor %}
             {% endfor %}
           </div>
         </div>
@@ -147,12 +154,12 @@
         </div>
         <!-- Налаштування профілю -->
         <div id="3" class="item_tab_content">
-          <form action="/api/users/{{request.user.id}}/" class="change_profile registery_form PATCH">
+          <form action="{% url 'update_project_user' %}" class="change_profile registery_form">
             <div class="footer_input__wrap inp-vak-wrap">
               <label for="login_name" class="login_label label__style color_black">
                 Ім'я та прізвище
               </label>
-              <input type="text" id="login_name" name="first_name" value="{% if request.user.full_name %}{{request.user.full_name}}{% endif %}" class="login_name login_input input_focus">
+              <input type="text" id="login_name" name="first_name" value="{% if request.user.first_name %}{{request.user.first_name}}{% endif %}" class="login_name login_input input_focus">
             </div>
             <div class="footer_input__wrap inp-vak-wrap">
               <label for="login_mail" class="login_label label__style color_black">
@@ -172,12 +179,12 @@
               </label>
               <input type="text" id="login_city" name="address" value="{% if request.user.address %}{{request.user.address}}{% endif %}" class="login_city login_input input_focus">
             </div>
-            <div class="footer_input__wrap inp-vak-wrap">
+            <!-- <div class="footer_input__wrap inp-vak-wrap">
               <label for="login_old_pass" class="login_label label__style color_black">
                 Пароль
               </label>
               <input type="password" id="login_old_pass" name="old_password" class="login_old_pass login_input input_focus">
-            </div>
+            </div> -->
             <div class="footer_input__wrap inp-vak-wrap">
               <label for="login_pass" class="login_label label__style color_black">
                 Новий Пароль
@@ -190,6 +197,7 @@
               </label>
               <input type="password" id="login_pass2" name="password2" class="login_pass2 login_input input_focus">
             </div>
+
             <div class="pass_checked_error"></div>
             <div class="bottom_registery__block">
               <input type="submit" value="Зберегти" class="btn_standart btn_standart_yellow">

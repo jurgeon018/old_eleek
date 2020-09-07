@@ -92,7 +92,7 @@ item_section__wrapper
           {{item.converted_price}} {{item.main_currency.symbol}}
         </div>
         <div class="item_btn_wrapper">
-          {% if item.in_stock and not item.in_stock.availability or not item.amount %}
+          {% if item.in_stock and not item.in_stock.availability and item.amount == 0 %}
           <div data-src='#form_qustion' class="fast_btn sale_one_click btn_standart btn_standart_black color_white">
             {% trans 'Інфорація про товар' %}
           </div>
@@ -353,7 +353,7 @@ item_section__wrapper
           </div>
           <div class="option_content__block">
             {% for option in attribute.get_values %}
-            <div 
+            <div
               class="option_content_prof price_multiple_option price_option" 
               data-value="{{option.value.value}}" 
               data-price-option='{{option.price|stringformat:".2f"}}'
@@ -363,6 +363,7 @@ item_section__wrapper
               <img class="option_img" src="/static/source/img/item/close.svg" alt="">
               <div class="option_text standart_title standart_title_6">
                 {{option.value.value}} ({{option.price}} {{option.currency.code}})
+                {{option.attribute}}
               </div>
             </div>
             {% endfor %}

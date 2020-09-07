@@ -12,6 +12,7 @@ router = DefaultRouter
 urlpatterns = [
     # path('', include(router.urls)),
     path('test_drive_contact/', test_drive_contact, name='test_drive_contact'),
+    path('update_project_user/', update_project_user, name='update_project_user'),
 ]
 
 

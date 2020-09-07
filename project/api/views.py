@@ -48,5 +48,24 @@ def test_drive_contact(request):
 
 
 
-
+def update_project_user(request):
+    response        = {}
+    query           = request.POST or request.GET
+    first_name      = query.get('first_name', '') 
+    email           = query.get('email', '') 
+    phone_number    = query.get('phone_number', '') 
+    address         = query.get('address', '') 
+    password1       = query.get('pass1') 
+    password2       = query.get('password2')
+    user            = request.user 
+    user.first_name = first_name
+    user.email      = email
+    user.phone_number      = phone_number
+    user.address    = address
+    if password1 and password2:
+        response['message'] = 'Пароль було змінено.'
+        user.set_password(password1)
+    user.save()
+    response["status"] = "OK"
+    return JsonResponse(response)
 
