@@ -269,8 +269,18 @@ class Value(GeneralMixin):
 
 
 class Relationship(models.Model):
-    parent   = models.ForeignKey(Value, related_name='parent_relationships', on_delete=models.CASCADE)
-    children = models.ForeignKey(Value, related_name='child_relationships', on_delete=models.CASCADE)
+    parent   = models.ForeignKey(
+        Value, related_name='parent_relationships', 
+        # on_delete=models.CASCADE,
+        on_delete=models.SET_NULL, blank=True, null=True,
+    )
+
+    children = models.ForeignKey(
+        Value, related_name='child_relationships', 
+        # on_delete=models.CASCADE,
+        on_delete=models.SET_NULL, blank=True, null=True,
+    )
+
 
     def __str__(self):
         return f'{self.id}.{self.parent} -> {self.children}'
