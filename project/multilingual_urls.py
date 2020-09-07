@@ -50,6 +50,8 @@ def item(request, slug):
     odd_features = ItemFeature.objects.filter(item=item)[:10:2]
     even_features = ItemFeature.objects.filter(item=item)[1:10:2]
     page = item
+    # x = ItemAttributeValue.objects.get(id=65)
+    # print(x)
     return render(request, 'project/item.html', locals())
 
 
@@ -144,7 +146,7 @@ from django.shortcuts import redirect
 
 def constructor_middleware(request):
     query = json.loads(request.body.decode('utf-8'))
-    print("query:", query)
+    # print("query:", query)
     item = Item.objects.get(id=query['item_id'])
     item_feature = ItemFeature.objects.filter(item=item,name__code="frame")
     if item_feature.exists():
@@ -160,8 +162,10 @@ def constructor_middleware(request):
             feature:value,
         })
     for attribute in json.loads(query['attributes']):
+        # print("attribute:", attribute)
         item_attribute = ItemAttribute.objects.get(id=attribute['item_attribute_id'])
         if 'item_attribute_value_id' in attribute:
+            print("attribute['item_attribute_value_id']", attribute['item_attribute_value_id'])
             item_attribute_value = ItemAttributeValue.objects.get(id=attribute['item_attribute_value_id'])
             parameter_code = item_attribute.attribute.code or f'attribute_{item_attribute.attribute.id}'
             value_code = item_attribute_value.value.code or f'value_{item_attribute_value.value.id}'

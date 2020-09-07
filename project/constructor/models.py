@@ -176,7 +176,10 @@ class TabGroup(BaseMixin, NameMixin):
         return Parameter.objects.filter(is_active=True, tab_group=self)
 
     def __str__(self):
-         return f'{self.id}.{self.tab.frame.name} -> {self.tab.name} -> {self.name}'
+        try:
+            return f'{self.id}.{self.tab.frame.name} -> {self.tab.name} -> {self.name}'
+        except:
+            return f'{self.id}'
     
     class Meta: 
         ordering = ['order']
@@ -208,7 +211,10 @@ class Parameter(BaseMixin, NameMixin, CodeMixin):
         return Value.objects.filter(is_active=True, parameter=self)
 
     def __str__(self):
-         return f'{self.id}.{self.tab_group.tab.frame.name} -> {self.tab_group.tab.name} -> {self.tab_group.name} -> {self.name}'
+        try:
+            return f'{self.id}.{self.tab_group.tab.frame.name} -> {self.tab_group.tab.name} -> {self.tab_group.name} -> {self.name}'
+        except:
+            return f'{self.id}'
     
     class Meta: 
         ordering = ['order']
@@ -257,7 +263,10 @@ class Value(GeneralMixin):
         return result 
 
     def __str__(self):
-        return f'{self.id}. {self.parameter.tab_group.tab.frame.name} -> {self.parameter.tab_group.tab.name} -> {self.parameter.tab_group.name} -> {self.parameter.name} -> {self.name}'
+        try:
+            return f'{self.id}. {self.parameter.tab_group.tab.frame.name} -> {self.parameter.tab_group.tab.name} -> {self.parameter.tab_group.name} -> {self.parameter.name} -> {self.name}'
+        except:
+            return f'{self.id}'
 
     class Meta: 
         ordering = ['order']
