@@ -2247,6 +2247,17 @@ body {
 .label_select_drive {
   top: -21px; }
 
+.thankyou_section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; }
+  .thankyou_section h1 {
+    display: flex; }
+
 @media (max-width: 992px) {
   .drive_form__block {
     flex-direction: column;
