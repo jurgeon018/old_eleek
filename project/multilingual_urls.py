@@ -141,8 +141,8 @@ def parse_request(request):
 def constructor_middleware(request):
     print(request.POST)
     print(request.GET)
-    print(request.data)
-    
+    print(request.body)
+
     query = request.GET or request.POST
     print("query:", query)
     uri = '?'
