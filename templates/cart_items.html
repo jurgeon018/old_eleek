@@ -1,0 +1,18 @@
+{% for cart_item in cart_items %}
+    <br>{{cart_item.item.title}}
+    <br>{{cart_item.item.price}} {{cart_item.item.currency.code}}
+    <br>{{cart_item.quantity}} шт.
+    <br>
+    {% for cart_item_attribute in cart_item.get_attributes %}
+      {{cart_item_attribute.attribute_name.attribute.name}}:
+      {% if not cart_item_attribute.values.all.exists %}
+        {{cart_item_attribute.value.value.value}}<br>
+      {% else%}
+        {% for value in cart_item_attribute.values.all %}{{value.value.value}}, {% endfor %}
+      {% endif %}
+    {% endfor %}
+    <hr>
+{% endfor %}
+
+
+

@@ -145,7 +145,7 @@ class FrameTypeAdmin(
         FrameColorInline,
     ]
     readonly_fields = ['code']
-    autocomplete_fields = ['item']
+    autocomplete_fields = ['items']
     formfield_overrides = {
         models.ImageField:{"widget":AdminImageWidget},
         models.TextField: {'widget': Textarea(attrs={'rows': 1,'cols': 40})},

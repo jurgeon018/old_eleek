@@ -1495,7 +1495,8 @@ $('.three_de__block').on('click', function () {
   }).then(function (data) {
     return data.json();
   }).then(function (body) {
-    console.log('body: ', body); // location.href=data.url;
+    console.log('body: ', body);
+    location.href = body.url;
   });
 });
 var slickFinder2 = $('.best-sales-block').length;

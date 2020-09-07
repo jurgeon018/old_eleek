@@ -433,7 +433,7 @@ $('.three_de__block').on('click', function() {
       })
       .then(body => {
         console.log('body: ', body);
-        // location.href=data.url;
+        location.href=body.url;
 
       });
 });
