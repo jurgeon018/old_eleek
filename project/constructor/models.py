@@ -118,7 +118,7 @@ class FrameType(GeneralMixin):
         for parameter in parameters:
             value = parameter.get_values().first()
             initial_price += value.price 
-            print(value.price, value)
+            # print(value.price, value)
         initial_price = str(initial_price).split('.')[0]
         initial_price = initial_price[::-1]
         initial_price = [(initial_price[i:i+3]) for i in range(0, len(initial_price), 3)] 
@@ -150,7 +150,7 @@ class Tab(BaseMixin, NameMixin, CodeMixin, ImageMixin, FrameMixin):
         return super().modeltranslation_fields() + ['description']
 
     def __str__(self):
-         return f'{self.id}.{self.frame.name} -> {self.name}'
+         return f'{self.id}.{self.name} <- {self.frame.name}'
     
     class Meta: 
         ordering = ['order']
@@ -177,7 +177,7 @@ class TabGroup(BaseMixin, NameMixin):
 
     def __str__(self):
         try:
-            return f'{self.id}.{self.tab.frame.name} -> {self.tab.name} -> {self.name}'
+            return f'{self.id}. {self.name}  <- {self.tab.name} <- {self.tab.frame.name}'
         except:
             return f'{self.id}'
     
@@ -212,7 +212,7 @@ class Parameter(BaseMixin, NameMixin, CodeMixin):
 
     def __str__(self):
         try:
-            return f'{self.id}.{self.tab_group.tab.frame.name} -> {self.tab_group.tab.name} -> {self.tab_group.name} -> {self.name}'
+            return f'{self.id}. {self.name} <- {self.tab_group.name} <- {self.tab_group.tab.name} <- {self.tab_group.tab.frame.name}'
         except:
             return f'{self.id}'
     
@@ -264,7 +264,7 @@ class Value(GeneralMixin):
 
     def __str__(self):
         try:
-            return f'{self.id}. {self.parameter.tab_group.tab.frame.name} -> {self.parameter.tab_group.tab.name} -> {self.parameter.tab_group.name} -> {self.parameter.name} -> {self.name}'
+            return f'{self.id}. {self.name} <- {self.parameter.name} <- {self.parameter.tab_group.name} <- {self.parameter.tab_group.tab.name} <- {self.parameter.tab_group.tab.frame.name}'
         except:
             return f'{self.id}'
 

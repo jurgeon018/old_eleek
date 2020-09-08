@@ -1,15 +1,17 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404
-from django.shortcuts import render 
-from django.http import HttpResponse 
+from django.shortcuts import get_object_or_404, redirect, render 
+from django.http import HttpResponse, JsonResponse
 from django.db.models import Max, Min 
 
-from .models import * 
 from box.apps.sw_shop.sw_catalog.models import *
 from box.core.sw_content.models import Page 
 from box.apps.sw_shop.sw_cart.decorators import cart_exists
 from box.apps.sw_shop.sw_order.models import Order
 from box.apps.sw_shop.sw_order.utils import get_order_liqpay_context
+
+from .models import * 
+from .constructor.models import * 
+
 
 def index(request):
     page = Page.objects.get(code='index')
@@ -50,8 +52,6 @@ def item(request, slug):
     odd_features = ItemFeature.objects.filter(item=item)[:10:2]
     even_features = ItemFeature.objects.filter(item=item)[1:10:2]
     page = item
-    # x = ItemAttributeValue.objects.get(id=65)
-    # print(x)
     return render(request, 'project/item.html', locals())
 
 
@@ -92,6 +92,7 @@ def search(request):
         )
     return render(request, 'project/search.html', locals())
 
+
 @login_required
 def profile(request):
     page = Page.objects.get(code='profile')
@@ -112,9 +113,6 @@ def login(request):
 def register(request):
     page = Page.objects.get(code='register')
     return render(request, 'project/auth/register.html', locals())
-
-
-from project.constructor.models import * 
 
 
 def parse_request(request):
@@ -140,50 +138,79 @@ def parse_request(request):
     } 
 
 
-from django.http import JsonResponse
-from django.shortcuts import redirect
-
-
 def constructor_middleware(request):
+    formed_attrs = {}
     query = json.loads(request.body.decode('utf-8'))
     # print("query:", query)
     item = Item.objects.get(id=query['item_id'])
-    item_feature = ItemFeature.objects.filter(item=item,name__code="frame")
-    if item_feature.exists():
-        iframe_type = item_feature.first().value.code
-    formed_attrs = {
-        # "iframe_type":iframe_type,
-        # "iframe_color":"#cccccc",
-    }
-    for item_feature in ItemFeature.objects.filter(item__id=item.id):
-        feature = item_feature.name.code or f"feature_{item_feature.name.id}"
-        value   = item_feature.value.code or f"value_{item_feature.value.id}"
-        formed_attrs.update({
-            feature:value,
-        })
-    for attribute in json.loads(query['attributes']):
-        # print("attribute:", attribute)
+    features = ItemFeature.objects.filter(item__id=query['item_id'])
+    attributes = json.loads(query['attributes'])
+    # frame
+    item_feature_iframe_type = ItemFeature.objects.get(
+        item=item,name__code="iframe_type"
+    ).value.code
+    if item_feature_iframe_type == 'eleek': item_feature_iframe_type = 'neo'
+    frame = FrameType.objects.get(code=item_feature_iframe_type)
+    formed_attrs['iframe_type']  = item_feature_iframe_type
+    # color
+    item_feature_frame_color = ItemAttributeValue.objects.filter(
+        item_attribute__item=item,
+        item_attribute__attribute__code="iframe_color",
+    )
+    if item_feature_frame_color.exists():
+        item_feature_frame_color = item_feature_frame_color.first().value.code
+    else:
+        item_feature_frame_color = FrameColor.objects.filter(frame=frame).first().color
+    formed_attrs['iframe_color'] = item_feature_frame_color
+    # attributes & features 
+    attribute_ids = []
+    attribute_value_ids = []
+    feature_ids = []
+    feature_value_ids = []
+    for item_feature in features:
+        feature_ids.append(item_feature.name.id)
+        feature_value_ids.append(item_feature.value.id)
+    for attribute in attributes:
         item_attribute = ItemAttribute.objects.get(id=attribute['item_attribute_id'])
         if 'item_attribute_value_id' in attribute:
-            print("attribute['item_attribute_value_id']", attribute['item_attribute_value_id'])
             item_attribute_value = ItemAttributeValue.objects.get(id=attribute['item_attribute_value_id'])
-            parameter_code = item_attribute.attribute.code or f'attribute_{item_attribute.attribute.id}'
-            value_code = item_attribute_value.value.code or f'value_{item_attribute_value.value.id}'
-            formed_attrs.update({
-                parameter_code:value_code,
-            })
+            attribute_ids.append(item_attribute.attribute.id)
+            attribute_value_ids.append(item_attribute_value.value.id)
         elif 'item_attribute_value_ids' in attribute:
             for item_attribute_value in ItemAttributeValue.objects.filter(id__in=attribute['item_attribute_value_ids']):
-                value_code = item_attribute_value.value.code or f'value_{item_attribute_value.value.id}'
-                formed_attrs.update({
-                    value_code:"true",
-                })
-    uri = ''
+                attribute_ids.append(item_attribute.attribute.id)
+                attribute_value_ids.append(item_attribute_value.value.id)
+    # values
+    values = Value.objects.filter(parameter__tab_group__tab__frame=frame)
+    for value in values:
+      parameter = value.parameter
+      if parameter.attr and parameter.attr.id in attribute_ids:
+        if value.attr_value and value.attr_value.id in attribute_value_id:
+          formed_attrs[parameter.code] = value.code
+        elif value.value and value.value.id in feature_value_ids:
+          formed_attrs[parameter.code] = value.code
+        else:
+          formed_attrs[parameter.code] = Value.objects.filter(parameter=parameter).first().code
+      elif parameter.feature and parameter.feature.id in feature_ids:
+        if value.attr_value and value.attr_value.id in attribute_value_id:
+          formed_attrs[parameter.code] = value.code
+        elif value.value and value.value.id in feature_value_ids:
+          formed_attrs[parameter.code] = value.code
+        else:
+          formed_attrs[parameter.code] = Value.objects.filter(parameter=parameter).first().code
+      else:
+        value = Value.objects.filter(parameter=parameter).first().code
+        print("value: ", value)
+        formed_attrs[parameter.code] = value 
+    # url
+    uri = '?'
     for k, v in formed_attrs.items():
         uri += f'{k}={v}&'
+    uri = uri[:-1]
+    print(uri)
     return JsonResponse({
-        'url':reverse("constructor"),
-        # 'url':reverse("bike") + uri,
+        # 'url':reverse("constructor"),
+        'url':reverse("bike") + uri,
     })
 
 
@@ -285,11 +312,9 @@ def bike(request):
 
 def payment(request):
     context = get_order_liqpay_context(request)
-    print(context)
+    # print(context)
     return render(request, 'project/payment.html', context)
 
-
-from django.urls import path, include 
 
 def cart_items(request):
     return render(request, 'cart_items.html', locals())
@@ -297,6 +322,10 @@ def cart_items(request):
 
 def page_404(request):
     return render(request, 'page_404.html', locals())
+
+
+
+from django.urls import path, include 
 
 
 urlpatterns = [

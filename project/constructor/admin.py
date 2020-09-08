@@ -134,7 +134,7 @@ class FrameColorInline(
 class FrameTypeAdmin(
     ImportExportModelAdmin,
     NestedModelAdmin,
-    SortableAdminMixin,
+    # SortableAdminMixin,
     TabbedTranslationAdmin,
     ):
     resource_class = FrameTypeResource
@@ -156,7 +156,7 @@ class FrameTypeAdmin(
 class TabAdmin(
     ImportExportModelAdmin, 
     TabbedTranslationAdmin,
-    SortableAdminMixin,
+    # SortableAdminMixin,
     NestedModelAdmin,
     ):
     resource_class = TabResource
@@ -176,7 +176,7 @@ class TabAdmin(
 class TabGroupAdmin(
     ImportExportModelAdmin, 
     TabbedTranslationAdmin,
-    SortableAdminMixin,
+    # SortableAdminMixin,
     NestedModelAdmin,
     ):
     resource_class = TabGroupResource
@@ -194,7 +194,7 @@ class TabGroupAdmin(
 @admin.register(Parameter)
 class ParameterAdmin(
     ImportExportModelAdmin, 
-    SortableAdminMixin,
+    # SortableAdminMixin,
     TabbedTranslationAdmin,
     NestedModelAdmin,
     ):
@@ -205,6 +205,14 @@ class ParameterAdmin(
     }
     inlines = [
         ValueInline,
+    ]
+    list_display = [
+        'id',
+        'code',
+        'name',
+        'tab_group',
+        'attr',
+        'feature',
     ]
     search_fields = ['name']
     autocomplete_fields = [
@@ -218,7 +226,7 @@ class ParameterAdmin(
 class ValueAdmin(
     TabbedTranslationAdmin,
     ImportExportModelAdmin,
-    SortableAdminMixin,
+    # SortableAdminMixin,
     ):
     resource_class = ValueResource
     inlines = [
@@ -229,6 +237,14 @@ class ValueAdmin(
         'name','code','color'
     ]
     autocomplete_fields = [
+        'parameter',
+        'attr_value',
+        'value',
+    ]
+    list_display = [
+        'id',
+        'code',
+        'name',
         'parameter',
         'attr_value',
         'value',

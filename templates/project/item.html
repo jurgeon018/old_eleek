@@ -236,7 +236,7 @@ item_section__wrapper
           {% trans 'Купити в кредит' %}
         </div>
       </div> -->
-      
+      {% if odd_features or even_features %}
       <div class="item_char_title main__title main__title_4">
         {% trans 'Характеристики' %}
       </div>
@@ -266,6 +266,7 @@ item_section__wrapper
           {% endfor %}
         </div>
       </div>
+      {% endif %}
       
 
 
@@ -510,6 +511,7 @@ item_section__wrapper
     </div>
   </div>
 </section>
+{% if item.similars.all.exists %}
 <section class="best_sales">
   <div class="container">
      <div class="best_title-block">
@@ -553,6 +555,7 @@ item_section__wrapper
   </div>
   <!-- /.container -->
 </section>
+{% endif %}
 <!-- /.best_sales -->
 <section class="item_tab">
   <div class="tab_container">
