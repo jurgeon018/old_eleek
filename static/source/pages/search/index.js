@@ -810,6 +810,7 @@ function Onload() {
   valide_form('#comment_form', '.inp-vak-wrap', false);
   valide_form('.registery_form', '.inp-vak-wrap', false);
   valide_form('.drive__form_last', '.inp-vak-wrap', true);
+  valide_form('.drive__form', '.inp-vak-wrap', true);
   valide_form('.form_cons', '.inp-vak-wrap', true);
   valide_form('#form_qustion', '.inp-vak-wrap', true);
   valide_form('#form_cons', '.inp-vak-wrap', true);
