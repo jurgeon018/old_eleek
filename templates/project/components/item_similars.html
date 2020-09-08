@@ -1,0 +1,46 @@
+{% load i18n sw_content sw_catalog %}
+{% if item.similars.all.exists %}
+<section class="best_sales">
+  <div class="container">
+     <div class="best_title-block">
+         <h4 class="best_sale_title">
+          {% trans 'Схожі товари' %}
+          </h4>
+         <div class="slick-wrap">
+             <button type="button" class="slick-first">
+                 <img src="/static/source/img/item/arrow-right.svg" alt="">
+             </button>
+             <button type="button" class="slick-second">
+                 <img src="/static/source/img/item/arrow-right.svg" alt="">
+
+             </button>
+         </div>
+     </div>
+      <div class="best-sales-block">
+        {% for similar in item.similars.all %}
+          <div class="best-sales-prof">
+              <a href="{{similar.get_absolute_url}}" class="best-sales_link-img">
+                 <img src="{{similar.image_url}}" alt="{{similar.alt}}" class="best-sales_photo">
+              </a>
+             <div class="best-sales_text">
+                <div class="best-sales_info">
+                     <div class="name-product">
+                         {{similar.title}}
+                     </div>
+                     <div class="cost-product">
+                         {{similar.price}} {{similar.currency.code}}
+                     </div>
+                </div>
+                <!-- 
+                <a href="{{similar.get_absolute_url}}" class="basket-btn">
+                 У Кошик
+                </a> 
+                -->
+             </div>
+         </div>
+         {% endfor %}
+      </div>
+  </div>
+  <!-- /.container -->
+</section>
+{% endif %}
