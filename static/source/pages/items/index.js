@@ -1370,7 +1370,7 @@ function createProdCard(product, step) {
   prod_card_info__wrap.classList.add('prod_card_info__wrap');
   var prod_name = document.createElement('div');
   prod_name.classList.add('prod_card-name', 'standart_title', 'standart_title_4', 'color_black');
-  prod_name.textContent = "".concat(product.alt);
+  prod_name.textContent = "".concat(product.title);
   var prod_card = document.createElement('div');
   prod_card.classList.add('prod_card-info');
   var prod_card_cost = document.createElement('div');
