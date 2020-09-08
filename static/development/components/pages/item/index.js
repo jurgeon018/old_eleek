@@ -401,8 +401,13 @@ function formited_json_atrr() {
     item_attribute_value_ids: mini_mass
   });
   console.log('attr_mass: ', attr_mass);
-
- return attr_mass;
+  let new_mass;
+  if (attr_mass[0].item_attribute_id == undefined) {
+    new_mass = [];
+    return new_mass;
+  } else {
+    return attr_mass;
+  }
 }
 
 
