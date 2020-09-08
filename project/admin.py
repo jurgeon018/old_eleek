@@ -4,8 +4,8 @@ from django.contrib.auth import get_user_model
 from .models import * 
 from .resources import * 
 from import_export.admin import ImportExportModelAdmin
-
-
+from modeltranslation.admin import TabbedTranslationAdmin
+# from box.core.utils import 
 admin.site.register(get_user_model(), BoxUserAdmin)
 
 
@@ -25,15 +25,29 @@ class TestDriveAdmin(admin.ModelAdmin):
 
 
 @admin.register(TestDriveModel)
-class TestDriveModelAdmin(ImportExportModelAdmin):
+class TestDriveModelAdmin(
+    TabbedTranslationAdmin,
+    ImportExportModelAdmin,
+    ):
     resourcce_class = TestDriveModelResource
 
 
-class VeloSliderAdmin(ImportExportModelAdmin):
+@admin.register(VeloSlider)
+class VeloSliderAdmin(
+    TabbedTranslationAdmin,
+    ImportExportModelAdmin,
+    ):
     resource_class = VeloSliderResource
 
 
-class TestDriveSliderAdmin(ImportExportModelAdmin):
+@admin.register(TestDriveSlider)
+class TestDriveSliderAdmin(
+    TabbedTranslationAdmin,
+    ImportExportModelAdmin,
+    ):
+    autocomplete_fields = [
+        'item',
+    ]
     resource_class = TestDriveSliderResource
 
 

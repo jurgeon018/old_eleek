@@ -65,7 +65,7 @@ section__wrapper
     <div class="bike_trailer__wrapper db_content" data-admin_url="{{slider.get_admin_url}}">
       <div class="bike_trailer_content">
         <h1 class="main__title main__title_1 color_black slide-name anim_text">
-          {{slider.text}}
+          {{slider.text|safe}}
         </h1>
         <div class="bike_trailer_btn__wrap slide-name anim_text">
             <a href="{% url 'test_drive' %}" class="btn_standart btn_standart_transparent">
@@ -198,7 +198,7 @@ section__wrapper
 
               </span>
               <span class="pref_text main__title main__title_5 color_white">
-                {% trans 'Час' %}
+                {% trans 'Тривалість заряду' %}
               </span>
           </div>
           <div class="preferens_counter__block">

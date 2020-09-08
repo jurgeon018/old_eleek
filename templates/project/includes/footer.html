@@ -26,9 +26,10 @@
           <img src="/static/source/img/index/phone.svg" alt="">
         </div>
         {% render 'tel1' 'tel' as tel1 %}
-        <a href="tel:+380673878768" class="footer_info_text db_content" data-admin_url="{{tel1.get_admin_url}}">
+        <a href="tel:+380673878768" class="footer_info_text">
           <!-- +380 67 387 87 68 -->
-          {{tel1.text}}
+          +380673878768
+          <!-- {{tel1.text}} -->
         </a>
       </div>
       <div class="footer_info">
@@ -47,7 +48,7 @@
           Пн. - Пт.: 09:00 - 18:00
         </div>
       </div>
-      <div class="footer_social__block">
+      <!-- <div class="footer_social__block">
           <a href="#" class="footer_social">
             <svg class="footer_social_svg" xmlns="http://www.w3.org/2000/svg" width="17" height="31" viewBox="0 0 17 31">
               <path fill="#FFF" d="M10.411 30.887V16.799h4.727l.71-5.492H10.41V7.801c0-1.59.44-2.673 2.722-2.673h2.906V.214C15.536.15 13.81 0 11.803 0 7.611 0 4.741 2.559 4.741 7.257v4.05H0v5.492h4.741v14.088h5.67z"/>
@@ -63,7 +64,7 @@
               <path fill="#FFF" d="M17.82 0c1.823.008 10.914.076 13.374.75 1.5.403 2.681 1.585 3.085 3.084.647 2.366.714 6.946.72 8.151v.43c-.005.875-.065 5.795-.72 8.285-.404 1.499-1.586 2.681-3.085 3.085-2.507.66-11.896.715-13.47.72h-.448c-1.57-.005-10.937-.063-13.47-.749-1.5-.404-2.682-1.586-3.085-3.085-.64-2.402-.712-7.16-.72-8.21v-.416c.008-1.045.08-5.783.72-8.21.403-1.5 1.614-2.71 3.084-3.114C6.265.073 15.356.007 17.18 0zM14.01 7.007V17.5l9.11-5.247-9.11-5.247z"/>
             </svg>
           </a>
-      </div>
+      </div> -->
     </div>
     <div class="footer_accordeon__block footer_part">
       <div class="footer_accordeon_name color_white main__title main__title_3">
@@ -93,13 +94,13 @@
       </div>
       <div class="footer_accordeon_content">
         <a href="{{velo.get_absolute_url}}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          {{velo.title}}
+          {{velo.title|title}}
         </a>
         <a href="{{ramy.get_absolute_url}}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          {{ramy.title}}
+          {{ramy.title|title}}
         </a>
         <a href="{{comp.get_absolute_url}}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          {{comp.title}}
+          {{comp.title|title}}
         </a>
       </div>
     </div>

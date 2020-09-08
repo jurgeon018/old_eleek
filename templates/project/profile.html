@@ -55,56 +55,58 @@
                     Категорії товарів
                   </a>
                 </div> -->
-            <div class="profile_attributes__block">
-              <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_1">
-                {% trans "Фото" %}              
+            {% if orders.exists %}
+              <div class="profile_attributes__block">
+                <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_1">
+                  {% trans "Фото" %}              
+                </div>
+                <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_2">
+                  {% trans "Назва" %}              
+                </div>
+                <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_3">
+                  {% trans "К-сть" %}              
+                </div>
+                <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_4">
+                  {% trans "Дата" %}              
+                </div>
+                <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_5">
+                  {% trans "Ціна" %}              
+                </div>
+                <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_5">
+                  {% trans "№ заказу" %}              
+                </div>
               </div>
-              <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_2">
-                {% trans "Назва" %}              
+              {% for order in orders %}
+              {% for cart_item in order.cart_items.all %}
+              <a href="{{cart_item.item.get_absolute_url}}">
+              <div class="profile_item">
+                <div class="profile_characteristick attr_size_1">
+                  <img src="{{cart_item.item.image_url}}" alt="{{cart_item.item.alt}}">
+                </div>
+                <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_2">
+                  {{cart_item.item.title}}
+                </div>
+                <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_3">
+                  {{cart_item.quantity}} шт.
+                </div>
+                <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_4">
+                  {{order.created|date:"d.m.Y"}}
+                </div>
+                <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
+                  {{cart_item.item.price}} {{cart_item.item.currency.code}}
+                </div>
+                <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
+                  {{order.id}}
+                </div>
               </div>
-              <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_3">
-                {% trans "К-сть" %}              
-              </div>
-              <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_4">
-                {% trans "Дата" %}              
-              </div>
-              <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_5">
-                {% trans "Ціна" %}              
-              </div>
-              <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_5">
-                {% trans "№ заказу" %}              
-              </div>
-            </div>
-            {% for order in orders %}
-            {% for cart_item in order.cart_items.all %}
-            <a href="{{cart_item.item.get_absolute_url}}">
-            <div class="profile_item">
-              <div class="profile_characteristick attr_size_1">
-                <img src="{{cart_item.item.image_url}}" alt="{{cart_item.item.alt}}">
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_2">
-                {{cart_item.item.title}}
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_3">
-                {{cart_item.quantity}} шт.
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_4">
-                {{order.created|date:"d.m.Y"}}
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
-                {{cart_item.item.price}} {{cart_item.item.currency.code}}
-              </div>
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
-                {{order.id}}
-              </div>
-            </div>
-            </a>
-            {% endfor %}
-            {% endfor %}
+              </a>
+              {% endfor %}
+              {% endfor %}
+            {% else %}
+              Ви ще не зробили ніяких замовлень
+            {% endif %}
           </div>
         </div>
-
-
         <!-- Програма лояльності -->
         <div id="2" class="item_tab_content">
           <div class="profile_content__wrap">
