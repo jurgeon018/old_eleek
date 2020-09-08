@@ -40,23 +40,24 @@ item_section__wrapper
                           
                       </div>
                   <div class="range_slider" id="slider"></div>
-                  {% for category in parent_categories %}
-                  <div class="items_filter_content__wrap {% if category == page %} items_filter_content__wrap_active {% endif %}">
-                    <a href="{{category.get_absolute_url}}">
+                  {% for parent_category in parent_categories %}
+                  <div class="items_filter_content__wrap {% if parent_category == page %} items_filter_content__wrap_active {% endif %}">
+                    <a href="{{parent_category.get_absolute_url}}">
                       <div class="items_filter_title standart_title standart_title_4 color_black">
-                        {{category.title|title}}
+                        {{parent_category.title|title}}
                       </div>
                     </a>
-                    {% if category.get_children %}
                     <div class="items_filter_content">
-                      <!-- {% for subcategory in category.get_children %}
+                      {% for subcategory in parent_category.get_children %}
                       <div class="radio_block">
-                        <input class="input_radio input_all_arr" name="discount" value="{{subcategory.id}}" type="checkbox" id="rb-{{subcategory.id}}"> 
-                        <label class="label_radio standart_title standart_title_6 color_black" for="rb-{{subcategory.id}}">{{subcategory.title}}</label>
+                        <!-- <input class="input_radio input_all_arr" name="discount" value="{{subcategory.id}}" type="checkbox" id="rb-{{subcategory.id}}">  -->
+                        <!-- <label class="label_radio standart_title standart_title_6 color_black" for="rb-{{subcategory.id}}">{{subcategory.title}}</label> -->
+                        <a href="{{subcategory.get_absolute_url}}" class="label_radio standart_title standart_title_6 color_black">
+                          {{subcategory.title}}
+                        </a>
                       </div>
-                      {% endfor %} -->
+                      {% endfor %}
                     </div>
-                    {% endif %}
                   </div>
                   {% endfor %}
                   </form>

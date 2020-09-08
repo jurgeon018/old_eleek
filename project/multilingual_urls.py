@@ -34,11 +34,12 @@ def thank_you(request):
 def item_category(request, slug):
     category          = get_object_or_404(ItemCategory, slug=slug)
     page              = category 
-    items             = Item.objects.filter(category=category)[0:6]
-    # items             = []
-    all_items         = Item.objects.filter(category=category)
-    show_more         = all_items.count() > 6
     parent_categories = ItemCategory.objects.filter(parent__isnull=True)
+    descentant_ids    = list(category.get_descendants().values_list('id', flat=True))
+    descentant_ids.append(category.id)
+    items             = Item.objects.filter(category__id__in=descentant_ids)[0:6]
+    all_items         = Item.objects.filter(category__id__in=descentant_ids)
+    show_more         = all_items.count() > 6
     discount_filter   = all_items.filter(discount__isnull=False).exists()
     raw_max_price     = all_items.aggregate(Max('price'))['price__max']
     raw_min_price     = all_items.aggregate(Min('price'))['price__min']
