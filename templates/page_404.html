@@ -19,14 +19,20 @@ item_section__wrapper
           src="/static/source/img/error/error.png" 
           srcset="/static/source/img/error/error.png 1x, /static/source/img/error/error@2x.png  2x"
         >
-        <h4 class="error_title main__title main__title_3 color_black">
-            Такої сторінки не знайдено
+        {% render 'text24' as text24 %}
+        <h4 class="db_content error_title main__title main__title_3 color_black" data-admin_url="{{text24.get_admin_url}}">
+          {{text24.text}}
+            <!-- Такої сторінки не знайдено -->
         </h4>
-        <h3 class="error_text standart_title standart_title_3 color_black">
-            Поверніться на головну або перегляньте асортимент наших товарів
+        {% render 'text25' as text25 %}
+        <h3 class="db_content error_text standart_title standart_title_3 color_black" data-admin_url="{{text25.get_admin_url}}">
+          {{text25.text}}
+            <!-- Поверніться на головну або перегляньте асортимент наших товарів -->
         </h3>
-        <a href="{% url 'shop' %}" class="error_btn btn_standart btn_standart_yellow out">
-            Магазин
+        {% render 'text26' as text26 %}
+        <a href="{% url 'shop' %}" class="db_content error_btn btn_standart btn_standart_yellow out" data-admin_url="{{text26.get_admin_url}}">
+          {{text26.text}}
+            <!-- Магазин -->
         </a>
     </div>
   </div>

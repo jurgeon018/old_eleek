@@ -21,7 +21,7 @@ item_section__wrapper
             <img src="{{image.image_url}}" alt="{{image.alt}}">
           </div>
           {% endfor %}
-        </div>in
+        </div>
         <div class="bottom_slider__wrap">
           <div class="three_de__block">
             <svg class="hvr-bob" xmlns="http://www.w3.org/2000/svg" width="49" height="56" viewBox="0 0 49 56">
@@ -30,8 +30,10 @@ item_section__wrapper
                   <path d="M.725 12.531L22.667 24.286 44.608 12.531M22.667 52.846L22.667 24.286" transform="translate(1.167 1.857)"/>
               </g>
             </svg>
-            <div class="three_title standart_title standart_title_5 color_black">
-              {% trans 'Показати в 3Д' %}
+            {% render 'text51' as text51 %}
+            <div class="db_content three_title standart_title standart_title_5 color_black" data-admin_url="{{text51.get_admin_url}}">
+              {{text51.text}}
+              <!-- {% trans 'Показати в 3Д' %} -->
             </div>
           </div>
           <div class="mini_slider">
@@ -45,15 +47,11 @@ item_section__wrapper
       </div>
     </div>
     <div class="item_select__block">
-
-
       <a href="{{item.category.get_absolute_url}}">
-      <div class="item_category_name sub_title sub_title_2 color_black">
+      <div class="item_category_name sub_title sub_title_2 color_black db_content" data-admin_url="{{item.category.get_admin_url}}">
         {{item.category.title|title}}
       </div>
       </a>
-
-
       <div class="item_name__block">
         <div data-id-name='{{item.id}}' class="item_name main__title main__title_2 color_black">
           {{item.title|title}} 
@@ -91,15 +89,21 @@ item_section__wrapper
         </div>
         <div class="item_btn_wrapper">
           {% if item.in_stock and not item.in_stock.availability or item.amount == 0 %}
-          <div data-src='#form_qustion' class="fast_btn sale_one_click btn_standart btn_standart_black color_white">
-            {% trans 'Інфорація про товар' %}
+          {% render 'text52' as text52 %}
+          <div data-src='#form_qustion' class="db_content fast_btn sale_one_click btn_standart btn_standart_black color_white" data-admin_url="{{text52.get_admin_url}}">
+            {{text52.text}}
+            <!-- {% trans 'Інфорація про товар' %} -->
           </div>
           {% else %}
-          <div data-src='#form_cons' class="fast_btn sale_one_click btn_standart btn_standart_black color_white">
-            {% trans 'Швидка покупка' %}
+          {% render 'text54' as text54 %}
+          <div data-src='#form_cons' class="db_content fast_btn sale_one_click btn_standart btn_standart_black color_white" data-admin_url="{{text54.get_admin_url}}">
+            {{text54.text}}
+            <!-- {% trans 'Швидка покупка' %} -->
           </div>
-          <div class="main_item_btn item_btn_price btn_standart btn_standart_black color_white">
-            {% trans 'Купити' %}
+          {% render 'text53' as text53 %}
+          <div class="db_content main_item_btn item_btn_price btn_standart btn_standart_black color_white" data-admin_url="{{text53.get_admin_url}}">
+            {{text53.text}}
+            <!-- {% trans 'Купити' %} -->
           </div>
           {% endif %}
         </div>
@@ -107,8 +111,6 @@ item_section__wrapper
           {% trans 'Куплено' %}
         </div> -->
       </div>
-
-      
       <div class="additional__block">
         <div class="addit_name sub_title sub_title_3 color_black">
           {% trans 'Ціна додаткових опцій' %}:
@@ -128,8 +130,10 @@ item_section__wrapper
       
       {% if item.manufacturer %}
       <div class="additional__block">
-        <div class="addit_name sub_title sub_title_3 color_black">
-          {% trans 'Виробник' %}:
+        {% render 'text55' as text55 %}
+        <div class="db_content addit_name sub_title sub_title_3 color_black" data-admin_url="{{text55.get_admin_url}}">
+          {{text55.text}}
+          <!-- {% trans 'Виробник' %}: -->
         </div>
         <div class="addit_price main__title main__title_5 color_black">
           {{item.manufacturer.name}}
@@ -140,8 +144,10 @@ item_section__wrapper
 
       {% if item.brand %}
       <div class="additional__block">
-        <div class="addit_name sub_title sub_title_3 color_black">
-          {% trans 'Бренд' %}:
+        {% render 'text56' as text56 %}
+        <div class="db_content addit_name sub_title sub_title_3 color_black" data-admin_url="{{text56.get_admin_url}}">
+          {{text56.text}}
+          <!-- {% trans 'Бренд' %}: -->
         </div>
         <div class="addit_price main__title main__title_5 color_black">
           {{item.brand.title}}
@@ -242,7 +248,7 @@ item_section__wrapper
       <div class="characteristick__wrap">
         <div class="char__block">
           {% for feature in odd_features %}
-          <div class="char_prof">
+          <div class="char_prof db_content" data-admin_url="{{feature.get_admin_url}}">
             <div class="char_text standart_title standart_title_5 color_black">
               {{feature.name}}
             </div>
@@ -254,7 +260,7 @@ item_section__wrapper
         </div>
         <div class="char__block">
           {% for feature in even_features %}
-          <div class="char_prof">
+          <div class="char_prof db_content" data-admin_url="{{feature.get_admin_url}}">
             <div class="char_text standart_title standart_title_5 color_black">
               {{feature.name}}
             </div>
@@ -276,85 +282,21 @@ item_section__wrapper
   <div class="tab_container">
     <div class="item_link__wrapper">
       <div class="item_tab_link__block">
-        {% for feature_category in item.get_feature_categories %}
-        <div data-tab="{{forloop.counter|add:'1'}}" class="item_tab_link standart_title standart_title_3 color_black {% if forloop.counter == 1 %} item_tab_link_active {% endif %}">
+        {% for feature_category in item.get_feature_categories %} 
+        <div data-tab="{{forloop.counter|add:'1'}}" class="db_content item_tab_link standart_title standart_title_3 color_black {% if forloop.counter == 1 %} item_tab_link_active {% endif %}" data-admin_url="{{feature_category.get_admin_url}}">
           {{feature_category.name}}
         </div>
         {% endfor %}
-        <div data-tab="1" class="item_tab_link item_tab_link_3 standart_title standart_title_3 color_black">
-          {% trans 'Відгуки' %}
+        {% render 'text57' as text57 %}
+        <div data-tab="1" class="db_content item_tab_link item_tab_link_3 standart_title standart_title_3 color_black" data-admin_url="{{text57.get_admin_url}}">
+          {{text57.text}}
+          <!-- {% trans 'Відгуки' %} -->
         </div>
       </div>
     </div>
     <div class="item_tab_content__block">
       {% include "project/components/item_features.html" %}
-      <div id="1" class="item_tab_content">
-        <div class="item_comment__wrap">
-          <div class="item_comment__block">
-              <div class="comment_kredit__block kredit__block">
-                {% render 'review' as review %}
-                <div class="kredit_text sub_title sub_title_2 color_black db_content" data-admin_url="{{review.get_admin_url}}">
-                  {{review.text}}
-                  <!-- Поділіться своїм досвідом користуванням нашим товаром та оцінінь його! -->
-                </div>
-                <div class="add_comment_btn kredit_btn btn_standart btn_standart_black standart_title standart_title_5 color_black">
-                  {% trans 'Додати відгук' %}
-                </div>
-              </div>
-              <div class="none_comments_text none_comments_text_hidden sub_title sub_title_2 color_black">
-                {% trans 'У даного товару ще немає відруків. Ви можете бути першим. ' %}
-              </div>
-              <div class="comment_profile__wrapper">
-                {% for review in item.reviews.all %}
-                <div class="comment_profile">
-                  <div class="comment_name__block">
-                    <div class="comment_name color_black standart_title standart_title_4">
-                      {{review.name}} ({{review.phone}}, {{review.email}})
-                    </div>
-                    <div class="comment_star">
-                      
-                      <div class="svg_rating__wrap">
-                        <svg class="rating_svg {% if review.rating in '12345'|make_list %}rating_svg_active{% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-                          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-                        </svg>
-                      </div>
-                      
-
-                      <div class="svg_rating__wrap">
-                        <svg class="rating_svg {% if review.rating in '2345'|make_list %}rating_svg_active{% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-                          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-                        </svg>
-                      </div>
-
-                      <div class="svg_rating__wrap">
-                        <svg class="rating_svg {% if review.rating in '345'|make_list %}rating_svg_active{% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-                          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-                        </svg>
-                      </div>
-                      
-                      <div class="svg_rating__wrap">
-                        <svg class="rating_svg {% if review.rating in '45'|make_list %}rating_svg_active{% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-                          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-                        </svg>
-                      </div>
-                      
-                      <div class="svg_rating__wrap">
-                        <svg class="rating_svg {% if review.rating in '5'|make_list %}rating_svg_active{% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
-                          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
-                        </svg>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="comment_text color_black sub_title sub_title_2">
-                    {{review.text}}
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-          </div>
-        </div>
-      </div>
+      {% include "project/components/item_reviews.html" %}
     </div>
   </div>
 </section>
@@ -373,6 +315,3 @@ item_section__wrapper
 <script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
 <script src="/static/source/pages/item/index.js?v=3"></script> 
 {% endblock scripts %}
-
-
-

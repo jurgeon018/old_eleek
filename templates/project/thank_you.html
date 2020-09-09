@@ -12,9 +12,10 @@ item_section__wrapper
 {% endblock main_class %}
 {% block content %}
 <section class="thankyou_section usually_section">
-  <h1 class="main__title main__title_1 color_black">
-    Дякуємо за покупку! <br>
-    Менеджер скоро з вами звяжеться!
+  {% render 'text63' as text63 %}
+  <h1 class="db_content main__title main__title_1 color_black" data-admin_url="{{text63.get_admin_url}}">
+    {{text63.text|safe}}
+    <!-- Дякуємо за покупку! <br> Менеджер скоро з вами звяжеться! -->
   </h1>
 </section>
 {% endblock content %}

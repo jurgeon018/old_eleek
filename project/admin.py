@@ -5,23 +5,30 @@ from .models import *
 from .resources import * 
 from import_export.admin import ImportExportModelAdmin
 from modeltranslation.admin import TabbedTranslationAdmin
-# from box.core.utils import 
+from box.core.utils import AdminImageWidget
 admin.site.register(get_user_model(), BoxUserAdmin)
 
 
-@admin.register
-class CertificateAdmin(ImportExportModelAdmin):
+@admin.register(Certificate)
+class CertificateAdmin(
+    TabbedTranslationAdmin,
+    ImportExportModelAdmin,
+    ):
+    formfield_overrides = {
+        models.ImageField:{'widget':AdminImageWidget}
+    }
     resource_class = CertificateResource 
 
 
 @admin.register(Partner)
-class PartnerAdmin(ImportExportModelAdmin):
+class PartnerAdmin(
+    TabbedTranslationAdmin,
+    ImportExportModelAdmin,
+    ):
+    formfield_overrides = {
+        models.ImageField:{'widget':AdminImageWidget}
+    }
     resource_class = PartnerResource 
-
-
-@admin.register(TestDrive)
-class TestDriveAdmin(admin.ModelAdmin):
-    pass 
 
 
 @admin.register(TestDriveModel)
@@ -29,6 +36,9 @@ class TestDriveModelAdmin(
     TabbedTranslationAdmin,
     ImportExportModelAdmin,
     ):
+    formfield_overrides = {
+        models.ImageField:{'widget':AdminImageWidget}
+    }
     resourcce_class = TestDriveModelResource
 
 
@@ -37,6 +47,9 @@ class VeloSliderAdmin(
     TabbedTranslationAdmin,
     ImportExportModelAdmin,
     ):
+    formfield_overrides = {
+        models.ImageField:{'widget':AdminImageWidget}
+    }
     resource_class = VeloSliderResource
 
 
@@ -45,12 +58,17 @@ class TestDriveSliderAdmin(
     TabbedTranslationAdmin,
     ImportExportModelAdmin,
     ):
+    formfield_overrides = {
+        models.ImageField:{'widget':AdminImageWidget}
+    }
     autocomplete_fields = [
         'item',
     ]
     resource_class = TestDriveSliderResource
 
 
-
+@admin.register(TestDrive)
+class TestDriveAdmin(admin.ModelAdmin):
+    pass 
 
 

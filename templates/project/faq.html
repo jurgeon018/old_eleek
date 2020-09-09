@@ -26,15 +26,18 @@ item_section__wrapper
 </div>
 <section class="another_pages">
     <div class="another_container">
-      <h1 class="faq_title main__title main__title_2">
-        Питання та відповіді
+      {% render 'text50' as text50 %}
+      <h1 class="db_content faq_title main__title main__title_2" data-admin_url="{{text50.get_admin_url}}">
+        {{text50.text}}
+        <!-- Питання та відповіді -->
       </h1>
       {% for faq in "faqs"|make_list %}
-      <div class="color_change__wrap current_attribute_change__wrap">
+      <div class="color_change__wrap current_attribute_change__wrap db_content" data-admin_url="{{faq.get_admin_url}}">
         <div class="color_change__block">
           <div class="color_change_prof">
             <div class="color_change_title standart_title standart_title_3 color_black">
               Як вибрати велосипед?
+              {{faq.title}}
             </div>
           </div>
           <div class="color_change_btn color_change_btn_active">
@@ -42,6 +45,7 @@ item_section__wrapper
           </div>
         </div>
         <div class="color_change_content color_change_content_active sub_title sub_title_2">
+          {{faq.content|safe}}
           Кращий електровелосипед – це Ваш електровелосипед.
           <br>
           <br>
@@ -71,7 +75,6 @@ item_section__wrapper
       </div>
       {% endfor %}
     </div>
-   
 </section>
 <!-- /.another_pages -->
 {% endblock content%}

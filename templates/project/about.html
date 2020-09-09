@@ -59,7 +59,7 @@ item_section__wrapper
       </div>
       <div class="doc_slider">
         {% for cert in certificates %}
-        <div class="doc_prof">
+        <div class="doc_prof db_content" data-admin_url="{{cert.get_admin_url}}">
           <a href="{{cert.image.url}}"></a>
 					<a data-fancybox="gallery" class="gallery_wrap" href="{{cert.image.url}}">
             <img class="big_gallery bbb" alt="{{cert.alt}}" data-lazy="{{cert.image.url}}">
@@ -87,7 +87,7 @@ item_section__wrapper
     </div>
       <div class="partner_slider">
         {% for partner in partners %}
-        <div class="partner_prof">
+        <div class="partner_prof db_content" data-admin_url="{{partner.get_admin_url}}">
           <img src="{{partner.image.url}}" alt="{{partner.alt}}">
         </div>
         {% endfor %}
@@ -120,7 +120,6 @@ item_section__wrapper
       <div class="footer_input__wrap inp-vak-wrap">
         {% render 'about_email' as about_email %}
         <label for="login_mail" class="login_label label__style color_black db_content" data-admin_url="{{about_email.get_admin_url}}">
-          <!-- E-mail -->
           {{about_email.text}}
         </label>
         <input type="text" id="login_mail" name="email" class="login_mail login_input input_focus">
