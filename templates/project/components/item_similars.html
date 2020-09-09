@@ -3,8 +3,10 @@
 <section class="best_sales">
   <div class="container">
      <div class="best_title-block">
-         <h4 class="best_sale_title">
-          {% trans 'Схожі товари' %}
+         {% render 'text79' as text79 %}
+         <h4 class="db_content best_sale_title" data-admin_url="{{text79.get_admin_url}}">
+            {{text79.text}}
+          <!-- {% trans 'Схожі товари' %} -->
           </h4>
          <div class="slick-wrap">
              <button type="button" class="slick-first">
@@ -18,7 +20,7 @@
      </div>
       <div class="best-sales-block">
         {% for similar in item.similars.all %}
-          <div class="best-sales-prof">
+          <div class="best-sales-prof db_content" data-get_admin_url="{{similar.get_admin_url}}">
               <a href="{{similar.get_absolute_url}}" class="best-sales_link-img">
                  <img src="{{similar.image_url}}" alt="{{similar.alt}}" class="best-sales_photo">
               </a>
@@ -31,16 +33,10 @@
                          {{similar.price}} {{similar.currency.code}}
                      </div>
                 </div>
-                <!-- 
-                <a href="{{similar.get_absolute_url}}" class="basket-btn">
-                 У Кошик
-                </a> 
-                -->
              </div>
          </div>
          {% endfor %}
       </div>
   </div>
-  <!-- /.container -->
 </section>
 {% endif %}

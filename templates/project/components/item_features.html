@@ -4,7 +4,7 @@
   <div class="characteristick__wrap">
       {% get_category_features feature_category item as features %}
       {% for feature in features %}
-      <div class="char_prof">
+      <div class="char_prof db_content" data-admin_url="{{feature.get_admin_url}}">
         <div class="char_text standart_title standart_title_5 color_black">
           {{feature.name}}
         </div>

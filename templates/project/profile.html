@@ -22,21 +22,34 @@
       <div class="sub_mail main__title main__title_4 color_black">
         {{request.user.username}} {% if request.user.email %} ({{request.user.email}}) {% endif %}
       </div>
+      {% render 'content_code' as content_code %}
+      db_content
+      data-admin_url="{{content_code.get_admin_url}}"
+      {{content_code.text}}
       <a href="{% url 'sw_logout' %}" class="exit_profile main_sub_title main_sub_title_3">
         {% trans 'Вийти' %}
       </a>
     </div>
     <div class="tab_container">
       <div class="item_tab_link__block">
-
+        {% render 'content_code' as content_code %}
+        db_content
+        data-admin_url="{{content_code.get_admin_url}}"
+        {{content_code.text}}
         <div data-tab="1" class="item_tab_link standart_title standart_title_3 color_black item_tab_link_active">
           {% trans 'Історія покупок' %}
         </div>
-
+        {% render 'content_code' as content_code %}
+        db_content
+        data-admin_url="{{content_code.get_admin_url}}"
+        {{content_code.text}}
         <div data-tab="2" class="item_tab_link standart_title standart_title_3 color_black">
           {% trans 'Програма лояльності' %}
         </div>
-        
+        {% render 'content_code' as content_code %}
+        db_content
+        data-admin_url="{{content_code.get_admin_url}}"
+        {{content_code.text}}
         <div data-tab="3" class="item_tab_link item_tab_link_3 standart_title standart_title_3 color_black">
           {% trans 'Налаштування профілю' %}
         </div>
@@ -57,22 +70,46 @@
                 </div> -->
             {% if orders.exists %}
               <div class="profile_attributes__block">
+                {% render 'content_code' as content_code %}
+                db_content
+                data-admin_url="{{content_code.get_admin_url}}"
                 <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_1">
+                  {{content_code.text}}
                   {% trans "Фото" %}              
                 </div>
+                {% render 'content_code' as content_code %}
+                db_content
+                data-admin_url="{{content_code.get_admin_url}}"
                 <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_2">
+                  {{content_code.text}}
                   {% trans "Назва" %}              
                 </div>
+                {% render 'content_code' as content_code %}
+                db_content
+                data-admin_url="{{content_code.get_admin_url}}"
                 <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_3">
+                  {{content_code.text}}
                   {% trans "К-сть" %}              
                 </div>
+                {% render 'content_code' as content_code %}
+                db_content
+                data-admin_url="{{content_code.get_admin_url}}"
                 <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_4">
+                  {{content_code.text}}
                   {% trans "Дата" %}              
                 </div>
+                {% render 'content_code' as content_code %}
+                db_content
+                data-admin_url="{{content_code.get_admin_url}}"
                 <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_5">
+                  {{content_code.text}}
                   {% trans "Ціна" %}              
                 </div>
+                {% render 'content_code' as content_code %}
+                db_content
+                data-admin_url="{{content_code.get_admin_url}}"
                 <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_5">
+                  {{content_code.text}}
                   {% trans "№ заказу" %}              
                 </div>
               </div>
@@ -103,7 +140,13 @@
               {% endfor %}
               {% endfor %}
             {% else %}
+            {% render 'content_code' as content_code %}
+            db_content
+            data-admin_url="{{content_code.get_admin_url}}"
+            <div>
+              {{content_code.text}}
               Ви ще не зробили ніяких замовлень
+            </div>
             {% endif %}
           </div>
         </div>
@@ -119,16 +162,32 @@
               </a>
             </div> -->
             <div class="profile_attributes__block">
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_10">
+                {{content_code.text}}
                 {% trans 'Назва' %}
               </div>
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_11">
+                {{content_code.text}}
                 {% trans 'Знижка' %}
               </div>
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_12">
+                {{content_code.text}}
                 {% trans 'Термін дії' %}
               </div>
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <div class="profile_attr_name standart_title standart_title_6 color_black attr_size_13">
+                {{content_code.text}}
                 {% trans 'Дія' %}  
               </div>
             </div>
@@ -158,25 +217,37 @@
         <div id="3" class="item_tab_content">
           <form action="{% url 'update_project_user' %}" class="change_profile registery_form">
             <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <label for="login_name" class="login_label label__style color_black">
+                {{content_code.text}}
                 Ім'я та прізвище
               </label>
               <input type="text" id="login_name" name="first_name" value="{% if request.user.first_name %}{{request.user.first_name}}{% endif %}" class="login_name login_input input_focus">
             </div>
             <div class="footer_input__wrap inp-vak-wrap">
               <label for="login_mail" class="login_label label__style color_black">
-                E-mail
+                Email
               </label>
               <input type="text" id="login_mail" name="email" value="{% if request.user.email %}{{request.user.email}}{% endif %}" class="login_mail login_input input_focus">
             </div>
             <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <label for="login_tel" class="login_label label__style color_black">
+                {{content_code.text}}
                 Телефон
               </label>
               <input type="tel" id="login_tel" name="phone_number" value="{% if request.user.phone_number %}{{request.user.phone_number}}{% endif %}" class="mobile login_tel login_input input_focus">
             </div>
             <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <label for="login_city" class="login_label label__style color_black">
+                {{content_code.text}}
                 Місто
               </label>
               <input type="text" id="login_city" name="address" value="{% if request.user.address %}{{request.user.address}}{% endif %}" class="login_city login_input input_focus">
@@ -188,13 +259,21 @@
               <input type="password" id="login_old_pass" name="old_password" class="login_old_pass login_input input_focus">
             </div> -->
             <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <label for="login_pass" class="login_label label__style color_black">
+                {{content_code.text}}
                 Новий Пароль
               </label>
               <input type="password" id="login_pass" name="pass1" class="login_pass login_input input_focus">
             </div>
             <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <label for="login_pass2" class="login_label label__style color_black">
+                {{content_code.text}}
                 Повторіть пароль
               </label>
               <input type="password" id="login_pass2" name="password2" class="login_pass2 login_input input_focus">

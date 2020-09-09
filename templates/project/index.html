@@ -68,11 +68,19 @@ section__wrapper
           {{slider.text|safe}}
         </h1>
         <div class="bike_trailer_btn__wrap slide-name anim_text">
-            <a href="{% url 'test_drive' %}" class="btn_standart btn_standart_transparent">
+          {% render 'content_code' as content_code %}
+          db_content
+          data-admin_url="{{content_code.get_admin_url}}"
+          <a href="{% url 'test_drive' %}" class="btn_standart btn_standart_transparent">
+              {{content_code.text}}
               {% trans 'Тест-драйв' %}
             </a>
             {% if slider.item %}
+            {% render 'content_code' as content_code %}
+            db_content
+            data-admin_url="{{content_code.get_admin_url}}"
             <a href="{{slider.item.get_absolute_url}}" class="btn_standart btn_standart_black">
+              {{content_code.text}}
               {% trans 'Детальніше' %}
             </a>
             {% endif %}
@@ -132,6 +140,10 @@ section__wrapper
                     <span class="pref_line">
 
                     </span>
+                    {% render 'content_code' as content_code %}
+                    db_content
+                    data-admin_url="{{content_code.get_admin_url}}"
+                    {{content_code.text}}
                     <span class="pref_text main__title main__title_5 color_white">
                       {% trans 'Дистанція' %}
                     </span>
@@ -140,7 +152,11 @@ section__wrapper
                     <span data-count="150" id="preferens_counter_1" class="lines preferens_counter_1 color_yellow main__title main__title_0">
                       0
                     </span>
+                    {% render 'content_code' as content_code %}
+                    db_content
+                    data-admin_url="{{content_code.get_admin_url}}"
                     <span class="sub_title sub_title_1 color_white">
+                      {{content_code.text}}
                       {% trans 'км' %}
                     </span>
                 </div>
@@ -153,7 +169,11 @@ section__wrapper
                   <span class="pref_line">
 
                   </span>
+                  {% render 'content_code' as content_code %}
+                  db_content
+                  data-admin_url="{{content_code.get_admin_url}}"
                   <span class="pref_text main__title main__title_5 color_white">
+                    {{content_code.text}}
                     {% trans 'Швидкість' %}
                   </span>
               </div>
@@ -161,7 +181,11 @@ section__wrapper
                   <span data-count="100" id="preferens_counter_2" class="lines preferens_counter_2 color_yellow main__title main__title_0">
                     0
                   </span>
+                  {% render 'content_code' as content_code %}
+                  db_content
+                  data-admin_url="{{content_code.get_admin_url}}"
                   <span class="sub_title sub_title_1 color_white">
+                    {{content_code.text}}
                     {% trans 'км/год' %}
                   </span>
               </div>
@@ -176,7 +200,11 @@ section__wrapper
                 <span class="pref_line">
 
                 </span>
+                {% render 'content_code' as content_code %}
+                db_content
+                data-admin_url="{{content_code.get_admin_url}}"
                 <span class="pref_text main__title main__title_5 color_white">
+                  {{content_code.text}}
                   {% trans 'Потужність' %}
                 </span>
             </div>
@@ -197,7 +225,11 @@ section__wrapper
               <span class="pref_line">
 
               </span>
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <span class="pref_text main__title main__title_5 color_white">
+                {{content_code.text}}
                 {% trans 'Тривалість заряду' %}
               </span>
           </div>
@@ -205,7 +237,11 @@ section__wrapper
               <span data-count="4" id="preferens_counter_4" class="lines preferens_counter_4 color_yellow main__title main__title_0">
                 0
               </span>
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <span class="sub_title sub_title_1 color_white">
+                {{content_code.text}}
                 {% trans 'год' %}
               </span>
           </div>
@@ -255,7 +291,11 @@ section__wrapper
           </div>
           <div class="eleek_slide_info__wrapp">
             <div class="eleek_slide_info__block">
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <div class="eleek_slide_info sub_title sub_title_2">
+                {{content_code.text}}
                 {% trans 'Дистанція' %}
               </div>
               <div class="eleek_slide_info eleek_info_result">
@@ -263,7 +303,11 @@ section__wrapper
               </div>
             </div>
             <div class="eleek_slide_info__block">
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <div class="eleek_slide_info sub_title sub_title_2">
+                {{content_code.text}}
                 {% trans 'Макс. швидкість' %}
               </div>
               <div class="eleek_slide_info eleek_info_result">
@@ -272,7 +316,11 @@ section__wrapper
             </div>
             
             <div class="eleek_slide_info__block">
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
               <div class="eleek_slide_info sub_title sub_title_2">
+                {{content_code.text}}
                 {% trans 'Потужність' %}
               </div>
               <div class="eleek_slide_info eleek_info_result">
@@ -281,7 +329,11 @@ section__wrapper
             </div>
           </div>
           {% if slide.item %}
+          {% render 'content_code' as content_code %}
+          db_content
+          data-admin_url="{{content_code.get_admin_url}}"
           <a href="{{slide.item.get_absolute_url}}" class="eleek_slide_btn btn_standart btn_standart_transparent">
+            {{content_code.text}}
             {% trans 'Детальніше' %}
           </a>
           {% endif %}
@@ -305,7 +357,11 @@ section__wrapper
       {{index_choose.text}}
       <!-- При виборі електро велосипеда можна не обмежувати себе в побажаннях. Ми можемо підібрати велосипед який підійде саме Вам. Починаючи з велосипеда для неспішних прогулянок по парку, закінчуючи зарядженим брутальним мотоциклом для агресивної їзди всюди. -->
     </div>
+    {% render 'content_code' as content_code %}
+    db_content
+    data-admin_url="{{content_code.get_admin_url}}"
     <a href="{{ramy.get_absolute_url}}" class="btn_standart btn_standart_black">
+      {{content_code.text}}
       {% trans 'Детальніше' %}
     </a>
     <a href="#" class="glo">

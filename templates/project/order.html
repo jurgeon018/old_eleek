@@ -32,6 +32,10 @@ item_section__wrapper
           </div>
           <div class="step_content">
             <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
+              {{content_code.text}}
               <label for="order_name" class="order_label label__style color_black">
                 {% trans "Ім'я та прізвище" %}
               </label>
@@ -46,6 +50,10 @@ item_section__wrapper
               <input value="jurgeon018@gmail.com" type="text" id="order_email" name='email' class="order_input input_focus input_requared">
             </div>
             <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
+              {{content_code.text}}
               <label for="order_phone" class="order_label label__style color_black">
                 {% trans 'Телефон' %}
               </label>
@@ -53,6 +61,10 @@ item_section__wrapper
               <input value="+380994506703" type="text" id="order_phone" name='phone' class="order_input input_focus input_requared mobile">
             </div>
             <div class="wrap_for_footer_btn">
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
+              {{content_code.text}}
               <div data-step-btn='1' class="btn_standart btn_standart_yellow next_step_btn">
                 {% trans 'Далі' %}
               </div>
@@ -76,6 +88,10 @@ item_section__wrapper
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
               </div>
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
+              {{content_code.text}}
               <div class="radio_title standart_title standart_title_6 color_black">
                 {% trans 'Доставка від Eleek' %}
               </div>
@@ -85,6 +101,10 @@ item_section__wrapper
               <div class="radio_tchk">
                 <div class="radio_center radio_center_active absolute_center"></div>
               </div>
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
+              {{content_code.text}}
               <div class="radio_title standart_title standart_title_6 color_black">
                 {% trans 'Нова пошта' %}
               </div>
@@ -130,6 +150,10 @@ item_section__wrapper
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
               </div>
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
+              {{content_code.text}}
               <div class="radio_title standart_title standart_title_6 color_black">
                 {% trans 'Самовивіз з магазину' %}
               </div>
@@ -137,6 +161,10 @@ item_section__wrapper
             <div class="two_input__wrap">
               <div class="select-block">
                 <input type="hidden" name="nova_pochta_department" class="nova_city nova_pochta_hidden">
+                {% render 'content_code' as content_code %}
+                db_content
+                data-admin_url="{{content_code.get_admin_url}}"
+                {{content_code.text}}
                 <div class="select_label sub_title sub_title_3 color_black">
                   {% trans 'Місто' %}
                 </div>
@@ -146,6 +174,10 @@ item_section__wrapper
               </div>
               <div class="select-block">
                 <input type="hidden" name="nova_pochta_department" class="nova_pochta_hidden">
+                {% render 'content_code' as content_code %}
+                db_content
+                data-admin_url="{{content_code.get_admin_url}}"
+                {{content_code.text}}
                 <div class="select_label sub_title sub_title_3 color_black">
                   {% trans 'Номер відділення' %}
                 </div>
@@ -156,6 +188,10 @@ item_section__wrapper
             </div>
             <div class="one_input__wrap hidden_input__wrap">
               <div class="footer_input__wrap inp-vak-wrap">
+                {% render 'content_code' as content_code %}
+                db_content
+                data-admin_url="{{content_code.get_admin_url}}"
+                {{content_code.text}}
                 <label for="order_address" class="order_label label__style color_black">
                   Адреса
                 </label>
@@ -163,6 +199,10 @@ item_section__wrapper
               </div>
             </div>
             <div class="wrap_for_footer_btn">
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
+              {{content_code.text}}
               <div data-step-btn='2' class="btn_standart btn_standart_yellow next_step_btn">
                 {% trans 'Далі' %}
               </div>
@@ -186,6 +226,10 @@ item_section__wrapper
               <div class="radio_tchk">
                 <div class="radio_center radio_center_active absolute_center"></div>
               </div>
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
+              {{content_code.text}}
               <div data-payment="cash" class="radio_title standart_title standart_title_6 color_black">
                 {% trans 'Готівка' %}
               </div>
@@ -195,6 +239,10 @@ item_section__wrapper
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
               </div>
+              {% render 'content_code' as content_code %}
+              db_content
+              data-admin_url="{{content_code.get_admin_url}}"
+              {{content_code.text}}
               <div data-payment="liqpay" class="radio_title standart_title standart_title_6 color_black">
                 <a class="liqpay">
                   <img src="/static/source/img/order/512-px-liqpay-svg.png" alt="">
@@ -241,6 +289,10 @@ item_section__wrapper
                 </div>
                 <div class="basket_bottom__wrap">
                   <div class="basket_counter__block">
+                    {% render 'content_code' as content_code %}
+                    db_content
+                    data-admin_url="{{content_code.get_admin_url}}"
+                    {{content_code.text}}
                     <div class="basket_text sub_title sub_title_2">
                       {% trans 'Кількість' %}
                     </div>
@@ -255,6 +307,10 @@ item_section__wrapper
                     </div>
                   </div>
                   <div class="basket_sum__block">
+                    {% render 'content_code' as content_code %}
+                    db_content
+                    data-admin_url="{{content_code.get_admin_url}}"
+                    {{content_code.text}}
                     <div class="basket_text sub_title sub_title_2">
                       {% trans 'Ціна' %}
                     </div>
@@ -268,6 +324,10 @@ item_section__wrapper
             {% endfor %}
           </div>
           <div class="order_item_result">
+            {% render 'content_code' as content_code %}
+            db_content
+            data-admin_url="{{content_code.get_admin_url}}"
+            {{content_code.text}}
             <div class="order_text main__title main__title_5 color_black">
               {% trans 'Всього' %}
             </div>

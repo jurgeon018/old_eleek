@@ -16,14 +16,22 @@ item_section__wrapper
     </div>
     <div class="registery_content">
       <div class="registery__block absolute_center">
+        {% render 'content_code' as content_code %}
+        db_content
+        data-admin_url="{{content_code.get_admin_url}}"
         <h2 class="registery_name main__title main__title_2 color_black">
-          {% trans 'Реєстрація' %}
+          {{content_code.text}}
+          <!-- {% trans 'Реєстрація' %} -->
         </h2>
         <form action="/api/users/" class="registery_form login_form">
 
           <div class="footer_input__wrap inp-vak-wrap">
+            {% render 'content_code' as content_code %}
+            db_content
+            data-admin_url="{{content_code.get_admin_url}}"
             <label for="login_mail" class="login_label label__style color_black">
-              {% trans 'Логін' %}
+              {{content_code.text}}
+              <!-- {% trans 'Логін' %} -->
             </label>
             <input type="text" id="login_mail" name="username" class="login_mail login_input input_focus">
           </div>
@@ -36,14 +44,22 @@ item_section__wrapper
           </div>
           
           <div class="footer_input__wrap inp-vak-wrap">
+            {% render 'content_code' as content_code %}
+            db_content
+            data-admin_url="{{content_code.get_admin_url}}"
             <label for="login_tel" class="login_label label__style color_black">
-              {% trans 'Телефон' %}
+              {{content_code.text}}
+              <!-- {% trans 'Телефон' %} -->
             </label>
             <input type="tel" id="login_tel" name="phone" class="login_tel login_input input_focus">
           </div>
           <div class="footer_input__wrap inp-vak-wrap">
+            {% render 'content_code' as content_code %}
+            db_content
+            data-admin_url="{{content_code.get_admin_url}}"
             <label for="login_pass" class="login_label label__style color_black">
-              {% trans 'Пароль' %}
+              {{content_code.text}}
+              <!-- {% trans 'Пароль' %} -->
             </label>
             <input type="password" id="login_pass" name="password" class="login_pass login_input input_focus">
           </div>
@@ -60,11 +76,19 @@ item_section__wrapper
           </div>
           
           <div class="last_registery__block">
+            {% render 'content_code' as content_code %}
+            db_content
+            data-admin_url="{{content_code.get_admin_url}}"
             <div class="last_registery_text sub_title sub_title_2 color_black">
-              {% trans 'Вже маєте аккаунт?' %}
+              {{content_code.text}}
+              <!-- {% trans 'Вже маєте аккаунт?' %} -->
             </div>
+            {% render 'content_code' as content_code %}
+            db_content
+            data-admin_url="{{content_code.get_admin_url}}"
             <a href="{% url 'login' %}" class="ultra_link sub_title sub_title_2 color_yellow">
-              {% trans 'Увійти' %}
+              {{content_code.text}}
+              <!-- {% trans 'Увійти' %} -->
             </a>
           </div>
 

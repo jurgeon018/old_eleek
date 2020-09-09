@@ -8,16 +8,20 @@
               {{review.text}}
               <!-- Поділіться своїм досвідом користуванням нашим товаром та оцінінь його! -->
             </div>
-            <div class="add_comment_btn kredit_btn btn_standart btn_standart_black standart_title standart_title_5 color_black">
-              {% trans 'Додати відгук' %}
+            {% render 'text80' as text80 %}
+            <div class="db_content add_comment_btn kredit_btn btn_standart btn_standart_black standart_title standart_title_5 color_black" data-admin_url="{{text80.get_admin_url}}">
+              {{text80.text}}
+              <!-- {% trans 'Додати відгук' %} -->
             </div>
           </div>
-          <div class="none_comments_text none_comments_text_hidden sub_title sub_title_2 color_black">
-            {% trans 'У даного товару ще немає відруків. Ви можете бути першим. ' %}
+          {% render 'text81' as text81 %}
+          <div class="db_content none_comments_text none_comments_text_hidden sub_title sub_title_2 color_black" data-admin_url="{{text81.get_admin_url}}">
+            {{text81.text}}
+            <!-- {% trans 'У даного товару ще немає відруків. Ви можете бути першим. ' %} -->
           </div>
           <div class="comment_profile__wrapper">
             {% for review in item.reviews.all %}
-            <div class="comment_profile">
+            <div class="comment_profile db_content" data-admin_url="{{review.get_admin_url}}">
               <div class="comment_name__block">
                 <div class="comment_name color_black standart_title standart_title_4">
                   {{review.name}} ({{review.phone}}, {{review.email}})

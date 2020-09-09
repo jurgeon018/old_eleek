@@ -50,15 +50,17 @@
   {% elif attribute.is_option %}
     <div class="option__wrap">
         <div 
-        class="item_char_title main__title main__title_4"
+        class="db_content item_char_title main__title main__title_4"
         data-item_attribute_id='{{attribute.id}}'
+        data-admin_url="{{attribute.get_admin_url}}"
         >
         {{attribute.attribute.name|title}}
         </div>
         <div class="option_content__block">
         {% for option in attribute.get_values %}
         <div
-            class="option_content_prof price_multiple_option price_option" 
+            class="db_content option_content_prof price_multiple_option price_option" 
+            data-admin_url="{{option.get_admin_url}}"
             data-value="{{option.value.value}}" 
             data-price-option='{{option.price|stringformat:".2f"}}'
             data-item_attribute_id='{{option.attribute.id}}'
@@ -83,7 +85,7 @@
 {% for attribute_category in item.get_attribute_categories %}
   {% get_category_attribute_values attribute_category item as category_attribute_values %}
   {% if category_attribute_values.exists %}
-    <div class="item_char_title main__title main__title_4">
+    <div class="item_char_title main__title main__title_4 db_content" data-admin_url="{{attribute_category.get_admin_url}}">
         {{attribute_category.name|title}}
     </div>
     <!-- Атрибути в категорії  -->
@@ -101,7 +103,7 @@
           attribute.get_values.first.value.value: {{attribute.get_values.first.value.value}}<br> -->
               <div class="color_change__block">
               <div class="color_change_prof">
-                  <div class="color_change_title main_sub_title main_sub_title_3 color_black">
+                  <div class="db_content color_change_title main_sub_title main_sub_title_3 color_black" data-admin_url="{{attribute.get_admin_url}}">
                   {{attribute.attribute.name}}
                   </div>
                   <div 
@@ -128,7 +130,8 @@
               <div class="color_change_content_wrap">
                   {% for value in attribute.get_values %}
                   <div
-                  class="color_change_oval color_change_select"
+                  class="color_change_oval color_change_select db_content"
+                  data-admin_url="{{value.get_admin_url}}"
                   style="background:#{{value.value.code}};" 
                   data-color='#{{value.value.code}}' 
                   data-value="{{value.value.value}}"
@@ -159,7 +162,7 @@
           >
               <div class="color_change__block">
               <div class="color_change_prof">
-                  <div class="color_change_title main_sub_title main_sub_title_3 color_black">
+                  <div class="db_content color_change_title main_sub_title main_sub_title_3 color_black" data-admin_url="{{attribute.get_admin_url}}">
                   {{attribute.attribute.name}}: 
                   </div>
                   <div class="color_change_name sub_title sub_title_2 color_black">
@@ -175,7 +178,7 @@
                   {% for value in attribute.get_values %}
                   <div class="option_content_prof price_simple_option change_attribute {% if forloop.counter == 1 %}option_content_prof_active{% endif %}" data-price-option='{{value.price|stringformat:".2f"}}'>
                   <img class="option_img" src="/static/source/img/item/close.svg" alt="">
-                  <div class="option_text standart_title standart_title_6">
+                  <div class="option_text standart_title standart_title_6 db_content" data-admin_url="{{value.get_admin_url}}">
                       {{value.value.value}} ({{value.price}} {{value.currency.code}})
                       <input
                       class="hidden_color_attr"
