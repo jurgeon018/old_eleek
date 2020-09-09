@@ -31,3 +31,9 @@ class VeloSliderResource(ModelResource):
         model = VeloSlider
         exclude = []
 
+
+class FaqResource(ModelResource):
+    class Meta:
+        model = Faq
+        exclude = []
+

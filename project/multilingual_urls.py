@@ -58,6 +58,7 @@ def item(request, slug):
 
 def faq(request):
     page = Page.objects.get(code='faq')
+    faqs = Faq.objects.filter(is_active=True)
     return render(request, 'project/faq.html', locals())
 
 
