@@ -16,12 +16,12 @@ import './index.scss'
     $('.db_content').addClass('db_content_active');
     admin_check = sessionStorage.getItem('admin_panell');
     admin_panels.forEach(function (item, index, array) {
-      var link_adress = $(item).data('admin_url');
+      // var link_adress = $(item).data('admin_url');
       var hidden_panel = document.createElement('div');
       hidden_panel.classList.add('db_hidden_content');
-      var hidden_link = document.createElement('a');
+      var hidden_link = document.createElement('span');
       hidden_link.classList.add('db_hidden_link');
-      hidden_link.setAttribute(`href`, link_adress);
+      // hidden_link.setAttribute(`href`, link_adress);
       hidden_link.textContent = 'Редагувати';
       hidden_panel.appendChild(hidden_link);
       item.appendChild(hidden_panel);
@@ -50,12 +50,12 @@ import './index.scss'
       sessionStorage.setItem('admin_panell', 0);
       admin_check = sessionStorage.getItem('admin_panell');
       admin_panels.forEach(function (item, index, array) {
-        var link_adress = $(item).data('admin_url');
+        // var link_adress = $(item).data('admin_url');
         var hidden_panel = document.createElement('div');
         hidden_panel.classList.add('db_hidden_content');
-        var hidden_link = document.createElement('a');
+        var hidden_link = document.createElement('span');
         hidden_link.classList.add('db_hidden_link');
-        hidden_link.setAttribute(`href`, link_adress);
+        // hidden_link.setAttribute(`href`, link_adress);
         hidden_link.textContent = 'Редагувати';
         hidden_panel.appendChild(hidden_link);
         item.appendChild(hidden_panel);

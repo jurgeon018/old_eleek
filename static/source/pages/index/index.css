@@ -2485,7 +2485,8 @@ body {
   position: relative;
   background-color: #111111;
   width: 100%;
-  padding-bottom: 100px; }
+  padding-bottom: 0px;
+  min-height: 100vh; }
   .second_section .second_title, .second_section .second_sub_title {
     position: relative;
     z-index: 1; }
@@ -2684,6 +2685,12 @@ body {
     width: 140px; }
   .three_section {
     padding-bottom: 150px; } }
+
+@media (max-width: 400px) {
+  .eleek_title__wrap {
+    width: 90%; }
+  .eleek_arrow__block {
+    width: 110px; } }
 
 .four_section {
   position: relative;
