@@ -142,6 +142,28 @@ class VeloSlider(models.Model):
 
 
 
+class Faq(models.Model):
+    title = models.CharField(verbose_name="Запитання", max_length=255)
+    content = HTMLField(verbose_name="Відповідь")
+    is_active = models.BooleanField(verbose_name="Активність", default=True)
+
+    def __str__(self):
+        return f'{self.title}'
+    
+    def get_admin_url(self):
+        return get_admin_url(self)
+
+    @classmethod
+    def modeltranslation_fields(self):
+        return [
+            'title',
+            'content',
+        ]
+
+    class Meta:
+        verbose_name = 'faq'
+        verbose_name_plural = 'faq'
+
 
 
 

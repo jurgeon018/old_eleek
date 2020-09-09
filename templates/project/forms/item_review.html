@@ -2,32 +2,26 @@
 <form method="POST" action="/api/create_review/" class="comment_form" id="comment_form" style="display:none;">
     <input type="hidden" name='item_id' value="{{item.id}}">
     <div class="search_menu_title">
-      {% render 'content_code' as content_code %}
-      db_content
-      data-admin_url="{{content_code.get_admin_url}}"
-      {{content_code.text}}
-      <div class="main__title main__title_4 color_black">
-        Новий відгук
+      {% render 'text137' as text137 %}
+      <div class="db_content main__title main__title_4 color_black" data-admin_url="{{text137.get_admin_url}}">
+        {{text137.text}}
+        <!-- Новий відгук -->
       </div>
       <img class="modal_comm modal_search_close" src="/static/source/img/index/close.svg" alt="">
     </div>
     <div class="footer_input__wrap inp-vak-wrap">
-      {% render 'content_code' as content_code %}
-      db_content
-      data-admin_url="{{content_code.get_admin_url}}"
-      {{content_code.text}}
-      <label for="comment_name" class="footer_label label__style color_black">
-        Ім'я
+      {% render 'text138' as text138 %}
+      <label for="comment_name" class="db_content footer_label label__style color_black" data-admin_url="{{text138.get_admin_url}}">
+        {{text138.text}}
+        <!-- Ім'я -->
       </label>
       <input type="text" id="comment_name" name='name' class="comment_name footer_input input_focus">
     </div>
     <div class="footer_input__wrap inp-vak-wrap">
-      {% render 'content_code' as content_code %}
-      db_content
-      data-admin_url="{{content_code.get_admin_url}}"
-      {{content_code.text}}
-      <label for="comment_phone" class="footer_label label__style color_black">
-        Телефон
+      {% render 'text139' as text139 %}
+      <label for="comment_phone" class="db_content footer_label label__style color_black" data-admin_url="{{text139.get_admin_url}}">
+        {{text139.text}}
+        <!-- Телефон -->
       </label>
       <input type="text" id="comment_phone" name='phone' class="comment_phone footer_input input_focus">
     </div>
@@ -38,12 +32,10 @@
       <input type="text" id="comment_email" name='email' class="comment_email footer_input input_focus">
     </div>
     <div class="comment_name__block">
-      {% render 'content_code' as content_code %}
-      db_content
-      data-admin_url="{{content_code.get_admin_url}}"
-      {{content_code.text}}
-      <div class="comment_name color_black sub_title sub_title_2">
-        Ваша оцінка товару
+      {% render 'text140' as text140 %}
+      <div class="db_content comment_name color_black sub_title sub_title_2" data-admin_url="{{text140.get_admin_url}}">
+        {{text140.text}}
+        <!-- Ваша оцінка товару -->
       </div>
       <div class="modal-review__rating-order-wrap">
         <input type="hidden" name="product_rating" class="hidden_rating_review" value="5">
@@ -72,23 +64,18 @@
       </div> -->
     </div>
     <div class="footer_input__wrap inp-vak-wrap">
-      {% render 'content_code' as content_code %}
-      db_content
-      data-admin_url="{{content_code.get_admin_url}}"
-      {{content_code.text}}
-      <label for="comment_send" class="footer_label label__style color_black">
-        Відгук
+      {% render 'text141' as text141 %}
+      <label for="comment_send" class="db_content footer_label label__style color_black" data-admin_url="{{text141.get_admin_url}}">
+        {{text141.text}}
+        <!-- Відгук -->
       </label>
       <textarea name='text' id="comment_send" class="comment_send user_send footer_input input_focus"></textarea>
     </div>
     <div class="wrap_for_footer_btn">
-      {% render 'content_code' as content_code %}
-      db_content
-      data-admin_url="{{content_code.get_admin_url}}"
-      {{content_code.text}}
-      <input type="submit" value="Додати відгук" class="generate_comment btn_standart btn_standart_black">
+      {% render 'text142' as text142 %}
+      <input type="submit" value="{{text142.text}}" class="db_content generate_comment btn_standart btn_standart_black" data-admin_url="{{text142.get_admin_url}}">
       <!-- <input type="submit" value="Додати відгук" class="generate_comment btn_standart btn_standart_black"> -->
     </div>
-  </form>
+</form>
   
   
