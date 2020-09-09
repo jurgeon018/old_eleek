@@ -8,5 +8,4 @@ $(".item_tab_link").on("click", function(){
      ($(this).addClass("item_tab_link_active"));
     ($(".item_tab_content").removeClass("item_tab_content_active"));
         ($("#"+$(this)[0].dataset.tab).addClass("item_tab_content_active"));
-
 });
