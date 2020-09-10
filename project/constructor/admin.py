@@ -127,6 +127,10 @@ class FrameColorInline(
     exclude = []
     extra = 0
     classes = ['collapse']
+    autocomplete_fields = [
+        'attribute_value',
+        'frame',
+    ]
     
 
 
@@ -263,6 +267,7 @@ class RelationshipAdmin(admin.ModelAdmin):
 
 @admin.register(FrameColor)
 class FrameColorAdmin(
+    TabbedTranslationAdmin,
     ImportExportModelAdmin,
     ):
     resource_class = FrameColorResource
@@ -271,4 +276,7 @@ class FrameColorAdmin(
         models.ImageField:{"widget":AdminImageWidget},
         models.TextField: {'widget': Textarea(attrs={'rows': 1,'cols': 40})},
     }
-
+    autocomplete_fields = [
+        'attribute_value',
+        'frame',
+    ]

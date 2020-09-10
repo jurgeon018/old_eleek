@@ -143,28 +143,20 @@ def parse_request(request):
 def constructor_middleware(request):
     formed_attrs = {}
     query = json.loads(request.body.decode('utf-8'))
-    # print("query:", query)
+    print("query:", query, '\n')
     item = Item.objects.get(id=query['item_id'])
     features = ItemFeature.objects.filter(item__id=query['item_id'])
     attributes = json.loads(query['attributes'])
-    # frame
+    # Получає раму 
     item_feature_iframe_type = ItemFeature.objects.get(
-        item=item,name__code="iframe_type"
+        item=item,
+        name__code="iframe_type"
     ).value.code
-    if item_feature_iframe_type == 'eleek': item_feature_iframe_type = 'neo'
+    if item_feature_iframe_type not in ['neo','pozitiff','ekross','lite']: 
+        item_feature_iframe_type = 'neo'
     frame = FrameType.objects.get(code=item_feature_iframe_type)
     formed_attrs['iframe_type']  = item_feature_iframe_type
-    # color
-    item_feature_frame_color = ItemAttributeValue.objects.filter(
-        item_attribute__item=item,
-        item_attribute__attribute__code="iframe_color",
-    )
-    if item_feature_frame_color.exists():
-        item_feature_frame_color = item_feature_frame_color.first().value.code
-    else:
-        item_feature_frame_color = FrameColor.objects.filter(frame=frame).first().color
-    formed_attrs['iframe_color'] = item_feature_frame_color
-    # attributes & features 
+    # Парсить атрибути і характеристики товара які прилетіли з фронту, і поміщає їх у 4 массиви 
     attribute_ids = []
     attribute_value_ids = []
     feature_ids = []
@@ -182,34 +174,51 @@ def constructor_middleware(request):
             for item_attribute_value in ItemAttributeValue.objects.filter(id__in=attribute['item_attribute_value_ids']):
                 attribute_ids.append(item_attribute.attribute.id)
                 attribute_value_ids.append(item_attribute_value.value.id)
-    # values
+    # Всі елементи конструктора у рамі 
     values = Value.objects.filter(parameter__tab_group__tab__frame=frame)
     for value in values:
+      # Параметр поточного елемента
       parameter = value.parameter
-      if parameter.attr and parameter.attr.id in attribute_ids:
-        if value.attr_value and value.attr_value.id in attribute_value_id:
-          formed_attrs[parameter.code] = value.code
-        elif value.value and value.value.id in feature_value_ids:
-          formed_attrs[parameter.code] = value.code
+      # Якшо атрибут у параметра є у тих атрибутах які прийшли з фронту, або характеристика у параметра є у тих характеристиках які прийшли з фронту, 
+      if (parameter.attr and parameter.attr.id in attribute_ids) or (parameter.feature and parameter.feature.id in feature_ids):
+        # Якшо значення атрибуту у елемента є у тих значеннях атрибута які прийшли з фронту, або значення характеристики у елемента є у тих значеннях характеристик які прийшли з фронту 
+        if (value.attr_value and value.attr_value.id in attribute_value_ids) or (value.value and value.value.id in feature_value_ids):
+          # Коду параметра присвоюється код значення 
+          value_code = value.code
+        # Якщо ні значення характеристики ні значення атрибуту у елемента немає у тих значеннях характеристик і атрибутів які прийшли з фронту
         else:
-          formed_attrs[parameter.code] = Value.objects.filter(parameter=parameter).first().code
-      elif parameter.feature and parameter.feature.id in feature_ids:
-        if value.attr_value and value.attr_value.id in attribute_value_id:
-          formed_attrs[parameter.code] = value.code
-        elif value.value and value.value.id in feature_value_ids:
-          formed_attrs[parameter.code] = value.code
+          # Коду параметра присвоюється перший код значення який попадеться 
+          value_code = Value.objects.filter(parameter=parameter).first().code
+        if parameter.type == Parameter.checkbox_options:
+          formed_attrs[value_code] = "true"
         else:
-          formed_attrs[parameter.code] = Value.objects.filter(parameter=parameter).first().code
+          formed_attrs[parameter.code] = value_code 
+      # Якщо ні атрибута ні характеристики товара у параметра немає у тих атрибутах і характеристиках які прийшли з фронту,
+      # Тобто якшо на карточці товару немає потрібних елементів
       else:
+        # Дістається просто перший елемент у параметрі
         value = Value.objects.filter(parameter=parameter).first().code
-        print("value: ", value)
         formed_attrs[parameter.code] = value 
+    # color
+    # Для того щоб працювало правильне присвоювання кольорів, то потрібно вручну звязати кольори рам з конструктора і кольори рам з товара 
+    if not formed_attrs.get('iframe_color'):
+        item_feature_frame_color = ItemAttributeValue.objects.filter(
+            item_attribute__item=item,
+            item_attribute__attribute__code="iframe_color",
+            # value__id__in=attribute_value_ids,
+        )
+        # Якщо у товара існує атрибут "колір рами", то береться перше значення кольору рами з товара 
+        if item_feature_frame_color.exists():
+            item_feature_frame_color = item_feature_frame_color.first().value.code
+        # Якщо у товара не існує атрибуту "колір рами", то береться перше значення кольору рами з конструктора
+        else:
+            item_feature_frame_color = FrameColor.objects.filter(frame=frame).first().color
+        formed_attrs['iframe_color'] = f'%23{item_feature_frame_color}'
     # url
     uri = '?'
     for k, v in formed_attrs.items():
         uri += f'{k}={v}&'
     uri = uri[:-1]
-    print(uri)
     return JsonResponse({
         # 'url':reverse("constructor"),
         'url':reverse("bike") + uri,

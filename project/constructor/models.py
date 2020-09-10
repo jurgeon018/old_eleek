@@ -73,7 +73,7 @@ class FrameMixin(models.Model):
 
 
 class BaseMixin(ActiveMixin, TimestampMixin):
-    order = models.IntegerField(verbose_name="Порядок", default=0, blank=False, null=False)
+    # order = models.IntegerField(verbose_name="Порядок", default=0, blank=False, null=False)
 
     class Meta: 
         abstract = True 
@@ -127,14 +127,17 @@ class FrameType(GeneralMixin):
         return initial_price
     
     class Meta: 
-        ordering = ['order']
+        # ordering = ['order']
         verbose_name = "Тип рами"
         verbose_name_plural = "Типи рами"
 
 
 class FrameColor(GeneralMixin, FrameMixin):
+    attribute_value = models.ForeignKey(
+        verbose_name="Значення атрибута товара", to="sw_catalog.AttributeValue", blank=True, null=True, on_delete=models.SET_NULL,
+    )
     class Meta: 
-        ordering = ['order']
+        # ordering = ['order']
         verbose_name = "Колір рами" 
         verbose_name_plural = "Кольори рами"
     
@@ -153,7 +156,7 @@ class Tab(BaseMixin, NameMixin, CodeMixin, ImageMixin, FrameMixin):
          return f'{self.id}.{self.name} <- {self.frame.name}'
     
     class Meta: 
-        ordering = ['order']
+        # ordering = ['order']
         verbose_name = "Вкладка"
         verbose_name_plural = "Вкладки"
 
@@ -182,7 +185,7 @@ class TabGroup(BaseMixin, NameMixin):
             return f'{self.id}'
     
     class Meta: 
-        ordering = ['order']
+        # ordering = ['order']
         verbose_name = "Група"
         verbose_name_plural = "Групи"
          
@@ -217,7 +220,7 @@ class Parameter(BaseMixin, NameMixin, CodeMixin):
             return f'{self.id}'
     
     class Meta: 
-        ordering = ['order']
+        # ordering = ['order']
         verbose_name = "Параметер групи"
         verbose_name_plural = "Параметри групи"
         unique_together = [
@@ -269,7 +272,7 @@ class Value(GeneralMixin):
             return f'{self.id}'
 
     class Meta: 
-        ordering = ['order']
+        # ordering = ['order']
         unique_together = [
             'code','parameter',
         ]
