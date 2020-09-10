@@ -39,6 +39,9 @@ class TestDriveModelAdmin(
     formfield_overrides = {
         models.ImageField:{'widget':AdminImageWidget}
     }
+    autocomplete_fields = [
+        'item',стар
+    ]
     resourcce_class = TestDriveModelResource
 
 

@@ -103,8 +103,8 @@ class TestDriveSlider(models.Model):
         return ['text', 'alt']
 
     class Meta:
-        verbose_name = 'модель велосипеда для тест драйву'
-        verbose_name_plural = 'моделі велосипедів для тест драйву'
+        verbose_name = 'слайд з велосипедом для тест драйву'
+        verbose_name_plural = 'Головний слайдер'
 
 
 class VeloSlider(models.Model):
@@ -133,11 +133,8 @@ class VeloSlider(models.Model):
         ]
 
     class Meta:
-        verbose_name = 'модель велосипеда для тест драйву'
-        verbose_name_plural = 'моделі велосипедів для тест драйву'
-
-
-
+        verbose_name = 'слайд з електровелосипедом'
+        verbose_name_plural = 'Слайдер з електровелосипедами'
 
 
 
@@ -161,8 +158,8 @@ class Faq(models.Model):
         ]
 
     class Meta:
-        verbose_name = 'faq'
-        verbose_name_plural = 'faq'
+        verbose_name = 'питання та відповідь'
+        verbose_name_plural = 'Питання та відповіді'
 
 
 
