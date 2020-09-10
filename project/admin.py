@@ -40,7 +40,7 @@ class TestDriveModelAdmin(
         models.ImageField:{'widget':AdminImageWidget}
     }
     autocomplete_fields = [
-        'item',стар
+        'item',
     ]
     resourcce_class = TestDriveModelResource
 
