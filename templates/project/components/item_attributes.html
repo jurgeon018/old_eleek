@@ -150,7 +150,7 @@
               <div class="color_change_content_wrap">
                   {% for value in attribute.get_values %}
                   <div
-                  class="color_change_oval color_change_select db_content"
+                  class="color_change_oval color_change_select db_content {% if value.value.code == 'FFFFFF' %} white_color_change_oval {% endif %}"
                   data-admin_url="{{value.get_admin_url}}"
                   style="background:#{{value.value.code}};" 
                   data-color='#{{value.value.code}}' 
