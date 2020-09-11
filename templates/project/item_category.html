@@ -1,5 +1,5 @@
 {% extends 'project/base.html' %}
-{% load i18n sw_content %}
+{% load i18n sw_content sw_catalog %}
 {% block styles %}
 <link rel="stylesheet" href="/static/source/pages/items/index.css.map">
 <link rel="stylesheet" href="/static/source/lib/nouislider/nouislider.min.css">
@@ -128,7 +128,11 @@ item_section__wrapper
                     </div>
                     <div class="prod_card-info">
                         <div class="prod_card-cost main__title main__title_5 color_black">
-                            {{item.price}} {{item.currency}}
+                            {% get_item_price item current_currency "price_with_discount" as item_price%}
+                            {{item_price|floatformat}} {{current_currency.code}}
+ 
+                            <!-- {{item.price}} {{item.currency}} -->
+
                         </div>
                         <a href="{{item.get_absolute_url}}" class="prod_card-btn">
                             <img class="absolute_center" src="/static/source/img/items/okey.svg" alt="">

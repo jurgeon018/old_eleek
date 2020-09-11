@@ -30,7 +30,9 @@
                          {{similar.title}}
                      </div>
                      <div class="cost-product">
-                         {{similar.price}} {{similar.currency.code}}
+                         <!-- {{similar.price}} {{similar.currency.code}} -->
+                         {% get_item_price similar current_currency "price_with_discount" as item_price%}
+                         {{item_price|floatformat}} {{current_currency.code}}
                      </div>
                 </div>
              </div>
