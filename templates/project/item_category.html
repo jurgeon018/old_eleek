@@ -12,6 +12,7 @@
 item_section__wrapper
 {% endblock main_class %}
 {% block content %}
+<input type="hidden" name="current_currency" id="current_currency" class="current_currency" value="{{current_currency.code}}">
 <section class="prod_header">
   <input type="hidden" class="category_id" name="category_id" value={{category.id}}>
   <div class="container">

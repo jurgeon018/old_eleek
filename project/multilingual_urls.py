@@ -41,8 +41,24 @@ def item_category(request, slug):
     all_items         = Item.objects.filter(category__id__in=descentant_ids)
     show_more         = all_items.count() > 6
     discount_filter   = all_items.filter(discount__isnull=False).exists()
-    raw_max_price     = all_items.aggregate(Max('price'))['price__max']
-    raw_min_price     = all_items.aggregate(Min('price'))['price__min']
+    # raw_max_price     = all_items.aggregate(Max('price'))['price__max']
+    # raw_min_price     = all_items.aggregate(Min('price'))['price__min']
+    # print(all_items.aggregate(Max('price')))
+    # print(all_items.aggregate(Min('price')))
+    raw_max_price     = None
+    raw_min_price     = None
+    current_currency = Currency.objects.get(code=request.session['current_currency_code'])
+    for item in all_items:
+        # price = item.price
+        price = item.get_price(current_currency, 'price_with_discount')
+        if raw_max_price == None:
+            raw_max_price = price  
+        if raw_min_price == None:
+            raw_min_price = price  
+        if raw_max_price != None and price > raw_max_price:
+            raw_max_price = price 
+        if raw_min_price != None and price < raw_min_price:
+            raw_min_price = price 
     max_price         = str(raw_max_price).replace(',','.')
     min_price         = str(raw_min_price).replace(',','.')
     return render(request, 'project/item_category.html', locals())
