@@ -1,15 +1,8 @@
 {% load i18n sw_content sw_catalog %}
-
-
-
 <!-- Атрибути без категорій -->
 {% for attribute in item.get_attributes_without_categories %}
   <!-- Атрибути без категорій(одиночні)  -->
   {% if not attribute.is_option %}
-
-
-
-
     <div 
     data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}' 
     data-item_attribute_value_id="{{attribute.get_values.first.id}}" 
@@ -35,7 +28,9 @@
             data-price-option='{{value.price|stringformat:".2f"}}'>
             <img class="option_img" src="/static/source/img/item/close.svg" alt="">
             <div class="option_text standart_title standart_title_6">
-            {{value.value.value}} ({{value.price}} {{value.currency.code}})
+            <!-- {{value.value.value}} ({{value.price}} {{value.currency.code}}) -->
+            {% get_item_attribute_value_price value current_currency  as item_attribute_value_price %}
+            {{value.value.value}} ({{item_attribute_value_price|floatformat}} {{current_currency.code}})
             <input
                 class="hidden_color_attr"
                 type="hidden"
@@ -50,16 +45,8 @@
         </div>
     </div>
     </div>
-
-
-
-
   <!-- Атрибути без категорій(опції-чекбокси) -->
   {% elif attribute.is_option %}
-
-
-
-
     <div class="option__wrap">
         <div 
         class="db_content item_char_title main__title main__title_4"
@@ -70,28 +57,30 @@
         </div>
         <div class="option_content__block">
         {% for option in attribute.get_values %}
+        {% get_item_attribute_value_price option current_currency  as item_attribute_value_price %}
         <div
             class="db_content option_content_prof price_multiple_option price_option" 
             data-admin_url="{{option.get_admin_url}}"
             data-value="{{option.value.value}}" 
-            data-price-option='{{option.price|stringformat:".2f"}}'
+            data-price-option='{{item_attribute_value_price|stringformat:".2f"}}'
             data-item_attribute_id='{{option.attribute.id}}'
             data-item_attribute_value_id='{{option.id}}'
         >
             <img class="option_img" src="/static/source/img/item/close.svg" alt="">
             <div class="option_text standart_title standart_title_6">
-            {{option.value.value}} ({{option.price}} {{option.currency.code}})
-            {{option.attribute}}
+            <!-- {{option.value.value}} ({{option.price}} {{option.currency.code}}) -->
+            {{option.value.value}} ({{item_attribute_value_price|floatformat}} {{current_currency.code}})
+            <!-- {{option.attribute}} -->
             </div>
         </div>
         {% endfor %}
         </div>
     </div>
-
-
-
   {% endif %}
 {% endfor %}
+
+
+
 
 
 
@@ -207,10 +196,15 @@
               <div class="color_change_content">
               <div class="color_change_content_wrap">
                   {% for value in attribute.get_values %}
-                  <div class="option_content_prof price_simple_option change_attribute {% if forloop.counter == 1 %}option_content_prof_active{% endif %}" data-price-option='{{value.price|stringformat:".2f"}}'>
+                  {% get_item_attribute_value_price value current_currency  as item_attribute_value_price %}
+                  <div 
+                    class="option_content_prof price_simple_option change_attribute {% if forloop.counter == 1 %}option_content_prof_active{% endif %}" 
+                    data-price-option='{{item_attribute_value_price|stringformat:".2f"}}'
+                  >
                   <img class="option_img" src="/static/source/img/item/close.svg" alt="">
                   <div class="option_text standart_title standart_title_6 db_content" data-admin_url="{{value.get_admin_url}}">
-                      {{value.value.value}} ({{value.price}} {{value.currency.code}})
+                      <!-- {{value.value.value}} ({{value.price}} {{value.currency.code}}) -->
+                      {{value.value.value}} ({{item_attribute_value_price|stringformat:".2f"}} {{current_currency.code}})          
                       <input
                       class="hidden_color_attr"
                       type="hidden"

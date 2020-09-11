@@ -9,6 +9,7 @@ def context(request):
     current_currency_code = request.session['current_currency_code']
     try:
         current_currency = Currency.objects.get(code=current_currency_code)
+        main_currency = Currency.objects.get(is_main=True)
         velo = ItemCategory.objects.get(code='velo')
         ramy = ItemCategory.objects.get(code='ramy')
         comp = ItemCategory.objects.get(code='comp')
@@ -20,8 +21,9 @@ def context(request):
         cart = get_cart(request)
         cart_items = CartItem.objects.filter(cart=cart)
         currencies = Currency.objects.all()
-    except:
-        pass 
+    except Exception as e:
+        raise e
+        # pass 
     return locals()
 
 
