@@ -6,6 +6,10 @@
 {% for attribute in item.get_attributes_without_categories %}
   <!-- Атрибути без категорій(одиночні)  -->
   {% if not attribute.is_option %}
+
+
+
+
     <div 
     data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}' 
     data-item_attribute_value_id="{{attribute.get_values.first.id}}" 
@@ -46,8 +50,16 @@
         </div>
     </div>
     </div>
+
+
+
+
   <!-- Атрибути без категорій(опції-чекбокси) -->
   {% elif attribute.is_option %}
+
+
+
+
     <div class="option__wrap">
         <div 
         class="db_content item_char_title main__title main__title_4"
@@ -75,6 +87,9 @@
         {% endfor %}
         </div>
     </div>
+
+
+
   {% endif %}
 {% endfor %}
 
@@ -94,6 +109,11 @@
       {% if attribute.get_values.exists %}
         <!-- Атрибути в категорії одиночні(кольори) -->
         {% if attribute_category.name == 'кольори' %}
+
+
+
+
+
           <div class="color_change__wrap only_color_change__wrap"
               data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}'
               data-item_attribute_value_id='{{attribute.get_values.first.id}}'
@@ -153,8 +173,19 @@
               </div>
               </div>
           </div>
+
+
+
+
+
         <!-- Атрибути в категорії одиночні(некольори) -->
         {% elif attribute_category.name != 'кольори' %}
+
+
+
+
+
+
           <div 
               data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}' 
               data-item_attribute_value_id="{{attribute.get_values.first.id}}" 
@@ -194,6 +225,12 @@
               </div>
               </div>
           </div>
+
+
+
+
+
+          
         {% endif %}
       {% endif %}
     {% endfor %}

@@ -116,7 +116,10 @@ item_section__wrapper
           {% trans 'Ціна додаткових опцій' %}:
         </div>
         <div class="addit_price main__title main__title_5 color_black">
-          ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span>
+          ₴ 
+          <span class="additional_price main__title_5 main__title_5 color_black">
+            0
+          </span>
         </div>
       </div>
       <div class="additional__block absolute_additional__block">
@@ -124,7 +127,10 @@ item_section__wrapper
           {% trans 'Ціна додаткових опцій' %}:
         </div>
         <div class="addit_price main__title main__title_5 color_black">
-          ₴ <span class="absolute_additional_price main__title_5 main__title_5 color_black">0</span>
+          ₴ 
+          <span class="absolute_additional_price main__title_5 main__title_5 color_black">
+            0
+          </span>
         </div>
       </div>
       
@@ -190,7 +196,7 @@ item_section__wrapper
         </div>
       </div>
     {% endif %}
-
+    
     {% if item.discount_price != 0 %}
       <div class="additional__block">
         <div class="addit_name sub_title sub_title_3 color_black">
@@ -200,7 +206,6 @@ item_section__wrapper
             <s> {{item.price}} {{item.currency}}</s>
         </div>
       </div>
-
       <div class="additional__block">
         <div class="addit_name sub_title sub_title_3 color_black">
           {% trans 'Нова ціна' %}:
@@ -215,24 +220,22 @@ item_section__wrapper
         {% trans 'Ціна' %}:
       </div>
       <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
-          {{item.price}} {{item.currency}} 
+          {{item.price}} {{item.currency}}
           <!-- 222222 -->
       </div>
     </div>
     {% else%}
     {% endif %}
 
-    <!-- <div class="additional__block">
+    <div class="additional__block">
       <div class="addit_name sub_title sub_title_3 color_black">
         ціна у вибраній валюті
       </div>
       <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
-          {% get_price_by_currency item current_currency %} {{current_currency.code}}
+          {% get_price item current_currency %} {{current_currency.code}}
         </div>
       </div> 
-    -->
-    <!-- https://docs.google.com/spreadsheets/d/1-v34aSjScQw6AVVaByppAX5l3cDD0WILrV6J_zsPkrk/edit#gid=0 -->
-
+   
       <!-- <div class="kredit__block">
         <div class="kredit_text sub_title sub_title_2 color_black">
           Від 10 057/місяць при купівлі товару в кредит або оплаті частинами
@@ -241,6 +244,8 @@ item_section__wrapper
           {% trans 'Купити в кредит' %}
         </div>
       </div> -->
+
+
       {% if odd_features or even_features %}
       <div class="item_char_title main__title main__title_4">
         {% trans 'Характеристики' %}
