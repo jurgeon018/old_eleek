@@ -37,9 +37,9 @@ def item_category(request, slug):
     parent_categories = ItemCategory.objects.filter(parent__isnull=True)
     descentant_ids    = list(category.get_descendants().values_list('id', flat=True))
     descentant_ids.append(category.id)
-    items             = Item.objects.filter(category__id__in=descentant_ids)[0:6]
+    items             = Item.objects.filter(category__id__in=descentant_ids)[0:24]
     all_items         = Item.objects.filter(category__id__in=descentant_ids)
-    show_more         = all_items.count() > 6
+    show_more         = all_items.count() > 24
     discount_filter   = all_items.filter(discount__isnull=False).exists()
     # raw_max_price     = all_items.aggregate(Max('price'))['price__max']
     # raw_min_price     = all_items.aggregate(Min('price'))['price__min']
@@ -49,8 +49,8 @@ def item_category(request, slug):
     raw_min_price     = None
     current_currency = Currency.objects.get(code=request.session['current_currency_code'])
     for item in all_items:
-        # price = item.price
-        price = item.get_price(current_currency, 'price_with_discount')
+        price = item.price
+        # price = item.get_price(current_currency, 'price_with_discount')
         if raw_max_price == None:
             raw_max_price = price  
         if raw_min_price == None:
