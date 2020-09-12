@@ -248,7 +248,7 @@ class Value(GeneralMixin):
         parents = parents.values_list('parent__id', flat=True)
         parents = Value.objects.filter(id__in=parents)
         return parents
-
+    
     def generate_children(self):
         result = {}
         for children in self.get_children():
