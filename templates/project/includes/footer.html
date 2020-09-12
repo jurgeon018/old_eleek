@@ -16,7 +16,7 @@
             <img src="/static/source/img/index/map-pin.svg" alt="">
           </div>
           {% render 'address1' 'address' as address1 %}
-          <a target="_blank" href="https://goo.gl/maps/YqYBqa7U4CfxCLsi6" class="footer_info_text db_content" data-admin_url="{{address1.get_admin_url}}">
+          <a target="_blank" href="{{address1.href}}" class="footer_info_text db_content" data-admin_url="{{address1.get_admin_url}}">
             {{address1.text}}
             <!-- вул. Об'їзна 12, м.Тернопіль -->
           </a>
@@ -26,8 +26,9 @@
           <img src="/static/source/img/index/phone.svg" alt="">
         </div>
         {% render 'tel1' 'tel' as tel1 %}
-        <a href="tel:+380673878768" class="footer_info_text db_content" data-admin_url="{{tel1.get_admin_url}}">
+        <a href="tel:{{tel1.href}}" class="db_content footer_info_text" data-admin_url="{{tel1.get_admin_url}}">
           <!-- +380 67 387 87 68 -->
+          <!-- +380673878768 -->
           {{tel1.text}}
         </a>
       </div>
@@ -43,11 +44,13 @@
         <div class="footer_info_svg">
           <img src="/static/source/img/index/clock.svg" alt="">
         </div>
-        <div class="footer_info_text color_white">
-          Пн. - Пт.: 09:00 - 18:00
+        {% render 'text11' as text11 %}
+        <div class="db_content footer_info_text color_white" data-admin_url="{{text11.get_admin_url}}">
+          {{text11.text}}
+          <!-- Пн. - Пт.: 09:00 - 18:00 -->
         </div>
       </div>
-      <div class="footer_social__block">
+      <!-- <div class="footer_social__block">
           <a href="#" class="footer_social">
             <svg class="footer_social_svg" xmlns="http://www.w3.org/2000/svg" width="17" height="31" viewBox="0 0 17 31">
               <path fill="#FFF" d="M10.411 30.887V16.799h4.727l.71-5.492H10.41V7.801c0-1.59.44-2.673 2.722-2.673h2.906V.214C15.536.15 13.81 0 11.803 0 7.611 0 4.741 2.559 4.741 7.257v4.05H0v5.492h4.741v14.088h5.67z"/>
@@ -63,76 +66,70 @@
               <path fill="#FFF" d="M17.82 0c1.823.008 10.914.076 13.374.75 1.5.403 2.681 1.585 3.085 3.084.647 2.366.714 6.946.72 8.151v.43c-.005.875-.065 5.795-.72 8.285-.404 1.499-1.586 2.681-3.085 3.085-2.507.66-11.896.715-13.47.72h-.448c-1.57-.005-10.937-.063-13.47-.749-1.5-.404-2.682-1.586-3.085-3.085-.64-2.402-.712-7.16-.72-8.21v-.416c.008-1.045.08-5.783.72-8.21.403-1.5 1.614-2.71 3.084-3.114C6.265.073 15.356.007 17.18 0zM14.01 7.007V17.5l9.11-5.247-9.11-5.247z"/>
             </svg>
           </a>
-      </div>
+      </div> -->
     </div>
     <div class="footer_accordeon__block footer_part">
-      <div class="footer_accordeon_name color_white main__title main__title_3">
-        {% trans 'Клієнтам' %} <div class="footer_btn"></div>
+      {% render 'text12' as text12 %}
+      <div class="db_content footer_accordeon_name color_white main__title main__title_3" data-admin_url="{{text12.get_admin_url}}">
+        {{text12.text}}
+        <!-- {% trans 'Клієнтам' %}  -->
+        <div class="footer_btn"></div>
       </div>
       <div class="footer_accordeon_content">
-        <a href="{% url 'about' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          {% trans 'Про нас' %}
+        {% render 'text13' as text13 %}
+        <a data-admin_url="{{text13.get_admin_url}}" href="{% url 'about' %}" class="db_content footer_accordeon_text color_white sub_title sub_title_2">
+          {{text13.text}}
+          <!-- {% trans 'Про нас' %} -->
         </a>
-        <a href="{% url 'faq' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          {% trans 'Часті питання' %}
+        {% render 'text14' as text14 %}
+        <a data-admin_url="{{text14.get_admin_url}}" href="{% url 'faq' %}" class="db_content footer_accordeon_text color_white sub_title sub_title_2">
+          {{text14.text}}
+          <!-- {% trans 'Часті питання' %} -->
         </a>
-        <a href="{% url 'delivery' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          {% trans 'Доставка і оплата' %}
+        {% render 'text15' as text15 %}
+        <a data-admin_url="{{text15.get_admin_url}}" href="{% url 'delivery' %}" class="db_content footer_accordeon_text color_white sub_title sub_title_2">
+          {{text15.text}}
+          <!-- {% trans 'Доставка і оплата' %} -->
         </a>
-        <a href="{% url 'test_drive' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          {% trans 'Тест-драйв' %}
+        {% render 'text16' as text16 %}
+        <a data-admin_url="{{text16.get_admin_url}}" href="{% url 'test_drive' %}" class="db_content footer_accordeon_text color_white sub_title sub_title_2">
+          {{text16.text}}
+          <!-- {% trans 'Тест-драйв' %} -->
         </a>
-        <a href="{% url 'constructor' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          {% trans 'Конструктор' %}
-        </a>
-      </div>
-    </div>
-    <div class="footer_accordeon__block footer_part">
-      <div class="footer_accordeon_name color_white main__title main__title_3">
-        {% trans 'Магазин' %} <div class="footer_btn"></div>
-      </div>
-      <div class="footer_accordeon_content">
-        <a href="{{velo.get_absolute_url}}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          {{velo.title}}
-        </a>
-        <a href="{{ramy.get_absolute_url}}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          {{ramy.title}}
-        </a>
-        <a href="{{comp.get_absolute_url}}" class="footer_accordeon_text color_white sub_title sub_title_2">
-          {{comp.title}}
+        {% render 'text17' as text17 %}
+        <a data-admin_url="{{text17.get_admin_url}}" href="{% url 'constructor' %}" class="db_content footer_accordeon_text color_white sub_title sub_title_2">
+          {{text17.text}}
+          <!-- {% trans 'Конструктор' %} -->
         </a>
       </div>
     </div>
     <div class="footer_accordeon__block footer_part">
-      <div class="footer_accordeon_name color_white main__title main__title_3">
-        {% trans 'Зв’язок' %} <div class="footer_btn"></div>
+      {% render 'text18' as text18 %}
+      <div class="db_content footer_accordeon_name color_white main__title main__title_3" data-admin_url="{{text18.get_admin_url}}">
+        {{text18.text}}
+        <!-- {% trans 'Магазин' %}  -->
+        <div class="footer_btn"></div>
       </div>
       <div class="footer_accordeon_content">
-        <form action="{% url 'sw_contact' %}" method="POST" class="footer_form">
-          <div class="footer_input__wrap inp-vak-wrap">
-            <label for="footer_name" class="footer_label label__style color_white">
-              {% trans "Ім'я" %}
-            </label>
-            <input type="text" id="footer_name" name='name' class="footer_input input_focus">
-          </div>
-          <div class="footer_input__wrap inp-vak-wrap">
-            <label for="footer_email" class="footer_label label__style color_white">
-              Email
-            </label>
-            <input type="text" id="footer_email" name='email' class="footer_input input_focus">
-          </div>
-          <div class="footer_input__wrap inp-vak-wrap">
-            <label for="footer_email" class="footer_label label__style color_white">
-              {% trans 'Повідомлення' %}
-            </label>
-            <textarea name='message' id="user_send" class="user_send footer_input input_focus"></textarea>
-          </div>
-          <div class="wrap_for_footer_btn">
-            <input type="submit" value="Відправити" class="btn_standart btn_standart_yellow">
-          </div>
-        </form>
-        
+        <a data-admin_url="{{velo.get_admin_url}}" href="{{velo.get_absolute_url}}" class="db_content footer_accordeon_text color_white sub_title sub_title_2">
+          {{velo.title|title}}
+        </a>
+        <a data-admin_url="{{ramy.get_admin_url}}" href="{{ramy.get_absolute_url}}" class="db_content footer_accordeon_text color_white sub_title sub_title_2">
+          {{ramy.title|title}}
+        </a>
+        <a data-admin_url="{{comp.get_admin_url}}" href="{{comp.get_absolute_url}}" class="db_content footer_accordeon_text color_white sub_title sub_title_2">
+          {{comp.title|title}}
+        </a>
       </div>
+    </div>
+    <div class="footer_accordeon__block footer_part">
+      {% render 'text19' as text19 %}
+      <div class="db_content footer_accordeon_name color_white main__title main__title_3" data-admin_url="{{text19.get_admin_url}}">
+        {{text19.text}}
+        <!-- {% trans 'Зв’язок' %}  -->
+        <div class="footer_btn"></div>
+      </div>
+      {% include "project/forms/footer.html" %}
     </div>
     </div>
     <div class="footer_bottom_info">
@@ -143,8 +140,10 @@
       <!-- Всі права захищено  -->
       </div>
       <div class="footer_starway__block color_white">
-        <div class="starway_text">
-          {% trans 'Розробка' %}
+        {% render 'text23' as text23 %}
+        <div class="starway_text db_content " data-admin_url="{{text23.get_admin_url}}">
+          {{text23.text}}
+          <!-- {% trans 'Розробка' %} -->
         </div>
         <a href="https://starway.agency/" class="starway_logo">
           <svg class="svg_sw" xmlns="http://www.w3.org/2000/svg" width="110" height="30" viewBox="0 0 110 30">
@@ -156,39 +155,5 @@
         </a>
       </div>
     </div>
-</footer>
-
-  <div class="footer_form_constructor">
-  <form action="/api/make_eleek_order/" method="POST" id="order__form_constructor" class="order__form_constructor">
-    <div class="footer_input__wrap inp-vak-wrap">
-      <label for="footer_name" class="footer_label label__style color_white">
-        {% trans "Ім'я" %}
-      </label>
-      <input type="text" id="footer_name" name='name' class="footer_input input_focus">
-    </div>
-    <div class="footer_input__wrap inp-vak-wrap">
-      <label for="footer_tell" class="footer_label label__style color_white">
-        Телефон
-      </label>
-      <input type="tel" id="footer_tell" name='tel' class="footer_input input_focus">
-    </div>
-    <div class="footer_input__wrap inp-vak-wrap">
-      <label for="footer_email" class="footer_label label__style color_white">
-        Email
-      </label>
-      <input type="text" id="footer_email" name='email' class="footer_input input_focus">
-    </div>
-    <div class="footer_input__wrap inp-vak-wrap">
-      <label for="footer_email" class="footer_label label__style color_white">
-        {% trans 'Коментар' %}
-      </label>
-      <textarea name='message' id="user_send" class="user_send footer_input input_focus"></textarea>
-    </div>
-
-    <div class="wrap_for_footer_btn">
-      <input type="submit" value="Відправити" class="btn_standart btn_standart_yellow">
-    </div>
-  </form>
-  
-</div>  
-
+  </footer>
+  {% include "project/modals/constructor_order.html" %}

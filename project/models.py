@@ -1,5 +1,7 @@
 from django.db import models
 from box.core.sw_auth.models import BoxAbstractUser
+from tinymce import HTMLField
+from box.core.helpers import get_admin_url
 
 
 class ProjectUser(BoxAbstractUser):
@@ -15,6 +17,9 @@ class Certificate(models.Model):
     def modeltranslation_fields(self):
         return ['alt']
 
+    def get_admin_url(self):
+        return get_admin_url(self)
+
     def __str__(self):
         return f'{self.image}'
 
@@ -27,7 +32,10 @@ class Partner(models.Model):
 
     image = models.ImageField(verbose_name='Картинка')
     alt   = models.CharField(verbose_name="Альт", max_length=255)
-    
+            
+    def get_admin_url(self):
+        return get_admin_url(self)
+
     @classmethod
     def modeltranslation_fields(self):
         return ['alt']
@@ -46,9 +54,12 @@ class TestDrive(models.Model):
     email   = models.CharField(verbose_name="Емейл", max_length=255)
     model   = models.CharField(verbose_name="Модель", max_length=255)
     message = models.CharField(verbose_name="Повідомлення", max_length=255)
+        
+    def get_admin_url(self):
+        return get_admin_url(self)
 
     def __str__(self):
-        return f'{self.id}'
+        return f'{self.name}, {self.phone}, {self.email}, {self.message}'
 
     class Meta:
         verbose_name = 'заявка на тест драйв'
@@ -61,7 +72,10 @@ class TestDriveModel(models.Model):
     item = models.ForeignKey(verbose_name="Товар", to="sw_catalog.Item", on_delete=models.SET_NULL, null=True, blank=True)
     
     def __str__(self):
-        return f'{self.id}'
+        return f'{self.name}, {self.item}'
+        
+    def get_admin_url(self):
+        return get_admin_url(self)
 
     @classmethod
     def modeltranslation_fields(self):
@@ -71,9 +85,6 @@ class TestDriveModel(models.Model):
         verbose_name = 'модель велосипеда для тест драйву'
         verbose_name_plural = 'моделі велосипедів для тест драйву'
 
-
-from tinymce import HTMLField
-from box.core.helpers import get_admin_url
 
 class TestDriveSlider(models.Model):
     text  = HTMLField(verbose_name="Текст")
@@ -85,15 +96,15 @@ class TestDriveSlider(models.Model):
         return get_admin_url(self)
 
     def __str__(self):
-        return f'{self.id}'
+        return f'{self.item}, {self.text}'
     
     @classmethod
     def modeltranslation_fields(self):
         return ['text', 'alt']
 
     class Meta:
-        verbose_name = 'модель велосипеда для тест драйву'
-        verbose_name_plural = 'моделі велосипедів для тест драйву'
+        verbose_name = 'слайд з велосипедом для тест драйву'
+        verbose_name_plural = 'Головний слайдер'
 
 
 class VeloSlider(models.Model):
@@ -122,14 +133,33 @@ class VeloSlider(models.Model):
         ]
 
     class Meta:
-        verbose_name = 'модель велосипеда для тест драйву'
-        verbose_name_plural = 'моделі велосипедів для тест драйву'
+        verbose_name = 'слайд з електровелосипедом'
+        verbose_name_plural = 'Слайдер з електровелосипедами'
 
 
 
 
+class Faq(models.Model):
+    title = models.CharField(verbose_name="Запитання", max_length=255)
+    content = HTMLField(verbose_name="Відповідь")
+    is_active = models.BooleanField(verbose_name="Активність", default=True)
 
+    def __str__(self):
+        return f'{self.title}'
+    
+    def get_admin_url(self):
+        return get_admin_url(self)
 
+    @classmethod
+    def modeltranslation_fields(self):
+        return [
+            'title',
+            'content',
+        ]
+
+    class Meta:
+        verbose_name = 'питання та відповідь'
+        verbose_name_plural = 'Питання та відповіді'
 
 
 

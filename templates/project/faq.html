@@ -26,15 +26,17 @@ item_section__wrapper
 </div>
 <section class="another_pages">
     <div class="another_container">
-      <h1 class="faq_title main__title main__title_2">
-        Питання та відповіді
+      {% render 'text50' as text50 %}
+      <h1 class="db_content faq_title main__title main__title_2" data-admin_url="{{text50.get_admin_url}}">
+        {{text50.text}}
+        <!-- Питання та відповіді -->
       </h1>
-      {% for faq in "faqs"|make_list %}
-      <div class="color_change__wrap current_attribute_change__wrap">
+      {% for faq in faqs %}
+      <div class="color_change__wrap current_attribute_change__wrap db_content" data-admin_url="{{faq.get_admin_url}}">
         <div class="color_change__block">
           <div class="color_change_prof">
             <div class="color_change_title standart_title standart_title_3 color_black">
-              Як вибрати велосипед?
+              {{faq.title}}
             </div>
           </div>
           <div class="color_change_btn color_change_btn_active">
@@ -42,38 +44,12 @@ item_section__wrapper
           </div>
         </div>
         <div class="color_change_content color_change_content_active sub_title sub_title_2">
-          Кращий електровелосипед – це Ваш електровелосипед.
-          <br>
-          <br>
-          Саме той, який підходить Вам: за ростом, вагою, потужністю, системі гальм, комфорту чи спортивності, розміром коліс, типу рами і за багатьма іншими чинниками.
-          <br>
-          <br>
-          Індустрія велосипедів на сьогоднішній день – це океан можливостей, на ринку представлені мільйони велосипедів.
-          <br>
-          <br>
-          І, якщо Ви дійсно спантеличені покупкою, яка повинна задовольнити Вас – Ви зрозумієте, що нюансів багато, але вибір є!
-          <br>
-          <br>
-          Однак, куди більш скромна картина Вас чекає якщо Ви вирішили обзавестись хорошим електровелосипедом.
-          <br>
-          <br>
-          Перед Вами постане вибір:
-          <br>
-          <br>
-          – Зовсім недорогий азіатський тип (300-500 $ важкий скрипучий незрозумілого вигляду мопед з педалями і безліччю багажників);
-          <br>
-          <br>
-          – Середньої ціни європейський тип китайського виробництва (1000-2000 $ непогані “велики”, урізані європейськими законами до незначної потужності 250Вт, 25км / год і без ручки газу);
-          <br>
-          <br>
-          – Дорогі брендові (від 4-5000$), але класні електровелосипеди.
+          {{faq.content|safe}}
         </div>
       </div>
       {% endfor %}
     </div>
-   
 </section>
-<!-- /.another_pages -->
 {% endblock content%}
 {% block scripts %}
 <script src="/static/source/lib/jquery/index.js"></script> 

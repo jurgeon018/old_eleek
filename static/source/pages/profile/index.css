@@ -2253,6 +2253,9 @@ body {
     height: 100%;
     width: 100%;
     object-fit: cover; }
+  .profile_characteristick .btn_standart {
+    width: fit-content;
+    padding: 10px 15px; }
 
 .attr_size_1 {
   width: 180px;

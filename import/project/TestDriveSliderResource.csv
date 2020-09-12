@@ -1,17 +1,5 @@
-id,item,image,text,text_uk,text_ru,text_en,alt,alt_en,alt_uk,alt_ru
-1,1,"sliders/123.png","Новий Eleek Atom1 — відчуй драйв!","Новий Eleek Atom1 — відчуй драйв!","Новий Eleek Atom1 — відчуй драйв!","Новий Eleek Atom1 — відчуй драйв!","alt","alt_en","alt_uk","alt_ru"
-2,2,"sliders/slide-1.png","Новий Eleek Atom1 — відчуй драйв!","Новий Eleek Atom1 — відчуй драйв!","Новий Eleek Atom1 — відчуй драйв!","Новий Eleek Atom1 — відчуй драйв!","alt","alt_en","alt_uk","alt_ru"
-3,3,"sliders/slide-2.png","Новий Eleek Atom1 — відчуй драйв!","Новий Eleek Atom1 — відчуй драйв!","Новий Eleek Atom1 — відчуй драйв!","Новий Eleek Atom1 — відчуй драйв!","alt","alt_en","alt_uk","alt_ru"
-4,4,"sliders/slide-3.png","Новий Eleek Atom1 — відчуй драйв!","Новий Eleek Atom1 — відчуй драйв!","Новий Eleek Atom1 — відчуй драйв!","Новий Eleek Atom1 — відчуй драйв!","alt","alt_en","alt_uk","alt_ru"
-
-
-
-
-
-
-
-
-
-
-
-
+id,text,text_uk,text_en,text_ru,item,image,alt,alt_uk,alt_en,alt_ru
+1,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,4,sliders/123.png,alt_uk,alt_uk,alt_en,alt_ru
+2,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,11,sliders/slide-1.png,alt_uk,alt_uk,alt_en,alt_ru
+3,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,3,sliders/slide-2.png,слайд,слайд,slide,слайд
+4,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,<p>Новий Eleek Atom1 &mdash; відчуй драйв!</p>,1,sliders/slide-3.png,слайд,слайд,slide,слайд

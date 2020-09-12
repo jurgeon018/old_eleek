@@ -11,10 +11,7 @@
 section__wrapper
 {% endblock main_class %}
 {% block content %}
-
 <script>
-
-  
   function findWord(word, str) {
     return RegExp('\\b'+ word +'\\b').test(str)
   };
@@ -57,23 +54,26 @@ section__wrapper
       document.querySelectorAll(".logos_anim")[0].classList.add("logos_anim_active");
      }, 2300);
   }
-  </script>
-
+</script>
 <section style="opacity: 0;" class="first_section">
   <div class="bike_trailer__block">
     {% for slider in test_drive_sliders %}
     <div class="bike_trailer__wrapper db_content" data-admin_url="{{slider.get_admin_url}}">
       <div class="bike_trailer_content">
         <h1 class="main__title main__title_1 color_black slide-name anim_text">
-          {{slider.text}}
+          {{slider.text|safe}}
         </h1>
         <div class="bike_trailer_btn__wrap slide-name anim_text">
-            <a href="{% url 'test_drive' %}" class="btn_standart btn_standart_transparent">
-              {% trans 'Тест-драйв' %}
+          {% render 'text82' as text82 %}
+          <a href="{% url 'test_drive' %}" class="db_content btn_standart btn_standart_transparent" data-admin_url="{{text82.get_admin_url}}">
+              {{text82.text}}
+              <!-- {% trans 'Тест-драйв' %} -->
             </a>
             {% if slider.item %}
-            <a href="{{slider.item.get_absolute_url}}" class="btn_standart btn_standart_black">
-              {% trans 'Детальніше' %}
+            {% render 'text83' as text83 %}
+            <a href="{{slider.item.get_absolute_url}}" class="db_content btn_standart btn_standart_black" data-admin_url="{{text83.get_admin_url}}">
+              {{text83.text}}
+              <!-- {% trans 'Детальніше' %} -->
             </a>
             {% endif %}
         </div>
@@ -129,19 +129,21 @@ section__wrapper
                     <span class="pref_num main__title main__title_5 color_white">
                       01
                     </span>
-                    <span class="pref_line">
-
-                    </span>
-                    <span class="pref_text main__title main__title_5 color_white">
-                      {% trans 'Дистанція' %}
+                    <span class="pref_line"></span>
+                    {% render 'text84' as text84 %}
+                    <span class="db_content pref_text main__title main__title_5 color_white" data-admin_url="{{text84.get_admin_url}}">
+                      {{text84.text}}
+                      <!-- {% trans 'Дистанція' %} -->
                     </span>
                 </div>
                 <div class="preferens_counter__block">
                     <span data-count="150" id="preferens_counter_1" class="lines preferens_counter_1 color_yellow main__title main__title_0">
                       0
                     </span>
-                    <span class="sub_title sub_title_1 color_white">
-                      {% trans 'км' %}
+                    {% render 'text85' as text85 %}
+                    <span class="db_content sub_title sub_title_1 color_white" data-admin_url="{{text85.get_admin_url}}">
+                      {{text85.text}}
+                      <!-- {% trans 'км' %} -->
                     </span>
                 </div>
           </div>
@@ -153,16 +155,20 @@ section__wrapper
                   <span class="pref_line">
 
                   </span>
-                  <span class="pref_text main__title main__title_5 color_white">
-                    {% trans 'Швидкість' %}
+                  {% render 'text86' as text86 %}
+                  <span class="db_content pref_text main__title main__title_5 color_white" data-admin_url="{{text86.get_admin_url}}">
+                    {{text86.text}}
+                    <!-- {% trans 'Швидкість' %} -->
                   </span>
               </div>
               <div class="preferens_counter__block">
                   <span data-count="100" id="preferens_counter_2" class="lines preferens_counter_2 color_yellow main__title main__title_0">
                     0
                   </span>
-                  <span class="sub_title sub_title_1 color_white">
-                    {% trans 'км/год' %}
+                  {% render 'text87' as text87 %}
+                  <span class="db_content sub_title sub_title_1 color_white" data-admin_url="{{text87.get_admin_url}}">
+                    {{text87.text}}
+                    <!-- {% trans 'км/год' %} -->
                   </span>
               </div>
           </div>
@@ -176,8 +182,10 @@ section__wrapper
                 <span class="pref_line">
 
                 </span>
-                <span class="pref_text main__title main__title_5 color_white">
-                  {% trans 'Потужність' %}
+                {% render 'text88' as text88 %}
+                <span class="db_content pref_text main__title main__title_5 color_white" data-admin_url="{{text88.get_admin_url}}">
+                  {{text88.text}}
+                  <!-- {% trans 'Потужність' %} -->
                 </span>
             </div>
             <div class="preferens_counter__block">
@@ -197,16 +205,20 @@ section__wrapper
               <span class="pref_line">
 
               </span>
-              <span class="pref_text main__title main__title_5 color_white">
-                {% trans 'Час' %}
+              {% render 'text89' as text89 %}
+              <span class="db_content pref_text main__title main__title_5 color_white"  data-admin_url="{{text89.get_admin_url}}">
+                {{text89.text}}
+                <!-- {% trans 'Тривалість заряду' %} -->
               </span>
           </div>
           <div class="preferens_counter__block">
               <span data-count="4" id="preferens_counter_4" class="lines preferens_counter_4 color_yellow main__title main__title_0">
                 0
               </span>
-              <span class="sub_title sub_title_1 color_white">
-                {% trans 'год' %}
+              {% render 'text90' as text90 %}
+              <span class="db_content sub_title sub_title_1 color_white" data-admin_url="{{text90.get_admin_url}}">
+                {{text90.text}}
+                <!-- {% trans 'год' %} -->
               </span>
           </div>
           </div>
@@ -238,7 +250,7 @@ section__wrapper
     </div>
     <div class="eleek_slider__wrap">
       {% for slide in velo_sliders %}
-        <div class="eleek_slide">
+        <div class="eleek_slide db_content" data-admin_url="{{slide.get_admin_url}}">
           <div class="eleek_num_counter main__title main__title_01 color_white">
             {% if forloop.counter > 9 %}
               {{forloop.counter}}
@@ -250,21 +262,26 @@ section__wrapper
             {{slide.name}}
           </div>
           <div class="eleek_slide_img">
-              <img data-lazy="/static/source/img/index/slide-{{slide}}.png" alt="">
+              <img data-lazy="{{slide.image.url}}" alt="{{slide.alt}}">
+              <!-- <img data-lazy="/static/source/img/index/slide-{{slide}}.png" alt=""> -->
               <img class="oval_slide" data-lazy="/static/source/img/index/oval.png" alt="">
           </div>
           <div class="eleek_slide_info__wrapp">
             <div class="eleek_slide_info__block">
-              <div class="eleek_slide_info sub_title sub_title_2">
-                {% trans 'Дистанція' %}
+              {% render 'text91' as text91 %}
+              <div class="db_content eleek_slide_info sub_title sub_title_2" data-admin_url="{{text91.get_admin_url}}">
+                {{text91.text}}
+                <!-- {% trans 'Дистанція' %} -->
               </div>
               <div class="eleek_slide_info eleek_info_result">
                 {{slide.distance}}
               </div>
             </div>
             <div class="eleek_slide_info__block">
-              <div class="eleek_slide_info sub_title sub_title_2">
-                {% trans 'Макс. швидкість' %}
+              {% render 'text92' as text92 %}
+              <div class="db_content eleek_slide_info sub_title sub_title_2" data-admin_url="{{text92.get_admin_url}}">
+                {{text92.text}}
+                <!-- {% trans 'Макс. швидкість' %} -->
               </div>
               <div class="eleek_slide_info eleek_info_result">
                 {{slide.speed}}
@@ -272,8 +289,10 @@ section__wrapper
             </div>
             
             <div class="eleek_slide_info__block">
-              <div class="eleek_slide_info sub_title sub_title_2">
-                {% trans 'Потужність' %}
+              {% render 'text93' as text93 %}
+              <div class="db_content eleek_slide_info sub_title sub_title_2" data-admin_url="{{text93.get_admin_url}}">
+                {{text93.text}}
+                <!-- {% trans 'Потужність' %} -->
               </div>
               <div class="eleek_slide_info eleek_info_result">
                 {{slide.power}}
@@ -281,8 +300,10 @@ section__wrapper
             </div>
           </div>
           {% if slide.item %}
-          <a href="{{slide.item.get_absolute_url}}" class="eleek_slide_btn btn_standart btn_standart_transparent">
-            {% trans 'Детальніше' %}
+          {% render 'text94' as text94 %}
+          <a href="{{slide.item.get_absolute_url}}" class="db_content eleek_slide_btn btn_standart btn_standart_transparent" data-admin_url="{{text94.get_admin_url}}">
+            {{text94.text}}
+            <!-- {% trans 'Детальніше' %} -->
           </a>
           {% endif %}
         </div>
@@ -305,8 +326,10 @@ section__wrapper
       {{index_choose.text}}
       <!-- При виборі електро велосипеда можна не обмежувати себе в побажаннях. Ми можемо підібрати велосипед який підійде саме Вам. Починаючи з велосипеда для неспішних прогулянок по парку, закінчуючи зарядженим брутальним мотоциклом для агресивної їзди всюди. -->
     </div>
-    <a href="{{ramy.get_absolute_url}}" class="btn_standart btn_standart_black">
-      {% trans 'Детальніше' %}
+    {% render 'text95' as text95 %}
+    <a href="{{ramy.get_absolute_url}}" class="db_content btn_standart btn_standart_black" data-admin_url="{{text95.get_admin_url}}">
+      {{text95.text}}
+      <!-- {% trans 'Детальніше' %} -->
     </a>
     <a href="#" class="glo">
       Кнопка с анимацией загрузки

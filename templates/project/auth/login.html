@@ -16,37 +16,58 @@ item_section__wrapper
     </div>
     <div class="registery_content">
       <div class="registery__block absolute_center">
-        <h2 class="registery_name main__title main__title_2 color_black">
-          {% trans 'Вхід' %}
+        {% render 'text156' as text156 %}
+        <h2 data-admin_url="{{text156.get_admin_url}}" class="registery_name main__title main__title_2 color_black">
+          {{text156.text}}
+          <!-- {% trans 'Вхід' %} -->
         </h2>
         <form action="/api/users/sw_login/" class="registery_form login_form">
           <div class="footer_input__wrap inp-vak-wrap">
-            <label for="login_username" class="login_label label__style color_black">
-              {% trans 'Логін' %}
+            {% render 'text157' as text157 %}
+            
+            <label data-admin_url="{{text157.get_admin_url}}" for="login_username" class="db_content login_label label__style color_black">
+              {{text157.text}}
+              <!-- {% trans 'Логін' %} -->
             </label>
             <input type="text" id="login_username" name="username" class="login_username login_input input_focus">
           </div>
           
           <div class="footer_input__wrap inp-vak-wrap">
-            <label for="login_pass" class="login_label label__style color_black">
-              {% trans 'Пароль' %}
+            {% render 'text158' as text158 %}
+            <label data-admin_url="{{text158.get_admin_url}}" for="login_pass" class="db_content login_label label__style color_black">
+              {{text158.text}}
+              <!-- {% trans 'Пароль' %} -->
             </label>
             <input type="password" id="login_pass" name="password" class="login_pass login_input input_focus">
           </div>
           <div class="error_block_false"></div>
           <div class="bottom_registery__block">
-          <a class="ultra_link sub_title sub_title_2 color_yellow" href="/accounts/google/login/?process=login">{% trans 'Вхід через Google' %}</a>
+            {% render 'text159' as text159 %}
+            
+            <a data-admin_url="{{text159.get_admin_url}}" class="db_content ultra_link sub_title sub_title_2 color_yellow" href="/accounts/google/login/?process=login">
+              {{text159.text}}
+            <!-- {% trans 'Вхід через Google' %} -->
+          </a>
             <input type="submit" value="Вхід" class="btn_standart btn_standart_black">
           </div>
-          <a href="{% url 'account_reset_password' %}" class="ultra_link sub_title sub_title_2 color_yellow">
-            {% trans 'Забули пароль?' %}
+          {% render 'text160' as text160 %}
+          
+          <a data-admin_url="{{text160.get_admin_url}}" href="{% url 'account_reset_password' %}" class="db_content ultra_link sub_title sub_title_2 color_yellow">
+            {{text160.text}}
+            <!-- {% trans 'Забули пароль?' %} -->
           </a>
           <div class="last_registery__block">
-            <div class="last_registery_text sub_title sub_title_2 color_black">
-              {% trans 'Ще не зареєстровані?' %}
+            {% render 'text161' as text161 %}
+            
+            <div data-admin_url="{{text161.get_admin_url}}" class="db_content last_registery_text sub_title sub_title_2 color_black">
+              {{text161.text}}
+              <!-- {% trans 'Ще не зареєстровані?' %} -->
             </div>
-            <a href="{% url 'register' %}" class="ultra_link sub_title sub_title_2 color_yellow">
-              {% trans 'Зареєструватись' %}
+            {% render 'text162' as text162 %}
+            
+            <a data-admin_url="{{text162.get_admin_url}}" href="{% url 'register' %}" class="db_content ultra_link sub_title sub_title_2 color_yellow">
+              {{text162.text}}
+              <!-- {% trans 'Зареєструватись' %} -->
             </a>
           </div>
         </form>
@@ -63,6 +84,3 @@ item_section__wrapper
 <script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
 <script src="/static/source/pages/login/index.js"></script> 
 {% endblock scripts %}
-
-
-

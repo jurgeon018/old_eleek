@@ -2693,6 +2693,10 @@ div.modal-review__rating-order-wrap[class] > span:hover ~ span {
   -moz-box-shadow: 0px 0px 17px -5px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 17px -5px rgba(0, 0, 0, 0.75); }
 
+.liqpay_section {
+  min-height: 100vh;
+  padding-top: 70px; }
+
 @media (max-width: 1328px) {
   .standart_container, .tab_container {
     padding: 100px 24px 0px 24px; }

@@ -114,12 +114,12 @@ if (admin_check == 0) {
   $('.db_content').addClass('db_content_active');
   admin_check = sessionStorage.getItem('admin_panell');
   admin_panels.forEach(function (item, index, array) {
-    var link_adress = $(item).data('admin_url');
+    // var link_adress = $(item).data('admin_url');
     var hidden_panel = document.createElement('div');
     hidden_panel.classList.add('db_hidden_content');
-    var hidden_link = document.createElement('a');
-    hidden_link.classList.add('db_hidden_link');
-    hidden_link.setAttribute("href", link_adress);
+    var hidden_link = document.createElement('span');
+    hidden_link.classList.add('db_hidden_link'); // hidden_link.setAttribute(`href`, link_adress);
+
     hidden_link.textContent = 'Редагувати';
     hidden_panel.appendChild(hidden_link);
     item.appendChild(hidden_panel);
@@ -144,12 +144,12 @@ function admin_func() {
     sessionStorage.setItem('admin_panell', 0);
     admin_check = sessionStorage.getItem('admin_panell');
     admin_panels.forEach(function (item, index, array) {
-      var link_adress = $(item).data('admin_url');
+      // var link_adress = $(item).data('admin_url');
       var hidden_panel = document.createElement('div');
       hidden_panel.classList.add('db_hidden_content');
-      var hidden_link = document.createElement('a');
-      hidden_link.classList.add('db_hidden_link');
-      hidden_link.setAttribute("href", link_adress);
+      var hidden_link = document.createElement('span');
+      hidden_link.classList.add('db_hidden_link'); // hidden_link.setAttribute(`href`, link_adress);
+
       hidden_link.textContent = 'Редагувати';
       hidden_panel.appendChild(hidden_link);
       item.appendChild(hidden_panel);
@@ -780,7 +780,7 @@ jQuery.validator.addMethod("lettersonly", function (value, element) {
   return this.optional(element) || /[^0-9]+$/i.test(value);
 }, curr_lang);
 jQuery.validator.addMethod("minLength", function (value, element) {
-  if (value.length <= 6) {
+  if (value.length < 6) {
     return false;
   } else {
     return true;
@@ -810,6 +810,7 @@ function Onload() {
   valide_form('#comment_form', '.inp-vak-wrap', false);
   valide_form('.registery_form', '.inp-vak-wrap', false);
   valide_form('.drive__form_last', '.inp-vak-wrap', true);
+  valide_form('.drive__form', '.inp-vak-wrap', true);
   valide_form('.form_cons', '.inp-vak-wrap', true);
   valide_form('#form_qustion', '.inp-vak-wrap', true);
   valide_form('#form_cons', '.inp-vak-wrap', true);
@@ -823,6 +824,13 @@ function location_leng() {
 function valide_form(id_form, error_inp_wrap, check_request) {
   var modal = false;
   var check_request = check_request;
+  var check_pass = true;
+
+  if (id_form == '.registery_form') {
+    check_pass = false;
+  } else {
+    check_pass = true;
+  }
 
   if ($(id_form).length > 0) {
     var lang_site;
@@ -882,8 +890,12 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           required: true
         },
         pass1: {
-          required: true,
-          minLength: true
+          required: check_pass,
+          minLength: check_pass
+        },
+        password2: {
+          required: check_pass,
+          minLength: check_pass
         },
         address: {
           required: true,
@@ -897,10 +909,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         },
         password: {
           required: true
-        },
-        password2: {
-          required: true,
-          minLength: true
         },
         pas1: {
           required: true
@@ -968,19 +976,24 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         var pass_finder = $('.login_pass2').length;
 
         if (pass_finder == 1) {
-          var pass_1 = $('.login_pass').val();
-          var pass_2 = $('.login_pass2').val();
-          pass_checked = false;
+          if ($('.login_pass').val().length >= 1) {
+            var pass_1 = $('.login_pass').val();
+            var pass_2 = $('.login_pass2').val();
+            pass_checked = false;
 
-          if (pass_1 == pass_2) {
+            if (pass_1 == pass_2) {
+              $('.pass_checked_error').text('');
+              pass_checked = true;
+            } else {
+              pass_checked = false;
+              event.preventDefault();
+              $('.load_spin').removeClass('load_spin_active');
+              $.fancybox.close();
+              $('.pass_checked_error').text('паролі не співпадають');
+            }
+          } else {
             $('.pass_checked_error').text('');
             pass_checked = true;
-          } else {
-            pass_checked = false;
-            event.preventDefault();
-            $('.load_spin').removeClass('load_spin_active');
-            $.fancybox.close();
-            $('.pass_checked_error').text('паролі не співпадають');
           }
         }
 
@@ -1123,7 +1136,12 @@ __webpack_require__.r(__webpack_exports__);
 
 $('.select_drive').select2({
   dropdownAutoWidth: true,
-  width: 'resolve'
+  width: 'resolve',
+  language: {
+    noResults: function noResults(params) {
+      return "Немає результатів";
+    }
+  }
 });
 
 /***/ }),

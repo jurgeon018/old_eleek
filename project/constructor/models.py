@@ -73,7 +73,7 @@ class FrameMixin(models.Model):
 
 
 class BaseMixin(ActiveMixin, TimestampMixin):
-    order = models.IntegerField(verbose_name="Порядок", default=0, blank=False, null=False)
+    # order = models.IntegerField(verbose_name="Порядок", default=0, blank=False, null=False)
 
     class Meta: 
         abstract = True 
@@ -118,7 +118,7 @@ class FrameType(GeneralMixin):
         for parameter in parameters:
             value = parameter.get_values().first()
             initial_price += value.price 
-            print(value.price, value)
+            # print(value.price, value)
         initial_price = str(initial_price).split('.')[0]
         initial_price = initial_price[::-1]
         initial_price = [(initial_price[i:i+3]) for i in range(0, len(initial_price), 3)] 
@@ -127,14 +127,17 @@ class FrameType(GeneralMixin):
         return initial_price
     
     class Meta: 
-        ordering = ['order']
+        # ordering = ['order']
         verbose_name = "Тип рами"
         verbose_name_plural = "Типи рами"
 
 
 class FrameColor(GeneralMixin, FrameMixin):
+    attribute_value = models.ForeignKey(
+        verbose_name="Значення атрибута товара", to="sw_catalog.AttributeValue", blank=True, null=True, on_delete=models.SET_NULL,
+    )
     class Meta: 
-        ordering = ['order']
+        # ordering = ['order']
         verbose_name = "Колір рами" 
         verbose_name_plural = "Кольори рами"
     
@@ -150,10 +153,10 @@ class Tab(BaseMixin, NameMixin, CodeMixin, ImageMixin, FrameMixin):
         return super().modeltranslation_fields() + ['description']
 
     def __str__(self):
-         return f'{self.id}.{self.frame.name} -> {self.name}'
+         return f'{self.id}.{self.name} <- {self.frame.name}'
     
     class Meta: 
-        ordering = ['order']
+        # ordering = ['order']
         verbose_name = "Вкладка"
         verbose_name_plural = "Вкладки"
 
@@ -177,12 +180,12 @@ class TabGroup(BaseMixin, NameMixin):
 
     def __str__(self):
         try:
-            return f'{self.id}.{self.tab.frame.name} -> {self.tab.name} -> {self.name}'
+            return f'{self.id}. {self.name}  <- {self.tab.name} <- {self.tab.frame.name}'
         except:
             return f'{self.id}'
     
     class Meta: 
-        ordering = ['order']
+        # ordering = ['order']
         verbose_name = "Група"
         verbose_name_plural = "Групи"
          
@@ -212,12 +215,12 @@ class Parameter(BaseMixin, NameMixin, CodeMixin):
 
     def __str__(self):
         try:
-            return f'{self.id}.{self.tab_group.tab.frame.name} -> {self.tab_group.tab.name} -> {self.tab_group.name} -> {self.name}'
+            return f'{self.id}. {self.name} <- {self.tab_group.name} <- {self.tab_group.tab.name} <- {self.tab_group.tab.frame.name}'
         except:
             return f'{self.id}'
     
     class Meta: 
-        ordering = ['order']
+        # ordering = ['order']
         verbose_name = "Параметер групи"
         verbose_name_plural = "Параметри групи"
         unique_together = [
@@ -264,12 +267,12 @@ class Value(GeneralMixin):
 
     def __str__(self):
         try:
-            return f'{self.id}. {self.parameter.tab_group.tab.frame.name} -> {self.parameter.tab_group.tab.name} -> {self.parameter.tab_group.name} -> {self.parameter.name} -> {self.name}'
+            return f'{self.id}. {self.name} <- {self.parameter.name} <- {self.parameter.tab_group.name} <- {self.parameter.tab_group.tab.name} <- {self.parameter.tab_group.tab.frame.name}'
         except:
             return f'{self.id}'
 
     class Meta: 
-        ordering = ['order']
+        # ordering = ['order']
         unique_together = [
             'code','parameter',
         ]

@@ -1,15 +1,17 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404
-from django.shortcuts import render 
-from django.http import HttpResponse 
+from django.shortcuts import get_object_or_404, redirect, render 
+from django.http import HttpResponse, JsonResponse
 from django.db.models import Max, Min 
 
-from .models import * 
 from box.apps.sw_shop.sw_catalog.models import *
 from box.core.sw_content.models import Page 
 from box.apps.sw_shop.sw_cart.decorators import cart_exists
 from box.apps.sw_shop.sw_order.models import Order
 from box.apps.sw_shop.sw_order.utils import get_order_liqpay_context
+
+from .models import * 
+from .constructor.models import * 
+
 
 def index(request):
     page = Page.objects.get(code='index')
@@ -32,14 +34,31 @@ def thank_you(request):
 def item_category(request, slug):
     category          = get_object_or_404(ItemCategory, slug=slug)
     page              = category 
-    items             = Item.objects.filter(category=category)[0:6]
-    # items             = []
-    all_items         = Item.objects.filter(category=category)
-    show_more         = all_items.count() > 6
     parent_categories = ItemCategory.objects.filter(parent__isnull=True)
+    descentant_ids    = list(category.get_descendants().values_list('id', flat=True))
+    descentant_ids.append(category.id)
+    items             = Item.objects.filter(category__id__in=descentant_ids)[0:24]
+    all_items         = Item.objects.filter(category__id__in=descentant_ids)
+    show_more         = all_items.count() > 24
     discount_filter   = all_items.filter(discount__isnull=False).exists()
-    raw_max_price     = all_items.aggregate(Max('price'))['price__max']
-    raw_min_price     = all_items.aggregate(Min('price'))['price__min']
+    # raw_max_price     = all_items.aggregate(Max('price'))['price__max']
+    # raw_min_price     = all_items.aggregate(Min('price'))['price__min']
+    # print(all_items.aggregate(Max('price')))
+    # print(all_items.aggregate(Min('price')))
+    raw_max_price     = None
+    raw_min_price     = None
+    current_currency = Currency.objects.get(code=request.session['current_currency_code'])
+    for item in all_items:
+        price = item.price
+        # price = item.get_price(current_currency, 'price_with_discount')
+        if raw_max_price == None:
+            raw_max_price = price  
+        if raw_min_price == None:
+            raw_min_price = price  
+        if raw_max_price != None and price > raw_max_price:
+            raw_max_price = price 
+        if raw_min_price != None and price < raw_min_price:
+            raw_min_price = price 
     max_price         = str(raw_max_price).replace(',','.')
     min_price         = str(raw_min_price).replace(',','.')
     return render(request, 'project/item_category.html', locals())
@@ -50,13 +69,12 @@ def item(request, slug):
     odd_features = ItemFeature.objects.filter(item=item)[:10:2]
     even_features = ItemFeature.objects.filter(item=item)[1:10:2]
     page = item
-    # x = ItemAttributeValue.objects.get(id=65)
-    # print(x)
     return render(request, 'project/item.html', locals())
 
 
 def faq(request):
     page = Page.objects.get(code='faq')
+    faqs = Faq.objects.filter(is_active=True)
     return render(request, 'project/faq.html', locals())
 
 
@@ -92,6 +110,7 @@ def search(request):
         )
     return render(request, 'project/search.html', locals())
 
+
 @login_required
 def profile(request):
     page = Page.objects.get(code='profile')
@@ -112,9 +131,6 @@ def login(request):
 def register(request):
     page = Page.objects.get(code='register')
     return render(request, 'project/auth/register.html', locals())
-
-
-from project.constructor.models import * 
 
 
 def parse_request(request):
@@ -140,50 +156,88 @@ def parse_request(request):
     } 
 
 
-from django.http import JsonResponse
-from django.shortcuts import redirect
-
-
 def constructor_middleware(request):
+    formed_attrs = {}
     query = json.loads(request.body.decode('utf-8'))
-    # print("query:", query)
+    print("query:", query, '\n')
     item = Item.objects.get(id=query['item_id'])
-    item_feature = ItemFeature.objects.filter(item=item,name__code="frame")
-    if item_feature.exists():
-        iframe_type = item_feature.first().value.code
-    formed_attrs = {
-        # "iframe_type":iframe_type,
-        # "iframe_color":"#cccccc",
-    }
-    for item_feature in ItemFeature.objects.filter(item__id=item.id):
-        feature = item_feature.name.code or f"feature_{item_feature.name.id}"
-        value   = item_feature.value.code or f"value_{item_feature.value.id}"
-        formed_attrs.update({
-            feature:value,
-        })
-    for attribute in json.loads(query['attributes']):
-        # print("attribute:", attribute)
+    features = ItemFeature.objects.filter(item__id=query['item_id'])
+    attributes = json.loads(query['attributes'])
+    # Получає раму 
+    item_feature_iframe_type = ItemFeature.objects.get(
+        item=item,
+        name__code="iframe_type"
+    ).value.code
+    if item_feature_iframe_type not in ['neo','pozitiff','ekross','lite']: 
+        item_feature_iframe_type = 'neo'
+    frame = FrameType.objects.get(code=item_feature_iframe_type)
+    formed_attrs['iframe_type']  = item_feature_iframe_type
+    # Парсить атрибути і характеристики товара які прилетіли з фронту, і поміщає їх у 4 массиви 
+    attribute_ids = []
+    attribute_value_ids = []
+    feature_ids = []
+    feature_value_ids = []
+    for item_feature in features:
+        feature_ids.append(item_feature.name.id)
+        feature_value_ids.append(item_feature.value.id)
+    for attribute in attributes:
         item_attribute = ItemAttribute.objects.get(id=attribute['item_attribute_id'])
         if 'item_attribute_value_id' in attribute:
-            print("attribute['item_attribute_value_id']", attribute['item_attribute_value_id'])
             item_attribute_value = ItemAttributeValue.objects.get(id=attribute['item_attribute_value_id'])
-            parameter_code = item_attribute.attribute.code or f'attribute_{item_attribute.attribute.id}'
-            value_code = item_attribute_value.value.code or f'value_{item_attribute_value.value.id}'
-            formed_attrs.update({
-                parameter_code:value_code,
-            })
+            attribute_ids.append(item_attribute.attribute.id)
+            attribute_value_ids.append(item_attribute_value.value.id)
         elif 'item_attribute_value_ids' in attribute:
             for item_attribute_value in ItemAttributeValue.objects.filter(id__in=attribute['item_attribute_value_ids']):
-                value_code = item_attribute_value.value.code or f'value_{item_attribute_value.value.id}'
-                formed_attrs.update({
-                    value_code:"true",
-                })
-    uri = ''
+                attribute_ids.append(item_attribute.attribute.id)
+                attribute_value_ids.append(item_attribute_value.value.id)
+    # Всі елементи конструктора у рамі 
+    values = Value.objects.filter(parameter__tab_group__tab__frame=frame)
+    for value in values:
+      # Параметр поточного елемента
+      parameter = value.parameter
+      # Якшо атрибут у параметра є у тих атрибутах які прийшли з фронту, або характеристика у параметра є у тих характеристиках які прийшли з фронту, 
+      if (parameter.attr and parameter.attr.id in attribute_ids) or (parameter.feature and parameter.feature.id in feature_ids):
+        # Якшо значення атрибуту у елемента є у тих значеннях атрибута які прийшли з фронту, або значення характеристики у елемента є у тих значеннях характеристик які прийшли з фронту 
+        if (value.attr_value and value.attr_value.id in attribute_value_ids) or (value.value and value.value.id in feature_value_ids):
+          # Коду параметра присвоюється код значення 
+          value_code = value.code
+        # Якщо ні значення характеристики ні значення атрибуту у елемента немає у тих значеннях характеристик і атрибутів які прийшли з фронту
+        else:
+          # Коду параметра присвоюється перший код значення який попадеться 
+          value_code = Value.objects.filter(parameter=parameter).first().code
+        if parameter.type == Parameter.checkbox_options:
+          formed_attrs[value_code] = "true"
+        else:
+          formed_attrs[parameter.code] = value_code 
+      # Якщо ні атрибута ні характеристики товара у параметра немає у тих атрибутах і характеристиках які прийшли з фронту,
+      # Тобто якшо на карточці товару немає потрібних елементів
+      else:
+        # Дістається просто перший елемент у параметрі
+        value = Value.objects.filter(parameter=parameter).first().code
+        formed_attrs[parameter.code] = value 
+    # color
+    # Для того щоб працювало правильне присвоювання кольорів, то потрібно вручну звязати кольори рам з конструктора і кольори рам з товара 
+    if not formed_attrs.get('iframe_color'):
+        item_feature_frame_color = ItemAttributeValue.objects.filter(
+            item_attribute__item=item,
+            item_attribute__attribute__code="iframe_color",
+            # value__id__in=attribute_value_ids,
+        )
+        # Якщо у товара існує атрибут "колір рами", то береться перше значення кольору рами з товара 
+        if item_feature_frame_color.exists():
+            item_feature_frame_color = item_feature_frame_color.first().value.code
+        # Якщо у товара не існує атрибуту "колір рами", то береться перше значення кольору рами з конструктора
+        else:
+            item_feature_frame_color = FrameColor.objects.filter(frame=frame).first().color
+        formed_attrs['iframe_color'] = f'%23{item_feature_frame_color}'
+    # url
+    uri = '?'
     for k, v in formed_attrs.items():
         uri += f'{k}={v}&'
+    uri = uri[:-1]
     return JsonResponse({
-        'url':reverse("constructor"),
-        # 'url':reverse("bike") + uri,
+        # 'url':reverse("constructor"),
+        'url':reverse("bike") + uri,
     })
 
 
@@ -285,11 +339,9 @@ def bike(request):
 
 def payment(request):
     context = get_order_liqpay_context(request)
-    print(context)
+    # print(context)
     return render(request, 'project/payment.html', context)
 
-
-from django.urls import path, include 
 
 def cart_items(request):
     return render(request, 'cart_items.html', locals())
@@ -297,6 +349,10 @@ def cart_items(request):
 
 def page_404(request):
     return render(request, 'page_404.html', locals())
+
+
+
+from django.urls import path, include 
 
 
 urlpatterns = [
