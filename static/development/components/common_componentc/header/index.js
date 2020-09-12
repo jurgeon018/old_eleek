@@ -387,7 +387,7 @@ function counter_minus(name) {
 
 
 function basket_minus() {
-  console.log(123);
+  // console.log(123);
   var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
   if (current_quan_sum == 1) {
     console.log('меньше не може бути');
@@ -395,7 +395,7 @@ function basket_minus() {
     $(this).parents('.basket_counter').find('.cart_counter').val(Number(current_quan_sum) - 1);
     let item_id = $(this).attr('data-quantity_item_id');
     let quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val();
-    console.log('quantity_id: ', quantity_id);
+    // console.log('quantity_id: ', quantity_id);
    
     fetch(`/api/cart_item/${Number(item_id)}/`, {
       method: 'PATCH',
@@ -411,15 +411,19 @@ function basket_minus() {
         return data.json();
       })
       .then(data => {
-        console.log('data: ', data);
-        $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
-        $('.basket_all_result').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
+        let currency = data.cart_currency;
+        let cart_total_price = data.cart_total_price;
+        let cart_item_total_price = data.cart_item_total_price;
+        let cart_currency = data.cart_currency
+        console.log('data patch minus: ', data);
+        $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(cart_item_total_price)} ${cart_currency}`)
+        $('.basket_all_result').text(`${currency} ${Math.round(cart_total_price)}`);
       });
   } 
 }
 function basket_plus() {
   var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
-  console.log('current_quan_sum: ', current_quan_sum);
+  // console.log('current_quan_sum: ', current_quan_sum);
 
   if (current_quan_sum == 99999) {
     console.log('більше не може бути');
@@ -428,7 +432,7 @@ function basket_plus() {
 
     let item_id = $(this).attr('data-quantity_item_id');
     let quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val();
-    console.log('quantity_id: ', quantity_id);
+    // console.log('quantity_id: ', quantity_id);
 
     fetch(`/api/cart_item/${Number(item_id)}/`, {
       method: 'PATCH',
@@ -444,7 +448,7 @@ function basket_plus() {
         return data.json();
       })
       .then(data => {
-        console.log('data: ', data);
+        console.log('data patch plus: ', data);
         $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
         $('.basket_all_result').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
       });

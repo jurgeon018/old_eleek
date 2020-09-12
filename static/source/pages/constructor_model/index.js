@@ -57492,7 +57492,7 @@ function counter_minus(name) {
 function basket_minus() {
   var _this3 = this;
 
-  console.log(123);
+  // console.log(123);
   var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
 
   if (current_quan_sum == 1) {
@@ -57500,8 +57500,8 @@ function basket_minus() {
   } else {
     $(this).parents('.basket_counter').find('.cart_counter').val(Number(current_quan_sum) - 1);
     var item_id = $(this).attr('data-quantity_item_id');
-    var quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val();
-    console.log('quantity_id: ', quantity_id);
+    var quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val(); // console.log('quantity_id: ', quantity_id);
+
     fetch("/api/cart_item/".concat(Number(item_id), "/"), {
       method: 'PATCH',
       body: JSON.stringify({
@@ -57514,9 +57514,13 @@ function basket_minus() {
     }).then(function (data) {
       return data.json();
     }).then(function (data) {
-      console.log('data: ', data);
-      $(_this3).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price), " ").concat(data.cart_currency));
-      $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(Math.round(data.cart_total_price)));
+      var currency = data.cart_currency;
+      var cart_total_price = data.cart_total_price;
+      var cart_item_total_price = data.cart_item_total_price;
+      var cart_currency = data.cart_currency;
+      console.log('data patch minus: ', data);
+      $(_this3).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(cart_item_total_price), " ").concat(cart_currency));
+      $('.basket_all_result').text("".concat(currency, " ").concat(Math.round(cart_total_price)));
     });
   }
 }
@@ -57524,16 +57528,15 @@ function basket_minus() {
 function basket_plus() {
   var _this4 = this;
 
-  var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
-  console.log('current_quan_sum: ', current_quan_sum);
+  var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val(); // console.log('current_quan_sum: ', current_quan_sum);
 
   if (current_quan_sum == 99999) {
     console.log('більше не може бути');
   } else {
     $(this).parents('.basket_counter').find('.cart_counter').val(Number(current_quan_sum) + 1);
     var item_id = $(this).attr('data-quantity_item_id');
-    var quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val();
-    console.log('quantity_id: ', quantity_id);
+    var quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val(); // console.log('quantity_id: ', quantity_id);
+
     fetch("/api/cart_item/".concat(Number(item_id), "/"), {
       method: 'PATCH',
       body: JSON.stringify({
@@ -57546,7 +57549,7 @@ function basket_plus() {
     }).then(function (data) {
       return data.json();
     }).then(function (data) {
-      console.log('data: ', data);
+      console.log('data patch plus: ', data);
       $(_this4).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price), " ").concat(data.cart_currency));
       $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(Math.round(data.cart_total_price)));
     });
