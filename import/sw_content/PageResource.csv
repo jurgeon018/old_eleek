@@ -2,7 +2,7 @@ code,meta_title,meta_title_uk,meta_title_en,meta_title_ru,meta_descr,meta_descr_
 about,Про Нас,Про Нас,About Us,О Нас,Про Нас,Про Нас,About Us,О Нас,about,about,,about
 header,,,,,,,,,,,,
 footer,,,,,,,,,,,,
-test_drive,test_drive,test_drive,,,test_drive,test_drive,,test_drive,test_drive,test_drive,,test_drive
+test_drive,Тест драйв,Тест драйв,Test Drive,Тест драйв,Тест драйв,Тест драйв,Test Drive,Тест драйв,test_drive,test_drive,,test_drive
 shop,shop,shop,,,shop,shop,,shop,shop,shop,,shop
 search,search,search,,,search,search,,search,search,search,,search
 profile,Профіль,Профіль,Profile,Профиль,profile,profile,,profile,profile,profile,,profile
@@ -16,3 +16,8 @@ delivery,delivery,delivery,,,delivery,delivery,,delivery,delivery,delivery,,deli
 login,login,login,,,login,login,,login,login,login,,login
 register,register,register,,,register,register,,register,register,register,,register
 contacts,,,,,,,,,,,,
+page_404,,,,,,,,,,,,
+item,,,,,,,,,,,,
+item_category,,,,,,,,,,,,
+thank_you,,,,,,,,,,,,
+basket,,,,,,,,,,,,

@@ -128,6 +128,10 @@ id,name,content_type,codename
 403,Can change Сертифікат,101,change_certificate
 404,Can delete Сертифікат,101,delete_certificate
 405,Can view Сертифікат,101,view_certificate
+462,Can add faq,116,add_faq
+463,Can change faq,116,change_faq
+464,Can delete faq,116,delete_faq
+465,Can view faq,116,view_faq
 406,Can add Парнтер,102,add_partner
 407,Can change Парнтер,102,change_partner
 408,Can delete Парнтер,102,delete_partner
