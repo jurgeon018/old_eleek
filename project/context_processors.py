@@ -22,8 +22,8 @@ def context(request):
         cart_items = CartItem.objects.filter(cart=cart)
         currencies = Currency.objects.all()
     except Exception as e:
-        raise e
-        # pass 
+        # raise e
+        pass 
     return locals()
 
 
