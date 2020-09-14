@@ -134,7 +134,7 @@
                 У вас поки що немає спеціальних пропозицій.
               </div>
               <a href="#" class="ultra_link sub_title sub_title_2 color_yellow">
-                Категорії товарів
+                Магазин 
               </a>
             </div> -->
             <div class="profile_attributes__block">
@@ -174,7 +174,7 @@
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_12">
                 <!-- 16.03.2020-10.06.2020 -->
-                {{coupon.started}}-{{coupon.period}}
+                {{coupon.started|date:"Y.m.d"}}-{{coupon.period|date:"Y.m.d"}}
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_13">
                 <a href="{% url 'shop' %}">

@@ -15,25 +15,27 @@ def random_date(start, end):
 from project.models import ProjectUser 
 
 
-s1 = datetime.strptime('1/1/2020 1:30 PM', '%m/%d/%Y %I:%M %p')
-s2 = datetime.strptime('1/2/2020 4:50 AM', '%m/%d/%Y %I:%M %p')
+s1 = datetime.strptime('1/1/2020 1:30 PM', '%d/%m/%Y %I:%M %p')
+s2 = datetime.strptime('1/2/2020 4:50 AM', '%d/%m/%Y %I:%M %p')
 
-e1 = datetime.strptime('1/10/2020 1:30 PM', '%m/%d/%Y %I:%M %p')
-e2 = datetime.strptime('1/12/2020 4:50 AM', '%m/%d/%Y %I:%M %p')
+e1 = datetime.strptime('1/10/2020 1:30 PM', '%d/%m/%Y %I:%M %p')
+e2 = datetime.strptime('1/12/2020 4:50 AM', '%d/%m/%Y %I:%M %p')
 
 
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
+        Coupon.objects.all().delete()
         for i in range(10):
             name = f'Купон {i}'
-            discount_amount = randrange(1, 80)
             currency        = choice(Currency.objects.all())
             discount_type   = choice(['currency','percent'])
-            requisition     = randrange(0, 100)
+            if discount_type == 'currency':
+                discount_amount = randrange(100, 300)
+            else:
+                discount_amount = randrange(1, 15)
+            # requisition     = randrange(0, 100)
             started         = random_date(s1, s2)
-            print(started)
             period          = random_date(e1, e2)
-            print(period)
             users           = ProjectUser.objects.all()
             # users           = [ProjectUser.objects.get(username='admin'), ]
             if Coupon.objects.filter(name=name).exists():
@@ -41,7 +43,7 @@ class Command(BaseCommand):
                 coupon.discount_amount = discount_amount
                 coupon.currency        = currency
                 coupon.discount_type   = discount_type
-                coupon.requisition     = requisition
+                # coupon.requisition     = requisition
                 coupon.started         = started
                 coupon.period          = period
                 coupon.save()
@@ -51,12 +53,13 @@ class Command(BaseCommand):
                     discount_amount=discount_amount,
                     currency=currency,
                     discount_type=discount_type,
-                    requisition=requisition,
+                    # requisition=requisition,
                     started=started,
                     period=period,
                 )
             for user in users:
                 coupon.users.add(user)
-            print(coupon)
+            print("coupon", coupon)
+            print()
         print('ok')
 

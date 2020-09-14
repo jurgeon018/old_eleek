@@ -44,7 +44,7 @@ def test_drive_contact(request):
 
 
 
-
+from django.contrib.auth import update_session_auth_hash
 
 
 
@@ -65,6 +65,7 @@ def update_project_user(request):
     if password1 and password2:
         response['message'] = 'Пароль було змінено.'
         user.set_password(password1)
+        update_session_auth_hash(request, request.user)
     user.save()
     response["status"] = "OK"
     return JsonResponse(response)
