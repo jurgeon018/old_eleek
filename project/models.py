@@ -5,7 +5,12 @@ from box.core.helpers import get_admin_url
 
 
 class ProjectUser(BoxAbstractUser):
-    pass
+    # email = models.EmailField(
+    #     'email address', blank=True,
+    #     # unique=True, 
+    #     unique=False,
+    # )
+    pass 
 
 
 class Certificate(models.Model):

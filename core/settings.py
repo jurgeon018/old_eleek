@@ -120,3 +120,7 @@ PATH_400    = 'page_400.html'
 PATH_403    = 'page_403.html'
 PATH_404    = 'page_404.html'
 PATH_500    = 'page_500.html'
+# ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_UNIQUE_EMAIL = False 
+
+
