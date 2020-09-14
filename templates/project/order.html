@@ -1,5 +1,5 @@
 {% extends 'project/base.html' %}
-{% load i18n sw_content %}
+{% load i18n sw_content sw_catalog sw_cart %}
 {% block styles %}
 <link rel="stylesheet" href="/static/source/pages/order/index.css.map">
 <link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
@@ -284,7 +284,10 @@ item_section__wrapper
                       <!-- {% trans 'Ціна' %} -->
                     </div>
                     <div class="basket_summ main__title main__title_5">
-                      {{cart_item.item.price}} {{cart_item.item.currency}}
+                      <!-- {{cart_item.item.price}} {{cart_item.item.currency}} -->
+                      {% get_cart_item_price cart_item current_currency "total_price_with_discount_with_attributes" as admin_total_price_with_discount_with_attributes %}
+                      {{admin_total_price_with_discount_with_attributes|floatformat}} {{current_currency.code}}
+                      
                     </div>
                   </div>
                 </div>
@@ -299,7 +302,12 @@ item_section__wrapper
               <!-- {% trans 'Всього' %} -->
             </div>
             <div class="order_sum main__title main__title_5 color_black">
-              {{cart.total_price}} {{cart.currency}}
+              <!-- {{cart.total_price}} {{cart.currency}} -->
+              {% get_cart_price cart main_currency "total_price" as main_cart_total_price%}
+              {% get_cart_price cart current_currency "total_price" as current_cart_total_price%}
+              <!-- {{main_cart_total_price}} {{main_currency.code}} -->
+              {{current_cart_total_price}}  {{current_currency.code}}
+
             </div>
           </div>
         </div>

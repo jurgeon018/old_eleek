@@ -233,8 +233,6 @@ $('.order_info__block').on('submit', function (evt) {
 
 $('.submit_order_btn').on('click', function() {
     let action = $('.order_info__block').attr('action');
-
-    
     let current_delivery = $('.step_content_delivery').find('.radio_center_active').parents('.radio_block').find('.radio_title').text();
     console.log('current_delivery: ', current_delivery);
     let current_payment = $('.step_content_payment').find('.radio_center_active').parents('.radio_block').find('.radio_title').attr('data-payment');

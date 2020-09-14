@@ -31,10 +31,10 @@ item_section__wrapper
               </label> 
               <div class="filter-content"> 
                   <form action="" class="filter_form">
-                    {% render 'text58' as text58 %}
+                    <!-- {% trans 'Ціна' %} -->
+                    <!-- {% render 'text58' as text58 %}
                     <div class="db_content filter_category standart_title standart_title_4 color_black" data-admin_url="{{text58.get_admin_url}}">
                       {{text58.text}}
-                      <!-- {% trans 'Ціна' %} -->
                     </div>
                   <input type="hidden" name="min_sum" class="input_for_min_range">
                   <input type="hidden" name="max_sum" class="input_for_max_range">
@@ -42,7 +42,7 @@ item_section__wrapper
                       <div class="cost_filter_num standart_title standart_title_6 color_black">
                           
                       </div>
-                  <div class="range_slider" id="slider"></div>
+                  <div class="range_slider" id="slider"></div> -->
                   {% for parent_category in parent_categories %}
                   <div class="items_filter_content__wrap {% if parent_category == page %} items_filter_content__wrap_active {% endif %}">
                     <a href="{{parent_category.get_absolute_url}}">
