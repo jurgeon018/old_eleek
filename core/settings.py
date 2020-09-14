@@ -14,8 +14,14 @@ INSTALLED_APPS +=[
 
 
 
+import sys
+import socket
+x = socket.gethostbyname(socket.gethostname())+"----"+sys.argv[-1]
 
-
+if sys.argv[-1] == '0.0.0.0:8000':
+    DEBUG = True 
+else:
+    DEBUG = False 
 
 
 
@@ -109,3 +115,8 @@ FILTER_BY_SUBCATEGORIES = True
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 56214400
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 56214400
+
+PATH_400    = 'page_400.html'
+PATH_403    = 'page_403.html'
+PATH_404    = 'page_404.html'
+PATH_500    = 'page_500.html'

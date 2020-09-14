@@ -159,21 +159,27 @@
                 <!-- {% trans 'Дія' %}   -->
               </div>
             </div>
-            {% for sale_item in '123456789'|make_list %}
-            <div class="profile_item">
-              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_10">
-                Категорія {{sale_item}}
+            {% for coupon in coupons  %}
+            <div class="profile_item ">
+              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_10 db_content" data-admin_url="{{coupon.get_admin_url}}">
+                {{coupon.name}}
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_11">
-                {{sale_item}}5%
+                {{coupon.discount_amount}} 
+                {% if coupon.discount_type == 'percent' %} 
+                % 
+                {% else %}
+                {{coupon.currency.code}}
+                {% endif %}
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_12">
-                16.03.2020-10.06.2020
+                <!-- 16.03.2020-10.06.2020 -->
+                {{coupon.started}}-{{coupon.period}}
               </div>
               <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_13">
                 <a href="{% url 'shop' %}">
                 <div class="btn_standart btn_standart_transparent">
-                    В магазин 
+                    В магазин
                   </div>
                 </a>
               </div>

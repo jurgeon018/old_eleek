@@ -110,11 +110,15 @@ def search(request):
         )
     return render(request, 'project/search.html', locals())
 
+from box.apps.sw_shop.sw_customer.models import Coupon 
 
 @login_required
 def profile(request):
     page = Page.objects.get(code='profile')
     orders = Order.objects.filter(user=request.user)
+    # coupons = Coupon.objects.all()
+    # coupons = [1,2,3,4,5]
+    coupons = Coupon.objects.filter(users__in=[request.user,])
     return render(request, 'project/profile.html', locals())
 
 

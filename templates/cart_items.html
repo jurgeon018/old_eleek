@@ -13,6 +13,8 @@
 {% get_cart_price cart current_currency "total_price" as current_cart_total_price%}
 <br>Вартість корзини: {{main_cart_total_price}} {{main_currency.code}}
 <br>Вартість корзини: {{current_cart_total_price}}  {{current_currency.code}}
+<br>Знижка: {{current_cart_total_price}}  {{current_currency.code}}
+
 {% for cart_item in cart_items %}
   <div class="cart_item" style="width:1000px">
 
@@ -20,7 +22,7 @@
 
     <a style="color:blue;" href="{{cart_item.item.get_absolute_url}}">
       {{cart_item.item.title}}
-    </a>  
+    </a>
 
     <!-- currency -> cart_item.item.currency  -->
     <br>
