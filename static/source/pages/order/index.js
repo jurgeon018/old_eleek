@@ -1230,11 +1230,11 @@ function check_next_step() {
         counter++;
       }
 
-      $('#order_adress').removeClass('input_requared');
+      $('#order_address').removeClass('input_requared');
     } else if ($('.step_content_delivery').hasClass('only_none_input')) {
-      $('#order_adress').removeClass('input_requared');
+      $('#order_address').removeClass('input_requared');
     } else if ($('.step_content_delivery').hasClass('only_one_input')) {
-      $('#order_adress').addClass('input_requared');
+      $('#order_address').addClass('input_requared');
     }
   }
 
@@ -1328,7 +1328,7 @@ $('.submit_order_btn').on('click', function () {
   var current_adress;
 
   if ($('.step_content_delivery').hasClass('only_one_input')) {
-    current_adress = $('#order_adress');
+    current_adress = $('#order_address').val();
   } else if ($('.step_content_delivery').hasClass('only_two_input')) {
     current_adress = "".concat(current_delivery.trim(), ", ").concat($('.select_city').val(), ", ").concat($('.select_aria').val());
   } else if ($('.step_content_delivery').hasClass('only_none_input')) {

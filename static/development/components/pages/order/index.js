@@ -90,8 +90,6 @@ function check_next_step() {
     let wrap = $(this).parents('.step__wrap');
     let counter = 0;
     if ($(this).attr('data-step-btn') == 2) {
-
-
         if ($('.step_content_delivery').hasClass('only_two_input')) {
           let check_city = $('.select_city').val();
           let check_aria = $('.select_aria').val();
@@ -100,16 +98,12 @@ function check_next_step() {
           if (check_city == null || check_aria == null) {
               counter++;
           }
-          $('#order_adress').removeClass('input_requared');
+          $('#order_address').removeClass('input_requared');
         } else if ($('.step_content_delivery').hasClass('only_none_input')) {
-          $('#order_adress').removeClass('input_requared');
+          $('#order_address').removeClass('input_requared');
         } else if ($('.step_content_delivery').hasClass('only_one_input')) {
-          $('#order_adress').addClass('input_requared');
+          $('#order_address').addClass('input_requared');
         }
-
-
-
-        
     }
     let all_input = $(wrap).find('.input_requared');
 
@@ -239,8 +233,6 @@ $('.order_info__block').on('submit', function (evt) {
 
 $('.submit_order_btn').on('click', function() {
     let action = $('.order_info__block').attr('action');
-
-    
     let current_delivery = $('.step_content_delivery').find('.radio_center_active').parents('.radio_block').find('.radio_title').text();
     console.log('current_delivery: ', current_delivery);
     let current_payment = $('.step_content_payment').find('.radio_center_active').parents('.radio_block').find('.radio_title').attr('data-payment');
@@ -249,7 +241,7 @@ $('.submit_order_btn').on('click', function() {
     // })
     let current_adress;
     if ($('.step_content_delivery').hasClass('only_one_input')) {
-      current_adress = $('#order_adress');
+      current_adress = $('#order_address').val();
     } else if ($('.step_content_delivery').hasClass('only_two_input')) {
       current_adress = `${current_delivery.trim()}, ${$('.select_city').val()}, ${$('.select_aria').val()}`;
     } else if ($('.step_content_delivery').hasClass('only_none_input')) {
