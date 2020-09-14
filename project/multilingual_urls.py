@@ -356,6 +356,12 @@ def page_404(request):
 
 
 
+def error_page(request):
+    sdfdsa
+    return render(request, 'page_404.html', locals())
+
+
+
 from django.urls import path, include 
 
 
@@ -384,6 +390,8 @@ urlpatterns = [
 
 
     path('cart_items/', cart_items,  name='cart_items'),
+    path('error_page/', error_page,  name='error_page'),
+    
 ]
 
 
