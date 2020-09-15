@@ -275,6 +275,7 @@ var slickFinder1 = $('.bike_trailer__block').length;
         let one_slide = 100 / main_sum;
         let reuslt = one_slide * current_slide;
         $('.line_active').css('width', `${reuslt}%`);
+        $('.first_num_name').text(`0${currentSlide + 1}`);
       });
 
       $('.bike_trailer__block').on('beforeChange', function(event, slick, currentSlide, nextSlide){

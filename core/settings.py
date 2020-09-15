@@ -14,17 +14,18 @@ INSTALLED_APPS +=[
 
 
 
-import sys
-import socket
-try:
-    x = socket.gethostbyname(socket.gethostname())+"----"+sys.argv[-1]
+# import sys
+# import socket
+# try:
+#     x = socket.gethostbyname(socket.gethostname())+"----"+sys.argv[-1]
 
-    if sys.argv[-1] == '0.0.0.0:8000':
-        DEBUG = True 
-    else:
-        DEBUG = False 
-except:
-    DEBUG = True
+#     if sys.argv[-1] == '0.0.0.0:8000':
+#         DEBUG = True 
+#     else:
+#         DEBUG = False 
+# except:
+#     DEBUG = True
+DEBUG = True
 
 
 

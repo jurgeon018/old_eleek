@@ -189,7 +189,7 @@
         </div>
         <!-- Налаштування профілю -->
         <div id="3" class="item_tab_content">
-          <form action="{% url 'update_project_user' %}" class="change_profile registery_form">
+          <form action="{% url 'update_project_user' %}" class="change_profile registery_form PATCH">
             <div class="footer_input__wrap inp-vak-wrap">
               {% render 'text111' as text111 %}
               <label for="login_name" class="db_content login_label label__style color_black" data-admin_url="{{text111.get_admin_url}}">

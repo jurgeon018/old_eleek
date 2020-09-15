@@ -1,11 +1,10 @@
 import './index.scss'
 
 
-
-if($('.mobile').length>0){
-  $('.mobile').mask("+38(999) 99 99 999");
-
-   }
+if($('input[type="tel"]').length>0){
+  
+    $('input[type="tel"]').mask("+38(999) 99 99 999");
+}
    
     
 
@@ -94,11 +93,12 @@ function valide_form(id_form, error_inp_wrap, check_request) {
   var modal = false;
   var check_request = check_request;
   let check_pass = true;
-  if (id_form == '.registery_form') {
+  if ($(id_form).hasClass('change_profile')) {
     check_pass = false;
   } else {
     check_pass = true;
   }
+  console.log('check_pass: ', check_pass);
 
   if ($(id_form).length > 0) {
       var lang_site;
@@ -246,13 +246,23 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                 var pass_finder = $('.login_pass2').length; 
 
                 if (pass_finder == 1) {
+                  console.log('(1', $('.login_pass').val().length);
+                  console.log('(2', $('.login_pass2').val().length);
                   if ($('.login_pass').val().length >= 1) {
                     var pass_1 = $('.login_pass').val();
                     var pass_2 = $('.login_pass2').val();
                         pass_checked = false;
                     if (pass_1 == pass_2) {
+                      if ($('.login_pass').val().length < 6 && $('.login_pass2').val().length < 6) {
+                        pass_checked = false;
+                        event.preventDefault();
+                        $('.load_spin').removeClass('load_spin_active');
+                        $.fancybox.close();
+                       $('.pass_checked_error').text('ваш пароль повинен містити не меньше 6 симовлів');
+                      } else {
                         $('.pass_checked_error').text('');
                         pass_checked = true;
+                      }
                     } else {
                         pass_checked = false;
                          event.preventDefault();
