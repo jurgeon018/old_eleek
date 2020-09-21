@@ -90,56 +90,59 @@ item_section__wrapper
         </div> -->
       </div>
       {% include "project/components/item_prices.html" %}
-      {% if item.manufacturer %}
+      <!-- {% if item.manufacturer %}
       <div class="additional__block">
         {% render 'text55' as text55 %}
         <div class="db_content addit_name sub_title sub_title_3 color_black" data-admin_url="{{text55.get_admin_url}}">
           {{text55.text}}
-          <!-- {% trans 'Виробник' %}: -->
+          {% trans 'Виробник' %}:
         </div>
         <div class="addit_price main__title main__title_5 color_black">
           {{item.manufacturer.name}}
-          <!-- ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span> -->
+          ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span>
         </div>
       </div>
-      {% endif %}
-      {% if item.brand %}
+      {% endif %} -->
+      <!-- {% if item.brand %}
       <div class="additional__block">
         {% render 'text56' as text56 %}
         <div class="db_content addit_name sub_title sub_title_3 color_black" data-admin_url="{{text56.get_admin_url}}">
           {{text56.text}}
-          <!-- {% trans 'Бренд' %}: -->
+          {% trans 'Бренд' %}:
         </div>
         <div class="addit_price main__title main__title_5 color_black">
           {{item.brand.title}}
-          <!-- ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span> -->
+          ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span>
         </div>
       </div>
-      {% endif %}
-      {% if item.in_stock %}
+      {% endif %} -->
+      <!-- {% if item.in_stock %}
       <div class="additional__block">
         <div class="addit_name sub_title sub_title_3 color_black">
           {% trans 'Наявність' %}:
         </div>
       <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
           {{item.in_stock.text}}
-          <!-- ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span> -->
+          ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span>
         </div>
       </div>
-      {% endif %}
-      {% if item.amount != 0 and item.amount != None %}
+      {% endif %} -->
+      <!-- {% if item.amount != 0 and item.amount != None %}
         <div class="additional__block">
           <div class="addit_name sub_title sub_title_3 color_black">
             {% trans 'Hа складі' %}:
           </div>
         <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
             {{item.amount}} {{item.unit.name}}
-            <!-- ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span> -->
+            ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span>
           </div>
         </div>
-      {% endif %}
+      {% endif %} -->
 
-
+        <div class="info_item__block color_black sub_title sub_title_2">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod in illum, hic quas tempore expedita, labore beatae quidem reprehenderit ab, molestias fugiat ipsa consectetur. Tempora neque cum beatae distinctio sint!
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod in illum, hic quas tempore expedita, labore beatae quidem reprehenderit ab, molestias fugiat ipsa consectetur. Tempora neque cum beatae distinctio sint!
+        </div>
 
 
 

@@ -335,6 +335,8 @@ var slickFinder1 = $('.bike_trailer__block').length;
         
   }
 
+  
+
   function find_width_progress() {
       let count_cloned = $('.bike_trailer__block').find('.slick-cloned').length;
       let count_block = $('.bike_trailer__block').find('.slick-slide').length;
@@ -351,6 +353,7 @@ var slickFinder1 = $('.bike_trailer__block').length;
       
       
   }
+
 
   var slickFinder2 = $('.eleek_slider__wrap').length;
   if (slickFinder2 >= 1) {
@@ -492,10 +495,10 @@ var index_wow_1 = new WOW(
       duration: 2000,
       easing: "swing",
       step: function () {
-        $(".lines").css({
-          "-webkit-filter": "blur(" + this.blurRadius + "px)",
-          filter: "blur(" + this.blurRadius + "px)"
-        });
+        // $(".lines").css({
+        //   "-webkit-filter": "blur(" + this.blurRadius + "px)",
+        //   filter: "blur(" + this.blurRadius + "px)"
+        // });
       }
     }
   );
@@ -567,4 +570,12 @@ var index_wow_1 = new WOW(
         $(this).removeClass('over').addClass('out');
     }
   );
-  
+
+
+
+
+
+  $('.eleek_slide').on('click', function() {
+    let link = $(this).find('.eleek_slide_btn').attr('href');
+    window.location = link;
+  });
