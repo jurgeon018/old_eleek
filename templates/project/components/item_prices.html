@@ -74,14 +74,14 @@
 {% endif %} -->
 
 {% if chosen_price != chosen_price_with_discount %}
-  <!-- <div class="additional__block">
+  <div class="additional__block">
     <div class="addit_name sub_title sub_title_3 color_black">
       Стара ціна:
     </div>
     <div class="addit_price main__title main__title_5 color_black">
         <s> {{chosen_price|floatformat}} {{current_currency}}</s>
     </div>
-  </div> -->
+  </div>
   <!-- <div class="additional__block">
     <div class="addit_name sub_title sub_title_3 color_black">
       Нова ціна:
@@ -104,7 +104,7 @@
 
 
 
-
+{% if item_has_options %}
 <div class="additional__block">
   <div class="addit_name sub_title sub_title_3 color_black">
     {% trans 'Ціна додаткових опцій' %}:
@@ -125,6 +125,7 @@
     {{current_currency.symbol}}
   </div>
 </div>
+{% endif %}
 
 
 

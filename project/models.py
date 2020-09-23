@@ -12,7 +12,7 @@ class ProjectUser(BoxAbstractUser):
     )
 
 class Certificate(models.Model):
-    sdf = models.CharField(verbose_name="sdf", max_length=255)
+    # sdf = models.CharField(verbose_name="sdf", max_length=255)
     image = models.ImageField(verbose_name='Картинка')
     alt   = models.CharField(verbose_name="Альт", max_length=255)
     
