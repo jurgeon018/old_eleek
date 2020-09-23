@@ -1206,8 +1206,9 @@ if (slickFinder0 >= 1) {
     fade: true,
     asNavFor: '.mini_slider'
   });
+  var current_quantity = Number($('.mini_slider').attr('data-quantity-slider'));
   $('.mini_slider').slick({
-    slidesToShow: 3,
+    slidesToShow: current_quantity,
     slidesToScroll: 1,
     asNavFor: '.main_card_slider',
     arrows: false,

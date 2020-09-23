@@ -52,8 +52,10 @@ let slickFinder0 = $('.item_slider__block').length;
         fade: true,
         asNavFor: '.mini_slider'
       });
+
+      let current_quantity = Number($('.mini_slider').attr('data-quantity-slider'));
       $('.mini_slider').slick({
-        slidesToShow: 3,
+        slidesToShow: current_quantity,
         slidesToScroll: 1,
         asNavFor: '.main_card_slider',
         arrows: false,
