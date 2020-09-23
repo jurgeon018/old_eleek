@@ -97,7 +97,7 @@
     {% for attribute in attributes %}
       {% if attribute.get_values.exists %}
         <!-- Атрибути в категорії одиночні(кольори) -->
-        {% if attribute_category.name == 'кольори' %}
+        {% if attribute_category.code == 'colours' %}
 
 
 
@@ -168,7 +168,7 @@
 
 
         <!-- Атрибути в категорії одиночні(некольори) -->
-        {% elif attribute_category.name != 'кольори' %}
+        {% elif attribute_category.code != 'colours' %}
 
 
 
