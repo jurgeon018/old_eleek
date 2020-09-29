@@ -47,7 +47,10 @@ def item_category(request, slug):
     # print(all_items.aggregate(Min('price')))
     raw_max_price     = None
     raw_min_price     = None
-    current_currency = Currency.objects.get(code=request.session['current_currency_code'])
+    if not request.session.get('current_currency_code'):
+        request.session['current_currency_code'] = 'UAH'
+    current_currency_code = request.session['current_currency_code']
+    current_currency = Currency.objects.get(code=current_currency_code)
     for item in all_items:
         price = item.price
         # price = item.get_price(current_currency, 'price_with_discount')

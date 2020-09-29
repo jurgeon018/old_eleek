@@ -13,19 +13,22 @@ INSTALLED_APPS +=[
 
 
 
+try:
+    import sys
+    import socket
+    x = socket.gethostbyname(socket.gethostname())+"----"+sys.argv[-1]
 
-# import sys
-# import socket
-# try:
-#     x = socket.gethostbyname(socket.gethostname())+"----"+sys.argv[-1]
-
-#     if sys.argv[-1] == '0.0.0.0:8000':
-#         DEBUG = True 
-#     else:
-#         DEBUG = False 
-# except:
-#     DEBUG = True
-DEBUG = True
+    if sys.argv[-1] == '0.0.0.0:8000':
+        print('sys.argv[-1] == 0.0.0.0:8000')
+        DEBUG = True 
+    else:
+        print('sys.argv[-1] != 0.0.0.0:8000')
+        DEBUG = False 
+except Exception as e:
+    print('try failed', e)
+    DEBUG = False 
+# DEBUG = True
+# DEBUG = False 
 
 
 
@@ -102,6 +105,7 @@ DEFAULT_FROM_EMAIL     = EMAIL_HOST_USER
 DEFAULT_RECIPIENT_LIST = [
     "jurgeon018@gmail.com",
     "dev@starwayua.com",
+    'eleekbikes@gmail.com',
 ]
 
 

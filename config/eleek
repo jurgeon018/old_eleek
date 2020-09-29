@@ -32,6 +32,26 @@ server{
 
 
 
+server{
+    server_name eleek.com.ua;
+    location /media {
+        alias /home/jurgeon/projects/eleek/src/media;
+    }
+    location /static {
+        alias /home/jurgeon/projects/eleek/src/static_root;
+    }
+    location / {
+        uwsgi_pass unix:/home/jurgeon/projects/eleek/src/config/eleek.sock;
+        include /etc/nginx/uwsgi_params;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/eleek.com.ua/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/eleek.com.ua/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
 
 
 
@@ -39,3 +59,22 @@ server{
 
 
 
+
+
+
+
+
+
+
+server{
+    if ($host = eleek.com.ua) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    server_name eleek.com.ua;
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}

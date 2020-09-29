@@ -37,3 +37,9 @@ class FaqResource(ModelResource):
         model = Faq
         exclude = []
 
+
+
+
+
+
+
