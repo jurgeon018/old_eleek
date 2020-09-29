@@ -20,6 +20,10 @@ item_section__wrapper
           <div class="img-wrap">
             <img src="{{image.image_url}}" alt="{{image.alt}}">
           </div>
+          {% empty %}
+          <div class="img-wrap">
+            <img src="{{item.image_url}}" alt="{{item.alt}}">
+          </div>
           {% endfor %}
         </div>
 
@@ -106,7 +110,7 @@ item_section__wrapper
         {% render 'text55' as text55 %}
         <div class="db_content addit_name sub_title sub_title_3 color_black" data-admin_url="{{text55.get_admin_url}}">
           {{text55.text}}
-          {% trans 'Виробник' %}:
+          <!-- {% trans 'Виробник' %}: -->
         </div>
         <div class="addit_price main__title main__title_5 color_black">
           {{item.manufacturer.name}}
@@ -118,7 +122,7 @@ item_section__wrapper
         {% render 'text56' as text56 %}
         <div class="db_content addit_name sub_title sub_title_3 color_black" data-admin_url="{{text56.get_admin_url}}">
           {{text56.text}}
-          {% trans 'Бренд' %}:
+          <!-- {% trans 'Бренд' %}: -->
         </div>
         <div class="addit_price main__title main__title_5 color_black">
           {{item.brand.title}}
