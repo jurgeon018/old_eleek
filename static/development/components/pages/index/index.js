@@ -249,7 +249,7 @@ var slickFinder1 = $('.bike_trailer__block').length;
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: false,
+        autoplay: true,
         arrows: true,
         prevArrow: '<div class="slick-first"><</div>',
         nextArrow: '<div class="slick-second">></div>',
