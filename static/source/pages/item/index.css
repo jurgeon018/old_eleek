@@ -2883,6 +2883,10 @@ div.modal-review__rating-order-wrap[class] > span:hover ~ span {
 
 .best_sales {
   padding-bottom: 30px; }
+  .best_sales .container_sales {
+    max-width: unset;
+    margin: 0 auto;
+    padding: 0px 44px; }
 
 @-webkit-keyframes hvr-wobble-horizontal {
   16.65% {
@@ -3058,6 +3062,10 @@ div.modal-review__rating-order-wrap[class] > span:hover ~ span {
 @media (max-width: 1040px) {
   .best-sales-prof {
     padding: 0; } }
+
+@media (max-width: 992px) {
+  .container_sales {
+    padding: 0px 24px !important; } }
 
 @media (max-width: 452px) {
   .best-sales-prof {

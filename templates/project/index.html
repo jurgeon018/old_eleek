@@ -58,12 +58,12 @@ section__wrapper
 <section style="opacity: 0;" class="first_section">
   <div class="bike_trailer__block">
     {% for slider in test_drive_sliders %}
-    <div class="bike_trailer__wrapper db_content" data-admin_url="{{slider.get_admin_url}}">
+    <div class="bike_trailer__wrapper db_content" data-index="{{forloop.counter}}" data-admin_url="{{slider.get_admin_url}}">
       <div class="bike_trailer_content">
-        <h1 class="main__title main__title_1 color_black slide-name anim_text">
+        <h1 class="main__title main__title_1 color_black slide-name">
           {{slider.text|safe}}
         </h1>
-        <div class="bike_trailer_btn__wrap slide-name anim_text">
+        <div class="bike_trailer_btn__wrap slide-name">
           {% render 'text82' as text82 %}
           <a href="{% url 'test_drive' %}" class="db_content btn_standart btn_standart_transparent" data-admin_url="{{text82.get_admin_url}}">
               {{text82.text}}
@@ -79,12 +79,12 @@ section__wrapper
         </div>
       </div>
         <div class="bike_trailer_img__block">
-            <img class="bike_trailer_img slide-img anim_img" data-lazy="{{slider.image.url}}" alt="{{slider.alt}}">
+            <img class="bike_trailer_img slide-img" data-lazy="{{slider.image.url}}" alt="{{slider.alt}}">
         </div>
     </div>
     {% endfor %}
   </div>
-  <div class="nav_for_bike_trailer">
+  <div class="nav_for_bike_trailer" data-arrow='next'>
     <div class="bike_progress__block">
       <span class="first_num_name num_name title_text_regular">
         01

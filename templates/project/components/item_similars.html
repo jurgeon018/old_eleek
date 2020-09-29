@@ -1,7 +1,7 @@
 {% load i18n sw_content sw_catalog %}
 {% if item.similars.all.exists %}
 <section class="best_sales">
-  <div class="container">
+  <div class="container_sales">
      <div class="best_title-block">
          {% render 'text79' as text79 %}
          <h4 class="db_content best_sale_title" data-admin_url="{{text79.get_admin_url}}">

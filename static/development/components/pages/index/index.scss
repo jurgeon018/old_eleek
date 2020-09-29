@@ -241,13 +241,6 @@
 
 }
 
-.slide-name {
-    position: relative;
-    transition: all .6s;
-    
-    animation-duration: 1s;
-    animation-name: anim_start_text;
-  }
 
   .anim_text {
     position: relative;
@@ -283,11 +276,19 @@
 //     }
 //   }
 
+
+
+  .slide-name {
+    position: relative;
+    transition: all .6s;
+  }
   .slide-img {
     position: relative;
-    animation-duration: 1.5s;
-    animation-name: anim_start_img;
+    transition: all .6s;
+    opacity: 0;
+    left: 0;
   }
+
   .anim_img {
     position: relative;
     opacity: 0 !important;
@@ -314,7 +315,7 @@
       left: 0;
     }
     30% {
-      opacity: 0;
+      opacity: 0 !important;
     }
     100% {
       left: -40%;
@@ -328,7 +329,11 @@
 
 
 
-
+  @media (max-width: 1375px) {
+    .bike_trailer_content {
+      max-width: 500px;
+    }
+  }
 
 @media (max-width: 1309px) {
     .first_section {

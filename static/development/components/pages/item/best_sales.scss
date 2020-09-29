@@ -1,6 +1,12 @@
 
 .best_sales {
     padding-bottom: 30px;
+
+    .container_sales {
+      max-width: unset;
+      margin: 0 auto;
+      padding: 0px 44px;
+    }
 }
 @-webkit-keyframes hvr-wobble-horizontal {
     16.65% {
@@ -227,6 +233,11 @@
     .best-sales-prof {
         padding: 0;
     }
+}
+@media (max-width: 992px) {
+  .container_sales {
+    padding: 0px 24px !important;
+  }
 }
 @media (max-width: 452px) {
     .best-sales-prof {

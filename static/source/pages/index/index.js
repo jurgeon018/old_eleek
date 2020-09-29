@@ -1418,13 +1418,13 @@ if (slickFinder1 >= 1) {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     arrows: true,
     prevArrow: '<div class="slick-first"><</div>',
     nextArrow: '<div class="slick-second">></div>',
     lazyLoad: "ondemand",
     speed: 1000,
-    cssEase: 'linear',
+    cssEase: 'cubic-bezier(0.550, 0.005, 0.440, -0.070)',
     swipe: false
   });
   $('.slick-first').click(function () {
@@ -1443,48 +1443,69 @@ if (slickFinder1 >= 1) {
     var reuslt = one_slide * current_slide;
     $('.line_active').css('width', "".concat(reuslt, "%"));
     $('.first_num_name').text("0".concat(currentSlide + 1));
+    return_data_arrow('next');
   });
   $('.bike_trailer__block').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-    $('.slide-name').css('left', '0%');
-    $('.slick-active .slide-name').css('left', '-150%');
+    applyHiddenClass(nextSlide);
   }); //
 
   var currSlide = 0;
   var nextSlide = 0;
 
-  function applyHiddenClass() {
-    $.each($('.slick-slide'), function () {
-      if ($(this).attr('aria-hidden') == 'true') {
-        $(this).find('.slide-name').addClass('anim_text');
-        $(this).find('.slide-img').addClass('anim_img');
-      } else {
-        $(this).find('.slide-name').removeClass('anim_text');
-        $(this).find('.slide-img').removeClass('anim_img');
+  function applyHiddenClass(position) {
+    var next_index = position + 1;
+    setTimeout(function () {
+      var main_slider = $('.bike_trailer__block').find('.slick-slide');
+      var current_slider = $('.bike_trailer__block').find('.slick-current');
+      var arrow_position = $('.nav_for_bike_trailer').attr('data-arrow');
+      var active_index;
+
+      if (arrow_position == 'next') {
+        active_index = next_index;
+      } else if (arrow_position == 'prev') {
+        active_index = next_index - 1;
+
+        if (active_index == 0) {
+          active_index = 4;
+        }
       }
-    });
+
+      console.log('active_index: ', active_index);
+      $.each(main_slider, function (index, value) {
+        var value_index = Number($(value).find('.bike_trailer__wrapper').attr('data-index'));
+        var current_text = $(value).find('.slide-name');
+        var current_img = $(value).find('.slide-img');
+
+        if (next_index == value_index) {
+          setTimeout(function () {
+            $(current_img).css('opacity', 1);
+            $(current_img).css('left', '0px');
+          }, 300);
+          setTimeout(function () {
+            $(current_text).css('opacity', 1);
+          }, 800);
+        } else {
+          $(current_img).css('left', '-20%');
+          $(current_img).css('opacity', 0);
+          setTimeout(function () {
+            $(current_text).css('opacity', 0);
+          }, 300);
+        }
+      });
+    }, 0);
   }
 
-  $('.bike_trailer__block').on('afterChange', function (event, slick, currentSlide) {
-    nextSlide = currentSlide;
-
-    if (nextSlide !== currSlide) {
-      $('.slick-active .slide-name').removeClass('animated zoomIn');
-      $('.slick-active .slide-name').addClass('anim_text');
-      $('.slick-active .slide-img').addClass('anim_img');
-    }
+  $('.slick-first').on('click', function () {
+    return_data_arrow('prev');
   });
-  $('.bike_trailer__block').on('setPosition', function (event, slick, currentSlide) {
-    if (nextSlide !== currSlide) {
-      $('.slick-active .slide-name').removeClass('anim_text');
-      $('.slick-active .slide-img').removeClass('anim_img');
-      $('.slick-active .slide-name').addClass('animated zoomIn');
-    }
-
-    applyHiddenClass();
+  $('.slick-second').on('click', function () {
+    return_data_arrow('next');
   });
-  $('.bike_trailer__block').on('beforeChange', function (event, slick, currentSlide) {
-    currSlide = currentSlide;
-  }); //
+
+  function return_data_arrow(arrow) {
+    $('.nav_for_bike_trailer').attr('data-arrow', arrow);
+  } //
+
 }
 
 function find_width_progress() {

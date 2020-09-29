@@ -2311,7 +2311,8 @@ body {
   margin-bottom: 50px; }
 
 .partners_block {
-  padding: 25px 55px; }
+  padding: 25px 55px;
+  padding-top: 200px; }
 
 .contact_form__block .drive__form {
   margin-top: 0; }
@@ -2321,6 +2322,10 @@ body {
 
 .contact_form__block .drive_title {
   margin-bottom: 30px; }
+
+@media (max-width: 1620px) {
+  .partners_block {
+    padding: 25px 55px; } }
 
 @media (max-width: 1420px) {
   .partner_arrow {

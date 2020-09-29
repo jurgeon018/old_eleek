@@ -155,6 +155,7 @@
 }
 .partners_block {
     padding: 25px 55px;
+    padding-top: 200px;
 }
 
 .contact_form__block {
@@ -169,6 +170,11 @@
     }
 }
 
+@media (max-width: 1620px) {
+    .partners_block {
+        padding: 25px 55px;
+    }
+}
 @media (max-width: 1420px) {
     .partner_arrow {
         display: flex;
