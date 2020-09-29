@@ -20,6 +20,10 @@ item_section__wrapper
           <div class="img-wrap">
             <img src="{{image.image_url}}" alt="{{image.alt}}">
           </div>
+          {% empty %}
+          <div class="img-wrap">
+            <img src="{{item.image_url}}" alt="{{item.alt}}">
+          </div>
           {% endfor %}
         </div>
 
