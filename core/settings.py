@@ -27,7 +27,7 @@ try:
 except Exception as e:
     print('try failed', e)
     DEBUG = False 
-# DEBUG = True
+DEBUG = True
 # DEBUG = False 
 
 

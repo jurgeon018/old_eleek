@@ -1411,8 +1411,7 @@ var slickFinder1 = $('.bike_trailer__block').length;
 
 if (slickFinder1 >= 1) {
   $('.bike_trailer__block').on('init', function (event, slick) {
-    $('.slick-active .slide-name').removeClass('anim_text');
-    $('.slick-active .slide-img').removeClass('anim_img'); //applyHiddenClass();
+    $('.slick-active .slide-name').css('opacity', '1'); //applyHiddenClass();
   });
   $('.bike_trailer__block').slick({
     infinite: true,
@@ -1423,7 +1422,7 @@ if (slickFinder1 >= 1) {
     prevArrow: '<div class="slick-first"><</div>',
     nextArrow: '<div class="slick-second">></div>',
     lazyLoad: "ondemand",
-    speed: 1000,
+    speed: 1700,
     cssEase: 'cubic-bezier(0.550, 0.005, 0.440, -0.070)',
     swipe: false
   });
@@ -1480,16 +1479,16 @@ if (slickFinder1 >= 1) {
           setTimeout(function () {
             $(current_img).css('opacity', 1);
             $(current_img).css('left', '0px');
-          }, 300);
+          }, 600);
           setTimeout(function () {
             $(current_text).css('opacity', 1);
-          }, 800);
+          }, 1500);
         } else {
           $(current_img).css('left', '-20%');
           $(current_img).css('opacity', 0);
           setTimeout(function () {
             $(current_text).css('opacity', 0);
-          }, 300);
+          }, 600);
         }
       });
     }, 0);

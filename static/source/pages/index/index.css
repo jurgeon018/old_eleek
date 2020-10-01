@@ -2400,7 +2400,8 @@ body {
 
 .slide-name {
   position: relative;
-  transition: all .6s; }
+  transition: all .6s;
+  opacity: 0; }
 
 .slide-img {
   position: relative;
